@@ -9,7 +9,6 @@ const Footer = () => {
       { name: "Events", href: "#events", submenu: [
         { name: "February 20th in Riyadh", href: "/events/riyadh" }
       ]},
-      { name: "Join the Network", href: "#join" },
       { name: "Legal", submenu: [
         { name: "Privacy Policy", href: "#privacy" },
         { name: "Terms of Use", href: "#terms" }
@@ -44,6 +43,14 @@ const Footer = () => {
   return (
     <footer className="bg-white">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
+        <div className="text-center mb-16">
+          <a
+            href="#join"
+            className="inline-block bg-primary text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-primary/90 transition-colors"
+          >
+            Join the Nias Network
+          </a>
+        </div>
         <nav className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
           {navigation.main.map((item) => (
             <div key={item.name} className="pb-6">
