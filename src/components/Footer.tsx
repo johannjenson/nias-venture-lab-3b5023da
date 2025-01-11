@@ -8,7 +8,8 @@ const Footer = () => {
         { name: "Nias Business Forum", href: "/events/riyadh" }
       ]},
       { name: "Resources", submenu: [
-        { name: "Opportunities", href: "/resources" }
+        { name: "Opportunities", href: "/resources" },
+        { name: "Member Login", href: "/login" }
       ]},
       { name: "About", submenu: [
         { name: "People", href: "/people" },

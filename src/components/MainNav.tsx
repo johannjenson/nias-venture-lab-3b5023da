@@ -36,6 +36,11 @@ const MainNav = () => {
       href: "/resources",
       description: "Explore investment opportunities aligned with Saudi Vision 2030.",
     },
+    {
+      title: "Member Login",
+      href: "/login",
+      description: "Access your Nias member account.",
+    },
   ];
 
   const renderNavItems = () => (
