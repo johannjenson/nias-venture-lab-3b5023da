@@ -13,8 +13,7 @@ const EventHero = ({ onRequestInvite }: EventHeroProps) => {
             Nias Business Forum
           </h1>
           <p className="text-xl text-gray-600 mb-8 animate-fade-in">
-            Join us for an exclusive gathering of global business leaders and investors
-            on February 20th, 2024 in Riyadh
+            Gather at our cozy Riyadh farmhouse with top founders and investors building the future of KSA
           </p>
           <Button
             className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in"
