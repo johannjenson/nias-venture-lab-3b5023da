@@ -162,7 +162,7 @@ const Resources = () => {
                 <SelectValue placeholder="Sort by..." />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="score">Sort by Nias Potential Score</SelectItem>
+                <SelectItem value="score">Sort by Score</SelectItem>
                 <SelectItem value="investment">Sort by Investment</SelectItem>
                 <SelectItem value="name">Sort by Name</SelectItem>
               </SelectContent>
