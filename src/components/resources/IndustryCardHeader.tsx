@@ -1,17 +1,15 @@
 import { Industry } from "@/types/industry";
 import { InfoIcon } from "lucide-react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { useState } from "react";
+import ScoreInfoModal from "./ScoreInfoModal";
 
 interface IndustryCardHeaderProps {
   industry: Industry;
 }
 
 const IndustryCardHeader = ({ industry }: IndustryCardHeaderProps) => {
+  const [showScoreInfo, setShowScoreInfo] = useState(false);
+
   return (
     <div className="flex items-start justify-between mb-4">
       <div>
@@ -23,26 +21,20 @@ const IndustryCardHeader = ({ industry }: IndustryCardHeaderProps) => {
           <div className="text-3xl font-bold text-primary">{industry.score}</div>
           <div className="text-sm font-medium text-gray-600 whitespace-nowrap flex items-center gap-1">
             Nias Potential Score
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <InfoIcon className="h-4 w-4 text-gray-500 hover:text-primary transition-colors" />
-                </TooltipTrigger>
-                <TooltipContent className="max-w-[300px] p-3 text-left">
-                  <p>Score is assessed with the following criteria:</p>
-                  <div className="mt-1 space-y-1">
-                    - Market size and growth potential
-                    - Alignment with Saudi Vision 2030
-                    - Current competition landscape
-                    - Regulatory environment
-                    - Available talent pool
-                  </div>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+            <button
+              onClick={() => setShowScoreInfo(true)}
+              className="inline-flex items-center"
+            >
+              <InfoIcon className="h-4 w-4 text-gray-500 hover:text-primary transition-colors" />
+            </button>
           </div>
         </div>
       </div>
+
+      <ScoreInfoModal 
+        isOpen={showScoreInfo} 
+        onClose={() => setShowScoreInfo(false)} 
+      />
     </div>
   );
 };
