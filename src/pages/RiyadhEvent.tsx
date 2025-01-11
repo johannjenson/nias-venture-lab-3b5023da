@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import SocialProof from "@/components/SocialProof";
 import EventInviteModal from "@/components/EventInviteModal";
 import EventHero from "@/components/event/EventHero";
@@ -10,6 +11,7 @@ import EventRegistration from "@/components/event/EventRegistration";
 
 const RiyadhEvent = () => {
   const [showRequestModal, setShowRequestModal] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen">
@@ -25,15 +27,14 @@ const RiyadhEvent = () => {
       </div>
 
       {/* Back to Home */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 text-primary hover:text-primary/80"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back
-        </Link>
-      </div>
+      <Button
+        variant="ghost"
+        size="icon"
+        className="fixed top-4 left-4 z-50"
+        onClick={() => navigate(-1)}
+      >
+        <ArrowLeft className="h-6 w-6" />
+      </Button>
 
       {/* Event Components */}
       <EventHero onRequestInvite={() => setShowRequestModal(true)} />
