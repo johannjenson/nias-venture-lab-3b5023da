@@ -37,7 +37,6 @@ const IndustryCardHeader = ({ industry }: IndustryCardHeaderProps) => {
                     <li>Regulatory environment</li>
                     <li>Available talent pool</li>
                   </ul>
-                </p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
