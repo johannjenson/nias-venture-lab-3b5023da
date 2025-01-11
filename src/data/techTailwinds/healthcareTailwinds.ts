@@ -15,5 +15,35 @@ export const healthcareTailwinds: Record<string, TechTailwindDescription> = {
       "Personalized treatment plans",
       "Accelerated research"
     ]
+  },
+  "Telemedicine": {
+    description: "Remote healthcare delivery systems enabling virtual consultations and remote patient monitoring.",
+    applications: [
+      "Virtual consultations",
+      "Remote monitoring",
+      "Digital health records",
+      "Healthcare accessibility"
+    ],
+    impact: [
+      "Increased healthcare access",
+      "Reduced healthcare costs",
+      "Improved patient outcomes",
+      "Enhanced healthcare efficiency"
+    ]
+  },
+  "Digital Health Records": {
+    description: "Electronic health record systems enabling secure storage and sharing of patient medical information.",
+    applications: [
+      "Patient data management",
+      "Healthcare coordination",
+      "Clinical decision support",
+      "Research and analytics"
+    ],
+    impact: [
+      "Improved care coordination",
+      "Better patient outcomes",
+      "Reduced medical errors",
+      "Enhanced research capabilities"
+    ]
   }
 };
