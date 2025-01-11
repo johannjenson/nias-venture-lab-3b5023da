@@ -111,7 +111,9 @@ const Contact = () => {
           </form>
         </div>
       </div>
-      <Footer />
+      <div className="hide-newsletter">
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -99,3 +99,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Hide newsletter section on contact page */
+.hide-newsletter #signup-form,
+.hide-newsletter .text-center.mb-16 {
+  display: none;
+}
