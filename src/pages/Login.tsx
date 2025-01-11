@@ -22,6 +22,14 @@ const Login = () => {
     return () => subscription.unsubscribe();
   }, [navigate]);
 
+  // Handle the sign up click from Auth UI
+  const handleViewChange = (view: 'sign_in' | 'sign_up') => {
+    if (view === 'sign_up') {
+      setShowRequestModal(true);
+      return false; // Prevent default navigation
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <div className="fixed top-0 left-0 right-0 bg-white border-b z-50 px-4">
@@ -63,6 +71,7 @@ const Login = () => {
                 }
               }
             }}
+            onViewChange={handleViewChange}
           />
           <RequestInviteModal 
             open={showRequestModal} 
