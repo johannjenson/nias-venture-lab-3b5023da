@@ -18,6 +18,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 interface RequestInviteModalProps {
   open: boolean;
@@ -37,22 +38,44 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
     additionalInfo: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    toast.success("Thank you for your interest in joining the Nias Network. We'll review your application and be in touch soon!");
-    onOpenChange(false);
-    setFormData({
-      fullName: "",
-      phoneNumber: "",
-      email: "",
-      company: "",
-      title: "",
-      linkedinUrl: "",
-      referredBy: "",
-      additionalInfo: "",
-    });
-    setStep(1);
+    
+    try {
+      // Split full name into first and last name
+      const nameParts = formData.fullName.trim().split(' ');
+      const firstName = nameParts[0];
+      const lastName = nameParts.slice(1).join(' ');
+
+      // Insert into Supabase
+      const { error } = await supabase
+        .from('Request')
+        .insert([
+          {
+            first_name: firstName,
+            last_name: lastName || null // If no last name provided, set to null
+          }
+        ]);
+
+      if (error) throw error;
+
+      toast.success("Thank you for your interest in joining the Nias Network. We'll review your application and be in touch soon!");
+      onOpenChange(false);
+      setFormData({
+        fullName: "",
+        phoneNumber: "",
+        email: "",
+        company: "",
+        title: "",
+        linkedinUrl: "",
+        referredBy: "",
+        additionalInfo: "",
+      });
+      setStep(1);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error("There was an error submitting your application. Please try again.");
+    }
   };
 
   const handleInputChange = (
