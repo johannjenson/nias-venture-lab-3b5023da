@@ -10,6 +10,7 @@ interface NavItem {
   title: string;
   href: string;
   description: string;
+  onClick?: () => void;
 }
 
 interface NavMenuItemProps {

@@ -2,12 +2,45 @@ import {
   NavigationMenu,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavMenuItem } from "./navigation/NavMenuItem";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { supabase } from "@/integrations/supabase/client";
+import { User } from "@supabase/supabase-js";
+import { toast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const MainNav = () => {
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast({
+        title: "Error",
+        description: "Failed to log out. Please try again.",
+        variant: "destructive",
+      });
+    } else {
+      navigate("/");
+    }
+  };
   
   const about = [
     {
@@ -41,6 +74,12 @@ const MainNav = () => {
       href: "/login",
       description: "Access your Nias member account.",
     },
+    ...(user ? [{
+      title: "Log Out",
+      href: "#",
+      description: "Sign out of your account",
+      onClick: handleLogout,
+    }] : []),
   ];
 
   const renderNavItems = () => (

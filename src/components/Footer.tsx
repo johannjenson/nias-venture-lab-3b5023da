@@ -1,7 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { User } from "@supabase/supabase-js";
 
 const Footer = () => {
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast({
+        title: "Error",
+        description: "Failed to log out. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
   const navigation = {
     main: [
       { name: "Events", submenu: [
@@ -9,7 +38,8 @@ const Footer = () => {
       ]},
       { name: "Resources", submenu: [
         { name: "Opportunities", href: "/resources" },
-        { name: "Member Login", href: "/login" }
+        { name: "Member Login", href: "/login" },
+        ...(user ? [{ name: "Log Out", href: "#", onClick: handleLogout }] : []),
       ]},
       { name: "About", submenu: [
         { name: "People", href: "/people" },
@@ -56,9 +86,21 @@ const Footer = () => {
                   <ul className="mt-2 space-y-2">
                     {item.submenu.map((subitem) => (
                       <li key={subitem.name}>
-                        <a href={subitem.href} className="text-sm leading-6 text-gray-600 hover:text-gray-900">
-                          {subitem.name}
-                        </a>
+                        {subitem.onClick ? (
+                          <button
+                            onClick={subitem.onClick}
+                            className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                          >
+                            {subitem.name}
+                          </button>
+                        ) : (
+                          <a
+                            href={subitem.href}
+                            className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                          >
+                            {subitem.name}
+                          </a>
+                        )}
                       </li>
                     ))}
                   </ul>
