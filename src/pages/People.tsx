@@ -1,4 +1,5 @@
-import { LinkedinIcon } from "lucide-react";
+import { ArrowLeft, LinkedinIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const People = () => {
   const team = [
@@ -26,12 +27,19 @@ const People = () => {
   return (
     <div className="py-24 bg-white sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-8"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to Home
+        </Link>
         <div className="mx-auto max-w-2xl lg:text-center">
           <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-            Our Team
+            People
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Meet the founders and leaders driving our vision forward.
+            Meet our crew
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
