@@ -35,7 +35,7 @@ const Hero = () => {
               Land & Expand in Saudi Arabia
             </h1>
             <p className="text-base md:text-lg text-[#555555] mb-8 md:mb-12 max-w-2xl mx-auto">
-              Bringing together exceptional companies from around the world looking to do business in the Kingdom with serial and exited entrepreneurs, strategic investors, and acquisitive funds.
+              Gather at our farmhouse in Riyadh with top founders and investors building the future of KSA
             </p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
               <Button
