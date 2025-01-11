@@ -20,7 +20,7 @@ const features = [
 
 const ValueProps = () => {
   return (
-    <div className="py-24 bg-secondary sm:py-32">
+    <div className="py-24 bg-secondary/30 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
           <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
@@ -35,7 +35,7 @@ const ValueProps = () => {
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
             {features.map((feature) => (
               <div key={feature.name} className="flex flex-col items-center text-center">
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-lg bg-accent">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-lg bg-primary">
                   <feature.icon className="h-8 w-8 text-white" aria-hidden="true" />
                 </div>
                 <dt className="text-xl font-semibold leading-7 text-primary">

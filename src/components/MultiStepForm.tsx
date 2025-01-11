@@ -32,9 +32,8 @@ const MultiStepForm = () => {
     if (step < 3) {
       setStep((prev) => prev + 1);
     } else {
-      // Here you would typically send the data to your backend
       console.log("Form submitted:", formData);
-      toast.success("Thank you for your interest! We'll be in touch soon.");
+      toast.success("Application received! We'll review it and get back to you soon.");
       setStep(1);
       setFormData({
         name: "",
@@ -47,44 +46,46 @@ const MultiStepForm = () => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg animate-fadeIn">
-      <div className="mb-6">
-        <div className="flex justify-between mb-2">
+    <div className="w-full max-w-md mx-auto bg-white p-8 rounded-lg shadow-xl animate-fadeIn">
+      <div className="mb-8">
+        <div className="flex justify-between mb-4">
           {[1, 2, 3].map((i) => (
             <div
               key={i}
-              className={`w-1/3 h-2 rounded-full mx-1 ${
-                i <= step ? "bg-accent" : "bg-gray-200"
+              className={`w-1/3 h-1 rounded-full mx-1 transition-all duration-500 ${
+                i <= step ? "bg-primary" : "bg-gray-200"
               }`}
             />
           ))}
         </div>
-        <p className="text-sm text-center text-gray-600">
+        <p className="text-sm text-center text-gray-600 font-medium">
           Step {step} of 3
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-6">
         {step === 1 && (
           <div className="space-y-4 animate-slideUp">
             <div>
-              <Label htmlFor="name">Full Name</Label>
+              <Label htmlFor="name" className="text-sm font-semibold text-gray-700">Full Name</Label>
               <Input
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
+                className="mt-1 border-gray-300 focus:border-primary focus:ring-primary"
                 required
               />
             </div>
             <div>
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-sm font-semibold text-gray-700">Work Email</Label>
               <Input
                 id="email"
                 name="email"
                 type="email"
                 value={formData.email}
                 onChange={handleInputChange}
+                className="mt-1 border-gray-300 focus:border-primary focus:ring-primary"
                 required
               />
             </div>
@@ -94,22 +95,24 @@ const MultiStepForm = () => {
         {step === 2 && (
           <div className="space-y-4 animate-slideUp">
             <div>
-              <Label htmlFor="company">Company Name</Label>
+              <Label htmlFor="company" className="text-sm font-semibold text-gray-700">Company Name</Label>
               <Input
                 id="company"
                 name="company"
                 value={formData.company}
                 onChange={handleInputChange}
+                className="mt-1 border-gray-300 focus:border-primary focus:ring-primary"
                 required
               />
             </div>
             <div>
-              <Label htmlFor="role">Your Role</Label>
+              <Label htmlFor="role" className="text-sm font-semibold text-gray-700">Your Role</Label>
               <Input
                 id="role"
                 name="role"
                 value={formData.role}
                 onChange={handleInputChange}
+                className="mt-1 border-gray-300 focus:border-primary focus:ring-primary"
                 required
               />
             </div>
@@ -119,12 +122,15 @@ const MultiStepForm = () => {
         {step === 3 && (
           <div className="space-y-4 animate-slideUp">
             <div>
-              <Label htmlFor="interests">What interests you about Saudi Arabia?</Label>
+              <Label htmlFor="interests" className="text-sm font-semibold text-gray-700">
+                What interests you about expanding to Saudi Arabia?
+              </Label>
               <Input
                 id="interests"
                 name="interests"
                 value={formData.interests}
                 onChange={handleInputChange}
+                className="mt-1 border-gray-300 focus:border-primary focus:ring-primary"
                 required
               />
             </div>
@@ -133,10 +139,14 @@ const MultiStepForm = () => {
 
         <Button
           type="submit"
-          className="w-full bg-accent hover:bg-accent/90"
+          className="w-full bg-primary hover:bg-primary/90 text-white py-6 text-base font-medium transition-all duration-300"
         >
-          {step === 3 ? "Submit" : "Next"}
+          {step === 3 ? "Submit Application" : "Continue"}
         </Button>
+        
+        <p className="text-xs text-center text-gray-500 mt-4">
+          {step === 3 ? "We review all applications within 48 hours" : "All fields are required"}
+        </p>
       </form>
     </div>
   );
