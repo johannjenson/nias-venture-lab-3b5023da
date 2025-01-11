@@ -11,7 +11,8 @@ import {
 import { useState } from "react";
 import KeyAreaModal from "./KeyAreaModal";
 import TechTailwindModal from "./TechTailwindModal";
-import { industries } from "@/data/industries";
+import { keyAreaDescriptions } from "@/data/keyAreaDescriptions";
+import { techTailwindsDescriptions } from "@/data/techTailwindsDescriptions";
 
 interface IndustryCardProps {
   industry: Industry;
@@ -95,19 +96,19 @@ const IndustryCard = ({ industry }: IndustryCardProps) => {
 
       {selectedKeyArea && (
         <KeyAreaModal
-          open={!!selectedKeyArea}
-          onOpenChange={(open) => !open && setSelectedKeyArea(null)}
+          isOpen={!!selectedKeyArea}
+          onClose={() => setSelectedKeyArea(null)}
           keyArea={selectedKeyArea}
-          industries={industries}
+          description={keyAreaDescriptions[selectedKeyArea]?.description || "Description not available"}
         />
       )}
 
       {selectedTechTailwind && (
         <TechTailwindModal
-          open={!!selectedTechTailwind}
-          onOpenChange={(open) => !open && setSelectedTechTailwind(null)}
+          isOpen={!!selectedTechTailwind}
+          onClose={() => setSelectedTechTailwind(null)}
           techTailwind={selectedTechTailwind}
-          industries={industries}
+          description={techTailwindsDescriptions[selectedTechTailwind]?.description || "Description not available"}
         />
       )}
     </Card>
