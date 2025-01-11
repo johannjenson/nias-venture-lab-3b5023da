@@ -62,7 +62,7 @@ const LeapDinner = () => {
                 <div className="space-y-6">
                   <div>
                     <h3 className="font-semibold text-primary mb-2">When</h3>
-                    <p className="text-gray-600">February 13th, 2024 | 7:30 PM - 11:00 PM</p>
+                    <p className="text-gray-600">February 13th, 2025 | 7:30 PM - 11:00 PM</p>
                   </div>
                   <div>
                     <h3 className="font-semibold text-primary mb-2">Where</h3>
