@@ -24,6 +24,7 @@ interface RequestInviteModalProps {
 }
 
 const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => {
+  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     fullName: "",
     phoneNumber: "",
@@ -31,6 +32,7 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
     company: "",
     title: "",
     linkedinUrl: "",
+    referredBy: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -45,12 +47,23 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
       company: "",
       title: "",
       linkedinUrl: "",
+      referredBy: "",
     });
+    setStep(1);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleNext = (e: React.FormEvent) => {
+    e.preventDefault();
+    setStep(2);
+  };
+
+  const handleBack = () => {
+    setStep(1);
   };
 
   return (
@@ -62,91 +75,116 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
             Connect with Saudi investors, founders, and advisors to accelerate your business growth in the Kingdom.
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-          <div className="space-y-2">
-            <Label htmlFor="fullName">Full Name</Label>
-            <Input
-              id="fullName"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          
-          <div className="space-y-2">
-            <Label htmlFor="phoneNumber">Phone Number</Label>
-            <Input
-              id="phoneNumber"
-              name="phoneNumber"
-              type="tel"
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
+        {step === 1 ? (
+          <form onSubmit={handleNext} className="space-y-4 mt-4">
+            <div className="space-y-2">
+              <Label htmlFor="fullName">Full Name</Label>
+              <Input
+                id="fullName"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="phoneNumber">Phone Number</Label>
+              <Input
+                id="phoneNumber"
+                name="phoneNumber"
+                type="tel"
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="email">Business Email</Label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Business Email</Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="company">Company</Label>
-            <Input
-              id="company"
-              name="company"
-              value={formData.company}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
+            <div className="space-y-2">
+              <Label htmlFor="company">Company</Label>
+              <Input
+                id="company"
+                name="company"
+                value={formData.company}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="title">Your Role</Label>
-            <Select
-              name="title"
-              value={formData.title}
-              onValueChange={(value) =>
-                setFormData((prev) => ({ ...prev, title: value }))
-              }
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select your role" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="founder">Founder</SelectItem>
-                <SelectItem value="executive">Executive</SelectItem>
-                <SelectItem value="investor">Investor</SelectItem>
-                <SelectItem value="advisor">Advisor</SelectItem>
-                <SelectItem value="broker">Broker</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+            <div className="space-y-2">
+              <Label htmlFor="title">Your Role</Label>
+              <Select
+                name="title"
+                value={formData.title}
+                onValueChange={(value) =>
+                  setFormData((prev) => ({ ...prev, title: value }))
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select your role" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="founder">Founder</SelectItem>
+                  <SelectItem value="executive">Executive</SelectItem>
+                  <SelectItem value="investor">Investor</SelectItem>
+                  <SelectItem value="advisor">Advisor</SelectItem>
+                  <SelectItem value="broker">Broker</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="linkedinUrl">LinkedIn URL</Label>
-            <Input
-              id="linkedinUrl"
-              name="linkedinUrl"
-              type="url"
-              value={formData.linkedinUrl}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
+            <div className="space-y-2">
+              <Label htmlFor="linkedinUrl">LinkedIn URL</Label>
+              <Input
+                id="linkedinUrl"
+                name="linkedinUrl"
+                type="url"
+                value={formData.linkedinUrl}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
 
-          <Button type="submit" className="w-full">
-            Submit Application
-          </Button>
-        </form>
+            <Button type="submit" className="w-full">
+              Next
+            </Button>
+          </form>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+            <div className="space-y-2">
+              <Label htmlFor="referredBy">Who referred you to the Nias Network?</Label>
+              <Input
+                id="referredBy"
+                name="referredBy"
+                value={formData.referredBy}
+                onChange={handleInputChange}
+                placeholder="Enter the name of the person who referred you"
+                required
+              />
+            </div>
+
+            <div className="flex gap-3">
+              <Button type="button" variant="outline" className="w-full" onClick={handleBack}>
+                Back
+              </Button>
+              <Button type="submit" className="w-full">
+                Submit Application
+              </Button>
+            </div>
+          </form>
+        )}
       </DialogContent>
     </Dialog>
   );
