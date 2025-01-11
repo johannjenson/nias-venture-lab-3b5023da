@@ -25,15 +25,15 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0EA5E9",
+          DEFAULT: "#0066FF", // Updated to match the blue in the image
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#D3E4FD",
-          foreground: "#0EA5E9",
+          DEFAULT: "#1EAEDB", // Teal color for brand
+          foreground: "#FFFFFF",
         },
         accent: {
-          DEFAULT: "#1EAEDB",
+          DEFAULT: "#16A7D5", // Slightly darker teal for contrast
           foreground: "#FFFFFF",
         },
         destructive: {

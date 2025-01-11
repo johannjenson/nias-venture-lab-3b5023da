@@ -3,36 +3,51 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-r from-primary to-accent text-white py-24 px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-6 animate-fadeIn">
-            Land & Expand in Saudi Arabia
+    <div className="relative min-h-[80vh] flex items-center">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/lovable-uploads/0a595b97-47d4-4ec2-be6e-c3a80a516ad7.png"
+          alt="Saudi Arabia Landscape"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Content Container */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-24">
+        <div className="bg-white/95 backdrop-blur-sm p-12 max-w-3xl rounded-lg shadow-lg">
+          <h1 className="text-5xl font-bold tracking-tight text-gray-900 mb-6">
+            LAND & EXPAND IN KSA
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-100 animate-slideUp">
-            Empowering international companies to grow in alignment with Vision 2030.
-            Join our network of founders, investors, and advisors.
+          <p className="text-lg text-gray-700 mb-8 max-w-2xl">
+            We bring together exceptional companies from around the world looking to do business in the Kingdom with serial and exited entrepreneurs, strategic investors, and acquisitive funds from the Kingdom.
           </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6 animate-slideUp">
+          <div className="flex items-center gap-6">
             <Button
-              className="bg-white text-primary hover:bg-gray-100 px-8 py-6 text-lg group transition-all duration-300"
+              className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
               onClick={() => {
                 const formElement = document.getElementById("signup-form");
                 formElement?.scrollIntoView({ behavior: "smooth" });
               }}
             >
               Request to Join
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
+            <a 
+              href="#learn-more" 
+              className="text-lg text-gray-900 font-medium flex items-center gap-2 hover:text-primary transition-colors"
+            >
+              Learn more <ArrowRight className="h-5 w-5" />
+            </a>
           </div>
         </div>
       </div>
-      <div className="absolute inset-0 -z-10 opacity-20">
-        <img
-          src="/lovable-uploads/001f9ae1-9f2f-4f69-96da-77ae7a562316.png"
-          alt="Wave Pattern"
-          className="h-full w-full object-cover opacity-50"
-        />
+
+      {/* Optional: Event Banner */}
+      <div className="absolute top-0 left-0 right-0 bg-primary text-white text-center py-2 px-4">
+        Join us in Riyadh on 20 February 2025.{" "}
+        <a href="#request" className="underline font-medium hover:text-white/90">
+          Request Your Invite
+        </a>
       </div>
     </div>
   );
