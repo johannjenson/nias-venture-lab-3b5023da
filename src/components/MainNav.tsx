@@ -50,11 +50,11 @@ const MainNav = () => {
     <NavigationMenu className="absolute top-14 left-1/2 -translate-x-1/2 z-50">
       <NavigationMenuList className="gap-6">
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-primary-foreground bg-transparent hover:bg-primary/10">
+          <NavigationMenuTrigger className="text-black bg-transparent hover:bg-white hover:text-black transition-colors">
             Solutions
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
               {solutions.map((item) => (
                 <ListItem
                   key={item.title}
@@ -69,11 +69,11 @@ const MainNav = () => {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-primary-foreground bg-transparent hover:bg-primary/10">
+          <NavigationMenuTrigger className="text-black bg-transparent hover:bg-white hover:text-black transition-colors">
             Resources
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
               {resources.map((item) => (
                 <ListItem
                   key={item.title}
@@ -89,7 +89,7 @@ const MainNav = () => {
 
         <NavigationMenuItem>
           <NavigationMenuLink
-            className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-primary-foreground hover:bg-primary/10"
+            className="text-black inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 hover:bg-white hover:text-black transition-colors"
             href="#events"
           >
             Events
@@ -98,7 +98,7 @@ const MainNav = () => {
 
         <NavigationMenuItem>
           <NavigationMenuLink
-            className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-primary-foreground hover:bg-primary/10"
+            className="text-black inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 hover:bg-white hover:text-black transition-colors"
             href="#about"
           >
             About Us
