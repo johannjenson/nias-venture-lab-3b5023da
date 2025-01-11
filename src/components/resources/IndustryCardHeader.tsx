@@ -1,5 +1,4 @@
 import { Industry } from "@/types/industry";
-import { InfoIcon } from "lucide-react";
 import { useState } from "react";
 import ScoreInfoModal from "./ScoreInfoModal";
 
@@ -17,18 +16,15 @@ const IndustryCardHeader = ({ industry }: IndustryCardHeaderProps) => {
         <p className="text-gray-600 mt-1">{industry.description}</p>
       </div>
       <div className="flex flex-col items-end ml-4">
-        <div className="bg-secondary/20 rounded-lg px-4 py-2 text-center">
+        <button
+          onClick={() => setShowScoreInfo(true)}
+          className="bg-secondary/20 rounded-lg px-4 py-2 text-center hover:bg-secondary/30 transition-colors"
+        >
           <div className="text-3xl font-bold text-primary">{industry.score}</div>
-          <div className="text-sm font-medium text-gray-600 whitespace-nowrap flex items-center gap-1">
+          <div className="text-sm font-medium text-gray-600 whitespace-nowrap">
             Nias Potential Score
-            <button
-              onClick={() => setShowScoreInfo(true)}
-              className="inline-flex items-center"
-            >
-              <InfoIcon className="h-4 w-4 text-gray-500 hover:text-primary transition-colors" />
-            </button>
           </div>
-        </div>
+        </button>
       </div>
 
       <ScoreInfoModal 
