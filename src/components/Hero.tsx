@@ -19,16 +19,16 @@ const Hero = () => {
 
       {/* Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-24">
-        <div className="bg-white/95 backdrop-blur-sm p-12 max-w-3xl rounded-lg shadow-lg">
-          <h1 className="text-5xl font-bold tracking-tight text-gray-900 mb-6">
+        <div className="bg-[#F2FCE2]/95 backdrop-blur-sm p-12 max-w-3xl rounded-lg shadow-lg">
+          <h1 className="text-5xl font-bold tracking-tight text-[#221F26] mb-6">
             LAND & EXPAND IN KSA
           </h1>
-          <p className="text-lg text-gray-700 mb-8 max-w-2xl">
+          <p className="text-lg text-[#555555] mb-8 max-w-2xl">
             We bring together exceptional companies from around the world looking to do business in the Kingdom with serial and exited entrepreneurs, strategic investors, and acquisitive funds from the Kingdom.
           </p>
           <div className="flex items-center gap-6">
             <Button
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
+              className="bg-[#16A7D5] hover:bg-[#16A7D5]/90 text-white px-8 py-6 text-lg"
               onClick={() => {
                 const formElement = document.getElementById("signup-form");
                 formElement?.scrollIntoView({ behavior: "smooth" });
@@ -38,7 +38,7 @@ const Hero = () => {
             </Button>
             <a 
               href="#learn-more" 
-              className="text-lg text-gray-900 font-medium flex items-center gap-2 hover:text-primary transition-colors"
+              className="text-lg text-[#333333] font-medium flex items-center gap-2 hover:text-[#16A7D5] transition-colors"
             >
               Learn more <ArrowRight className="h-5 w-5" />
             </a>
@@ -47,7 +47,7 @@ const Hero = () => {
       </div>
 
       {/* Event Banner */}
-      <div className="absolute top-0 left-0 right-0 bg-primary text-white text-center py-2 px-4">
+      <div className="absolute top-0 left-0 right-0 bg-[#221F26] text-white text-center py-2 px-4">
         Join us in Riyadh on 20 February 2025.{" "}
         <a href="#request" className="underline font-medium hover:text-white/90">
           Request Your Invite
