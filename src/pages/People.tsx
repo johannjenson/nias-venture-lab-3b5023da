@@ -7,26 +7,26 @@ const People = () => {
   const team = [
     {
       name: "Ibrahim Alshuwaier",
-      role: "Founder & CEO",
-      imageUrl: "/placeholder.svg",
+      role: "Business Development",
+      imageUrl: "https://images.unsplash.com/photo-1501286353178-1ec881214838", // Whimsical monkey with banana - represents business growth
       linkedIn: "https://www.linkedin.com/",
     },
     {
       name: "Ibrahim AlSemari",
-      role: "Managing Director",
-      imageUrl: "/placeholder.svg",
+      role: "Finance",
+      imageUrl: "https://images.unsplash.com/photo-1582562124811-c09040d0a901", // Smart looking cat - represents financial wisdom
       linkedIn: "https://pinnacle.sa/staff/ibrahim-alsemari/",
     },
     {
       name: "Johann Jenson",
-      role: "Chief Investment Officer",
-      imageUrl: "/placeholder.svg",
+      role: "Product",
+      imageUrl: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f", // Curious deer - represents product vision
       linkedIn: "https://www.linkedin.com/in/johannjenson/",
     },
     {
       name: "Lukas Gaebler",
-      role: "Chief Strategy Officer",
-      imageUrl: "/placeholder.svg",
+      role: "Tech",
+      imageUrl: "https://images.unsplash.com/photo-1438565434616-3ef039228b15", // Mountain goats - represents technical climbing/advancement
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
     },
   ];
