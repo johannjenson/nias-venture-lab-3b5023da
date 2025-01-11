@@ -9,6 +9,11 @@ const Hero = () => {
 
   return (
     <div className="relative min-h-screen flex flex-col">
+      {/* Back Link */}
+      <a href="/" className="absolute top-6 left-6 text-gray-600 hover:text-gray-900">
+        Back
+      </a>
+
       {/* Event Banner */}
       <div className="bg-[#221F26] text-white text-center py-2 px-4">
         Join us in Riyadh on 20 February 2025.{" "}
@@ -58,22 +63,34 @@ const Hero = () => {
             <div className="text-center p-8 rounded-lg bg-secondary/30">
               <h3 className="text-xl font-semibold text-[#221F26] mb-4">Founders & Executives</h3>
               <p className="mb-6 text-gray-600">Take your business to the next level.</p>
-              <Button variant="outline" className="hover:bg-primary hover:text-white">
-                Learn More
+              <Button 
+                variant="outline" 
+                className="hover:bg-primary hover:text-white"
+                onClick={() => setShowRequestModal(true)}
+              >
+                Request to Join
               </Button>
             </div>
             <div className="text-center p-8 rounded-lg bg-secondary/30">
               <h3 className="text-xl font-semibold text-[#221F26] mb-4">Buyers & Investors</h3>
               <p className="mb-6 text-gray-600">Discover new opportunities.</p>
-              <Button variant="outline" className="hover:bg-primary hover:text-white">
-                Learn More
+              <Button 
+                variant="outline" 
+                className="hover:bg-primary hover:text-white"
+                onClick={() => setShowRequestModal(true)}
+              >
+                Request to Join
               </Button>
             </div>
             <div className="text-center p-8 rounded-lg bg-secondary/30">
               <h3 className="text-xl font-semibold text-[#221F26] mb-4">Advisors & Brokers</h3>
               <p className="mb-6 text-gray-600">Join our network of trusted partners.</p>
-              <Button variant="outline" className="hover:bg-primary hover:text-white">
-                Learn More
+              <Button 
+                variant="outline" 
+                className="hover:bg-primary hover:text-white"
+                onClick={() => setShowRequestModal(true)}
+              >
+                Request to Join
               </Button>
             </div>
           </div>
