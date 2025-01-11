@@ -9,6 +9,7 @@ const Footer = () => {
       { name: "Events", href: "#events", submenu: [
         { name: "February 20th in Riyadh", href: "/events/riyadh" }
       ]},
+      { name: "Resources", href: "/resources" },
       { name: "Legal", submenu: [
         { name: "Privacy Policy", href: "#privacy" },
         { name: "Terms of Use", href: "#terms" }
