@@ -56,22 +56,21 @@ const Login = () => {
             providers={[]}
             redirectTo={window.location.origin}
             view="sign_in"
+            localization={{
+              variables: {
+                sign_up: {
+                  link_text: "Don't have an account? Request to Join the Nias Network"
+                }
+              }
+            }}
           />
-          <div className="mt-8 text-center">
-            <button
-              onClick={() => setShowRequestModal(true)}
-              className="text-lg text-primary hover:underline font-medium"
-            >
-              Don't have an account? Request to Join the Nias Network
-            </button>
-          </div>
+          <RequestInviteModal 
+            open={showRequestModal} 
+            onOpenChange={setShowRequestModal}
+          />
         </div>
       </main>
       <Footer />
-      <RequestInviteModal 
-        open={showRequestModal} 
-        onOpenChange={setShowRequestModal}
-      />
     </div>
   );
 };
