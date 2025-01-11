@@ -14,10 +14,6 @@ const Footer = () => {
         { name: "People", href: "/people" },
         { name: "Contact", href: "/contact" }
       ]},
-      { name: "Legal", submenu: [
-        { name: "Privacy Policy", href: "/privacy-policy" },
-        { name: "Terms of Use", href: "/terms-of-use" }
-      ]},
     ],
     social: [
       {
@@ -80,6 +76,10 @@ const Footer = () => {
         </div>
         <p className="mt-10 text-center text-xs leading-5 text-gray-500">
           &copy; {new Date().getFullYear()} Nias.io. All rights reserved.
+          <span className="mx-2">·</span>
+          <a href="/privacy-policy" className="hover:text-gray-900">Privacy Policy</a>
+          <span className="mx-2">·</span>
+          <a href="/terms-of-use" className="hover:text-gray-900">Terms of Use</a>
         </p>
       </div>
     </footer>
