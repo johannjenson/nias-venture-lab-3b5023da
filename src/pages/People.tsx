@@ -15,7 +15,7 @@ const People = () => {
       name: "Ibrahim AlSemari",
       role: "Finance",
       imageUrl: "https://images.unsplash.com/photo-1582562124811-c09040d0a901", // Smart looking cat - represents financial wisdom
-      linkedIn: "https://pinnacle.sa/staff/ibrahim-alsemari/",
+      linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162",
     },
     {
       name: "Johann Jenson",
