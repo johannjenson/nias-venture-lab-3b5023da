@@ -6,10 +6,12 @@ import { industries } from "@/data/industries";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import RequestInviteModal from "@/components/RequestInviteModal";
 
 const Resources = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("score");
+  const [showRequestModal, setShowRequestModal] = useState(false);
   const navigate = useNavigate();
 
   const filteredAndSortedIndustries = industries
@@ -32,15 +34,27 @@ const Resources = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Button
-        variant="ghost"
-        size="icon"
-        className="fixed top-4 left-4 z-50"
-        onClick={() => navigate(-1)}
-      >
-        <ArrowLeft className="h-6 w-6" />
-      </Button>
-      <main className="container mx-auto px-4 py-16">
+      {/* Sticky Header */}
+      <div className="fixed top-0 left-0 right-0 bg-white border-b z-50 px-4">
+        <div className="max-w-7xl mx-auto h-16 flex items-center justify-between">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => navigate(-1)}
+            className="hover:bg-transparent"
+          >
+            <ArrowLeft className="h-6 w-6" />
+          </Button>
+          <Button
+            onClick={() => setShowRequestModal(true)}
+            className="bg-primary hover:bg-primary/90 text-white"
+          >
+            Join the Nias Network
+          </Button>
+        </div>
+      </div>
+
+      <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold text-primary mb-4">Vision 2030 Investment Opportunities</h1>
           <p className="text-lg text-gray-600 mb-8">
@@ -64,6 +78,10 @@ const Resources = () => {
         </div>
       </main>
       <Footer />
+      <RequestInviteModal 
+        open={showRequestModal} 
+        onOpenChange={setShowRequestModal}
+      />
     </div>
   );
 };
