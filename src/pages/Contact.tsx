@@ -6,20 +6,42 @@ import { toast } from "sonner";
 import Footer from "@/components/Footer";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    toast.success("Message sent! We'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from("Contact")
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+          },
+        ]);
+
+      if (error) throw error;
+
+      toast.success("Message sent! We'll get back to you soon.");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -64,6 +86,7 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 className="mt-1"
+                disabled={isSubmitting}
               />
             </div>
 
@@ -82,6 +105,7 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 className="mt-1"
+                disabled={isSubmitting}
               />
             </div>
 
@@ -99,14 +123,16 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 className="mt-1 h-32"
+                disabled={isSubmitting}
               />
             </div>
 
             <Button
               type="submit"
               className="w-full bg-primary hover:bg-primary/90 text-white"
+              disabled={isSubmitting}
             >
-              Send
+              {isSubmitting ? "Sending..." : "Send"}
             </Button>
           </form>
         </div>
