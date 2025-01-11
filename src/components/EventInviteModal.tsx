@@ -17,6 +17,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 interface EventInviteModalProps {
   open: boolean;
@@ -33,19 +34,39 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
     interests: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Event invite form submitted:", formData);
-    toast.success("Thank you for your interest in the Nias Business Forum. We'll review your application and be in touch soon!");
-    onOpenChange(false);
-    setFormData({
-      fullName: "",
-      phoneNumber: "",
-      email: "",
-      company: "",
-      title: "",
-      interests: "",
-    });
+    
+    try {
+      const { error } = await supabase
+        .from('EventRequest')
+        .insert([
+          {
+            full_name: formData.fullName,
+            phone_number: formData.phoneNumber,
+            email: formData.email,
+            company: formData.company,
+            title: formData.title,
+            interests: formData.interests
+          }
+        ]);
+
+      if (error) throw error;
+
+      toast.success("Thank you for your interest in the Nias Business Forum. We'll review your application and be in touch soon!");
+      onOpenChange(false);
+      setFormData({
+        fullName: "",
+        phoneNumber: "",
+        email: "",
+        company: "",
+        title: "",
+        interests: "",
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error("There was an error submitting your application. Please try again.");
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
