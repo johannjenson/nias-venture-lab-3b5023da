@@ -47,13 +47,20 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
       const firstName = nameParts[0];
       const lastName = nameParts.slice(1).join(' ');
 
-      // Insert into Supabase
+      // Insert into Supabase with all fields
       const { error } = await supabase
         .from('Request')
         .insert([
           {
             first_name: firstName,
-            last_name: lastName || null // If no last name provided, set to null
+            last_name: lastName || null,
+            phone_number: formData.phoneNumber,
+            email: formData.email,
+            company: formData.company,
+            title: formData.title,
+            linkedin_url: formData.linkedinUrl,
+            referred_by: formData.referredBy,
+            additional_info: formData.additionalInfo
           }
         ]);
 

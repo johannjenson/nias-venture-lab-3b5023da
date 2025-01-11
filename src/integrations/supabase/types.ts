@@ -11,22 +11,43 @@ export type Database = {
     Tables: {
       Request: {
         Row: {
+          additional_info: string | null
+          company: string | null
           created_at: string
+          email: string | null
           first_name: string | null
           id: number
           last_name: string | null
+          linkedin_url: string | null
+          phone_number: string | null
+          referred_by: string | null
+          title: string | null
         }
         Insert: {
+          additional_info?: string | null
+          company?: string | null
           created_at?: string
+          email?: string | null
           first_name?: string | null
           id?: number
           last_name?: string | null
+          linkedin_url?: string | null
+          phone_number?: string | null
+          referred_by?: string | null
+          title?: string | null
         }
         Update: {
+          additional_info?: string | null
+          company?: string | null
           created_at?: string
+          email?: string | null
           first_name?: string | null
           id?: number
           last_name?: string | null
+          linkedin_url?: string | null
+          phone_number?: string | null
+          referred_by?: string | null
+          title?: string | null
         }
         Relationships: []
       }
