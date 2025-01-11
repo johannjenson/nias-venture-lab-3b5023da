@@ -4,21 +4,21 @@ const People = () => {
   const team = [
     {
       name: "Ibrahim Alshuwaier",
-      role: "Co-Founder",
+      role: "Business Development",
     },
     {
       name: "Ibrahim AlSemari",
-      role: "Co-Founder",
+      role: "Finance",
       link: "https://pinnacle.sa/staff/ibrahim-alsemari/",
     },
     {
       name: "Johann Jenson",
-      role: "Co-Founder",
+      role: "Product",
       link: "https://www.linkedin.com/in/johannjenson/",
     },
     {
       name: "Lukas Gaebler",
-      role: "Co-Founder",
+      role: "Tech",
       link: "https://at.linkedin.com/in/lukas-gaebler",
     },
   ];
