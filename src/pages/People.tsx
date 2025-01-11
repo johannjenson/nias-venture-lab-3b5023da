@@ -7,22 +7,39 @@ const People = () => {
   const team = [
     {
       name: "Ibrahim Alshuwaier",
-      role: "Business Development",
+      role: "Founder & CEO",
+      imageUrl: "/placeholder.svg",
+      linkedIn: "https://www.linkedin.com/",
     },
     {
-      name: "Ibrahim AlSemari",
-      role: "Finance",
-      link: "https://pinnacle.sa/staff/ibrahim-alsemari/",
+      name: "Abdulrahman Alolayan",
+      role: "Co-Founder & Managing Director",
+      imageUrl: "/placeholder.svg",
+      linkedIn: "https://www.linkedin.com/",
     },
     {
-      name: "Johann Jenson",
-      role: "Product",
-      link: "https://www.linkedin.com/in/johannjenson/",
+      name: "John Doe",
+      role: "Chief Technology Officer",
+      imageUrl: "/placeholder.svg",
+      linkedIn: "https://www.linkedin.com/",
     },
     {
-      name: "Lukas Gaebler",
-      role: "Tech",
-      link: "https://at.linkedin.com/in/lukas-gaebler",
+      name: "Jane Smith",
+      role: "Marketing Director",
+      imageUrl: "/placeholder.svg",
+      linkedIn: "https://www.linkedin.com/",
+    },
+    {
+      name: "Alice Johnson",
+      role: "Product Manager",
+      imageUrl: "/placeholder.svg",
+      linkedIn: "https://www.linkedin.com/",
+    },
+    {
+      name: "Bob Brown",
+      role: "Lead Designer",
+      imageUrl: "/placeholder.svg",
+      linkedIn: "https://www.linkedin.com/",
     },
   ];
 
@@ -32,7 +49,7 @@ const People = () => {
         <Button
           variant="ghost"
           size="icon"
-          className="fixed top-4 left-4 z-50"
+          className="fixed top-14 left-4 z-50"
           onClick={() => navigate(-1)}
         >
           <ArrowLeft className="h-6 w-6" />
@@ -42,39 +59,40 @@ const People = () => {
             People
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Meet our crew
+            Meet our team of founders and leaders.
           </p>
         </div>
-        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
-            {team.map((person) => (
-              <div
-                key={person.name}
-                className="flex flex-col items-start bg-accent/30 rounded-lg p-6 hover:bg-accent transition-colors"
-              >
-                <dt className="text-xl font-semibold leading-7 text-primary">
-                  {person.name}
-                </dt>
-                <dd className="mt-1 flex flex-grow flex-col">
-                  <p className="flex-grow text-base leading-7 text-gray-600">
-                    {person.role}
-                  </p>
-                  {person.link && (
-                    <a
-                      href={person.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80"
-                    >
-                      <LinkedinIcon className="h-4 w-4" />
-                      View Profile
-                    </a>
-                  )}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+        <ul
+          role="list"
+          className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+        >
+          {team.map((person) => (
+            <li key={person.name}>
+              <img
+                className="aspect-[3/2] w-full rounded-2xl object-cover"
+                src={person.imageUrl}
+                alt=""
+              />
+              <h3 className="mt-6 text-lg font-semibold leading-8 text-gray-900">
+                {person.name}
+              </h3>
+              <p className="text-base leading-7 text-gray-600">{person.role}</p>
+              <ul role="list" className="mt-6 flex gap-x-6">
+                <li>
+                  <a
+                    href={person.linkedIn}
+                    className="text-gray-400 hover:text-gray-500"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="sr-only">LinkedIn</span>
+                    <LinkedinIcon className="h-5 w-5" />
+                  </a>
+                </li>
+              </ul>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
