@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/tooltip";
 import { useState } from "react";
 import KeyAreaModal from "./KeyAreaModal";
+import TechTailwindModal from "./TechTailwindModal";
 import { industries } from "@/data/industries";
 
 interface IndustryCardProps {
@@ -18,6 +19,7 @@ interface IndustryCardProps {
 
 const IndustryCard = ({ industry }: IndustryCardProps) => {
   const [selectedKeyArea, setSelectedKeyArea] = useState<string | null>(null);
+  const [selectedTechTailwind, setSelectedTechTailwind] = useState<string | null>(null);
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
@@ -78,7 +80,12 @@ const IndustryCard = ({ industry }: IndustryCardProps) => {
           <div className="text-sm font-medium text-gray-500 mb-2">Tech Tailwinds</div>
           <div className="flex flex-wrap gap-2">
             {industry.techTailwinds.map((tech) => (
-              <Badge key={tech} variant="outline" className="border-primary/20 text-primary">
+              <Badge 
+                key={tech} 
+                variant="outline" 
+                className="border-primary/20 text-primary cursor-pointer hover:bg-primary/5 transition-colors"
+                onClick={() => setSelectedTechTailwind(tech)}
+              >
                 {tech}
               </Badge>
             ))}
@@ -91,6 +98,15 @@ const IndustryCard = ({ industry }: IndustryCardProps) => {
           open={!!selectedKeyArea}
           onOpenChange={(open) => !open && setSelectedKeyArea(null)}
           keyArea={selectedKeyArea}
+          industries={industries}
+        />
+      )}
+
+      {selectedTechTailwind && (
+        <TechTailwindModal
+          open={!!selectedTechTailwind}
+          onOpenChange={(open) => !open && setSelectedTechTailwind(null)}
+          techTailwind={selectedTechTailwind}
           industries={industries}
         />
       )}
