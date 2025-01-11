@@ -8,25 +8,25 @@ const People = () => {
     {
       name: "Ibrahim Alshuwaier",
       role: "Business Development",
-      imageUrl: "https://images.unsplash.com/photo-1501286353178-1ec881214838", // Whimsical monkey with banana - represents business growth
+      imageUrl: "https://images.unsplash.com/photo-1469041797191-50ace28483c3", // Camels - represents business growth and adaptability
       linkedIn: "https://www.linkedin.com/",
     },
     {
       name: "Ibrahim AlSemari",
       role: "Finance",
-      imageUrl: "https://images.unsplash.com/photo-1582562124811-c09040d0a901", // Smart looking cat - represents financial wisdom
+      imageUrl: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d", // Antelope - represents precision and financial acumen
       linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162",
     },
     {
       name: "Johann Jenson",
       role: "Product",
-      imageUrl: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f", // Curious deer - represents product vision
+      imageUrl: "https://images.unsplash.com/photo-1493962853295-0fd70327578a", // Arabian Oryx - represents vision and resilience
       linkedIn: "https://www.linkedin.com/in/johannjenson/",
     },
     {
       name: "Lukas Gaebler",
       role: "Tech",
-      imageUrl: "https://images.unsplash.com/photo-1438565434616-3ef039228b15", // Mountain goats - represents technical climbing/advancement
+      imageUrl: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2", // Arabian horses - represents power and technical excellence
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
     },
   ];
