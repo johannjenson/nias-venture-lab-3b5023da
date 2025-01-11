@@ -6,15 +6,18 @@ const Footer = () => {
   
   const navigation = {
     main: [
-      { name: "About", href: "#about", submenu: [
+      { name: "About", submenu: [
         { name: "Our Mission", href: "#mission" },
         { name: "People", href: "/people" },
         { name: "Contact", href: "#contact" }
       ]},
-      { name: "Events", href: "#events", submenu: [
+      { name: "Events", submenu: [
         { name: "February 20th in Riyadh", href: "/events/riyadh" }
       ]},
-      { name: "Resources", href: "/resources" },
+      { name: "Resources", submenu: [
+        { name: "Vision 2030 Opportunities", href: "/resources" },
+        { name: "Opportunities", href: "/opportunities" }
+      ]},
       { name: "Legal", submenu: [
         { name: "Privacy Policy", href: "#privacy" },
         { name: "Terms of Use", href: "#terms" }
@@ -57,7 +60,6 @@ const Footer = () => {
       return;
     }
     
-    // Here you would typically send this to your backend
     console.log("Email submitted:", email);
     
     toast({
@@ -111,17 +113,11 @@ const Footer = () => {
         <nav className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
           {navigation.main.map((item) => (
             <div key={item.name} className="pb-6">
-              {item.submenu ? (
-                <div>
-                  {item.href ? (
-                    <a href={item.href} className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-900">
-                      {item.name}
-                    </a>
-                  ) : (
-                    <span className="text-sm font-semibold leading-6 text-gray-900">
-                      {item.name}
-                    </span>
-                  )}
+              <div>
+                <span className="text-sm font-semibold leading-6 text-gray-900">
+                  {item.name}
+                </span>
+                {item.submenu && (
                   <ul className="mt-2 space-y-2">
                     {item.submenu.map((subitem) => (
                       <li key={subitem.name}>
@@ -131,12 +127,8 @@ const Footer = () => {
                       </li>
                     ))}
                   </ul>
-                </div>
-              ) : (
-                <a href={item.href} className="text-sm leading-6 text-gray-600 hover:text-gray-900">
-                  {item.name}
-                </a>
-              )}
+                )}
+              </div>
             </div>
           ))}
         </nav>
