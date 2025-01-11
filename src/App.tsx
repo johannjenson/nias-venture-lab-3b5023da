@@ -8,6 +8,8 @@ import People from "./pages/People";
 import RiyadhEvent from "./pages/RiyadhEvent";
 import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfUse from "./pages/TermsOfUse";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +25,8 @@ const App = () => (
           <Route path="/events/riyadh" element={<RiyadhEvent />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-use" element={<TermsOfUse />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
