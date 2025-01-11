@@ -16,6 +16,11 @@ const MainNav = () => {
       href: "/people",
       description: "Meet our team of founders and leaders.",
     },
+    {
+      title: "Contact",
+      href: "/contact",
+      description: "Get in touch with our team.",
+    },
   ];
 
   const events = [
