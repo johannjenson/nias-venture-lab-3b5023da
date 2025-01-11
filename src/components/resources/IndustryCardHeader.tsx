@@ -28,15 +28,15 @@ const IndustryCardHeader = ({ industry }: IndustryCardHeaderProps) => {
                 <TooltipTrigger>
                   <InfoIcon className="h-4 w-4 text-gray-500 hover:text-primary transition-colors" />
                 </TooltipTrigger>
-                <TooltipContent className="max-w-[300px] p-3">
+                <TooltipContent className="max-w-[300px] p-3 text-left">
                   <p>Score is assessed with the following criteria:</p>
-                  <ul className="list-disc ml-4 mt-1 space-y-1">
-                    <li>Market size and growth potential</li>
-                    <li>Alignment with Saudi Vision 2030</li>
-                    <li>Current competition landscape</li>
-                    <li>Regulatory environment</li>
-                    <li>Available talent pool</li>
-                  </ul>
+                  <div className="mt-1 space-y-1">
+                    - Market size and growth potential
+                    - Alignment with Saudi Vision 2030
+                    - Current competition landscape
+                    - Regulatory environment
+                    - Available talent pool
+                  </div>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
