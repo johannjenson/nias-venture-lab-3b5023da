@@ -18,12 +18,6 @@ const Login = () => {
       if (event === "SIGNED_IN") {
         navigate("/");
       }
-      // Intercept sign up attempts
-      if (event === "INITIAL_SESSION" && window.location.hash.includes('#auth-sign-up')) {
-        setShowRequestModal(true);
-        // Remove the hash to prevent modal from showing again on refresh
-        window.history.replaceState(null, '', window.location.pathname);
-      }
     });
 
     return () => subscription.unsubscribe();
@@ -65,9 +59,12 @@ const Login = () => {
             view="sign_in"
             localization={{
               variables: {
-                sign_up: {
-                  link_text: "Don't have an account? Request to Join the Nias Network",
-                  button_label: "Request to Join the Nias Network"
+                sign_in: {
+                  email_label: 'Email',
+                  password_label: 'Password',
+                  button_label: 'Sign In',
+                  loading_button_label: 'Signing in ...',
+                  link_text: '',  // Remove "Don't have an account?" text
                 }
               }
             }}
