@@ -1,4 +1,5 @@
 import { Building2, Users, Briefcase } from "lucide-react";
+import { Button } from "./ui/button";
 
 const features = [
   {
@@ -47,6 +48,18 @@ const ValueProps = () => {
               </div>
             ))}
           </dl>
+        </div>
+        <div className="mt-16 text-center">
+          <Button 
+            variant="outline"
+            className="hover:bg-primary hover:text-white"
+            onClick={() => {
+              const formElement = document.getElementById("signup-form");
+              formElement?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Learn more about how we can help
+          </Button>
         </div>
       </div>
     </div>

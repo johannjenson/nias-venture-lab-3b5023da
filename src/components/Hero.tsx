@@ -75,26 +75,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      {/* Email Sign-up Form */}
-      <div className="bg-secondary/50 py-24">
-        <div className="max-w-xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-[#221F26] mb-4">Stay in the loop.</h2>
-          <p className="text-gray-600 mb-8">
-            Receive monthly insights on investing, M&A, and tech in KSA.
-          </p>
-          <form className="flex gap-4" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-            <Button type="submit" className="bg-primary hover:bg-primary/90 text-white">
-              Subscribe
-            </Button>
-          </form>
-        </div>
-      </div>
     </div>
   );
 };

@@ -1,8 +1,5 @@
 import Hero from "@/components/Hero";
 import ValueProps from "@/components/ValueProps";
-import MultiStepForm from "@/components/MultiStepForm";
-import CaseStudies from "@/components/CaseStudies";
-import SocialProof from "@/components/SocialProof";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -20,11 +17,26 @@ const Index = () => {
               Take the first step towards expanding your business in Saudi Arabia.
             </p>
           </div>
-          <MultiStepForm />
+          <form className="max-w-xl mx-auto" onSubmit={(e) => e.preventDefault()}>
+            <div className="space-y-4">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+              <button
+                type="submit"
+                className="w-full bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors"
+              >
+                Subscribe
+              </button>
+            </div>
+            <p className="mt-4 text-sm text-gray-500 text-center">
+              Receive monthly insights on investing, M&A, and tech in KSA.
+            </p>
+          </form>
         </div>
       </div>
-      <CaseStudies />
-      <SocialProof />
       <Footer />
     </div>
   );
