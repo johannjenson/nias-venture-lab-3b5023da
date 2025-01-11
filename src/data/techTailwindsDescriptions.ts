@@ -124,5 +124,95 @@ export const techTailwindsDescriptions: Record<string, TechTailwindDescription> 
       "Personalized treatment plans",
       "Accelerated research"
     ]
+  },
+  "AR/VR Experiences": {
+    description: "Augmented and Virtual Reality technologies enabling immersive experiences across tourism, entertainment, and training.",
+    applications: [
+      "Virtual tourism experiences",
+      "Interactive museum exhibits",
+      "Training simulations",
+      "Entertainment attractions"
+    ],
+    impact: [
+      "Enhanced visitor engagement",
+      "Increased tourism revenue",
+      "Improved learning outcomes",
+      "Extended reach to global audiences"
+    ]
+  },
+  "Smart Tourism": {
+    description: "Integration of smart technologies to enhance tourist experiences and optimize destination management.",
+    applications: [
+      "Smart destination management",
+      "Personalized tourist experiences",
+      "Real-time visitor analytics",
+      "Digital tourist guides"
+    ],
+    impact: [
+      "Improved visitor satisfaction",
+      "Optimized resource allocation",
+      "Enhanced destination management",
+      "Increased tourism revenue"
+    ]
+  },
+  "Virtual Production": {
+    description: "Advanced production technologies combining real-time 3D graphics with live-action footage.",
+    applications: [
+      "Film and TV production",
+      "Live events broadcasting",
+      "Virtual sets and environments",
+      "Real-time visual effects"
+    ],
+    impact: [
+      "Reduced production costs",
+      "Increased creative flexibility",
+      "Faster production timelines",
+      "Enhanced visual quality"
+    ]
+  },
+  "Cloud Gaming": {
+    description: "Cloud-based gaming platforms enabling high-quality gaming experiences across devices.",
+    applications: [
+      "Game streaming services",
+      "Cross-platform gaming",
+      "Mobile cloud gaming",
+      "Virtual gaming communities"
+    ],
+    impact: [
+      "Broader gaming accessibility",
+      "Reduced hardware requirements",
+      "Enhanced gaming experiences",
+      "Increased market reach"
+    ]
+  },
+  "Digital Distribution": {
+    description: "Digital platforms and infrastructure for content distribution and monetization.",
+    applications: [
+      "Content delivery networks",
+      "Digital marketplaces",
+      "Streaming platforms",
+      "Content licensing"
+    ],
+    impact: [
+      "Wider content reach",
+      "Improved monetization",
+      "Reduced distribution costs",
+      "Enhanced user engagement"
+    ]
+  },
+  "XR Content": {
+    description: "Extended Reality content combining AR, VR, and mixed reality for immersive experiences.",
+    applications: [
+      "Interactive entertainment",
+      "Educational content",
+      "Virtual events",
+      "Immersive advertising"
+    ],
+    impact: [
+      "Enhanced user engagement",
+      "New revenue streams",
+      "Innovative content formats",
+      "Improved learning outcomes"
+    ]
   }
 };
