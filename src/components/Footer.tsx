@@ -4,15 +4,15 @@ import { toast } from "@/hooks/use-toast";
 const Footer = () => {
   const navigation = {
     main: [
-      { name: "About", submenu: [
-        { name: "People", href: "/people" },
-        { name: "Contact", href: "/contact" }
-      ]},
       { name: "Events", submenu: [
         { name: "Nias Business Forum", href: "/events/riyadh" }
       ]},
       { name: "Resources", submenu: [
         { name: "Opportunities", href: "/resources" }
+      ]},
+      { name: "About", submenu: [
+        { name: "People", href: "/people" },
+        { name: "Contact", href: "/contact" }
       ]},
       { name: "Legal", submenu: [
         { name: "Privacy Policy", href: "#privacy" },
