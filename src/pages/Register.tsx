@@ -40,7 +40,6 @@ const Register = () => {
           <h1 className="text-4xl font-bold text-primary mb-8">Create Your Account</h1>
           <Auth
             supabaseClient={supabase}
-            view="sign_up"
             appearance={{
               theme: ThemeSupa,
               variables: {
@@ -54,6 +53,7 @@ const Register = () => {
             }}
             providers={[]}
             redirectTo={window.location.origin}
+            view="sign_up"
           />
         </div>
       </main>

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
@@ -6,9 +6,11 @@ import { useNavigate } from "react-router-dom";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import RequestInviteModal from "@/components/RequestInviteModal";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [showRequestModal, setShowRequestModal] = useState(false);
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
@@ -53,10 +55,23 @@ const Login = () => {
             }}
             providers={[]}
             redirectTo={window.location.origin}
+            view="sign_in"
           />
+          <div className="mt-8 text-center">
+            <button
+              onClick={() => setShowRequestModal(true)}
+              className="text-lg text-primary hover:underline font-medium"
+            >
+              Don't have an account? Request to Join the Nias Network
+            </button>
+          </div>
         </div>
       </main>
       <Footer />
+      <RequestInviteModal 
+        open={showRequestModal} 
+        onOpenChange={setShowRequestModal}
+      />
     </div>
   );
 };
