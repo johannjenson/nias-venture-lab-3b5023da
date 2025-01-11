@@ -61,6 +61,11 @@ const MainNav = () => {
       href: "/events/riyadh",
       description: "Join our inaugural business forum on February 20th connecting global companies with Saudi investors.",
     },
+    {
+      title: "Nias Network Dinner at LEAP",
+      href: "/events/leap-dinner",
+      description: "Connect with industry leaders at our exclusive dinner during LEAP 2024 in Riyadh.",
+    },
   ];
 
   const resources = [
