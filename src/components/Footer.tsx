@@ -11,7 +11,7 @@ const Footer = () => {
         { name: "Contact", href: "/contact" }
       ]},
       { name: "Events", submenu: [
-        { name: "February 20th in Riyadh", href: "/events/riyadh" }
+        { name: "Nias Business Forum", href: "/events/riyadh" }
       ]},
       { name: "Resources", submenu: [
         { name: "Vision 2030 Opportunities", href: "/resources" },
