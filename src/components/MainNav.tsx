@@ -28,24 +28,6 @@ const MainNav = () => {
     },
   ];
 
-  const resources = [
-    {
-      title: "Market Entry Guides",
-      href: "#guides",
-      description: "Essential steps and insights for expanding your business in Saudi Arabia.",
-    },
-    {
-      title: "Investment Insights",
-      href: "#insights",
-      description: "Analysis of top sectors and opportunities under Vision 2030.",
-    },
-    {
-      title: "Case Studies",
-      href: "#cases",
-      description: "Success stories of companies that have landed and expanded in KSA.",
-    },
-  ];
-
   const about = [
     {
       title: "People",
@@ -72,25 +54,6 @@ const MainNav = () => {
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
               {solutions.map((item) => (
-                <ListItem
-                  key={item.title}
-                  title={item.title}
-                  href={item.href}
-                >
-                  {item.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-black bg-transparent hover:bg-white hover:text-black transition-colors">
-            Resources
-          </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
-              {resources.map((item) => (
                 <ListItem
                   key={item.title}
                   title={item.title}

@@ -6,13 +6,14 @@ const Footer = () => {
         { name: "People", href: "/people" },
         { name: "Contact", href: "#contact" }
       ]},
-      { name: "Resources", href: "#resources" },
       { name: "Events", href: "#events", submenu: [
         { name: "February 20th in Riyadh", href: "/events/riyadh" }
       ]},
       { name: "Join the Network", href: "#join" },
-      { name: "Privacy Policy", href: "#privacy" },
-      { name: "Terms of Use", href: "#terms" },
+      { name: "Legal", submenu: [
+        { name: "Privacy Policy", href: "#privacy" },
+        { name: "Terms of Use", href: "#terms" }
+      ]},
     ],
     social: [
       {
@@ -48,9 +49,15 @@ const Footer = () => {
             <div key={item.name} className="pb-6">
               {item.submenu ? (
                 <div>
-                  <a href={item.href} className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-900">
-                    {item.name}
-                  </a>
+                  {item.href ? (
+                    <a href={item.href} className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-900">
+                      {item.name}
+                    </a>
+                  ) : (
+                    <span className="text-sm font-semibold leading-6 text-gray-900">
+                      {item.name}
+                    </span>
+                  )}
                   <ul className="mt-2 space-y-2">
                     {item.submenu.map((subitem) => (
                       <li key={subitem.name}>
