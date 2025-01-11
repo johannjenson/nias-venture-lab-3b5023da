@@ -4,8 +4,20 @@ import {
 } from "@/components/ui/navigation-menu";
 import React from "react";
 import { NavMenuItem } from "./navigation/NavMenuItem";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Menu } from "lucide-react";
+import { Button } from "./ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet";
 
 const MainNav = () => {
+  const isMobile = useIsMobile();
+  
   const about = [
     {
       title: "People",
@@ -35,13 +47,39 @@ const MainNav = () => {
     },
   ];
 
+  const renderNavItems = () => (
+    <NavigationMenuList className="gap-6">
+      <NavMenuItem title="Events" items={events} />
+      <NavMenuItem title="Resources" items={resources} />
+      <NavMenuItem title="About" items={about} />
+    </NavigationMenuList>
+  );
+
+  if (isMobile) {
+    return (
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant="ghost" size="icon" className="fixed right-4 top-14 z-50">
+            <Menu className="h-6 w-6" />
+          </Button>
+        </SheetTrigger>
+        <SheetContent>
+          <SheetHeader>
+            <SheetTitle>Menu</SheetTitle>
+          </SheetHeader>
+          <div className="mt-4">
+            <NavigationMenu className="w-full">
+              {renderNavItems()}
+            </NavigationMenu>
+          </div>
+        </SheetContent>
+      </Sheet>
+    );
+  }
+
   return (
     <NavigationMenu className="absolute top-14 left-1/2 -translate-x-1/2 z-50">
-      <NavigationMenuList className="gap-6">
-        <NavMenuItem title="Events" items={events} />
-        <NavMenuItem title="Resources" items={resources} />
-        <NavMenuItem title="About" items={about} />
-      </NavigationMenuList>
+      {renderNavItems()}
     </NavigationMenu>
   );
 };
