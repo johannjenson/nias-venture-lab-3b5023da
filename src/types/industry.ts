@@ -5,4 +5,5 @@ export interface Industry {
   investment: string;
   keyAreas: string[];
   tam: string;
+  techTailwinds: string[];
 }

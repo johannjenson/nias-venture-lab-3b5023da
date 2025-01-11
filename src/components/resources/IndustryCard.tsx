@@ -63,6 +63,17 @@ const IndustryCard = ({ industry }: IndustryCardProps) => {
             ))}
           </div>
         </div>
+
+        <div className="mt-4">
+          <div className="text-sm font-medium text-gray-500 mb-2">Tech Tailwinds</div>
+          <div className="flex flex-wrap gap-2">
+            {industry.techTailwinds.map((tech) => (
+              <Badge key={tech} variant="outline" className="border-primary/20 text-primary">
+                {tech}
+              </Badge>
+            ))}
+          </div>
+        </div>
       </CardContent>
     </Card>
   );
