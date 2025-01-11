@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import RequestInviteModal from "@/components/RequestInviteModal";
+import DinnerInviteModal from "@/components/DinnerInviteModal";
 import Footer from "@/components/Footer";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -96,7 +96,7 @@ const LeapDinner = () => {
 
       <Footer />
 
-      <RequestInviteModal
+      <DinnerInviteModal
         open={showRequestModal}
         onOpenChange={setShowRequestModal}
       />
