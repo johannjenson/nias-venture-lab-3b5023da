@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Industry } from "@/types/industry";
+import { keyAreaDescriptions } from "@/data/keyAreaDescriptions";
 
 interface KeyAreaModalProps {
   open: boolean;
@@ -16,7 +17,6 @@ interface KeyAreaModalProps {
 }
 
 const KeyAreaModal = ({ open, onOpenChange, keyArea, industries }: KeyAreaModalProps) => {
-  // Filter industries that include this key area
   const relatedIndustries = industries.filter((industry) =>
     industry.keyAreas.includes(keyArea)
   );
@@ -27,6 +27,8 @@ const KeyAreaModal = ({ open, onOpenChange, keyArea, industries }: KeyAreaModalP
       return value ? parseInt(value) : 0;
     })
     .reduce((a, b) => a + b, 0);
+
+  const keyAreaInfo = keyAreaDescriptions[keyArea];
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -42,6 +44,18 @@ const KeyAreaModal = ({ open, onOpenChange, keyArea, industries }: KeyAreaModalP
         </DialogHeader>
 
         <div className="mt-6 space-y-6">
+          {keyAreaInfo && (
+            <div className="mb-6">
+              <p className="text-gray-700 mb-4">{keyAreaInfo.description}</p>
+              <h4 className="text-md font-semibold text-primary mb-2">Key Opportunities</h4>
+              <ul className="list-disc pl-5 space-y-1">
+                {keyAreaInfo.opportunities.map((opportunity, index) => (
+                  <li key={index} className="text-gray-600">{opportunity}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           <div>
             <h3 className="text-lg font-semibold text-primary mb-3">Related Industries</h3>
             <div className="space-y-4">
