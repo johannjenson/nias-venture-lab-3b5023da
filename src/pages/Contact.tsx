@@ -4,8 +4,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import Footer from "@/components/Footer";
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,6 +32,14 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-2xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center text-gray-600 hover:text-gray-900 mb-8"
+        >
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Back
+        </button>
+
         <div className="space-y-12">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
