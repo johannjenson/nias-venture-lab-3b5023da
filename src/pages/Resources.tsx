@@ -3,10 +3,14 @@ import Footer from "@/components/Footer";
 import IndustryCard from "@/components/resources/IndustryCard";
 import SearchAndFilter from "@/components/resources/SearchAndFilter";
 import { industries } from "@/data/industries";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Resources = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("score");
+  const navigate = useNavigate();
 
   const filteredAndSortedIndustries = industries
     .filter(industry => 
@@ -27,6 +31,14 @@ const Resources = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Button
+        variant="ghost"
+        size="icon"
+        className="fixed top-4 left-4 z-50"
+        onClick={() => navigate(-1)}
+      >
+        <ArrowLeft className="h-6 w-6" />
+      </Button>
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold text-primary mb-4">Vision 2030 Investment Opportunities</h1>
