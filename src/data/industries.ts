@@ -255,5 +255,90 @@ export const industries: Industry[] = [
       { name: "Northrop Grumman", marketCap: "$70.0B" },
       { name: "Raytheon Technologies", marketCap: "$80.0B" }
     ]
+  },
+  {
+    name: "Retail",
+    score: 84,
+    description: "Modern retail development including e-commerce platforms, smart stores, and luxury retail.",
+    investment: "$550+ billion",
+    keyAreas: ["E-commerce", "Smart Retail", "Luxury Market"],
+    tam: "$800 billion",
+    techTailwinds: ["Digital Payments", "AI Analytics", "IoT in Retail", "AR Shopping"],
+    leaders: [
+      { name: "Fawaz Al Hokair Group", marketCap: "$4.2B" },
+      { name: "Jarir Marketing", marketCap: "$3.8B" },
+      { name: "BinDawood Holding", marketCap: "$2.5B" },
+      { name: "Al Othaim Markets", marketCap: "$2.1B" },
+      { name: "Extra", marketCap: "$1.2B" },
+      { name: "Panda Retail Company", marketCap: "$0.9B" }
+    ]
+  },
+  {
+    name: "Creative Industries",
+    score: 82,
+    description: "Development of film, gaming, and digital content creation industries.",
+    investment: "$240+ billion",
+    keyAreas: ["Film Production", "Gaming Development", "Digital Content"],
+    tam: "$400 billion",
+    techTailwinds: ["Virtual Production", "Cloud Gaming", "Digital Distribution", "XR Content"],
+    leaders: [
+      { name: "MBC Group", marketCap: "$2.8B" },
+      { name: "Rotana Media", marketCap: "$1.5B" },
+      { name: "Saudi Research & Media", marketCap: "$1.2B" },
+      { name: "Manga Productions", marketCap: "$0.8B" },
+      { name: "Nebras Films", marketCap: "$0.4B" },
+      { name: "Saudi Gaming", marketCap: "$0.3B" }
+    ]
+  },
+  {
+    name: "Biotechnology",
+    score: 85,
+    description: "Development of biotechnology research, pharmaceuticals, and medical innovations.",
+    investment: "$380+ billion",
+    keyAreas: ["Biomedical Research", "Drug Development", "Genomics"],
+    tam: "$600 billion",
+    techTailwinds: ["Gene Editing", "Precision Medicine", "Bioinformatics", "Synthetic Biology"],
+    leaders: [
+      { name: "SPIMACO", marketCap: "$1.8B" },
+      { name: "Jamjoom Pharma", marketCap: "$1.2B" },
+      { name: "Dallah Healthcare", marketCap: "$1.0B" },
+      { name: "Saudi Pharmaceutical", marketCap: "$0.9B" },
+      { name: "Biotech Corp", marketCap: "$0.7B" },
+      { name: "Advanced Pharma", marketCap: "$0.5B" }
+    ]
+  },
+  {
+    name: "Smart Construction",
+    score: 83,
+    description: "Advanced construction technologies, sustainable building materials, and smart infrastructure.",
+    investment: "$420+ billion",
+    keyAreas: ["Sustainable Materials", "Smart Buildings", "Construction Tech"],
+    tam: "$900 billion",
+    techTailwinds: ["3D Printing", "Modular Construction", "IoT Integration", "Digital Twins"],
+    leaders: [
+      { name: "Saudi Ceramics", marketCap: "$2.1B" },
+      { name: "Arabian Cement", marketCap: "$1.8B" },
+      { name: "Saudi Steel Pipe", marketCap: "$1.2B" },
+      { name: "Red Sea International", marketCap: "$0.9B" },
+      { name: "Construction Products Holding", marketCap: "$0.8B" },
+      { name: "Advanced Construction", marketCap: "$0.6B" }
+    ]
+  },
+  {
+    name: "Ocean Economy",
+    score: 81,
+    description: "Development of marine resources, aquaculture, and coastal tourism.",
+    investment: "$175+ billion",
+    keyAreas: ["Marine Tourism", "Aquaculture", "Port Development"],
+    tam: "$300 billion",
+    techTailwinds: ["Marine Tech", "Sustainable Fishing", "Ocean Data", "Clean Energy"],
+    leaders: [
+      { name: "National Shipping", marketCap: "$3.2B" },
+      { name: "Red Sea Gateway Terminal", marketCap: "$2.5B" },
+      { name: "Saudi Fisheries", marketCap: "$0.8B" },
+      { name: "Marine Development", marketCap: "$0.6B" },
+      { name: "Coastal Tourism Co", marketCap: "$0.5B" },
+      { name: "Blue Economy Corp", marketCap: "$0.4B" }
+    ]
   }
 ];
