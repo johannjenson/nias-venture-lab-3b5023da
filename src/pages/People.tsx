@@ -8,25 +8,25 @@ const People = () => {
     {
       name: "Ibrahim Alshuwaier",
       role: "Business Development",
-      imageUrl: "https://images.unsplash.com/photo-1590177600598-73f9e6fe665c", // Arabian Red Fox - native to Saudi Arabia, symbolizing adaptability and strategic thinking
+      imageUrl: "https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd", // Desert Fox representation
       linkedIn: "https://www.linkedin.com/",
     },
     {
       name: "Ibrahim AlSemari",
       role: "Finance",
-      imageUrl: "https://images.unsplash.com/photo-1584486379634-d6cfcc5c4e62", // Arabian Sand Cat - native to Saudi Arabia, representing precision and careful calculation
+      imageUrl: "https://images.unsplash.com/photo-1568265112889-c9d3fc50a281", // Desert Cat representation
       linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162",
     },
     {
       name: "Johann Jenson",
       role: "Product",
-      imageUrl: "https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6", // Arabian Leopard - native to Saudi Arabia, symbolizing agility and innovation
+      imageUrl: "https://images.unsplash.com/photo-1456926631375-92c8ce872def", // Big Cat/Leopard representation
       linkedIn: "https://www.linkedin.com/in/johannjenson/",
     },
     {
       name: "Lukas Gaebler",
       role: "Tech",
-      imageUrl: "https://images.unsplash.com/photo-1579187707643-35646d22b596", // Arabian Wolf - native to Saudi Arabia, representing intelligence and teamwork
+      imageUrl: "https://images.unsplash.com/photo-1564352969906-8b7f46ba4b8b", // Wolf representation
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
     },
   ];
