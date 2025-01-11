@@ -8,25 +8,25 @@ const People = () => {
     {
       name: "Ibrahim Alshuwaier",
       role: "Business Development",
-      imageUrl: "https://images.unsplash.com/photo-1469041797191-50ace28483c3", // Camels - represents business growth and adaptability
+      imageUrl: "https://images.unsplash.com/photo-1533450718592-29d45635f0a9", // Majestic Arabian camel - symbolizing endurance and adaptability in business
       linkedIn: "https://www.linkedin.com/",
     },
     {
       name: "Ibrahim AlSemari",
       role: "Finance",
-      imageUrl: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d", // Antelope - represents precision and financial acumen
+      imageUrl: "https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6", // Graceful Arabian Gazelle - representing precision and swift decision-making
       linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162",
     },
     {
       name: "Johann Jenson",
       role: "Product",
-      imageUrl: "https://images.unsplash.com/photo-1493962853295-0fd70327578a", // Arabian Oryx - represents vision and resilience
+      imageUrl: "https://images.unsplash.com/photo-1579187707643-35646d22b596", // Majestic Arabian Oryx - symbolizing resilience and innovation
       linkedIn: "https://www.linkedin.com/in/johannjenson/",
     },
     {
       name: "Lukas Gaebler",
       role: "Tech",
-      imageUrl: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2", // Arabian horses - represents power and technical excellence
+      imageUrl: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a", // Powerful Arabian stallion - representing strength and technical excellence
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
     },
   ];
