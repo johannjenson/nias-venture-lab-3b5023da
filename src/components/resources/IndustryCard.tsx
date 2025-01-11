@@ -8,12 +8,17 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useState } from "react";
+import KeyAreaModal from "./KeyAreaModal";
+import { industries } from "@/data/industries";
 
 interface IndustryCardProps {
   industry: Industry;
 }
 
 const IndustryCard = ({ industry }: IndustryCardProps) => {
+  const [selectedKeyArea, setSelectedKeyArea] = useState<string | null>(null);
+
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <CardContent className="p-6">
@@ -57,7 +62,12 @@ const IndustryCard = ({ industry }: IndustryCardProps) => {
           <div className="text-sm font-medium text-gray-500 mb-2">Key Areas</div>
           <div className="flex flex-wrap gap-2">
             {industry.keyAreas.map((area) => (
-              <Badge key={area} variant="secondary" className="bg-secondary text-primary">
+              <Badge 
+                key={area} 
+                variant="secondary" 
+                className="bg-secondary text-primary cursor-pointer hover:bg-secondary/80 transition-colors"
+                onClick={() => setSelectedKeyArea(area)}
+              >
                 {area}
               </Badge>
             ))}
@@ -75,6 +85,15 @@ const IndustryCard = ({ industry }: IndustryCardProps) => {
           </div>
         </div>
       </CardContent>
+
+      {selectedKeyArea && (
+        <KeyAreaModal
+          open={!!selectedKeyArea}
+          onOpenChange={(open) => !open && setSelectedKeyArea(null)}
+          keyArea={selectedKeyArea}
+          industries={industries}
+        />
+      )}
     </Card>
   );
 };
