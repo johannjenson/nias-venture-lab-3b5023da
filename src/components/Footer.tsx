@@ -43,13 +43,32 @@ const Footer = () => {
   return (
     <footer className="bg-white">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
-        <div className="text-center mb-16">
-          <a
-            href="#join"
-            className="inline-block bg-primary text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-primary/90 transition-colors"
-          >
-            Join the Nias Network
-          </a>
+        <div id="signup-form" className="py-24 bg-white">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center mb-16">
+              <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
+                Get Nias News
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-gray-600">
+                Receive monthly insights on investing, M&A, and tech in KSA.
+              </p>
+            </div>
+            <form className="max-w-xl mx-auto" onSubmit={(e) => e.preventDefault()}>
+              <div className="space-y-4">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <button
+                  type="submit"
+                  className="w-full bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors"
+                >
+                  Subscribe
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
         <nav className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
           {navigation.main.map((item) => (
@@ -91,32 +110,13 @@ const Footer = () => {
             </a>
           ))}
         </div>
-        <div id="signup-form" className="py-24 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl text-center mb-16">
-              <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-                Get Nias News
-              </h2>
-              <p className="mt-6 text-lg leading-8 text-gray-600">
-                Receive monthly insights on investing, M&A, and tech in KSA.
-              </p>
-            </div>
-            <form className="max-w-xl mx-auto" onSubmit={(e) => e.preventDefault()}>
-              <div className="space-y-4">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
-                />
-                <button
-                  type="submit"
-                  className="w-full bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors"
-                >
-                  Subscribe
-                </button>
-              </div>
-            </form>
-          </div>
+        <div className="text-center mt-16">
+          <a
+            href="#join"
+            className="inline-block bg-primary text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-primary/90 transition-colors"
+          >
+            Join the Nias Network
+          </a>
         </div>
         <p className="mt-10 text-center text-xs leading-5 text-gray-500">
           &copy; {new Date().getFullYear()} Nias.io. All rights reserved.
