@@ -1,16 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import MainNav from "./MainNav";
+import RequestInviteModal from "./RequestInviteModal";
+import { useState } from "react";
 
 const Hero = () => {
+  const [showRequestModal, setShowRequestModal] = useState(false);
+
   return (
     <div className="relative min-h-screen flex flex-col">
       {/* Event Banner */}
       <div className="bg-[#221F26] text-white text-center py-2 px-4">
         Join us in Riyadh on 20 February 2025.{" "}
-        <a href="#request" className="underline font-medium hover:text-white/90">
+        <button 
+          onClick={() => setShowRequestModal(true)}
+          className="underline font-medium hover:text-white/90"
+        >
           Request Your Invite
-        </a>
+        </button>
       </div>
 
       {/* Navigation */}
@@ -29,10 +36,7 @@ const Hero = () => {
             <div className="flex items-center justify-center gap-6">
               <Button
                 className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
-                onClick={() => {
-                  const formElement = document.getElementById("signup-form");
-                  formElement?.scrollIntoView({ behavior: "smooth" });
-                }}
+                onClick={() => setShowRequestModal(true)}
               >
                 Request to Join
               </Button>
@@ -75,6 +79,12 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Request Invite Modal */}
+      <RequestInviteModal 
+        open={showRequestModal} 
+        onOpenChange={setShowRequestModal} 
+      />
     </div>
   );
 };
