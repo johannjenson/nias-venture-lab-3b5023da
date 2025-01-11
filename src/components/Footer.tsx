@@ -7,9 +7,8 @@ const Footer = () => {
   const navigation = {
     main: [
       { name: "About", submenu: [
-        { name: "Our Mission", href: "#mission" },
         { name: "People", href: "/people" },
-        { name: "Contact", href: "#contact" }
+        { name: "Contact", href: "/contact" }
       ]},
       { name: "Events", submenu: [
         { name: "February 20th in Riyadh", href: "/events/riyadh" }
