@@ -14,8 +14,7 @@ const Footer = () => {
         { name: "Nias Business Forum", href: "/events/riyadh" }
       ]},
       { name: "Resources", submenu: [
-        { name: "Vision 2030 Opportunities", href: "/resources" },
-        { name: "Opportunities", href: "/opportunities" }
+        { name: "Opportunities", href: "/resources" }
       ]},
       { name: "Legal", submenu: [
         { name: "Privacy Policy", href: "#privacy" },
