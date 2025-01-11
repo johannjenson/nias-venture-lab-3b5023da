@@ -26,7 +26,7 @@ const People = () => {
     {
       name: "Lukas Gaebler",
       role: "Tech",
-      imageUrl: "https://images.unsplash.com/photo-1564352969906-8b7f46ba4b8b", // Wolf representation
+      imageUrl: "https://images.unsplash.com/photo-1543946207-39bd91e70ca7", // Different Wolf representation
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
     },
   ];
@@ -47,7 +47,7 @@ const People = () => {
             People
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Meet our team of founders and leaders.
+            Meet the crew at Nias
           </p>
         </div>
         <ul
