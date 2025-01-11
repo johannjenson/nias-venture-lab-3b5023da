@@ -150,6 +150,12 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
               </Select>
             </div>
 
+            <Button type="submit" className="w-full">
+              Next
+            </Button>
+          </form>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-4 mt-4">
             <div className="space-y-2">
               <Label htmlFor="linkedinUrl">LinkedIn URL</Label>
               <Input
@@ -158,16 +164,11 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
                 type="url"
                 value={formData.linkedinUrl}
                 onChange={handleInputChange}
+                placeholder="e.g. linkedin.com/in/username"
                 required
               />
             </div>
 
-            <Button type="submit" className="w-full">
-              Next
-            </Button>
-          </form>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-4 mt-4">
             <div className="space-y-2">
               <Label htmlFor="referredBy">Who referred you to the Nias Network?</Label>
               <Input
