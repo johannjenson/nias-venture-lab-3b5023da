@@ -33,6 +33,39 @@ export type Database = {
         }
         Relationships: []
       }
+      DinnerRequest: {
+        Row: {
+          company: string | null
+          created_at: string | null
+          email: string | null
+          full_name: string | null
+          id: number
+          interests: string | null
+          phone_number: string | null
+          title: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: never
+          interests?: string | null
+          phone_number?: string | null
+          title?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: never
+          interests?: string | null
+          phone_number?: string | null
+          title?: string | null
+        }
+        Relationships: []
+      }
       EventRequest: {
         Row: {
           company: string | null
