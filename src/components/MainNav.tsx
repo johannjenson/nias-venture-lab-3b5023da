@@ -10,24 +10,6 @@ import { cn } from "@/lib/utils";
 import React from "react";
 
 const MainNav = () => {
-  const solutions = [
-    {
-      title: "Founders & Executives",
-      href: "#founders",
-      description: "Scale your business in KSA with confidence through strategic partnerships.",
-    },
-    {
-      title: "Buyers & Investors",
-      href: "#investors",
-      description: "Uncover transformative investment opportunities aligned with Vision 2030.",
-    },
-    {
-      title: "Advisors & Brokers",
-      href: "#advisors",
-      description: "Partner with global and local businesses to drive success.",
-    },
-  ];
-
   const about = [
     {
       title: "People",
@@ -44,16 +26,24 @@ const MainNav = () => {
     },
   ];
 
+  const resources = [
+    {
+      title: "Vision 2030 Opportunities",
+      href: "/resources",
+      description: "Explore investment opportunities aligned with Saudi Vision 2030.",
+    },
+  ];
+
   return (
     <NavigationMenu className="absolute top-14 left-1/2 -translate-x-1/2 z-50">
       <NavigationMenuList className="gap-6">
         <NavigationMenuItem>
           <NavigationMenuTrigger className="text-black bg-transparent hover:bg-white hover:text-black transition-colors">
-            Solutions
+            Events
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
-              {solutions.map((item) => (
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1 lg:w-[600px] bg-white">
+              {events.map((item) => (
                 <ListItem
                   key={item.title}
                   title={item.title}
@@ -68,11 +58,11 @@ const MainNav = () => {
 
         <NavigationMenuItem>
           <NavigationMenuTrigger className="text-black bg-transparent hover:bg-white hover:text-black transition-colors">
-            Events
+            Resources
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1 lg:w-[600px] bg-white">
-              {events.map((item) => (
+              {resources.map((item) => (
                 <ListItem
                   key={item.title}
                   title={item.title}
