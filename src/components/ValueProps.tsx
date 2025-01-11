@@ -1,4 +1,4 @@
-import { Building2, Users, Briefcase } from "lucide-react";
+import { PlaneLanding, Users, Briefcase } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import RequestInviteModal from "./RequestInviteModal";
@@ -7,7 +7,7 @@ const features = [
   {
     name: "Smooth Landing",
     description: "Navigate regulatory requirements and local partnerships with confidence.",
-    icon: Building2,
+    icon: PlaneLanding,
   },
   {
     name: "Trusted Advisors",
