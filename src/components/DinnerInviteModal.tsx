@@ -80,7 +80,7 @@ const DinnerInviteModal = ({ open, onOpenChange }: DinnerInviteModalProps) => {
         <DialogHeader className="space-y-2">
           <DialogTitle className="text-2xl font-bold">Join us for Dinner</DialogTitle>
           <DialogDescription>
-            Request your invitation to the Nias Network Dinner at LEAP on February 13th, 2024.
+            Request your invitation to the Nias Network Dinner at LEAP on February 13th, 2025.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 mt-2">
