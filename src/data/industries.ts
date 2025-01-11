@@ -12,7 +12,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "SABIC", marketCap: "$80.2B" },
       { name: "Saudi Aramco", marketCap: "$2.1T" },
-      { name: "Ma'aden", marketCap: "$42.3B" }
+      { name: "Ma'aden", marketCap: "$42.3B" },
+      { name: "Sipchem", marketCap: "$15.1B" },
+      { name: "Tasnee", marketCap: "$8.4B" },
+      { name: "Saudi Ceramic", marketCap: "$2.1B" }
     ]
   },
   {
@@ -26,7 +29,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "stc", marketCap: "$58.7B" },
       { name: "Mobily", marketCap: "$16.2B" },
-      { name: "Elm", marketCap: "$12.8B" }
+      { name: "Elm", marketCap: "$12.8B" },
+      { name: "Zain", marketCap: "$10.5B" },
+      { name: "Saudi Telecom Company", marketCap: "$20.0B" },
+      { name: "Axiom Telecom", marketCap: "$1.2B" }
     ]
   },
   {
@@ -40,7 +46,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "Al Habtoor Group", marketCap: "$5.0B" },
       { name: "Emaar Properties", marketCap: "$15.2B" },
-      { name: "Saudi Entertainment Ventures", marketCap: "$3.5B" }
+      { name: "Saudi Entertainment Ventures", marketCap: "$3.5B" },
+      { name: "Makkah Construction", marketCap: "$2.0B" },
+      { name: "Al Othaim Holding", marketCap: "$1.5B" },
+      { name: "Red Sea Global", marketCap: "$1.0B" }
     ]
   },
   {
@@ -54,7 +63,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "Al Nahdi Medical Company", marketCap: "$3.2B" },
       { name: "Saudi Pharmaceutical Industries", marketCap: "$1.5B" },
-      { name: "Tamer Group", marketCap: "$2.0B" }
+      { name: "Tamer Group", marketCap: "$2.0B" },
+      { name: "Al-Dawaa Pharmacies", marketCap: "$1.0B" },
+      { name: "Saudi German Hospital", marketCap: "$0.8B" },
+      { name: "Mawhiba", marketCap: "$0.5B" }
     ]
   },
   {
@@ -68,7 +80,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "ACWA Power", marketCap: "$10.0B" },
       { name: "First Solar", marketCap: "$8.5B" },
-      { name: "Siemens Gamesa", marketCap: "$12.0B" }
+      { name: "Siemens Gamesa", marketCap: "$12.0B" },
+      { name: "Vestas", marketCap: "$9.2B" },
+      { name: "Saudi Electricity Company", marketCap: "$25.3B" },
+      { name: "Desert Technologies", marketCap: "$1.8B" }
     ]
   },
   {
@@ -82,7 +97,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "Ma'aden", marketCap: "$42.3B" },
       { name: "Barrick Gold", marketCap: "$35.0B" },
-      { name: "Rio Tinto", marketCap: "$120.0B" }
+      { name: "Rio Tinto", marketCap: "$120.0B" },
+      { name: "Alamos Gold", marketCap: "$5.0B" },
+      { name: "Newmont Corporation", marketCap: "$50.0B" },
+      { name: "Anglo American", marketCap: "$40.0B" }
     ]
   },
   {
@@ -96,7 +114,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "Saudi Ports Authority", marketCap: "$10.0B" },
       { name: "DHL", marketCap: "$30.0B" },
-      { name: "Aramex", marketCap: "$3.0B" }
+      { name: "Aramex", marketCap: "$3.0B" },
+      { name: "FedEx", marketCap: "$80.0B" },
+      { name: "UPS", marketCap: "$100.0B" },
+      { name: "Saudi Railway Company", marketCap: "$2.5B" }
     ]
   },
   {
@@ -110,7 +131,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "Al-Falak", marketCap: "$1.0B" },
       { name: "Edraak", marketCap: "$0.5B" },
-      { name: "Noon Academy", marketCap: "$0.8B" }
+      { name: "Noon Academy", marketCap: "$0.8B" },
+      { name: "Mawhiba", marketCap: "$0.6B" },
+      { name: "Qurtuba International School", marketCap: "$0.4B" },
+      { name: "International Schools Group", marketCap: "$0.7B" }
     ]
   },
   {
@@ -124,7 +148,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "Al Rajhi Bank", marketCap: "$20.0B" },
       { name: "National Commercial Bank", marketCap: "$25.0B" },
-      { name: "Samba Financial Group", marketCap: "$10.0B" }
+      { name: "Samba Financial Group", marketCap: "$10.0B" },
+      { name: "Riyad Bank", marketCap: "$15.0B" },
+      { name: "Arab National Bank", marketCap: "$5.0B" },
+      { name: "Alinma Bank", marketCap: "$8.0B" }
     ]
   },
   {
@@ -138,7 +165,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "Emaar Properties", marketCap: "$15.2B" },
       { name: "Dar Al Arkan", marketCap: "$5.0B" },
-      { name: "Saudi Real Estate Company", marketCap: "$3.0B" }
+      { name: "Saudi Real Estate Company", marketCap: "$3.0B" },
+      { name: "JLL", marketCap: "$10.0B" },
+      { name: "Colliers International", marketCap: "$8.0B" },
+      { name: "Knight Frank", marketCap: "$6.0B" }
     ]
   },
   {
@@ -152,7 +182,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "Almarai", marketCap: "$8.0B" },
       { name: "Savola Group", marketCap: "$4.5B" },
-      { name: "Saudi Agricultural and Livestock Investment Company", marketCap: "$2.0B" }
+      { name: "Saudi Agricultural and Livestock Investment Company", marketCap: "$2.0B" },
+      { name: "Al-Faisaliah Group", marketCap: "$1.5B" },
+      { name: "Al-Jazeera Agricultural Company", marketCap: "$1.0B" },
+      { name: "Al-Othaim Foods", marketCap: "$0.8B" }
     ]
   },
   {
@@ -166,7 +199,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "ACWA Power", marketCap: "$10.0B" },
       { name: "Veolia", marketCap: "$15.0B" },
-      { name: "Suez", marketCap: "$12.0B" }
+      { name: "Suez", marketCap: "$12.0B" },
+      { name: "Saudi Water Partnership Company", marketCap: "$2.5B" },
+      { name: "National Water Company", marketCap: "$3.0B" },
+      { name: "Al-Khodari Sons Company", marketCap: "$1.0B" }
     ]
   },
   {
@@ -180,7 +216,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "Saudi Arabian Military Industries", marketCap: "$5.0B" },
       { name: "Lockheed Martin", marketCap: "$100.0B" },
-      { name: "Raytheon Technologies", marketCap: "$80.0B" }
+      { name: "Raytheon Technologies", marketCap: "$80.0B" },
+      { name: "Northrop Grumman", marketCap: "$70.0B" },
+      { name: "BAE Systems", marketCap: "$60.0B" },
+      { name: "General Dynamics", marketCap: "$50.0B" }
     ]
   },
   {
@@ -194,7 +233,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "Saudi Sports Company", marketCap: "$1.5B" },
       { name: "Qiddiya Investment Company", marketCap: "$2.0B" },
-      { name: "Saudi Entertainment Ventures", marketCap: "$3.5B" }
+      { name: "Saudi Entertainment Ventures", marketCap: "$3.5B" },
+      { name: "Al-Hilal FC", marketCap: "$0.8B" },
+      { name: "Al-Nassr FC", marketCap: "$0.7B" },
+      { name: "Saudi Arabian Football Federation", marketCap: "$0.5B" }
     ]
   },
   {
@@ -208,7 +250,10 @@ export const industries: Industry[] = [
     leaders: [
       { name: "Saudi Arabian Airlines", marketCap: "$5.0B" },
       { name: "Boeing", marketCap: "$120.0B" },
-      { name: "Airbus", marketCap: "$100.0B" }
+      { name: "Airbus", marketCap: "$100.0B" },
+      { name: "Lockheed Martin", marketCap: "$100.0B" },
+      { name: "Northrop Grumman", marketCap: "$70.0B" },
+      { name: "Raytheon Technologies", marketCap: "$80.0B" }
     ]
   }
 ];
