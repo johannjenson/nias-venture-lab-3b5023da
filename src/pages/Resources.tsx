@@ -75,6 +75,41 @@ const industries = [
     description: "Development of smart cities, residential projects, and commercial spaces.",
     investment: "$1+ trillion",
     keyAreas: ["Smart Cities", "Residential Development", "Commercial Real Estate"]
+  },
+  {
+    name: "Agriculture & Food Security",
+    score: 83,
+    description: "Sustainable agriculture, food production, and agricultural technology initiatives.",
+    investment: "$180+ billion",
+    keyAreas: ["AgTech", "Food Production", "Sustainable Farming"]
+  },
+  {
+    name: "Water & Environment",
+    score: 85,
+    description: "Water management, desalination projects, and environmental conservation initiatives.",
+    investment: "$230+ billion",
+    keyAreas: ["Water Technology", "Environmental Solutions", "Waste Management"]
+  },
+  {
+    name: "Defense & Security",
+    score: 89,
+    description: "Military technology, cybersecurity, and defense manufacturing localization.",
+    investment: "$290+ billion",
+    keyAreas: ["Defense Manufacturing", "Cybersecurity", "Military Technology"]
+  },
+  {
+    name: "Sports & Entertainment",
+    score: 81,
+    description: "Sports facilities, entertainment venues, and cultural attractions development.",
+    investment: "$200+ billion",
+    keyAreas: ["Sports Infrastructure", "Entertainment Venues", "Cultural Facilities"]
+  },
+  {
+    name: "Aerospace",
+    score: 86,
+    description: "Aviation manufacturing, space technology, and aerospace research initiatives.",
+    investment: "$350+ billion",
+    keyAreas: ["Aviation Manufacturing", "Space Technology", "Aerospace R&D"]
   }
 ];
 
@@ -143,9 +178,11 @@ const Resources = () => {
                       <h3 className="text-2xl font-semibold text-primary">{industry.name}</h3>
                       <p className="text-gray-600 mt-1">{industry.description}</p>
                     </div>
-                    <div className="flex flex-col items-end">
-                      <div className="text-3xl font-bold text-primary">{industry.score}</div>
-                      <div className="text-sm text-gray-500">Nias Potential Score</div>
+                    <div className="flex flex-col items-end ml-4">
+                      <div className="bg-secondary/20 rounded-lg px-4 py-2 text-center">
+                        <div className="text-3xl font-bold text-primary">{industry.score}</div>
+                        <div className="text-sm font-medium text-gray-600 whitespace-nowrap">Nias Potential Score</div>
+                      </div>
                     </div>
                   </div>
 
