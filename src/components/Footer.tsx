@@ -43,7 +43,7 @@ const Footer = () => {
   return (
     <footer className="bg-white">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
-        <div id="signup-form" className="py-24 bg-white">
+        <div id="signup-form" className="pb-24 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center mb-16">
               <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
