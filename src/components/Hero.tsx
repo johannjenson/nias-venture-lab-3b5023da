@@ -4,29 +4,18 @@ import MainNav from "./MainNav";
 
 const Hero = () => {
   return (
-    <div className="relative min-h-[80vh] flex items-center justify-center">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/lovable-uploads/001f9ae1-9f2f-4f69-96da-77ae7a562316.png"
-          alt="Saudi Arabia Oasis"
-          className="w-full h-full object-cover opacity-90"
-        />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
-      </div>
-
+    <div className="relative min-h-[80vh] flex items-center justify-center bg-secondary">
       {/* Navigation */}
       <MainNav />
 
       {/* Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
-        <div className="bg-[#F2FCE2]/90 backdrop-blur-sm p-12 max-w-3xl mx-auto rounded-lg shadow-lg">
+        <div className="max-w-3xl mx-auto">
           <h1 className="text-5xl font-bold tracking-tight text-[#221F26] mb-6">
             LAND & EXPAND IN KSA
           </h1>
           <p className="text-lg text-[#555555] mb-8 max-w-2xl mx-auto">
-            We bring together exceptional companies from around the world looking to do business in the Kingdom with serial and exited entrepreneurs, strategic investors, and acquisitive funds from the Kingdom.
+            Empowering international companies to grow in alignment with Vision 2030.
           </p>
           <div className="flex items-center justify-center gap-6">
             <Button
