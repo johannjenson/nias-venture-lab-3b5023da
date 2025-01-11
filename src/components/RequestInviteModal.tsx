@@ -7,6 +7,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -33,6 +34,7 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
     title: "",
     linkedinUrl: "",
     referredBy: "",
+    additionalInfo: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -48,11 +50,14 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
       title: "",
       linkedinUrl: "",
       referredBy: "",
+      additionalInfo: "",
     });
     setStep(1);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -172,6 +177,18 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
                 onChange={handleInputChange}
                 placeholder="Enter the name of the person who referred you"
                 required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="additionalInfo">Anything else you would like to share with us?</Label>
+              <Textarea
+                id="additionalInfo"
+                name="additionalInfo"
+                value={formData.additionalInfo}
+                onChange={handleInputChange}
+                placeholder="Tell us more about yourself and what you hope to gain from the Nias Network"
+                className="min-h-[100px]"
               />
             </div>
 
