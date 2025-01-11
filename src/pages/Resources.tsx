@@ -127,7 +127,7 @@ const Resources = () => {
                 <SelectValue placeholder="Sort by..." />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="score">Sort by Score</SelectItem>
+                <SelectItem value="score">Sort by Nias Potential Score</SelectItem>
                 <SelectItem value="investment">Sort by Investment</SelectItem>
                 <SelectItem value="name">Sort by Name</SelectItem>
               </SelectContent>
@@ -145,7 +145,7 @@ const Resources = () => {
                     </div>
                     <div className="flex flex-col items-end">
                       <div className="text-3xl font-bold text-primary">{industry.score}</div>
-                      <div className="text-sm text-gray-500">Potential Score</div>
+                      <div className="text-sm text-gray-500">Nias Potential Score</div>
                     </div>
                   </div>
 
