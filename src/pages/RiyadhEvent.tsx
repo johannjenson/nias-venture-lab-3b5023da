@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import SocialProof from "@/components/SocialProof";
-import RequestInviteModal from "@/components/RequestInviteModal";
+import EventInviteModal from "@/components/EventInviteModal";
 import EventHero from "@/components/event/EventHero";
 import EventOverview from "@/components/event/EventOverview";
 import EventAudience from "@/components/event/EventAudience";
@@ -42,8 +42,8 @@ const RiyadhEvent = () => {
       <SocialProof />
       <EventRegistration onRequestInvite={() => setShowRequestModal(true)} />
 
-      {/* Request Invite Modal */}
-      <RequestInviteModal 
+      {/* Event Invite Modal */}
+      <EventInviteModal 
         open={showRequestModal} 
         onOpenChange={setShowRequestModal} 
       />
