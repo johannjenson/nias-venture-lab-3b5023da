@@ -29,6 +29,12 @@ const People = () => {
       imageUrl: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2", // Horses representing power and adaptability
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
     },
+    {
+      name: "Richard Schrems",
+      role: "Operations",
+      imageUrl: "https://images.unsplash.com/photo-1469041797191-50ace28483c3", // Camels representing endurance and adaptability
+      linkedIn: "https://sa.linkedin.com/in/richardschrems",
+    },
   ];
 
   return (
