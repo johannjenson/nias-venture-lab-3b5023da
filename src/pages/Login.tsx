@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
@@ -64,11 +64,26 @@ const Login = () => {
                   password_label: 'Password',
                   button_label: 'Sign In',
                   loading_button_label: 'Signing in ...',
-                  link_text: '',  // Remove "Don't have an account?" text
                 }
               }
             }}
           />
+          <div className="mt-4 space-y-2 text-center">
+            <button
+              onClick={() => setShowRequestModal(true)}
+              className="text-sm text-gray-600 hover:text-gray-900"
+            >
+              Don't have an account? Request to Join
+            </button>
+            <div>
+              <Link
+                to="/forgot-password"
+                className="text-sm text-gray-600 hover:text-gray-900"
+              >
+                Forgot your password?
+              </Link>
+            </div>
+          </div>
           <RequestInviteModal 
             open={showRequestModal} 
             onOpenChange={setShowRequestModal}
