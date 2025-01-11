@@ -25,8 +25,8 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#D4C8BE", // Lighter beige
-          foreground: "#2C2420",
+          DEFAULT: "#221F26", // Dark charcoal for better contrast
+          foreground: "#FFFFFF",
         },
         secondary: {
           DEFAULT: "#E8E4D9", // Soft beige (keeping this one)
