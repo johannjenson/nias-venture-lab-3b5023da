@@ -1,5 +1,7 @@
 import { Building2, Users, Briefcase } from "lucide-react";
 import { Button } from "./ui/button";
+import { useState } from "react";
+import RequestInviteModal from "./RequestInviteModal";
 
 const features = [
   {
@@ -20,6 +22,8 @@ const features = [
 ];
 
 const ValueProps = () => {
+  const [showRequestModal, setShowRequestModal] = useState(false);
+
   return (
     <div className="py-24 bg-secondary/30 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -51,17 +55,19 @@ const ValueProps = () => {
         </div>
         <div className="mt-16 text-center">
           <Button 
-            variant="outline"
-            className="hover:bg-primary hover:text-white"
-            onClick={() => {
-              const formElement = document.getElementById("signup-form");
-              formElement?.scrollIntoView({ behavior: "smooth" });
-            }}
+            size="lg"
+            className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white"
+            onClick={() => setShowRequestModal(true)}
           >
-            Learn more about how we can help
+            Join the Nias Network
           </Button>
         </div>
       </div>
+
+      <RequestInviteModal 
+        open={showRequestModal} 
+        onOpenChange={setShowRequestModal} 
+      />
     </div>
   );
 };
