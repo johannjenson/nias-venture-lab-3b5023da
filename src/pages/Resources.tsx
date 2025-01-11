@@ -1,6 +1,9 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
 const industries = [
   {
@@ -37,10 +40,65 @@ const industries = [
     description: "Solar, wind, and green hydrogen projects as part of the Saudi Green Initiative.",
     investment: "$700+ billion",
     keyAreas: ["Solar Power", "Wind Energy", "Green Hydrogen"]
+  },
+  {
+    name: "Mining & Minerals",
+    score: 82,
+    description: "Exploration and processing of mineral resources, focusing on rare earth elements and phosphates.",
+    investment: "$320+ billion",
+    keyAreas: ["Mineral Processing", "Mining Technology", "Resource Exploration"]
+  },
+  {
+    name: "Logistics & Transportation",
+    score: 87,
+    description: "Development of transportation infrastructure, ports, and logistics networks.",
+    investment: "$400+ billion",
+    keyAreas: ["Smart Logistics", "Port Development", "Transportation Networks"]
+  },
+  {
+    name: "Education",
+    score: 78,
+    description: "Modernization of education system, e-learning platforms, and vocational training.",
+    investment: "$150+ billion",
+    keyAreas: ["EdTech", "Vocational Training", "Digital Learning"]
+  },
+  {
+    name: "Financial Services",
+    score: 86,
+    description: "FinTech solutions, digital banking, and Islamic finance innovations.",
+    investment: "$280+ billion",
+    keyAreas: ["FinTech", "Digital Banking", "Islamic Finance"]
+  },
+  {
+    name: "Real Estate",
+    score: 84,
+    description: "Development of smart cities, residential projects, and commercial spaces.",
+    investment: "$1+ trillion",
+    keyAreas: ["Smart Cities", "Residential Development", "Commercial Real Estate"]
   }
 ];
 
 const Resources = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortBy, setSortBy] = useState("score");
+
+  const filteredAndSortedIndustries = industries
+    .filter(industry => 
+      industry.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      industry.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      industry.keyAreas.some(area => area.toLowerCase().includes(searchTerm.toLowerCase()))
+    )
+    .sort((a, b) => {
+      if (sortBy === "score") {
+        return b.score - a.score;
+      } else if (sortBy === "investment") {
+        return parseFloat(b.investment.replace(/[^0-9.]/g, '')) - 
+               parseFloat(a.investment.replace(/[^0-9.]/g, ''));
+      } else {
+        return a.name.localeCompare(b.name);
+      }
+    });
+
   return (
     <div className="min-h-screen bg-white">
       <main className="container mx-auto px-4 py-16">
@@ -52,8 +110,32 @@ const Resources = () => {
             seeking market entry.
           </p>
 
+          <div className="flex gap-4 mb-8">
+            <div className="flex-1">
+              <Input
+                placeholder="Search industries, descriptions, or key areas..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full"
+              />
+            </div>
+            <Select
+              value={sortBy}
+              onValueChange={setSortBy}
+            >
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Sort by..." />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="score">Sort by Score</SelectItem>
+                <SelectItem value="investment">Sort by Investment</SelectItem>
+                <SelectItem value="name">Sort by Name</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
           <div className="space-y-8">
-            {industries.map((industry) => (
+            {filteredAndSortedIndustries.map((industry) => (
               <Card key={industry.name} className="overflow-hidden hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between mb-4">
