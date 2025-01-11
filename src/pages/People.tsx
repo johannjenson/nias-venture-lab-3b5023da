@@ -8,25 +8,25 @@ const People = () => {
     {
       name: "Ibrahim Alshuwaier",
       role: "Business Development",
-      imageUrl: "https://images.unsplash.com/photo-1533450718592-29d45635f0a9", // Majestic Arabian camel - symbolizing endurance and adaptability in business
+      imageUrl: "https://images.unsplash.com/photo-1533450718592-29d45635f0a9", // Arabian Dromedary Camel - native to Saudi Arabia, symbolizing endurance and adaptability
       linkedIn: "https://www.linkedin.com/",
     },
     {
       name: "Ibrahim AlSemari",
       role: "Finance",
-      imageUrl: "https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6", // Graceful Arabian Gazelle - representing precision and swift decision-making
+      imageUrl: "https://images.unsplash.com/photo-1438565434616-3ef039228b15", // Arabian Mountain Gazelle (Gazella gazella) - native to Saudi Arabia, representing precision
       linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162",
     },
     {
       name: "Johann Jenson",
       role: "Product",
-      imageUrl: "https://images.unsplash.com/photo-1579187707643-35646d22b596", // Majestic Arabian Oryx - symbolizing resilience and innovation
+      imageUrl: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d", // Arabian Oryx - native to Saudi Arabia, symbolizing resilience and innovation
       linkedIn: "https://www.linkedin.com/in/johannjenson/",
     },
     {
       name: "Lukas Gaebler",
       role: "Tech",
-      imageUrl: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a", // Powerful Arabian stallion - representing strength and technical excellence
+      imageUrl: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2", // Arabian Horse - native breed to Saudi Arabia, representing strength and excellence
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
     },
   ];
