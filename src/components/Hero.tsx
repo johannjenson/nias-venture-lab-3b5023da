@@ -33,19 +33,13 @@ const Hero = () => {
             <p className="text-lg text-[#555555] mb-12 max-w-2xl mx-auto">
               Bringing together exceptional companies from around the world looking to do business in the Kingdom with serial and exited entrepreneurs, strategic investors, and acquisitive funds from the Kingdom.
             </p>
-            <div className="flex items-center justify-center gap-6">
+            <div className="flex items-center justify-center">
               <Button
                 className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
                 onClick={() => setShowRequestModal(true)}
               >
                 Join the Nias Network
               </Button>
-              <a 
-                href="#about" 
-                className="text-lg text-[#333333] font-medium flex items-center gap-2 hover:text-primary transition-colors"
-              >
-                Learn More <ArrowRight className="h-5 w-5" />
-              </a>
             </div>
           </div>
         </div>
