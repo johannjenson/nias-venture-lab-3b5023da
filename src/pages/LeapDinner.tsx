@@ -2,12 +2,29 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import RequestInviteModal from "@/components/RequestInviteModal";
 import Footer from "@/components/Footer";
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const LeapDinner = () => {
   const [showRequestModal, setShowRequestModal] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Sticky Header */}
+      <div className="fixed top-0 left-0 right-0 bg-white border-b z-50 px-4">
+        <div className="max-w-7xl mx-auto h-16 flex items-center">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => navigate(-1)}
+            className="hover:bg-transparent"
+          >
+            <ArrowLeft className="h-6 w-6" />
+          </Button>
+        </div>
+      </div>
+
       <main>
         {/* Hero Section */}
         <section className="py-24 bg-secondary">
