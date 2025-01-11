@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import SocialProof from "@/components/SocialProof";
 import EventInviteModal from "@/components/EventInviteModal";
 import EventHero from "@/components/event/EventHero";
 import EventOverview from "@/components/event/EventOverview";
@@ -36,7 +35,26 @@ const RiyadhEvent = () => {
       <EventOverview />
       <EventAudience />
       <EventRegistration onRequestInvite={() => setShowRequestModal(true)} />
-      <SocialProof />
+
+      {/* Stats Section */}
+      <div className="bg-white py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+            <div className="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt className="text-base leading-7 text-gray-600">Worked with companies from</dt>
+              <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">23 countries</dd>
+            </div>
+            <div className="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt className="text-base leading-7 text-gray-600">Revenue generated</dt>
+              <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$700M</dd>
+            </div>
+            <div className="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt className="text-base leading-7 text-gray-600">Raised and deployed</dt>
+              <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$1.7B</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
 
       {/* Request Invite Modal */}
       <EventInviteModal
