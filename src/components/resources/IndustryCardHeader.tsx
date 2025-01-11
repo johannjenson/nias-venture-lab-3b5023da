@@ -22,7 +22,7 @@ const IndustryCardHeader = ({ industry }: IndustryCardHeaderProps) => {
         >
           <div className="text-3xl font-bold text-primary">{industry.score}</div>
           <div className="text-sm font-medium text-gray-600 whitespace-nowrap">
-            Nias Potential Score
+            Nias Opportunity Score
           </div>
         </button>
       </div>
