@@ -42,15 +42,15 @@ const RiyadhEvent = () => {
           <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
             <div className="mx-auto flex max-w-xs flex-col gap-y-4">
               <dt className="text-base leading-7 text-gray-600">Worked with companies from</dt>
-              <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">23 countries</dd>
+              <dd className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">23 countries</dd>
             </div>
             <div className="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt className="text-base leading-7 text-gray-600">Revenue generated</dt>
-              <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$700M</dd>
+              <dt className="text-base leading-7 text-gray-600">Generated Recurring Revenue</dt>
+              <dd className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$700M</dd>
             </div>
             <div className="mx-auto flex max-w-xs flex-col gap-y-4">
               <dt className="text-base leading-7 text-gray-600">Raised and deployed</dt>
-              <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$1.7B</dd>
+              <dd className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$1.7B</dd>
             </div>
           </dl>
         </div>
