@@ -44,12 +44,8 @@ const Contact = () => {
         <div className="space-y-12">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
-              Get in Touch
+              Contact
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              Have questions? We'd love to hear from you. Send us a message and
-              we'll respond as soon as possible.
-            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-8">
@@ -110,7 +106,7 @@ const Contact = () => {
               type="submit"
               className="w-full bg-primary hover:bg-primary/90 text-white"
             >
-              Send Message
+              Send
             </Button>
           </form>
         </div>
