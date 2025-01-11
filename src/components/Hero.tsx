@@ -38,7 +38,7 @@ const Hero = () => {
                 className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
                 onClick={() => setShowRequestModal(true)}
               >
-                Request to Join
+                Join the Nias Network
               </Button>
               <a 
                 href="#about" 
