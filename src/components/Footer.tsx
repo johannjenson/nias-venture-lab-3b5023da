@@ -1,4 +1,9 @@
+import { useState } from "react";
+import { toast } from "@/hooks/use-toast";
+
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  
   const navigation = {
     main: [
       { name: "About", href: "#about", submenu: [
@@ -41,6 +46,28 @@ const Footer = () => {
     ],
   };
 
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) {
+      toast({
+        title: "Error",
+        description: "Please enter an email address",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Here you would typically send this to your backend
+    console.log("Email submitted:", email);
+    
+    toast({
+      title: "Success!",
+      description: "Thank you for subscribing to our newsletter!",
+    });
+    
+    setEmail(""); // Clear the input after successful subscription
+  };
+
   return (
     <footer className="bg-white">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
@@ -62,11 +89,13 @@ const Footer = () => {
                 Receive monthly insights on investing, M&A, and tech in KSA.
               </p>
             </div>
-            <form className="max-w-xl mx-auto" onSubmit={(e) => e.preventDefault()}>
+            <form className="max-w-xl mx-auto" onSubmit={handleSubscribe}>
               <div className="space-y-4">
                 <input
                   type="email"
                   placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <button
