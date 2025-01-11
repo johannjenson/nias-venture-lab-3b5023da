@@ -62,7 +62,7 @@ const Footer = () => {
     
     toast({
       title: "Success!",
-      description: "Thank you for subscribing to our newsletter!",
+      description: "Thank you for subscribing to Nias News!",
     });
     
     setEmail(""); // Clear the input after successful subscription
