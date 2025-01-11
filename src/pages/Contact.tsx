@@ -31,19 +31,20 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-2xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center text-gray-600 hover:text-gray-900 mb-8"
-        >
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Back
-        </button>
+      <Button
+        variant="ghost"
+        size="icon"
+        className="fixed top-14 left-4 z-50"
+        onClick={() => navigate(-1)}
+      >
+        <ArrowLeft className="h-6 w-6" />
+      </Button>
 
+      <div className="max-w-2xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="space-y-12">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
-              Contact Us
+              Get in Touch
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Have questions? We'd love to hear from you. Send us a message and
