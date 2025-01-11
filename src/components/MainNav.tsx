@@ -50,7 +50,7 @@ const MainNav = () => {
     <NavigationMenu className="absolute top-14 left-1/2 -translate-x-1/2 z-50">
       <NavigationMenuList className="gap-6">
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-white bg-transparent hover:bg-white/10">
+          <NavigationMenuTrigger className="text-primary-foreground bg-transparent hover:bg-primary/10">
             Solutions
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -69,7 +69,7 @@ const MainNav = () => {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-white bg-transparent hover:bg-white/10">
+          <NavigationMenuTrigger className="text-primary-foreground bg-transparent hover:bg-primary/10">
             Resources
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -89,7 +89,7 @@ const MainNav = () => {
 
         <NavigationMenuItem>
           <NavigationMenuLink
-            className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-white hover:bg-white/10 hover:text-white"
+            className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-primary-foreground hover:bg-primary/10"
             href="#events"
           >
             Events
@@ -98,7 +98,7 @@ const MainNav = () => {
 
         <NavigationMenuItem>
           <NavigationMenuLink
-            className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-white hover:bg-white/10 hover:text-white"
+            className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-primary-foreground hover:bg-primary/10"
             href="#about"
           >
             About Us

@@ -25,15 +25,15 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#8B7355", // Warm brown
-          foreground: "#FFFFFF",
+          DEFAULT: "#D4C8BE", // Lighter beige
+          foreground: "#2C2420",
         },
         secondary: {
-          DEFAULT: "#E8E4D9", // Soft beige
+          DEFAULT: "#E8E4D9", // Soft beige (keeping this one)
           foreground: "#2C2420",
         },
         accent: {
-          DEFAULT: "#A49B8F", // Warm gray
+          DEFAULT: "#F5F2EB", // Very light beige
           foreground: "#2C2420",
         },
         destructive: {
