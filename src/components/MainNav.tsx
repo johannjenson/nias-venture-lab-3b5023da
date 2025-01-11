@@ -10,7 +10,7 @@ const MainNav = () => {
     {
       title: "People",
       href: "/people",
-      description: "Meet our team of founders and leaders.",
+      description: "Meet our crew at Nias.",
     },
     {
       title: "Contact",
