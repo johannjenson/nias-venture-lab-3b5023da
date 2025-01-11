@@ -13,7 +13,7 @@ const SearchAndFilter = ({ searchTerm, setSearchTerm, sortBy, setSortBy }: Searc
     <div className="flex gap-4 mb-8">
       <div className="flex-1">
         <Input
-          placeholder="Search industries, descriptions, or key areas..."
+          placeholder="Search industries, descriptions, key areas, or industry leaders..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full"

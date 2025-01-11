@@ -16,7 +16,8 @@ const Resources = () => {
     .filter(industry => 
       industry.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       industry.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      industry.keyAreas.some(area => area.toLowerCase().includes(searchTerm.toLowerCase()))
+      industry.keyAreas.some(area => area.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      industry.leaders.some(leader => leader.name.toLowerCase().includes(searchTerm.toLowerCase()))
     )
     .sort((a, b) => {
       if (sortBy === "score") {
