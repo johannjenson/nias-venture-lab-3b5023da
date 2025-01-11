@@ -1,4 +1,4 @@
-import { ArrowLeft, LinkedinIcon } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
@@ -12,34 +12,22 @@ const People = () => {
       linkedIn: "https://www.linkedin.com/",
     },
     {
-      name: "Abdulrahman Alolayan",
-      role: "Co-Founder & Managing Director",
+      name: "Ibrahim AlSemari",
+      role: "Managing Director",
       imageUrl: "/placeholder.svg",
-      linkedIn: "https://www.linkedin.com/",
+      linkedIn: "https://pinnacle.sa/staff/ibrahim-alsemari/",
     },
     {
-      name: "John Doe",
-      role: "Chief Technology Officer",
+      name: "Johann Jenson",
+      role: "Chief Investment Officer",
       imageUrl: "/placeholder.svg",
-      linkedIn: "https://www.linkedin.com/",
+      linkedIn: "https://www.linkedin.com/in/johannjenson/",
     },
     {
-      name: "Jane Smith",
-      role: "Marketing Director",
+      name: "Lukas Gaebler",
+      role: "Chief Strategy Officer",
       imageUrl: "/placeholder.svg",
-      linkedIn: "https://www.linkedin.com/",
-    },
-    {
-      name: "Alice Johnson",
-      role: "Product Manager",
-      imageUrl: "/placeholder.svg",
-      linkedIn: "https://www.linkedin.com/",
-    },
-    {
-      name: "Bob Brown",
-      role: "Lead Designer",
-      imageUrl: "/placeholder.svg",
-      linkedIn: "https://www.linkedin.com/",
+      linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
     },
   ];
 
@@ -64,7 +52,7 @@ const People = () => {
         </div>
         <ul
           role="list"
-          className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+          className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4"
         >
           {team.map((person) => (
             <li key={person.name}>
@@ -86,7 +74,13 @@ const People = () => {
                     rel="noopener noreferrer"
                   >
                     <span className="sr-only">LinkedIn</span>
-                    <LinkedinIcon className="h-5 w-5" />
+                    <svg fill="currentColor" viewBox="0 0 24 24" className="h-5 w-5">
+                      <path
+                        fillRule="evenodd"
+                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
                   </a>
                 </li>
               </ul>
