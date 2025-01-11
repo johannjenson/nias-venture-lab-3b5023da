@@ -29,7 +29,7 @@ const IndustryCardHeader = ({ industry }: IndustryCardHeaderProps) => {
                   <InfoIcon className="h-4 w-4 text-gray-500 hover:text-primary transition-colors" />
                 </TooltipTrigger>
                 <TooltipContent className="max-w-[300px] p-3">
-                  <p>The Nias Potential Score (1-10) is calculated based on:</p>
+                  <p>Score is assessed with the following criteria:</p>
                   <ul className="list-disc ml-4 mt-1 space-y-1">
                     <li>Market size and growth potential</li>
                     <li>Alignment with Saudi Vision 2030</li>
