@@ -1,3 +1,8 @@
+export interface IndustryLeader {
+  name: string;
+  marketCap: string;
+}
+
 export interface Industry {
   name: string;
   score: number;
@@ -6,4 +11,5 @@ export interface Industry {
   keyAreas: string[];
   tam: string;
   techTailwinds: string[];
+  leaders: IndustryLeader[];
 }

@@ -8,6 +8,7 @@ import { techTailwindsDescriptions } from "@/data/techTailwindsDescriptions";
 import IndustryCardHeader from "./IndustryCardHeader";
 import IndustryMetrics from "./IndustryMetrics";
 import IndustryTags from "./IndustryTags";
+import IndustryLeaders from "./IndustryLeaders";
 
 interface IndustryCardProps {
   industry: Industry;
@@ -36,6 +37,8 @@ const IndustryCard = ({ industry }: IndustryCardProps) => {
           variant="outline"
           onTagClick={setSelectedTechTailwind}
         />
+
+        <IndustryLeaders leaders={industry.leaders} />
       </CardContent>
 
       {selectedKeyArea && (
