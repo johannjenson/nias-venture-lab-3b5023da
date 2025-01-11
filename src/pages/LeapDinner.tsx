@@ -12,13 +12,13 @@ const LeapDinner = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Sticky Header */}
-      <div className="fixed top-0 left-0 right-0 bg-primary text-white border-b z-50 px-4">
+      <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50 px-4">
         <div className="max-w-7xl mx-auto h-16 flex items-center">
           <Button
             variant="ghost"
             size="icon"
             onClick={() => navigate(-1)}
-            className="hover:bg-primary/90 text-white"
+            className="hover:bg-secondary/90 text-secondary-foreground"
           >
             <ArrowLeft className="h-6 w-6" />
           </Button>
