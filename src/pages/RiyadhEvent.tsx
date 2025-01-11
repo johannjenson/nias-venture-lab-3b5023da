@@ -33,7 +33,7 @@ const RiyadhEvent = () => {
               Nias Business Forum
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Join us for an exclusive gathering of global business leaders and Saudi investors
+              Join us for an exclusive gathering of global business leaders and investors
               on February 20th, 2024 in Riyadh
             </p>
             <Button
@@ -49,7 +49,6 @@ const RiyadhEvent = () => {
         </div>
       </header>
 
-      {/* Key Values Section */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-12">

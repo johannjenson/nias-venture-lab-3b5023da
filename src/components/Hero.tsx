@@ -11,7 +11,7 @@ const Hero = () => {
     <div className="relative min-h-screen flex flex-col">
       {/* Event Banner */}
       <div className="bg-[#221F26] text-white text-center py-2 px-4">
-        Join us in Riyadh on 20 February 2025.{" "}
+        Join us for an exclusive gathering of global business leaders and investors on February 20th, 2024 in Riyadh.{" "}
         <a 
           href="/events/riyadh"
           className="underline font-medium hover:text-white/90"
