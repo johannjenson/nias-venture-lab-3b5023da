@@ -1,5 +1,6 @@
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import MainNav from "./MainNav";
 
 const Hero = () => {
   return (
@@ -12,6 +13,9 @@ const Hero = () => {
           className="w-full h-full object-cover"
         />
       </div>
+
+      {/* Navigation */}
+      <MainNav />
 
       {/* Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-24">
@@ -42,7 +46,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Optional: Event Banner */}
+      {/* Event Banner */}
       <div className="absolute top-0 left-0 right-0 bg-primary text-white text-center py-2 px-4">
         Join us in Riyadh on 20 February 2025.{" "}
         <a href="#request" className="underline font-medium hover:text-white/90">
