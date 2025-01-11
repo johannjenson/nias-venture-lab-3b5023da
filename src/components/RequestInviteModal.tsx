@@ -36,7 +36,7 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    toast.success("Your invitation request has been received. We'll be in touch soon!");
+    toast.success("Thank you for your interest in joining the Nias Network. We'll review your application and be in touch soon!");
     onOpenChange(false);
     setFormData({
       fullName: "",
@@ -57,9 +57,9 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold">Request an Invite</DialogTitle>
+          <DialogTitle className="text-2xl font-bold">Join the Nias Network</DialogTitle>
           <DialogDescription>
-            Join us for an exclusive gathering of global business leaders and Saudi investors.
+            Connect with Saudi investors, founders, and advisors to accelerate your business growth in the Kingdom.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
@@ -110,7 +110,7 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="title">Title</Label>
+            <Label htmlFor="title">Your Role</Label>
             <Select
               name="title"
               value={formData.title}
@@ -144,7 +144,7 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
           </div>
 
           <Button type="submit" className="w-full">
-            Submit Request
+            Submit Application
           </Button>
         </form>
       </DialogContent>
