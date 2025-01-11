@@ -21,13 +21,6 @@ const KeyAreaModal = ({ open, onOpenChange, keyArea, industries }: KeyAreaModalP
     industry.keyAreas.includes(keyArea)
   );
 
-  const totalInvestment = relatedIndustries
-    .map((industry) => {
-      const value = industry.investment.match(/\d+/)?.[0];
-      return value ? parseInt(value) : 0;
-    })
-    .reduce((a, b) => a + b, 0);
-
   const keyAreaInfo = keyAreaDescriptions[keyArea];
 
   return (
@@ -37,10 +30,6 @@ const KeyAreaModal = ({ open, onOpenChange, keyArea, industries }: KeyAreaModalP
           <DialogTitle className="text-2xl font-bold text-primary mb-2">
             {keyArea}
           </DialogTitle>
-          <DialogDescription className="text-base text-gray-600">
-            This key area is present across {relatedIndustries.length} industries with a
-            combined investment potential of ${totalInvestment}+ billion.
-          </DialogDescription>
         </DialogHeader>
 
         <div className="mt-6 space-y-6">
