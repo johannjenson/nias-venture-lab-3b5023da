@@ -8,25 +8,25 @@ const People = () => {
     {
       name: "Ibrahim Alshuwaier",
       role: "Business Development",
-      imageUrl: "https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd", // Desert Fox representation
+      imageUrl: "https://images.unsplash.com/photo-1472396961693-142e6e269027", // Two brown deer representing strategic vision
       linkedIn: "https://www.linkedin.com/",
     },
     {
       name: "Ibrahim AlSemari",
       role: "Finance",
-      imageUrl: "https://images.unsplash.com/photo-1568265112889-c9d3fc50a281", // Desert Cat representation
+      imageUrl: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d", // Antelope and zebra representing balance and precision
       linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162",
     },
     {
       name: "Johann Jenson",
       role: "Product",
-      imageUrl: "https://images.unsplash.com/photo-1456926631375-92c8ce872def", // Big Cat/Leopard representation
+      imageUrl: "https://images.unsplash.com/photo-1493962853295-0fd70327578a", // Brown ox representing strength and stability
       linkedIn: "https://www.linkedin.com/in/johannjenson/",
     },
     {
       name: "Lukas Gaebler",
       role: "Tech",
-      imageUrl: "https://images.unsplash.com/photo-1543946207-39bd91e70ca7", // Different Wolf representation
+      imageUrl: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2", // Horses representing power and adaptability
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
     },
   ];
