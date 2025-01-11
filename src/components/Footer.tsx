@@ -3,11 +3,13 @@ const Footer = () => {
     main: [
       { name: "About", href: "#about", submenu: [
         { name: "Our Mission", href: "#mission" },
-        { name: "Our Team", href: "/people" },
+        { name: "People", href: "/people" },
         { name: "Contact", href: "#contact" }
       ]},
       { name: "Resources", href: "#resources" },
-      { name: "Events", href: "#events" },
+      { name: "Events", href: "#events", submenu: [
+        { name: "February 20th in Riyadh", href: "/events/riyadh" }
+      ]},
       { name: "Join the Network", href: "#join" },
       { name: "Privacy Policy", href: "#privacy" },
       { name: "Terms of Use", href: "#terms" },
