@@ -4,45 +4,96 @@ import MainNav from "./MainNav";
 
 const Hero = () => {
   return (
-    <div className="relative min-h-[80vh] flex items-center justify-center bg-secondary">
-      {/* Navigation */}
-      <MainNav />
-
-      {/* Content Container */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-5xl font-bold tracking-tight text-[#221F26] mb-6">
-            LAND & EXPAND IN KSA
-          </h1>
-          <p className="text-lg text-[#555555] mb-8 max-w-2xl mx-auto">
-            Empowering international companies to grow in alignment with Vision 2030.
-          </p>
-          <div className="flex items-center justify-center gap-6">
-            <Button
-              className="bg-[#16A7D5] hover:bg-[#16A7D5]/90 text-white px-8 py-6 text-lg"
-              onClick={() => {
-                const formElement = document.getElementById("signup-form");
-                formElement?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Request to Join
-            </Button>
-            <a 
-              href="#learn-more" 
-              className="text-lg text-[#333333] font-medium flex items-center gap-2 hover:text-[#16A7D5] transition-colors"
-            >
-              Learn more <ArrowRight className="h-5 w-5" />
-            </a>
-          </div>
-        </div>
-      </div>
-
+    <div className="relative min-h-screen flex flex-col">
       {/* Event Banner */}
-      <div className="absolute top-0 left-0 right-0 bg-[#221F26] text-white text-center py-2 px-4">
+      <div className="bg-[#221F26] text-white text-center py-2 px-4">
         Join us in Riyadh on 20 February 2025.{" "}
         <a href="#request" className="underline font-medium hover:text-white/90">
           Request Your Invite
         </a>
+      </div>
+
+      {/* Navigation */}
+      <MainNav />
+
+      {/* Hero Content */}
+      <div className="flex-1 flex items-center bg-secondary">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-24">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-5xl font-bold tracking-tight text-[#221F26] mb-6">
+              Land & Expand in Saudi Arabia
+            </h1>
+            <p className="text-lg text-[#555555] mb-12 max-w-2xl mx-auto">
+              Empowering international companies to grow in alignment with Vision 2030.
+            </p>
+            <div className="flex items-center justify-center gap-6">
+              <Button
+                className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
+                onClick={() => {
+                  const formElement = document.getElementById("signup-form");
+                  formElement?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                Request to Join
+              </Button>
+              <a 
+                href="#about" 
+                className="text-lg text-[#333333] font-medium flex items-center gap-2 hover:text-primary transition-colors"
+              >
+                Learn More <ArrowRight className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Audience CTAs */}
+      <div className="bg-white py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-8 rounded-lg bg-secondary/30">
+              <h3 className="text-xl font-semibold text-[#221F26] mb-4">Founders & Executives</h3>
+              <p className="mb-6 text-gray-600">Take your business to the next level.</p>
+              <Button variant="outline" className="hover:bg-primary hover:text-white">
+                Learn More
+              </Button>
+            </div>
+            <div className="text-center p-8 rounded-lg bg-secondary/30">
+              <h3 className="text-xl font-semibold text-[#221F26] mb-4">Buyers & Investors</h3>
+              <p className="mb-6 text-gray-600">Discover new opportunities.</p>
+              <Button variant="outline" className="hover:bg-primary hover:text-white">
+                Learn More
+              </Button>
+            </div>
+            <div className="text-center p-8 rounded-lg bg-secondary/30">
+              <h3 className="text-xl font-semibold text-[#221F26] mb-4">Advisors & Brokers</h3>
+              <p className="mb-6 text-gray-600">Join our network of trusted partners.</p>
+              <Button variant="outline" className="hover:bg-primary hover:text-white">
+                Learn More
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Email Sign-up Form */}
+      <div className="bg-secondary/50 py-24">
+        <div className="max-w-xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-[#221F26] mb-4">Stay in the loop.</h2>
+          <p className="text-gray-600 mb-8">
+            Receive monthly insights on investing, M&A, and tech in KSA.
+          </p>
+          <form className="flex gap-4" onSubmit={(e) => e.preventDefault()}>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="flex-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+            <Button type="submit" className="bg-primary hover:bg-primary/90 text-white">
+              Subscribe
+            </Button>
+          </form>
+        </div>
       </div>
     </div>
   );
