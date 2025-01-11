@@ -9,11 +9,6 @@ const Hero = () => {
 
   return (
     <div className="relative min-h-screen flex flex-col">
-      {/* Back Link */}
-      <a href="/" className="absolute top-6 left-6 text-gray-600 hover:text-gray-900">
-        Back
-      </a>
-
       {/* Event Banner */}
       <div className="bg-[#221F26] text-white text-center py-2 px-4">
         Join us in Riyadh on 20 February 2025.{" "}

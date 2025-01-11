@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import SocialProof from "@/components/SocialProof";
 
@@ -15,13 +15,13 @@ const RiyadhEvent = () => {
       </div>
 
       {/* Back to Home */}
-      <div className="max-w-7xl mx-auto px-6 pt-8">
+      <div className="max-w-7xl mx-auto px-6 pt-12">
         <Link
           to="/"
           className="inline-flex items-center gap-2 text-primary hover:text-primary/80"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to Home
+          Back
         </Link>
       </div>
 

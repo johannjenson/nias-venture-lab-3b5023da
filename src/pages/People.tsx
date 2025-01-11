@@ -29,10 +29,10 @@ const People = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-8"
+          className="inline-flex items-center gap-2 text-primary hover:text-primary/80 mb-12"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to Home
+          Back
         </Link>
         <div className="mx-auto max-w-2xl lg:text-center">
           <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
