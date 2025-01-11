@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <div className="relative min-h-screen flex flex-col">
       {/* Event Banner */}
-      <div className="bg-[#221F26] text-white text-center py-2 px-4">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-[#221F26] text-white text-center py-2 px-4">
         Join us for an exclusive gathering of global business leaders and investors on February 20th, 2024 in Riyadh.{" "}
         <a 
           href="/events/riyadh"
@@ -20,8 +20,10 @@ const Hero = () => {
         </a>
       </div>
 
-      {/* Navigation */}
-      <MainNav />
+      {/* Navigation with adjusted top margin to account for fixed banner */}
+      <div className="mt-[40px]">
+        <MainNav />
+      </div>
 
       {/* Hero Content */}
       <div className="flex-1 flex items-center bg-secondary">
