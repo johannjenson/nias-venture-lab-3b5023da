@@ -12,7 +12,7 @@ const Hero = () => {
   return (
     <div className="relative min-h-screen flex flex-col">
       {/* Event Banner */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-[#221F26] text-white text-center py-2 px-4">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-[#221F26] text-white text-center py-3 px-4">
         <span className="text-sm md:text-base">
           On February 20th, 2024, join us for an exclusive gathering of global business leaders and investors in Riyadh.{" "}
           <a 
@@ -24,13 +24,11 @@ const Hero = () => {
         </span>
       </div>
 
-      {/* Navigation with adjusted top margin to account for fixed banner */}
-      <div className="mt-[40px]">
-        <MainNav />
-      </div>
+      {/* Navigation */}
+      <MainNav />
 
       {/* Hero Content */}
-      <div className="flex-1 flex items-center bg-secondary mt-8 md:mt-0">
+      <div className="flex-1 flex items-center bg-secondary pt-16">
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-24">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#221F26] mb-6">

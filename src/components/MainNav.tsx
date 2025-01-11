@@ -59,13 +59,17 @@ const MainNav = () => {
     return (
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" className="fixed right-4 top-14 z-50">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="fixed right-4 top-4 z-50 text-white hover:bg-white/10"
+          >
             <Menu className="h-6 w-6" />
           </Button>
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent className="w-[300px] sm:w-[400px] bg-secondary">
           <SheetHeader>
-            <SheetTitle>Menu</SheetTitle>
+            <SheetTitle className="text-left">Menu</SheetTitle>
           </SheetHeader>
           <div className="mt-4">
             <NavigationMenu className="w-full">
