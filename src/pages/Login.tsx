@@ -39,49 +39,51 @@ const Login = () => {
       </div>
 
       <main className="container mx-auto px-4 py-16 mt-16">
-        <div className="max-w-md mx-auto">
+        <div className="max-w-md mx-auto min-h-[400px]">
           <h1 className="text-4xl font-bold text-primary mb-8">Member Login</h1>
-          <Auth
-            supabaseClient={supabase}
-            appearance={{
-              theme: ThemeSupa,
-              variables: {
-                default: {
-                  colors: {
-                    brand: '#000000',
-                    brandAccent: '#404040',
+          <div className="w-full">
+            <Auth
+              supabaseClient={supabase}
+              appearance={{
+                theme: ThemeSupa,
+                variables: {
+                  default: {
+                    colors: {
+                      brand: '#000000',
+                      brandAccent: '#404040',
+                    },
                   },
                 },
-              },
-            }}
-            providers={[]}
-            view="sign_in"
-            showLinks={false}
-            localization={{
-              variables: {
-                sign_in: {
-                  email_label: 'Email',
-                  password_label: 'Password',
-                  button_label: 'Sign In',
-                  loading_button_label: 'Signing in ...',
+              }}
+              providers={[]}
+              view="sign_in"
+              showLinks={false}
+              localization={{
+                variables: {
+                  sign_in: {
+                    email_label: 'Email',
+                    password_label: 'Password',
+                    button_label: 'Sign In',
+                    loading_button_label: 'Signing in ...',
+                  }
                 }
-              }
-            }}
-          />
-          <div className="mt-4 space-y-2 text-center">
-            <button
-              onClick={() => setShowRequestModal(true)}
-              className="text-sm text-gray-600 hover:text-gray-900"
-            >
-              Don't have an account? Request to Join
-            </button>
-            <div>
-              <Link
-                to="/forgot-password"
+              }}
+            />
+            <div className="mt-4 space-y-2 text-center">
+              <button
+                onClick={() => setShowRequestModal(true)}
                 className="text-sm text-gray-600 hover:text-gray-900"
               >
-                Forgot your password?
-              </Link>
+                Don't have an account? Request to Join
+              </button>
+              <div>
+                <Link
+                  to="/forgot-password"
+                  className="text-sm text-gray-600 hover:text-gray-900"
+                >
+                  Forgot your password?
+                </Link>
+              </div>
             </div>
           </div>
           <RequestInviteModal 
