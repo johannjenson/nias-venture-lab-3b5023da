@@ -74,14 +74,14 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px]">
-        <DialogHeader>
+        <DialogHeader className="space-y-2">
           <DialogTitle className="text-2xl font-bold">Join the Nias Network</DialogTitle>
           <DialogDescription>
             Connect with Saudi investors, founders, and advisors to accelerate your business growth in the Kingdom.
           </DialogDescription>
         </DialogHeader>
         {step === 1 ? (
-          <form onSubmit={handleNext} className="space-y-4 mt-4">
+          <form onSubmit={handleNext} className="space-y-4 mt-2">
             <div className="space-y-2">
               <Label htmlFor="fullName">Full Name</Label>
               <Input
@@ -155,7 +155,7 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
             </Button>
           </form>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+          <form onSubmit={handleSubmit} className="space-y-4 mt-2">
             <div className="space-y-2">
               <Label htmlFor="linkedinUrl">LinkedIn URL</Label>
               <Input

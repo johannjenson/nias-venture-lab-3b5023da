@@ -56,13 +56,13 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px]">
-        <DialogHeader>
+        <DialogHeader className="space-y-2">
           <DialogTitle className="text-2xl font-bold">Join Us in Riyadh</DialogTitle>
           <DialogDescription>
             Request your invitation to the Nias Business Forum on February 20th, 2024.
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+        <form onSubmit={handleSubmit} className="space-y-4 mt-2">
           <div className="space-y-2">
             <Label htmlFor="fullName">Full Name</Label>
             <Input
