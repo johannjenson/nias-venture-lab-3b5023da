@@ -31,7 +31,7 @@ const Hero = () => {
               Land & Expand in Saudi Arabia
             </h1>
             <p className="text-lg text-[#555555] mb-12 max-w-2xl mx-auto">
-              Empowering international companies to grow in alignment with Vision 2030.
+              Bringing together exceptional companies from around the world looking to do business in the Kingdom with serial and exited entrepreneurs, strategic investors, and acquisitive funds from the Kingdom.
             </p>
             <div className="flex items-center justify-center gap-6">
               <Button
