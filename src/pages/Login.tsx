@@ -13,9 +13,16 @@ const Login = () => {
   const [showRequestModal, setShowRequestModal] = useState(false);
 
   useEffect(() => {
+    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === "SIGNED_IN") {
         navigate("/");
+      }
+      // Intercept sign up attempts
+      if (event === "INITIAL_SESSION" && window.location.hash.includes('#auth-sign-up')) {
+        setShowRequestModal(true);
+        // Remove the hash to prevent modal from showing again on refresh
+        window.history.replaceState(null, '', window.location.pathname);
       }
     });
 
@@ -63,10 +70,6 @@ const Login = () => {
                   button_label: "Request to Join the Nias Network"
                 }
               }
-            }}
-            onSignUp={(e) => {
-              e.preventDefault();
-              setShowRequestModal(true);
             }}
           />
           <RequestInviteModal 
