@@ -40,7 +40,7 @@ const ForgotPassword = () => {
           <h1 className="text-4xl font-bold text-primary mb-8">Reset Password</h1>
           <Auth
             supabaseClient={supabase}
-            view="forgot_password"
+            view="forgotten_password"
             appearance={{
               theme: ThemeSupa,
               variables: {
