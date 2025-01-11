@@ -23,9 +23,15 @@ const IndustryCard = ({ industry }: IndustryCardProps) => {
           </div>
         </div>
 
-        <div className="mt-4">
-          <div className="text-sm font-medium text-gray-500 mb-2">Expected Investment</div>
-          <div className="text-lg font-semibold text-primary">{industry.investment}</div>
+        <div className="grid grid-cols-2 gap-4 mt-4">
+          <div>
+            <div className="text-sm font-medium text-gray-500 mb-2">Expected Investment</div>
+            <div className="text-lg font-semibold text-primary">{industry.investment}</div>
+          </div>
+          <div>
+            <div className="text-sm font-medium text-gray-500 mb-2">Total Addressable Market</div>
+            <div className="text-lg font-semibold text-primary">{industry.tam}</div>
+          </div>
         </div>
 
         <div className="mt-4">

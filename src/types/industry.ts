@@ -4,4 +4,5 @@ export interface Industry {
   description: string;
   investment: string;
   keyAreas: string[];
+  tam: string;
 }
