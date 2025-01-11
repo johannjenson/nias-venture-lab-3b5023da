@@ -12,12 +12,12 @@ const Hero = () => {
       {/* Event Banner */}
       <div className="bg-[#221F26] text-white text-center py-2 px-4">
         Join us in Riyadh on 20 February 2025.{" "}
-        <button 
-          onClick={() => setShowRequestModal(true)}
+        <a 
+          href="/events/riyadh"
           className="underline font-medium hover:text-white/90"
         >
-          Request Your Invite
-        </button>
+          Learn More
+        </a>
       </div>
 
       {/* Navigation */}
