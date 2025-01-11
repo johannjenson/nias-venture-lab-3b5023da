@@ -44,6 +44,14 @@ const Footer = () => {
   return (
     <footer className="bg-white">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
+        <div className="text-center mb-16">
+          <a
+            href="#join"
+            className="inline-block bg-primary text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-primary/90 transition-colors"
+          >
+            Join the Nias Network
+          </a>
+        </div>
         <div id="signup-form" className="pb-24 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center mb-16">
@@ -110,14 +118,6 @@ const Footer = () => {
               <item.icon className="h-6 w-6" aria-hidden="true" />
             </a>
           ))}
-        </div>
-        <div className="text-center mt-16">
-          <a
-            href="#join"
-            className="inline-block bg-primary text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-primary/90 transition-colors"
-          >
-            Join the Nias Network
-          </a>
         </div>
         <p className="mt-10 text-center text-xs leading-5 text-gray-500">
           &copy; {new Date().getFullYear()} Nias.io. All rights reserved.
