@@ -37,7 +37,7 @@ const Register = () => {
 
       <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-md mx-auto">
-          <h1 className="text-4xl font-bold text-primary mb-8">Create Account</h1>
+          <h1 className="text-4xl font-bold text-primary mb-8">Create Your Account</h1>
           <Auth
             supabaseClient={supabase}
             view="sign_up"
