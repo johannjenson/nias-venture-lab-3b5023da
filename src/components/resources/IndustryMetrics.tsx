@@ -19,8 +19,8 @@ const IndustryMetrics = ({ industry }: IndustryMetricsProps) => {
         <div className="text-lg font-semibold text-primary">{industry.investment}</div>
       </div>
       <div>
-        <div className="flex items-center gap-2">
-          <div className="text-sm font-medium text-gray-500 mb-2">Total Addressable Market</div>
+        <div className="flex items-center gap-2 mb-2">
+          <div className="text-sm font-medium text-gray-500">Total Addressable Market</div>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
