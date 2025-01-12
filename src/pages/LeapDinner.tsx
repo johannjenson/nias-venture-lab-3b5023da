@@ -10,8 +10,8 @@ const LeapDinner = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Sticky Header */}
-      <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50 px-4">
-        <div className="max-w-7xl mx-auto h-16 flex items-center justify-end">
+      <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
+        <div className="max-w-7xl mx-auto h-16 flex items-center">
           <BackButton />
         </div>
       </div>
