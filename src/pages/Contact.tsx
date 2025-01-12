@@ -53,16 +53,21 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Button
-        variant="ghost"
-        size="icon"
-        className="fixed top-14 left-4 z-50"
-        onClick={() => navigate(-1)}
-      >
-        <ArrowLeft className="h-6 w-6" />
-      </Button>
+      {/* Sticky Header */}
+      <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
+        <div className="max-w-7xl mx-auto h-16 flex items-center">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="ml-4"
+            onClick={() => navigate(-1)}
+          >
+            <ArrowLeft className="h-6 w-6" />
+          </Button>
+        </div>
+      </div>
 
-      <div className="max-w-2xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <div className="max-w-2xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
         <div className="space-y-12">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
