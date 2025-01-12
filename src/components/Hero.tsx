@@ -13,31 +13,35 @@ const Hero = () => {
   return (
     <div className="relative min-h-screen flex flex-col">
       {/* Event Banner */}
-      {showBanner && (
-        <div className="relative bg-[#221F26] text-white text-center py-3 px-4">
-          <div className="relative max-w-7xl mx-auto px-8 md:px-12">
-            <span className="text-sm md:text-base">
-              Join us Feb 20th for an exclusive gathering of global business leaders and investors in Riyadh.{" "}
-              <a 
-                href="/events/riyadh"
-                className="underline font-medium hover:text-white/90"
+      <div className="relative">
+        {showBanner && (
+          <div className="bg-[#221F26] text-white text-center py-3 px-4">
+            <div className="relative max-w-7xl mx-auto px-8 md:px-12">
+              <span className="text-sm md:text-base">
+                Join us Feb 20th for an exclusive gathering of global business leaders and investors in Riyadh.{" "}
+                <a 
+                  href="/events/riyadh"
+                  className="underline font-medium hover:text-white/90"
+                >
+                  Learn More
+                </a>
+              </span>
+              <button
+                onClick={() => setShowBanner(false)}
+                className="absolute right-0 top-1/2 -translate-y-1/2 p-1 hover:bg-white/10 rounded-full transition-colors"
+                aria-label="Close banner"
               >
-                Learn More
-              </a>
-            </span>
-            <button
-              onClick={() => setShowBanner(false)}
-              className="absolute right-0 top-1/2 -translate-y-1/2 p-1 hover:bg-white/10 rounded-full transition-colors"
-              aria-label="Close banner"
-            >
-              <X className="h-4 w-4" />
-            </button>
+                <X className="h-4 w-4" />
+              </button>
+            </div>
           </div>
+        )}
+        
+        {/* Navigation - Now positioned relative to banner container */}
+        <div className={`w-full ${showBanner ? 'pt-6' : 'pt-12'}`}>
+          <MainNav />
         </div>
-      )}
-
-      {/* Navigation */}
-      <MainNav />
+      </div>
 
       {/* Hero Content */}
       <div className="flex-1 flex items-center bg-secondary pt-12 md:pt-16">
