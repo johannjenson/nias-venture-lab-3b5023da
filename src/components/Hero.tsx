@@ -28,7 +28,7 @@ const Hero = () => {
       <MainNav />
 
       {/* Hero Content */}
-      <div className="flex-1 flex items-center bg-secondary pt-24 md:pt-16">
+      <div className="flex-1 flex items-center bg-secondary pt-32 md:pt-16">
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-24">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#221F26] mb-6">
