@@ -14,7 +14,7 @@ const Hero = () => {
     <div className="relative min-h-screen flex flex-col">
       {/* Event Banner */}
       {showBanner && (
-        <div className="fixed top-0 left-0 right-0 z-50 bg-[#221F26] text-white text-center py-3 px-4">
+        <div className="relative bg-[#221F26] text-white text-center py-3 px-4">
           <div className="relative max-w-7xl mx-auto px-8 md:px-12">
             <span className="text-sm md:text-base">
               Join us Feb 20th for an exclusive gathering of global business leaders and investors in Riyadh.{" "}
