@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, X } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import MainNav from "./MainNav";
 import RequestInviteModal from "./RequestInviteModal";
 import { useState } from "react";
@@ -7,47 +7,31 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const Hero = () => {
   const [showRequestModal, setShowRequestModal] = useState(false);
-  const [showBanner, setShowBanner] = useState(true);
   const isMobile = useIsMobile();
 
   return (
     <div className="relative min-h-screen flex flex-col">
       {/* Event Banner */}
-      <div className="relative bg-secondary">
-        {showBanner && (
-          <div className="bg-[#221F26] text-white text-center py-3 px-4">
-            <div className="relative max-w-7xl mx-auto px-8 md:px-12">
-              <span className="text-sm md:text-base">
-                Join us Feb 20th for an exclusive gathering of global business leaders and investors in Riyadh.{" "}
-                <a 
-                  href="/events/riyadh"
-                  className="underline font-medium hover:text-white/90"
-                >
-                  Learn More
-                </a>
-              </span>
-              <button
-                onClick={() => setShowBanner(false)}
-                className="absolute right-0 top-1/2 -translate-y-1/2 p-1 hover:bg-white/10 rounded-full transition-colors"
-                aria-label="Close banner"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
-        )}
-        
-        {/* Navigation - Now positioned relative to banner container */}
-        <div className={`w-full ${showBanner ? 'pt-6' : 'pt-12'}`}>
-          <MainNav />
-        </div>
+      <div className="fixed top-0 left-0 right-0 z-50 bg-[#221F26] text-white text-center py-3 px-4">
+        <span className="text-sm md:text-base">
+          On February 20th, 2025, join us for an exclusive gathering of global business leaders and investors in Riyadh.{" "}
+          <a 
+            href="/events/riyadh"
+            className="underline font-medium hover:text-white/90"
+          >
+            Learn More
+          </a>
+        </span>
       </div>
 
+      {/* Navigation */}
+      <MainNav />
+
       {/* Hero Content */}
-      <div className="flex-1 flex items-center bg-secondary">
+      <div className="flex-1 flex items-center bg-secondary pt-32 md:pt-16">
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-24">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-[2.88rem] md:text-[3.6rem] font-bold tracking-tight text-[#221F26] mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#221F26] mb-6">
               Land & Expand in Saudi Arabia
             </h1>
             <p className="text-base md:text-lg text-[#555555] mb-8 md:mb-12 max-w-2xl mx-auto">
