@@ -13,7 +13,7 @@ const Hero = () => {
   return (
     <div className="relative min-h-screen flex flex-col">
       {/* Event Banner */}
-      <div className="relative">
+      <div className="relative bg-secondary">
         {showBanner && (
           <div className="bg-[#221F26] text-white text-center py-3 px-4">
             <div className="relative max-w-7xl mx-auto px-8 md:px-12">
@@ -44,7 +44,7 @@ const Hero = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="flex-1 flex items-center bg-secondary pt-12 md:pt-16">
+      <div className="flex-1 flex items-center bg-secondary">
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-24">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-[2.88rem] md:text-[3.6rem] font-bold tracking-tight text-[#221F26] mb-6">
