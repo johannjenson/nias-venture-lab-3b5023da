@@ -96,7 +96,7 @@ const MainNav = () => {
   );
 
   return (
-    <NavigationMenu className="absolute top-20 left-1/2 -translate-x-1/2 z-50 w-full md:w-auto px-4 md:px-0">
+    <NavigationMenu className="absolute top-24 md:top-20 left-1/2 -translate-x-1/2 z-50 w-full md:w-auto px-4 md:px-0">
       {renderNavItems()}
     </NavigationMenu>
   );
