@@ -2,26 +2,17 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import DinnerInviteModal from "@/components/DinnerInviteModal";
 import Footer from "@/components/Footer";
-import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { BackButton } from "@/components/ui/back-button";
 
 const LeapDinner = () => {
   const [showRequestModal, setShowRequestModal] = useState(false);
-  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-white">
       {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50 px-4">
         <div className="max-w-7xl mx-auto h-16 flex items-center">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => navigate(-1)}
-            className="hover:bg-secondary/90 text-secondary-foreground"
-          >
-            <ArrowLeft className="h-6 w-6" />
-          </Button>
+          <BackButton />
         </div>
       </div>
 
