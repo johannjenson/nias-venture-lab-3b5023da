@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import MainNav from "./MainNav";
 import RequestInviteModal from "./RequestInviteModal";
 import { useState } from "react";
@@ -7,22 +7,34 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const Hero = () => {
   const [showRequestModal, setShowRequestModal] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
   const isMobile = useIsMobile();
 
   return (
     <div className="relative min-h-screen flex flex-col">
       {/* Event Banner */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-[#221F26] text-white text-center py-3 px-4">
-        <span className="text-sm md:text-base">
-          On February 20th, 2025, join us for an exclusive gathering of global business leaders and investors in Riyadh.{" "}
-          <a 
-            href="/events/riyadh"
-            className="underline font-medium hover:text-white/90"
-          >
-            Learn More
-          </a>
-        </span>
-      </div>
+      {showBanner && (
+        <div className="fixed top-0 left-0 right-0 z-50 bg-[#221F26] text-white text-center py-3 px-4">
+          <div className="relative max-w-7xl mx-auto">
+            <span className="text-sm md:text-base">
+              On February 20th, 2025, join us for an exclusive gathering of global business leaders and investors in Riyadh.{" "}
+              <a 
+                href="/events/riyadh"
+                className="underline font-medium hover:text-white/90"
+              >
+                Learn More
+              </a>
+            </span>
+            <button
+              onClick={() => setShowBanner(false)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 p-1 hover:bg-white/10 rounded-full transition-colors"
+              aria-label="Close banner"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Navigation */}
       <MainNav />
