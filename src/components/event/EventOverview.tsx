@@ -29,7 +29,7 @@ const EventOverview = () => {
             </h2>
             <p className="text-gray-600 mb-6">
               The Nias Business Forum brings together visionary leaders, innovative entrepreneurs, 
-              and strategic investors for a day of meaningful connections and opportunities.
+              and strategic investors for an evening of meaningful connections and opportunities.
             </p>
             <div className="space-y-4">
               {features.map((feature, index) => (
