@@ -22,12 +22,13 @@ const RiyadhEvent = () => {
 
       <main>
         <EventHero
-          showRequestModal={showRequestModal}
-          setShowRequestModal={setShowRequestModal}
+          onRequestInvite={() => setShowRequestModal(true)}
         />
         <EventOverview />
         <EventAudience />
-        <EventRegistration />
+        <EventRegistration 
+          onRequestInvite={() => setShowRequestModal(true)}
+        />
       </main>
 
       <Footer />
