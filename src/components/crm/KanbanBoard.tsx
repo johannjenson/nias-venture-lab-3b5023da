@@ -18,11 +18,10 @@ type Contact = {
 };
 
 const stages: { id: ContactStage; label: string }[] = [
-  { id: 'new_lead', label: 'New Lead' },
-  { id: 'qualifying', label: 'Qualifying' },
-  { id: 'meeting_scheduled', label: 'Meeting Scheduled' },
-  { id: 'proposal_sent', label: 'Proposal Sent' },
-  { id: 'negotiating', label: 'Negotiating' },
+  { id: 'mql_lead', label: 'MQL Lead' },
+  { id: 'sql_qualification', label: 'SQL Qualification' },
+  { id: 'sqo_discovery', label: 'SQO Discovery' },
+  { id: 'evaluation', label: 'Evaluation' },
   { id: 'closed_won', label: 'Closed Won' },
   { id: 'closed_lost', label: 'Closed Lost' },
 ];

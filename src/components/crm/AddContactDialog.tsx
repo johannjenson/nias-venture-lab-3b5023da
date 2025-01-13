@@ -43,8 +43,8 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
       .from('contacts')
       .insert([{ 
         ...formData, 
-        stage: 'new_lead',
-        user_id: user.id // Add the user_id to the contact
+        stage: 'mql_lead', // Updated from 'new_lead' to 'mql_lead'
+        user_id: user.id
       }]);
 
     setLoading(false);
