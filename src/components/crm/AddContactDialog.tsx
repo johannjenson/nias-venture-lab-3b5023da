@@ -26,9 +26,26 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
     e.preventDefault();
     setLoading(true);
 
+    // Get the current user's ID
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      toast({
+        title: "Error adding contact",
+        description: "You must be logged in to add contacts",
+        variant: "destructive",
+      });
+      setLoading(false);
+      return;
+    }
+
     const { error } = await supabase
       .from('contacts')
-      .insert([{ ...formData, stage: 'new_lead' }]);
+      .insert([{ 
+        ...formData, 
+        stage: 'new_lead',
+        user_id: user.id // Add the user_id to the contact
+      }]);
 
     setLoading(false);
 
