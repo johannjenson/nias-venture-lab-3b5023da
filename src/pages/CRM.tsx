@@ -8,10 +8,10 @@ import { ArrowLeft } from "lucide-react";
 const CRM = () => {
   const navigate = useNavigate();
   
-  // Frontend URL (from Vercel)
+  // Frontend URL (from your Vercel frontend deployment - /front directory)
   const TWENTY_FRONTEND_URL = "https://your-twenty-frontend.vercel.app";
   
-  // Backend URL (also from Vercel)
+  // Backend URL (from your Vercel backend deployment - /server directory)
   const TWENTY_BACKEND_URL = "https://your-twenty-backend.vercel.app";
   
   // Auth URL (backend URL + /auth)
