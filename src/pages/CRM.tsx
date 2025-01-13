@@ -7,6 +7,8 @@ import { ArrowLeft } from "lucide-react";
 
 const CRM = () => {
   const navigate = useNavigate();
+  // Replace this URL with your self-hosted Twenty instance URL
+  const TWENTY_CRM_URL = "YOUR_SELF_HOSTED_TWENTY_URL";
 
   useEffect(() => {
     // Check if user is authenticated
@@ -44,7 +46,7 @@ const CRM = () => {
       <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-7xl mx-auto">
           <iframe 
-            src="https://app.twenty.com"
+            src={TWENTY_CRM_URL}
             className="w-full h-[calc(100vh-200px)] border-0 rounded-lg"
             title="Twenty CRM"
           />
