@@ -7,15 +7,6 @@ import { ArrowLeft } from "lucide-react";
 
 const CRM = () => {
   const navigate = useNavigate();
-  
-  // Frontend URL (from your Vercel frontend deployment - /front directory)
-  const TWENTY_FRONTEND_URL = "https://your-twenty-frontend.vercel.app";
-  
-  // Backend URL (from your Vercel backend deployment - /server directory)
-  const TWENTY_BACKEND_URL = "https://your-twenty-backend.vercel.app";
-  
-  // Auth URL (backend URL + /auth)
-  const TWENTY_AUTH_URL = `${TWENTY_BACKEND_URL}/auth`;
 
   useEffect(() => {
     // Check if user is authenticated
@@ -52,11 +43,20 @@ const CRM = () => {
 
       <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-7xl mx-auto">
-          <iframe 
-            src={TWENTY_FRONTEND_URL}
-            className="w-full h-[calc(100vh-200px)] border-0 rounded-lg"
-            title="Twenty CRM"
-          />
+          <div className="space-y-4">
+            <h1 className="text-3xl font-bold">CRM Dashboard</h1>
+            <p className="text-gray-600">
+              Manage your contacts and relationships using Supabase as your backend.
+            </p>
+            
+            {/* We'll implement the CRM UI here in future updates */}
+            <div className="p-8 border rounded-lg bg-gray-50 text-center">
+              <p>CRM functionality coming soon!</p>
+              <p className="text-sm text-gray-500 mt-2">
+                This will be powered by Supabase tables and authentication.
+              </p>
+            </div>
+          </div>
         </div>
       </main>
       <Footer />
