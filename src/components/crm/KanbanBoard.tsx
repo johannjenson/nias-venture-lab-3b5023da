@@ -3,6 +3,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import ContactCard from "./ContactCard";
 import { useToast } from "@/components/ui/use-toast";
+import { Database } from "@/integrations/supabase/types";
+
+type ContactStage = Database["public"]["Enums"]["contact_stage"];
 
 type Contact = {
   id: string;
@@ -11,10 +14,10 @@ type Contact = {
   email: string;
   company: string;
   title: string;
-  stage: string;
+  stage: ContactStage;
 };
 
-const stages = [
+const stages: { id: ContactStage; label: string }[] = [
   { id: 'new_lead', label: 'New Lead' },
   { id: 'qualifying', label: 'Qualifying' },
   { id: 'meeting_scheduled', label: 'Meeting Scheduled' },
