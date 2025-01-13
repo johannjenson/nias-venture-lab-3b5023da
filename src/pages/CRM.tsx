@@ -7,8 +7,8 @@ import { ArrowLeft } from "lucide-react";
 
 const CRM = () => {
   const navigate = useNavigate();
-  // Replace this URL with your self-hosted Twenty instance URL
-  const TWENTY_CRM_URL = "YOUR_SELF_HOSTED_TWENTY_URL";
+  // Replace this with your Vercel deployment URL for Twenty
+  const TWENTY_CRM_URL = "https://your-twenty-deployment.vercel.app";
 
   useEffect(() => {
     // Check if user is authenticated
