@@ -79,12 +79,19 @@ const MainNav = () => {
       href: "/login",
       description: "Access your Nias member account.",
     },
-    ...(user ? [{
-      title: "Log Out",
-      href: "#",
-      description: "Sign out of your account",
-      onClick: handleLogout,
-    }] : []),
+    ...(user ? [
+      {
+        title: "CRM",
+        href: "/crm",
+        description: "Access the Twenty CRM system.",
+      },
+      {
+        title: "Log Out",
+        href: "#",
+        description: "Sign out of your account",
+        onClick: handleLogout,
+      }
+    ] : []),
   ];
 
   const renderNavItems = () => (

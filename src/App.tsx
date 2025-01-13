@@ -14,6 +14,7 @@ import TermsOfUse from "./pages/TermsOfUse";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
+import CRM from "./pages/CRM";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/crm" element={<CRM />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
