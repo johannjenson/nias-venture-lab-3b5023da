@@ -11,8 +11,8 @@ const CRM = () => {
   // Frontend URL (from Vercel)
   const TWENTY_FRONTEND_URL = "https://your-twenty-frontend.vercel.app";
   
-  // Backend URL (from Railway)
-  const TWENTY_BACKEND_URL = "https://your-twenty-backend.railway.app";
+  // Backend URL (also from Vercel)
+  const TWENTY_BACKEND_URL = "https://your-twenty-backend.vercel.app";
   
   // Auth URL (backend URL + /auth)
   const TWENTY_AUTH_URL = `${TWENTY_BACKEND_URL}/auth`;
