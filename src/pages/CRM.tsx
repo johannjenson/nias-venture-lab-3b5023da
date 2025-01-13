@@ -7,8 +7,15 @@ import { ArrowLeft } from "lucide-react";
 
 const CRM = () => {
   const navigate = useNavigate();
-  // Replace this with your Vercel deployment URL for Twenty
-  const TWENTY_CRM_URL = "https://your-twenty-deployment.vercel.app";
+  
+  // Frontend URL (from Vercel)
+  const TWENTY_FRONTEND_URL = "https://your-twenty-frontend.vercel.app";
+  
+  // Backend URL (from Railway)
+  const TWENTY_BACKEND_URL = "https://your-twenty-backend.railway.app";
+  
+  // Auth URL (backend URL + /auth)
+  const TWENTY_AUTH_URL = `${TWENTY_BACKEND_URL}/auth`;
 
   useEffect(() => {
     // Check if user is authenticated
@@ -46,7 +53,7 @@ const CRM = () => {
       <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-7xl mx-auto">
           <iframe 
-            src={TWENTY_CRM_URL}
+            src={TWENTY_FRONTEND_URL}
             className="w-full h-[calc(100vh-200px)] border-0 rounded-lg"
             title="Twenty CRM"
           />
