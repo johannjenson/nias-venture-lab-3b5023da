@@ -9,6 +9,44 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      checklist_items: {
+        Row: {
+          completed: boolean | null
+          contact_id: string | null
+          created_at: string | null
+          id: string
+          item_text: string
+          stage: Database["public"]["Enums"]["contact_stage"]
+          updated_at: string | null
+        }
+        Insert: {
+          completed?: boolean | null
+          contact_id?: string | null
+          created_at?: string | null
+          id?: string
+          item_text: string
+          stage: Database["public"]["Enums"]["contact_stage"]
+          updated_at?: string | null
+        }
+        Update: {
+          completed?: boolean | null
+          contact_id?: string | null
+          created_at?: string | null
+          id?: string
+          item_text?: string
+          stage?: Database["public"]["Enums"]["contact_stage"]
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "checklist_items_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       Contact: {
         Row: {
           created_at: string | null
@@ -43,6 +81,7 @@ export type Database = {
           last_name: string | null
           notes: string | null
           phone: string | null
+          stage: Database["public"]["Enums"]["contact_stage"] | null
           status: string | null
           title: string | null
           updated_at: string | null
@@ -57,6 +96,7 @@ export type Database = {
           last_name?: string | null
           notes?: string | null
           phone?: string | null
+          stage?: Database["public"]["Enums"]["contact_stage"] | null
           status?: string | null
           title?: string | null
           updated_at?: string | null
@@ -71,6 +111,7 @@ export type Database = {
           last_name?: string | null
           notes?: string | null
           phone?: string | null
+          stage?: Database["public"]["Enums"]["contact_stage"] | null
           status?: string | null
           title?: string | null
           updated_at?: string | null
@@ -194,7 +235,14 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      contact_stage:
+        | "new_lead"
+        | "qualifying"
+        | "meeting_scheduled"
+        | "proposal_sent"
+        | "negotiating"
+        | "closed_won"
+        | "closed_lost"
     }
     CompositeTypes: {
       [_ in never]: never
