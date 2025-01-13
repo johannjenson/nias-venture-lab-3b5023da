@@ -3,6 +3,9 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import ContactDetailsDialog from "./ContactDetailsDialog";
+import { Database } from "@/integrations/supabase/types";
+
+type ContactStage = Database["public"]["Enums"]["contact_stage"];
 
 interface ContactCardProps {
   contact: {
@@ -12,6 +15,7 @@ interface ContactCardProps {
     email: string;
     company: string;
     title: string;
+    stage: ContactStage;
   };
   onUpdate: () => void;
 }

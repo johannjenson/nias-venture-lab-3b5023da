@@ -4,6 +4,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Database } from "@/integrations/supabase/types";
+
+type ContactStage = Database["public"]["Enums"]["contact_stage"];
 
 interface ContactDetailsDialogProps {
   contact: {
@@ -13,7 +16,7 @@ interface ContactDetailsDialogProps {
     email: string;
     company: string;
     title: string;
-    stage: string;
+    stage: ContactStage;
   };
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -22,11 +25,13 @@ interface ContactDetailsDialogProps {
 
 interface ChecklistItem {
   id: string;
+  contact_id: string | null;
+  stage: ContactStage;
   item_text: string;
   completed: boolean;
 }
 
-const stages = [
+const stages: { id: ContactStage; label: string }[] = [
   { id: 'new_lead', label: 'New Lead' },
   { id: 'qualifying', label: 'Qualifying' },
   { id: 'meeting_scheduled', label: 'Meeting Scheduled' },
@@ -67,7 +72,6 @@ const ContactDetailsDialog = ({
     }
 
     if (existingItems.length === 0) {
-      // Fetch default items and create them for this contact
       const { data: defaultItems, error: defaultError } = await supabase
         .from('checklist_items')
         .select('*')
@@ -83,8 +87,8 @@ const ContactDetailsDialog = ({
         return;
       }
 
-      // Create checklist items for this contact
       const newItems = defaultItems.map(({ item_text, stage }) => ({
+        id: crypto.randomUUID(),
         contact_id: contact.id,
         stage,
         item_text,
@@ -110,7 +114,7 @@ const ContactDetailsDialog = ({
     }
   };
 
-  const updateStage = async (newStage: string) => {
+  const updateStage = async (newStage: ContactStage) => {
     const { error } = await supabase
       .from('contacts')
       .update({ stage: newStage })
