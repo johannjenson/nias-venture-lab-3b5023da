@@ -26,7 +26,7 @@ const LeapDinner = () => {
               </h1>
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">
                 Join us for an exclusive dinner gathering of global business leaders and investors
-                on February 13th, 2025 in Riyadh
+                on February 9th, 2025 in Riyadh
               </p>
               <Button
                 className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in"
