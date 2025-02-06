@@ -50,7 +50,7 @@ const EventOverview = () => {
             <div className="space-y-4">
               <div>
                 <h4 className="font-semibold text-primary">Date & Time</h4>
-                <p className="text-gray-600">February 20th, 2025 | 7:00 PM - 2:00 AM</p>
+                <p className="text-gray-600">February 12th, 2025 | 7:00 PM - 2:00 AM</p>
               </div>
               <div>
                 <h4 className="font-semibold text-primary">Location</h4>
