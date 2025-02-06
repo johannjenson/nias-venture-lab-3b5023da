@@ -77,7 +77,7 @@ const LeapDinner = () => {
                 </p>
                 <p className="text-gray-600">
                   The Nias team will be attending LEAP's daytime sessions and evening events from
-                  February 9-12, culminating in our exclusive network dinner on February 9th.
+                  February 9-12.
                 </p>
               </div>
             </div>
