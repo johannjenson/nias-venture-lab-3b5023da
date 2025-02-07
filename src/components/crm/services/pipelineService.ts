@@ -1,6 +1,7 @@
 
 import { supabase } from "@/integrations/supabase/client";
 import { ContactStage } from "../types/kanban";
+import { IndustryType } from "../types/contact";
 
 interface ContactData {
   first_name: string;
@@ -9,7 +10,7 @@ interface ContactData {
   phone: string | null;
   company: string | null;
   title: string | null;
-  industry: string | null;
+  industry: IndustryType | null;
   linkedin_url: string | null;
   source: 'network_request' | 'event_request';
   source_id: string;
