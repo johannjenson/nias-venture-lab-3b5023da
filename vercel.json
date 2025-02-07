@@ -1,5 +1,10 @@
+
 {
   "rewrites": [
+    {
+      "source": "/events/riyadh",
+      "destination": "/events/nias-business-forum"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"

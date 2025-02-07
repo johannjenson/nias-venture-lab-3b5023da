@@ -34,7 +34,7 @@ const Footer = () => {
   const navigation = {
     main: [
       { name: "Events", submenu: [
-        { name: "Nias Business Forum", href: "/events/riyadh" },
+        { name: "Nias Business Forum", href: "/events/nias-business-forum" },
         { name: "Nias Network Dinner at LEAP", href: "/events/leap-dinner" }
       ]},
       { name: "Resources", submenu: [

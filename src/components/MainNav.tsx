@@ -59,7 +59,7 @@ const MainNav = () => {
   const events = [
     {
       title: "Nias Business Forum",
-      href: "/events/riyadh",
+      href: "/events/nias-business-forum",
       description: "Join our inaugural business forum on February 13th connecting global companies with Saudi investors.",
     },
     {
