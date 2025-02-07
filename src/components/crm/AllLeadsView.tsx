@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
@@ -148,7 +147,7 @@ const AllLeadsView = () => {
     setLeads(allLeads);
   };
 
-  const handleEditLead = async (leadEntry: LeadEntry) => {
+  const handleLeadClick = async (leadEntry: LeadEntry) => {
     if (leadEntry.type === 'contact') {
       const { data: contact, error } = await supabase
         .from('contacts')
@@ -177,42 +176,6 @@ const AllLeadsView = () => {
     }
   };
 
-  const handleDeleteLead = async (leadEntry: LeadEntry) => {
-    try {
-      if (leadEntry.type === 'contact') {
-        const { error } = await supabase
-          .from('contacts')
-          .delete()
-          .eq('id', leadEntry.id);
-
-        if (error) throw error;
-      } else {
-        const table = leadEntry.id.startsWith('membership_') ? 'Request' : 'EventRequest';
-        const id = parseInt(leadEntry.id.replace(leadEntry.id.startsWith('membership_') ? 'membership_' : 'event_', ''));
-
-        const { error } = await supabase
-          .from(table)
-          .delete()
-          .eq('id', id);
-
-        if (error) throw error;
-      }
-
-      toast({
-        title: "Lead deleted",
-        description: "The lead has been successfully deleted",
-      });
-
-      fetchAllLeads();
-    } catch (error: any) {
-      toast({
-        title: "Error deleting lead",
-        description: error.message,
-        variant: "destructive",
-      });
-    }
-  };
-
   return (
     <div className="rounded-md border">
       <Table>
@@ -224,12 +187,15 @@ const AllLeadsView = () => {
             <TableHead>Company</TableHead>
             <TableHead>Industry</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {leads.map((lead) => (
-            <TableRow key={lead.id}>
+            <TableRow 
+              key={lead.id}
+              className="cursor-pointer hover:bg-muted/50"
+              onClick={() => handleLeadClick(lead)}
+            >
               <TableCell>
                 {lead.first_name} {lead.last_name}
               </TableCell>
@@ -239,37 +205,6 @@ const AllLeadsView = () => {
               <TableCell>{lead.industry}</TableCell>
               <TableCell>
                 {lead.type === 'contact' ? lead.stage : lead.request_status}
-              </TableCell>
-              <TableCell className="flex items-center gap-2">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => handleEditLead(lead)}
-                >
-                  <Edit className="h-4 w-4" />
-                </Button>
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button variant="ghost" size="icon">
-                      <Trash2 className="h-4 w-4 text-destructive" />
-                    </Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                      <AlertDialogDescription>
-                        This action cannot be undone. This will permanently delete this lead
-                        from the database.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
-                      <AlertDialogAction onClick={() => handleDeleteLead(lead)}>
-                        Delete
-                      </AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
               </TableCell>
             </TableRow>
           ))}
