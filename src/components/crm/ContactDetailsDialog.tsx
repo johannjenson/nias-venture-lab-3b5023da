@@ -230,7 +230,7 @@ const ContactDetailsDialog = ({
     if (!url.trim()) return;
 
     try {
-      new URL(url); // Validate URL format
+      new URL(url.trim()); // Validate URL format with trimmed value
     } catch (e) {
       toast({
         title: "Invalid URL",
@@ -267,7 +267,7 @@ const ContactDetailsDialog = ({
     const url = e.target.value;
     setNewUrl(url);
     
-    // If the URL ends with a space or enter key, treat it as submission
+    // Handle spaces at the end as submission
     if (url.endsWith(' ')) {
       handleUrlAdd(url.trim());
     }
@@ -275,7 +275,7 @@ const ContactDetailsDialog = ({
 
   const handleUrlInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      e.preventDefault();
+      e.preventDefault(); // Prevent form submission
       handleUrlAdd(newUrl);
     }
   };
