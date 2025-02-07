@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,8 @@ interface AddContactDialogProps {
   onOpenChange: (open: boolean) => void;
 }
 
+type LeadType = 'founder_executive' | 'investor_buyer' | 'advisor_broker' | 'other';
+
 const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
@@ -22,14 +25,14 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
     email: "",
     company: "",
     title: "",
-    lead_type: "other"
+    lead_type: 'other' as LeadType
   });
 
   const leadTypes = [
-    { id: 'founder_executive', label: 'Founders & Executives' },
-    { id: 'investor_buyer', label: 'Investors & Buyers' },
-    { id: 'advisor_broker', label: 'Advisors & Brokers' },
-    { id: 'other', label: 'Other' },
+    { id: 'founder_executive' as const, label: 'Founders & Executives' },
+    { id: 'investor_buyer' as const, label: 'Investors & Buyers' },
+    { id: 'advisor_broker' as const, label: 'Advisors & Brokers' },
+    { id: 'other' as const, label: 'Other' },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -56,7 +59,7 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
         company: formData.company,
         stage: 'mql_lead',
         user_id: user.id,
-        lead_type: formData.lead_type || 'other'
+        lead_type: formData.lead_type
       })
       .select('id')
       .single();
@@ -74,12 +77,16 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
     // Now create the contact with reference to the company
     const { error: contactError } = await supabase
       .from('contacts')
-      .insert({ 
-        ...formData, 
+      .insert({
+        first_name: formData.first_name,
+        last_name: formData.last_name,
+        email: formData.email,
+        company: formData.company,
+        title: formData.title,
         stage: 'mql_lead',
         user_id: user.id,
         company_id: newCompany.id,
-        lead_type: formData.lead_type || 'other'
+        lead_type: formData.lead_type
       });
 
     setLoading(false);
@@ -173,7 +180,7 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
             <Label htmlFor="lead_type">Lead Type</Label>
             <Select
               value={formData.lead_type}
-              onValueChange={(value) => setFormData({ ...formData, lead_type: value })}
+              onValueChange={(value: LeadType) => setFormData({ ...formData, lead_type: value })}
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select lead type" />
