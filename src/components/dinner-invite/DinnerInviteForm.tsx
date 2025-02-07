@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { DinnerFormData } from "./types";
-import { industryTypes } from "@/data/industries";
+import { industries } from "@/data/industries";
 
 interface DinnerInviteFormProps {
   formData: DinnerFormData;
@@ -115,7 +115,7 @@ const DinnerInviteForm = ({
             <SelectValue placeholder="Select your industry" />
           </SelectTrigger>
           <SelectContent>
-            {industryTypes.map(industry => (
+            {industries.map(industry => (
               <SelectItem key={industry.name.toLowerCase()} value={industry.name.toLowerCase()}>
                 {industry.name}
               </SelectItem>

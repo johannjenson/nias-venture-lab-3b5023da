@@ -16,3 +16,7 @@ export interface DinnerFormData {
 
 export type RoleOption = 'founder' | 'executive' | 'investor' | 'advisor' | 'broker';
 
+export type IndustryType = 'manufacturing' | 'technology' | 'tourism' | 'healthcare' | 'energy' |
+  'mining' | 'logistics' | 'education' | 'finance' | 'real_estate' | 'agriculture' |
+  'water' | 'defense' | 'sports' | 'aerospace' | 'retail' | 'creative' | 'biotech' |
+  'construction' | 'ocean';

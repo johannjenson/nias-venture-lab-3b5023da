@@ -20,12 +20,17 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2 } from "lucide-react";
-import { industryTypes } from "@/data/industries";
+import { industries } from "@/data/industries";
 
 interface EventInviteModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
+
+type IndustryType = 'manufacturing' | 'technology' | 'tourism' | 'healthcare' | 'energy' |
+  'mining' | 'logistics' | 'education' | 'finance' | 'real_estate' | 'agriculture' |
+  'water' | 'defense' | 'sports' | 'aerospace' | 'retail' | 'creative' | 'biotech' |
+  'construction' | 'ocean';
 
 const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,7 +40,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
     email: "",
     company: "",
     title: "",
-    industry: "",
+    industry: "" as IndustryType,
     interests: "",
   });
 
@@ -46,17 +51,15 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
     try {
       const { error } = await supabase
         .from('EventRequest')
-        .insert([
-          {
-            full_name: formData.fullName,
-            phone_number: formData.phoneNumber,
-            email: formData.email,
-            company: formData.company,
-            title: formData.title,
-            industry: formData.industry,
-            interests: formData.interests
-          }
-        ]);
+        .insert({
+          full_name: formData.fullName,
+          phone_number: formData.phoneNumber,
+          email: formData.email,
+          company: formData.company,
+          title: formData.title,
+          industry: formData.industry,
+          interests: formData.interests
+        });
 
       if (error) throw error;
 
@@ -82,7 +85,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
         email: "",
         company: "",
         title: "",
-        industry: "",
+        industry: "" as IndustryType,
         interests: "",
       });
     } catch (error) {
@@ -186,7 +189,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
             <Select
               name="industry"
               value={formData.industry}
-              onValueChange={(value) =>
+              onValueChange={(value: IndustryType) =>
                 setFormData((prev) => ({ ...prev, industry: value }))
               }
               disabled={isSubmitting}
@@ -195,7 +198,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
                 <SelectValue placeholder="Select your industry" />
               </SelectTrigger>
               <SelectContent>
-                {industryTypes.map(industry => (
+                {industries.map(industry => (
                   <SelectItem key={industry.name.toLowerCase()} value={industry.name.toLowerCase()}>
                     {industry.name}
                   </SelectItem>
