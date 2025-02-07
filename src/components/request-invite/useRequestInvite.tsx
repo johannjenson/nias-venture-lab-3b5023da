@@ -125,6 +125,6 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
     handleNext,
     handleBack,
     isSubmitting,
-    setFormData: (value: string) => setFormData(prev => ({ ...prev, title: value }))
+    setFormData
   };
 };
