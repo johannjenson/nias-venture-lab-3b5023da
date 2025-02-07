@@ -6,6 +6,10 @@
       "destination": "/events/nias-business-forum"
     },
     {
+      "source": "/events/nias-business-forum",
+      "destination": "/"
+    },
+    {
       "source": "/events/(.*)",
       "destination": "/"
     },
