@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -47,8 +48,8 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
       const firstName = nameParts[0];
       const lastName = nameParts.slice(1).join(' ');
 
-      // Insert into Supabase with all fields
-      const { error } = await supabase
+      // Insert into Supabase
+      const { error: dbError } = await supabase
         .from('Request')
         .insert([
           {
@@ -64,7 +65,19 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
           }
         ]);
 
-      if (error) throw error;
+      if (dbError) throw dbError;
+
+      // Send confirmation email
+      const { error: emailError } = await supabase.functions.invoke('send-network-confirmation', {
+        body: {
+          fullName: formData.fullName,
+          email: formData.email,
+          company: formData.company,
+          title: formData.title
+        }
+      });
+
+      if (emailError) throw emailError;
 
       toast.success("Thank you for your interest in joining the Nias Network. We'll review your application and be in touch soon!");
       onOpenChange(false);
