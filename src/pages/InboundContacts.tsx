@@ -2,12 +2,12 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
-import { LeadsTable } from "@/components/crm/components/LeadsTable";
+import LeadsTable from "@/components/crm/components/LeadsTable";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Footer from "@/components/Footer";
-import { LeadEntry } from "@/components/crm/types/contact";
+import { LeadEntry, IndustryType } from "@/components/crm/types/contact";
 
 const InboundContacts = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const InboundContacts = () => {
         id: contact.id.toString(),
         name: contact.name,
         email: contact.email,
-        industry: contact.industry,
+        industry: contact.industry as IndustryType | null,
         type: 'request',
         request_status: contact.request_status,
         company: null,
