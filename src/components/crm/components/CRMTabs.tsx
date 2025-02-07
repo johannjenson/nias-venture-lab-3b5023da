@@ -4,18 +4,22 @@ import KanbanBoard from "../KanbanBoard";
 import MembershipRequestsBoard from "../MembershipRequestsBoard";
 import EventRequestsBoard from "../EventRequestsBoard";
 import CRMFilters from "./CRMFilters";
-import { LeadType } from "../types/contact";
+import { IndustryType, LeadType } from "../types/contact";
 
 interface CRMTabsProps {
   leadTypeFilter: LeadType | 'all';
   onLeadTypeChange: (value: LeadType | 'all') => void;
+  industryFilter: IndustryType | 'all';
+  onIndustryChange: (value: IndustryType | 'all') => void;
   viewByCompany: boolean;
   onViewTypeChange: (checked: boolean) => void;
 }
 
 const CRMTabs = ({ 
   leadTypeFilter, 
-  onLeadTypeChange, 
+  onLeadTypeChange,
+  industryFilter,
+  onIndustryChange,
   viewByCompany, 
   onViewTypeChange 
 }: CRMTabsProps) => {
@@ -30,6 +34,8 @@ const CRMTabs = ({
         <CRMFilters
           leadTypeFilter={leadTypeFilter}
           onLeadTypeChange={onLeadTypeChange}
+          industryFilter={industryFilter}
+          onIndustryChange={onIndustryChange}
           viewByCompany={viewByCompany}
           onViewTypeChange={onViewTypeChange}
         />
@@ -38,6 +44,7 @@ const CRMTabs = ({
         <KanbanBoard 
           viewType={viewByCompany ? "company" : "user"}
           leadTypeFilter={leadTypeFilter}
+          industryFilter={industryFilter}
         />
       </TabsContent>
       <TabsContent value="membership">

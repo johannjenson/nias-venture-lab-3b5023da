@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import { Contact, CompanyView, stages } from "./types/kanban";
+import { IndustryType } from "./types/contact";
 import StageHeader from "./components/StageHeader";
 import UserView from "./components/UserView";
 import CompanyStageView from "./components/CompanyView";
@@ -11,9 +12,10 @@ import CompanyStageView from "./components/CompanyView";
 interface KanbanBoardProps {
   viewType: 'user' | 'company';
   leadTypeFilter: 'all' | Contact['lead_type'];
+  industryFilter: 'all' | IndustryType;
 }
 
-const KanbanBoard = ({ viewType, leadTypeFilter }: KanbanBoardProps) => {
+const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardProps) => {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [companyViews, setCompanyViews] = useState<CompanyView[]>([]);
   const { toast } = useToast();
@@ -35,7 +37,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter }: KanbanBoardProps) => {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [viewType, leadTypeFilter]);
+  }, [viewType, leadTypeFilter, industryFilter]);
 
   const fetchData = async () => {
     let query = supabase
@@ -45,6 +47,10 @@ const KanbanBoard = ({ viewType, leadTypeFilter }: KanbanBoardProps) => {
 
     if (leadTypeFilter !== 'all') {
       query = query.eq('lead_type', leadTypeFilter);
+    }
+
+    if (industryFilter !== 'all') {
+      query = query.eq('industry', industryFilter);
     }
 
     const { data, error } = await query;
@@ -61,9 +67,15 @@ const KanbanBoard = ({ viewType, leadTypeFilter }: KanbanBoardProps) => {
     if (viewType === 'user') {
       setContacts(data || []);
     } else {
-      const { data: leadsData, error: leadsError } = await supabase
+      let leadsQuery = supabase
         .from('leads')
         .select('id, company, stage, last_contact_date');
+
+      if (industryFilter !== 'all') {
+        leadsQuery = leadsQuery.eq('industry', industryFilter);
+      }
+
+      const { data: leadsData, error: leadsError } = await leadsQuery;
 
       if (leadsError) {
         toast({

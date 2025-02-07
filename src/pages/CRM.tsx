@@ -7,7 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import AddContactDialog from "@/components/crm/AddContactDialog";
 import CRMHeader from "@/components/crm/components/CRMHeader";
 import CRMTabs from "@/components/crm/components/CRMTabs";
-import { LeadType } from "@/components/crm/types/contact";
+import { LeadType, IndustryType } from "@/components/crm/types/contact";
 
 const CRM = () => {
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ const CRM = () => {
   const [showAddContact, setShowAddContact] = useState(false);
   const [viewByCompany, setViewByCompany] = useState(false);
   const [leadTypeFilter, setLeadTypeFilter] = useState<LeadType | 'all'>('all');
+  const [industryFilter, setIndustryFilter] = useState<IndustryType | 'all'>('all');
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -54,6 +55,8 @@ const CRM = () => {
           <CRMTabs
             leadTypeFilter={leadTypeFilter}
             onLeadTypeChange={setLeadTypeFilter}
+            industryFilter={industryFilter}
+            onIndustryChange={setIndustryFilter}
             viewByCompany={viewByCompany}
             onViewTypeChange={setViewByCompany}
           />
