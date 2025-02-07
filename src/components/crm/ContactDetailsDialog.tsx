@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
@@ -13,7 +14,6 @@ import ContactAttachments from "./components/ContactAttachments";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import HeatRating from "./components/HeatRating";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Target, Trash2 } from "lucide-react";
 import { DeleteRequestDialog } from "./components/request-details/DeleteRequestDialog";
 
@@ -30,6 +30,20 @@ const ContactDetailsDialog = ({
   const [goal, setGoal] = useState(contact.goal || '');
   const { toast } = useToast();
 
+  // Extract the actual contact ID from the prefixed ID if needed
+  const getActualContactId = async (prefixedId: string) => {
+    if (prefixedId.startsWith('event_')) {
+      const eventId = prefixedId.replace('event_', '');
+      const { data: eventRequest } = await supabase
+        .from('event_requests')
+        .select('uuid_id')
+        .eq('id', eventId)
+        .single();
+      return eventRequest?.uuid_id;
+    }
+    return prefixedId;
+  };
+
   useEffect(() => {
     if (open) {
       fetchChecklist();
@@ -38,10 +52,20 @@ const ContactDetailsDialog = ({
   }, [open, contact.stage, contact.goal]);
 
   const fetchChecklist = async () => {
+    const actualContactId = await getActualContactId(contact.id);
+    if (!actualContactId) {
+      toast({
+        title: "Error fetching checklist",
+        description: "Could not find the contact ID",
+        variant: "destructive",
+      });
+      return;
+    }
+
     const { data: existingItems, error: existingError } = await supabase
       .from('checklist_items')
       .select('*')
-      .eq('contact_id', contact.id)
+      .eq('contact_id', actualContactId)
       .eq('stage', contact.stage);
 
     if (existingError) {
@@ -71,7 +95,7 @@ const ContactDetailsDialog = ({
     if (existingItems.length === 0) {
       const newItems: ChecklistItem[] = defaultItems.map(({ item_text, stage }) => ({
         id: crypto.randomUUID(),
-        contact_id: contact.id,
+        contact_id: actualContactId,
         stage,
         item_text,
         completed: false,
@@ -98,7 +122,7 @@ const ContactDetailsDialog = ({
         .filter(item => !existingTexts.has(item.item_text))
         .map(({ item_text, stage }) => ({
           id: crypto.randomUUID(),
-          contact_id: contact.id,
+          contact_id: actualContactId,
           stage,
           item_text,
           completed: false,
@@ -137,10 +161,20 @@ const ContactDetailsDialog = ({
   };
 
   const processStageUpdate = async (newStage: typeof contact.stage) => {
+    const actualContactId = await getActualContactId(contact.id);
+    if (!actualContactId) {
+      toast({
+        title: "Error updating stage",
+        description: "Could not find the contact ID",
+        variant: "destructive",
+      });
+      return;
+    }
+
     const { error } = await supabase
       .from('contacts')
       .update({ stage: newStage })
-      .eq('id', contact.id);
+      .eq('id', actualContactId);
 
     if (error) {
       toast({
@@ -180,10 +214,20 @@ const ContactDetailsDialog = ({
   };
 
   const updateHeatRating = async (rating: number) => {
+    const actualContactId = await getActualContactId(contact.id);
+    if (!actualContactId) {
+      toast({
+        title: "Error updating heat rating",
+        description: "Could not find the contact ID",
+        variant: "destructive",
+      });
+      return;
+    }
+
     const { error } = await supabase
       .from('contacts')
       .update({ heat_rating: rating })
-      .eq('id', contact.id);
+      .eq('id', actualContactId);
 
     if (error) {
       toast({
@@ -198,10 +242,20 @@ const ContactDetailsDialog = ({
   };
 
   const updateGoal = async () => {
+    const actualContactId = await getActualContactId(contact.id);
+    if (!actualContactId) {
+      toast({
+        title: "Error updating target",
+        description: "Could not find the contact ID",
+        variant: "destructive",
+      });
+      return;
+    }
+
     const { error } = await supabase
       .from('contacts')
       .update({ goal })
-      .eq('id', contact.id);
+      .eq('id', actualContactId);
 
     if (error) {
       toast({
@@ -223,46 +277,6 @@ const ContactDetailsDialog = ({
     if (e.key === 'Enter') {
       e.preventDefault();
       updateGoal();
-    }
-  };
-
-  const handleDelete = async () => {
-    try {
-      await supabase
-        .from('checklist_items')
-        .delete()
-        .eq('contact_id', contact.id);
-
-      await supabase
-        .from('contact_notes')
-        .delete()
-        .eq('contact_id', contact.id);
-
-      await supabase
-        .from('contact_attachments')
-        .delete()
-        .eq('contact_id', contact.id);
-
-      const { error } = await supabase
-        .from('contacts')
-        .delete()
-        .eq('id', contact.id);
-
-      if (error) throw error;
-
-      toast({
-        title: "Contact deleted",
-        description: "The contact has been successfully removed from the pipeline",
-      });
-
-      onUpdate();
-      onOpenChange(false);
-    } catch (error: any) {
-      toast({
-        title: "Error deleting contact",
-        description: error.message,
-        variant: "destructive",
-      });
     }
   };
 
@@ -337,26 +351,6 @@ const ContactDetailsDialog = ({
           </Tabs>
         </DialogContent>
       </Dialog>
-
-      <AlertDialog open={showDeleteAlert} onOpenChange={setShowDeleteAlert}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Delete Contact</AlertDialogTitle>
-            <AlertDialogDescription>
-              Are you sure you want to delete this contact? This action cannot be undone, and all associated data (notes, checklist items, and attachments) will be permanently removed.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => setShowDeleteAlert(false)}>Cancel</AlertDialogCancel>
-            <AlertDialogAction 
-              onClick={handleDelete}
-              className="bg-destructive hover:bg-destructive/90"
-            >
-              Delete
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
 
       <AlertDialog open={showStageAlert} onOpenChange={setShowStageAlert}>
         <AlertDialogContent>

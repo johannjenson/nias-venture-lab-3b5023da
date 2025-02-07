@@ -18,11 +18,34 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const { toast } = useToast();
 
+  const getActualContactId = async (prefixedId: string) => {
+    if (prefixedId.startsWith('event_')) {
+      const eventId = prefixedId.replace('event_', '');
+      const { data: eventRequest } = await supabase
+        .from('event_requests')
+        .select('uuid_id')
+        .eq('id', eventId)
+        .single();
+      return eventRequest?.uuid_id;
+    }
+    return prefixedId;
+  };
+
   React.useEffect(() => {
     fetchTimelineItems();
   }, [contactId]);
 
   const fetchTimelineItems = async () => {
+    const actualContactId = await getActualContactId(contactId);
+    if (!actualContactId) {
+      toast({
+        title: "Error fetching notes",
+        description: "Could not find the contact ID",
+        variant: "destructive",
+      });
+      return;
+    }
+
     const { data: notesData, error: notesError } = await supabase
       .from('contact_notes')
       .select(`
@@ -33,7 +56,7 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
           last_name
         )
       `)
-      .eq('contact_id', contactId)
+      .eq('contact_id', actualContactId)
       .order('created_at', { ascending: false });
 
     if (notesError) {
@@ -55,7 +78,7 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
           last_name
         )
       `)
-      .eq('contact_id', contactId)
+      .eq('contact_id', actualContactId)
       .eq('completed', true)
       .not('completed_at', 'is', null)
       .order('completed_at', { ascending: false });
@@ -107,10 +130,20 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
   const addNote = async () => {
     if (!newNote.trim()) return;
 
+    const actualContactId = await getActualContactId(contactId);
+    if (!actualContactId) {
+      toast({
+        title: "Error adding note",
+        description: "Could not find the contact ID",
+        variant: "destructive",
+      });
+      return;
+    }
+
     const { error } = await supabase
       .from('contact_notes')
       .insert({
-        contact_id: contactId,
+        contact_id: actualContactId,
         content: newNote.trim(),
         user_id: (await supabase.auth.getUser()).data.user?.id
       });
