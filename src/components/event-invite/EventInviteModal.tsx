@@ -31,6 +31,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
     setIsSubmitting(true);
     
     try {
+      // Changed EventRequest to event_requests
       const { error } = await supabase
         .from('event_requests')
         .insert({

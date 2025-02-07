@@ -23,7 +23,7 @@ type LeadEntry = {
   name: string | null;
   email: string | null;
   title: string | null;
-  industry: IndustryType | string | null;
+  industry: IndustryType | string | null; // Updated to allow both IndustryType and string
   status: string;
   type: 'contact' | 'request';
   stage?: string;

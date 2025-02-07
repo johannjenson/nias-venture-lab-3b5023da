@@ -1,3 +1,4 @@
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,7 +21,7 @@ const RequestDetailsDialog = ({
   onUpdate 
 }: RequestDetailsDialogProps) => {
   const [status, setStatus] = useState(request.request_status || 'pending');
-  const [industry, setIndustry] = useState<IndustryType | ''>(request.industry || '');
+  const [industry, setIndustry] = useState<IndustryType | ''>(request.industry as IndustryType || '');
   const { toast } = useToast();
 
   const handleStatusChange = async (newStatus: string) => {
@@ -28,7 +29,7 @@ const RequestDetailsDialog = ({
     const { error } = await supabase
       .from(table)
       .update({ request_status: newStatus })
-      .eq('id', request.id);
+      .eq('id', parseInt(request.id)); // Convert string ID to number
 
     if (error) {
       toast({
@@ -54,7 +55,7 @@ const RequestDetailsDialog = ({
     const { error } = await supabase
       .from(table)
       .update({ industry: newIndustry })
-      .eq('id', request.id);
+      .eq('id', parseInt(request.id)); // Convert string ID to number
 
     if (error) {
       toast({
@@ -80,7 +81,7 @@ const RequestDetailsDialog = ({
     const { error } = await supabase
       .from(table)
       .delete()
-      .eq('id', request.id);
+      .eq('id', parseInt(request.id)); // Convert string ID to number
 
     if (error) {
       toast({
