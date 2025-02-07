@@ -20,6 +20,7 @@ export interface ChecklistItem {
   item_text: string;
   completed: boolean;
   completed_at: string | null;
+  completed_by?: string | null;
 }
 
 export interface Note {
@@ -53,5 +54,9 @@ export interface TimelineItem {
   } | null;
   stage?: ContactStage;
   completed?: boolean;
+  completed_by?: {
+    email: string | null;
+    first_name: string | null;
+    last_name: string | null;
+  } | null;
 }
-

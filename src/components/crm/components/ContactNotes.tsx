@@ -47,7 +47,14 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
 
     const { data: checklistData, error: checklistError } = await supabase
       .from('checklist_items')
-      .select('*')
+      .select(`
+        *,
+        profiles:completed_by (
+          email,
+          first_name,
+          last_name
+        )
+      `)
       .eq('contact_id', contactId)
       .eq('completed', true)
       .not('completed_at', 'is', null)
@@ -76,7 +83,8 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
       timestamp: item.completed_at!,
       content: item.item_text,
       stage: item.stage,
-      completed: true
+      completed: true,
+      completed_by: item.profiles
     }));
 
     const allItems = [...noteItems, ...checklistItems].sort(
@@ -127,7 +135,8 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
       .from('checklist_items')
       .update({ 
         completed: false,
-        completed_at: null
+        completed_at: null,
+        completed_by: null
       })
       .eq('id', itemId);
 

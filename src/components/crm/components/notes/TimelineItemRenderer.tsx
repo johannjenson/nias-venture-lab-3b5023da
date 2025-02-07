@@ -34,7 +34,9 @@ const TimelineItemRenderer = ({ item, onToggleChecklistItem }: TimelineItemRende
       <div className="flex-1">
         <p className="text-sm mb-2">Completed: {item.content}</p>
         <p className="text-xs text-gray-500">
-          Stage: {item.stage} - Completed on {new Date(item.timestamp).toLocaleString()}
+          Stage: {item.stage} - Completed by {item.completed_by?.first_name && item.completed_by?.last_name 
+            ? `${item.completed_by.first_name} ${item.completed_by.last_name}`
+            : item.completed_by?.email} on {new Date(item.timestamp).toLocaleString()}
         </p>
       </div>
     </div>

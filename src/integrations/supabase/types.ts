@@ -52,6 +52,7 @@ export type Database = {
         Row: {
           completed: boolean | null
           completed_at: string | null
+          completed_by: string | null
           contact_id: string | null
           created_at: string | null
           id: string
@@ -62,6 +63,7 @@ export type Database = {
         Insert: {
           completed?: boolean | null
           completed_at?: string | null
+          completed_by?: string | null
           contact_id?: string | null
           created_at?: string | null
           id?: string
@@ -72,6 +74,7 @@ export type Database = {
         Update: {
           completed?: boolean | null
           completed_at?: string | null
+          completed_by?: string | null
           contact_id?: string | null
           created_at?: string | null
           id?: string
@@ -80,6 +83,13 @@ export type Database = {
           updated_at?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "checklist_items_completed_by_fkey"
+            columns: ["completed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "checklist_items_contact_id_fkey"
             columns: ["contact_id"]
