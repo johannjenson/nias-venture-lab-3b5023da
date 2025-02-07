@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import AddContactDialog from "../AddContactDialog";
@@ -8,17 +9,17 @@ const CRMHeader = () => {
   const [showAddContact, setShowAddContact] = useState(false);
 
   return (
-    <div className="flex items-center justify-between mb-8">
+    <div className="flex items-center justify-between border-b pb-6">
       <div>
-        <h2 className="text-3xl font-bold tracking-tight">CRM</h2>
-        <p className="text-muted-foreground">
+        <h2 className="text-3xl font-bold tracking-tight">Relationship Management</h2>
+        <p className="text-muted-foreground mt-1">
           Manage your contacts and leads
         </p>
       </div>
-      <div className="flex gap-4">
+      <div className="flex items-center gap-2">
         <InferIndustriesButton />
         <Button onClick={() => setShowAddContact(true)}>
-          <Plus className="mr-2 h-4 w-4" /> Add Contact
+          <Plus className="h-4 w-4" /> Add Leads
         </Button>
       </div>
 
