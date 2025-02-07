@@ -39,6 +39,13 @@ export type Database = {
             referencedRelation: "contacts"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "ai_transcripts_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "leads_with_user_status"
+            referencedColumns: ["id"]
+          },
         ]
       }
       checklist_items: {
@@ -75,6 +82,13 @@ export type Database = {
             columns: ["contact_id"]
             isOneToOne: false
             referencedRelation: "contacts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "checklist_items_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "leads_with_user_status"
             referencedColumns: ["id"]
           },
         ]
@@ -157,6 +171,13 @@ export type Database = {
             referencedRelation: "contacts"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "contact_attachments_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "leads_with_user_status"
+            referencedColumns: ["id"]
+          },
         ]
       }
       contact_notes: {
@@ -190,6 +211,13 @@ export type Database = {
             columns: ["contact_id"]
             isOneToOne: false
             referencedRelation: "contacts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "contact_notes_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "leads_with_user_status"
             referencedColumns: ["id"]
           },
           {
@@ -598,6 +626,89 @@ export type Database = {
         }
         Relationships: []
       }
+      leads_with_user_status: {
+        Row: {
+          company: string | null
+          company_description: string | null
+          company_domain: string | null
+          company_id: string | null
+          created_at: string | null
+          email: string | null
+          first_name: string | null
+          has_account: boolean | null
+          id: string | null
+          industry: Database["public"]["Enums"]["industry_type"] | null
+          last_name: string | null
+          lead_type: Database["public"]["Enums"]["lead_type"] | null
+          linkedin_url: string | null
+          notes: string | null
+          phone: string | null
+          source: string | null
+          source_id: string | null
+          stage: Database["public"]["Enums"]["contact_stage"] | null
+          status: string | null
+          title: string | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          company?: string | null
+          company_description?: string | null
+          company_domain?: string | null
+          company_id?: string | null
+          created_at?: string | null
+          email?: string | null
+          first_name?: string | null
+          has_account?: never
+          id?: string | null
+          industry?: Database["public"]["Enums"]["industry_type"] | null
+          last_name?: string | null
+          lead_type?: Database["public"]["Enums"]["lead_type"] | null
+          linkedin_url?: string | null
+          notes?: string | null
+          phone?: string | null
+          source?: string | null
+          source_id?: string | null
+          stage?: Database["public"]["Enums"]["contact_stage"] | null
+          status?: string | null
+          title?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          company?: string | null
+          company_description?: string | null
+          company_domain?: string | null
+          company_id?: string | null
+          created_at?: string | null
+          email?: string | null
+          first_name?: string | null
+          has_account?: never
+          id?: string | null
+          industry?: Database["public"]["Enums"]["industry_type"] | null
+          last_name?: string | null
+          lead_type?: Database["public"]["Enums"]["lead_type"] | null
+          linkedin_url?: string | null
+          notes?: string | null
+          phone?: string | null
+          source?: string | null
+          source_id?: string | null
+          stage?: Database["public"]["Enums"]["contact_stage"] | null
+          status?: string | null
+          title?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "contacts_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       membership_requests: {
         Row: {
           additional_info: string | null
@@ -645,6 +756,12 @@ export type Database = {
       }
     }
     Functions: {
+      has_user_account: {
+        Args: {
+          email_address: string
+        }
+        Returns: boolean
+      }
       infer_industries_from_requests: {
         Args: Record<PropertyKey, never>
         Returns: undefined

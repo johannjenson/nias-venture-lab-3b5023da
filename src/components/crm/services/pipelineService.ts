@@ -24,7 +24,7 @@ export const createContactAndUpdateRequest = async (
 ) => {
   // First check if contact already exists
   const { data: existingContact, error: fetchError } = await supabase
-    .from('contacts')
+    .from('leads_with_user_status')
     .select('*')
     .eq('email', contactData.email)
     .maybeSingle();

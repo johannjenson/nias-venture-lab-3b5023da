@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, UserCheck } from "lucide-react";
 import ContactDetailsDialog from "./ContactDetailsDialog";
 import { Database } from "@/integrations/supabase/types";
 
@@ -19,6 +19,7 @@ interface ContactCardProps {
     stage: ContactStage;
     source?: string;
     source_id?: string;
+    has_account?: boolean;
   };
   onUpdate: () => void;
 }
@@ -31,11 +32,13 @@ const ContactCard = ({ contact, onUpdate }: ContactCardProps) => {
       <Card className="p-4 hover:shadow-md transition-shadow">
         <div className="space-y-2">
           <div className="flex items-start justify-between">
-            <div>
+            <div className="flex items-center gap-2">
               <h4 className="font-medium">
                 {contact.first_name} {contact.last_name}
               </h4>
-              <p className="text-sm text-gray-500">{contact.company}</p>
+              {contact.has_account && (
+                <UserCheck className="h-4 w-4 text-green-500" title="Has user account" />
+              )}
             </div>
             <Button
               variant="ghost"
