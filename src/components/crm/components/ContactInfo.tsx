@@ -4,7 +4,7 @@ import { Contact } from "../types/contact-details";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { EnvelopeOpenIcon } from "lucide-react";
+import { MailOpen } from "lucide-react";
 
 interface ContactInfoProps {
   contact: Contact;
@@ -58,7 +58,7 @@ const ContactInfo = ({ contact }: ContactInfoProps) => {
             className="w-full"
             disabled={contact.invitation_status === 'sent'}
           >
-            <EnvelopeOpenIcon className="w-4 h-4 mr-2" />
+            <MailOpen className="w-4 h-4 mr-2" />
             {contact.invitation_status === 'sent' ? 'Invitation Sent' : 'Invite to Create Account'}
           </Button>
         </div>
@@ -68,3 +68,4 @@ const ContactInfo = ({ contact }: ContactInfoProps) => {
 };
 
 export default ContactInfo;
+
