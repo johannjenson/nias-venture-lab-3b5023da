@@ -7,6 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { UserCheck } from "lucide-react";
 import { LeadEntry } from "../types/contact";
 
 interface LeadsTableProps {
@@ -36,7 +37,15 @@ const LeadsTable = ({ leads, onLeadClick }: LeadsTableProps) => {
             onClick={() => onLeadClick(lead)}
           >
             <TableCell>
-              {lead.name || `${lead.first_name || ''} ${lead.last_name || ''}`}
+              <div className="flex items-center gap-2">
+                {lead.name || `${lead.first_name || ''} ${lead.last_name || ''}`}
+                {lead.has_account && (
+                  <UserCheck 
+                    className="h-4 w-4 text-green-500" 
+                    aria-label="Has user account" 
+                  />
+                )}
+              </div>
             </TableCell>
             <TableCell>{lead.title}</TableCell>
             <TableCell>{lead.email}</TableCell>
