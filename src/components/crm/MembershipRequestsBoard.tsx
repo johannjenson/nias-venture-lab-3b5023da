@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
-import ContactCard from "./ContactCard";
+import { MembershipCard } from "./MembershipCard";
 
 type MembershipRequest = {
   id: string;
@@ -38,7 +38,7 @@ const MembershipRequestsBoard = () => {
       .on('postgres_changes', { 
         event: '*', 
         schema: 'public', 
-        table: 'Request' 
+        table: 'membership_requests' 
       }, () => {
         fetchRequests();
       })
@@ -67,6 +67,29 @@ const MembershipRequestsBoard = () => {
     setRequests(data || []);
   };
 
+  const updateRequestStatus = async (requestId: string, status: string) => {
+    const { error } = await supabase
+      .from('membership_requests')
+      .update({ request_status: status })
+      .eq('id', requestId);
+
+    if (error) {
+      toast({
+        title: "Error updating request status",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    toast({
+      title: "Status updated",
+      description: `Request status has been updated to ${status}`,
+    });
+
+    fetchRequests();
+  };
+
   return (
     <div className="flex gap-4 overflow-x-auto pb-4">
       {stages.map((stage) => {
@@ -86,20 +109,10 @@ const MembershipRequestsBoard = () => {
               </div>
               <div className="space-y-2">
                 {stageRequests.map(request => (
-                  <ContactCard 
+                  <MembershipCard 
                     key={request.id} 
-                    contact={{
-                      id: request.id,
-                      first_name: request.first_name || '',
-                      last_name: request.last_name || '',
-                      email: request.email || '',
-                      company: request.company || '',
-                      title: request.title || '',
-                      stage: 'mql_lead',
-                      source: 'network_request',
-                      source_id: request.id
-                    }}
-                    onUpdate={fetchRequests}
+                    request={request}
+                    onUpdateStatus={updateRequestStatus}
                   />
                 ))}
               </div>
