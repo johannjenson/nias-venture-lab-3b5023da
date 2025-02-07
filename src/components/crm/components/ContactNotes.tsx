@@ -4,22 +4,24 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
-import { Note } from "../types/contact-details";
+import { Note, TimelineItem } from "../types/contact-details";
+import { CheckCircle2, MessageSquare } from "lucide-react";
 
 interface ContactNotesProps {
   contactId: string;
 }
 
 const ContactNotes = ({ contactId }: ContactNotesProps) => {
-  const [notes, setNotes] = useState<Note[]>([]);
+  const [timelineItems, setTimelineItems] = useState<TimelineItem[]>([]);
   const [newNote, setNewNote] = useState('');
   const { toast } = useToast();
 
   React.useEffect(() => {
-    fetchNotes();
+    fetchTimelineItems();
   }, [contactId]);
 
-  const fetchNotes = async () => {
+  const fetchTimelineItems = async () => {
+    // Fetch notes
     const { data: notesData, error: notesError } = await supabase
       .from('contact_notes')
       .select(`
@@ -42,7 +44,42 @@ const ContactNotes = ({ contactId }: ContactNotesProps) => {
       return;
     }
 
-    setNotes(notesData);
+    // Fetch completed checklist items
+    const { data: checklistData, error: checklistError } = await supabase
+      .from('checklist_items')
+      .select('*')
+      .eq('contact_id', contactId)
+      .eq('completed', true)
+      .not('completed_at', 'is', null)
+      .order('completed_at', { ascending: false });
+
+    if (checklistError) {
+      toast({
+        title: "Error fetching checklist items",
+        description: checklistError.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Combine and sort timeline items
+    const timelineItems: TimelineItem[] = [
+      ...notesData.map((note): TimelineItem => ({
+        id: note.id,
+        type: 'note',
+        timestamp: note.created_at,
+        content: note.content,
+        user: note.profiles
+      })),
+      ...(checklistData || []).map((item): TimelineItem => ({
+        id: item.id,
+        type: 'checklist',
+        timestamp: item.completed_at!,
+        content: item.item_text,
+      }))
+    ].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+
+    setTimelineItems(timelineItems);
   };
 
   const addNote = async () => {
@@ -66,12 +103,12 @@ const ContactNotes = ({ contactId }: ContactNotesProps) => {
     }
 
     setNewNote('');
-    fetchNotes();
+    fetchTimelineItems();
   };
 
   return (
     <div>
-      <h4 className="font-medium mb-4">Notes</h4>
+      <h4 className="font-medium mb-4">Timeline</h4>
       <div className="space-y-4">
         <div className="space-y-2">
           <Textarea
@@ -90,14 +127,29 @@ const ContactNotes = ({ contactId }: ContactNotesProps) => {
         </div>
 
         <div className="space-y-3">
-          {notes.map((note) => (
-            <div key={note.id} className="bg-gray-50 p-3 rounded-lg">
-              <p className="text-sm mb-2">{note.content}</p>
-              <p className="text-xs text-gray-500">
-                Added by {note.profiles?.first_name && note.profiles?.last_name 
-                  ? `${note.profiles.first_name} ${note.profiles.last_name}`
-                  : note.profiles?.email} on {new Date(note.created_at).toLocaleString()}
-              </p>
+          {timelineItems.map((item) => (
+            <div key={item.id} className="bg-gray-50 p-3 rounded-lg">
+              <div className="flex items-start gap-2">
+                {item.type === 'note' ? (
+                  <MessageSquare className="h-4 w-4 mt-1 text-gray-500" />
+                ) : (
+                  <CheckCircle2 className="h-4 w-4 mt-1 text-green-500" />
+                )}
+                <div className="flex-1">
+                  <p className="text-sm mb-2">{item.content}</p>
+                  <p className="text-xs text-gray-500">
+                    {item.type === 'note' ? (
+                      <>
+                        Added by {item.user?.first_name && item.user?.last_name 
+                          ? `${item.user.first_name} ${item.user.last_name}`
+                          : item.user?.email}
+                      </>
+                    ) : (
+                      'Task completed'
+                    )} on {new Date(item.timestamp).toLocaleString()}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -107,4 +159,3 @@ const ContactNotes = ({ contactId }: ContactNotesProps) => {
 };
 
 export default ContactNotes;
-

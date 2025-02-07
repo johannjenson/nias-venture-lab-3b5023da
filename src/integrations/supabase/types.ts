@@ -51,6 +51,7 @@ export type Database = {
       checklist_items: {
         Row: {
           completed: boolean | null
+          completed_at: string | null
           contact_id: string | null
           created_at: string | null
           id: string
@@ -60,6 +61,7 @@ export type Database = {
         }
         Insert: {
           completed?: boolean | null
+          completed_at?: string | null
           contact_id?: string | null
           created_at?: string | null
           id?: string
@@ -69,6 +71,7 @@ export type Database = {
         }
         Update: {
           completed?: boolean | null
+          completed_at?: string | null
           contact_id?: string | null
           created_at?: string | null
           id?: string

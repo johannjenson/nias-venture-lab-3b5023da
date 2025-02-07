@@ -11,7 +11,7 @@ interface ContactChecklistProps {
 const ContactChecklist = ({ checklist, onToggleItem }: ContactChecklistProps) => {
   return (
     <div>
-      <h4 className="font-medium mb-4">Stage Checklist</h4>
+      <h4 className="font-medium mb-4">Current Stage Checklist</h4>
       <div className="space-y-3">
         {checklist.map((item) => (
           <div key={item.id} className="flex items-start space-x-3">

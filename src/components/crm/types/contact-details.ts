@@ -19,6 +19,7 @@ export interface ChecklistItem {
   stage: ContactStage;
   item_text: string;
   completed: boolean;
+  completed_at: string | null;
 }
 
 export interface Note {
@@ -38,4 +39,16 @@ export interface ContactDetailsDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onUpdate: () => void;
+}
+
+export interface TimelineItem {
+  id: string;
+  type: 'note' | 'checklist';
+  timestamp: string;
+  content: string;
+  user?: {
+    email: string | null;
+    first_name: string | null;
+    last_name: string | null;
+  } | null;
 }

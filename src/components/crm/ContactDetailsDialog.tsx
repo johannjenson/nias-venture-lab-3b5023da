@@ -136,7 +136,10 @@ const ContactDetailsDialog = ({
   const toggleChecklistItem = async (itemId: string, completed: boolean) => {
     const { error } = await supabase
       .from('checklist_items')
-      .update({ completed })
+      .update({ 
+        completed,
+        completed_at: completed ? new Date().toISOString() : null
+      })
       .eq('id', itemId);
 
     if (error) {
@@ -149,7 +152,7 @@ const ContactDetailsDialog = ({
     }
 
     setChecklist(checklist.map(item => 
-      item.id === itemId ? { ...item, completed } : item
+      item.id === itemId ? { ...item, completed, completed_at: completed ? new Date().toISOString() : null } : item
     ));
   };
 
