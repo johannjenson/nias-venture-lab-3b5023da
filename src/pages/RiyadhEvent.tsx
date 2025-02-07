@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import EventInviteModal from "@/components/EventInviteModal";
+import EventInviteModal from "@/components/event-invite/EventInviteModal";
 import Footer from "@/components/Footer";
 import { BackButton } from "@/components/ui/back-button";
 import EventHero from "@/components/event/EventHero";
