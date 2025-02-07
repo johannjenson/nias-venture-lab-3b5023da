@@ -289,3 +289,4 @@ const ContactAttachments = ({ contactId }: ContactAttachmentsProps) => {
 };
 
 export default ContactAttachments;
+
