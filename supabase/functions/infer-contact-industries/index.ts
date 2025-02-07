@@ -18,10 +18,17 @@ Deno.serve(async (req) => {
       { global: { headers: { Authorization: req.headers.get('Authorization')! } } }
     )
 
-    // Get contacts without industry set
+    // First run the SQL function to infer industries from requests
+    const { error: fnError } = await supabaseClient.rpc('infer_industries_from_requests')
+    
+    if (fnError) {
+      console.error('Error running infer_industries_from_requests:', fnError)
+    }
+
+    // Then get remaining contacts without industry set
     const { data: contacts, error: fetchError } = await supabaseClient
       .from('contacts')
-      .select('id, company, company_domain, company_description, title, notes')
+      .select('id, company, company_domain, company_description, title, notes, linkedin_url')
       .is('industry', null)
 
     if (fetchError) throw fetchError
@@ -50,7 +57,7 @@ Deno.serve(async (req) => {
         }
       }
 
-      const industry = inferIndustry(contact, companyInfo);
+      const industry = await inferIndustry(contact, companyInfo);
       if (!industry) return null;
 
       const { error: updateError } = await supabaseClient

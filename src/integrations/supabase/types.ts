@@ -654,7 +654,10 @@ export type Database = {
       }
     }
     Functions: {
-      [_ in never]: never
+      infer_industries_from_requests: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
     }
     Enums: {
       company_stage:
