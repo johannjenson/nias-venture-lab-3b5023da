@@ -32,7 +32,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
     
     try {
       const { error } = await supabase
-        .from('event_requests')  // Changed from 'EventRequest' to 'event_requests'
+        .from('event_requests')
         .insert({
           name: formData.fullName,
           phone_number: formData.phoneNumber,

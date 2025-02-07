@@ -23,7 +23,7 @@ type LeadEntry = {
   name: string | null;
   email: string | null;
   title: string | null;
-  industry: IndustryType | string | null; // Updated to allow both IndustryType and string
+  industry: IndustryType | string | null;
   status: string;
   type: 'contact' | 'request';
   stage?: string;
@@ -115,7 +115,7 @@ const AllLeadsView = () => {
           : null,
         email: contact.email,
         title: contact.title,
-        industry: contact.industry,
+        industry: contact.industry as IndustryType | null,
         company: contact.company,
         status: contact.stage || 'Unknown',
         type: 'contact',
