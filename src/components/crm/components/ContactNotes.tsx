@@ -7,6 +7,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { TimelineItem } from "../types/contact-details";
 import { MessageSquare, CheckSquare, ChevronDown, ChevronUp } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface ContactNotesProps {
   contactId: string;
@@ -169,12 +170,16 @@ const ContactNotes = ({ contactId }: ContactNotesProps) => {
             {isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
           </Button>
         </CollapsibleTrigger>
-        <CollapsibleContent className="mt-4 space-y-3">
-          {timelineItems.map((item) => (
-            <div key={item.id} className="bg-gray-50 p-3 rounded-lg">
-              {renderTimelineItem(item)}
+        <CollapsibleContent className="mt-4">
+          <ScrollArea className="h-[300px]">
+            <div className="space-y-3">
+              {timelineItems.map((item) => (
+                <div key={item.id} className="bg-gray-50 p-3 rounded-lg">
+                  {renderTimelineItem(item)}
+                </div>
+              ))}
             </div>
-          ))}
+          </ScrollArea>
         </CollapsibleContent>
       </Collapsible>
     </div>
@@ -182,3 +187,4 @@ const ContactNotes = ({ contactId }: ContactNotesProps) => {
 };
 
 export default ContactNotes;
+
