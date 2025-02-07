@@ -21,11 +21,11 @@ const RequestDetailsDialog = ({
   const { toast } = useToast();
 
   const handleStatusChange = async (newStatus: string) => {
-    const table = type === 'membership' ? 'Request' : 'event_requests';
+    const table = type === 'membership' ? 'membership_requests' : 'event_requests';
     const { error } = await supabase
       .from(table)
       .update({ request_status: newStatus })
-      .eq('id', parseInt(request.id));
+      .eq('id', request.id);
 
     if (error) {
       toast({
@@ -46,12 +46,12 @@ const RequestDetailsDialog = ({
   };
 
   const handleIndustryChange = async (newIndustry: IndustryType) => {
-    const table = type === 'membership' ? 'Request' : 'event_requests';
+    const table = type === 'membership' ? 'membership_requests' : 'event_requests';
     
     const { error } = await supabase
       .from(table)
       .update({ industry: newIndustry })
-      .eq('id', parseInt(request.id));
+      .eq('id', request.id);
 
     if (error) {
       toast({
@@ -94,11 +94,11 @@ const RequestDetailsDialog = ({
     }
 
     // Update the moved_to_pipeline flag
-    const table = type === 'membership' ? 'Request' : 'event_requests';
+    const table = type === 'membership' ? 'membership_requests' : 'event_requests';
     const { error: updateError } = await supabase
       .from(table)
       .update({ moved_to_pipeline: true })
-      .eq('id', parseInt(request.id));
+      .eq('id', request.id);
 
     if (updateError) {
       toast({
@@ -123,12 +123,13 @@ const RequestDetailsDialog = ({
           industry: request.industry,
           linkedin_url: request.linkedin_url,
           source: type === 'membership' ? 'network_request' : 'event_request',
-          source_id: request.id.toString(),
+          source_id: request.id,
           stage: 'mql_lead'
         }
       ]);
 
     if (contactError) {
+      console.error('Contact creation error:', contactError);
       toast({
         title: "Error creating contact",
         description: contactError.message,
@@ -147,12 +148,12 @@ const RequestDetailsDialog = ({
   };
 
   const handleDelete = async () => {
-    const table = type === 'membership' ? 'Request' : 'event_requests';
+    const table = type === 'membership' ? 'membership_requests' : 'event_requests';
     
     const { error } = await supabase
       .from(table)
       .delete()
-      .eq('id', parseInt(request.id));
+      .eq('id', request.id);
 
     if (error) {
       toast({
