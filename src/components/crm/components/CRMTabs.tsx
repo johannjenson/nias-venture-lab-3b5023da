@@ -49,6 +49,13 @@ const CRMTabs = ({
       }, () => {
         fetchPendingCounts();
       })
+      .on('postgres_changes', { 
+        event: '*', 
+        schema: 'public', 
+        table: 'dinner_requests' 
+      }, () => {
+        fetchPendingCounts();
+      })
       .subscribe();
 
     return () => {
@@ -65,13 +72,20 @@ const CRMTabs = ({
 
     setPendingMembershipCount(membershipCount || 0);
 
-    // Get pending event requests count
-    const { count: eventCount } = await supabase
-      .from('forum_requests')
-      .select('*', { count: 'exact', head: true })
-      .eq('request_status', 'pending');
+    // Get total pending event requests count (forum + dinner)
+    const [forumResponse, dinnerResponse] = await Promise.all([
+      supabase
+        .from('forum_requests')
+        .select('*', { count: 'exact', head: true })
+        .eq('request_status', 'pending'),
+      supabase
+        .from('dinner_requests')
+        .select('*', { count: 'exact', head: true })
+        .eq('request_status', 'pending')
+    ]);
 
-    setPendingEventCount(eventCount || 0);
+    const totalEventCount = (forumResponse.count || 0) + (dinnerResponse.count || 0);
+    setPendingEventCount(totalEventCount);
   };
 
   return (
