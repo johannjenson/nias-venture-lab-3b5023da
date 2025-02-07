@@ -99,6 +99,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter }: KanbanBoardProps) => {
                   ? contacts.filter(c => c.stage === stage.id).length
                   : companyViews.filter(c => c.stage === stage.id).length
               }
+              stage={stage.id}
             />
             {viewType === 'user' ? (
               <UserView
