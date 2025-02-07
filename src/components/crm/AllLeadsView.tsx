@@ -8,9 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { LeadEntry, IndustryType, LeadType } from "./types/contact";
 import LeadsTable from "./components/LeadsTable";
 import CRMFilters from "./components/CRMFilters";
-import { Button } from "@/components/ui/button";
-import { MailOpen } from "lucide-react";
-import { toast } from "sonner";
+import { useLeads } from "./hooks/useLeads";
 
 const AllLeadsView = () => {
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);

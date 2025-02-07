@@ -60,7 +60,7 @@ const LeadsTable = ({ leads, onLeadClick, onCreateAccount }: LeadsTableProps) =>
               {lead.type === 'contact' ? lead.stage : lead.request_status}
             </TableCell>
             <TableCell>
-              {!lead.has_account && lead.type === 'membership' && lead.request_status === 'approved' && (
+              {!lead.has_account && lead.id.startsWith('membership_') && lead.request_status === 'approved' && (
                 <Button
                   onClick={() => onCreateAccount(lead)}
                   variant="secondary"

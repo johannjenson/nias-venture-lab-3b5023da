@@ -62,14 +62,19 @@ const InboundContacts = () => {
         title: null,
         first_name: null,
         last_name: null,
-        additional_info: contact.message // Map the message field to additional_info
+        additional_info: contact.message
       }));
     },
-    enabled: !isLoading // Only fetch contacts when authentication check is complete
+    enabled: !isLoading
   });
 
   const handleLeadClick = (lead: LeadEntry) => {
     console.log("Lead clicked:", lead);
+  };
+
+  const handleCreateAccount = (lead: LeadEntry) => {
+    console.log("Create account clicked:", lead);
+    // This is a placeholder since inbound contacts don't need account creation
   };
 
   if (isLoading) {
@@ -78,7 +83,6 @@ const InboundContacts = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center">
           <Button
@@ -106,7 +110,11 @@ const InboundContacts = () => {
           {isContactsLoading ? (
             <div className="text-center py-12">Loading contacts...</div>
           ) : contacts && contacts.length > 0 ? (
-            <LeadsTable leads={contacts} onLeadClick={handleLeadClick} />
+            <LeadsTable 
+              leads={contacts} 
+              onLeadClick={handleLeadClick} 
+              onCreateAccount={handleCreateAccount}
+            />
           ) : (
             <div className="text-center py-12 text-gray-500">
               No contact form submissions yet
