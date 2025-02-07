@@ -3,6 +3,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { IndustryType, LeadType, industryTypes, leadTypes } from "../types/contact";
+import { Separator } from "@/components/ui/separator";
 
 interface CRMFiltersProps {
   leadTypeFilter: LeadType | 'all';
@@ -11,6 +12,10 @@ interface CRMFiltersProps {
   onIndustryChange: (value: IndustryType | 'all') => void;
   viewByCompany: boolean;
   onViewTypeChange: (checked: boolean) => void;
+  showMembershipRequests: boolean;
+  onShowMembershipRequestsChange: (checked: boolean) => void;
+  showEventRequests: boolean;
+  onShowEventRequestsChange: (checked: boolean) => void;
 }
 
 const CRMFilters = ({ 
@@ -19,7 +24,11 @@ const CRMFilters = ({
   industryFilter,
   onIndustryChange,
   viewByCompany, 
-  onViewTypeChange 
+  onViewTypeChange,
+  showMembershipRequests,
+  onShowMembershipRequestsChange,
+  showEventRequests,
+  onShowEventRequestsChange
 }: CRMFiltersProps) => {
   return (
     <div className="flex items-center space-x-4">
@@ -57,15 +66,41 @@ const CRMFilters = ({
         </SelectContent>
       </Select>
 
-      <div className="flex items-center space-x-2">
-        <Label htmlFor="view-toggle" className="text-sm text-gray-600">
-          {viewByCompany ? "Company View" : "User View"}
-        </Label>
-        <Switch
-          id="view-toggle"
-          checked={viewByCompany}
-          onCheckedChange={onViewTypeChange}
-        />
+      <Separator orientation="vertical" className="h-8" />
+
+      <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2">
+          <Label htmlFor="view-toggle" className="text-sm text-gray-600">
+            {viewByCompany ? "Company View" : "User View"}
+          </Label>
+          <Switch
+            id="view-toggle"
+            checked={viewByCompany}
+            onCheckedChange={onViewTypeChange}
+          />
+        </div>
+
+        <div className="flex items-center space-x-2">
+          <Label htmlFor="membership-toggle" className="text-sm text-gray-600">
+            Show Membership Requests
+          </Label>
+          <Switch
+            id="membership-toggle"
+            checked={showMembershipRequests}
+            onCheckedChange={onShowMembershipRequestsChange}
+          />
+        </div>
+
+        <div className="flex items-center space-x-2">
+          <Label htmlFor="events-toggle" className="text-sm text-gray-600">
+            Show Event Requests
+          </Label>
+          <Switch
+            id="events-toggle"
+            checked={showEventRequests}
+            onCheckedChange={onShowEventRequestsChange}
+          />
+        </div>
       </div>
     </div>
   );
