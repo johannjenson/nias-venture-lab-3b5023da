@@ -1,19 +1,20 @@
 
 import { supabase } from "@/integrations/supabase/client";
 import { IndustryType } from "../types/contact";
+import { ContactStage } from "../types/kanban";
 
 interface ContactData {
   first_name: string;
   last_name: string;
   email: string | null;
-  phone_number: string | null;
+  phone: string | null; // Note: changed from phone_number to match DB schema
   company: string | null;
   title: string | null;
   industry: IndustryType | null;
   linkedin_url: string | null;
   source: 'network_request' | 'event_request';
   source_id: string;
-  stage: string;
+  stage: ContactStage;
 }
 
 export const createContactAndUpdateRequest = async (
@@ -24,7 +25,19 @@ export const createContactAndUpdateRequest = async (
   // Create the contact
   const { data: newContact, error: contactError } = await supabase
     .from('contacts')
-    .insert([contactData])
+    .insert({
+      first_name: contactData.first_name,
+      last_name: contactData.last_name,
+      email: contactData.email,
+      phone: contactData.phone, // Note: using 'phone' instead of 'phone_number'
+      company: contactData.company,
+      title: contactData.title,
+      industry: contactData.industry,
+      linkedin_url: contactData.linkedin_url,
+      source: contactData.source,
+      source_id: contactData.source_id,
+      stage: contactData.stage
+    })
     .select()
     .single();
 
@@ -48,4 +61,3 @@ export const createContactAndUpdateRequest = async (
 
   return newContact;
 };
-
