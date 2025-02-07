@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
@@ -228,7 +229,7 @@ const ContactDetailsDialog = ({
       <Dialog open={open} onOpenChange={onOpenChange}>
         <DialogContent className="max-w-2xl h-[90vh] p-0 flex flex-col">
           <DialogHeader className="p-6 pb-2">
-            <DialogTitle>
+            <DialogTitle className="pb-[10px]">
               {contact.first_name} {contact.last_name}
             </DialogTitle>
             <div className="mt-4 flex items-center gap-6">
@@ -309,3 +310,4 @@ const ContactDetailsDialog = ({
 };
 
 export default ContactDetailsDialog;
+
