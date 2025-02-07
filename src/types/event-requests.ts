@@ -6,6 +6,7 @@ export type EventRequest = {
   company: string | null;
   title: string | null;
   phone_number: string | null;
+  industry: string | null;
   interests: string | null;
   request_status: string | null;
   created_at: string;

@@ -4,14 +4,17 @@ import { DinnerFormData } from "./types";
 
 export const submitDinnerInvite = async (formData: DinnerFormData) => {
   const { error } = await supabase
-    .from('dinner_invites')
+    .from('event_requests')
     .insert([
       {
         name: formData.name,
         email: formData.email,
         company: formData.company,
-        role: formData.role,
+        title: formData.role,
         industry: formData.industry,
+        phone_number: formData.phoneNumber,
+        interests: formData.interests,
+        event_type: 'dinner'
       }
     ]);
 

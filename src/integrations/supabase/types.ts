@@ -302,15 +302,16 @@ export type Database = {
         }
         Relationships: []
       }
-      DinnerRequest: {
+      event_requests: {
         Row: {
           company: string | null
           created_at: string | null
           email: string | null
-          full_name: string | null
+          event_type: string
           id: number
           industry: string | null
           interests: string | null
+          name: string | null
           phone_number: string | null
           request_status: string | null
           title: string | null
@@ -319,10 +320,11 @@ export type Database = {
           company?: string | null
           created_at?: string | null
           email?: string | null
-          full_name?: string | null
+          event_type: string
           id?: never
           industry?: string | null
           interests?: string | null
+          name?: string | null
           phone_number?: string | null
           request_status?: string | null
           title?: string | null
@@ -331,49 +333,11 @@ export type Database = {
           company?: string | null
           created_at?: string | null
           email?: string | null
-          full_name?: string | null
+          event_type?: string
           id?: never
           industry?: string | null
           interests?: string | null
-          phone_number?: string | null
-          request_status?: string | null
-          title?: string | null
-        }
-        Relationships: []
-      }
-      EventRequest: {
-        Row: {
-          company: string | null
-          created_at: string | null
-          email: string | null
-          full_name: string | null
-          id: number
-          industry: Database["public"]["Enums"]["industry_type"] | null
-          interests: string | null
-          phone_number: string | null
-          request_status: string | null
-          title: string | null
-        }
-        Insert: {
-          company?: string | null
-          created_at?: string | null
-          email?: string | null
-          full_name?: string | null
-          id?: number
-          industry?: Database["public"]["Enums"]["industry_type"] | null
-          interests?: string | null
-          phone_number?: string | null
-          request_status?: string | null
-          title?: string | null
-        }
-        Update: {
-          company?: string | null
-          created_at?: string | null
-          email?: string | null
-          full_name?: string | null
-          id?: number
-          industry?: Database["public"]["Enums"]["industry_type"] | null
-          interests?: string | null
+          name?: string | null
           phone_number?: string | null
           request_status?: string | null
           title?: string | null
@@ -546,7 +510,8 @@ export type Database = {
           company: string | null
           created_at: string | null
           email: string | null
-          id: string | null
+          id: number | null
+          industry: string | null
           interests: string | null
           name: string | null
           phone_number: string | null
@@ -557,7 +522,8 @@ export type Database = {
           company?: string | null
           created_at?: string | null
           email?: string | null
-          id?: never
+          id?: number | null
+          industry?: string | null
           interests?: string | null
           name?: string | null
           phone_number?: string | null
@@ -568,7 +534,8 @@ export type Database = {
           company?: string | null
           created_at?: string | null
           email?: string | null
-          id?: never
+          id?: number | null
+          industry?: string | null
           interests?: string | null
           name?: string | null
           phone_number?: string | null
@@ -582,7 +549,8 @@ export type Database = {
           company: string | null
           created_at: string | null
           email: string | null
-          id: string | null
+          id: number | null
+          industry: string | null
           interests: string | null
           name: string | null
           phone_number: string | null
@@ -593,7 +561,8 @@ export type Database = {
           company?: string | null
           created_at?: string | null
           email?: string | null
-          id?: never
+          id?: number | null
+          industry?: string | null
           interests?: string | null
           name?: string | null
           phone_number?: string | null
@@ -604,7 +573,8 @@ export type Database = {
           company?: string | null
           created_at?: string | null
           email?: string | null
-          id?: never
+          id?: number | null
+          industry?: string | null
           interests?: string | null
           name?: string | null
           phone_number?: string | null

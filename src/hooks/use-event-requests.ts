@@ -12,31 +12,19 @@ export const useEventRequests = () => {
   useEffect(() => {
     fetchRequests();
 
-    const dinnerChannel = supabase
-      .channel('dinner_changes')
+    const channel = supabase
+      .channel('event_requests_changes')
       .on('postgres_changes', { 
         event: '*', 
         schema: 'public', 
-        table: 'DinnerRequest' 
-      }, () => {
-        fetchRequests();
-      })
-      .subscribe();
-
-    const forumChannel = supabase
-      .channel('forum_changes')
-      .on('postgres_changes', { 
-        event: '*', 
-        schema: 'public', 
-        table: 'EventRequest' 
+        table: 'event_requests' 
       }, () => {
         fetchRequests();
       })
       .subscribe();
 
     return () => {
-      supabase.removeChannel(dinnerChannel);
-      supabase.removeChannel(forumChannel);
+      supabase.removeChannel(channel);
     };
   }, []);
 
@@ -75,11 +63,13 @@ export const useEventRequests = () => {
   };
 
   const updateRequestStatus = async (requestId: string, status: string, type: 'dinner' | 'forum') => {
-    const table = type === 'dinner' ? 'dinner_requests' : 'forum_requests';
+    const eventType = type === 'dinner' ? 'dinner' : 'forum';
+    
     const { error } = await supabase
-      .from(table)
+      .from('event_requests')
       .update({ request_status: status })
-      .eq('id', requestId);
+      .eq('id', requestId)
+      .eq('event_type', eventType);
 
     if (error) {
       toast({

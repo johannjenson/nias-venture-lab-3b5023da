@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { EventInviteModalProps, EventFormData, IndustryType } from "./types";
+import { EventInviteModalProps, EventFormData } from "./types";
 import EventInviteForm from "./EventInviteForm";
 
 const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
@@ -20,7 +20,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
     email: "",
     company: "",
     title: "",
-    industry: "" as IndustryType,
+    industry: "",
     interests: "",
   });
 
@@ -30,15 +30,16 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
     
     try {
       const { error } = await supabase
-        .from('EventRequest')
+        .from('event_requests')
         .insert({
-          full_name: formData.fullName,
+          name: formData.fullName,
           phone_number: formData.phoneNumber,
           email: formData.email,
           company: formData.company,
           title: formData.title,
           industry: formData.industry,
-          interests: formData.interests
+          interests: formData.interests,
+          event_type: 'forum'
         });
 
       if (error) throw error;
@@ -65,7 +66,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
         email: "",
         company: "",
         title: "",
-        industry: "" as IndustryType,
+        industry: "",
         interests: "",
       });
     } catch (error) {
@@ -95,7 +96,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
           isSubmitting={isSubmitting}
           onInputChange={handleInputChange}
           onTitleChange={(value) => setFormData((prev) => ({ ...prev, title: value }))}
-          onIndustryChange={(value) => setFormData((prev) => ({ ...prev, industry: value as IndustryType }))}
+          onIndustryChange={(value) => setFormData((prev) => ({ ...prev, industry: value }))}
           onSubmit={handleSubmit}
         />
       </DialogContent>
