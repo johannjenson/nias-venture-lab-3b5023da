@@ -1,4 +1,3 @@
-
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,15 +24,11 @@ const RequestDetailsDialog = ({
   const { toast } = useToast();
 
   const handleStatusChange = async (newStatus: string) => {
-    const table = type === 'membership' ? 'Request' : 'EventRequest';
-    const id = type === 'membership' ? 
-      parseInt(request.id.replace('membership_', '')) : 
-      parseInt(request.id.replace('event_', ''));
-
+    const table = type === 'membership' ? 'Request' : 'event_requests';
     const { error } = await supabase
       .from(table)
       .update({ request_status: newStatus })
-      .eq('id', id);
+      .eq('id', request.id);
 
     if (error) {
       toast({
@@ -54,15 +49,12 @@ const RequestDetailsDialog = ({
   };
 
   const handleIndustryChange = async (newIndustry: IndustryType) => {
-    const table = type === 'membership' ? 'Request' : 'EventRequest';
-    const id = type === 'membership' ? 
-      parseInt(request.id.replace('membership_', '')) : 
-      parseInt(request.id.replace('event_', ''));
-
+    const table = type === 'membership' ? 'Request' : 'event_requests';
+    
     const { error } = await supabase
       .from(table)
       .update({ industry: newIndustry })
-      .eq('id', id);
+      .eq('id', request.id);
 
     if (error) {
       toast({
@@ -83,15 +75,12 @@ const RequestDetailsDialog = ({
   };
 
   const handleDelete = async () => {
-    const table = type === 'membership' ? 'Request' : 'EventRequest';
-    const id = type === 'membership' ? 
-      parseInt(request.id.replace('membership_', '')) : 
-      parseInt(request.id.replace('event_', ''));
-
+    const table = type === 'membership' ? 'Request' : 'event_requests';
+    
     const { error } = await supabase
       .from(table)
       .delete()
-      .eq('id', id);
+      .eq('id', request.id);
 
     if (error) {
       toast({

@@ -17,7 +17,7 @@ import { IndustryType } from "./types/contact";
 import { EventRequest } from "@/types/event-requests";
 
 type LeadEntry = {
-  id: string | number;
+  id: string;
   first_name: string | null;
   last_name: string | null;
   name: string | null;
@@ -110,6 +110,9 @@ const AllLeadsView = () => {
         id: contact.id,
         first_name: contact.first_name,
         last_name: contact.last_name,
+        name: contact.first_name && contact.last_name 
+          ? `${contact.first_name} ${contact.last_name}`
+          : null,
         email: contact.email,
         title: contact.title,
         industry: contact.industry,
@@ -119,7 +122,7 @@ const AllLeadsView = () => {
         stage: contact.stage
       })),
       ...eventData.map((request: EventRequest): LeadEntry => ({
-        id: request.id,
+        id: request.id.toString(),
         first_name: request.name?.split(' ')[0] || null,
         last_name: request.name?.split(' ').slice(1).join(' ') || null,
         name: request.name,
@@ -132,9 +135,12 @@ const AllLeadsView = () => {
         request_status: request.request_status
       })),
       ...membershipData.map((request): LeadEntry => ({
-        id: request.id,
+        id: request.id.toString(),
         first_name: request.first_name,
         last_name: request.last_name,
+        name: request.first_name && request.last_name 
+          ? `${request.first_name} ${request.last_name}`
+          : null,
         email: request.email,
         title: request.title,
         industry: request.industry,
@@ -167,11 +173,11 @@ const AllLeadsView = () => {
 
       setSelectedContact(contact);
     } else {
-      const requestId = leadEntry.id;
-      if (requestId.startsWith('membership_')) {
-        setRequestType('membership');
-      } else if (requestId.startsWith('event_')) {
+      const isEventRequest = leads.find(l => l.id === leadEntry.id)?.type === 'request';
+      if (isEventRequest) {
         setRequestType('event');
+      } else {
+        setRequestType('membership');
       }
       setSelectedRequest(leadEntry);
     }
@@ -198,7 +204,7 @@ const AllLeadsView = () => {
               onClick={() => handleLeadClick(lead)}
             >
               <TableCell>
-                {lead.first_name} {lead.last_name}
+                {lead.name || `${lead.first_name || ''} ${lead.last_name || ''}`}
               </TableCell>
               <TableCell>{lead.title}</TableCell>
               <TableCell>{lead.email}</TableCell>
