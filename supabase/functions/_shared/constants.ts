@@ -1,0 +1,22 @@
+export const industryTypes = [
+  'manufacturing',
+  'technology',
+  'tourism',
+  'healthcare',
+  'energy',
+  'mining',
+  'logistics',
+  'education',
+  'finance',
+  'real_estate',
+  'agriculture',
+  'water',
+  'defense',
+  'sports',
+  'aerospace',
+  'retail',
+  'creative',
+  'biotech',
+  'construction',
+  'ocean'
+] as const;
