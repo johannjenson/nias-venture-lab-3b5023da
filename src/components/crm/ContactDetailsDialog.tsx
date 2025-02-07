@@ -1,6 +1,7 @@
+
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -274,14 +275,6 @@ const ContactDetailsDialog = ({
               <DialogTitle className="pb-[10px]">
                 {contact.first_name} {contact.last_name}
               </DialogTitle>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-destructive hover:text-destructive hover:bg-destructive/10"
-                onClick={() => setShowDeleteAlert(true)}
-              >
-                <Trash2 className="h-5 w-5" />
-              </Button>
             </div>
             <div className="mt-4 flex items-center gap-6">
               <Target className="w-6 h-6 text-gray-500 p-1" />
@@ -331,6 +324,18 @@ const ContactDetailsDialog = ({
                 <ContactAttachments contactId={contact.id} />
               </TabsContent>
             </ScrollArea>
+
+            <div className="p-6 pt-2 border-t">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-destructive hover:text-destructive hover:bg-destructive/10"
+                onClick={() => setShowDeleteAlert(true)}
+              >
+                <Trash2 className="h-4 w-4 mr-2" />
+                Delete Contact
+              </Button>
+            </div>
           </Tabs>
         </DialogContent>
       </Dialog>
