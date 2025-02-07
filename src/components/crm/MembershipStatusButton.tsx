@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Check, Clock, XCircle, Users } from "lucide-react";
 import {
@@ -45,7 +44,7 @@ export const MembershipStatusButton = ({ currentStatus, onUpdateStatus }: Member
           size="sm"
           disabled={isLoading}
           className={cn(
-            "min-w-[140px] transition-all",
+            "min-w-[140px] transition-all bg-gray-100",
             currentStatusInfo.color,
             isLoading && "opacity-50 cursor-not-allowed"
           )}
@@ -64,7 +63,7 @@ export const MembershipStatusButton = ({ currentStatus, onUpdateStatus }: Member
               key={status.value}
               onClick={() => handleStatusUpdate(status.value)}
               className={cn(
-                "flex items-center gap-2",
+                "flex items-center gap-2 bg-gray-100 hover:bg-gray-200",
                 status.color
               )}
             >
@@ -77,4 +76,3 @@ export const MembershipStatusButton = ({ currentStatus, onUpdateStatus }: Member
     </DropdownMenu>
   );
 };
-
