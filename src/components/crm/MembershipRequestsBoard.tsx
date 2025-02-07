@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
@@ -91,7 +90,7 @@ const MembershipRequestsBoard = () => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 bg-[#F5F2EB] p-6 rounded-lg">
       <Tabs defaultValue="all" className="space-y-4">
         <TabsList>
           <TabsTrigger value="all">All Requests</TabsTrigger>

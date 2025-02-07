@@ -1,4 +1,3 @@
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RequestCard } from "./RequestCard";
 import { useEventRequests } from "@/hooks/use-event-requests";
@@ -7,7 +6,7 @@ const EventRequestsBoard = () => {
   const { dinnerRequests, forumRequests, updateRequestStatus } = useEventRequests();
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 bg-[#F5F2EB] p-6 rounded-lg">
       <Tabs defaultValue="dinner" className="space-y-4">
         <TabsList>
           <TabsTrigger value="dinner">Dinner Requests</TabsTrigger>
