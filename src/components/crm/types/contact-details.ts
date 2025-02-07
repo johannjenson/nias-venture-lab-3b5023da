@@ -43,7 +43,7 @@ export interface ContactDetailsDialogProps {
 
 export interface TimelineItem {
   id: string;
-  type: 'note';
+  type: 'note' | 'checklist';
   timestamp: string;
   content: string;
   user?: {
@@ -51,4 +51,6 @@ export interface TimelineItem {
     first_name: string | null;
     last_name: string | null;
   } | null;
+  stage?: ContactStage;
 }
+

@@ -161,7 +161,7 @@ const ContactDetailsDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-hidden flex flex-col">
         <DialogHeader>
           <DialogTitle>
             {contact.first_name} {contact.last_name}
@@ -171,13 +171,13 @@ const ContactDetailsDialog = ({
           </DialogDescription>
         </DialogHeader>
 
-        <Tabs defaultValue="details" className="w-full">
+        <Tabs defaultValue="details" className="flex-1 overflow-hidden">
           <TabsList className="w-full">
             <TabsTrigger value="details" className="flex-1">Details</TabsTrigger>
             <TabsTrigger value="attachments" className="flex-1">Attachments</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="details">
+          <TabsContent value="details" className="flex-1 overflow-auto">
             <div className="grid grid-cols-3 gap-8">
               <div className="col-span-1 space-y-4">
                 <ContactInfo contact={contact} />
@@ -194,7 +194,7 @@ const ContactDetailsDialog = ({
             </div>
           </TabsContent>
 
-          <TabsContent value="attachments">
+          <TabsContent value="attachments" className="flex-1 overflow-auto">
             <ContactAttachments contactId={contact.id} />
           </TabsContent>
         </Tabs>
@@ -204,3 +204,4 @@ const ContactDetailsDialog = ({
 };
 
 export default ContactDetailsDialog;
+
