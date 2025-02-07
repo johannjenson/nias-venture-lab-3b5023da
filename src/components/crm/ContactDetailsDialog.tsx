@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Database } from "@/integrations/supabase/types";
+import { Textarea } from "@/components/ui/textarea";
 
 type ContactStage = Database["public"]["Enums"]["contact_stage"];
 
@@ -31,6 +32,13 @@ interface ChecklistItem {
   completed: boolean;
 }
 
+interface Note {
+  id: string;
+  content: string;
+  created_at: string;
+  user_id: string;
+}
+
 const stages: { id: ContactStage; label: string }[] = [
   { id: 'mql_lead', label: 'MQL Lead' },
   { id: 'sql_qualification', label: 'SQL Qualification' },
@@ -47,11 +55,14 @@ const ContactDetailsDialog = ({
   onUpdate 
 }: ContactDetailsDialogProps) => {
   const [checklist, setChecklist] = useState<ChecklistItem[]>([]);
+  const [notes, setNotes] = useState<Note[]>([]);
+  const [newNote, setNewNote] = useState('');
   const { toast } = useToast();
 
   useEffect(() => {
     if (open) {
       fetchChecklist();
+      fetchNotes();
     }
   }, [open, contact.stage]);
 
@@ -113,6 +124,25 @@ const ContactDetailsDialog = ({
     }
   };
 
+  const fetchNotes = async () => {
+    const { data, error } = await supabase
+      .from('contact_notes')
+      .select('*')
+      .eq('contact_id', contact.id)
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      toast({
+        title: "Error fetching notes",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setNotes(data || []);
+  };
+
   const updateStage = async (newStage: ContactStage) => {
     const { error } = await supabase
       .from('contacts')
@@ -150,6 +180,30 @@ const ContactDetailsDialog = ({
     setChecklist(checklist.map(item => 
       item.id === itemId ? { ...item, completed } : item
     ));
+  };
+
+  const addNote = async () => {
+    if (!newNote.trim()) return;
+
+    const { error } = await supabase
+      .from('contact_notes')
+      .insert({
+        contact_id: contact.id,
+        content: newNote.trim(),
+        user_id: (await supabase.auth.getUser()).data.user?.id
+      });
+
+    if (error) {
+      toast({
+        title: "Error adding note",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setNewNote('');
+    fetchNotes();
   };
 
   return (
@@ -190,28 +244,62 @@ const ContactDetailsDialog = ({
             </div>
           </div>
 
-          <div className="col-span-2">
-            <h4 className="font-medium mb-4">Stage Checklist</h4>
-            <div className="space-y-3">
-              {checklist.map((item) => (
-                <div key={item.id} className="flex items-start space-x-3">
-                  <Checkbox
-                    id={item.id}
-                    checked={item.completed}
-                    onCheckedChange={(checked) => 
-                      toggleChecklistItem(item.id, checked as boolean)
-                    }
+          <div className="col-span-2 space-y-6">
+            <div>
+              <h4 className="font-medium mb-4">Stage Checklist</h4>
+              <div className="space-y-3">
+                {checklist.map((item) => (
+                  <div key={item.id} className="flex items-start space-x-3">
+                    <Checkbox
+                      id={item.id}
+                      checked={item.completed}
+                      onCheckedChange={(checked) => 
+                        toggleChecklistItem(item.id, checked as boolean)
+                      }
+                    />
+                    <label
+                      htmlFor={item.id}
+                      className={`text-sm ${
+                        item.completed ? "text-gray-500 line-through" : ""
+                      }`}
+                    >
+                      {item.item_text}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-medium mb-4">Notes</h4>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Textarea
+                    placeholder="Add a note..."
+                    value={newNote}
+                    onChange={(e) => setNewNote(e.target.value)}
+                    className="min-h-[100px]"
                   />
-                  <label
-                    htmlFor={item.id}
-                    className={`text-sm ${
-                      item.completed ? "text-gray-500 line-through" : ""
-                    }`}
+                  <Button 
+                    onClick={addNote}
+                    disabled={!newNote.trim()}
+                    className="w-full"
                   >
-                    {item.item_text}
-                  </label>
+                    Add Note
+                  </Button>
                 </div>
-              ))}
+
+                <div className="space-y-3">
+                  {notes.map((note) => (
+                    <div key={note.id} className="bg-gray-50 p-3 rounded-lg">
+                      <p className="text-sm mb-2">{note.content}</p>
+                      <p className="text-xs text-gray-500">
+                        Added {new Date(note.created_at).toLocaleString()}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
