@@ -28,6 +28,7 @@ const getEmailContent = (status: string, firstName: string) => {
           <h1>Welcome to Our Network, ${firstName}!</h1>
           <p>We're thrilled to inform you that your membership request has been approved!</p>
           <p>You now have access to our exclusive network and all its benefits. We look forward to connecting with you and seeing the value you'll bring to our community.</p>
+          <p>You will receive a separate email with instructions to set up your account password.</p>
           <p>Best regards,<br>The Team</p>
         `,
       };

@@ -74,6 +74,7 @@ const MembershipRequestsBoard = () => {
       }
 
       try {
+        // Create user account
         const { error: createAccountError } = await supabase.functions.invoke('create-approved-member', {
           body: {
             requestId,
@@ -87,9 +88,27 @@ const MembershipRequestsBoard = () => {
           throw createAccountError;
         }
 
+        // Send status notification email
+        const { error: emailError } = await supabase.functions.invoke('send-membership-status', {
+          body: {
+            requestId,
+            status: 'approved',
+            recipient: {
+              email: request.email,
+              firstName: request.first_name,
+              lastName: request.last_name,
+            },
+          },
+        });
+
+        if (emailError) {
+          console.error('Error sending status notification:', emailError);
+          // Don't throw here as the account was created successfully
+        }
+
         toast({
           title: "Request approved",
-          description: "Account has been created and a password reset email has been sent.",
+          description: "Account has been created and setup instructions have been sent.",
         });
       } catch (error) {
         console.error('Error creating account:', error);
@@ -101,13 +120,46 @@ const MembershipRequestsBoard = () => {
         return;
       }
     } else {
-      // For other status updates, just update the status
-      const { error } = await supabase
-        .from('membership_requests')
-        .update({ request_status: status })
-        .eq('id', requestId);
+      // For other status updates, just update the status and send notification
+      try {
+        const request = requests.find(r => r.id === requestId);
+        if (!request) {
+          throw new Error('Request not found');
+        }
 
-      if (error) {
+        const { error: updateError } = await supabase
+          .from('membership_requests')
+          .update({ request_status: status })
+          .eq('id', requestId);
+
+        if (updateError) {
+          throw updateError;
+        }
+
+        // Send status notification for waitlist and rejected statuses
+        if (['waitlist', 'rejected'].includes(status)) {
+          const { error: emailError } = await supabase.functions.invoke('send-membership-status', {
+            body: {
+              requestId,
+              status: status as 'waitlist' | 'rejected',
+              recipient: {
+                email: request.email,
+                firstName: request.first_name,
+                lastName: request.last_name,
+              },
+            },
+          });
+
+          if (emailError) {
+            console.error('Error sending status notification:', emailError);
+          }
+        }
+
+        toast({
+          title: "Status updated",
+          description: `Request status has been updated to ${status}`,
+        });
+      } catch (error: any) {
         toast({
           title: "Error updating request status",
           description: error.message,
@@ -115,11 +167,6 @@ const MembershipRequestsBoard = () => {
         });
         return;
       }
-
-      toast({
-        title: "Status updated",
-        description: `Request status has been updated to ${status}`,
-      });
     }
 
     fetchRequests();
