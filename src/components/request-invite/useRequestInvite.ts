@@ -34,28 +34,22 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
       if (checkError) throw checkError;
 
       if (hasAccount) {
-        toast.error(
-          <div className="space-y-2">
-            <p>An account already exists with this email.</p>
-            <div className="flex gap-2">
-              <a 
-                href="/login" 
-                className="text-blue-500 hover:text-blue-600 underline"
-                onClick={() => onCloseModal(false)}
-              >
-                Login
-              </a>
-              <span>or</span>
-              <a 
-                href="/forgot-password" 
-                className="text-blue-500 hover:text-blue-600 underline"
-                onClick={() => onCloseModal(false)}
-              >
-                Reset Password
-              </a>
-            </div>
-          </div>
-        );
+        toast.error("An account already exists with this email. Please login or reset your password.", {
+          action: {
+            label: "Login",
+            onClick: () => {
+              onCloseModal(false);
+              window.location.href = "/login";
+            },
+          },
+          altAction: {
+            label: "Reset Password",
+            onClick: () => {
+              onCloseModal(false);
+              window.location.href = "/forgot-password";
+            },
+          },
+        });
         setIsSubmitting(false);
         return;
       }
@@ -138,4 +132,3 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
     setFormData: (value: string) => setFormData(prev => ({ ...prev, title: value }))
   };
 };
-
