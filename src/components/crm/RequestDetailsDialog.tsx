@@ -9,6 +9,7 @@ import { RequestDetailsDialogProps } from "./types/request-details";
 import { supabase } from "@/integrations/supabase/client";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState } from "react";
+import { industryTypes } from "./types/contact";
 
 const RequestDetailsDialog = ({ 
   request, 
@@ -18,14 +19,19 @@ const RequestDetailsDialog = ({
   onUpdate 
 }: RequestDetailsDialogProps) => {
   const [status, setStatus] = useState(request.request_status || 'pending');
+  const [industry, setIndustry] = useState(request.industry || '');
   const { toast } = useToast();
 
   const handleStatusChange = async (newStatus: string) => {
     const table = type === 'membership' ? 'Request' : 'EventRequest';
+    const id = type === 'membership' ? 
+      parseInt(request.id.replace('membership_', '')) : 
+      parseInt(request.id.replace('event_', ''));
+
     const { error } = await supabase
       .from(table)
       .update({ request_status: newStatus })
-      .eq('id', type === 'membership' ? request.id.replace('membership_', '') : request.id.replace('event_', ''));
+      .eq('id', id);
 
     if (error) {
       toast({
@@ -42,6 +48,32 @@ const RequestDetailsDialog = ({
     toast({
       title: "Status updated",
       description: `Request status updated to ${newStatus}`,
+    });
+  };
+
+  const handleIndustryChange = async (newIndustry: string) => {
+    if (type !== 'event') return; // Only event requests have industry field
+
+    const { error } = await supabase
+      .from('EventRequest')
+      .update({ industry: newIndustry })
+      .eq('id', parseInt(request.id.replace('event_', '')));
+
+    if (error) {
+      toast({
+        title: "Error updating industry",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIndustry(newIndustry);
+    onUpdate();
+
+    toast({
+      title: "Industry updated",
+      description: `Industry updated to ${industryTypes.find(i => i.id === newIndustry)?.label || newIndustry}`,
     });
   };
 
@@ -111,6 +143,24 @@ const RequestDetailsDialog = ({
             <div>
               <Label>Referred By</Label>
               <Input value={request.referred_by} readOnly />
+            </div>
+          )}
+
+          {type === 'event' && (
+            <div>
+              <Label>Industry</Label>
+              <Select value={industry} onValueChange={handleIndustryChange}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {industryTypes.map(type => (
+                    <SelectItem key={type.id} value={type.id}>
+                      {type.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           )}
 
