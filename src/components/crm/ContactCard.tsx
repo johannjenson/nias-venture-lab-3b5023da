@@ -37,7 +37,10 @@ const ContactCard = ({ contact, onUpdate }: ContactCardProps) => {
                 {contact.first_name} {contact.last_name}
               </h4>
               {contact.has_account && (
-                <UserCheck className="h-4 w-4 text-green-500" title="Has user account" />
+                <UserCheck 
+                  className="h-4 w-4 text-green-500" 
+                  aria-label="Has user account" 
+                />
               )}
             </div>
             <Button
