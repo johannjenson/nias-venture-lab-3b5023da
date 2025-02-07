@@ -33,6 +33,7 @@ const ContactDetailsDialog = ({
   const [newNote, setNewNote] = useState('');
   const [attachments, setAttachments] = useState<Attachment[]>([]);
   const [newUrl, setNewUrl] = useState('');
+
   const { toast } = useToast();
 
   useEffect(() => {
@@ -190,7 +191,9 @@ const ContactDetailsDialog = ({
       .insert({
         contact_id: contact.id,
         external_url: newUrl.trim(),
-        uploaded_by: (await supabase.auth.getUser()).data.user?.id
+        uploaded_by: (await supabase.auth.getUser()).data.user?.id,
+        file_path: '', // Required field but not used for URLs
+        filename: 'external-url' // Required field but not used for URLs
       });
 
     if (dbError) {
@@ -473,7 +476,7 @@ const ContactDetailsDialog = ({
                         variant="ghost"
                         size="sm"
                         className="text-red-500 hover:text-red-600"
-                        onClick={() => handleDelete(attachment)}
+                        onClick={() => handleFileDelete(attachment)}
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>
