@@ -109,7 +109,7 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
     }
 
     setNewNote('');
-    fetchTimelineItems();
+    await fetchTimelineItems();
   };
 
   const toggleChecklistItem = async (itemId: string) => {
