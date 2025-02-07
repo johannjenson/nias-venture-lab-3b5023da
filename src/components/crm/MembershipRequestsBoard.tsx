@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
@@ -60,24 +61,66 @@ const MembershipRequestsBoard = () => {
   };
 
   const updateRequestStatus = async (requestId: string, status: string) => {
-    const { error } = await supabase
-      .from('membership_requests')
-      .update({ request_status: status })
-      .eq('id', requestId);
+    // If the new status is 'approved', create an account for the member
+    if (status === 'approved') {
+      const request = requests.find(r => r.id === requestId);
+      if (!request || !request.email || !request.first_name) {
+        toast({
+          title: "Error approving request",
+          description: "Missing required information for account creation",
+          variant: "destructive",
+        });
+        return;
+      }
 
-    if (error) {
+      try {
+        const { error: createAccountError } = await supabase.functions.invoke('create-approved-member', {
+          body: {
+            requestId,
+            email: request.email,
+            firstName: request.first_name,
+            lastName: request.last_name || '',
+          },
+        });
+
+        if (createAccountError) {
+          throw createAccountError;
+        }
+
+        toast({
+          title: "Request approved",
+          description: "Account has been created and a password reset email has been sent.",
+        });
+      } catch (error) {
+        console.error('Error creating account:', error);
+        toast({
+          title: "Error creating account",
+          description: error.message,
+          variant: "destructive",
+        });
+        return;
+      }
+    } else {
+      // For other status updates, just update the status
+      const { error } = await supabase
+        .from('membership_requests')
+        .update({ request_status: status })
+        .eq('id', requestId);
+
+      if (error) {
+        toast({
+          title: "Error updating request status",
+          description: error.message,
+          variant: "destructive",
+        });
+        return;
+      }
+
       toast({
-        title: "Error updating request status",
-        description: error.message,
-        variant: "destructive",
+        title: "Status updated",
+        description: `Request status has been updated to ${status}`,
       });
-      return;
     }
-
-    toast({
-      title: "Status updated",
-      description: `Request status has been updated to ${status}`,
-    });
 
     fetchRequests();
   };
