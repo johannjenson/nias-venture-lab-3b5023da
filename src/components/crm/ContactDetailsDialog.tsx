@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
@@ -11,6 +10,7 @@ import ContactChecklist from "./components/ContactChecklist";
 import ContactNotes from "./components/ContactNotes";
 import ContactAttachments from "./components/ContactAttachments";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import HeatRating from "./components/HeatRating";
 
 const ContactDetailsDialog = ({ 
   contact, 
@@ -28,7 +28,6 @@ const ContactDetailsDialog = ({
   }, [open, contact.stage]);
 
   const fetchChecklist = async () => {
-    // First, get existing completed items for this contact
     const { data: existingItems, error: existingError } = await supabase
       .from('checklist_items')
       .select('*')
@@ -44,7 +43,6 @@ const ContactDetailsDialog = ({
       return;
     }
 
-    // Get default items for the current stage
     const { data: defaultItems, error: defaultError } = await supabase
       .from('checklist_items')
       .select('*')
@@ -61,7 +59,6 @@ const ContactDetailsDialog = ({
     }
 
     if (existingItems.length === 0) {
-      // No existing items, create new ones from defaults
       const newItems: ChecklistItem[] = defaultItems.map(({ item_text, stage }) => ({
         id: crypto.randomUUID(),
         contact_id: contact.id,
@@ -86,7 +83,6 @@ const ContactDetailsDialog = ({
 
       setChecklist(newItems);
     } else {
-      // Merge existing items with any new default items for the current stage
       const existingTexts = new Set(existingItems.map(item => item.item_text));
       const newDefaultItems: ChecklistItem[] = defaultItems
         .filter(item => !existingTexts.has(item.item_text))
@@ -134,7 +130,7 @@ const ContactDetailsDialog = ({
     }
 
     onUpdate();
-    fetchChecklist(); // This will add any new checklist items for the new stage
+    fetchChecklist();
   };
 
   const toggleChecklistItem = async (itemId: string, completed: boolean) => {
@@ -158,6 +154,24 @@ const ContactDetailsDialog = ({
     setChecklist(checklist.map(item => 
       item.id === itemId ? { ...item, completed, completed_at: completed ? new Date().toISOString() : null } : item
     ));
+  };
+
+  const updateHeatRating = async (rating: number) => {
+    const { error } = await supabase
+      .from('contacts')
+      .update({ heat_rating: rating })
+      .eq('id', contact.id);
+
+    if (error) {
+      toast({
+        title: "Error updating heat rating",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    onUpdate();
   };
 
   return (
@@ -184,6 +198,10 @@ const ContactDetailsDialog = ({
                 <div className="col-span-1 space-y-4">
                   <ContactInfo contact={contact} />
                   <StageSelector currentStage={contact.stage} onStageChange={updateStage} />
+                  <HeatRating 
+                    currentRating={contact.heat_rating} 
+                    onRatingChange={updateHeatRating}
+                  />
                 </div>
 
                 <div className="col-span-2 space-y-6">

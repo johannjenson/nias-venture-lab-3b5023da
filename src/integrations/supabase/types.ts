@@ -251,6 +251,7 @@ export type Database = {
           created_at: string | null
           email: string
           first_name: string | null
+          heat_rating: number | null
           id: string
           industry: Database["public"]["Enums"]["industry_type"] | null
           last_name: string | null
@@ -274,6 +275,7 @@ export type Database = {
           created_at?: string | null
           email: string
           first_name?: string | null
+          heat_rating?: number | null
           id?: string
           industry?: Database["public"]["Enums"]["industry_type"] | null
           last_name?: string | null
@@ -297,6 +299,7 @@ export type Database = {
           created_at?: string | null
           email?: string
           first_name?: string | null
+          heat_rating?: number | null
           id?: string
           industry?: Database["public"]["Enums"]["industry_type"] | null
           last_name?: string | null
