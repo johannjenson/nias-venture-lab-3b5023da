@@ -14,8 +14,8 @@ import { Contact } from "../../types/contact-details";
 interface StageChangeAlertProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  pendingStage: typeof Contact.prototype.stage | null;
-  onConfirm: (stage: typeof Contact.prototype.stage) => void;
+  pendingStage: Contact['stage'] | null;
+  onConfirm: (stage: Contact['stage']) => void;
 }
 
 const StageChangeAlert = ({

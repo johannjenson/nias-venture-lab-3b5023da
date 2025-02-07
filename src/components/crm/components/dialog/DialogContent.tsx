@@ -13,7 +13,7 @@ interface DialogContentProps {
   contact: Contact;
   checklist: ChecklistItem[];
   onHeatRatingChange: (rating: number) => void;
-  onStageChange: (stage: typeof contact.stage) => void;
+  onStageChange: (stage: Contact['stage']) => void;
   onToggleChecklistItem: (itemId: string, completed: boolean) => void;
   onChecklistUpdate: () => void;
 }
