@@ -8,6 +8,7 @@ export interface ContactFormData {
   company: string;
   title: string;
   lead_type: LeadType;
+  note?: string; // Added note as an optional field
 }
 
 export const leadTypes = [
