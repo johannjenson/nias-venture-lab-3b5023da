@@ -1,3 +1,4 @@
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -59,8 +60,9 @@ const RequestDetailsDialog = ({
     }
 
     // Update the moved_to_pipeline flag
+    const table = type === 'membership' ? 'Request' : 'event_requests';
     const { error: updateError } = await supabase
-      .from('Request')
+      .from(table)
       .update({ moved_to_pipeline: true })
       .eq('id', parseInt(request.id));
 
@@ -78,15 +80,15 @@ const RequestDetailsDialog = ({
       .from('contacts')
       .insert([
         {
-          first_name: request.first_name,
-          last_name: request.last_name,
+          first_name: request.first_name || request.name?.split(' ')[0],
+          last_name: request.last_name || request.name?.split(' ').slice(1).join(' '),
           email: request.email,
           phone: request.phone_number,
           company: request.company,
           title: request.title,
           industry: request.industry,
           linkedin_url: request.linkedin_url,
-          source: 'network_request',
+          source: type === 'membership' ? 'network_request' : 'event_request',
           source_id: request.id.toString(),
           stage: 'mql_lead'
         }
@@ -260,7 +262,7 @@ const RequestDetailsDialog = ({
               </Select>
             </div>
 
-            {status === 'approved' && type === 'membership' && (
+            {status === 'approved' && (
               <Button
                 onClick={handleMoveToContact}
                 className="ml-4"
