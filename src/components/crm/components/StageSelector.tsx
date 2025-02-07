@@ -22,7 +22,7 @@ const stages: { id: ContactStage; label: string }[] = [
 const StageSelector = ({ currentStage, onStageChange }: StageSelectorProps) => {
   return (
     <div>
-      <h4 className="font-medium mb-2">Stage</h4>
+      <h4 className="font-medium mb-2">Change Stage</h4>
       <div className="space-y-2">
         {stages.map((stage) => (
           <Button
@@ -41,3 +41,4 @@ const StageSelector = ({ currentStage, onStageChange }: StageSelectorProps) => {
 };
 
 export default StageSelector;
+
