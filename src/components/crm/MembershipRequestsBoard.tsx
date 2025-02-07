@@ -21,6 +21,7 @@ type MembershipRequest = {
 
 const stages = [
   { id: 'pending', label: 'Pending Review' },
+  { id: 'waitlist', label: 'Waitlist' },
   { id: 'approved', label: 'Approved' },
   { id: 'rejected', label: 'Rejected' },
 ];

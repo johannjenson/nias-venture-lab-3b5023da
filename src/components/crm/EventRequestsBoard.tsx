@@ -4,6 +4,14 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import ContactCard from "./ContactCard";
+import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type EventRequest = {
@@ -14,12 +22,15 @@ type EventRequest = {
   title: string | null;
   phone_number: string | null;
   interests: string | null;
+  request_status: string | null;
   created_at: string;
 };
 
-const stages = [
-  { id: 'dinner', label: 'Dinner Requests' },
-  { id: 'forum', label: 'Forum Requests' },
+const statuses = [
+  { value: 'pending', label: 'Pending Review' },
+  { value: 'waitlist', label: 'Waitlist' },
+  { value: 'approved', label: 'Approved' },
+  { value: 'rejected', label: 'Rejected' },
 ];
 
 const EventRequestsBoard = () => {
@@ -94,6 +105,66 @@ const EventRequestsBoard = () => {
     setForumRequests(forumData || []);
   };
 
+  const updateRequestStatus = async (requestId: string, status: string, type: 'dinner' | 'forum') => {
+    const table = type === 'dinner' ? 'DinnerRequest' : 'EventRequest';
+    const { error } = await supabase
+      .from(table)
+      .update({ request_status: status })
+      .eq('id', requestId);
+
+    if (error) {
+      toast({
+        title: "Error updating request status",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    toast({
+      title: "Status updated",
+      description: `Request has been moved to ${status}`,
+    });
+
+    fetchRequests();
+  };
+
+  const RequestCard = ({ request, type }: { request: EventRequest, type: 'dinner' | 'forum' }) => (
+    <Card key={request.id} className="p-4">
+      <div className="flex justify-between items-start mb-4">
+        <div>
+          <h4 className="font-medium">{request.name}</h4>
+          <p className="text-sm text-gray-500">{request.company}</p>
+          <p className="text-sm text-gray-600">{request.title}</p>
+          <p className="text-sm text-gray-500 truncate">{request.email}</p>
+        </div>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size="sm">
+              {request.request_status || 'Pending'} <ChevronDown className="ml-2 h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            {statuses.map((status) => (
+              <DropdownMenuItem
+                key={status.value}
+                onClick={() => updateRequestStatus(request.id, status.value, type)}
+              >
+                {status.label}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+      {request.interests && (
+        <div className="text-sm text-gray-600">
+          <p className="font-medium">Interests:</p>
+          <p>{request.interests}</p>
+        </div>
+      )}
+    </Card>
+  );
+
   return (
     <div className="space-y-4">
       <Tabs defaultValue="dinner" className="space-y-4">
@@ -105,22 +176,7 @@ const EventRequestsBoard = () => {
         <TabsContent value="dinner">
           <div className="grid gap-4">
             {dinnerRequests.map(request => (
-              <Card key={request.id} className="p-4">
-                <ContactCard 
-                  contact={{
-                    id: request.id,
-                    first_name: request.name || '',
-                    last_name: '',
-                    email: request.email || '',
-                    company: request.company || '',
-                    title: request.title || '',
-                    stage: 'mql_lead',
-                    source: 'dinner_request',
-                    source_id: request.id
-                  }}
-                  onUpdate={fetchRequests}
-                />
-              </Card>
+              <RequestCard key={request.id} request={request} type="dinner" />
             ))}
           </div>
         </TabsContent>
@@ -128,22 +184,7 @@ const EventRequestsBoard = () => {
         <TabsContent value="forum">
           <div className="grid gap-4">
             {forumRequests.map(request => (
-              <Card key={request.id} className="p-4">
-                <ContactCard 
-                  contact={{
-                    id: request.id,
-                    first_name: request.name || '',
-                    last_name: '',
-                    email: request.email || '',
-                    company: request.company || '',
-                    title: request.title || '',
-                    stage: 'mql_lead',
-                    source: 'forum_request',
-                    source_id: request.id
-                  }}
-                  onUpdate={fetchRequests}
-                />
-              </Card>
+              <RequestCard key={request.id} request={request} type="forum" />
             ))}
           </div>
         </TabsContent>
