@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
@@ -58,6 +57,64 @@ const ContactDetailsDialog = ({
     }
 
     setAttachments(data);
+  };
+
+  const fetchChecklist = async () => {
+    const { data: existingItems, error: existingError } = await supabase
+      .from('checklist_items')
+      .select('*')
+      .eq('contact_id', contact.id);
+
+    if (existingError) {
+      toast({
+        title: "Error fetching checklist",
+        description: existingError.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (existingItems.length === 0) {
+      const { data: defaultItems, error: defaultError } = await supabase
+        .from('checklist_items')
+        .select('*')
+        .is('contact_id', null)
+        .eq('stage', contact.stage);
+
+      if (defaultError) {
+        toast({
+          title: "Error fetching default checklist",
+          description: defaultError.message,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      const newItems = defaultItems.map(({ item_text, stage }) => ({
+        id: crypto.randomUUID(),
+        contact_id: contact.id,
+        stage,
+        item_text,
+        completed: false,
+      }));
+
+      const { error: insertError } = await supabase
+        .from('checklist_items')
+        .insert(newItems);
+
+      if (insertError) {
+        toast({
+          title: "Error creating checklist",
+          description: insertError.message,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      setChecklist(newItems);
+    } else {
+      setChecklist(existingItems);
+    }
   };
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -169,11 +226,11 @@ const ContactDetailsDialog = ({
     });
   };
 
-  const handleUrlAdd = async () => {
-    if (!newUrl.trim()) return;
+  const handleUrlAdd = async (url: string) => {
+    if (!url.trim()) return;
 
     try {
-      new URL(newUrl); // Validate URL format
+      new URL(url); // Validate URL format
     } catch (e) {
       toast({
         title: "Invalid URL",
@@ -187,10 +244,10 @@ const ContactDetailsDialog = ({
       .from('contact_attachments')
       .insert({
         contact_id: contact.id,
-        external_url: newUrl.trim(),
+        external_url: url.trim(),
         uploaded_by: (await supabase.auth.getUser()).data.user?.id,
-        file_path: 'url-attachment', // Required field but not used for URLs
-        filename: 'external-url' // Required field but not used for URLs
+        file_path: 'url-attachment',
+        filename: 'external-url'
       });
 
     if (dbError) {
@@ -204,66 +261,22 @@ const ContactDetailsDialog = ({
 
     setNewUrl('');
     fetchAttachments();
-    toast({
-      title: "URL added successfully",
-    });
   };
 
-  const fetchChecklist = async () => {
-    const { data: existingItems, error: existingError } = await supabase
-      .from('checklist_items')
-      .select('*')
-      .eq('contact_id', contact.id);
-
-    if (existingError) {
-      toast({
-        title: "Error fetching checklist",
-        description: existingError.message,
-        variant: "destructive",
-      });
-      return;
+  const handleUrlInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const url = e.target.value;
+    setNewUrl(url);
+    
+    // If the URL ends with a space or enter key, treat it as submission
+    if (url.endsWith(' ')) {
+      handleUrlAdd(url.trim());
     }
+  };
 
-    if (existingItems.length === 0) {
-      const { data: defaultItems, error: defaultError } = await supabase
-        .from('checklist_items')
-        .select('*')
-        .is('contact_id', null)
-        .eq('stage', contact.stage);
-
-      if (defaultError) {
-        toast({
-          title: "Error fetching default checklist",
-          description: defaultError.message,
-          variant: "destructive",
-        });
-        return;
-      }
-
-      const newItems = defaultItems.map(({ item_text, stage }) => ({
-        id: crypto.randomUUID(),
-        contact_id: contact.id,
-        stage,
-        item_text,
-        completed: false,
-      }));
-
-      const { error: insertError } = await supabase
-        .from('checklist_items')
-        .insert(newItems);
-
-      if (insertError) {
-        toast({
-          title: "Error creating checklist",
-          description: insertError.message,
-          variant: "destructive",
-        });
-        return;
-      }
-
-      setChecklist(newItems);
-    } else {
-      setChecklist(existingItems);
+  const handleUrlInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleUrlAdd(newUrl);
     }
   };
 
@@ -339,11 +352,11 @@ const ContactDetailsDialog = ({
           </TabsContent>
 
           <TabsContent value="attachments">
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <Button variant="outline" className="flex-1">
-                  <label className="flex items-center gap-2 cursor-pointer w-full">
-                    <Upload className="h-4 w-4" />
+            <div className="space-y-6">
+              <div className="space-y-4">
+                <Button variant="outline" className="w-full py-8 text-lg">
+                  <label className="flex items-center gap-2 cursor-pointer w-full justify-center">
+                    <Upload className="h-6 w-6" />
                     Upload File
                     <input
                       type="file"
@@ -352,41 +365,33 @@ const ContactDetailsDialog = ({
                     />
                   </label>
                 </Button>
-                <div className="flex-[2] flex gap-2">
+                <div className="flex gap-2">
                   <Input
                     type="url"
-                    placeholder="Add URL (e.g., https://example.com)"
+                    placeholder="Add URL and press Enter (e.g., https://example.com)"
                     value={newUrl}
-                    onChange={(e) => setNewUrl(e.target.value)}
+                    onChange={handleUrlInputChange}
+                    onKeyDown={handleUrlInputKeyDown}
+                    className="flex-1"
                   />
-                  <Button onClick={handleUrlAdd}>
-                    <LinkIcon className="h-4 w-4 mr-2" />
-                    Add URL
-                  </Button>
+                  <LinkIcon className="h-5 w-5 text-gray-400 mt-2" />
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 max-h-[400px] overflow-y-auto">
                 {attachments.map((attachment) => (
                   <div
                     key={attachment.id}
                     className="flex items-center justify-between p-3 border rounded-lg"
                   >
                     <div className="flex items-center gap-3">
-                      {attachment.file_path ? (
-                        <FileIcon className="h-5 w-5 text-blue-500" />
-                      ) : (
+                      {attachment.file_path === 'url-attachment' ? (
                         <LinkIcon className="h-5 w-5 text-green-500" />
+                      ) : (
+                        <FileIcon className="h-5 w-5 text-blue-500" />
                       )}
                       <div>
-                        {attachment.file_path ? (
-                          <>
-                            <p className="font-medium">{attachment.filename}</p>
-                            <p className="text-sm text-gray-500">
-                              {new Date(attachment.created_at).toLocaleDateString()}
-                            </p>
-                          </>
-                        ) : (
+                        {attachment.file_path === 'url-attachment' ? (
                           <>
                             <p className="font-medium">External Link</p>
                             <p className="text-sm text-blue-500 hover:text-blue-600">
@@ -401,11 +406,18 @@ const ContactDetailsDialog = ({
                               </a>
                             </p>
                           </>
+                        ) : (
+                          <>
+                            <p className="font-medium">{attachment.filename}</p>
+                            <p className="text-sm text-gray-500">
+                              {new Date(attachment.created_at).toLocaleDateString()}
+                            </p>
+                          </>
                         )}
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      {attachment.file_path && (
+                      {attachment.file_path !== 'url-attachment' && (
                         <Button
                           variant="ghost"
                           size="sm"
