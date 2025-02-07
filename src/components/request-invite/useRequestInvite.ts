@@ -25,6 +25,41 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
     setIsSubmitting(true);
     
     try {
+      // Check if user already exists
+      const { data: hasAccount, error: checkError } = await supabase
+        .rpc('has_user_account', {
+          email_address: formData.email
+        });
+
+      if (checkError) throw checkError;
+
+      if (hasAccount) {
+        toast.error(
+          <div className="space-y-2">
+            <p>An account already exists with this email.</p>
+            <div className="flex gap-2">
+              <a 
+                href="/login" 
+                className="text-blue-500 hover:text-blue-600 underline"
+                onClick={() => onCloseModal(false)}
+              >
+                Login
+              </a>
+              <span>or</span>
+              <a 
+                href="/forgot-password" 
+                className="text-blue-500 hover:text-blue-600 underline"
+                onClick={() => onCloseModal(false)}
+              >
+                Reset Password
+              </a>
+            </div>
+          </div>
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
       // Split full name into first and last name
       const nameParts = formData.fullName.trim().split(' ');
       const firstName = nameParts[0];
@@ -103,3 +138,4 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
     setFormData: (value: string) => setFormData(prev => ({ ...prev, title: value }))
   };
 };
+
