@@ -26,9 +26,11 @@ export const useRequestDeletion = ({
         .from('contacts')
         .select('id')
         .eq('source', type === 'membership' ? 'network_request' : 'event_request')
-        .eq('source_id', requestId.toString());
+        .eq('source_id', requestId.toString())
+        .limit(1)
+        .single();
 
-      if (contactFetchError) {
+      if (contactFetchError && contactFetchError.code !== 'PGRST116') { // Ignore "no rows returned" error
         toast({
           title: "Error finding associated contact",
           description: contactFetchError.message,
@@ -37,7 +39,24 @@ export const useRequestDeletion = ({
         return;
       }
 
-      // Delete the original request first
+      if (contacts) {
+        // Delete the contact first
+        const { error: contactDeleteError } = await supabase
+          .from('contacts')
+          .delete()
+          .eq('id', contacts.id);
+
+        if (contactDeleteError) {
+          toast({
+            title: "Error deleting associated contact",
+            description: contactDeleteError.message,
+            variant: "destructive",
+          });
+          return;
+        }
+      }
+
+      // Then delete the request
       const { error: requestDeleteError } = await supabase
         .from(requestTable)
         .delete()
@@ -52,26 +71,9 @@ export const useRequestDeletion = ({
         return;
       }
 
-      // Delete the associated contact if found
-      if (contacts && contacts.length > 0) {
-        const { error: contactDeleteError } = await supabase
-          .from('contacts')
-          .delete()
-          .eq('id', contacts[0].id);
-
-        if (contactDeleteError) {
-          toast({
-            title: "Error deleting associated contact",
-            description: contactDeleteError.message,
-            variant: "destructive",
-          });
-          return;
-        }
-      }
-
       // Only if all operations succeeded, close dialog and update UI
-      onOpenChange(false);
       onUpdate();
+      onOpenChange(false);
 
       toast({
         title: "Request deleted",
