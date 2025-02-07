@@ -86,9 +86,15 @@ const EventRequestsBoard = () => {
 
     // Transform the data to match EventRequest type
     const transformedDinnerData: EventRequest[] = (dinnerData || []).map(item => ({
-      ...item,
-      request_status: item.request_status || 'pending',
-      id: item.id.toString()
+      id: item.id || '',
+      name: item.name,
+      email: item.email,
+      company: item.company,
+      title: item.title,
+      phone_number: item.phone_number,
+      interests: item.interests,
+      request_status: 'pending',
+      created_at: item.created_at || new Date().toISOString(),
     }));
 
     setDinnerRequests(transformedDinnerData);
@@ -110,9 +116,15 @@ const EventRequestsBoard = () => {
 
     // Transform the data to match EventRequest type
     const transformedForumData: EventRequest[] = (forumData || []).map(item => ({
-      ...item,
-      request_status: item.request_status || 'pending',
-      id: item.id.toString()
+      id: item.id || '',
+      name: item.name,
+      email: item.email,
+      company: item.company,
+      title: item.title,
+      phone_number: item.phone_number,
+      interests: item.interests,
+      request_status: 'pending',
+      created_at: item.created_at || new Date().toISOString(),
     }));
 
     setForumRequests(transformedForumData);
