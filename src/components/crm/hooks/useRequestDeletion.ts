@@ -18,7 +18,7 @@ export const useRequestDeletion = ({
   const { toast } = useToast();
 
   const handleDelete = async () => {
-    const table = type === 'membership' ? 'membership_requests' : 'event_requests';
+    const table = type === 'membership' ? 'Request' : 'event_requests';
     
     const { error } = await supabase
       .from(table)
