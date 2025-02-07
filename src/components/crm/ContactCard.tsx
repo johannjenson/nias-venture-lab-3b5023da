@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { Contact, ContactStage } from "./types/kanban";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
@@ -22,7 +23,35 @@ interface ContactCardProps {
 const ContactCard = ({ contact, onUpdate }: ContactCardProps) => {
   const [isMoving, setIsMoving] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+  const [showMoveAlert, setShowMoveAlert] = useState(false);
+  const [pendingStageChange, setPendingStageChange] = useState<ContactStage | null>(null);
   const { toast } = useToast();
+
+  const checkIncompleteItems = async (newStage: ContactStage) => {
+    const { data: items, error } = await supabase
+      .from('checklist_items')
+      .select('*')
+      .eq('contact_id', contact.id)
+      .eq('stage', contact.stage);
+
+    if (error) {
+      toast({
+        title: "Error checking checklist items",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const hasIncompleteItems = items.some(item => !item.completed);
+    
+    if (hasIncompleteItems) {
+      setPendingStageChange(newStage);
+      setShowMoveAlert(true);
+    } else {
+      handleMoveContact(newStage);
+    }
+  };
 
   const handleMoveContact = async (newStage: ContactStage) => {
     setIsMoving(true);
@@ -94,22 +123,22 @@ const ContactCard = ({ contact, onUpdate }: ContactCardProps) => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => handleMoveContact('mql_lead')}>
+              <DropdownMenuItem onClick={() => checkIncompleteItems('mql_lead')}>
                 Move to MQL
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleMoveContact('sql_qualification')}>
+              <DropdownMenuItem onClick={() => checkIncompleteItems('sql_qualification')}>
                 Move to SQL
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleMoveContact('sqo_discovery')}>
+              <DropdownMenuItem onClick={() => checkIncompleteItems('sqo_discovery')}>
                 Move to SQO
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleMoveContact('evaluation')}>
+              <DropdownMenuItem onClick={() => checkIncompleteItems('evaluation')}>
                 Move to Evaluation
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleMoveContact('closed_won')}>
+              <DropdownMenuItem onClick={() => checkIncompleteItems('closed_won')}>
                 Move to Won
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleMoveContact('closed_lost')}>
+              <DropdownMenuItem onClick={() => checkIncompleteItems('closed_lost')}>
                 Move to Lost
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -147,9 +176,30 @@ const ContactCard = ({ contact, onUpdate }: ContactCardProps) => {
         onOpenChange={setShowDetails}
         onUpdate={onUpdate}
       />
+
+      <AlertDialog open={showMoveAlert} onOpenChange={setShowMoveAlert}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Incomplete Checklist Items</AlertDialogTitle>
+            <AlertDialogDescription>
+              There are incomplete checklist items for the current stage. Are you sure you want to proceed with moving this contact to the next stage?
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setShowMoveAlert(false)}>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={() => {
+              if (pendingStageChange) {
+                handleMoveContact(pendingStageChange);
+                setShowMoveAlert(false);
+              }
+            }}>
+              Proceed Anyway
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   );
 };
 
 export default ContactCard;
-

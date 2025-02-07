@@ -1,5 +1,7 @@
+
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -19,6 +21,8 @@ const ContactDetailsDialog = ({
   onUpdate 
 }: ContactDetailsDialogProps) => {
   const [checklist, setChecklist] = useState<ChecklistItem[]>([]);
+  const [showStageAlert, setShowStageAlert] = useState(false);
+  const [pendingStageChange, setPendingStageChange] = useState<typeof contact.stage | null>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -115,6 +119,18 @@ const ContactDetailsDialog = ({
   };
 
   const updateStage = async (newStage: typeof contact.stage) => {
+    const hasIncompleteItems = checklist.some(item => !item.completed);
+    
+    if (hasIncompleteItems) {
+      setPendingStageChange(newStage);
+      setShowStageAlert(true);
+      return;
+    }
+
+    await processStageUpdate(newStage);
+  };
+
+  const processStageUpdate = async (newStage: typeof contact.stage) => {
     const { error } = await supabase
       .from('contacts')
       .update({ stage: newStage })
@@ -131,6 +147,7 @@ const ContactDetailsDialog = ({
 
     onUpdate();
     fetchChecklist();
+    setPendingStageChange(null);
   };
 
   const toggleChecklistItem = async (itemId: string, completed: boolean) => {
@@ -175,55 +192,79 @@ const ContactDetailsDialog = ({
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl h-[90vh] p-0">
-        <DialogHeader className="p-6 pb-0">
-          <DialogTitle>
-            {contact.first_name} {contact.last_name}
-          </DialogTitle>
-          <DialogDescription>
-            View and manage contact details, attachments, and progress
-          </DialogDescription>
-        </DialogHeader>
+    <>
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="max-w-2xl h-[90vh] p-0">
+          <DialogHeader className="p-6 pb-0">
+            <DialogTitle>
+              {contact.first_name} {contact.last_name}
+            </DialogTitle>
+            <DialogDescription>
+              View and manage contact details, attachments, and progress
+            </DialogDescription>
+          </DialogHeader>
 
-        <Tabs defaultValue="details" className="flex flex-col h-full">
-          <TabsList className="px-6">
-            <TabsTrigger value="details" className="flex-1">Details</TabsTrigger>
-            <TabsTrigger value="attachments" className="flex-1">Attachments</TabsTrigger>
-          </TabsList>
+          <Tabs defaultValue="details" className="flex flex-col h-full">
+            <TabsList className="px-6">
+              <TabsTrigger value="details" className="flex-1">Details</TabsTrigger>
+              <TabsTrigger value="attachments" className="flex-1">Attachments</TabsTrigger>
+            </TabsList>
 
-          <ScrollArea className="flex-1 p-6">
-            <TabsContent value="details" className="mt-0">
-              <div className="grid grid-cols-3 gap-8">
-                <div className="col-span-1 space-y-4">
-                  <ContactInfo contact={contact} />
-                  <HeatRating 
-                    currentRating={contact.heat_rating} 
-                    onRatingChange={updateHeatRating}
-                  />
-                  <StageSelector currentStage={contact.stage} onStageChange={updateStage} />
+            <ScrollArea className="flex-1 p-6">
+              <TabsContent value="details" className="mt-0">
+                <div className="grid grid-cols-3 gap-8">
+                  <div className="col-span-1 space-y-4">
+                    <ContactInfo contact={contact} />
+                    <HeatRating 
+                      currentRating={contact.heat_rating} 
+                      onRatingChange={updateHeatRating}
+                    />
+                    <StageSelector currentStage={contact.stage} onStageChange={updateStage} />
+                  </div>
+
+                  <div className="col-span-2 space-y-6">
+                    <ContactChecklist 
+                      checklist={checklist} 
+                      onToggleItem={toggleChecklistItem} 
+                    />
+                    <ContactNotes 
+                      contactId={contact.id} 
+                      onChecklistUpdate={fetchChecklist}
+                    />
+                  </div>
                 </div>
+              </TabsContent>
 
-                <div className="col-span-2 space-y-6">
-                  <ContactChecklist 
-                    checklist={checklist} 
-                    onToggleItem={toggleChecklistItem} 
-                  />
-                  <ContactNotes 
-                    contactId={contact.id} 
-                    onChecklistUpdate={fetchChecklist}
-                  />
-                </div>
-              </div>
-            </TabsContent>
+              <TabsContent value="attachments" className="mt-0">
+                <ContactAttachments contactId={contact.id} />
+              </TabsContent>
+            </ScrollArea>
+          </Tabs>
+        </DialogContent>
+      </Dialog>
 
-            <TabsContent value="attachments" className="mt-0">
-              <ContactAttachments contactId={contact.id} />
-            </TabsContent>
-          </ScrollArea>
-        </Tabs>
-      </DialogContent>
-    </Dialog>
+      <AlertDialog open={showStageAlert} onOpenChange={setShowStageAlert}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Incomplete Checklist Items</AlertDialogTitle>
+            <AlertDialogDescription>
+              There are incomplete checklist items for the current stage. Are you sure you want to proceed with moving this contact to the next stage?
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setShowStageAlert(false)}>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={() => {
+              if (pendingStageChange) {
+                processStageUpdate(pendingStageChange);
+                setShowStageAlert(false);
+              }
+            }}>
+              Proceed Anyway
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
   );
 };
 
