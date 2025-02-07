@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -52,6 +53,20 @@ const DinnerInviteModal = ({ open, onOpenChange }: DinnerInviteModalProps) => {
         ]);
 
       if (error) throw error;
+
+      // Send confirmation email
+      const { error: emailError } = await supabase.functions.invoke('send-event-confirmation', {
+        body: {
+          eventType: 'dinner',
+          fullName: formData.fullName,
+          email: formData.email,
+          company: formData.company,
+        },
+      });
+
+      if (emailError) {
+        console.error('Error sending confirmation email:', emailError);
+      }
 
       toast.success("Thank you for your interest in the Nias Network Dinner. We'll review your application and be in touch soon!");
       onOpenChange(false);
