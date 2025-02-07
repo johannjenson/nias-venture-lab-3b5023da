@@ -208,7 +208,7 @@ export type Database = {
           company_domain: string | null
           company_id: string | null
           created_at: string | null
-          email: string | null
+          email: string
           first_name: string | null
           id: string
           industry: Database["public"]["Enums"]["industry_type"] | null
@@ -231,7 +231,7 @@ export type Database = {
           company_domain?: string | null
           company_id?: string | null
           created_at?: string | null
-          email?: string | null
+          email: string
           first_name?: string | null
           id?: string
           industry?: Database["public"]["Enums"]["industry_type"] | null
@@ -254,7 +254,7 @@ export type Database = {
           company_domain?: string | null
           company_id?: string | null
           created_at?: string | null
-          email?: string | null
+          email?: string
           first_name?: string | null
           id?: string
           industry?: Database["public"]["Enums"]["industry_type"] | null

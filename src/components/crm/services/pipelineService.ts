@@ -1,16 +1,15 @@
 
 import { supabase } from "@/integrations/supabase/client";
-import { IndustryType } from "../types/contact";
 import { ContactStage } from "../types/kanban";
 
 interface ContactData {
   first_name: string;
   last_name: string;
   email: string | null;
-  phone: string | null; // Note: changed from phone_number to match DB schema
+  phone: string | null;
   company: string | null;
   title: string | null;
-  industry: IndustryType | null;
+  industry: string | null;
   linkedin_url: string | null;
   source: 'network_request' | 'event_request';
   source_id: string;
@@ -22,27 +21,57 @@ export const createContactAndUpdateRequest = async (
   contactData: ContactData,
   requestType: 'membership' | 'event'
 ) => {
-  // Create the contact
-  const { data: newContact, error: contactError } = await supabase
+  // First check if contact already exists
+  const { data: existingContact, error: fetchError } = await supabase
     .from('contacts')
-    .insert({
-      first_name: contactData.first_name,
-      last_name: contactData.last_name,
-      email: contactData.email,
-      phone: contactData.phone, // Note: using 'phone' instead of 'phone_number'
-      company: contactData.company,
-      title: contactData.title,
-      industry: contactData.industry,
-      linkedin_url: contactData.linkedin_url,
-      source: contactData.source,
-      source_id: contactData.source_id,
-      stage: contactData.stage
-    })
-    .select()
-    .single();
+    .select('*')
+    .eq('email', contactData.email)
+    .maybeSingle();
 
-  if (contactError) {
-    throw contactError;
+  if (fetchError) {
+    throw fetchError;
+  }
+
+  let contactId;
+
+  if (existingContact) {
+    // Update existing contact with new information
+    const { data: updatedContact, error: updateError } = await supabase
+      .from('contacts')
+      .update({
+        first_name: contactData.first_name,
+        last_name: contactData.last_name,
+        phone: contactData.phone,
+        company: contactData.company,
+        title: contactData.title,
+        industry: contactData.industry,
+        linkedin_url: contactData.linkedin_url,
+        source: contactData.source,
+        source_id: contactData.source_id,
+        // Don't update the stage if contact already exists
+      })
+      .eq('id', existingContact.id)
+      .select()
+      .single();
+
+    if (updateError) {
+      throw updateError;
+    }
+
+    contactId = existingContact.id;
+  } else {
+    // Create new contact
+    const { data: newContact, error: createError } = await supabase
+      .from('contacts')
+      .insert(contactData)
+      .select()
+      .single();
+
+    if (createError) {
+      throw createError;
+    }
+
+    contactId = newContact.id;
   }
 
   // Update the request
@@ -59,5 +88,5 @@ export const createContactAndUpdateRequest = async (
     throw updateError;
   }
 
-  return newContact;
+  return { contactId };
 };

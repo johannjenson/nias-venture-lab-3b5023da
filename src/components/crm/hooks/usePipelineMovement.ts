@@ -47,7 +47,7 @@ export const usePipelineMovement = ({
           first_name: firstName,
           last_name: lastName,
           email: request.email,
-          phone: request.phone_number, // Changed from phone_number to phone to match ContactData interface
+          phone: request.phone_number,
           company: request.company,
           title: request.title,
           industry: request.industry,
