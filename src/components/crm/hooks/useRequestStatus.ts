@@ -8,11 +8,19 @@ interface UseRequestStatusProps {
   requestId: number;
   type: 'membership' | 'event';
   onUpdate: () => void;
+  initialStatus?: string;
+  initialIndustry?: IndustryType;
 }
 
-export const useRequestStatus = ({ requestId, type, onUpdate }: UseRequestStatusProps) => {
-  const [status, setStatus] = useState<string>('pending');
-  const [industry, setIndustry] = useState<IndustryType | ''>('');
+export const useRequestStatus = ({ 
+  requestId, 
+  type, 
+  onUpdate,
+  initialStatus = 'pending',
+  initialIndustry = ''
+}: UseRequestStatusProps) => {
+  const [status, setStatus] = useState<string>(initialStatus);
+  const [industry, setIndustry] = useState<IndustryType | ''>(initialIndustry);
   const { toast } = useToast();
 
   const handleStatusChange = async (newStatus: string) => {
@@ -75,4 +83,3 @@ export const useRequestStatus = ({ requestId, type, onUpdate }: UseRequestStatus
     handleIndustryChange,
   };
 };
-

@@ -26,6 +26,8 @@ const RequestDetailsDialog = ({
     requestId: Number(request.id),
     type,
     onUpdate,
+    initialStatus: request.request_status || 'pending',
+    initialIndustry: request.industry || '',
   });
 
   const { handleMoveToContact } = usePipelineMovement({
@@ -75,4 +77,3 @@ const RequestDetailsDialog = ({
 };
 
 export default RequestDetailsDialog;
-
