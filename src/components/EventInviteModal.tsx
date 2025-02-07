@@ -1,5 +1,4 @@
 
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -7,6 +6,10 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { useState } from "react";
+import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -16,9 +19,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
-import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
 import { Loader2 } from "lucide-react";
 import { industries } from "@/data/industries";
 
@@ -50,20 +50,20 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
     
     try {
       const { error } = await supabase
-        .from('EventRequest')
+        .from('event_requests')
         .insert({
-          full_name: formData.fullName,
+          name: formData.fullName,
           phone_number: formData.phoneNumber,
           email: formData.email,
           company: formData.company,
           title: formData.title,
           industry: formData.industry,
-          interests: formData.interests
+          interests: formData.interests,
+          event_type: 'forum'
         });
 
       if (error) throw error;
 
-      // Send confirmation email
       const { error: emailError } = await supabase.functions.invoke('send-event-confirmation', {
         body: {
           eventType: 'forum',

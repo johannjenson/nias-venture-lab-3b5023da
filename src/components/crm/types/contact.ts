@@ -48,7 +48,6 @@ export const industryTypes = [
   { id: 'ocean' as const, label: 'Ocean Economy' }
 ] as const;
 
-// Added LeadEntry type definition
 export type LeadEntry = {
   id: string;
   first_name: string | null;
