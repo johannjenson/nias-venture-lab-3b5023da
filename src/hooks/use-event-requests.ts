@@ -63,19 +63,62 @@ export const useEventRequests = () => {
   };
 
   const updateRequestStatus = async (requestId: number, status: string, type: 'dinner' | 'forum') => {
-    const { error } = await supabase
+    // First get the request details so we can send the email
+    const { data: requestData, error: fetchError } = await supabase
+      .from('event_requests')
+      .select('*')
+      .eq('id', requestId)
+      .single();
+
+    if (fetchError) {
+      toast({
+        title: "Error fetching request details",
+        description: fetchError.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Update the status in the database
+    const { error: updateError } = await supabase
       .from('event_requests')
       .update({ request_status: status })
       .eq('id', requestId)
       .eq('event_type', type);
 
-    if (error) {
+    if (updateError) {
       toast({
         title: "Error updating request status",
-        description: error.message,
+        description: updateError.message,
         variant: "destructive",
       });
       return;
+    }
+
+    // Send status update email if the status is approved, rejected, or waitlist
+    if (['approved', 'rejected', 'waitlist'].includes(status)) {
+      try {
+        const { error: emailError } = await supabase.functions.invoke('send-event-status', {
+          body: {
+            eventType: type,
+            status,
+            fullName: requestData.name,
+            email: requestData.email,
+          },
+        });
+
+        if (emailError) {
+          console.error('Error sending status update email:', emailError);
+          toast({
+            title: "Status updated but email failed",
+            description: "The status was updated but we couldn't send the notification email.",
+            variant: "destructive",
+          });
+          return;
+        }
+      } catch (emailError) {
+        console.error('Error invoking send-event-status function:', emailError);
+      }
     }
 
     toast({
