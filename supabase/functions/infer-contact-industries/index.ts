@@ -1,6 +1,5 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3'
 import { Database } from '../_shared/database.types.ts'
-import { industryTypes } from '../_shared/constants.ts'
 
 type IndustryType = Database['public']['Enums']['industry_type']
 
