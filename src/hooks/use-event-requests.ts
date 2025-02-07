@@ -67,7 +67,7 @@ export const useEventRequests = () => {
       .from('event_requests')
       .update({ request_status: status })
       .eq('id', requestId)
-      .eq('event_type', type === 'dinner' ? 'dinner' : 'forum');
+      .eq('event_type', type);
 
     if (error) {
       toast({

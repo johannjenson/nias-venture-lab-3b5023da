@@ -1,6 +1,7 @@
+
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { Contact } from "./types/kanban";
 import {
   Table,
@@ -10,20 +11,19 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { Edit, Trash2 } from "lucide-react";
 import ContactDetailsDialog from "./ContactDetailsDialog";
 import RequestDetailsDialog from "./RequestDetailsDialog";
 import { IndustryType } from "./types/contact";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import { EventRequest } from "@/types/event-requests";
 
 type LeadEntry = {
-  id: string;
+  id: string | number;
   first_name: string | null;
   last_name: string | null;
+  name: string | null;
   email: string | null;
   title: string | null;
-  industry: IndustryType | null;
+  industry: IndustryType | string | null;
   status: string;
   type: 'contact' | 'request';
   stage?: string;
@@ -78,7 +78,7 @@ const AllLeadsView = () => {
     }
 
     const { data: eventData, error: eventError } = await supabase
-      .from('EventRequest')
+      .from('event_requests')
       .select('*')
       .order('created_at', { ascending: false });
 
@@ -118,10 +118,11 @@ const AllLeadsView = () => {
         type: 'contact',
         stage: contact.stage
       })),
-      ...eventData.map((request): LeadEntry => ({
-        id: `event_${request.id}`,
-        first_name: request.full_name?.split(' ')[0] || null,
-        last_name: request.full_name?.split(' ').slice(1).join(' ') || null,
+      ...eventData.map((request: EventRequest): LeadEntry => ({
+        id: request.id,
+        first_name: request.name?.split(' ')[0] || null,
+        last_name: request.name?.split(' ').slice(1).join(' ') || null,
+        name: request.name,
         email: request.email,
         title: request.title,
         industry: request.industry,
@@ -131,12 +132,12 @@ const AllLeadsView = () => {
         request_status: request.request_status
       })),
       ...membershipData.map((request): LeadEntry => ({
-        id: `membership_${request.id}`,
+        id: request.id,
         first_name: request.first_name,
         last_name: request.last_name,
         email: request.email,
         title: request.title,
-        industry: null, // Membership requests don't have industry yet
+        industry: request.industry,
         company: request.company,
         status: request.request_status || 'pending',
         type: 'request',

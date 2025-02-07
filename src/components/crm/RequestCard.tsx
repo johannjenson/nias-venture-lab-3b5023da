@@ -22,7 +22,7 @@ export const statuses = [
 interface RequestCardProps {
   request: EventRequest;
   type: RequestType;
-  onUpdateStatus: (requestId: string, status: string, type: RequestType) => Promise<void>;
+  onUpdateStatus: (requestId: number, status: string, type: RequestType) => Promise<void>;
 }
 
 export const RequestCard = ({ request, type, onUpdateStatus }: RequestCardProps) => {
