@@ -14,6 +14,7 @@ import ContactAttachments from "./components/ContactAttachments";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import HeatRating from "./components/HeatRating";
 import { Input } from "@/components/ui/input";
+import { Target } from "lucide-react";
 
 const ContactDetailsDialog = ({ 
   contact, 
@@ -234,7 +235,8 @@ const ContactDetailsDialog = ({
             <DialogDescription>
               View and manage contact details, attachments, and progress
             </DialogDescription>
-            <div className="mt-2">
+            <div className="mt-2 flex items-center gap-2">
+              <Target className="w-5 h-5 text-gray-500" />
               <Input
                 placeholder="Set a goal for this lead... (press Enter to save)"
                 value={goal}
