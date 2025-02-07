@@ -1,11 +1,10 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
 import { TimelineItem } from "../types/contact-details";
-import { MessageSquare, CheckSquare, ChevronDown, ChevronUp } from "lucide-react";
+import { MessageSquare, CheckSquare, ChevronDown, ChevronUp, RefreshCw } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -18,6 +17,7 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
   const [timelineItems, setTimelineItems] = useState<TimelineItem[]>([]);
   const [newNote, setNewNote] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const { toast } = useToast();
 
   React.useEffect(() => {
@@ -86,6 +86,16 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
     );
 
     setTimelineItems(allItems);
+  };
+
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    await fetchTimelineItems();
+    setIsRefreshing(false);
+    toast({
+      title: "Timeline refreshed",
+      description: "The timeline has been updated with the latest changes.",
+    });
   };
 
   const addNote = async () => {
@@ -191,12 +201,22 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
       </div>
 
       <Collapsible open={isOpen} onOpenChange={setIsOpen} className="mt-4">
-        <CollapsibleTrigger asChild>
-          <Button variant="outline" className="w-full flex justify-between">
-            <span>Timeline</span>
-            {isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+        <div className="flex items-center justify-between">
+          <CollapsibleTrigger asChild>
+            <Button variant="outline" className="flex-1 flex justify-between mr-2">
+              <span>Timeline</span>
+              {isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            </Button>
+          </CollapsibleTrigger>
+          <Button 
+            variant="outline" 
+            size="icon"
+            onClick={handleRefresh}
+            disabled={isRefreshing}
+          >
+            <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
           </Button>
-        </CollapsibleTrigger>
+        </div>
         <CollapsibleContent className="mt-4">
           <ScrollArea className="h-[300px]">
             <div className="space-y-3">
@@ -214,4 +234,3 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
 };
 
 export default ContactNotes;
-
