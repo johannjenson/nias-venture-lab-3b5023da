@@ -113,6 +113,10 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
   };
 
   const toggleChecklistItem = async (itemId: string) => {
+    // First update the local state to remove the item from the timeline
+    setTimelineItems(prevItems => prevItems.filter(item => item.id !== itemId));
+
+    // Then update the database
     const { error } = await supabase
       .from('checklist_items')
       .update({ 
@@ -127,10 +131,11 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
         description: error.message,
         variant: "destructive",
       });
+      // If there was an error, refresh the timeline to ensure accurate state
+      await fetchTimelineItems();
       return;
     }
 
-    await fetchTimelineItems();
     onChecklistUpdate();  // Refresh the checklist in the parent component
   };
 
