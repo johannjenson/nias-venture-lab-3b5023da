@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,9 +11,10 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface ContactNotesProps {
   contactId: string;
+  onChecklistUpdate: () => void;
 }
 
-const ContactNotes = ({ contactId }: ContactNotesProps) => {
+const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
   const [timelineItems, setTimelineItems] = useState<TimelineItem[]>([]);
   const [newNote, setNewNote] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -129,6 +131,7 @@ const ContactNotes = ({ contactId }: ContactNotesProps) => {
     }
 
     fetchTimelineItems();
+    onChecklistUpdate();  // Refresh the checklist in the parent component
   };
 
   const renderTimelineItem = (item: TimelineItem) => {

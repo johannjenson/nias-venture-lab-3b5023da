@@ -191,7 +191,10 @@ const ContactDetailsDialog = ({
                     checklist={checklist} 
                     onToggleItem={toggleChecklistItem} 
                   />
-                  <ContactNotes contactId={contact.id} />
+                  <ContactNotes 
+                    contactId={contact.id} 
+                    onChecklistUpdate={fetchChecklist}
+                  />
                 </div>
               </div>
             </TabsContent>
