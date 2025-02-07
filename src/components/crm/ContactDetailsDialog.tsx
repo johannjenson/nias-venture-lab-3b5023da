@@ -197,11 +197,11 @@ const ContactDetailsDialog = ({
               <div className="grid grid-cols-3 gap-8">
                 <div className="col-span-1 space-y-4">
                   <ContactInfo contact={contact} />
-                  <StageSelector currentStage={contact.stage} onStageChange={updateStage} />
                   <HeatRating 
                     currentRating={contact.heat_rating} 
                     onRatingChange={updateHeatRating}
                   />
+                  <StageSelector currentStage={contact.stage} onStageChange={updateStage} />
                 </div>
 
                 <div className="col-span-2 space-y-6">
