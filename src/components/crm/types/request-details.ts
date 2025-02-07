@@ -6,6 +6,7 @@ export interface RequestDetailsDialogProps {
     id: string;
     first_name?: string | null;
     last_name?: string | null;
+    name?: string | null;  // Added this field for event requests
     email?: string | null;
     phone_number?: string | null;
     company?: string | null;

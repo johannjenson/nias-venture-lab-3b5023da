@@ -1,4 +1,3 @@
-
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -49,6 +48,32 @@ const RequestDetailsDialog = ({
     });
   };
 
+  const handleIndustryChange = async (newIndustry: IndustryType) => {
+    const table = type === 'membership' ? 'Request' : 'event_requests';
+    
+    const { error } = await supabase
+      .from(table)
+      .update({ industry: newIndustry })
+      .eq('id', parseInt(request.id));
+
+    if (error) {
+      toast({
+        title: "Error updating industry",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIndustry(newIndustry);
+    onUpdate();
+
+    toast({
+      title: "Industry updated",
+      description: `Industry updated to ${industryTypes.find(i => i.id === newIndustry)?.label || newIndustry}`,
+    });
+  };
+
   const handleMoveToContact = async () => {
     if (status !== 'approved') {
       toast({
@@ -57,6 +82,18 @@ const RequestDetailsDialog = ({
         variant: "destructive",
       });
       return;
+    }
+
+    // Determine first and last name based on request type
+    let firstName, lastName;
+    if (type === 'membership') {
+      firstName = request.first_name;
+      lastName = request.last_name;
+    } else {
+      // For event requests, split the full name
+      const nameParts = request.name?.split(' ') || [];
+      firstName = nameParts[0] || '';
+      lastName = nameParts.slice(1).join(' ') || '';
     }
 
     // Update the moved_to_pipeline flag
@@ -80,8 +117,8 @@ const RequestDetailsDialog = ({
       .from('contacts')
       .insert([
         {
-          first_name: request.first_name || request.name?.split(' ')[0],
-          last_name: request.last_name || request.name?.split(' ').slice(1).join(' '),
+          first_name: firstName,
+          last_name: lastName,
           email: request.email,
           phone: request.phone_number,
           company: request.company,
@@ -110,32 +147,6 @@ const RequestDetailsDialog = ({
 
     onUpdate();
     onOpenChange(false);
-  };
-
-  const handleIndustryChange = async (newIndustry: IndustryType) => {
-    const table = type === 'membership' ? 'Request' : 'event_requests';
-    
-    const { error } = await supabase
-      .from(table)
-      .update({ industry: newIndustry })
-      .eq('id', parseInt(request.id));
-
-    if (error) {
-      toast({
-        title: "Error updating industry",
-        description: error.message,
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIndustry(newIndustry);
-    onUpdate();
-
-    toast({
-      title: "Industry updated",
-      description: `Industry updated to ${industryTypes.find(i => i.id === newIndustry)?.label || newIndustry}`,
-    });
   };
 
   const handleDelete = async () => {
@@ -168,20 +179,31 @@ const RequestDetailsDialog = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Request Details - {request.first_name} {request.last_name}</DialogTitle>
+          <DialogTitle>
+            Request Details - {type === 'membership' ? 
+              `${request.first_name} ${request.last_name}` : 
+              request.name}
+          </DialogTitle>
         </DialogHeader>
 
         <div className="grid gap-4">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <Label>First Name</Label>
-              <Input value={request.first_name || ''} readOnly />
+          {type === 'membership' ? (
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <Label>First Name</Label>
+                <Input value={request.first_name || ''} readOnly />
+              </div>
+              <div>
+                <Label>Last Name</Label>
+                <Input value={request.last_name || ''} readOnly />
+              </div>
             </div>
+          ) : (
             <div>
-              <Label>Last Name</Label>
-              <Input value={request.last_name || ''} readOnly />
+              <Label>Name</Label>
+              <Input value={request.name || ''} readOnly />
             </div>
-          </div>
+          )}
 
           <div>
             <Label>Email</Label>
