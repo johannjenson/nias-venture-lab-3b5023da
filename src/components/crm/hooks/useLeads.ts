@@ -52,51 +52,61 @@ export const useLeads = () => {
       return;
     }
 
+    // Process contacts data
+    const contactLeads: LeadEntry[] = (contactsData || []).map((contact): LeadEntry => ({
+      id: contact.id,
+      first_name: contact.first_name,
+      last_name: contact.last_name,
+      name: contact.first_name && contact.last_name 
+        ? `${contact.first_name} ${contact.last_name}`
+        : null,
+      email: contact.email,
+      title: contact.title,
+      industry: contact.industry as IndustryType | null,
+      company: contact.company,
+      status: contact.stage || 'Unknown',
+      type: 'contact',
+      stage: contact.stage,
+      has_account: contact.has_account
+    }));
+
+    // Process event request data
+    const eventLeads: LeadEntry[] = (eventData || []).map((request: EventRequest): LeadEntry => ({
+      id: request.id.toString(),
+      first_name: request.name?.split(' ')[0] || null,
+      last_name: request.name?.split(' ').slice(1).join(' ') || null,
+      name: request.name,
+      email: request.email,
+      title: request.title,
+      industry: request.industry as IndustryType | null,
+      company: request.company,
+      status: request.request_status || 'pending',
+      type: 'request',
+      request_status: request.request_status
+    }));
+
+    // Process membership request data
+    const membershipLeads: LeadEntry[] = (membershipData || []).map((request): LeadEntry => ({
+      id: request.id.toString(),
+      first_name: request.first_name,
+      last_name: request.last_name,
+      name: request.first_name && request.last_name 
+        ? `${request.first_name} ${request.last_name}`
+        : null,
+      email: request.email,
+      title: request.title,
+      industry: request.industry as IndustryType | null,
+      company: request.company,
+      status: request.request_status || 'pending',
+      type: 'request',
+      request_status: request.request_status
+    }));
+
+    // Combine all leads and ensure unique IDs by adding a prefix
     const allLeads: LeadEntry[] = [
-      ...contactsData.map((contact): LeadEntry => ({
-        id: contact.id,
-        first_name: contact.first_name,
-        last_name: contact.last_name,
-        name: contact.first_name && contact.last_name 
-          ? `${contact.first_name} ${contact.last_name}`
-          : null,
-        email: contact.email,
-        title: contact.title,
-        industry: contact.industry as IndustryType | null,
-        company: contact.company,
-        status: contact.stage || 'Unknown',
-        type: 'contact',
-        stage: contact.stage,
-        has_account: contact.has_account  // Include has_account field from the view
-      })),
-      ...eventData.map((request: EventRequest): LeadEntry => ({
-        id: request.id.toString(),
-        first_name: request.name?.split(' ')[0] || null,
-        last_name: request.name?.split(' ').slice(1).join(' ') || null,
-        name: request.name,
-        email: request.email,
-        title: request.title,
-        industry: request.industry as IndustryType | null,
-        company: request.company,
-        status: request.request_status || 'pending',
-        type: 'request',
-        request_status: request.request_status
-      })),
-      ...membershipData.map((request): LeadEntry => ({
-        id: request.id.toString(),
-        first_name: request.first_name,
-        last_name: request.last_name,
-        name: request.first_name && request.last_name 
-          ? `${request.first_name} ${request.last_name}`
-          : null,
-        email: request.email,
-        title: request.title,
-        industry: request.industry as IndustryType | null,
-        company: request.company,
-        status: request.request_status || 'pending',
-        type: 'request',
-        request_status: request.request_status
-      }))
+      ...contactLeads.map(lead => ({ ...lead, id: `contact_${lead.id}` })),
+      ...eventLeads.map(lead => ({ ...lead, id: `event_${lead.id}` })),
+      ...membershipLeads.map(lead => ({ ...lead, id: `membership_${lead.id}` }))
     ];
 
     setLeads(allLeads);
