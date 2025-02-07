@@ -120,12 +120,12 @@ const RequestDetailsDialog = ({
             onMoveToContact={handleMoveToContact}
           />
 
-          <div className="flex flex-col space-y-4 pt-4">
+          <div className="flex space-x-2 pt-4">
             {type === 'membership' && status === 'approved' && (
               <Button 
                 onClick={handleCreateAccount}
                 variant="secondary"
-                className="w-full"
+                className="flex-1"
               >
                 <MailOpen className="w-4 h-4 mr-2" />
                 Invite to Create Account
