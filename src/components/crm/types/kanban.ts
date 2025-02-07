@@ -13,6 +13,7 @@ export type Contact = {
   title: string;
   stage: ContactStage;
   lead_type: LeadType;
+  heat_rating: number;
   source?: string;
   source_id?: string;
   company_id?: string;
