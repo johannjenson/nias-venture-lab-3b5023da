@@ -8,17 +8,19 @@ import { ArrowLeft, Plus } from "lucide-react";
 import KanbanBoard from "@/components/crm/KanbanBoard";
 import MembershipRequestsBoard from "@/components/crm/MembershipRequestsBoard";
 import EventRequestsBoard from "@/components/crm/EventRequestsBoard";
-import CompanyBoard from "@/components/crm/CompanyBoard";
 import AddContactDialog from "@/components/crm/AddContactDialog";
 import { useToast } from "@/components/ui/use-toast";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 
 const CRM = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [loading, setLoading] = useState(true);
   const [showAddContact, setShowAddContact] = useState(false);
+  const [viewByCompany, setViewByCompany] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -73,17 +75,29 @@ const CRM = () => {
       <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-7xl mx-auto">
           <Tabs defaultValue="pipeline" className="space-y-4">
-            <TabsList>
-              <TabsTrigger value="pipeline">User Pipeline</TabsTrigger>
-              <TabsTrigger value="companies">Company Pipeline</TabsTrigger>
-              <TabsTrigger value="membership">Membership Requests</TabsTrigger>
-              <TabsTrigger value="events">Event Requests</TabsTrigger>
-            </TabsList>
+            <div className="flex items-center justify-between">
+              <TabsList>
+                <TabsTrigger value="pipeline">Pipeline</TabsTrigger>
+                <TabsTrigger value="membership">Membership Requests</TabsTrigger>
+                <TabsTrigger value="events">Event Requests</TabsTrigger>
+              </TabsList>
+              <div className="flex items-center space-x-2">
+                <Label htmlFor="view-toggle" className="text-sm text-gray-600">
+                  {viewByCompany ? "Company View" : "User View"}
+                </Label>
+                <Switch
+                  id="view-toggle"
+                  checked={viewByCompany}
+                  onCheckedChange={setViewByCompany}
+                />
+              </div>
+            </div>
             <TabsContent value="pipeline">
-              <KanbanBoard />
-            </TabsContent>
-            <TabsContent value="companies">
-              <CompanyBoard />
+              {viewByCompany ? (
+                <KanbanBoard viewType="company" />
+              ) : (
+                <KanbanBoard viewType="user" />
+              )}
             </TabsContent>
             <TabsContent value="membership">
               <MembershipRequestsBoard />
