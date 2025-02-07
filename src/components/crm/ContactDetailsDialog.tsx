@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
@@ -203,7 +202,7 @@ const ContactDetailsDialog = ({
 
     if (error) {
       toast({
-        title: "Error updating goal",
+        title: "Error updating target",
         description: error.message,
         variant: "destructive",
       });
@@ -212,8 +211,8 @@ const ContactDetailsDialog = ({
 
     onUpdate();
     toast({
-      title: "Goal updated",
-      description: "The contact's goal has been updated successfully.",
+      title: "Target updated",
+      description: "The contact's target has been updated successfully.",
     });
   };
 
@@ -232,13 +231,10 @@ const ContactDetailsDialog = ({
             <DialogTitle>
               {contact.first_name} {contact.last_name}
             </DialogTitle>
-            <DialogDescription>
-              View and manage contact details, attachments, and progress
-            </DialogDescription>
-            <div className="mt-2 flex items-center gap-4">
-              <Target className="w-6 h-6 text-gray-500 p-0.5" />
+            <div className="mt-4 flex items-center gap-6">
+              <Target className="w-6 h-6 text-gray-500 p-1" />
               <Input
-                placeholder="Set a goal for this lead... (press Enter to save)"
+                placeholder="Set a target for this lead... (press Enter to save)"
                 value={goal}
                 onChange={(e) => setGoal(e.target.value)}
                 onBlur={updateGoal}
@@ -313,4 +309,3 @@ const ContactDetailsDialog = ({
 };
 
 export default ContactDetailsDialog;
-
