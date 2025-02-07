@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
@@ -29,17 +30,13 @@ const ContactDetailsDialog = ({
   onUpdate 
 }: ContactDetailsDialogProps) => {
   const [checklist, setChecklist] = useState<ChecklistItem[]>([]);
-  const [notes, setNotes] = useState<Note[]>([]);
-  const [newNote, setNewNote] = useState('');
   const [attachments, setAttachments] = useState<Attachment[]>([]);
   const [newUrl, setNewUrl] = useState('');
-
   const { toast } = useToast();
 
   useEffect(() => {
     if (open) {
       fetchChecklist();
-      fetchNotes();
       fetchAttachments();
     }
   }, [open, contact.stage]);
@@ -192,7 +189,7 @@ const ContactDetailsDialog = ({
         contact_id: contact.id,
         external_url: newUrl.trim(),
         uploaded_by: (await supabase.auth.getUser()).data.user?.id,
-        file_path: '', // Required field but not used for URLs
+        file_path: 'url-attachment', // Required field but not used for URLs
         filename: 'external-url' // Required field but not used for URLs
       });
 
@@ -270,32 +267,6 @@ const ContactDetailsDialog = ({
     }
   };
 
-  const fetchNotes = async () => {
-    const { data: notesData, error: notesError } = await supabase
-      .from('contact_notes')
-      .select(`
-        *,
-        profiles (
-          email,
-          first_name,
-          last_name
-        )
-      `)
-      .eq('contact_id', contact.id)
-      .order('created_at', { ascending: false });
-
-    if (notesError) {
-      toast({
-        title: "Error fetching notes",
-        description: notesError.message,
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setNotes(notesData);
-  };
-
   const updateStage = async (newStage: typeof contact.stage) => {
     const { error } = await supabase
       .from('contacts')
@@ -335,30 +306,6 @@ const ContactDetailsDialog = ({
     ));
   };
 
-  const addNote = async () => {
-    if (!newNote.trim()) return;
-
-    const { error } = await supabase
-      .from('contact_notes')
-      .insert({
-        contact_id: contact.id,
-        content: newNote.trim(),
-        user_id: (await supabase.auth.getUser()).data.user?.id
-      });
-
-    if (error) {
-      toast({
-        title: "Error adding note",
-        description: error.message,
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setNewNote('');
-    fetchNotes();
-  };
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl">
@@ -386,12 +333,7 @@ const ContactDetailsDialog = ({
                   checklist={checklist} 
                   onToggleItem={toggleChecklistItem} 
                 />
-                <ContactNotes
-                  notes={notes}
-                  newNote={newNote}
-                  onNewNoteChange={setNewNote}
-                  onAddNote={addNote}
-                />
+                <ContactNotes contactId={contact.id} />
               </div>
             </div>
           </TabsContent>
