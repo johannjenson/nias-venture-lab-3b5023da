@@ -227,6 +227,66 @@ export type Database = {
         }
         Relationships: []
       }
+      leads: {
+        Row: {
+          company: string | null
+          created_at: string | null
+          email: string | null
+          expected_close_date: string | null
+          expected_value: number | null
+          first_name: string | null
+          id: string
+          last_contact_date: string | null
+          last_name: string | null
+          notes: string | null
+          phone: string | null
+          source: string | null
+          stage: Database["public"]["Enums"]["lead_stage"] | null
+          status: string | null
+          title: string | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string | null
+          email?: string | null
+          expected_close_date?: string | null
+          expected_value?: number | null
+          first_name?: string | null
+          id?: string
+          last_contact_date?: string | null
+          last_name?: string | null
+          notes?: string | null
+          phone?: string | null
+          source?: string | null
+          stage?: Database["public"]["Enums"]["lead_stage"] | null
+          status?: string | null
+          title?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string | null
+          email?: string | null
+          expected_close_date?: string | null
+          expected_value?: number | null
+          first_name?: string | null
+          id?: string
+          last_contact_date?: string | null
+          last_name?: string | null
+          notes?: string | null
+          phone?: string | null
+          source?: string | null
+          stage?: Database["public"]["Enums"]["lead_stage"] | null
+          status?: string | null
+          title?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       Request: {
         Row: {
           additional_info: string | null
@@ -422,6 +482,14 @@ export type Database = {
         | "sql_qualification"
         | "sqo_discovery"
         | "evaluation"
+        | "closed_won"
+        | "closed_lost"
+      lead_stage:
+        | "new"
+        | "contacted"
+        | "meeting_scheduled"
+        | "proposal_sent"
+        | "negotiation"
         | "closed_won"
         | "closed_lost"
     }
