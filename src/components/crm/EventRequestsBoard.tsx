@@ -131,7 +131,7 @@ const EventRequestsBoard = () => {
   };
 
   const updateRequestStatus = async (requestId: string, status: string, type: 'dinner' | 'forum') => {
-    const table = type === 'dinner' ? 'DinnerRequest' : 'EventRequest';
+    const table = type === 'dinner' ? 'dinner_requests' : 'forum_requests';
     const { error } = await supabase
       .from(table)
       .update({ request_status: status })
