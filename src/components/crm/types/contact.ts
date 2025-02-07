@@ -55,7 +55,7 @@ export type LeadEntry = {
   name: string | null;
   email: string | null;
   title: string | null;
-  industry: IndustryType | string | null;
+  industry: IndustryType | null;
   status: string;
   type: 'contact' | 'request';
   stage?: string;
