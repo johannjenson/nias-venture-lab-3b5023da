@@ -64,7 +64,7 @@ const MainNav = () => {
     {
       title: "Nias Network Dinner at LEAP",
       href: "/events/leap-dinner",
-      description: "Connect with industry leaders at our exclusive dinner during LEAP 2024 in Riyadh on Sunday, February 9th at 7:00 PM.",
+      description: "Connect with industry leaders at our exclusive dinner during LEAP 2024 in Riyadh on Sunday, February 9th from 7:00 PM.",
     },
   ];
 
