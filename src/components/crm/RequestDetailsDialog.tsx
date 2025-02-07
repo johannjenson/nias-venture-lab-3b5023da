@@ -25,7 +25,7 @@ const RequestDetailsDialog = ({
     const { error } = await supabase
       .from(table)
       .update({ request_status: newStatus })
-      .eq('id', request.id);
+      .eq('id', Number(request.id));
 
     if (error) {
       toast({
@@ -51,7 +51,7 @@ const RequestDetailsDialog = ({
     const { error } = await supabase
       .from(table)
       .update({ industry: newIndustry })
-      .eq('id', request.id);
+      .eq('id', Number(request.id));
 
     if (error) {
       toast({
@@ -98,7 +98,7 @@ const RequestDetailsDialog = ({
     const { error: updateError } = await supabase
       .from(table)
       .update({ moved_to_pipeline: true })
-      .eq('id', request.id);
+      .eq('id', Number(request.id));
 
     if (updateError) {
       toast({
@@ -153,7 +153,7 @@ const RequestDetailsDialog = ({
     const { error } = await supabase
       .from(table)
       .delete()
-      .eq('id', request.id);
+      .eq('id', Number(request.id));
 
     if (error) {
       toast({
