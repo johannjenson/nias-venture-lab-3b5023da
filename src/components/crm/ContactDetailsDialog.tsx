@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
@@ -37,6 +38,8 @@ interface Note {
   content: string;
   created_at: string;
   user_id: string;
+  user_email?: string;
+  user_name?: string;
 }
 
 const stages: { id: ContactStage; label: string }[] = [
@@ -125,22 +128,37 @@ const ContactDetailsDialog = ({
   };
 
   const fetchNotes = async () => {
-    const { data, error } = await supabase
+    const { data: notesData, error: notesError } = await supabase
       .from('contact_notes')
-      .select('*')
+      .select(`
+        *,
+        profiles:user_id (
+          email,
+          first_name,
+          last_name
+        )
+      `)
       .eq('contact_id', contact.id)
       .order('created_at', { ascending: false });
 
-    if (error) {
+    if (notesError) {
       toast({
         title: "Error fetching notes",
-        description: error.message,
+        description: notesError.message,
         variant: "destructive",
       });
       return;
     }
 
-    setNotes(data || []);
+    const formattedNotes = notesData.map(note => ({
+      ...note,
+      user_email: note.profiles?.email,
+      user_name: note.profiles?.first_name && note.profiles?.last_name 
+        ? `${note.profiles.first_name} ${note.profiles.last_name}`
+        : note.profiles?.email
+    }));
+
+    setNotes(formattedNotes);
   };
 
   const updateStage = async (newStage: ContactStage) => {
@@ -294,7 +312,7 @@ const ContactDetailsDialog = ({
                     <div key={note.id} className="bg-gray-50 p-3 rounded-lg">
                       <p className="text-sm mb-2">{note.content}</p>
                       <p className="text-xs text-gray-500">
-                        Added {new Date(note.created_at).toLocaleString()}
+                        Added by {note.user_name || note.user_email} on {new Date(note.created_at).toLocaleString()}
                       </p>
                     </div>
                   ))}
@@ -309,3 +327,4 @@ const ContactDetailsDialog = ({
 };
 
 export default ContactDetailsDialog;
+
