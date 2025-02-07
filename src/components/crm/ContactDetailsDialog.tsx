@@ -8,8 +8,9 @@ import ContactInfo from "./components/ContactInfo";
 import StageSelector from "./components/StageSelector";
 import ContactChecklist from "./components/ContactChecklist";
 import ContactNotes from "./components/ContactNotes";
-import { Upload, FileIcon, Trash2 } from "lucide-react";
+import { Upload, FileIcon, Trash2, Link as LinkIcon, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 interface Attachment {
   id: string;
@@ -18,6 +19,7 @@ interface Attachment {
   content_type: string | null;
   size: number | null;
   created_at: string;
+  external_url: string | null;
 }
 
 const ContactDetailsDialog = ({ 
@@ -30,6 +32,7 @@ const ContactDetailsDialog = ({
   const [notes, setNotes] = useState<Note[]>([]);
   const [newNote, setNewNote] = useState('');
   const [attachments, setAttachments] = useState<Attachment[]>([]);
+  const [newUrl, setNewUrl] = useState('');
   const { toast } = useToast();
 
   useEffect(() => {
@@ -165,6 +168,44 @@ const ContactDetailsDialog = ({
     fetchAttachments();
     toast({
       title: "File deleted successfully",
+    });
+  };
+
+  const handleUrlAdd = async () => {
+    if (!newUrl.trim()) return;
+
+    try {
+      new URL(newUrl); // Validate URL format
+    } catch (e) {
+      toast({
+        title: "Invalid URL",
+        description: "Please enter a valid URL",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const { error: dbError } = await supabase
+      .from('contact_attachments')
+      .insert({
+        contact_id: contact.id,
+        external_url: newUrl.trim(),
+        uploaded_by: (await supabase.auth.getUser()).data.user?.id
+      });
+
+    if (dbError) {
+      toast({
+        title: "Error saving URL",
+        description: dbError.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setNewUrl('');
+    fetchAttachments();
+    toast({
+      title: "URL added successfully",
     });
   };
 
@@ -355,7 +396,7 @@ const ContactDetailsDialog = ({
           <TabsContent value="attachments">
             <div className="space-y-4">
               <div className="flex items-center gap-4">
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="flex-1">
                   <label className="flex items-center gap-2 cursor-pointer w-full">
                     <Upload className="h-4 w-4" />
                     Upload File
@@ -366,6 +407,18 @@ const ContactDetailsDialog = ({
                     />
                   </label>
                 </Button>
+                <div className="flex-[2] flex gap-2">
+                  <Input
+                    type="url"
+                    placeholder="Add URL (e.g., https://example.com)"
+                    value={newUrl}
+                    onChange={(e) => setNewUrl(e.target.value)}
+                  />
+                  <Button onClick={handleUrlAdd}>
+                    <LinkIcon className="h-4 w-4 mr-2" />
+                    Add URL
+                  </Button>
+                </div>
               </div>
 
               <div className="space-y-2">
@@ -375,27 +428,52 @@ const ContactDetailsDialog = ({
                     className="flex items-center justify-between p-3 border rounded-lg"
                   >
                     <div className="flex items-center gap-3">
-                      <FileIcon className="h-5 w-5 text-blue-500" />
+                      {attachment.file_path ? (
+                        <FileIcon className="h-5 w-5 text-blue-500" />
+                      ) : (
+                        <LinkIcon className="h-5 w-5 text-green-500" />
+                      )}
                       <div>
-                        <p className="font-medium">{attachment.filename}</p>
-                        <p className="text-sm text-gray-500">
-                          {new Date(attachment.created_at).toLocaleDateString()}
-                        </p>
+                        {attachment.file_path ? (
+                          <>
+                            <p className="font-medium">{attachment.filename}</p>
+                            <p className="text-sm text-gray-500">
+                              {new Date(attachment.created_at).toLocaleDateString()}
+                            </p>
+                          </>
+                        ) : (
+                          <>
+                            <p className="font-medium">External Link</p>
+                            <p className="text-sm text-blue-500 hover:text-blue-600">
+                              <a 
+                                href={attachment.external_url!} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-1"
+                              >
+                                {attachment.external_url}
+                                <ExternalLink className="h-3 w-3" />
+                              </a>
+                            </p>
+                          </>
+                        )}
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleFileDownload(attachment)}
-                      >
-                        Download
-                      </Button>
+                      {attachment.file_path && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleFileDownload(attachment)}
+                        >
+                          Download
+                        </Button>
+                      )}
                       <Button
                         variant="ghost"
                         size="sm"
                         className="text-red-500 hover:text-red-600"
-                        onClick={() => handleFileDelete(attachment)}
+                        onClick={() => handleDelete(attachment)}
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>

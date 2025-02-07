@@ -108,6 +108,7 @@ export type Database = {
           contact_id: string | null
           content_type: string | null
           created_at: string
+          external_url: string | null
           file_path: string
           filename: string
           id: string
@@ -119,6 +120,7 @@ export type Database = {
           contact_id?: string | null
           content_type?: string | null
           created_at?: string
+          external_url?: string | null
           file_path: string
           filename: string
           id?: string
@@ -130,6 +132,7 @@ export type Database = {
           contact_id?: string | null
           content_type?: string | null
           created_at?: string
+          external_url?: string | null
           file_path?: string
           filename?: string
           id?: string
