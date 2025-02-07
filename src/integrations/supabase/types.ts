@@ -289,6 +289,72 @@ export type Database = {
       }
     }
     Views: {
+      dinner_requests: {
+        Row: {
+          company: string | null
+          created_at: string | null
+          email: string | null
+          id: string | null
+          interests: string | null
+          name: string | null
+          phone_number: string | null
+          title: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: never
+          interests?: string | null
+          name?: string | null
+          phone_number?: string | null
+          title?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: never
+          interests?: string | null
+          name?: string | null
+          phone_number?: string | null
+          title?: string | null
+        }
+        Relationships: []
+      }
+      forum_requests: {
+        Row: {
+          company: string | null
+          created_at: string | null
+          email: string | null
+          id: string | null
+          interests: string | null
+          name: string | null
+          phone_number: string | null
+          title: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: never
+          interests?: string | null
+          name?: string | null
+          phone_number?: string | null
+          title?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: never
+          interests?: string | null
+          name?: string | null
+          phone_number?: string | null
+          title?: string | null
+        }
+        Relationships: []
+      }
       membership_requests: {
         Row: {
           additional_info: string | null
