@@ -121,6 +121,7 @@ export type Database = {
           email: string | null
           first_name: string | null
           id: string
+          industry: Database["public"]["Enums"]["industry_type"] | null
           last_name: string | null
           lead_type: Database["public"]["Enums"]["lead_type"] | null
           notes: string | null
@@ -140,6 +141,7 @@ export type Database = {
           email?: string | null
           first_name?: string | null
           id?: string
+          industry?: Database["public"]["Enums"]["industry_type"] | null
           last_name?: string | null
           lead_type?: Database["public"]["Enums"]["lead_type"] | null
           notes?: string | null
@@ -159,6 +161,7 @@ export type Database = {
           email?: string | null
           first_name?: string | null
           id?: string
+          industry?: Database["public"]["Enums"]["industry_type"] | null
           last_name?: string | null
           lead_type?: Database["public"]["Enums"]["lead_type"] | null
           notes?: string | null
@@ -292,6 +295,7 @@ export type Database = {
           expected_value: number | null
           first_name: string | null
           id: string
+          industry: Database["public"]["Enums"]["industry_type"] | null
           last_contact_date: string | null
           last_name: string | null
           lead_type: Database["public"]["Enums"]["lead_type"] | null
@@ -312,6 +316,7 @@ export type Database = {
           expected_value?: number | null
           first_name?: string | null
           id?: string
+          industry?: Database["public"]["Enums"]["industry_type"] | null
           last_contact_date?: string | null
           last_name?: string | null
           lead_type?: Database["public"]["Enums"]["lead_type"] | null
@@ -332,6 +337,7 @@ export type Database = {
           expected_value?: number | null
           first_name?: string | null
           id?: string
+          industry?: Database["public"]["Enums"]["industry_type"] | null
           last_contact_date?: string | null
           last_name?: string | null
           lead_type?: Database["public"]["Enums"]["lead_type"] | null
@@ -574,6 +580,27 @@ export type Database = {
         | "evaluation"
         | "closed_won"
         | "closed_lost"
+      industry_type:
+        | "manufacturing"
+        | "technology"
+        | "tourism"
+        | "healthcare"
+        | "energy"
+        | "mining"
+        | "logistics"
+        | "education"
+        | "finance"
+        | "real_estate"
+        | "agriculture"
+        | "water"
+        | "defense"
+        | "sports"
+        | "aerospace"
+        | "retail"
+        | "creative"
+        | "biotech"
+        | "construction"
+        | "ocean"
       lead_type:
         | "founder_executive"
         | "investor_buyer"

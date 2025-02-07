@@ -21,7 +21,8 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
     email: "",
     company: "",
     title: "",
-    lead_type: "other"
+    lead_type: "other",
+    industry: "technology"
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -53,7 +54,8 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
         email: "",
         company: "",
         title: "",
-        lead_type: "other"
+        lead_type: "other",
+        industry: "technology"
       });
       onOpenChange(false);
     } catch (error) {

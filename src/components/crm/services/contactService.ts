@@ -10,7 +10,8 @@ export const createContact = async (formData: ContactFormData, userId: string) =
       company: formData.company,
       stage: 'mql_lead',
       user_id: userId,
-      lead_type: formData.lead_type
+      lead_type: formData.lead_type,
+      industry: formData.industry
     })
     .select('id')
     .single();
@@ -31,7 +32,8 @@ export const createContact = async (formData: ContactFormData, userId: string) =
       stage: 'mql_lead',
       user_id: userId,
       company_id: newCompany.id,
-      lead_type: formData.lead_type
+      lead_type: formData.lead_type,
+      industry: formData.industry
     })
     .select('id')
     .single();

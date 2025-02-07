@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { ContactFormData, LeadType, leadTypes } from "../types/contact";
+import { ContactFormData, LeadType, leadTypes, IndustryType, industryTypes } from "../types/contact";
 
 interface ContactFormProps {
   formData: ContactFormData;
@@ -80,6 +80,25 @@ const ContactForm = ({ formData, onChange, onSubmit, onCancel, loading }: Contac
           </SelectTrigger>
           <SelectContent>
             {leadTypes.map(type => (
+              <SelectItem key={type.id} value={type.id}>
+                {type.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="industry">Industry</Label>
+        <Select
+          value={formData.industry}
+          onValueChange={(value: IndustryType) => onChange({ ...formData, industry: value })}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Select industry" />
+          </SelectTrigger>
+          <SelectContent>
+            {industryTypes.map(type => (
               <SelectItem key={type.id} value={type.id}>
                 {type.label}
               </SelectItem>
