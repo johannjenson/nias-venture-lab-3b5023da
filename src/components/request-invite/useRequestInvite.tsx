@@ -31,7 +31,12 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
           email_address: formData.email
         });
 
-      if (checkError) throw checkError;
+      if (checkError) {
+        console.error('Error checking account:', checkError);
+        toast.error("Error checking account status. Please try again.");
+        setIsSubmitting(false);
+        return;
+      }
 
       if (hasAccount) {
         toast.error("An account already exists with this email. Please login or reset your password.");
@@ -61,7 +66,10 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
           }
         ]);
 
-      if (dbError) throw dbError;
+      if (dbError) {
+        console.error('Error inserting request:', dbError);
+        throw dbError;
+      }
 
       // Send confirmation email using the client SDK without auth
       const { error: emailError } = await supabase.functions.invoke('send-network-confirmation', {
@@ -70,13 +78,13 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
           email: formData.email,
           company: formData.company,
           title: formData.title
-        },
-        headers: {
-          'Content-Type': 'application/json'
         }
       });
 
-      if (emailError) throw emailError;
+      if (emailError) {
+        console.error('Error sending confirmation email:', emailError);
+        throw emailError;
+      }
 
       toast.success("Thank you for your interest in joining the Nias Network. We'll review your application and be in touch soon!");
       onCloseModal(false);
