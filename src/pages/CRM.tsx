@@ -8,6 +8,7 @@ import AddContactDialog from "@/components/crm/AddContactDialog";
 import CRMHeader from "@/components/crm/components/CRMHeader";
 import CRMTabs from "@/components/crm/components/CRMTabs";
 import { LeadType, IndustryType } from "@/components/crm/types/contact";
+import { InferIndustriesButton } from "@/components/crm/components/InferIndustriesButton";
 
 const CRM = () => {
   const navigate = useNavigate();
@@ -52,6 +53,9 @@ const CRM = () => {
 
       <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-7xl mx-auto">
+          <div className="mb-4">
+            <InferIndustriesButton />
+          </div>
           <CRMTabs
             leadTypeFilter={leadTypeFilter}
             onLeadTypeChange={setLeadTypeFilter}
