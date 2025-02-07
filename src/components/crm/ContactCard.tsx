@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -16,6 +17,8 @@ interface ContactCardProps {
     company: string;
     title: string;
     stage: ContactStage;
+    source?: string;
+    source_id?: string;
   };
   onUpdate: () => void;
 }
@@ -45,6 +48,9 @@ const ContactCard = ({ contact, onUpdate }: ContactCardProps) => {
           <div className="text-sm">
             <p className="text-gray-600">{contact.title}</p>
             <p className="text-gray-500 truncate">{contact.email}</p>
+            {contact.source === 'network_request' && (
+              <p className="text-blue-600 text-xs mt-2">Network Join Request</p>
+            )}
           </div>
         </div>
       </Card>

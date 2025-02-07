@@ -81,6 +81,8 @@ export type Database = {
           last_name: string | null
           notes: string | null
           phone: string | null
+          source: string | null
+          source_id: string | null
           stage: Database["public"]["Enums"]["contact_stage"] | null
           status: string | null
           title: string | null
@@ -96,6 +98,8 @@ export type Database = {
           last_name?: string | null
           notes?: string | null
           phone?: string | null
+          source?: string | null
+          source_id?: string | null
           stage?: Database["public"]["Enums"]["contact_stage"] | null
           status?: string | null
           title?: string | null
@@ -111,6 +115,8 @@ export type Database = {
           last_name?: string | null
           notes?: string | null
           phone?: string | null
+          source?: string | null
+          source_id?: string | null
           stage?: Database["public"]["Enums"]["contact_stage"] | null
           status?: string | null
           title?: string | null
@@ -227,6 +233,7 @@ export type Database = {
           linkedin_url: string | null
           phone_number: string | null
           referred_by: string | null
+          request_status: string | null
           title: string | null
         }
         Insert: {
@@ -240,6 +247,7 @@ export type Database = {
           linkedin_url?: string | null
           phone_number?: string | null
           referred_by?: string | null
+          request_status?: string | null
           title?: string | null
         }
         Update: {
@@ -253,6 +261,7 @@ export type Database = {
           linkedin_url?: string | null
           phone_number?: string | null
           referred_by?: string | null
+          request_status?: string | null
           title?: string | null
         }
         Relationships: []
