@@ -9,7 +9,10 @@ interface UserViewProps {
 }
 
 const UserView = ({ contacts, stage, onUpdate }: UserViewProps) => {
-  const stageContacts = contacts.filter(c => c.stage === stage);
+  const stageContacts = contacts
+    .filter(c => c.stage === stage)
+    .sort((a, b) => b.heat_rating - a.heat_rating); // Sort by heat rating descending
+    
   const networkRequests = stageContacts.filter(c => c.source === 'network_request');
   const otherContacts = stageContacts.filter(c => c.source !== 'network_request');
 
@@ -46,3 +49,4 @@ const UserView = ({ contacts, stage, onUpdate }: UserViewProps) => {
 };
 
 export default UserView;
+

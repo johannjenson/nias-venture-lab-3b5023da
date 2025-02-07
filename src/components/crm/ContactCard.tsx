@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { MoreHorizontal, UserCheck } from "lucide-react";
+import { MoreHorizontal, UserCheck, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -100,6 +100,15 @@ const ContactCard = ({ contact, onUpdate }: ContactCardProps) => {
         <div className="text-sm text-gray-600">
           <p>{contact.title}</p>
           <p>{contact.company}</p>
+          <div className="flex gap-0.5 mt-1">
+            {Array.from({ length: contact.heat_rating }).map((_, index) => (
+              <Flame 
+                key={index}
+                className="h-4 w-4 text-red-500"
+                aria-label={`Heat rating ${contact.heat_rating} out of 5`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
