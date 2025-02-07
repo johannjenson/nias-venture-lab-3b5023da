@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-type LeadStage = Database["public"]["Enums"]["lead_stage"];
+type CompanyStage = Database["public"]["Enums"]["company_stage"];
 
 type Lead = {
   id: string;
@@ -22,12 +22,12 @@ type Lead = {
   email: string;
   company: string;
   title: string;
-  stage: LeadStage;
+  stage: CompanyStage;
   expected_value: number | null;
   expected_close_date: string | null;
 };
 
-const stages: { id: LeadStage; label: string }[] = [
+const stages: { id: CompanyStage; label: string }[] = [
   { id: 'new', label: 'New' },
   { id: 'contacted', label: 'Contacted' },
   { id: 'meeting_scheduled', label: 'Meeting Scheduled' },
@@ -78,7 +78,7 @@ const CompanyBoard = () => {
     setLeads(data || []);
   };
 
-  const updateLeadStage = async (leadId: string, stage: LeadStage) => {
+  const updateLeadStage = async (leadId: string, stage: CompanyStage) => {
     const { error } = await supabase
       .from('leads')
       .update({ stage })
