@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Footer from "@/components/Footer";
 import IndustryCard from "@/components/resources/IndustryCard";
@@ -6,6 +7,8 @@ import { industries } from "@/data/industries";
 import { Button } from "@/components/ui/button";
 import { BackButton } from "@/components/ui/back-button";
 import RequestInviteModal from "@/components/RequestInviteModal";
+import { Link } from "react-router-dom";
+import { UserCheck } from "lucide-react";
 
 const Resources = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -34,7 +37,14 @@ const Resources = () => {
     <div className="min-h-screen bg-white">
       {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-white border-b z-50 px-4">
-        <div className="max-w-7xl mx-auto h-16 flex items-center justify-end">
+        <div className="max-w-7xl mx-auto h-16 flex items-center justify-between">
+          <Link 
+            to="/resources/inbound-contacts"
+            className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900"
+          >
+            <UserCheck className="h-4 w-4" />
+            View Inbound Contacts
+          </Link>
           <Button
             onClick={() => setShowRequestModal(true)}
             className="bg-primary hover:bg-primary/90 text-white"

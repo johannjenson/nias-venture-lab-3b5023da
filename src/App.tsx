@@ -16,6 +16,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import CRM from "./pages/CRM";
+import InboundContacts from "./pages/InboundContacts";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/crm" element={<CRM />} />
+          <Route path="/resources/inbound-contacts" element={<InboundContacts />} />
         </Routes>
         <Toaster />
         <Sonner />
