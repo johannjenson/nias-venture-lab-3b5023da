@@ -9,6 +9,38 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      ai_transcripts: {
+        Row: {
+          contact_id: string | null
+          created_at: string
+          id: string
+          transcript_text: string
+          updated_at: string
+        }
+        Insert: {
+          contact_id?: string | null
+          created_at?: string
+          id?: string
+          transcript_text: string
+          updated_at?: string
+        }
+        Update: {
+          contact_id?: string | null
+          created_at?: string
+          id?: string
+          transcript_text?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ai_transcripts_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       checklist_items: {
         Row: {
           completed: boolean | null

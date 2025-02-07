@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
@@ -8,6 +9,7 @@ import AllLeadsView from "../AllLeadsView";
 import CRMFilters from "./CRMFilters";
 import { IndustryType, LeadType } from "../types/contact";
 import { supabase } from "@/integrations/supabase/client";
+import { AIOptionsDropdown } from "./AIOptionsDropdown";
 
 interface CRMTabsProps {
   leadTypeFilter: LeadType | 'all';
@@ -110,14 +112,17 @@ const CRMTabs = ({
           </TabsTrigger>
           <TabsTrigger value="all-leads">All Leads</TabsTrigger>
         </TabsList>
-        <CRMFilters
-          leadTypeFilter={leadTypeFilter}
-          onLeadTypeChange={onLeadTypeChange}
-          industryFilter={industryFilter}
-          onIndustryChange={onIndustryChange}
-          viewByCompany={viewByCompany}
-          onViewTypeChange={onViewTypeChange}
-        />
+        <div className="flex items-center">
+          <CRMFilters
+            leadTypeFilter={leadTypeFilter}
+            onLeadTypeChange={onLeadTypeChange}
+            industryFilter={industryFilter}
+            onIndustryChange={onIndustryChange}
+            viewByCompany={viewByCompany}
+            onViewTypeChange={onViewTypeChange}
+          />
+          <AIOptionsDropdown />
+        </div>
       </div>
       <TabsContent value="pipeline">
         <KanbanBoard 
