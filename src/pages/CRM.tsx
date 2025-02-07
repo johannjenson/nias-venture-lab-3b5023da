@@ -65,7 +65,7 @@ const CRM = () => {
             <h1 className="text-xl font-semibold">CRM Dashboard</h1>
           </div>
           <Button onClick={() => setShowAddContact(true)}>
-            <Plus className="mr-2 h-4 w-4" /> Add Contact
+            <Plus className="mr-2 h-4 w-4" /> Add Lead
           </Button>
         </div>
       </div>
@@ -106,3 +106,4 @@ const CRM = () => {
 };
 
 export default CRM;
+

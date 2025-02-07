@@ -74,6 +74,7 @@ export type Database = {
       contacts: {
         Row: {
           company: string | null
+          company_id: string | null
           created_at: string | null
           email: string | null
           first_name: string | null
@@ -91,6 +92,7 @@ export type Database = {
         }
         Insert: {
           company?: string | null
+          company_id?: string | null
           created_at?: string | null
           email?: string | null
           first_name?: string | null
@@ -108,6 +110,7 @@ export type Database = {
         }
         Update: {
           company?: string | null
+          company_id?: string | null
           created_at?: string | null
           email?: string | null
           first_name?: string | null
@@ -123,7 +126,15 @@ export type Database = {
           updated_at?: string | null
           user_id?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "contacts_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       dinner_invites: {
         Row: {
@@ -241,7 +252,7 @@ export type Database = {
           notes: string | null
           phone: string | null
           source: string | null
-          stage: Database["public"]["Enums"]["lead_stage"] | null
+          stage: Database["public"]["Enums"]["company_stage"] | null
           status: string | null
           title: string | null
           updated_at: string | null
@@ -260,7 +271,7 @@ export type Database = {
           notes?: string | null
           phone?: string | null
           source?: string | null
-          stage?: Database["public"]["Enums"]["lead_stage"] | null
+          stage?: Database["public"]["Enums"]["company_stage"] | null
           status?: string | null
           title?: string | null
           updated_at?: string | null
@@ -279,7 +290,7 @@ export type Database = {
           notes?: string | null
           phone?: string | null
           source?: string | null
-          stage?: Database["public"]["Enums"]["lead_stage"] | null
+          stage?: Database["public"]["Enums"]["company_stage"] | null
           status?: string | null
           title?: string | null
           updated_at?: string | null
@@ -477,19 +488,19 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      contact_stage:
-        | "mql_lead"
-        | "sql_qualification"
-        | "sqo_discovery"
-        | "evaluation"
-        | "closed_won"
-        | "closed_lost"
-      lead_stage:
+      company_stage:
         | "new"
         | "contacted"
         | "meeting_scheduled"
         | "proposal_sent"
         | "negotiation"
+        | "closed_won"
+        | "closed_lost"
+      contact_stage:
+        | "mql_lead"
+        | "sql_qualification"
+        | "sqo_discovery"
+        | "evaluation"
         | "closed_won"
         | "closed_lost"
     }

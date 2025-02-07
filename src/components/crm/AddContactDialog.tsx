@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -39,20 +40,66 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
       return;
     }
 
-    const { error } = await supabase
+    // First, we'll create or find the company in the leads table
+    const { data: existingCompany, error: companySearchError } = await supabase
+      .from('leads')
+      .select('id')
+      .eq('company', formData.company)
+      .single();
+
+    if (companySearchError && companySearchError.code !== 'PGRST116') {
+      toast({
+        title: "Error finding company",
+        description: companySearchError.message,
+        variant: "destructive",
+      });
+      setLoading(false);
+      return;
+    }
+
+    let companyId;
+    if (!existingCompany) {
+      // Create new company in leads table
+      const { data: newCompany, error: createCompanyError } = await supabase
+        .from('leads')
+        .insert([{
+          company: formData.company,
+          stage: 'new',
+          user_id: user.id
+        }])
+        .select('id')
+        .single();
+
+      if (createCompanyError) {
+        toast({
+          title: "Error creating company",
+          description: createCompanyError.message,
+          variant: "destructive",
+        });
+        setLoading(false);
+        return;
+      }
+      companyId = newCompany.id;
+    } else {
+      companyId = existingCompany.id;
+    }
+
+    // Now create the contact with reference to the company
+    const { error: contactError } = await supabase
       .from('contacts')
       .insert([{ 
         ...formData, 
-        stage: 'mql_lead', // Updated from 'new_lead' to 'mql_lead'
-        user_id: user.id
+        stage: 'mql_lead',
+        user_id: user.id,
+        company_id: companyId
       }]);
 
     setLoading(false);
 
-    if (error) {
+    if (contactError) {
       toast({
         title: "Error adding contact",
-        description: error.message,
+        description: contactError.message,
         variant: "destructive",
       });
       return;
@@ -77,7 +124,7 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Add New Contact</DialogTitle>
+          <DialogTitle>Add New Lead</DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -142,7 +189,7 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
               Cancel
             </Button>
             <Button type="submit" disabled={loading}>
-              {loading ? "Adding..." : "Add Contact"}
+              {loading ? "Adding..." : "Add Lead"}
             </Button>
           </div>
         </form>
