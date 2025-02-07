@@ -1,5 +1,5 @@
+
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import EventInviteModal from "@/components/event-invite/EventInviteModal";
 import Footer from "@/components/Footer";
 import { BackButton } from "@/components/ui/back-button";
@@ -15,12 +15,12 @@ const RiyadhEvent = () => {
     <div className="min-h-screen bg-white">
       {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
-        <div className="max-w-7xl mx-auto h-16 flex items-center">
+        <div className="max-w-7xl mx-auto h-16 flex items-center px-6">
           <BackButton />
         </div>
       </div>
 
-      <main>
+      <main className="pt-16">
         <EventHero
           onRequestInvite={() => setShowRequestModal(true)}
         />
