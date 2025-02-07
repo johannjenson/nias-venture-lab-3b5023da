@@ -24,6 +24,7 @@ const LeadsTable = ({ leads, onLeadClick }: LeadsTableProps) => {
           <TableHead>Email</TableHead>
           <TableHead>Company</TableHead>
           <TableHead>Industry</TableHead>
+          <TableHead>Message</TableHead>
           <TableHead>Status</TableHead>
         </TableRow>
       </TableHeader>
@@ -41,6 +42,9 @@ const LeadsTable = ({ leads, onLeadClick }: LeadsTableProps) => {
             <TableCell>{lead.email}</TableCell>
             <TableCell>{lead.company}</TableCell>
             <TableCell>{lead.industry}</TableCell>
+            <TableCell className="max-w-xs truncate">
+              {lead.additional_info}
+            </TableCell>
             <TableCell>
               {lead.type === 'contact' ? lead.stage : lead.request_status}
             </TableCell>

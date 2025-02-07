@@ -61,7 +61,8 @@ const InboundContacts = () => {
         company: null,
         title: null,
         first_name: null,
-        last_name: null
+        last_name: null,
+        additional_info: contact.message // Map the message field to additional_info
       }));
     },
     enabled: !isLoading // Only fetch contacts when authentication check is complete
