@@ -1,3 +1,4 @@
+
 import { Building2, Users2, LineChart } from "lucide-react";
 
 const features = [
@@ -45,12 +46,12 @@ const EventOverview = () => {
               ))}
             </div>
           </div>
-          <div className="bg-secondary p-8 rounded-lg">
+          <div className="bg-secondary p-8 rounded-lg shadow-sm">
             <h3 className="text-2xl font-bold text-primary mb-6">Event Details</h3>
             <div className="space-y-4">
               <div>
                 <h4 className="font-semibold text-primary">Date & Time</h4>
-                <p className="text-gray-600">February 13th, 2024 | 7:00 PM - 1:00 AM</p>
+                <p className="text-gray-600">February 13th, 2025 | 7:00 PM - 1:00 AM</p>
               </div>
               <div>
                 <h4 className="font-semibold text-primary">Location</h4>
