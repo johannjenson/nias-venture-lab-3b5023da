@@ -11,7 +11,7 @@ const CRMHeader = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col space-y-8 py-8">
+    <div className="flex flex-col space-y-8">
       <button 
         onClick={() => navigate('/')}
         className="flex items-center text-muted-foreground hover:text-foreground transition-colors"
@@ -44,4 +44,3 @@ const CRMHeader = () => {
 };
 
 export default CRMHeader;
-
