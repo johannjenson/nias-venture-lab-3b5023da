@@ -44,6 +44,24 @@ const ContactCard = ({ contact, onUpdate }: ContactCardProps) => {
     onUpdate();
   };
 
+  const handleHeatRatingChange = async (newRating: number) => {
+    const { error } = await supabase
+      .from('contacts')
+      .update({ heat_rating: newRating })
+      .eq('id', contact.id);
+
+    if (error) {
+      toast({
+        title: "Error updating heat rating",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    onUpdate();
+  };
+
   return (
     <>
       <div 
@@ -100,13 +118,24 @@ const ContactCard = ({ contact, onUpdate }: ContactCardProps) => {
         <div className="text-sm text-gray-600">
           <p>{contact.title}</p>
           <p>{contact.company}</p>
-          <div className="flex gap-0.5 mt-1">
-            {Array.from({ length: contact.heat_rating }).map((_, index) => (
-              <Flame 
-                key={index}
-                className="h-4 w-4 text-red-500"
-                aria-label={`Heat rating ${contact.heat_rating} out of 5`}
-              />
+          <div 
+            className="flex gap-0.5 mt-1" 
+            onClick={(e) => e.stopPropagation()} // Prevent card click when clicking rating
+          >
+            {[1, 2, 3, 4, 5].map((rating) => (
+              <button
+                key={rating}
+                onClick={() => handleHeatRatingChange(rating === contact.heat_rating ? 0 : rating)}
+                className="hover:scale-110 transition-transform"
+              >
+                <Flame 
+                  className={cn(
+                    "h-4 w-4",
+                    rating <= contact.heat_rating ? "text-red-500" : "text-gray-300"
+                  )}
+                  aria-label={`Heat rating ${rating} out of 5`}
+                />
+              </button>
             ))}
           </div>
         </div>
