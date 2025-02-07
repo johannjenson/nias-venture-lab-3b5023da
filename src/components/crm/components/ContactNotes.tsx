@@ -1,17 +1,74 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/components/ui/use-toast";
 import { Note } from "../types/contact-details";
 
 interface ContactNotesProps {
-  notes: Note[];
-  newNote: string;
-  onNewNoteChange: (value: string) => void;
-  onAddNote: () => void;
+  contactId: string;
 }
 
-const ContactNotes = ({ notes, newNote, onNewNoteChange, onAddNote }: ContactNotesProps) => {
+const ContactNotes = ({ contactId }: ContactNotesProps) => {
+  const [notes, setNotes] = useState<Note[]>([]);
+  const [newNote, setNewNote] = useState('');
+  const { toast } = useToast();
+
+  React.useEffect(() => {
+    fetchNotes();
+  }, [contactId]);
+
+  const fetchNotes = async () => {
+    const { data: notesData, error: notesError } = await supabase
+      .from('contact_notes')
+      .select(`
+        *,
+        profiles (
+          email,
+          first_name,
+          last_name
+        )
+      `)
+      .eq('contact_id', contactId)
+      .order('created_at', { ascending: false });
+
+    if (notesError) {
+      toast({
+        title: "Error fetching notes",
+        description: notesError.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setNotes(notesData);
+  };
+
+  const addNote = async () => {
+    if (!newNote.trim()) return;
+
+    const { error } = await supabase
+      .from('contact_notes')
+      .insert({
+        contact_id: contactId,
+        content: newNote.trim(),
+        user_id: (await supabase.auth.getUser()).data.user?.id
+      });
+
+    if (error) {
+      toast({
+        title: "Error adding note",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setNewNote('');
+    fetchNotes();
+  };
+
   return (
     <div>
       <h4 className="font-medium mb-4">Notes</h4>
@@ -20,11 +77,11 @@ const ContactNotes = ({ notes, newNote, onNewNoteChange, onAddNote }: ContactNot
           <Textarea
             placeholder="Add a note..."
             value={newNote}
-            onChange={(e) => onNewNoteChange(e.target.value)}
+            onChange={(e) => setNewNote(e.target.value)}
             className="min-h-[100px]"
           />
           <Button 
-            onClick={onAddNote}
+            onClick={addNote}
             disabled={!newNote.trim()}
             className="w-full"
           >
@@ -50,3 +107,4 @@ const ContactNotes = ({ notes, newNote, onNewNoteChange, onAddNote }: ContactNot
 };
 
 export default ContactNotes;
+
