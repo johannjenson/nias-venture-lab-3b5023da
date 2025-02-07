@@ -29,6 +29,7 @@ const InboundContacts = () => {
         industry: contact.industry as IndustryType | null,
         type: 'request',
         request_status: contact.request_status,
+        status: contact.request_status || 'pending', // Add status field, fallback to 'pending' if request_status is null
         company: null,
         title: null,
         first_name: null,
