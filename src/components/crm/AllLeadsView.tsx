@@ -41,8 +41,13 @@ const AllLeadsView = () => {
     }
 
     try {
-      const requestId = lead.id.replace('membership_', '');
+      const rawRequestId = lead.id.replace('membership_', '');
+      const requestId = parseInt(rawRequestId, 10);
       
+      if (isNaN(requestId)) {
+        throw new Error('Invalid request ID format');
+      }
+
       // First update the request status to account_created
       const { error: updateError } = await supabase
         .from('Request')
