@@ -1,4 +1,6 @@
 
+import { IndustryType } from "./contact";
+
 export interface RequestDetailsDialogProps {
   request: {
     id: string;
@@ -13,7 +15,7 @@ export interface RequestDetailsDialogProps {
     additional_info?: string | null;
     linkedin_url?: string | null;
     referred_by?: string | null;
-    industry?: string | null;
+    industry?: IndustryType | null;
   };
   type: 'membership' | 'event';
   open: boolean;

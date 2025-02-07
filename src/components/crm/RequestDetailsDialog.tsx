@@ -9,7 +9,7 @@ import { RequestDetailsDialogProps } from "./types/request-details";
 import { supabase } from "@/integrations/supabase/client";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState } from "react";
-import { industryTypes } from "./types/contact";
+import { industryTypes, IndustryType } from "./types/contact";
 
 const RequestDetailsDialog = ({ 
   request, 
@@ -19,7 +19,7 @@ const RequestDetailsDialog = ({
   onUpdate 
 }: RequestDetailsDialogProps) => {
   const [status, setStatus] = useState(request.request_status || 'pending');
-  const [industry, setIndustry] = useState(request.industry || '');
+  const [industry, setIndustry] = useState<IndustryType | ''>(request.industry || '');
   const { toast } = useToast();
 
   const handleStatusChange = async (newStatus: string) => {
@@ -51,7 +51,7 @@ const RequestDetailsDialog = ({
     });
   };
 
-  const handleIndustryChange = async (newIndustry: string) => {
+  const handleIndustryChange = async (newIndustry: IndustryType) => {
     if (type !== 'event') return; // Only event requests have industry field
 
     const { error } = await supabase
