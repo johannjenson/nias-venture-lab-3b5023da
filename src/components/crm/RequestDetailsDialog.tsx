@@ -21,7 +21,7 @@ const RequestDetailsDialog = ({
   const { toast } = useToast();
 
   const handleStatusChange = async (newStatus: string) => {
-    const table = type === 'membership' ? 'membership_requests' : 'event_requests';
+    const table = type === 'membership' ? 'Request' : 'event_requests';
     const { error } = await supabase
       .from(table)
       .update({ request_status: newStatus })
@@ -46,7 +46,7 @@ const RequestDetailsDialog = ({
   };
 
   const handleIndustryChange = async (newIndustry: IndustryType) => {
-    const table = type === 'membership' ? 'membership_requests' : 'event_requests';
+    const table = type === 'membership' ? 'Request' : 'event_requests';
     
     const { error } = await supabase
       .from(table)
@@ -94,7 +94,7 @@ const RequestDetailsDialog = ({
     }
 
     // Update the moved_to_pipeline flag
-    const table = type === 'membership' ? 'membership_requests' : 'event_requests';
+    const table = type === 'membership' ? 'Request' : 'event_requests';
     const { error: updateError } = await supabase
       .from(table)
       .update({ moved_to_pipeline: true })
@@ -148,7 +148,7 @@ const RequestDetailsDialog = ({
   };
 
   const handleDelete = async () => {
-    const table = type === 'membership' ? 'membership_requests' : 'event_requests';
+    const table = type === 'membership' ? 'Request' : 'event_requests';
     
     const { error } = await supabase
       .from(table)
