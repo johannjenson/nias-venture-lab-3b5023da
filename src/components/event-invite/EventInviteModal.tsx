@@ -12,17 +12,19 @@ import { supabase } from "@/integrations/supabase/client";
 import { EventInviteModalProps, EventFormData } from "./types";
 import EventInviteForm from "./EventInviteForm";
 
+const initialFormData: EventFormData = {
+  fullName: "",
+  phoneNumber: "",
+  email: "",
+  company: "",
+  title: "",
+  industry: "manufacturing",
+  interests: "",
+};
+
 const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState<EventFormData>({
-    fullName: "",
-    phoneNumber: "",
-    email: "",
-    company: "",
-    title: "",
-    industry: "",
-    interests: "",
-  });
+  const [formData, setFormData] = useState<EventFormData>(initialFormData);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,15 +62,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
 
       toast.success("Thank you for your interest in the Nias Business Forum. We'll review your application and be in touch soon!");
       onOpenChange(false);
-      setFormData({
-        fullName: "",
-        phoneNumber: "",
-        email: "",
-        company: "",
-        title: "",
-        industry: "",
-        interests: "",
-      });
+      setFormData(initialFormData);
     } catch (error) {
       console.error('Error submitting form:', error);
       toast.error("There was an error submitting your application. Please try again.");

@@ -62,14 +62,12 @@ export const useEventRequests = () => {
     setForumRequests(forumData || []);
   };
 
-  const updateRequestStatus = async (requestId: string, status: string, type: 'dinner' | 'forum') => {
-    const eventType = type === 'dinner' ? 'dinner' : 'forum';
-    
+  const updateRequestStatus = async (requestId: number, status: string, type: 'dinner' | 'forum') => {
     const { error } = await supabase
       .from('event_requests')
       .update({ request_status: status })
       .eq('id', requestId)
-      .eq('event_type', eventType);
+      .eq('event_type', type === 'dinner' ? 'dinner' : 'forum');
 
     if (error) {
       toast({

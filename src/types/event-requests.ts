@@ -1,6 +1,6 @@
 
 export type EventRequest = {
-  id: string;
+  id: number;
   name: string | null;
   email: string | null;
   company: string | null;
