@@ -49,7 +49,7 @@ const CRM = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <CRMHeader />
+      <CRMHeader onAddLead={() => setShowAddContact(true)} />
 
       <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-7xl mx-auto">
