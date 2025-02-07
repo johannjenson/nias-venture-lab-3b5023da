@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
@@ -16,6 +15,7 @@ import HeatRating from "./components/HeatRating";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Target, Trash2 } from "lucide-react";
+import { DeleteRequestDialog } from "./components/request-details/DeleteRequestDialog";
 
 const ContactDetailsDialog = ({ 
   contact, 
@@ -326,15 +326,13 @@ const ContactDetailsDialog = ({
             </ScrollArea>
 
             <div className="p-6 pt-2 border-t">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-destructive hover:text-destructive hover:bg-destructive/10"
-                onClick={() => setShowDeleteAlert(true)}
-              >
-                <Trash2 className="h-4 w-4 mr-2" />
-                Delete Contact
-              </Button>
+              <DeleteRequestDialog 
+                contactId={contact.id} 
+                onDelete={() => {
+                  onUpdate();
+                  onOpenChange(false);
+                }}
+              />
             </div>
           </Tabs>
         </DialogContent>
