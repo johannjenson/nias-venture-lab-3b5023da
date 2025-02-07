@@ -43,6 +43,24 @@ const MainNav = () => {
     }
   };
   
+  const dashboard = user ? [
+    {
+      title: "Manage Relationships",
+      href: "/crm",
+      description: "Manage your contacts and leads",
+    },
+    {
+      title: "Manage Opportunities",
+      href: "/opportunities",
+      description: "Track and manage business opportunities",
+    },
+    {
+      title: "Settings",
+      href: "/settings",
+      description: "Configure your account settings",
+    },
+  ] : [];
+
   const about = [
     {
       title: "People",
@@ -82,11 +100,6 @@ const MainNav = () => {
     }] : []),
     ...(user ? [
       {
-        title: "Relationship Management",
-        href: "/crm",
-        description: "You eat what you hunt",
-      },
-      {
         title: "Log Out",
         href: "#",
         description: "Sign out of your account",
@@ -97,6 +110,7 @@ const MainNav = () => {
 
   const renderNavItems = () => (
     <NavigationMenuList className="gap-6">
+      {user && <NavMenuItem title="Dashboard" items={dashboard} />}
       <NavMenuItem title="Events" items={events} />
       <NavMenuItem title="Resources" items={resources} />
       <NavMenuItem title="About" items={about} />

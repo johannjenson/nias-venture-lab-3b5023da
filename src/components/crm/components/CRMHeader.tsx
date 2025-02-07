@@ -11,7 +11,7 @@ const CRMHeader = () => {
   return (
     <div className="flex items-center justify-between border-b pb-6">
       <div>
-        <h2 className="text-3xl font-bold tracking-tight">Relationship Management</h2>
+        <h2 className="text-3xl font-bold tracking-tight">Manage Relationships</h2>
         <p className="text-muted-foreground mt-1">
           Manage your contacts and leads
         </p>
