@@ -52,5 +52,6 @@ export interface TimelineItem {
     last_name: string | null;
   } | null;
   stage?: ContactStage;
+  completed?: boolean;
 }
 

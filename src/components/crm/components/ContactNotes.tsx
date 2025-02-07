@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -24,7 +23,6 @@ const ContactNotes = ({ contactId }: ContactNotesProps) => {
   }, [contactId]);
 
   const fetchTimelineItems = async () => {
-    // Fetch notes
     const { data: notesData, error: notesError } = await supabase
       .from('contact_notes')
       .select(`
@@ -47,7 +45,6 @@ const ContactNotes = ({ contactId }: ContactNotesProps) => {
       return;
     }
 
-    // Fetch completed checklist items
     const { data: checklistData, error: checklistError } = await supabase
       .from('checklist_items')
       .select('*')
@@ -65,7 +62,6 @@ const ContactNotes = ({ contactId }: ContactNotesProps) => {
       return;
     }
 
-    // Convert notes to timeline items
     const noteItems: TimelineItem[] = notesData.map((note): TimelineItem => ({
       id: note.id,
       type: 'note',
@@ -74,16 +70,15 @@ const ContactNotes = ({ contactId }: ContactNotesProps) => {
       user: note.profiles
     }));
 
-    // Convert checklist items to timeline items
     const checklistItems: TimelineItem[] = checklistData.map((item): TimelineItem => ({
       id: item.id,
       type: 'checklist',
       timestamp: item.completed_at!,
       content: item.item_text,
-      stage: item.stage
+      stage: item.stage,
+      completed: true
     }));
 
-    // Combine and sort all timeline items by timestamp
     const allItems = [...noteItems, ...checklistItems].sort(
       (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
     );
@@ -115,6 +110,27 @@ const ContactNotes = ({ contactId }: ContactNotesProps) => {
     fetchTimelineItems();
   };
 
+  const toggleChecklistItem = async (itemId: string) => {
+    const { error } = await supabase
+      .from('checklist_items')
+      .update({ 
+        completed: false,
+        completed_at: null
+      })
+      .eq('id', itemId);
+
+    if (error) {
+      toast({
+        title: "Error updating checklist item",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    fetchTimelineItems();
+  };
+
   const renderTimelineItem = (item: TimelineItem) => {
     if (item.type === 'note') {
       return (
@@ -133,7 +149,7 @@ const ContactNotes = ({ contactId }: ContactNotesProps) => {
     } else {
       return (
         <div className="flex items-start gap-2">
-          <CheckSquare className="h-4 w-4 mt-1 text-green-500" />
+          <CheckSquare className="h-4 w-4 mt-1 text-green-500 cursor-pointer" onClick={() => toggleChecklistItem(item.id)} />
           <div className="flex-1">
             <p className="text-sm mb-2">Completed: {item.content}</p>
             <p className="text-xs text-gray-500">
@@ -187,4 +203,3 @@ const ContactNotes = ({ contactId }: ContactNotesProps) => {
 };
 
 export default ContactNotes;
-
