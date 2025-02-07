@@ -1,20 +1,15 @@
-import { useEffect, useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
+
+import { useState, useEffect } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ChecklistItem, Note, ContactDetailsDialogProps } from "./types/contact-details";
-import ContactInfo from "./components/ContactInfo";
-import StageSelector from "./components/StageSelector";
-import ContactChecklist from "./components/ContactChecklist";
-import ContactNotes from "./components/ContactNotes";
-import ContactAttachments from "./components/ContactAttachments";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import HeatRating from "./components/HeatRating";
-import { Input } from "@/components/ui/input";
-import { Target, Trash2 } from "lucide-react";
 import { DeleteRequestDialog } from "./components/request-details/DeleteRequestDialog";
+import { Contact, ChecklistItem, ContactDetailsDialogProps } from "./types/contact-details";
+import DialogHeader from "./components/dialog/DialogHeader";
+import DialogContent as CustomDialogContent from "./components/dialog/DialogContent";
+import StageChangeAlert from "./components/dialog/StageChangeAlert";
 
 const ContactDetailsDialog = ({ 
   contact, 
@@ -24,7 +19,6 @@ const ContactDetailsDialog = ({
 }: ContactDetailsDialogProps) => {
   const [checklist, setChecklist] = useState<ChecklistItem[]>([]);
   const [showStageAlert, setShowStageAlert] = useState(false);
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [pendingStageChange, setPendingStageChange] = useState<typeof contact.stage | null>(null);
   const [goal, setGoal] = useState(contact.goal || '');
   const { toast } = useToast();
@@ -90,7 +84,7 @@ const ContactDetailsDialog = ({
       return;
     }
 
-    if (existingItems.length === 0) {
+    if (existingItems.length === 0 && defaultItems.length > 0) {
       const newItems: ChecklistItem[] = defaultItems.map(({ item_text, stage }) => ({
         id: crypto.randomUUID(),
         contact_id: actualContactId,
@@ -271,35 +265,17 @@ const ContactDetailsDialog = ({
     });
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      updateGoal();
-    }
-  };
-
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
         <DialogContent className="max-w-2xl h-[90vh] p-0 flex flex-col">
-          <DialogHeader className="p-6 pb-2">
-            <div className="flex justify-between items-start">
-              <DialogTitle className="pb-[10px]">
-                {contact.first_name} {contact.last_name}
-              </DialogTitle>
-            </div>
-            <div className="mt-4 flex items-center gap-6">
-              <Target className="w-6 h-6 text-gray-500 p-1" />
-              <Input
-                placeholder="Set a target for this lead... (press Enter to save)"
-                value={goal}
-                onChange={(e) => setGoal(e.target.value)}
-                onBlur={updateGoal}
-                onKeyDown={handleKeyDown}
-                className="mt-2"
-              />
-            </div>
-          </DialogHeader>
+          <DialogHeader 
+            firstName={contact.first_name}
+            lastName={contact.last_name}
+            goal={goal}
+            onGoalChange={setGoal}
+            onGoalUpdate={updateGoal}
+          />
 
           <Tabs defaultValue="details" className="flex flex-col flex-1">
             <TabsList className="px-6 mt-2">
@@ -308,33 +284,15 @@ const ContactDetailsDialog = ({
             </TabsList>
 
             <ScrollArea className="flex-1 p-6">
-              <TabsContent value="details" className="mt-0">
-                <div className="grid grid-cols-3 gap-8">
-                  <div className="col-span-1 space-y-4">
-                    <ContactInfo contact={contact} />
-                    <HeatRating 
-                      currentRating={contact.heat_rating} 
-                      onRatingChange={updateHeatRating}
-                    />
-                    <StageSelector currentStage={contact.stage} onStageChange={updateStage} />
-                  </div>
-
-                  <div className="col-span-2 space-y-6">
-                    <ContactChecklist 
-                      checklist={checklist} 
-                      onToggleItem={toggleChecklistItem} 
-                    />
-                    <ContactNotes 
-                      contactId={contact.id} 
-                      onChecklistUpdate={fetchChecklist}
-                    />
-                  </div>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="attachments" className="mt-0">
-                <ContactAttachments contactId={contact.id} />
-              </TabsContent>
+              <CustomDialogContent
+                activeTab="details"
+                contact={contact}
+                checklist={checklist}
+                onHeatRatingChange={updateHeatRating}
+                onStageChange={updateStage}
+                onToggleChecklistItem={toggleChecklistItem}
+                onChecklistUpdate={fetchChecklist}
+              />
             </ScrollArea>
 
             <div className="p-6 pt-2 border-t">
@@ -350,27 +308,12 @@ const ContactDetailsDialog = ({
         </DialogContent>
       </Dialog>
 
-      <AlertDialog open={showStageAlert} onOpenChange={setShowStageAlert}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Incomplete Checklist Items</AlertDialogTitle>
-            <AlertDialogDescription>
-              There are incomplete checklist items for the current stage. Are you sure you want to proceed with moving this contact to the next stage?
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => setShowStageAlert(false)}>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={() => {
-              if (pendingStageChange) {
-                processStageUpdate(pendingStageChange);
-                setShowStageAlert(false);
-              }
-            }}>
-              Proceed Anyway
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <StageChangeAlert
+        open={showStageAlert}
+        onOpenChange={setShowStageAlert}
+        pendingStage={pendingStageChange}
+        onConfirm={processStageUpdate}
+      />
     </>
   );
 };
