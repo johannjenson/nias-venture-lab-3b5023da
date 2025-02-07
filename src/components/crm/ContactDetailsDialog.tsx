@@ -226,7 +226,7 @@ const ContactDetailsDialog = ({
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="max-w-2xl h-[90vh] p-0">
+        <DialogContent className="max-w-2xl h-[90vh] p-0 flex flex-col">
           <DialogHeader className="p-6 pb-2">
             <DialogTitle>
               {contact.first_name} {contact.last_name}
@@ -246,7 +246,7 @@ const ContactDetailsDialog = ({
             </div>
           </DialogHeader>
 
-          <Tabs defaultValue="details" className="flex flex-col h-full">
+          <Tabs defaultValue="details" className="flex flex-col flex-1">
             <TabsList className="px-6 mt-2">
               <TabsTrigger value="details" className="flex-1">Details</TabsTrigger>
               <TabsTrigger value="attachments" className="flex-1">Attachments</TabsTrigger>
