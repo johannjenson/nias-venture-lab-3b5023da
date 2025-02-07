@@ -489,11 +489,10 @@ export type Database = {
     }
     Enums: {
       company_stage:
-        | "new"
-        | "contacted"
-        | "meeting_scheduled"
-        | "proposal_sent"
-        | "negotiation"
+        | "mql_lead"
+        | "sql_qualification"
+        | "sqo_discovery"
+        | "evaluation"
         | "closed_won"
         | "closed_lost"
       contact_stage:

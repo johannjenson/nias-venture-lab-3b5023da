@@ -74,7 +74,7 @@ const CRM = () => {
         <div className="max-w-7xl mx-auto">
           <Tabs defaultValue="pipeline" className="space-y-4">
             <TabsList>
-              <TabsTrigger value="pipeline">Contact Pipeline</TabsTrigger>
+              <TabsTrigger value="pipeline">User Pipeline</TabsTrigger>
               <TabsTrigger value="companies">Company Pipeline</TabsTrigger>
               <TabsTrigger value="membership">Membership Requests</TabsTrigger>
               <TabsTrigger value="events">Event Requests</TabsTrigger>
@@ -106,4 +106,3 @@ const CRM = () => {
 };
 
 export default CRM;
-

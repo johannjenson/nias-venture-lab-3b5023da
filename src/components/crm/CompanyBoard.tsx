@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
@@ -28,11 +27,10 @@ type Lead = {
 };
 
 const stages: { id: CompanyStage; label: string }[] = [
-  { id: 'new', label: 'New' },
-  { id: 'contacted', label: 'Contacted' },
-  { id: 'meeting_scheduled', label: 'Meeting Scheduled' },
-  { id: 'proposal_sent', label: 'Proposal Sent' },
-  { id: 'negotiation', label: 'Negotiation' },
+  { id: 'mql_lead', label: 'MQL Lead' },
+  { id: 'sql_qualification', label: 'SQL Qualification' },
+  { id: 'sqo_discovery', label: 'SQO Discovery' },
+  { id: 'evaluation', label: 'Evaluation' },
   { id: 'closed_won', label: 'Closed Won' },
   { id: 'closed_lost', label: 'Closed Lost' },
 ];
