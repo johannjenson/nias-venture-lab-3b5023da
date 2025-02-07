@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import DinnerInviteModal from "@/components/DinnerInviteModal";
@@ -53,7 +54,7 @@ const LeapDinner = () => {
                 <div className="space-y-6">
                   <div>
                     <h3 className="font-semibold text-primary mb-2">When</h3>
-                    <p className="text-gray-600">February 9th, 2025 | 7:00 PM - 12:00 PM</p>
+                    <p className="text-gray-600">February 9th, 2025 | 7:00 PM - 1:00 AM</p>
                   </div>
                   <div>
                     <h3 className="font-semibold text-primary mb-2">Where</h3>
