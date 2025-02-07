@@ -10,6 +10,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState } from "react";
 import { industryTypes, IndustryType } from "./types/contact";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import { Trash2 } from "lucide-react";
 
 const RequestDetailsDialog = ({ 
   request, 
@@ -77,12 +79,61 @@ const RequestDetailsDialog = ({
     });
   };
 
+  const handleDelete = async () => {
+    const table = type === 'membership' ? 'Request' : 'EventRequest';
+    const id = type === 'membership' ? 
+      parseInt(request.id.replace('membership_', '')) : 
+      parseInt(request.id.replace('event_', ''));
+
+    const { error } = await supabase
+      .from(table)
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      toast({
+        title: "Error deleting request",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    toast({
+      title: "Request deleted",
+      description: "The request has been successfully deleted",
+    });
+
+    onOpenChange(false);
+    onUpdate();
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
-          <DialogTitle>
-            Request Details - {request.first_name} {request.last_name}
+          <DialogTitle className="flex items-center justify-between">
+            <span>Request Details - {request.first_name} {request.last_name}</span>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="destructive" size="icon">
+                  <Trash2 className="h-4 w-4" />
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. This will permanently delete the request
+                    from the database.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction onClick={handleDelete}>Delete</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </DialogTitle>
         </DialogHeader>
 
