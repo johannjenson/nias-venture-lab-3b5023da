@@ -47,3 +47,24 @@ export const industryTypes = [
   { id: 'construction' as const, label: 'Smart Construction' },
   { id: 'ocean' as const, label: 'Ocean Economy' }
 ] as const;
+
+// Added LeadEntry type definition
+export type LeadEntry = {
+  id: string;
+  first_name: string | null;
+  last_name: string | null;
+  name: string | null;
+  email: string | null;
+  title: string | null;
+  industry: IndustryType | string | null;
+  status: string;
+  type: 'contact' | 'request';
+  stage?: string;
+  request_status?: string;
+  company?: string | null;
+  phone_number?: string | null;
+  interests?: string | null;
+  additional_info?: string | null;
+  linkedin_url?: string | null;
+  referred_by?: string | null;
+};

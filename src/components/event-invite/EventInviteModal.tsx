@@ -31,9 +31,8 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
     setIsSubmitting(true);
     
     try {
-      // Changed EventRequest to event_requests
       const { error } = await supabase
-        .from('event_requests')
+        .from('event_requests')  // Changed from 'EventRequest' to 'event_requests'
         .insert({
           name: formData.fullName,
           phone_number: formData.phoneNumber,
@@ -47,7 +46,6 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
 
       if (error) throw error;
 
-      // Send confirmation email
       const { error: emailError } = await supabase.functions.invoke('send-event-confirmation', {
         body: {
           eventType: 'forum',
