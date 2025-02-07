@@ -1,0 +1,225 @@
+
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/components/ui/use-toast";
+import { Contact } from "./types/kanban";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Edit } from "lucide-react";
+import ContactDetailsDialog from "./ContactDetailsDialog";
+import { IndustryType } from "./types/contact";
+
+type LeadEntry = {
+  id: string;
+  first_name: string | null;
+  last_name: string | null;
+  email: string | null;
+  title: string | null;
+  industry: IndustryType | null;
+  status: string;
+  type: 'contact' | 'request';
+  stage?: string;
+  request_status?: string;
+  company?: string | null;
+};
+
+const AllLeadsView = () => {
+  const [leads, setLeads] = useState<LeadEntry[]>([]);
+  const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    fetchAllLeads();
+
+    const channel = supabase
+      .channel('all_leads_changes')
+      .on('postgres_changes', { 
+        event: '*', 
+        schema: 'public', 
+        table: 'contacts' 
+      }, () => {
+        fetchAllLeads();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  const fetchAllLeads = async () => {
+    // Fetch pipeline contacts
+    const { data: contactsData, error: contactsError } = await supabase
+      .from('contacts')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (contactsError) {
+      toast({
+        title: "Error fetching contacts",
+        description: contactsError.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Fetch event requests
+    const { data: eventData, error: eventError } = await supabase
+      .from('EventRequest')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (eventError) {
+      toast({
+        title: "Error fetching event requests",
+        description: eventError.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Fetch membership requests
+    const { data: membershipData, error: membershipError } = await supabase
+      .from('Request')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (membershipError) {
+      toast({
+        title: "Error fetching membership requests",
+        description: membershipError.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const allLeads: LeadEntry[] = [
+      ...contactsData.map((contact): LeadEntry => ({
+        id: contact.id,
+        first_name: contact.first_name,
+        last_name: contact.last_name,
+        email: contact.email,
+        title: contact.title,
+        industry: contact.industry,
+        company: contact.company,
+        status: contact.stage || 'Unknown',
+        type: 'contact',
+        stage: contact.stage
+      })),
+      ...eventData.map((request): LeadEntry => ({
+        id: `event_${request.id}`,
+        first_name: request.full_name?.split(' ')[0] || null,
+        last_name: request.full_name?.split(' ').slice(1).join(' ') || null,
+        email: request.email,
+        title: request.title,
+        industry: request.industry,
+        company: request.company,
+        status: request.request_status || 'pending',
+        type: 'request',
+        request_status: request.request_status
+      })),
+      ...membershipData.map((request): LeadEntry => ({
+        id: `membership_${request.id}`,
+        first_name: request.first_name,
+        last_name: request.last_name,
+        email: request.email,
+        title: request.title,
+        industry: null, // Membership requests don't have industry yet
+        company: request.company,
+        status: request.request_status || 'pending',
+        type: 'request',
+        request_status: request.request_status
+      }))
+    ];
+
+    setLeads(allLeads);
+  };
+
+  const handleEditContact = async (leadEntry: LeadEntry) => {
+    if (leadEntry.type === 'contact') {
+      const { data: contact, error } = await supabase
+        .from('contacts')
+        .select('*')
+        .eq('id', leadEntry.id)
+        .single();
+
+      if (error) {
+        toast({
+          title: "Error fetching contact details",
+          description: error.message,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      setSelectedContact(contact);
+    } else {
+      // For requests, we could implement a different edit dialog or conversion to contact
+      toast({
+        title: "Info",
+        description: "Request entries can be managed from their respective tabs",
+      });
+    }
+  };
+
+  return (
+    <div className="rounded-md border">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Name</TableHead>
+            <TableHead>Title</TableHead>
+            <TableHead>Email</TableHead>
+            <TableHead>Company</TableHead>
+            <TableHead>Industry</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {leads.map((lead) => (
+            <TableRow key={lead.id}>
+              <TableCell>
+                {lead.first_name} {lead.last_name}
+              </TableCell>
+              <TableCell>{lead.title}</TableCell>
+              <TableCell>{lead.email}</TableCell>
+              <TableCell>{lead.company}</TableCell>
+              <TableCell>{lead.industry}</TableCell>
+              <TableCell>
+                {lead.type === 'contact' ? lead.stage : lead.request_status}
+              </TableCell>
+              <TableCell>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => handleEditContact(lead)}
+                >
+                  <Edit className="h-4 w-4" />
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+
+      {selectedContact && (
+        <ContactDetailsDialog
+          contact={selectedContact}
+          open={!!selectedContact}
+          onOpenChange={(open) => !open && setSelectedContact(null)}
+          onUpdate={fetchAllLeads}
+        />
+      )}
+    </div>
+  );
+};
+
+export default AllLeadsView;

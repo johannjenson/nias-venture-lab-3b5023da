@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import KanbanBoard from "../KanbanBoard";
 import MembershipRequestsBoard from "../MembershipRequestsBoard";
 import EventRequestsBoard from "../EventRequestsBoard";
+import AllLeadsView from "../AllLeadsView";
 import CRMFilters from "./CRMFilters";
 import { IndustryType, LeadType } from "../types/contact";
 
@@ -28,6 +29,7 @@ const CRMTabs = ({
       <div className="flex items-center justify-between">
         <TabsList>
           <TabsTrigger value="pipeline">Pipeline</TabsTrigger>
+          <TabsTrigger value="all-leads">All Leads</TabsTrigger>
           <TabsTrigger value="membership">Membership Requests</TabsTrigger>
           <TabsTrigger value="events">Event Requests</TabsTrigger>
         </TabsList>
@@ -46,6 +48,9 @@ const CRMTabs = ({
           leadTypeFilter={leadTypeFilter}
           industryFilter={industryFilter}
         />
+      </TabsContent>
+      <TabsContent value="all-leads">
+        <AllLeadsView />
       </TabsContent>
       <TabsContent value="membership">
         <MembershipRequestsBoard />
