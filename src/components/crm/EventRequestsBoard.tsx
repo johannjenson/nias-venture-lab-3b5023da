@@ -84,20 +84,7 @@ const EventRequestsBoard = () => {
       return;
     }
 
-    // Transform the data to match EventRequest type
-    const transformedDinnerData: EventRequest[] = (dinnerData || []).map(item => ({
-      id: item.id || '',
-      name: item.name,
-      email: item.email,
-      company: item.company,
-      title: item.title,
-      phone_number: item.phone_number,
-      interests: item.interests,
-      request_status: 'pending',
-      created_at: item.created_at || new Date().toISOString(),
-    }));
-
-    setDinnerRequests(transformedDinnerData);
+    setDinnerRequests(dinnerData || []);
 
     // Fetch forum requests
     const { data: forumData, error: forumError } = await supabase
@@ -114,20 +101,7 @@ const EventRequestsBoard = () => {
       return;
     }
 
-    // Transform the data to match EventRequest type
-    const transformedForumData: EventRequest[] = (forumData || []).map(item => ({
-      id: item.id || '',
-      name: item.name,
-      email: item.email,
-      company: item.company,
-      title: item.title,
-      phone_number: item.phone_number,
-      interests: item.interests,
-      request_status: 'pending',
-      created_at: item.created_at || new Date().toISOString(),
-    }));
-
-    setForumRequests(transformedForumData);
+    setForumRequests(forumData || []);
   };
 
   const updateRequestStatus = async (requestId: string, status: string, type: 'dinner' | 'forum') => {

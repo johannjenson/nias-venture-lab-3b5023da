@@ -304,6 +304,7 @@ export type Database = {
           interests: string | null
           name: string | null
           phone_number: string | null
+          request_status: string | null
           title: string | null
         }
         Insert: {
@@ -314,6 +315,7 @@ export type Database = {
           interests?: string | null
           name?: string | null
           phone_number?: string | null
+          request_status?: string | null
           title?: string | null
         }
         Update: {
@@ -324,6 +326,7 @@ export type Database = {
           interests?: string | null
           name?: string | null
           phone_number?: string | null
+          request_status?: string | null
           title?: string | null
         }
         Relationships: []
@@ -337,6 +340,7 @@ export type Database = {
           interests: string | null
           name: string | null
           phone_number: string | null
+          request_status: string | null
           title: string | null
         }
         Insert: {
@@ -347,6 +351,7 @@ export type Database = {
           interests?: string | null
           name?: string | null
           phone_number?: string | null
+          request_status?: string | null
           title?: string | null
         }
         Update: {
@@ -357,6 +362,7 @@ export type Database = {
           interests?: string | null
           name?: string | null
           phone_number?: string | null
+          request_status?: string | null
           title?: string | null
         }
         Relationships: []
