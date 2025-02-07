@@ -10,7 +10,7 @@ interface CompanyViewProps {
   onUpdate: () => void;
 }
 
-const CompanyView = ({ companies, stage, onUpdate }: CompanyViewProps) => {
+const CompanyStageView = ({ companies, stage, onUpdate }: CompanyViewProps) => {
   const stageCompanies = companies.filter(company => company.stage === stage);
 
   return (
@@ -45,4 +45,4 @@ const CompanyView = ({ companies, stage, onUpdate }: CompanyViewProps) => {
   );
 };
 
-export default CompanyView;
+export default CompanyStageView;

@@ -6,7 +6,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { Contact, CompanyView, stages } from "./types/kanban";
 import StageHeader from "./components/StageHeader";
 import UserView from "./components/UserView";
-import CompanyView from "./components/CompanyView";
+import CompanyStageView from "./components/CompanyView";
 
 interface KanbanBoardProps {
   viewType: 'user' | 'company';
@@ -107,7 +107,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter }: KanbanBoardProps) => {
                 onUpdate={fetchData}
               />
             ) : (
-              <CompanyView
+              <CompanyStageView
                 companies={companyViews}
                 stage={stage.id}
                 onUpdate={fetchData}
