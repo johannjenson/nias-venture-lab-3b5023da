@@ -41,9 +41,20 @@ const AllLeadsView = () => {
     }
 
     try {
+      const requestId = lead.id.replace('membership_', '');
+      
+      // First update the request status to account_created
+      const { error: updateError } = await supabase
+        .from('Request')
+        .update({ request_status: 'account_created' })
+        .eq('id', requestId);
+
+      if (updateError) throw updateError;
+
+      // Then create the user account
       const { error } = await supabase.functions.invoke('create-approved-member', {
         body: {
-          requestId: lead.id,
+          requestId,
           email: lead.email,
           firstName: lead.first_name,
           lastName: lead.last_name,
