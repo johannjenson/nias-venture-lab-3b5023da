@@ -4,15 +4,17 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { FormData } from "./types";
+import { Loader2 } from "lucide-react";
 
 interface AdditionalInfoFormProps {
   formData: FormData;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onBack: () => void;
   onSubmit: (e: React.FormEvent) => void;
+  isSubmitting?: boolean;
 }
 
-const AdditionalInfoForm = ({ formData, onInputChange, onBack, onSubmit }: AdditionalInfoFormProps) => {
+const AdditionalInfoForm = ({ formData, onInputChange, onBack, onSubmit, isSubmitting }: AdditionalInfoFormProps) => {
   return (
     <form onSubmit={onSubmit} className="space-y-4 mt-2">
       <div className="space-y-2">
@@ -53,11 +55,18 @@ const AdditionalInfoForm = ({ formData, onInputChange, onBack, onSubmit }: Addit
       </div>
 
       <div className="flex gap-3">
-        <Button type="button" variant="outline" className="w-full" onClick={onBack}>
+        <Button type="button" variant="outline" className="w-full" onClick={onBack} disabled={isSubmitting}>
           Back
         </Button>
-        <Button type="submit" className="w-full">
-          Submit Application
+        <Button type="submit" className="w-full" disabled={isSubmitting}>
+          {isSubmitting ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Submitting...
+            </>
+          ) : (
+            "Submit Application"
+          )}
         </Button>
       </div>
     </form>

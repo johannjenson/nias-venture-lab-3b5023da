@@ -1,8 +1,10 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 type FormData = {
   name: string;
@@ -14,6 +16,7 @@ type FormData = {
 
 const MultiStepForm = () => {
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -27,21 +30,27 @@ const MultiStepForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (step < 3) {
       setStep((prev) => prev + 1);
     } else {
-      console.log("Form submitted:", formData);
-      toast.success("Application received! We'll review it and get back to you soon.");
-      setStep(1);
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        role: "",
-        interests: "",
-      });
+      setIsSubmitting(true);
+      try {
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Simulating API call
+        console.log("Form submitted:", formData);
+        toast.success("Application received! We'll review it and get back to you soon.");
+        setStep(1);
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          role: "",
+          interests: "",
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -140,8 +149,16 @@ const MultiStepForm = () => {
         <Button
           type="submit"
           className="w-full bg-primary hover:bg-primary/90 text-white py-6 text-base font-medium transition-all duration-300"
+          disabled={isSubmitting}
         >
-          {step === 3 ? "Submit Application" : "Continue"}
+          {isSubmitting ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Submitting...
+            </>
+          ) : (
+            step === 3 ? "Submit Application" : "Continue"
+          )}
         </Button>
         
         <p className="text-xs text-center text-gray-500 mt-4">

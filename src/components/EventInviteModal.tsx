@@ -19,6 +19,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { Loader2 } from "lucide-react";
 
 interface EventInviteModalProps {
   open: boolean;
@@ -26,6 +27,7 @@ interface EventInviteModalProps {
 }
 
 const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     phoneNumber: "",
@@ -37,6 +39,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
     try {
       const { error } = await supabase
@@ -81,6 +84,8 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
     } catch (error) {
       console.error('Error submitting form:', error);
       toast.error("There was an error submitting your application. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -107,6 +112,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
               value={formData.fullName}
               onChange={handleInputChange}
               required
+              disabled={isSubmitting}
             />
           </div>
           
@@ -119,6 +125,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
               value={formData.phoneNumber}
               onChange={handleInputChange}
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -131,6 +138,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
               value={formData.email}
               onChange={handleInputChange}
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -142,6 +150,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
               value={formData.company}
               onChange={handleInputChange}
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -153,6 +162,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
               onValueChange={(value) =>
                 setFormData((prev) => ({ ...prev, title: value }))
               }
+              disabled={isSubmitting}
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select your role" />
@@ -176,11 +186,19 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
               onChange={handleInputChange}
               placeholder="E.g., networking, investment opportunities, market insights"
               required
+              disabled={isSubmitting}
             />
           </div>
 
-          <Button type="submit" className="w-full">
-            Submit Application
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Submitting...
+              </>
+            ) : (
+              "Submit Application"
+            )}
           </Button>
         </form>
       </DialogContent>

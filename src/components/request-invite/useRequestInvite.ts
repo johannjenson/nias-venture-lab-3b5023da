@@ -18,9 +18,11 @@ const initialFormData: FormData = {
 export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
     try {
       // Split full name into first and last name
@@ -66,6 +68,8 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
     } catch (error) {
       console.error('Error submitting form:', error);
       toast.error("There was an error submitting your application. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -92,6 +96,7 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
     handleInputChange,
     handleNext,
     handleBack,
+    isSubmitting,
     setFormData: (value: string) => setFormData(prev => ({ ...prev, title: value }))
   };
 };

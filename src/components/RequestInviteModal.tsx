@@ -23,6 +23,7 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
     handleInputChange,
     handleNext,
     handleBack,
+    isSubmitting,
     setFormData,
   } = useRequestInvite(onOpenChange);
 
@@ -48,6 +49,7 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
             onInputChange={handleInputChange}
             onBack={handleBack}
             onSubmit={handleSubmit}
+            isSubmitting={isSubmitting}
           />
         )}
       </DialogContent>
