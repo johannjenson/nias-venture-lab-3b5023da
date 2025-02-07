@@ -22,7 +22,7 @@ const CRMHeader = ({ onAddLead }: CRMHeaderProps) => {
           >
             <ArrowLeft className="h-6 w-6" />
           </Button>
-          <h1 className="text-xl font-semibold">CRM Dashboard</h1>
+          <h1 className="text-xl font-semibold">Relationship Management</h1>
         </div>
         <Button onClick={onAddLead}>
           <Plus className="mr-2 h-4 w-4" /> Add Lead
@@ -33,3 +33,4 @@ const CRMHeader = ({ onAddLead }: CRMHeaderProps) => {
 };
 
 export default CRMHeader;
+
