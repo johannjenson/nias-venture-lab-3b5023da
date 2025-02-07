@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
@@ -30,10 +29,9 @@ const ContactDetailsDialog = ({
   const [goal, setGoal] = useState(contact.goal || '');
   const { toast } = useToast();
 
-  // Extract the actual contact ID from the prefixed ID if needed
   const getActualContactId = async (prefixedId: string) => {
     if (prefixedId.startsWith('event_')) {
-      const eventId = prefixedId.replace('event_', '');
+      const eventId = parseInt(prefixedId.replace('event_', ''), 10);
       const { data: eventRequest } = await supabase
         .from('event_requests')
         .select('uuid_id')

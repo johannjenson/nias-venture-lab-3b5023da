@@ -20,7 +20,7 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
 
   const getActualContactId = async (prefixedId: string) => {
     if (prefixedId.startsWith('event_')) {
-      const eventId = prefixedId.replace('event_', '');
+      const eventId = parseInt(prefixedId.replace('event_', ''), 10);
       const { data: eventRequest } = await supabase
         .from('event_requests')
         .select('uuid_id')
