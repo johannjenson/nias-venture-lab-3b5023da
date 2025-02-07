@@ -75,6 +75,11 @@ const MainNav = () => {
       href: "/resources",
       description: "Explore investment opportunities aligned with Saudi Vision 2030.",
     },
+    ...(user ? [{
+      title: "Inbound Contacts",
+      href: "/resources/inbound-contacts",
+      description: "View and manage contact form submissions",
+    }] : []),
     ...(!user ? [{
       title: "Member Login",
       href: "/login",
