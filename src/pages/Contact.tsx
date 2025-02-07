@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,7 +31,8 @@ const Contact = () => {
             email: formData.email,
             message: formData.message,
           },
-        ]);
+        ])
+        .select();
 
       if (error) throw error;
 
