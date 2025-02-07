@@ -16,6 +16,7 @@ export type Contact = {
   source?: string;
   source_id?: string;
   company_id?: string;
+  has_account?: boolean;
 };
 
 export type CompanyView = {

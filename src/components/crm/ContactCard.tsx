@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Contact } from "./types/kanban";
+import { Contact, ContactStage } from "./types/kanban";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
@@ -22,7 +22,7 @@ const ContactCard = ({ contact, onUpdate }: ContactCardProps) => {
   const [isMoving, setIsMoving] = useState(false);
   const { toast } = useToast();
 
-  const handleMoveContact = async (newStage: string) => {
+  const handleMoveContact = async (newStage: ContactStage) => {
     setIsMoving(true);
     
     const { error } = await supabase
@@ -66,20 +66,23 @@ const ContactCard = ({ contact, onUpdate }: ContactCardProps) => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={() => handleMoveContact('new_lead')}>
-              Move to New Lead
-            </DropdownMenuItem>
             <DropdownMenuItem onClick={() => handleMoveContact('mql_lead')}>
               Move to MQL
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleMoveContact('sql_lead')}>
+            <DropdownMenuItem onClick={() => handleMoveContact('sql_qualification')}>
               Move to SQL
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleMoveContact('opportunity')}>
-              Move to Opportunity
+            <DropdownMenuItem onClick={() => handleMoveContact('sqo_discovery')}>
+              Move to SQO
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleMoveContact('customer')}>
-              Move to Customer
+            <DropdownMenuItem onClick={() => handleMoveContact('evaluation')}>
+              Move to Evaluation
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleMoveContact('closed_won')}>
+              Move to Won
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleMoveContact('closed_lost')}>
+              Move to Lost
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
