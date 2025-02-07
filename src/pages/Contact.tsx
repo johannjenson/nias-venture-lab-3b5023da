@@ -8,6 +8,8 @@ import Footer from "@/components/Footer";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { industryTypes } from "@/components/crm/types/contact";
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -16,6 +18,7 @@ const Contact = () => {
     name: "",
     email: "",
     message: "",
+    industry: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -30,6 +33,9 @@ const Contact = () => {
             name: formData.name,
             email: formData.email,
             message: formData.message,
+            industry: formData.industry,
+            request_status: "pending",
+            moved_to_pipeline: false,
           },
         ])
         .select();
@@ -37,7 +43,7 @@ const Contact = () => {
       if (error) throw error;
 
       toast.success("Message sent! We'll get back to you soon.");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", message: "", industry: "" });
     } catch (error) {
       console.error("Error submitting form:", error);
       toast.error("Failed to send message. Please try again.");
@@ -51,6 +57,10 @@ const Contact = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleIndustryChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, industry: value }));
   };
 
   return (
@@ -114,6 +124,30 @@ const Contact = () => {
                 className="mt-1"
                 disabled={isSubmitting}
               />
+            </div>
+
+            <div>
+              <label
+                htmlFor="industry"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Industry
+              </label>
+              <Select
+                value={formData.industry}
+                onValueChange={handleIndustryChange}
+              >
+                <SelectTrigger className="mt-1">
+                  <SelectValue placeholder="Select your industry" />
+                </SelectTrigger>
+                <SelectContent>
+                  {industryTypes.map(type => (
+                    <SelectItem key={type.id} value={type.id}>
+                      {type.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             <div>
