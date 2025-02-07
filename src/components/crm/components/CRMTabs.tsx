@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
@@ -93,7 +92,6 @@ const CRMTabs = ({
       <div className="flex items-center justify-between">
         <TabsList>
           <TabsTrigger value="pipeline">Pipeline</TabsTrigger>
-          <TabsTrigger value="all-leads">All Leads</TabsTrigger>
           <TabsTrigger value="membership" className="flex items-center gap-2">
             Membership Requests
             {pendingMembershipCount > 0 && (
@@ -110,6 +108,7 @@ const CRMTabs = ({
               </Badge>
             )}
           </TabsTrigger>
+          <TabsTrigger value="all-leads">All Leads</TabsTrigger>
         </TabsList>
         <CRMFilters
           leadTypeFilter={leadTypeFilter}
@@ -127,14 +126,14 @@ const CRMTabs = ({
           industryFilter={industryFilter}
         />
       </TabsContent>
-      <TabsContent value="all-leads">
-        <AllLeadsView />
-      </TabsContent>
       <TabsContent value="membership">
         <MembershipRequestsBoard />
       </TabsContent>
       <TabsContent value="events">
         <EventRequestsBoard />
+      </TabsContent>
+      <TabsContent value="all-leads">
+        <AllLeadsView />
       </TabsContent>
     </Tabs>
   );
