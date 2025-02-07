@@ -45,7 +45,7 @@ const CRMTabs = ({
       .on('postgres_changes', { 
         event: '*', 
         schema: 'public', 
-        table: 'EventRequest' 
+        table: 'forum_requests' 
       }, () => {
         fetchPendingCounts();
       })
@@ -67,7 +67,7 @@ const CRMTabs = ({
 
     // Get pending event requests count
     const { count: eventCount } = await supabase
-      .from('EventRequest')
+      .from('forum_requests')
       .select('*', { count: 'exact', head: true })
       .eq('request_status', 'pending');
 
@@ -127,4 +127,3 @@ const CRMTabs = ({
 };
 
 export default CRMTabs;
-
