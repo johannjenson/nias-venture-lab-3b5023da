@@ -22,14 +22,22 @@ interface MembershipCardProps {
 
 export const MembershipCard = ({ request, onUpdateStatus }: MembershipCardProps) => (
   <Card className="p-4">
-    <div className="flex justify-between items-start mb-4">
-      <div>
-        <h4 className="font-medium">
-          {request.first_name} {request.last_name}
-        </h4>
-        <p className="text-sm text-gray-500">{request.company}</p>
-        <p className="text-sm text-gray-600">{request.title}</p>
-        <p className="text-sm text-gray-500 truncate">{request.email}</p>
+    <div className="flex justify-between items-center">
+      <div className="grid grid-cols-[1fr,1fr,2fr,1fr] gap-4 flex-1 mr-4">
+        <div>
+          <h4 className="font-medium">
+            {request.first_name} {request.last_name}
+          </h4>
+        </div>
+        <div>
+          <p className="text-sm text-gray-500">{request.company}</p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-500 truncate">{request.email}</p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-600">{request.title}</p>
+        </div>
       </div>
       <MembershipStatusButton
         currentStatus={request.request_status}
@@ -37,7 +45,7 @@ export const MembershipCard = ({ request, onUpdateStatus }: MembershipCardProps)
       />
     </div>
     {(request.linkedin_url || request.referred_by || request.additional_info) && (
-      <div className="space-y-2 text-sm text-gray-600">
+      <div className="mt-4 space-y-2 text-sm text-gray-600 border-t pt-4">
         {request.linkedin_url && (
           <p>
             <span className="font-medium">LinkedIn:</span>{" "}
