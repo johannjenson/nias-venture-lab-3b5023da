@@ -30,7 +30,6 @@ const CRMTabs = ({
 }: CRMTabsProps) => {
   const [pendingMembershipCount, setPendingMembershipCount] = useState(0);
   const [pendingEventCount, setPendingEventCount] = useState(0);
-  const [currentTab, setCurrentTab] = useState("pipeline");
 
   useEffect(() => {
     fetchPendingCounts();
@@ -91,7 +90,7 @@ const CRMTabs = ({
   };
 
   return (
-    <Tabs defaultValue="pipeline" className="space-y-4" onValueChange={setCurrentTab}>
+    <Tabs defaultValue="pipeline" className="space-y-4">
       <div className="flex items-center justify-between">
         <TabsList>
           <TabsTrigger value="pipeline">Pipeline</TabsTrigger>
@@ -122,7 +121,7 @@ const CRMTabs = ({
             viewByCompany={viewByCompany}
             onViewTypeChange={onViewTypeChange}
           />
-          <AIOptionsDropdown showUploadOption={currentTab === "pipeline"} />
+          <AIOptionsDropdown />
         </div>
       </div>
       <TabsContent value="pipeline">

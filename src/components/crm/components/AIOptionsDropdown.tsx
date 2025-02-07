@@ -7,44 +7,28 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { InferIndustriesButton } from "./InferIndustriesButton";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { DatabaseZap } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
-interface AIOptionsDropdownProps {
-  showUploadOption?: boolean;
-}
-
-export const AIOptionsDropdown = ({ showUploadOption = false }: AIOptionsDropdownProps) => {
-  const [isUploadOpen, setIsUploadOpen] = useState(false);
-  const [transcript, setTranscript] = useState("");
+export const AIOptionsDropdown = () => {
   const { toast } = useToast();
 
-  const handleUploadTranscript = async () => {
+  const handleInferIndustries = async () => {
     try {
-      const { error } = await supabase
-        .from('ai_transcripts')
-        .insert([
-          { transcript_text: transcript }
-        ]);
-
+      const { data, error } = await supabase.functions.invoke('infer-contact-industries');
+      
       if (error) throw error;
 
       toast({
-        title: "Success",
-        description: "AI transcript uploaded successfully",
+        title: "Industries Inferred",
+        description: data.message,
       });
-      setIsUploadOpen(false);
-      setTranscript("");
     } catch (error) {
-      console.error('Error uploading transcript:', error);
+      console.error('Error inferring industries:', error);
       toast({
         title: "Error",
-        description: "Failed to upload transcript. Please try again.",
+        description: "Failed to infer industries. Please try again.",
         variant: "destructive",
       });
     }
@@ -59,41 +43,12 @@ export const AIOptionsDropdown = ({ showUploadOption = false }: AIOptionsDropdow
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem asChild>
-            <InferIndustriesButton />
+          <DropdownMenuItem onClick={handleInferIndustries}>
+            <DatabaseZap className="mr-2 h-4 w-4" />
+            Infer Industries
           </DropdownMenuItem>
-          {showUploadOption && (
-            <DropdownMenuItem onSelect={() => setIsUploadOpen(true)}>
-              Upload AI Transcript
-            </DropdownMenuItem>
-          )}
         </DropdownMenuContent>
       </DropdownMenu>
-
-      {showUploadOption && (
-        <Dialog open={isUploadOpen} onOpenChange={setIsUploadOpen}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Upload AI Transcript</DialogTitle>
-            </DialogHeader>
-            <div className="space-y-4">
-              <div>
-                <Label htmlFor="transcript">AI Transcript</Label>
-                <Textarea
-                  id="transcript"
-                  value={transcript}
-                  onChange={(e) => setTranscript(e.target.value)}
-                  placeholder="Paste your AI transcript here..."
-                  className="h-40"
-                />
-              </div>
-              <Button onClick={handleUploadTranscript} className="w-full">
-                Upload Transcript
-              </Button>
-            </div>
-          </DialogContent>
-        </Dialog>
-      )}
     </div>
   );
 };
