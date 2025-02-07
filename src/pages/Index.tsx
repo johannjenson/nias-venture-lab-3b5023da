@@ -5,11 +5,19 @@ import ValueProps from "@/components/ValueProps";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  console.log("Rendering Index page");
+  
   return (
     <div className="min-h-screen bg-white">
-      <Hero />
-      <ValueProps />
-      <Footer />
+      <div>
+        <Hero />
+      </div>
+      <div>
+        <ValueProps />
+      </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };

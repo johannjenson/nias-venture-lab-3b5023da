@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import MainNav from "./MainNav";
 import RequestInviteModal from "./RequestInviteModal";
@@ -6,6 +7,7 @@ import HeroContent from "./hero/HeroContent";
 import AudienceCTAs from "./hero/AudienceCTAs";
 
 const Hero = () => {
+  console.log("Rendering Hero component");
   const [showRequestModal, setShowRequestModal] = useState(false);
 
   return (
