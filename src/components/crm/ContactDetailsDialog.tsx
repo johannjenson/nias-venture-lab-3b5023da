@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
@@ -215,6 +216,13 @@ const ContactDetailsDialog = ({
     });
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      updateGoal();
+    }
+  };
+
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
@@ -228,10 +236,11 @@ const ContactDetailsDialog = ({
             </DialogDescription>
             <div className="mt-4">
               <Input
-                placeholder="Set a goal for this lead..."
+                placeholder="Set a goal for this lead... (press Enter to save)"
                 value={goal}
                 onChange={(e) => setGoal(e.target.value)}
                 onBlur={updateGoal}
+                onKeyDown={handleKeyDown}
                 className="mt-2"
               />
             </div>
