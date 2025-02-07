@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -5,9 +6,11 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Plus } from "lucide-react";
 import KanbanBoard from "@/components/crm/KanbanBoard";
+import MembershipRequestsBoard from "@/components/crm/MembershipRequestsBoard";
 import AddContactDialog from "@/components/crm/AddContactDialog";
 import { useToast } from "@/components/ui/use-toast";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const CRM = () => {
   const navigate = useNavigate();
@@ -67,7 +70,18 @@ const CRM = () => {
 
       <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-7xl mx-auto">
-          <KanbanBoard />
+          <Tabs defaultValue="pipeline" className="space-y-4">
+            <TabsList>
+              <TabsTrigger value="pipeline">Contact Pipeline</TabsTrigger>
+              <TabsTrigger value="membership">Membership Requests</TabsTrigger>
+            </TabsList>
+            <TabsContent value="pipeline">
+              <KanbanBoard />
+            </TabsContent>
+            <TabsContent value="membership">
+              <MembershipRequestsBoard />
+            </TabsContent>
+          </Tabs>
         </div>
       </main>
 

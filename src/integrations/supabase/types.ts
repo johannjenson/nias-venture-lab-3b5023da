@@ -289,7 +289,51 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      membership_requests: {
+        Row: {
+          additional_info: string | null
+          company: string | null
+          created_at: string | null
+          email: string | null
+          first_name: string | null
+          id: string | null
+          last_name: string | null
+          linkedin_url: string | null
+          phone_number: string | null
+          referred_by: string | null
+          request_status: string | null
+          title: string | null
+        }
+        Insert: {
+          additional_info?: string | null
+          company?: string | null
+          created_at?: string | null
+          email?: string | null
+          first_name?: string | null
+          id?: never
+          last_name?: string | null
+          linkedin_url?: string | null
+          phone_number?: string | null
+          referred_by?: string | null
+          request_status?: string | null
+          title?: string | null
+        }
+        Update: {
+          additional_info?: string | null
+          company?: string | null
+          created_at?: string | null
+          email?: string | null
+          first_name?: string | null
+          id?: never
+          last_name?: string | null
+          linkedin_url?: string | null
+          phone_number?: string | null
+          referred_by?: string | null
+          request_status?: string | null
+          title?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
