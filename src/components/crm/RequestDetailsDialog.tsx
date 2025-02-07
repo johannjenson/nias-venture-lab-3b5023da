@@ -69,7 +69,10 @@ const RequestDetailsDialog = ({
           />
 
           <div className="flex justify-end pt-4">
-            <DeleteRequestDialog onDelete={handleDelete} />
+            <DeleteRequestDialog 
+              contactId={request.id.toString()} 
+              onDelete={handleDelete}
+            />
           </div>
         </div>
       </DialogContent>
