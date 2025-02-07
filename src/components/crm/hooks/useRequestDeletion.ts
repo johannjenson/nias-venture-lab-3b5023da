@@ -68,13 +68,14 @@ export const useRequestDeletion = ({
       return;
     }
 
+    // Update UI
+    onUpdate();
+    onOpenChange(false);
+
     toast({
       title: "Request deleted",
       description: "The request and associated contact have been successfully deleted",
     });
-
-    onOpenChange(false);
-    onUpdate();
   };
 
   return { handleDelete };

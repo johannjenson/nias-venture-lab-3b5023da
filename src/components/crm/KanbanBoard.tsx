@@ -23,7 +23,8 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
   useEffect(() => {
     fetchData();
 
-    const channel = supabase
+    // Subscribe to all relevant changes
+    const contactsChannel = supabase
       .channel('contacts_changes')
       .on('postgres_changes', { 
         event: '*', 
@@ -34,8 +35,32 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
       })
       .subscribe();
 
+    const requestsChannel = supabase
+      .channel('requests_changes')
+      .on('postgres_changes', {
+        event: '*',
+        schema: 'public',
+        table: 'Request'
+      }, () => {
+        fetchData();
+      })
+      .subscribe();
+
+    const eventRequestsChannel = supabase
+      .channel('event_requests_changes')
+      .on('postgres_changes', {
+        event: '*',
+        schema: 'public',
+        table: 'event_requests'
+      }, () => {
+        fetchData();
+      })
+      .subscribe();
+
     return () => {
-      supabase.removeChannel(channel);
+      supabase.removeChannel(contactsChannel);
+      supabase.removeChannel(requestsChannel);
+      supabase.removeChannel(eventRequestsChannel);
     };
   }, [viewType, leadTypeFilter, industryFilter]);
 
