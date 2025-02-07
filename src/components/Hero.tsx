@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import MainNav from "./MainNav";
-import RequestInviteModal from "./RequestInviteModal";
+import RequestInviteModal from "./request-invite/RequestInviteModal";
 import EventBanner from "./hero/EventBanner";
 import HeroContent from "./hero/HeroContent";
 import AudienceCTAs from "./hero/AudienceCTAs";
@@ -16,14 +16,12 @@ const Hero = () => {
       <MainNav />
       <HeroContent onRequestInvite={() => setShowRequestModal(true)} />
       <AudienceCTAs onRequestInvite={() => setShowRequestModal(true)} />
-      {/* Temporarily commenting out RequestInviteModal while fixing type error
       {showRequestModal && (
         <RequestInviteModal 
           open={showRequestModal} 
           onOpenChange={setShowRequestModal} 
         />
       )}
-      */}
     </div>
   );
 };
