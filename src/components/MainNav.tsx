@@ -1,3 +1,4 @@
+
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -81,9 +82,9 @@ const MainNav = () => {
     },
     ...(user ? [
       {
-        title: "CRM",
+        title: "Relationship Management",
         href: "/crm",
-        description: "Access the Twenty CRM system.",
+        description: "You Eat What You Hunt",
       },
       {
         title: "Log Out",
