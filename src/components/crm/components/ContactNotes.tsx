@@ -129,6 +129,9 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
   };
 
   const toggleChecklistItem = async (itemId: string) => {
+    const itemToRemove = timelineItems.find(i => i.id === itemId);
+    if (!itemToRemove) return;
+    
     setTimelineItems(prevItems => prevItems.filter(i => i.id !== itemId));
 
     const { error } = await supabase
@@ -146,11 +149,12 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
         description: error.message,
         variant: "destructive",
       });
-      await fetchTimelineItems();
+      await fetchTimelineItems(); // Refresh if there was an error
       return;
     }
 
     onChecklistUpdate();
+    await fetchTimelineItems(); // Always refresh after successful toggle
   };
 
   return (
