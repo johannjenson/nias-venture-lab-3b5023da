@@ -49,6 +49,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
       query = query.eq('lead_type', leadTypeFilter);
     }
 
+    // Only add industry filter if a specific industry is selected
     if (industryFilter !== 'all') {
       query = query.eq('industry', industryFilter);
     }
@@ -71,6 +72,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
         .from('leads')
         .select('id, company, stage, last_contact_date');
 
+      // Only add industry filter for company view if a specific industry is selected
       if (industryFilter !== 'all') {
         leadsQuery = leadsQuery.eq('industry', industryFilter);
       }
