@@ -85,7 +85,7 @@ export const RequestDetailsForm = ({ request, type }: RequestDetailsFormProps) =
       <div>
         <Label>Status</Label>
         <div className="mt-1">
-          <Badge variant={request.request_status === 'closed_won' ? 'success' : 'secondary'}>
+          <Badge variant={request.request_status === 'closed_won' ? 'default' : 'secondary'}>
             {currentStage?.label || request.request_status || 'Pending'}
           </Badge>
         </div>
