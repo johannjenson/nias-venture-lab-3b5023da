@@ -227,55 +227,50 @@ const ContactDetailsDialog = ({
   };
 
   const handleUrlAdd = async (url: string) => {
-    if (!url.trim()) return;
+    if (!url) return;
+
+    // Basic URL validation - must start with http:// or https://
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      url = 'https://' + url;
+    }
 
     try {
-      new URL(url.trim()); // Validate URL format with trimmed value
+      new URL(url);
+
+      const { error: dbError } = await supabase
+        .from('contact_attachments')
+        .insert({
+          contact_id: contact.id,
+          external_url: url,
+          uploaded_by: (await supabase.auth.getUser()).data.user?.id,
+          file_path: 'url-attachment',
+          filename: 'external-url'
+        });
+
+      if (dbError) {
+        toast({
+          title: "Error saving URL",
+          description: dbError.message,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      setNewUrl('');
+      fetchAttachments();
     } catch (e) {
-      toast({
-        title: "Invalid URL",
-        description: "Please enter a valid URL",
-        variant: "destructive",
-      });
+      // If URL is invalid, don't show an error, just return
       return;
     }
-
-    const { error: dbError } = await supabase
-      .from('contact_attachments')
-      .insert({
-        contact_id: contact.id,
-        external_url: url.trim(),
-        uploaded_by: (await supabase.auth.getUser()).data.user?.id,
-        file_path: 'url-attachment',
-        filename: 'external-url'
-      });
-
-    if (dbError) {
-      toast({
-        title: "Error saving URL",
-        description: dbError.message,
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setNewUrl('');
-    fetchAttachments();
   };
 
   const handleUrlInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const url = e.target.value;
-    setNewUrl(url);
-    
-    // Handle spaces at the end as submission
-    if (url.endsWith(' ')) {
-      handleUrlAdd(url.trim());
-    }
+    setNewUrl(e.target.value);
   };
 
   const handleUrlInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      e.preventDefault(); // Prevent form submission
+      e.preventDefault();
       handleUrlAdd(newUrl);
     }
   };
@@ -367,8 +362,8 @@ const ContactDetailsDialog = ({
                 </Button>
                 <div className="flex gap-2">
                   <Input
-                    type="url"
-                    placeholder="Add URL and press Enter (e.g., https://example.com)"
+                    type="text"
+                    placeholder="Add URL and press Enter"
                     value={newUrl}
                     onChange={handleUrlInputChange}
                     onKeyDown={handleUrlInputKeyDown}
