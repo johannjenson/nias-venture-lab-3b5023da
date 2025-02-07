@@ -113,8 +113,11 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
   };
 
   const toggleChecklistItem = async (itemId: string) => {
+    // Get the item details before updating
+    const item = timelineItems.find(item => item.id === itemId);
+    
     // First update the local state to remove the item from the timeline
-    setTimelineItems(prevItems => prevItems.filter(item => item.id !== itemId));
+    setTimelineItems(prevItems => prevItems.filter(i => i.id !== itemId));
 
     // Then update the database
     const { error } = await supabase
@@ -211,3 +214,4 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
 };
 
 export default ContactNotes;
+
