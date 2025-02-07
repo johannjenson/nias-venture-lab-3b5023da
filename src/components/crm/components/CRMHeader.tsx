@@ -3,11 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-interface CRMHeaderProps {
-  onAddLead: () => void;
-}
-
-const CRMHeader = ({ onAddLead }: CRMHeaderProps) => {
+const CRMHeader = () => {
   const navigate = useNavigate();
 
   return (
@@ -24,7 +20,7 @@ const CRMHeader = ({ onAddLead }: CRMHeaderProps) => {
           </Button>
           <h1 className="text-xl font-semibold">Relationship Management</h1>
         </div>
-        <Button onClick={onAddLead}>
+        <Button onClick={() => setShowAddContact(true)}>
           <Plus className="mr-2 h-4 w-4" /> Add Lead
         </Button>
       </div>
@@ -33,4 +29,3 @@ const CRMHeader = ({ onAddLead }: CRMHeaderProps) => {
 };
 
 export default CRMHeader;
-
