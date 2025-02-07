@@ -84,7 +84,7 @@ const MainNav = () => {
       {
         title: "Relationship Management",
         href: "/crm",
-        description: "You Eat What You Hunt",
+        description: "You eat what you hunt",
       },
       {
         title: "Log Out",
