@@ -93,24 +93,8 @@ const RequestDetailsDialog = ({
       lastName = nameParts.slice(1).join(' ') || '';
     }
 
-    // Update the moved_to_pipeline flag
-    const table = type === 'membership' ? 'Request' : 'event_requests';
-    const { error: updateError } = await supabase
-      .from(table)
-      .update({ moved_to_pipeline: true })
-      .eq('id', Number(request.id));
-
-    if (updateError) {
-      toast({
-        title: "Error updating request",
-        description: updateError.message,
-        variant: "destructive",
-      });
-      return;
-    }
-
-    // Insert into contacts table
-    const { error: contactError } = await supabase
+    // Create the contact first
+    const { data: newContact, error: contactError } = await supabase
       .from('contacts')
       .insert([
         {
@@ -123,16 +107,37 @@ const RequestDetailsDialog = ({
           industry: request.industry,
           linkedin_url: request.linkedin_url,
           source: type === 'membership' ? 'network_request' : 'event_request',
-          source_id: request.id,
+          source_id: request.id.toString(),
           stage: 'mql_lead'
         }
-      ]);
+      ])
+      .select()
+      .single();
 
     if (contactError) {
       console.error('Contact creation error:', contactError);
       toast({
         title: "Error creating contact",
         description: contactError.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Only update the request after successfully creating the contact
+    const table = type === 'membership' ? 'Request' : 'event_requests';
+    const { error: updateError } = await supabase
+      .from(table)
+      .update({ 
+        moved_to_pipeline: true,
+        request_status: 'moved_to_pipeline' 
+      })
+      .eq('id', Number(request.id));
+
+    if (updateError) {
+      toast({
+        title: "Error updating request",
+        description: updateError.message,
         variant: "destructive",
       });
       return;
