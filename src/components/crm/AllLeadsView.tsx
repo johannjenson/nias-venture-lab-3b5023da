@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
@@ -14,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Edit } from "lucide-react";
 import ContactDetailsDialog from "./ContactDetailsDialog";
+import RequestDetailsDialog from "./RequestDetailsDialog";
 import { IndustryType } from "./types/contact";
 
 type LeadEntry = {
@@ -28,11 +28,18 @@ type LeadEntry = {
   stage?: string;
   request_status?: string;
   company?: string | null;
+  phone_number?: string | null;
+  interests?: string | null;
+  additional_info?: string | null;
+  linkedin_url?: string | null;
+  referred_by?: string | null;
 };
 
 const AllLeadsView = () => {
   const [leads, setLeads] = useState<LeadEntry[]>([]);
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+  const [selectedRequest, setSelectedRequest] = useState<LeadEntry | null>(null);
+  const [requestType, setRequestType] = useState<'membership' | 'event' | null>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -55,7 +62,6 @@ const AllLeadsView = () => {
   }, []);
 
   const fetchAllLeads = async () => {
-    // Fetch pipeline contacts
     const { data: contactsData, error: contactsError } = await supabase
       .from('contacts')
       .select('*')
@@ -70,7 +76,6 @@ const AllLeadsView = () => {
       return;
     }
 
-    // Fetch event requests
     const { data: eventData, error: eventError } = await supabase
       .from('EventRequest')
       .select('*')
@@ -85,7 +90,6 @@ const AllLeadsView = () => {
       return;
     }
 
-    // Fetch membership requests
     const { data: membershipData, error: membershipError } = await supabase
       .from('Request')
       .select('*')
@@ -142,7 +146,7 @@ const AllLeadsView = () => {
     setLeads(allLeads);
   };
 
-  const handleEditContact = async (leadEntry: LeadEntry) => {
+  const handleEditLead = async (leadEntry: LeadEntry) => {
     if (leadEntry.type === 'contact') {
       const { data: contact, error } = await supabase
         .from('contacts')
@@ -161,11 +165,13 @@ const AllLeadsView = () => {
 
       setSelectedContact(contact);
     } else {
-      // For requests, we could implement a different edit dialog or conversion to contact
-      toast({
-        title: "Info",
-        description: "Request entries can be managed from their respective tabs",
-      });
+      const requestId = leadEntry.id;
+      if (requestId.startsWith('membership_')) {
+        setRequestType('membership');
+      } else if (requestId.startsWith('event_')) {
+        setRequestType('event');
+      }
+      setSelectedRequest(leadEntry);
     }
   };
 
@@ -200,7 +206,7 @@ const AllLeadsView = () => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  onClick={() => handleEditContact(lead)}
+                  onClick={() => handleEditLead(lead)}
                 >
                   <Edit className="h-4 w-4" />
                 </Button>
@@ -215,6 +221,21 @@ const AllLeadsView = () => {
           contact={selectedContact}
           open={!!selectedContact}
           onOpenChange={(open) => !open && setSelectedContact(null)}
+          onUpdate={fetchAllLeads}
+        />
+      )}
+
+      {selectedRequest && requestType && (
+        <RequestDetailsDialog
+          request={selectedRequest}
+          type={requestType}
+          open={!!selectedRequest}
+          onOpenChange={(open) => {
+            if (!open) {
+              setSelectedRequest(null);
+              setRequestType(null);
+            }
+          }}
           onUpdate={fetchAllLeads}
         />
       )}
