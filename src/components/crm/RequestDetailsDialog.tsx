@@ -7,6 +7,7 @@ import { useRequestDeletion } from "./hooks/useRequestDeletion";
 import { RequestDetailsForm } from "./components/request-details/RequestDetailsForm";
 import { RequestControls } from "./components/request-details/RequestControls";
 import { DeleteRequestDialog } from "./components/request-details/DeleteRequestDialog";
+import { IndustryType } from "./types/contact";
 
 const RequestDetailsDialog = ({ 
   request, 
@@ -27,7 +28,7 @@ const RequestDetailsDialog = ({
     type,
     onUpdate,
     initialStatus: request.request_status || 'pending',
-    initialIndustry: request.industry || '',
+    initialIndustry: request.industry as IndustryType | null || null,
   });
 
   const { handleMoveToContact } = usePipelineMovement({

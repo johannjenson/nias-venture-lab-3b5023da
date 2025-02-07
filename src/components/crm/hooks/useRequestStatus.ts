@@ -9,7 +9,7 @@ interface UseRequestStatusProps {
   type: 'membership' | 'event';
   onUpdate: () => void;
   initialStatus?: string;
-  initialIndustry?: IndustryType;
+  initialIndustry?: IndustryType | null;
 }
 
 export const useRequestStatus = ({ 
@@ -17,10 +17,10 @@ export const useRequestStatus = ({
   type, 
   onUpdate,
   initialStatus = 'pending',
-  initialIndustry = ''
+  initialIndustry = null
 }: UseRequestStatusProps) => {
   const [status, setStatus] = useState<string>(initialStatus);
-  const [industry, setIndustry] = useState<IndustryType | ''>(initialIndustry);
+  const [industry, setIndustry] = useState<IndustryType | null>(initialIndustry);
   const { toast } = useToast();
 
   const handleStatusChange = async (newStatus: string) => {
