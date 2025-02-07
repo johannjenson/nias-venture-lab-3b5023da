@@ -117,6 +117,10 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
     setStep(1);
   };
 
+  const handleTitleChange = (value: string) => {
+    setFormData(prev => ({ ...prev, title: value }));
+  };
+
   return {
     step,
     formData,
@@ -125,6 +129,6 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
     handleNext,
     handleBack,
     isSubmitting,
-    setFormData
+    setFormData: handleTitleChange
   };
 };
