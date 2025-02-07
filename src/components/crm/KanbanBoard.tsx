@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import ContactCard from "./ContactCard";
 import { useToast } from "@/components/ui/use-toast";
 import { Database } from "@/integrations/supabase/types";
+import { formatDistanceToNow } from "date-fns";
 
 type ContactStage = Database["public"]["Enums"]["contact_stage"];
 
@@ -25,6 +26,7 @@ type CompanyView = {
   id: string;
   company: string;
   stage: ContactStage;
+  last_contact_date: string | null;
   contacts: Contact[];
 };
 
@@ -86,7 +88,7 @@ const KanbanBoard = ({ viewType }: KanbanBoardProps) => {
       // Group contacts by company and get the company's stage from leads table
       const { data: leadsData, error: leadsError } = await supabase
         .from('leads')
-        .select('id, company, stage');
+        .select('id, company, stage, last_contact_date');
 
       if (leadsError) {
         toast({
@@ -101,6 +103,7 @@ const KanbanBoard = ({ viewType }: KanbanBoardProps) => {
         id: lead.id,
         company: lead.company,
         stage: lead.stage,
+        last_contact_date: lead.last_contact_date,
         contacts: data?.filter(contact => contact.company_id === lead.id) || []
       }));
 
@@ -152,11 +155,18 @@ const KanbanBoard = ({ viewType }: KanbanBoardProps) => {
       <div className="space-y-4">
         {stageCompanies.map(company => (
           <Card key={company.id} className="p-4">
-            <div className="mb-2">
-              <h4 className="font-medium">{company.company}</h4>
-              <p className="text-sm text-gray-500">
-                {company.contacts.length} contact{company.contacts.length !== 1 ? 's' : ''}
-              </p>
+            <div className="mb-4">
+              <h4 className="font-medium text-lg">{company.company}</h4>
+              <div className="flex items-center justify-between mt-1">
+                <p className="text-sm text-gray-500">
+                  {company.contacts.length} contact{company.contacts.length !== 1 ? 's' : ''}
+                </p>
+                {company.last_contact_date && (
+                  <p className="text-sm text-gray-600">
+                    Last contact: {formatDistanceToNow(new Date(company.last_contact_date), { addSuffix: true })}
+                  </p>
+                )}
+              </div>
             </div>
             <div className="space-y-2">
               {company.contacts.map(contact => (
