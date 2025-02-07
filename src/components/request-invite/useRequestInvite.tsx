@@ -25,7 +25,7 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
     setIsSubmitting(true);
     
     try {
-      // Check if user already exists
+      console.log('Checking if user account exists for:', formData.email);
       const { data: hasAccount, error: checkError } = await supabase
         .rpc('has_user_account', {
           email_address: formData.email
@@ -38,6 +38,7 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
         return;
       }
 
+      console.log('Has account result:', hasAccount);
       if (hasAccount) {
         toast.error("An account already exists with this email. Please login or reset your password.");
         setIsSubmitting(false);
@@ -49,6 +50,7 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
       const firstName = nameParts[0];
       const lastName = nameParts.slice(1).join(' ');
 
+      console.log('Inserting request:', { firstName, lastName, ...formData });
       // Insert into Supabase
       const { error: dbError } = await supabase
         .from('Request')
@@ -71,6 +73,7 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
         throw dbError;
       }
 
+      console.log('Sending confirmation email');
       // Send confirmation email using the client SDK without auth
       const { error: emailError } = await supabase.functions.invoke('send-network-confirmation', {
         body: {
