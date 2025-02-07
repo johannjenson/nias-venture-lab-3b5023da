@@ -49,13 +49,13 @@ export const stages: { id: ContactStage; label: string; description: string }[] 
   },
   { 
     id: 'closed_won', 
-    label: 'Approved',
-    description: 'Successfully approved members'
+    label: 'Closed Won',
+    description: 'Successfully closed opportunities'
   },
   { 
     id: 'closed_lost', 
-    label: 'Rejected',
-    description: 'Declined or inactive leads'
+    label: 'Closed Lost',
+    description: 'Lost or declined opportunities'
   },
 ];
 
