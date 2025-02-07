@@ -1,11 +1,14 @@
 
+import { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
 import KanbanBoard from "../KanbanBoard";
 import MembershipRequestsBoard from "../MembershipRequestsBoard";
 import EventRequestsBoard from "../EventRequestsBoard";
 import AllLeadsView from "../AllLeadsView";
 import CRMFilters from "./CRMFilters";
 import { IndustryType, LeadType } from "../types/contact";
+import { supabase } from "@/integrations/supabase/client";
 
 interface CRMTabsProps {
   leadTypeFilter: LeadType | 'all';
@@ -24,14 +27,75 @@ const CRMTabs = ({
   viewByCompany, 
   onViewTypeChange 
 }: CRMTabsProps) => {
+  const [pendingMembershipCount, setPendingMembershipCount] = useState(0);
+  const [pendingEventCount, setPendingEventCount] = useState(0);
+
+  useEffect(() => {
+    fetchPendingCounts();
+
+    const channel = supabase
+      .channel('request_changes')
+      .on('postgres_changes', { 
+        event: '*', 
+        schema: 'public', 
+        table: 'membership_requests' 
+      }, () => {
+        fetchPendingCounts();
+      })
+      .on('postgres_changes', { 
+        event: '*', 
+        schema: 'public', 
+        table: 'EventRequest' 
+      }, () => {
+        fetchPendingCounts();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  const fetchPendingCounts = async () => {
+    // Get pending membership requests count
+    const { count: membershipCount } = await supabase
+      .from('membership_requests')
+      .select('*', { count: 'exact', head: true })
+      .eq('request_status', 'pending');
+
+    setPendingMembershipCount(membershipCount || 0);
+
+    // Get pending event requests count
+    const { count: eventCount } = await supabase
+      .from('EventRequest')
+      .select('*', { count: 'exact', head: true })
+      .eq('request_status', 'pending');
+
+    setPendingEventCount(eventCount || 0);
+  };
+
   return (
     <Tabs defaultValue="pipeline" className="space-y-4">
       <div className="flex items-center justify-between">
         <TabsList>
           <TabsTrigger value="pipeline">Pipeline</TabsTrigger>
           <TabsTrigger value="all-leads">All Leads</TabsTrigger>
-          <TabsTrigger value="membership">Membership Requests</TabsTrigger>
-          <TabsTrigger value="events">Event Requests</TabsTrigger>
+          <TabsTrigger value="membership" className="flex items-center gap-2">
+            Membership Requests
+            {pendingMembershipCount > 0 && (
+              <Badge variant="destructive" className="h-5 px-2">
+                {pendingMembershipCount}
+              </Badge>
+            )}
+          </TabsTrigger>
+          <TabsTrigger value="events" className="flex items-center gap-2">
+            Event Requests
+            {pendingEventCount > 0 && (
+              <Badge variant="destructive" className="h-5 px-2">
+                {pendingEventCount}
+              </Badge>
+            )}
+          </TabsTrigger>
         </TabsList>
         <CRMFilters
           leadTypeFilter={leadTypeFilter}
@@ -63,3 +127,4 @@ const CRMTabs = ({
 };
 
 export default CRMTabs;
+
