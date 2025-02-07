@@ -6,7 +6,7 @@
       "destination": "/events/nias-business-forum"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!.*\\.).*)",
       "destination": "/"
     }
   ],
