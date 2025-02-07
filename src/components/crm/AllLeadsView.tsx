@@ -7,8 +7,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { LeadEntry, IndustryType, LeadType } from "./types/contact";
 import LeadsTable from "./components/LeadsTable";
-import { useLeads } from "./hooks/useLeads";
 import CRMFilters from "./components/CRMFilters";
+import { Button } from "@/components/ui/button";
+import { MailOpen } from "lucide-react";
+import { toast } from "sonner";
 
 const AllLeadsView = () => {
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
@@ -19,6 +21,53 @@ const AllLeadsView = () => {
   const [viewByCompany, setViewByCompany] = useState(false);
   const { toast } = useToast();
   const { leads, fetchAllLeads } = useLeads();
+
+  const handleCreateAccount = async (lead: LeadEntry) => {
+    if (!lead.email || !lead.first_name || !lead.last_name) {
+      toast({
+        title: "Missing Information",
+        description: "First name, last name and email are required to create an account",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Check if email is from zid.sa domain
+    if (lead.email.endsWith('@zid.sa')) {
+      toast({
+        title: "Cannot Create Account",
+        description: "Accounts cannot be created for @zid.sa email addresses",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      const { error } = await supabase.functions.invoke('create-approved-member', {
+        body: {
+          requestId: lead.id,
+          email: lead.email,
+          firstName: lead.first_name,
+          lastName: lead.last_name,
+        },
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Account Created",
+        description: "User account has been created and an email has been sent with login instructions",
+      });
+
+      fetchAllLeads();
+    } catch (error: any) {
+      toast({
+        title: "Error Creating Account",
+        description: error.message || "An error occurred while creating the account",
+        variant: "destructive",
+      });
+    }
+  };
 
   const handleLeadClick = async (leadEntry: LeadEntry) => {
     if (leadEntry.type === 'contact') {
@@ -71,7 +120,11 @@ const AllLeadsView = () => {
       />
       
       <div className="rounded-md border">
-        <LeadsTable leads={filteredLeads} onLeadClick={handleLeadClick} />
+        <LeadsTable 
+          leads={filteredLeads} 
+          onLeadClick={handleLeadClick} 
+          onCreateAccount={handleCreateAccount}
+        />
       </div>
 
       {selectedContact && (
