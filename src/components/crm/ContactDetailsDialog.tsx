@@ -227,14 +227,14 @@ const ContactDetailsDialog = ({
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
         <DialogContent className="max-w-2xl h-[90vh] p-0">
-          <DialogHeader className="p-6 pb-0">
+          <DialogHeader className="p-6 pb-2">
             <DialogTitle>
               {contact.first_name} {contact.last_name}
             </DialogTitle>
             <DialogDescription>
               View and manage contact details, attachments, and progress
             </DialogDescription>
-            <div className="mt-4">
+            <div className="mt-2">
               <Input
                 placeholder="Set a goal for this lead... (press Enter to save)"
                 value={goal}
@@ -247,7 +247,7 @@ const ContactDetailsDialog = ({
           </DialogHeader>
 
           <Tabs defaultValue="details" className="flex flex-col h-full">
-            <TabsList className="px-6">
+            <TabsList className="px-6 mt-2">
               <TabsTrigger value="details" className="flex-1">Details</TabsTrigger>
               <TabsTrigger value="attachments" className="flex-1">Attachments</TabsTrigger>
             </TabsList>
@@ -311,3 +311,4 @@ const ContactDetailsDialog = ({
 };
 
 export default ContactDetailsDialog;
+
