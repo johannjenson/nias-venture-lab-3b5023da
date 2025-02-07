@@ -11,6 +11,7 @@ import { IndustryType } from "./types/contact";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
+import { MailOpen } from "lucide-react";
 
 const RequestDetailsDialog = ({ 
   request, 
@@ -119,12 +120,14 @@ const RequestDetailsDialog = ({
             onMoveToContact={handleMoveToContact}
           />
 
-          <div className="flex justify-between items-center pt-4">
+          <div className="flex flex-col space-y-4 pt-4">
             {type === 'membership' && status === 'approved' && (
               <Button 
                 onClick={handleCreateAccount}
                 variant="secondary"
+                className="w-full"
               >
+                <MailOpen className="w-4 h-4 mr-2" />
                 Invite to Create Account
               </Button>
             )}
