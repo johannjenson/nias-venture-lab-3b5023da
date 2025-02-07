@@ -445,6 +445,7 @@ export type Database = {
           industry: string | null
           last_name: string | null
           linkedin_url: string | null
+          moved_to_pipeline: boolean | null
           phone_number: string | null
           referred_by: string | null
           request_status: string | null
@@ -460,6 +461,7 @@ export type Database = {
           industry?: string | null
           last_name?: string | null
           linkedin_url?: string | null
+          moved_to_pipeline?: boolean | null
           phone_number?: string | null
           referred_by?: string | null
           request_status?: string | null
@@ -475,6 +477,7 @@ export type Database = {
           industry?: string | null
           last_name?: string | null
           linkedin_url?: string | null
+          moved_to_pipeline?: boolean | null
           phone_number?: string | null
           referred_by?: string | null
           request_status?: string | null

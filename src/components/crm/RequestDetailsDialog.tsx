@@ -1,4 +1,3 @@
-
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,7 +28,7 @@ const RequestDetailsDialog = ({
     const { error } = await supabase
       .from(table)
       .update({ request_status: newStatus })
-      .eq('id', parseInt(request.id)); // Convert string ID to number
+      .eq('id', parseInt(request.id));
 
     if (error) {
       toast({
@@ -49,13 +48,75 @@ const RequestDetailsDialog = ({
     });
   };
 
+  const handleMoveToContact = async () => {
+    if (status !== 'approved') {
+      toast({
+        title: "Cannot move to pipeline",
+        description: "Request must be approved first",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Update the moved_to_pipeline flag
+    const { error: updateError } = await supabase
+      .from('Request')
+      .update({ moved_to_pipeline: true })
+      .eq('id', parseInt(request.id));
+
+    if (updateError) {
+      toast({
+        title: "Error updating request",
+        description: updateError.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Insert into contacts table
+    const { error: contactError } = await supabase
+      .from('contacts')
+      .insert([
+        {
+          first_name: request.first_name,
+          last_name: request.last_name,
+          email: request.email,
+          phone: request.phone_number,
+          company: request.company,
+          title: request.title,
+          industry: request.industry,
+          linkedin_url: request.linkedin_url,
+          source: 'network_request',
+          source_id: request.id.toString(),
+          stage: 'mql_lead'
+        }
+      ]);
+
+    if (contactError) {
+      toast({
+        title: "Error creating contact",
+        description: contactError.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    toast({
+      title: "Success",
+      description: "Request has been moved to the pipeline",
+    });
+
+    onUpdate();
+    onOpenChange(false);
+  };
+
   const handleIndustryChange = async (newIndustry: IndustryType) => {
     const table = type === 'membership' ? 'Request' : 'event_requests';
     
     const { error } = await supabase
       .from(table)
       .update({ industry: newIndustry })
-      .eq('id', parseInt(request.id)); // Convert string ID to number
+      .eq('id', parseInt(request.id));
 
     if (error) {
       toast({
@@ -81,7 +142,7 @@ const RequestDetailsDialog = ({
     const { error } = await supabase
       .from(table)
       .delete()
-      .eq('id', parseInt(request.id)); // Convert string ID to number
+      .eq('id', parseInt(request.id));
 
     if (error) {
       toast({
@@ -198,6 +259,15 @@ const RequestDetailsDialog = ({
                 </SelectContent>
               </Select>
             </div>
+
+            {status === 'approved' && type === 'membership' && (
+              <Button
+                onClick={handleMoveToContact}
+                className="ml-4"
+              >
+                Move to Pipeline
+              </Button>
+            )}
           </div>
 
           <div className="flex justify-end pt-4">
