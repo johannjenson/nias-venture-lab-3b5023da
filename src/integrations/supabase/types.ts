@@ -372,6 +372,7 @@ export type Database = {
           phone_number: string | null
           request_status: string | null
           title: string | null
+          uuid_id: string
         }
         Insert: {
           company?: string | null
@@ -386,6 +387,7 @@ export type Database = {
           phone_number?: string | null
           request_status?: string | null
           title?: string | null
+          uuid_id?: string
         }
         Update: {
           company?: string | null
@@ -400,6 +402,7 @@ export type Database = {
           phone_number?: string | null
           request_status?: string | null
           title?: string | null
+          uuid_id?: string
         }
         Relationships: []
       }
