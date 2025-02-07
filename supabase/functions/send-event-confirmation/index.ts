@@ -40,8 +40,10 @@ const handler = async (req: Request): Promise<Response> => {
 
     const event = eventDetails[eventType];
 
+    console.log("Attempting to send confirmation email to:", email);
+
     const emailResponse = await resend.emails.send({
-      from: "Nias Events <events@nias.sa>",
+      from: "Nias Events <events@nias.io>",
       to: [email],
       subject: `Registration Received: ${event.name}`,
       html: `
