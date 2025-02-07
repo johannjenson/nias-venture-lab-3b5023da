@@ -6,7 +6,7 @@
       "destination": "/events/nias-business-forum"
     },
     {
-      "source": "/((?!.*\\.).*)",
+      "source": "/((?!.*\\.js|.*\\.css|.*\\.mjs|.*\\.jsx|.*\\.ts|.*\\.tsx).*)",
       "destination": "/"
     }
   ],
@@ -54,6 +54,15 @@
         {
           "key": "Content-Type",
           "value": "application/javascript"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.css$",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/css"
         }
       ]
     }
