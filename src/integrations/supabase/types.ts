@@ -119,6 +119,36 @@ export type Database = {
         }
         Relationships: []
       }
+      dinner_invites: {
+        Row: {
+          company: string
+          created_at: string
+          email: string
+          id: string
+          name: string
+          role: string
+          status: string
+        }
+        Insert: {
+          company: string
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          role: string
+          status?: string
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          role?: string
+          status?: string
+        }
+        Relationships: []
+      }
       DinnerRequest: {
         Row: {
           company: string | null

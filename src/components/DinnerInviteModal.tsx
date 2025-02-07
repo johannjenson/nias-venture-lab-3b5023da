@@ -29,11 +29,11 @@ interface DinnerInviteModalProps {
 const DinnerInviteModal = ({ open, onOpenChange }: DinnerInviteModalProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     phoneNumber: "",
     email: "",
     company: "",
-    title: "",
+    role: "",
     interests: "",
   });
 
@@ -43,15 +43,13 @@ const DinnerInviteModal = ({ open, onOpenChange }: DinnerInviteModalProps) => {
     
     try {
       const { error } = await supabase
-        .from('DinnerRequest')
+        .from('dinner_invites')
         .insert([
           {
-            full_name: formData.fullName,
-            phone_number: formData.phoneNumber,
+            name: formData.name,
             email: formData.email,
             company: formData.company,
-            title: formData.title,
-            interests: formData.interests
+            role: formData.role,
           }
         ]);
 
@@ -61,7 +59,7 @@ const DinnerInviteModal = ({ open, onOpenChange }: DinnerInviteModalProps) => {
       const { error: emailError } = await supabase.functions.invoke('send-event-confirmation', {
         body: {
           eventType: 'dinner',
-          fullName: formData.fullName,
+          fullName: formData.name,
           email: formData.email,
           company: formData.company,
         },
@@ -74,11 +72,11 @@ const DinnerInviteModal = ({ open, onOpenChange }: DinnerInviteModalProps) => {
       toast.success("Thank you for your interest in the Nias Network Dinner. We'll review your application and be in touch soon!");
       onOpenChange(false);
       setFormData({
-        fullName: "",
+        name: "",
         phoneNumber: "",
         email: "",
         company: "",
-        title: "",
+        role: "",
         interests: "",
       });
     } catch (error) {
@@ -100,16 +98,16 @@ const DinnerInviteModal = ({ open, onOpenChange }: DinnerInviteModalProps) => {
         <DialogHeader className="space-y-2">
           <DialogTitle className="text-2xl font-bold">Join us for Dinner</DialogTitle>
           <DialogDescription>
-            Request your invitation to the Nias Network Dinner at LEAP on February 13th, 2025.
+            Request your invitation to the Nias Network Dinner at LEAP on February 9th, 2025.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 mt-2">
           <div className="space-y-2">
-            <Label htmlFor="fullName">Full Name</Label>
+            <Label htmlFor="name">Full Name</Label>
             <Input
-              id="fullName"
-              name="fullName"
-              value={formData.fullName}
+              id="name"
+              name="name"
+              value={formData.name}
               onChange={handleInputChange}
               required
               disabled={isSubmitting}
@@ -155,12 +153,12 @@ const DinnerInviteModal = ({ open, onOpenChange }: DinnerInviteModalProps) => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="title">Your Role</Label>
+            <Label htmlFor="role">Your Role</Label>
             <Select
-              name="title"
-              value={formData.title}
+              name="role"
+              value={formData.role}
               onValueChange={(value) =>
-                setFormData((prev) => ({ ...prev, title: value }))
+                setFormData((prev) => ({ ...prev, role: value }))
               }
               disabled={isSubmitting}
             >
