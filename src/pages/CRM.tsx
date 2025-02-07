@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -11,6 +12,7 @@ import { LeadType, IndustryType } from "@/components/crm/types/contact";
 const CRM = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [showAddContact, setShowAddContact] = useState(false);
   const [viewByCompany, setViewByCompany] = useState(false);
   const [leadTypeFilter, setLeadTypeFilter] = useState<LeadType | 'all'>('all');
   const [industryFilter, setIndustryFilter] = useState<IndustryType | 'all'>('all');
@@ -46,7 +48,7 @@ const CRM = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <CRMHeader />
+      <CRMHeader onAddLead={() => setShowAddContact(true)} />
 
       <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-7xl mx-auto">
@@ -60,6 +62,11 @@ const CRM = () => {
           />
         </div>
       </main>
+
+      <AddContactDialog 
+        open={showAddContact} 
+        onOpenChange={setShowAddContact}
+      />
       
       <Footer />
     </div>
