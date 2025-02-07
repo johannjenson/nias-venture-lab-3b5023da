@@ -43,7 +43,7 @@ export interface ContactDetailsDialogProps {
 
 export interface TimelineItem {
   id: string;
-  type: 'note' | 'checklist';
+  type: 'note';
   timestamp: string;
   content: string;
   user?: {

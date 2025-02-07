@@ -31,7 +31,8 @@ const ContactDetailsDialog = ({
     const { data: existingItems, error: existingError } = await supabase
       .from('checklist_items')
       .select('*')
-      .eq('contact_id', contact.id);
+      .eq('contact_id', contact.id)
+      .eq('stage', contact.stage);
 
     if (existingError) {
       toast({
@@ -60,12 +61,13 @@ const ContactDetailsDialog = ({
 
     if (existingItems.length === 0) {
       // No existing items, create new ones from defaults
-      const newItems = defaultItems.map(({ item_text, stage }) => ({
+      const newItems: ChecklistItem[] = defaultItems.map(({ item_text, stage }) => ({
         id: crypto.randomUUID(),
         contact_id: contact.id,
         stage,
         item_text,
         completed: false,
+        completed_at: null
       }));
 
       const { error: insertError } = await supabase
@@ -85,7 +87,7 @@ const ContactDetailsDialog = ({
     } else {
       // Merge existing items with any new default items for the current stage
       const existingTexts = new Set(existingItems.map(item => item.item_text));
-      const newDefaultItems = defaultItems
+      const newDefaultItems: ChecklistItem[] = defaultItems
         .filter(item => !existingTexts.has(item.item_text))
         .map(({ item_text, stage }) => ({
           id: crypto.randomUUID(),
@@ -93,6 +95,7 @@ const ContactDetailsDialog = ({
           stage,
           item_text,
           completed: false,
+          completed_at: null
         }));
 
       if (newDefaultItems.length > 0) {
@@ -158,7 +161,7 @@ const ContactDetailsDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
             {contact.first_name} {contact.last_name}
