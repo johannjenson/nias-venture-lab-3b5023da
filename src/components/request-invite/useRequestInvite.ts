@@ -49,13 +49,16 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
 
       if (dbError) throw dbError;
 
-      // Send confirmation email
+      // Send confirmation email using the client SDK without auth
       const { error: emailError } = await supabase.functions.invoke('send-network-confirmation', {
         body: {
           fullName: formData.fullName,
           email: formData.email,
           company: formData.company,
           title: formData.title
+        },
+        headers: {
+          'Content-Type': 'application/json'
         }
       });
 
