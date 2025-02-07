@@ -42,7 +42,7 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
               window.location.href = "/login";
             },
           },
-          altAction: {
+          cancel: {
             label: "Reset Password",
             onClick: () => {
               onCloseModal(false);
