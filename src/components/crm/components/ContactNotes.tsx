@@ -130,7 +130,7 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
       return;
     }
 
-    fetchTimelineItems();
+    await fetchTimelineItems();
     onChecklistUpdate();  // Refresh the checklist in the parent component
   };
 
