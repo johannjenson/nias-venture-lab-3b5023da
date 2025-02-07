@@ -40,59 +40,36 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
       return;
     }
 
-    // First, we'll create or find the company in the leads table
-    const { data: existingCompany, error: companySearchError } = await supabase
+    // First, create the company in the leads table
+    const { data: newCompany, error: createCompanyError } = await supabase
       .from('leads')
+      .insert({
+        company: formData.company,
+        stage: 'mql_lead',
+        user_id: user.id
+      })
       .select('id')
-      .eq('company', formData.company)
       .single();
 
-    if (companySearchError && companySearchError.code !== 'PGRST116') {
+    if (createCompanyError) {
       toast({
-        title: "Error finding company",
-        description: companySearchError.message,
+        title: "Error creating company",
+        description: createCompanyError.message,
         variant: "destructive",
       });
       setLoading(false);
       return;
     }
 
-    let companyId;
-    if (!existingCompany) {
-      // Create new company in leads table
-      const { data: newCompany, error: createCompanyError } = await supabase
-        .from('leads')
-        .insert([{
-          company: formData.company,
-          stage: 'new',
-          user_id: user.id
-        }])
-        .select('id')
-        .single();
-
-      if (createCompanyError) {
-        toast({
-          title: "Error creating company",
-          description: createCompanyError.message,
-          variant: "destructive",
-        });
-        setLoading(false);
-        return;
-      }
-      companyId = newCompany.id;
-    } else {
-      companyId = existingCompany.id;
-    }
-
     // Now create the contact with reference to the company
     const { error: contactError } = await supabase
       .from('contacts')
-      .insert([{ 
+      .insert({ 
         ...formData, 
         stage: 'mql_lead',
         user_id: user.id,
-        company_id: companyId
-      }]);
+        company_id: newCompany.id
+      });
 
     setLoading(false);
 
