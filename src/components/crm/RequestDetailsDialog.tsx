@@ -1,16 +1,13 @@
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { RequestDetailsDialogProps } from "./types/request-details";
 import { supabase } from "@/integrations/supabase/client";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState } from "react";
-import { industryTypes, IndustryType } from "./types/contact";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { Trash2 } from "lucide-react";
+import { IndustryType } from "./types/contact";
+import { RequestDetailsForm } from "./components/request-details/RequestDetailsForm";
+import { RequestControls } from "./components/request-details/RequestControls";
+import { DeleteRequestDialog } from "./components/request-details/DeleteRequestDialog";
 
 const RequestDetailsDialog = ({ 
   request, 
@@ -70,7 +67,7 @@ const RequestDetailsDialog = ({
 
     toast({
       title: "Industry updated",
-      description: `Industry updated to ${industryTypes.find(i => i.id === newIndustry)?.label || newIndustry}`,
+      description: `Industry updated to ${newIndustry}`,
     });
   };
 
@@ -186,136 +183,19 @@ const RequestDetailsDialog = ({
           </DialogTitle>
         </DialogHeader>
 
-        <div className="grid gap-4">
-          {type === 'membership' ? (
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <Label>First Name</Label>
-                <Input value={request.first_name || ''} readOnly />
-              </div>
-              <div>
-                <Label>Last Name</Label>
-                <Input value={request.last_name || ''} readOnly />
-              </div>
-            </div>
-          ) : (
-            <div>
-              <Label>Name</Label>
-              <Input value={request.name || ''} readOnly />
-            </div>
-          )}
-
-          <div>
-            <Label>Email</Label>
-            <Input value={request.email || ''} readOnly />
-          </div>
-
-          <div>
-            <Label>Phone</Label>
-            <Input value={request.phone_number || ''} readOnly />
-          </div>
-
-          <div>
-            <Label>Company</Label>
-            <Input value={request.company || ''} readOnly />
-          </div>
-
-          <div>
-            <Label>Title</Label>
-            <Input value={request.title || ''} readOnly />
-          </div>
-
-          {request.linkedin_url && (
-            <div>
-              <Label>LinkedIn URL</Label>
-              <Input value={request.linkedin_url} readOnly />
-            </div>
-          )}
-
-          {request.interests && (
-            <div>
-              <Label>Interests</Label>
-              <Textarea value={request.interests} readOnly />
-            </div>
-          )}
-
-          {request.additional_info && (
-            <div>
-              <Label>Additional Information</Label>
-              <Textarea value={request.additional_info} readOnly />
-            </div>
-          )}
-
-          {request.referred_by && (
-            <div>
-              <Label>Referred By</Label>
-              <Input value={request.referred_by} readOnly />
-            </div>
-          )}
-
-          <div>
-            <Label>Industry</Label>
-            <Select value={industry} onValueChange={handleIndustryChange}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {industryTypes.map(type => (
-                  <SelectItem key={type.id} value={type.id}>
-                    {type.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="flex justify-between items-center">
-            <div>
-              <Label>Status</Label>
-              <Select value={status} onValueChange={handleStatusChange}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="pending">Pending</SelectItem>
-                  <SelectItem value="approved">Approved</SelectItem>
-                  <SelectItem value="rejected">Rejected</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {status === 'approved' && (
-              <Button
-                onClick={handleMoveToContact}
-                className="ml-4"
-              >
-                Move to Pipeline
-              </Button>
-            )}
-          </div>
+        <div className="space-y-6">
+          <RequestDetailsForm request={request} type={type} />
+          
+          <RequestControls
+            status={status}
+            industry={industry}
+            onStatusChange={handleStatusChange}
+            onIndustryChange={handleIndustryChange}
+            onMoveToContact={handleMoveToContact}
+          />
 
           <div className="flex justify-end pt-4">
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button variant="destructive">
-                  <Trash2 className="h-4 w-4 mr-2" />
-                  Delete Request
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete the request
-                    from the database.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={handleDelete}>Delete</AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+            <DeleteRequestDialog onDelete={handleDelete} />
           </div>
         </div>
       </DialogContent>
