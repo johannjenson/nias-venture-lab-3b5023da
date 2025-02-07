@@ -16,12 +16,10 @@ const Hero = () => {
       <MainNav />
       <HeroContent onRequestInvite={() => setShowRequestModal(true)} />
       <AudienceCTAs onRequestInvite={() => setShowRequestModal(true)} />
-      {showRequestModal && (
-        <RequestInviteModal 
-          open={showRequestModal} 
-          onOpenChange={setShowRequestModal} 
-        />
-      )}
+      <RequestInviteModal 
+        open={showRequestModal} 
+        onOpenChange={setShowRequestModal} 
+      />
     </div>
   );
 };
