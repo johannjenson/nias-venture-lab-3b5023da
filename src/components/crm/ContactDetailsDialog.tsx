@@ -27,6 +27,7 @@ const ContactDetailsDialog = ({
   }, [open, contact.stage]);
 
   const fetchChecklist = async () => {
+    // First, get existing completed items for this contact
     const { data: existingItems, error: existingError } = await supabase
       .from('checklist_items')
       .select('*')
@@ -41,22 +42,24 @@ const ContactDetailsDialog = ({
       return;
     }
 
+    // Get default items for the current stage
+    const { data: defaultItems, error: defaultError } = await supabase
+      .from('checklist_items')
+      .select('*')
+      .is('contact_id', null)
+      .eq('stage', contact.stage);
+
+    if (defaultError) {
+      toast({
+        title: "Error fetching default checklist",
+        description: defaultError.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
     if (existingItems.length === 0) {
-      const { data: defaultItems, error: defaultError } = await supabase
-        .from('checklist_items')
-        .select('*')
-        .is('contact_id', null)
-        .eq('stage', contact.stage);
-
-      if (defaultError) {
-        toast({
-          title: "Error fetching default checklist",
-          description: defaultError.message,
-          variant: "destructive",
-        });
-        return;
-      }
-
+      // No existing items, create new ones from defaults
       const newItems = defaultItems.map(({ item_text, stage }) => ({
         id: crypto.randomUUID(),
         contact_id: contact.id,
@@ -80,7 +83,34 @@ const ContactDetailsDialog = ({
 
       setChecklist(newItems);
     } else {
-      setChecklist(existingItems);
+      // Merge existing items with any new default items for the current stage
+      const existingTexts = new Set(existingItems.map(item => item.item_text));
+      const newDefaultItems = defaultItems
+        .filter(item => !existingTexts.has(item.item_text))
+        .map(({ item_text, stage }) => ({
+          id: crypto.randomUUID(),
+          contact_id: contact.id,
+          stage,
+          item_text,
+          completed: false,
+        }));
+
+      if (newDefaultItems.length > 0) {
+        const { error: insertError } = await supabase
+          .from('checklist_items')
+          .insert(newDefaultItems);
+
+        if (insertError) {
+          toast({
+            title: "Error adding new checklist items",
+            description: insertError.message,
+            variant: "destructive",
+          });
+          return;
+        }
+      }
+
+      setChecklist([...existingItems, ...newDefaultItems]);
     }
   };
 
@@ -100,7 +130,7 @@ const ContactDetailsDialog = ({
     }
 
     onUpdate();
-    fetchChecklist();
+    fetchChecklist(); // This will add any new checklist items for the new stage
   };
 
   const toggleChecklistItem = async (itemId: string, completed: boolean) => {
@@ -168,4 +198,3 @@ const ContactDetailsDialog = ({
 };
 
 export default ContactDetailsDialog;
-
