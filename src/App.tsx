@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import People from "./pages/People";
 import RiyadhEvent from "./pages/RiyadhEvent";
@@ -28,7 +28,6 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/people" element={<People />} />
           <Route path="/events/nias-business-forum" element={<RiyadhEvent />} />
-          <Route path="/events/riyadh" element={<Navigate to="/events/nias-business-forum" replace />} />
           <Route path="/events/leap-dinner" element={<LeapDinner />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/contact" element={<Contact />} />
