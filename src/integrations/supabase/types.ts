@@ -124,6 +124,7 @@ export type Database = {
           industry: Database["public"]["Enums"]["industry_type"] | null
           last_name: string | null
           lead_type: Database["public"]["Enums"]["lead_type"] | null
+          linkedin_url: string | null
           notes: string | null
           phone: string | null
           source: string | null
@@ -144,6 +145,7 @@ export type Database = {
           industry?: Database["public"]["Enums"]["industry_type"] | null
           last_name?: string | null
           lead_type?: Database["public"]["Enums"]["lead_type"] | null
+          linkedin_url?: string | null
           notes?: string | null
           phone?: string | null
           source?: string | null
@@ -164,6 +166,7 @@ export type Database = {
           industry?: Database["public"]["Enums"]["industry_type"] | null
           last_name?: string | null
           lead_type?: Database["public"]["Enums"]["lead_type"] | null
+          linkedin_url?: string | null
           notes?: string | null
           phone?: string | null
           source?: string | null
