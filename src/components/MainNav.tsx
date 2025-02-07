@@ -95,17 +95,13 @@ const MainNav = () => {
     ] : []),
   ];
 
-  const renderNavItems = () => (
-    <NavigationMenuList className="gap-6">
-      <NavMenuItem title="Events" items={events} />
-      <NavMenuItem title="Resources" items={resources} />
-      <NavMenuItem title="About" items={about} />
-    </NavigationMenuList>
-  );
-
   return (
     <NavigationMenu className="absolute top-24 md:top-20 left-1/2 -translate-x-1/2 z-50 w-full md:w-auto px-4 md:px-0">
-      {renderNavItems()}
+      <NavigationMenuList className="gap-6">
+        <NavMenuItem title="Events" items={events} />
+        <NavMenuItem title="Resources" items={resources} />
+        <NavMenuItem title="About" items={about} />
+      </NavigationMenuList>
     </NavigationMenu>
   );
 };
