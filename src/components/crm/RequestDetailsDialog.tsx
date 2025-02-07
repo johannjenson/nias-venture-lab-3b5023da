@@ -121,6 +121,10 @@ const RequestDetailsDialog = ({
           />
 
           <div className="flex space-x-2 pt-4">
+            <DeleteRequestDialog 
+              contactId={request.id.toString()} 
+              onDelete={handleDelete}
+            />
             {type === 'membership' && status === 'approved' && (
               <Button 
                 onClick={handleCreateAccount}
@@ -131,10 +135,6 @@ const RequestDetailsDialog = ({
                 Invite to Create Account
               </Button>
             )}
-            <DeleteRequestDialog 
-              contactId={request.id.toString()} 
-              onDelete={handleDelete}
-            />
           </div>
         </div>
       </DialogContent>
