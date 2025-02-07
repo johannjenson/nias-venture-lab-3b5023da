@@ -20,7 +20,7 @@ export const createContact = async (formData: ContactFormData, userId: string) =
   }
 
   // Now create the contact with reference to the company
-  const { error: contactError } = await supabase
+  const { data: newContact, error: contactError } = await supabase
     .from('contacts')
     .insert({
       first_name: formData.first_name,
@@ -32,11 +32,28 @@ export const createContact = async (formData: ContactFormData, userId: string) =
       user_id: userId,
       company_id: newCompany.id,
       lead_type: formData.lead_type
-    });
+    })
+    .select('id')
+    .single();
 
   if (contactError) {
     throw new Error(contactError.message);
   }
 
-  return true;
+  // If there's a note, create it
+  if (formData.note) {
+    const { error: noteError } = await supabase
+      .from('contact_notes')
+      .insert({
+        contact_id: newContact.id,
+        content: formData.note,
+        user_id: userId
+      });
+
+    if (noteError) {
+      throw new Error(noteError.message);
+    }
+  }
+
+  return newContact;
 };
