@@ -76,7 +76,7 @@ const handler = async (req: Request): Promise<Response> => {
     console.log(`Sending ${status} notification to ${recipient.email} for request ${requestId}`);
 
     const emailResponse = await resend.emails.send({
-      from: "Network Membership <onboarding@resend.dev>",
+      from: "Nias Network Membership <membership@nias.io>",
       to: [recipient.email],
       subject: emailContent.subject,
       html: emailContent.html,
