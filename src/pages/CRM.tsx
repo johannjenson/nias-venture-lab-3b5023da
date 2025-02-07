@@ -8,6 +8,7 @@ import { ArrowLeft, Plus } from "lucide-react";
 import KanbanBoard from "@/components/crm/KanbanBoard";
 import MembershipRequestsBoard from "@/components/crm/MembershipRequestsBoard";
 import EventRequestsBoard from "@/components/crm/EventRequestsBoard";
+import CompanyBoard from "@/components/crm/CompanyBoard";
 import AddContactDialog from "@/components/crm/AddContactDialog";
 import { useToast } from "@/components/ui/use-toast";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -74,11 +75,15 @@ const CRM = () => {
           <Tabs defaultValue="pipeline" className="space-y-4">
             <TabsList>
               <TabsTrigger value="pipeline">Contact Pipeline</TabsTrigger>
+              <TabsTrigger value="companies">Company Pipeline</TabsTrigger>
               <TabsTrigger value="membership">Membership Requests</TabsTrigger>
               <TabsTrigger value="events">Event Requests</TabsTrigger>
             </TabsList>
             <TabsContent value="pipeline">
               <KanbanBoard />
+            </TabsContent>
+            <TabsContent value="companies">
+              <CompanyBoard />
             </TabsContent>
             <TabsContent value="membership">
               <MembershipRequestsBoard />
