@@ -15,18 +15,24 @@ const StageHeader = ({ label, count, stage }: StageHeaderProps) => {
 
   useEffect(() => {
     const fetchDefaultChecklist = async () => {
-      const { data, error } = await supabase
-        .from('checklist_items')
-        .select('item_text')
-        .is('contact_id', null)
-        .eq('stage', stage);
+      try {
+        const { data, error } = await supabase
+          .from('checklist_items')
+          .select('item_text')
+          .is('contact_id', null)
+          .eq('stage', stage);
 
-      if (error) {
-        console.error('Error fetching checklist items:', error);
-        return;
+        if (error) {
+          console.error('Error fetching checklist items:', error);
+          return;
+        }
+
+        if (data) {
+          setChecklistItems(data.map(item => item.item_text));
+        }
+      } catch (error) {
+        console.error('Error in fetchDefaultChecklist:', error);
       }
-
-      setChecklistItems(data.map(item => item.item_text));
     };
 
     fetchDefaultChecklist();
@@ -48,4 +54,3 @@ const StageHeader = ({ label, count, stage }: StageHeaderProps) => {
 };
 
 export default StageHeader;
-
