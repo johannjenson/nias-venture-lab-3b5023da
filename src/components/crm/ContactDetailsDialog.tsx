@@ -8,7 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { DeleteRequestDialog } from "./components/request-details/DeleteRequestDialog";
 import { Contact, ChecklistItem, ContactDetailsDialogProps } from "./types/contact-details";
 import DialogHeader from "./components/dialog/DialogHeader";
-import DialogContent as CustomDialogContent from "./components/dialog/DialogContent";
+import { default as CustomDialogContent } from "./components/dialog/DialogContent";
 import StageChangeAlert from "./components/dialog/StageChangeAlert";
 
 const ContactDetailsDialog = ({ 
