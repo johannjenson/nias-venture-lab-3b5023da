@@ -11,7 +11,7 @@ export const useLeads = () => {
 
   const fetchAllLeads = async () => {
     const { data: contactsData, error: contactsError } = await supabase
-      .from('contacts')
+      .from('leads_with_user_status')  // Use the view that includes has_account
       .select('*')
       .order('created_at', { ascending: false });
 
@@ -66,7 +66,8 @@ export const useLeads = () => {
         company: contact.company,
         status: contact.stage || 'Unknown',
         type: 'contact',
-        stage: contact.stage
+        stage: contact.stage,
+        has_account: contact.has_account  // Include has_account field from the view
       })),
       ...eventData.map((request: EventRequest): LeadEntry => ({
         id: request.id.toString(),
