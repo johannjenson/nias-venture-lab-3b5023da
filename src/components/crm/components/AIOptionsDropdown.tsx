@@ -15,7 +15,11 @@ import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
 
-export const AIOptionsDropdown = () => {
+interface AIOptionsDropdownProps {
+  showUploadOption?: boolean;
+}
+
+export const AIOptionsDropdown = ({ showUploadOption = false }: AIOptionsDropdownProps) => {
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [transcript, setTranscript] = useState("");
   const { toast } = useToast();
@@ -58,34 +62,38 @@ export const AIOptionsDropdown = () => {
           <DropdownMenuItem asChild>
             <InferIndustriesButton />
           </DropdownMenuItem>
-          <DropdownMenuItem onSelect={() => setIsUploadOpen(true)}>
-            Upload AI Transcript
-          </DropdownMenuItem>
+          {showUploadOption && (
+            <DropdownMenuItem onSelect={() => setIsUploadOpen(true)}>
+              Upload AI Transcript
+            </DropdownMenuItem>
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <Dialog open={isUploadOpen} onOpenChange={setIsUploadOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Upload AI Transcript</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4">
-            <div>
-              <Label htmlFor="transcript">AI Transcript</Label>
-              <Textarea
-                id="transcript"
-                value={transcript}
-                onChange={(e) => setTranscript(e.target.value)}
-                placeholder="Paste your AI transcript here..."
-                className="h-40"
-              />
+      {showUploadOption && (
+        <Dialog open={isUploadOpen} onOpenChange={setIsUploadOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Upload AI Transcript</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4">
+              <div>
+                <Label htmlFor="transcript">AI Transcript</Label>
+                <Textarea
+                  id="transcript"
+                  value={transcript}
+                  onChange={(e) => setTranscript(e.target.value)}
+                  placeholder="Paste your AI transcript here..."
+                  className="h-40"
+                />
+              </div>
+              <Button onClick={handleUploadTranscript} className="w-full">
+                Upload Transcript
+              </Button>
             </div>
-            <Button onClick={handleUploadTranscript} className="w-full">
-              Upload Transcript
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 };
