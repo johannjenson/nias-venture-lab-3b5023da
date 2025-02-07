@@ -8,6 +8,7 @@ import { Database } from "@/integrations/supabase/types";
 import { formatDistanceToNow } from "date-fns";
 
 type ContactStage = Database["public"]["Enums"]["contact_stage"];
+type LeadType = 'all' | 'founder_executive' | 'investor_buyer' | 'advisor_broker' | 'other';
 
 type Contact = {
   id: string;
@@ -17,6 +18,7 @@ type Contact = {
   company: string;
   title: string;
   stage: ContactStage;
+  lead_type: LeadType;
   source?: string;
   source_id?: string;
   company_id?: string;
@@ -39,11 +41,20 @@ const stages: { id: ContactStage; label: string }[] = [
   { id: 'closed_lost', label: 'Rejected' },
 ];
 
+const leadTypes: { id: LeadType; label: string }[] = [
+  { id: 'all', label: 'All Leads' },
+  { id: 'founder_executive', label: 'Founders & Executives' },
+  { id: 'investor_buyer', label: 'Investors & Buyers' },
+  { id: 'advisor_broker', label: 'Advisors & Brokers' },
+  { id: 'other', label: 'Other' },
+];
+
 interface KanbanBoardProps {
   viewType: 'user' | 'company';
+  leadTypeFilter: LeadType;
 }
 
-const KanbanBoard = ({ viewType }: KanbanBoardProps) => {
+const KanbanBoard = ({ viewType, leadTypeFilter }: KanbanBoardProps) => {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [companyViews, setCompanyViews] = useState<CompanyView[]>([]);
   const { toast } = useToast();
@@ -65,13 +76,19 @@ const KanbanBoard = ({ viewType }: KanbanBoardProps) => {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [viewType]);
+  }, [viewType, leadTypeFilter]);
 
   const fetchData = async () => {
-    const { data, error } = await supabase
+    let query = supabase
       .from('contacts')
       .select('*, company_id')
       .order('created_at', { ascending: false });
+
+    if (leadTypeFilter !== 'all') {
+      query = query.eq('lead_type', leadTypeFilter);
+    }
+
+    const { data, error } = await query;
 
     if (error) {
       toast({
@@ -105,7 +122,7 @@ const KanbanBoard = ({ viewType }: KanbanBoardProps) => {
         stage: lead.stage,
         last_contact_date: lead.last_contact_date,
         contacts: data?.filter(contact => contact.company_id === lead.id) || []
-      }));
+      })).filter(company => company.contacts.length > 0);
 
       setCompanyViews(companyViews);
     }

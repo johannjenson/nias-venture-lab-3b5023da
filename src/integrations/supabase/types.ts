@@ -80,6 +80,7 @@ export type Database = {
           first_name: string | null
           id: string
           last_name: string | null
+          lead_type: Database["public"]["Enums"]["lead_type"] | null
           notes: string | null
           phone: string | null
           source: string | null
@@ -98,6 +99,7 @@ export type Database = {
           first_name?: string | null
           id?: string
           last_name?: string | null
+          lead_type?: Database["public"]["Enums"]["lead_type"] | null
           notes?: string | null
           phone?: string | null
           source?: string | null
@@ -116,6 +118,7 @@ export type Database = {
           first_name?: string | null
           id?: string
           last_name?: string | null
+          lead_type?: Database["public"]["Enums"]["lead_type"] | null
           notes?: string | null
           phone?: string | null
           source?: string | null
@@ -249,6 +252,7 @@ export type Database = {
           id: string
           last_contact_date: string | null
           last_name: string | null
+          lead_type: Database["public"]["Enums"]["lead_type"] | null
           notes: string | null
           phone: string | null
           source: string | null
@@ -268,6 +272,7 @@ export type Database = {
           id?: string
           last_contact_date?: string | null
           last_name?: string | null
+          lead_type?: Database["public"]["Enums"]["lead_type"] | null
           notes?: string | null
           phone?: string | null
           source?: string | null
@@ -287,6 +292,7 @@ export type Database = {
           id?: string
           last_contact_date?: string | null
           last_name?: string | null
+          lead_type?: Database["public"]["Enums"]["lead_type"] | null
           notes?: string | null
           phone?: string | null
           source?: string | null
@@ -502,6 +508,11 @@ export type Database = {
         | "evaluation"
         | "closed_won"
         | "closed_lost"
+      lead_type:
+        | "founder_executive"
+        | "investor_buyer"
+        | "advisor_broker"
+        | "other"
     }
     CompositeTypes: {
       [_ in never]: never

@@ -14,6 +14,23 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+type LeadType = 'all' | 'founder_executive' | 'investor_buyer' | 'advisor_broker' | 'other';
+
+const leadTypes = [
+  { id: 'all', label: 'All Leads' },
+  { id: 'founder_executive', label: 'Founders & Executives' },
+  { id: 'investor_buyer', label: 'Investors & Buyers' },
+  { id: 'advisor_broker', label: 'Advisors & Brokers' },
+  { id: 'other', label: 'Other' },
+];
 
 const CRM = () => {
   const navigate = useNavigate();
@@ -21,6 +38,7 @@ const CRM = () => {
   const [loading, setLoading] = useState(true);
   const [showAddContact, setShowAddContact] = useState(false);
   const [viewByCompany, setViewByCompany] = useState(false);
+  const [leadTypeFilter, setLeadTypeFilter] = useState<LeadType>('all');
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -81,23 +99,39 @@ const CRM = () => {
                 <TabsTrigger value="membership">Membership Requests</TabsTrigger>
                 <TabsTrigger value="events">Event Requests</TabsTrigger>
               </TabsList>
-              <div className="flex items-center space-x-2">
-                <Label htmlFor="view-toggle" className="text-sm text-gray-600">
-                  {viewByCompany ? "Company View" : "User View"}
-                </Label>
-                <Switch
-                  id="view-toggle"
-                  checked={viewByCompany}
-                  onCheckedChange={setViewByCompany}
-                />
+              <div className="flex items-center space-x-4">
+                <Select
+                  value={leadTypeFilter}
+                  onValueChange={(value: LeadType) => setLeadTypeFilter(value)}
+                >
+                  <SelectTrigger className="w-[200px]">
+                    <SelectValue placeholder="Filter by type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {leadTypes.map(type => (
+                      <SelectItem key={type.id} value={type.id}>
+                        {type.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <div className="flex items-center space-x-2">
+                  <Label htmlFor="view-toggle" className="text-sm text-gray-600">
+                    {viewByCompany ? "Company View" : "User View"}
+                  </Label>
+                  <Switch
+                    id="view-toggle"
+                    checked={viewByCompany}
+                    onCheckedChange={setViewByCompany}
+                  />
+                </div>
               </div>
             </div>
             <TabsContent value="pipeline">
-              {viewByCompany ? (
-                <KanbanBoard viewType="company" />
-              ) : (
-                <KanbanBoard viewType="user" />
-              )}
+              <KanbanBoard 
+                viewType={viewByCompany ? "company" : "user"}
+                leadTypeFilter={leadTypeFilter}
+              />
             </TabsContent>
             <TabsContent value="membership">
               <MembershipRequestsBoard />

@@ -1,9 +1,10 @@
-
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select } from "@/components/ui/select";
+import { SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -21,7 +22,15 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
     email: "",
     company: "",
     title: "",
+    lead_type: "other"
   });
+
+  const leadTypes = [
+    { id: 'founder_executive', label: 'Founders & Executives' },
+    { id: 'investor_buyer', label: 'Investors & Buyers' },
+    { id: 'advisor_broker', label: 'Advisors & Brokers' },
+    { id: 'other', label: 'Other' },
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,7 +55,8 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
       .insert({
         company: formData.company,
         stage: 'mql_lead',
-        user_id: user.id
+        user_id: user.id,
+        lead_type: formData.lead_type || 'other'
       })
       .select('id')
       .single();
@@ -68,7 +78,8 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
         ...formData, 
         stage: 'mql_lead',
         user_id: user.id,
-        company_id: newCompany.id
+        company_id: newCompany.id,
+        lead_type: formData.lead_type || 'other'
       });
 
     setLoading(false);
@@ -93,6 +104,7 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
       email: "",
       company: "",
       title: "",
+      lead_type: "other"
     });
     onOpenChange(false);
   };
@@ -155,6 +167,25 @@ const AddContactDialog = ({ open, onOpenChange }: AddContactDialogProps) => {
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
               required
             />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="lead_type">Lead Type</Label>
+            <Select
+              value={formData.lead_type}
+              onValueChange={(value) => setFormData({ ...formData, lead_type: value })}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select lead type" />
+              </SelectTrigger>
+              <SelectContent>
+                {leadTypes.map(type => (
+                  <SelectItem key={type.id} value={type.id}>
+                    {type.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="flex justify-end space-x-2">
