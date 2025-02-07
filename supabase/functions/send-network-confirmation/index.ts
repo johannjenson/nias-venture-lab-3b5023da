@@ -23,7 +23,16 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
+    // Ensure request has a body
+    if (!req.body) {
+      throw new Error("Request body is required");
+    }
+
     const { fullName, email, company, title }: NetworkRequestConfirmation = await req.json();
+
+    if (!fullName || !email || !company || !title) {
+      throw new Error("Missing required fields");
+    }
 
     console.log("Attempting to send network request confirmation to:", email);
 
@@ -63,19 +72,25 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Confirmation email sent successfully:", emailResponse);
 
     return new Response(JSON.stringify(emailResponse), {
-      status: 200,
-      headers: {
+      headers: { 
         "Content-Type": "application/json",
-        ...corsHeaders,
+        ...corsHeaders 
       },
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error sending confirmation email:", error);
+    
+    // Ensure we return a proper JSON error response
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ 
+        error: error instanceof Error ? error.message : "An unexpected error occurred" 
+      }),
       {
         status: 500,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
+        headers: { 
+          "Content-Type": "application/json",
+          ...corsHeaders 
+        },
       }
     );
   }
