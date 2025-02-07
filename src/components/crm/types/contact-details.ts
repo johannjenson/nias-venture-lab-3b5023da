@@ -1,3 +1,4 @@
+
 import { Database } from "@/integrations/supabase/types";
 
 type ContactStage = Database["public"]["Enums"]["contact_stage"];
@@ -11,6 +12,7 @@ export interface Contact {
   title: string;
   stage: ContactStage;
   heat_rating: number;
+  goal?: string;
 }
 
 export interface ChecklistItem {

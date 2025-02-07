@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
@@ -13,6 +12,7 @@ import ContactNotes from "./components/ContactNotes";
 import ContactAttachments from "./components/ContactAttachments";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import HeatRating from "./components/HeatRating";
+import { Input } from "@/components/ui/input";
 
 const ContactDetailsDialog = ({ 
   contact, 
@@ -23,13 +23,15 @@ const ContactDetailsDialog = ({
   const [checklist, setChecklist] = useState<ChecklistItem[]>([]);
   const [showStageAlert, setShowStageAlert] = useState(false);
   const [pendingStageChange, setPendingStageChange] = useState<typeof contact.stage | null>(null);
+  const [goal, setGoal] = useState(contact.goal || '');
   const { toast } = useToast();
 
   useEffect(() => {
     if (open) {
       fetchChecklist();
+      setGoal(contact.goal || '');
     }
-  }, [open, contact.stage]);
+  }, [open, contact.stage, contact.goal]);
 
   const fetchChecklist = async () => {
     const { data: existingItems, error: existingError } = await supabase
@@ -191,6 +193,28 @@ const ContactDetailsDialog = ({
     onUpdate();
   };
 
+  const updateGoal = async () => {
+    const { error } = await supabase
+      .from('contacts')
+      .update({ goal })
+      .eq('id', contact.id);
+
+    if (error) {
+      toast({
+        title: "Error updating goal",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    onUpdate();
+    toast({
+      title: "Goal updated",
+      description: "The contact's goal has been updated successfully.",
+    });
+  };
+
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
@@ -202,6 +226,15 @@ const ContactDetailsDialog = ({
             <DialogDescription>
               View and manage contact details, attachments, and progress
             </DialogDescription>
+            <div className="mt-4">
+              <Input
+                placeholder="Set a goal for this lead..."
+                value={goal}
+                onChange={(e) => setGoal(e.target.value)}
+                onBlur={updateGoal}
+                className="mt-2"
+              />
+            </div>
           </DialogHeader>
 
           <Tabs defaultValue="details" className="flex flex-col h-full">
