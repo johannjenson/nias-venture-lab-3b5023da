@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
@@ -32,13 +31,37 @@ type CompanyView = {
   contacts: Contact[];
 };
 
-const stages: { id: ContactStage; label: string }[] = [
-  { id: 'mql_lead', label: 'MQL Lead' },
-  { id: 'sql_qualification', label: 'SQL Qualification' },
-  { id: 'sqo_discovery', label: 'SQO Discovery' },
-  { id: 'evaluation', label: 'Evaluation' },
-  { id: 'closed_won', label: 'Approved' },
-  { id: 'closed_lost', label: 'Rejected' },
+const stages: { id: ContactStage; label: string; description: string }[] = [
+  { 
+    id: 'mql_lead', 
+    label: 'MQL Lead',
+    description: 'Marketing qualified leads ready for initial contact'
+  },
+  { 
+    id: 'sql_qualification', 
+    label: 'SQL Qualification',
+    description: 'Sales qualified leads under evaluation'
+  },
+  { 
+    id: 'sqo_discovery', 
+    label: 'SQO Discovery',
+    description: 'Sales qualified opportunities in discovery phase'
+  },
+  { 
+    id: 'evaluation', 
+    label: 'Evaluation',
+    description: 'Leads actively evaluating membership'
+  },
+  { 
+    id: 'closed_won', 
+    label: 'Approved',
+    description: 'Successfully approved members'
+  },
+  { 
+    id: 'closed_lost', 
+    label: 'Rejected',
+    description: 'Declined or inactive leads'
+  },
 ];
 
 const leadTypes: { id: LeadType; label: string }[] = [
@@ -102,7 +125,6 @@ const KanbanBoard = ({ viewType, leadTypeFilter }: KanbanBoardProps) => {
     if (viewType === 'user') {
       setContacts(data || []);
     } else {
-      // Group contacts by company and get the company's stage from leads table
       const { data: leadsData, error: leadsError } = await supabase
         .from('leads')
         .select('id, company, stage, last_contact_date');
@@ -205,14 +227,17 @@ const KanbanBoard = ({ viewType, leadTypeFilter }: KanbanBoardProps) => {
       {stages.map((stage) => (
         <div key={stage.id} className="flex-shrink-0 w-80">
           <Card className="p-4">
-            <div className="flex items-center justify-between mb-4">
+            <div className="mb-4">
               <h3 className="font-semibold">{stage.label}</h3>
-              <span className="text-sm text-gray-500">
-                {viewType === 'user' 
-                  ? contacts.filter(c => c.stage === stage.id).length
-                  : companyViews.filter(c => c.stage === stage.id).length
-                }
-              </span>
+              <p className="text-sm text-gray-500 mt-1">{stage.description}</p>
+              <div className="flex items-center justify-end mt-2">
+                <span className="text-sm text-gray-500">
+                  {viewType === 'user' 
+                    ? contacts.filter(c => c.stage === stage.id).length
+                    : companyViews.filter(c => c.stage === stage.id).length
+                  }
+                </span>
+              </div>
             </div>
             {viewType === 'user' ? renderUserView(stage.id) : renderCompanyView(stage.id)}
           </Card>
