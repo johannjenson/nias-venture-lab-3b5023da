@@ -11,12 +11,14 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { DinnerFormData } from "./types";
+import { industryTypes } from "@/data/industries";
 
 interface DinnerInviteFormProps {
   formData: DinnerFormData;
   isSubmitting: boolean;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onRoleChange: (value: string) => void;
+  onIndustryChange: (value: string) => void;
   onSubmit: (e: React.FormEvent) => void;
 }
 
@@ -25,6 +27,7 @@ const DinnerInviteForm = ({
   isSubmitting,
   onInputChange,
   onRoleChange,
+  onIndustryChange,
   onSubmit,
 }: DinnerInviteFormProps) => {
   return (
@@ -96,6 +99,27 @@ const DinnerInviteForm = ({
             <SelectItem value="investor">Investor</SelectItem>
             <SelectItem value="advisor">Advisor</SelectItem>
             <SelectItem value="broker">Broker</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="industry">Industry</Label>
+        <Select
+          name="industry"
+          value={formData.industry}
+          onValueChange={onIndustryChange}
+          disabled={isSubmitting}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Select your industry" />
+          </SelectTrigger>
+          <SelectContent>
+            {industryTypes.map(industry => (
+              <SelectItem key={industry.name.toLowerCase()} value={industry.name.toLowerCase()}>
+                {industry.name}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
       </div>

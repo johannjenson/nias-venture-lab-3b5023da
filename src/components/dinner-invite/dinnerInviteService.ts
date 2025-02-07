@@ -11,6 +11,7 @@ export const submitDinnerInvite = async (formData: DinnerFormData) => {
         email: formData.email,
         company: formData.company,
         role: formData.role,
+        industry: formData.industry,
       }
     ]);
 

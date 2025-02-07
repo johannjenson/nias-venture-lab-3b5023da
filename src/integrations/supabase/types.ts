@@ -309,6 +309,7 @@ export type Database = {
           email: string | null
           full_name: string | null
           id: number
+          industry: string | null
           interests: string | null
           phone_number: string | null
           request_status: string | null
@@ -320,6 +321,7 @@ export type Database = {
           email?: string | null
           full_name?: string | null
           id?: never
+          industry?: string | null
           interests?: string | null
           phone_number?: string | null
           request_status?: string | null
@@ -331,6 +333,7 @@ export type Database = {
           email?: string | null
           full_name?: string | null
           id?: never
+          industry?: string | null
           interests?: string | null
           phone_number?: string | null
           request_status?: string | null
@@ -475,6 +478,7 @@ export type Database = {
           email: string | null
           first_name: string | null
           id: number
+          industry: string | null
           last_name: string | null
           linkedin_url: string | null
           phone_number: string | null
@@ -489,6 +493,7 @@ export type Database = {
           email?: string | null
           first_name?: string | null
           id?: number
+          industry?: string | null
           last_name?: string | null
           linkedin_url?: string | null
           phone_number?: string | null
@@ -503,6 +508,7 @@ export type Database = {
           email?: string | null
           first_name?: string | null
           id?: number
+          industry?: string | null
           last_name?: string | null
           linkedin_url?: string | null
           phone_number?: string | null

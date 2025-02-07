@@ -20,6 +20,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2 } from "lucide-react";
+import { industryTypes } from "@/data/industries";
 
 interface EventInviteModalProps {
   open: boolean;
@@ -34,6 +35,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
     email: "",
     company: "",
     title: "",
+    industry: "",
     interests: "",
   });
 
@@ -51,6 +53,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
             email: formData.email,
             company: formData.company,
             title: formData.title,
+            industry: formData.industry,
             interests: formData.interests
           }
         ]);
@@ -79,6 +82,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
         email: "",
         company: "",
         title: "",
+        industry: "",
         interests: "",
       });
     } catch (error) {
@@ -173,6 +177,29 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
                 <SelectItem value="investor">Investor</SelectItem>
                 <SelectItem value="advisor">Advisor</SelectItem>
                 <SelectItem value="broker">Broker</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="industry">Industry</Label>
+            <Select
+              name="industry"
+              value={formData.industry}
+              onValueChange={(value) =>
+                setFormData((prev) => ({ ...prev, industry: value }))
+              }
+              disabled={isSubmitting}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select your industry" />
+              </SelectTrigger>
+              <SelectContent>
+                {industryTypes.map(industry => (
+                  <SelectItem key={industry.name.toLowerCase()} value={industry.name.toLowerCase()}>
+                    {industry.name}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>

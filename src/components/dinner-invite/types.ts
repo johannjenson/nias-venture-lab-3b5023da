@@ -10,7 +10,9 @@ export interface DinnerFormData {
   email: string;
   company: string;
   role: string;
+  industry: string;
   interests: string;
 }
 
 export type RoleOption = 'founder' | 'executive' | 'investor' | 'advisor' | 'broker';
+
