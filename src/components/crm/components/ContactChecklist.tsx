@@ -16,7 +16,7 @@ const ContactChecklist = ({ checklist, onToggleItem }: ContactChecklistProps) =>
     <div>
       <h4 className="font-medium mb-4">Current Stage Checklist</h4>
       <div className="space-y-3">
-        {uncomplletedItems.map((item) => (
+        {uncompletedItems.map((item) => (
           <div key={item.id} className="flex items-start space-x-3">
             <Checkbox
               id={item.id}
@@ -39,4 +39,3 @@ const ContactChecklist = ({ checklist, onToggleItem }: ContactChecklistProps) =>
 };
 
 export default ContactChecklist;
-
