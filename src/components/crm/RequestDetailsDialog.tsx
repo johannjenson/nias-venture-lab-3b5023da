@@ -1,3 +1,4 @@
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -53,12 +54,15 @@ const RequestDetailsDialog = ({
   };
 
   const handleIndustryChange = async (newIndustry: IndustryType) => {
-    if (type !== 'event') return; // Only event requests have industry field
+    const table = type === 'membership' ? 'Request' : 'EventRequest';
+    const id = type === 'membership' ? 
+      parseInt(request.id.replace('membership_', '')) : 
+      parseInt(request.id.replace('event_', ''));
 
     const { error } = await supabase
-      .from('EventRequest')
+      .from(table)
       .update({ industry: newIndustry })
-      .eq('id', parseInt(request.id.replace('event_', '')));
+      .eq('id', id);
 
     if (error) {
       toast({
@@ -174,23 +178,21 @@ const RequestDetailsDialog = ({
             </div>
           )}
 
-          {type === 'event' && (
-            <div>
-              <Label>Industry</Label>
-              <Select value={industry} onValueChange={handleIndustryChange}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {industryTypes.map(type => (
-                    <SelectItem key={type.id} value={type.id}>
-                      {type.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          )}
+          <div>
+            <Label>Industry</Label>
+            <Select value={industry} onValueChange={handleIndustryChange}>
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {industryTypes.map(type => (
+                  <SelectItem key={type.id} value={type.id}>
+                    {type.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
           <div className="flex justify-between items-center">
             <div>
@@ -206,11 +208,14 @@ const RequestDetailsDialog = ({
                 </SelectContent>
               </Select>
             </div>
-            
+          </div>
+
+          <div className="flex justify-end pt-4">
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-destructive hover:text-destructive">
-                  <Trash2 className="h-4 w-4" />
+                <Button variant="destructive">
+                  <Trash2 className="h-4 w-4 mr-2" />
+                  Delete Request
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
