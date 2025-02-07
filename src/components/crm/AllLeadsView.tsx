@@ -50,7 +50,7 @@ const AllLeadsView = () => {
   };
 
   const filteredLeads = leads.filter(lead => {
-    if (leadTypeFilter !== 'all' && lead.lead_type !== leadTypeFilter) {
+    if (leadTypeFilter !== 'all' && (lead.type === 'request' || !lead.stage)) {
       return false;
     }
     if (industryFilter !== 'all' && lead.industry !== industryFilter) {
