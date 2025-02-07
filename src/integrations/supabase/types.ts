@@ -320,6 +320,7 @@ export type Database = {
           id: number
           industry: string | null
           interests: string | null
+          moved_to_pipeline: boolean | null
           name: string | null
           phone_number: string | null
           request_status: string | null
@@ -333,6 +334,7 @@ export type Database = {
           id?: never
           industry?: string | null
           interests?: string | null
+          moved_to_pipeline?: boolean | null
           name?: string | null
           phone_number?: string | null
           request_status?: string | null
@@ -346,6 +348,7 @@ export type Database = {
           id?: never
           industry?: string | null
           interests?: string | null
+          moved_to_pipeline?: boolean | null
           name?: string | null
           phone_number?: string | null
           request_status?: string | null
