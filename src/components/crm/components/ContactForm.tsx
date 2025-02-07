@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import { ContactFormData, LeadType, leadTypes } from "../types/contact";
 
 interface ContactFormProps {
@@ -85,6 +86,17 @@ const ContactForm = ({ formData, onChange, onSubmit, onCancel, loading }: Contac
             ))}
           </SelectContent>
         </Select>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="note">Notes</Label>
+        <Textarea
+          id="note"
+          value={formData.note || ''}
+          onChange={(e) => onChange({ ...formData, note: e.target.value })}
+          placeholder="Add any additional notes..."
+          className="min-h-[100px]"
+        />
       </div>
 
       <div className="flex justify-end space-x-2">
