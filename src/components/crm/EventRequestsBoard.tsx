@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
-import ContactCard from "./ContactCard";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import {
@@ -85,7 +84,14 @@ const EventRequestsBoard = () => {
       return;
     }
 
-    setDinnerRequests(dinnerData || []);
+    // Transform the data to match EventRequest type
+    const transformedDinnerData: EventRequest[] = (dinnerData || []).map(item => ({
+      ...item,
+      request_status: item.request_status || 'pending',
+      id: item.id.toString()
+    }));
+
+    setDinnerRequests(transformedDinnerData);
 
     // Fetch forum requests
     const { data: forumData, error: forumError } = await supabase
@@ -102,7 +108,14 @@ const EventRequestsBoard = () => {
       return;
     }
 
-    setForumRequests(forumData || []);
+    // Transform the data to match EventRequest type
+    const transformedForumData: EventRequest[] = (forumData || []).map(item => ({
+      ...item,
+      request_status: item.request_status || 'pending',
+      id: item.id.toString()
+    }));
+
+    setForumRequests(transformedForumData);
   };
 
   const updateRequestStatus = async (requestId: string, status: string, type: 'dinner' | 'forum') => {
