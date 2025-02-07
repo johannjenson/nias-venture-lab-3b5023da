@@ -1,3 +1,4 @@
+
 import { Card } from "@/components/ui/card";
 import { ChevronDown, Check, Clock, XCircle, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -41,12 +42,20 @@ export const RequestCard = ({ request, type, onUpdateStatus }: RequestCardProps)
 
   return (
     <Card className="p-4">
-      <div className="flex justify-between items-start mb-4">
-        <div>
-          <h4 className="font-medium">{request.name}</h4>
-          <p className="text-sm text-gray-500">{request.company}</p>
-          <p className="text-sm text-gray-600">{request.title}</p>
-          <p className="text-sm text-gray-500 truncate">{request.email}</p>
+      <div className="flex justify-between items-center">
+        <div className="grid grid-cols-[1fr,1fr,2fr,1fr] gap-4 flex-1 mr-4">
+          <div>
+            <h4 className="font-medium">{request.name}</h4>
+          </div>
+          <div>
+            <p className="text-sm text-gray-500">{request.company}</p>
+          </div>
+          <div>
+            <p className="text-sm text-gray-500 truncate">{request.email}</p>
+          </div>
+          <div>
+            <p className="text-sm text-gray-600">{request.title}</p>
+          </div>
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -87,7 +96,7 @@ export const RequestCard = ({ request, type, onUpdateStatus }: RequestCardProps)
         </DropdownMenu>
       </div>
       {request.interests && (
-        <div className="text-sm text-gray-600">
+        <div className="mt-4 text-sm text-gray-600">
           <p className="font-medium">Interests:</p>
           <p>{request.interests}</p>
         </div>
