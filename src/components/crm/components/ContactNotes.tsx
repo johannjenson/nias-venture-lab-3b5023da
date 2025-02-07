@@ -1,12 +1,10 @@
+
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
 import { TimelineItem } from "../types/contact-details";
-import { MessageSquare, CheckSquare, ChevronDown, ChevronUp, RefreshCw } from "lucide-react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import AddNoteForm from "./notes/AddNoteForm";
+import Timeline from "./notes/Timeline";
 
 interface ContactNotesProps {
   contactId: string;
@@ -123,13 +121,8 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
   };
 
   const toggleChecklistItem = async (itemId: string) => {
-    // Get the item details before updating
-    const item = timelineItems.find(item => item.id === itemId);
-    
-    // First update the local state to remove the item from the timeline
     setTimelineItems(prevItems => prevItems.filter(i => i.id !== itemId));
 
-    // Then update the database
     const { error } = await supabase
       .from('checklist_items')
       .update({ 
@@ -144,91 +137,28 @@ const ContactNotes = ({ contactId, onChecklistUpdate }: ContactNotesProps) => {
         description: error.message,
         variant: "destructive",
       });
-      // If there was an error, refresh the timeline to ensure accurate state
       await fetchTimelineItems();
       return;
     }
 
-    onChecklistUpdate();  // Refresh the checklist in the parent component
-  };
-
-  const renderTimelineItem = (item: TimelineItem) => {
-    if (item.type === 'note') {
-      return (
-        <div className="flex items-start gap-2">
-          <MessageSquare className="h-4 w-4 mt-1 text-gray-500" />
-          <div className="flex-1">
-            <p className="text-sm mb-2">{item.content}</p>
-            <p className="text-xs text-gray-500">
-              Added by {item.user?.first_name && item.user?.last_name 
-                ? `${item.user.first_name} ${item.user.last_name}`
-                : item.user?.email} on {new Date(item.timestamp).toLocaleString()}
-            </p>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div className="flex items-start gap-2">
-          <CheckSquare className="h-4 w-4 mt-1 text-green-500 cursor-pointer" onClick={() => toggleChecklistItem(item.id)} />
-          <div className="flex-1">
-            <p className="text-sm mb-2">Completed: {item.content}</p>
-            <p className="text-xs text-gray-500">
-              Stage: {item.stage} - Completed on {new Date(item.timestamp).toLocaleString()}
-            </p>
-          </div>
-        </div>
-      );
-    }
+    onChecklistUpdate();
   };
 
   return (
     <div>
-      <div className="space-y-2">
-        <Textarea
-          placeholder="Add a note..."
-          value={newNote}
-          onChange={(e) => setNewNote(e.target.value)}
-          className="min-h-[100px]"
-        />
-        <Button 
-          onClick={addNote}
-          disabled={!newNote.trim()}
-          className="w-full"
-        >
-          Add Note
-        </Button>
-      </div>
-
-      <Collapsible open={isOpen} onOpenChange={setIsOpen} className="mt-4">
-        <div className="flex items-center justify-between">
-          <CollapsibleTrigger asChild>
-            <Button variant="outline" className="flex-1 flex justify-between mr-2">
-              <span>Timeline</span>
-              {isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-            </Button>
-          </CollapsibleTrigger>
-          <Button 
-            variant="outline" 
-            size="icon"
-            onClick={handleRefresh}
-            disabled={isRefreshing}
-          >
-            <RefreshCw className={`h-4 w-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-          </Button>
-        </div>
-        <CollapsibleContent className="mt-4">
-          <ScrollArea className="h-[300px]">
-            <div className="space-y-3">
-              {timelineItems.map((item) => (
-                <div key={item.id} className="bg-gray-50 p-3 rounded-lg">
-                  {renderTimelineItem(item)}
-                </div>
-              ))}
-            </div>
-          </ScrollArea>
-        </CollapsibleContent>
-      </Collapsible>
+      <AddNoteForm
+        newNote={newNote}
+        onNoteChange={setNewNote}
+        onAddNote={addNote}
+      />
+      <Timeline
+        isOpen={isOpen}
+        onOpenChange={setIsOpen}
+        isRefreshing={isRefreshing}
+        onRefresh={handleRefresh}
+        timelineItems={timelineItems}
+        onToggleChecklistItem={toggleChecklistItem}
+      />
     </div>
   );
 };
