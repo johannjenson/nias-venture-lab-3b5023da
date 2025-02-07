@@ -43,7 +43,7 @@ const Timeline = ({
         </Button>
       </div>
       <CollapsibleContent className="mt-4">
-        <ScrollArea className="h-[600px]">
+        <ScrollArea className="h-[570px]">
           <div className="space-y-3">
             {timelineItems.map((item) => (
               <div key={item.id} className="bg-gray-50 p-3 rounded-lg">
@@ -61,3 +61,4 @@ const Timeline = ({
 };
 
 export default Timeline;
+
