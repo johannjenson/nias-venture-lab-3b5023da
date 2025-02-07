@@ -47,7 +47,7 @@ export const usePipelineMovement = ({
           first_name: firstName,
           last_name: lastName,
           email: request.email,
-          phone_number: request.phone_number,
+          phone: request.phone_number, // Changed from phone_number to phone to match ContactData interface
           company: request.company,
           title: request.title,
           industry: request.industry,
@@ -78,4 +78,3 @@ export const usePipelineMovement = ({
 
   return { handleMoveToContact };
 };
-
