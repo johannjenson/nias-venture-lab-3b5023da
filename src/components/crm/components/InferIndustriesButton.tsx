@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
-import { Loader2, RefreshCw } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 export const InferIndustriesButton = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,17 +37,15 @@ export const InferIndustriesButton = () => {
       onClick={handleInferIndustries}
       disabled={isLoading}
       variant="outline"
+      size="sm"
     >
       {isLoading ? (
         <>
-          <Loader2 className="animate-spin" />
-          Updating...
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          Updating Industries...
         </>
       ) : (
-        <>
-          <RefreshCw />
-          Sync Industries
-        </>
+        'Infer Industries'
       )}
     </Button>
   );
