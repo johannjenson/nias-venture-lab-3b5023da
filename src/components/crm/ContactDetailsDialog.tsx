@@ -10,6 +10,7 @@ import StageSelector from "./components/StageSelector";
 import ContactChecklist from "./components/ContactChecklist";
 import ContactNotes from "./components/ContactNotes";
 import ContactAttachments from "./components/ContactAttachments";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const ContactDetailsDialog = ({ 
   contact, 
@@ -161,8 +162,8 @@ const ContactDetailsDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-hidden flex flex-col">
-        <DialogHeader>
+      <DialogContent className="max-w-2xl h-[90vh] p-0">
+        <DialogHeader className="p-6 pb-0">
           <DialogTitle>
             {contact.first_name} {contact.last_name}
           </DialogTitle>
@@ -171,32 +172,34 @@ const ContactDetailsDialog = ({
           </DialogDescription>
         </DialogHeader>
 
-        <Tabs defaultValue="details" className="flex-1 overflow-hidden">
-          <TabsList className="w-full">
+        <Tabs defaultValue="details" className="flex flex-col h-full">
+          <TabsList className="px-6">
             <TabsTrigger value="details" className="flex-1">Details</TabsTrigger>
             <TabsTrigger value="attachments" className="flex-1">Attachments</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="details" className="flex-1 overflow-auto">
-            <div className="grid grid-cols-3 gap-8">
-              <div className="col-span-1 space-y-4">
-                <ContactInfo contact={contact} />
-                <StageSelector currentStage={contact.stage} onStageChange={updateStage} />
-              </div>
+          <ScrollArea className="flex-1 p-6">
+            <TabsContent value="details" className="mt-0">
+              <div className="grid grid-cols-3 gap-8">
+                <div className="col-span-1 space-y-4">
+                  <ContactInfo contact={contact} />
+                  <StageSelector currentStage={contact.stage} onStageChange={updateStage} />
+                </div>
 
-              <div className="col-span-2 space-y-6">
-                <ContactChecklist 
-                  checklist={checklist} 
-                  onToggleItem={toggleChecklistItem} 
-                />
-                <ContactNotes contactId={contact.id} />
+                <div className="col-span-2 space-y-6">
+                  <ContactChecklist 
+                    checklist={checklist} 
+                    onToggleItem={toggleChecklistItem} 
+                  />
+                  <ContactNotes contactId={contact.id} />
+                </div>
               </div>
-            </div>
-          </TabsContent>
+            </TabsContent>
 
-          <TabsContent value="attachments" className="flex-1 overflow-auto">
-            <ContactAttachments contactId={contact.id} />
-          </TabsContent>
+            <TabsContent value="attachments" className="mt-0">
+              <ContactAttachments contactId={contact.id} />
+            </TabsContent>
+          </ScrollArea>
         </Tabs>
       </DialogContent>
     </Dialog>
@@ -204,4 +207,3 @@ const ContactDetailsDialog = ({
 };
 
 export default ContactDetailsDialog;
-
