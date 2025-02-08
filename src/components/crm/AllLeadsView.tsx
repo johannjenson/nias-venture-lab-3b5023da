@@ -5,18 +5,14 @@ import ContactDetailsDialog from "./ContactDetailsDialog";
 import RequestDetailsDialog from "./RequestDetailsDialog";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { LeadEntry, IndustryType, LeadType } from "./types/contact";
+import { LeadEntry } from "./types/contact";
 import LeadsTable from "./components/LeadsTable";
-import CRMFilters from "./components/CRMFilters";
 import { useLeads } from "./hooks/useLeads";
 
 const AllLeadsView = () => {
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
   const [selectedRequest, setSelectedRequest] = useState<LeadEntry | null>(null);
   const [requestType, setRequestType] = useState<'membership' | 'event' | null>(null);
-  const [leadTypeFilter, setLeadTypeFilter] = useState<LeadType | 'all'>('all');
-  const [industryFilter, setIndustryFilter] = useState<IndustryType | 'all'>('all');
-  const [viewByCompany, setViewByCompany] = useState(false);
   const { toast } = useToast();
   const { leads, fetchAllLeads } = useLeads();
 
@@ -49,30 +45,11 @@ const AllLeadsView = () => {
     }
   };
 
-  const filteredLeads = leads.filter(lead => {
-    if (leadTypeFilter !== 'all' && (lead.type === 'request' || !lead.stage)) {
-      return false;
-    }
-    if (industryFilter !== 'all' && lead.industry !== industryFilter) {
-      return false;
-    }
-    return true;
-  });
-
   return (
     <div className="space-y-4">
-      <CRMFilters
-        leadTypeFilter={leadTypeFilter}
-        onLeadTypeChange={setLeadTypeFilter}
-        industryFilter={industryFilter}
-        onIndustryChange={setIndustryFilter}
-        viewByCompany={viewByCompany}
-        onViewTypeChange={setViewByCompany}
-      />
-      
       <div className="rounded-md border">
         <LeadsTable 
-          leads={filteredLeads} 
+          leads={leads} 
           onLeadClick={handleLeadClick}
         />
       </div>
@@ -105,3 +82,4 @@ const AllLeadsView = () => {
 };
 
 export default AllLeadsView;
+
