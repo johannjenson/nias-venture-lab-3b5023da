@@ -2,7 +2,7 @@
 import { Database } from "@/integrations/supabase/types";
 
 export type ContactStage = Database["public"]["Enums"]["contact_stage"];
-export type LeadType = 'all' | 'founder_executive' | 'investor_buyer' | 'advisor_broker' | 'other';
+export type LeadType = Database["public"]["Enums"]["lead_type"];
 
 export type Contact = {
   id: string;
@@ -12,12 +12,14 @@ export type Contact = {
   company: string;
   title: string;
   stage: ContactStage;
-  lead_type: LeadType;
+  lead_type?: LeadType;
   heat_rating: number;
+  goal?: string;
+  company_id?: string;
   source?: string;
   source_id?: string;
-  company_id?: string;
   has_account?: boolean;
+  industry?: Database["public"]["Enums"]["industry_type"];
 };
 
 export type CompanyView = {
@@ -62,7 +64,6 @@ export const stages: { id: ContactStage; label: string; description: string }[] 
 ];
 
 export const leadTypes: { id: LeadType; label: string }[] = [
-  { id: 'all', label: 'All Leads' },
   { id: 'founder_executive', label: 'Founders & Executives' },
   { id: 'investor_buyer', label: 'Investors & Buyers' },
   { id: 'advisor_broker', label: 'Advisors & Brokers' },

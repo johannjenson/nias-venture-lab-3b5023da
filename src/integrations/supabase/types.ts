@@ -259,9 +259,12 @@ export type Database = {
       contacts: {
         Row: {
           company: string | null
+          company_id: string | null
           created_at: string | null
           email: string
           first_name: string | null
+          goal: string | null
+          heat_rating: number | null
           id: string
           industry: Database["public"]["Enums"]["industry_type"] | null
           last_login: string | null
@@ -275,9 +278,12 @@ export type Database = {
         }
         Insert: {
           company?: string | null
+          company_id?: string | null
           created_at?: string | null
           email: string
           first_name?: string | null
+          goal?: string | null
+          heat_rating?: number | null
           id?: string
           industry?: Database["public"]["Enums"]["industry_type"] | null
           last_login?: string | null
@@ -291,9 +297,12 @@ export type Database = {
         }
         Update: {
           company?: string | null
+          company_id?: string | null
           created_at?: string | null
           email?: string
           first_name?: string | null
+          goal?: string | null
+          heat_rating?: number | null
           id?: string
           industry?: Database["public"]["Enums"]["industry_type"] | null
           last_login?: string | null
@@ -305,7 +314,15 @@ export type Database = {
           title?: string | null
           updated_at?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "contacts_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       dinner_invites: {
         Row: {
