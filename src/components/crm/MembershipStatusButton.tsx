@@ -25,7 +25,12 @@ interface MembershipStatusButtonProps {
 export const MembershipStatusButton = ({ currentStatus, onUpdateStatus }: MembershipStatusButtonProps) => {
   const [isLoading, setIsLoading] = useState(false);
   
-  const currentStatusInfo = statuses.find(s => s.value === currentStatus) || statuses[0];
+  // If the status is approved or account-related, show as Approved
+  const effectiveStatus = currentStatus === 'account_exists' || currentStatus === 'account_created' 
+    ? 'approved' 
+    : currentStatus;
+  
+  const currentStatusInfo = statuses.find(s => s.value === effectiveStatus) || statuses[0];
   const StatusIcon = currentStatusInfo.icon;
 
   const handleStatusUpdate = async (status: string) => {
