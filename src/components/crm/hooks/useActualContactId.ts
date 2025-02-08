@@ -34,13 +34,13 @@ export const useActualContactId = () => {
 
     if (prefixedId.startsWith('membership_')) {
       const requestId = parseInt(prefixedId.replace('membership_', ''), 10);
-      const { data: membershipRequest, error } = await supabase
+      const { data: membershipRequest, error: membershipError } = await supabase
         .from('Request')
         .select('email')
         .eq('id', requestId)
-        .maybeSingle();
+        .single();
 
-      if (error || !membershipRequest?.email) return null;
+      if (membershipError || !membershipRequest?.email) return null;
 
       const { data: contact, error: contactError } = await supabase
         .from('contacts')
@@ -48,7 +48,7 @@ export const useActualContactId = () => {
         .eq('email', membershipRequest.email)
         .eq('source', 'network_request')
         .eq('source_id', requestId.toString())
-        .maybeSingle();
+        .single();
 
       if (contactError || !contact?.id) {
         toast({
