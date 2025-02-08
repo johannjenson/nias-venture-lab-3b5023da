@@ -11,7 +11,7 @@ export const useLeads = () => {
 
   const fetchAllLeads = async () => {
     const { data: contactsData, error: contactsError } = await supabase
-      .from('leads_with_user_status')  // Use the view that includes has_account
+      .from('consolidated_leads')  // Use the new consolidated view
       .select('*')
       .order('created_at', { ascending: false });
 
