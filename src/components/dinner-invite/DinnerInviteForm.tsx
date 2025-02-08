@@ -10,7 +10,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
-import { DinnerFormData } from "./types";
+import { DinnerFormData, IndustryType } from "./types";
 import { industries } from "@/data/industries";
 
 interface DinnerInviteFormProps {
@@ -18,7 +18,7 @@ interface DinnerInviteFormProps {
   isSubmitting: boolean;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onRoleChange: (value: string) => void;
-  onIndustryChange: (value: string) => void;
+  onIndustryChange: (value: IndustryType) => void;
   onSubmit: (e: React.FormEvent) => void;
 }
 
@@ -115,8 +115,11 @@ const DinnerInviteForm = ({
             <SelectValue placeholder="Select your industry" />
           </SelectTrigger>
           <SelectContent>
-            {industries.map(industry => (
-              <SelectItem key={industry.name.toLowerCase()} value={industry.name.toLowerCase()}>
+            {industries.map((industry) => (
+              <SelectItem 
+                key={industry.name.toLowerCase().replace(" ", "_")} 
+                value={industry.name.toLowerCase().replace(" ", "_") as IndustryType}
+              >
                 {industry.name}
               </SelectItem>
             ))}
