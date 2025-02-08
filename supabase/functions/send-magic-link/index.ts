@@ -15,13 +15,34 @@ interface RequestBody {
 }
 
 serve(async (req: Request) => {
-  // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
     const { email, signInUrl }: RequestBody = await req.json();
+
+    // Generate a sign-in link using Supabase auth admin API
+    const signInResponse = await fetch(
+      `${Deno.env.get('SUPABASE_URL')}/auth/v1/admin/generate-link`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '',
+        'Authorization': `Bearer ${Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')}`
+      },
+      body: JSON.stringify({
+        email,
+        type: 'magiclink',
+        redirect_to: signInUrl
+      })
+    });
+
+    if (!signInResponse.ok) {
+      throw new Error('Failed to generate sign-in link');
+    }
+
+    const { properties: { action_link } } = await signInResponse.json();
 
     const emailResponse = await resend.emails.send({
       from: "Nias Network <membership@nias.io>",
@@ -30,7 +51,7 @@ serve(async (req: Request) => {
       html: `
         <h1>Welcome to Nias Network!</h1>
         <p>Click the link below to sign in to your account:</p>
-        <p><a href="${signInUrl}">Sign In to Nias Network</a></p>
+        <p><a href="${action_link}">Sign In to Nias Network</a></p>
         <p>If you didn't request this link, you can safely ignore this email.</p>
         <p>Best regards,<br>The Nias Network Team</p>
       `,

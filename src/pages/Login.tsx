@@ -52,7 +52,6 @@ const Login = () => {
   const handleSendMagicLink = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Check if enough time has passed since last submit (5 seconds minimum)
     const now = Date.now();
     const timeSinceLastSubmit = now - lastSubmitTime;
     if (timeSinceLastSubmit < 5000) {
@@ -64,14 +63,25 @@ const Login = () => {
     setLastSubmitTime(now);
 
     try {
-      // Create OTP without sending email by setting suppress_email in data object
+      // Send our custom email first
+      const { error } = await supabase.functions.invoke('send-magic-link', {
+        body: { 
+          email,
+          signInUrl: 'https://nias.io/login'
+        },
+      });
+
+      if (error) throw error;
+
+      // Then create OTP without sending email
       const { error: signInError } = await supabase.auth.signInWithOtp({
         email,
         options: {
           shouldCreateUser: true,
           emailRedirectTo: 'https://nias.io/login',
           data: {
-            suppress_email: true
+            suppress_email: true,
+            use_custom_email: true
           }
         },
       });
@@ -82,16 +92,6 @@ const Login = () => {
         }
         throw signInError;
       }
-
-      // Send our custom email
-      const { error } = await supabase.functions.invoke('send-magic-link', {
-        body: { 
-          email,
-          signInUrl: 'https://nias.io/login'
-        },
-      });
-
-      if (error) throw error;
 
       toast.success("Check your email for the magic link!");
     } catch (error: any) {
