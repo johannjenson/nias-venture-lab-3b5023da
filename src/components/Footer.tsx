@@ -22,18 +22,30 @@ const Footer = () => {
   }, []);
 
   const handleLogout = async () => {
-    // First check if we have a session
-    const { data: { session } } = await supabase.auth.getSession();
-    
-    if (!session) {
-      return; // If no session, do nothing
-    }
+    try {
+      // First check if we have a session
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (!session) {
+        return; // If no session, do nothing
+      }
 
-    const { error } = await supabase.auth.signOut();
-    if (error) {
+      // Clear any existing session storage
+      localStorage.removeItem('supabase.auth.token');
+      
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        toast({
+          title: "Error",
+          description: "Failed to log out. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Unexpected error during logout:", error);
       toast({
         title: "Error",
-        description: "Failed to log out. Please try again.",
+        description: "An unexpected error occurred. Please try again.",
         variant: "destructive",
       });
     }

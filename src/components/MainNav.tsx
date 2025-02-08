@@ -1,4 +1,3 @@
-
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -31,24 +30,37 @@ const MainNav = () => {
   }, []);
 
   const handleLogout = async () => {
-    // First check if we have a session
-    const { data: { session } } = await supabase.auth.getSession();
-    
-    if (!session) {
-      // If no session, just redirect to home
-      navigate("/");
-      return;
-    }
+    try {
+      // First check if we have a session
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (!session) {
+        // If no session, just redirect to home
+        navigate("/");
+        return;
+      }
 
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.error("Logout error:", error);
+      // Clear any existing session storage
+      localStorage.removeItem('supabase.auth.token');
+      
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.error("Logout error:", error);
+        toast({
+          title: "Error",
+          description: "Failed to log out. Please try again.",
+          variant: "destructive",
+        });
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Unexpected error during logout:", error);
       toast({
         title: "Error",
-        description: "Failed to log out. Please try again.",
+        description: "An unexpected error occurred. Please try again.",
         variant: "destructive",
       });
-    } else {
       navigate("/");
     }
   };
