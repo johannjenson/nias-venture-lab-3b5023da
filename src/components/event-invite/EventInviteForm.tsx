@@ -17,7 +17,6 @@ interface EventInviteFormProps {
   isSubmitting: boolean;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onTitleChange: (value: string) => void;
-  onIndustryChange: (value: string) => void;
   onSubmit: (e: React.FormEvent) => void;
 }
 

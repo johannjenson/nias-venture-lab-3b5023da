@@ -87,7 +87,6 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
           isSubmitting={isSubmitting}
           onInputChange={handleInputChange}
           onTitleChange={(value) => setFormData((prev) => ({ ...prev, title: value }))}
-          onIndustryChange={() => {}} // Kept for compatibility but no longer used
           onSubmit={handleSubmit}
         />
       </DialogContent>
