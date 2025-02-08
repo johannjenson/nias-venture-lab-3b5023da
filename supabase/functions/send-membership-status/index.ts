@@ -25,11 +25,30 @@ const getEmailContent = (status: string, firstName: string) => {
       return {
         subject: 'Welcome to Our Network! Your Membership is Approved',
         html: `
-          <h1>Welcome to Our Network, ${firstName}!</h1>
-          <p>We're thrilled to inform you that your membership request has been approved!</p>
-          <p>You now have access to our exclusive network and all its benefits. We look forward to connecting with you and seeing the value you'll bring to our community.</p>
-          <p>You will receive a separate email with instructions to set up your account password.</p>
-          <p>Best regards,<br>The Team</p>
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <h1 style="color: #221F26; margin-bottom: 24px;">Welcome to Our Network, ${firstName}!</h1>
+            
+            <p style="color: #4B5563; font-size: 16px; line-height: 1.5;">
+              We're thrilled to inform you that your membership request has been approved! You now have access to our exclusive network and all its benefits.
+            </p>
+
+            <div style="background-color: #F3F4F6; padding: 16px; border-radius: 8px; margin: 24px 0;">
+              <h2 style="color: #221F26; font-size: 18px; margin-bottom: 12px;">Next Steps to Access Your Account</h2>
+              <ol style="color: #4B5563; margin: 0; padding-left: 20px;">
+                <li style="margin-bottom: 8px;">Check your inbox for a separate email with password setup instructions</li>
+                <li style="margin-bottom: 8px;">Click the link in that email to set your password</li>
+                <li style="margin-bottom: 8px;">Once your password is set, you can log in using your email address</li>
+              </ol>
+            </div>
+
+            <p style="color: #4B5563; font-size: 16px; line-height: 1.5;">
+              We look forward to connecting with you and seeing the value you'll bring to our community.
+            </p>
+
+            <p style="color: #6B7280; font-size: 14px; margin-top: 32px;">
+              If you don't receive the password setup email within the next few minutes, please check your spam folder or contact our support team.
+            </p>
+          </div>
         `,
       };
     case 'waitlist':
