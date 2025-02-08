@@ -25,13 +25,13 @@ export const useActualContactId = () => {
   const getActualContactId = async (prefixedId: string): Promise<string | null> => {
     if (prefixedId.startsWith('event_')) {
       const eventId = parseInt(prefixedId.replace('event_', ''), 10);
-      const { data: eventRequest } = await supabase
+      const { data: eventRequest, error } = await supabase
         .from('event_requests')
-        .select<'event_requests', EventRequest>('notes_uuid')
+        .select('notes_uuid')
         .eq('id', eventId)
         .maybeSingle();
 
-      if (!eventRequest?.notes_uuid) {
+      if (error || !eventRequest?.notes_uuid) {
         toast({
           title: "Error fetching contact ID",
           description: "Could not find the event request",
@@ -45,23 +45,23 @@ export const useActualContactId = () => {
 
     if (prefixedId.startsWith('membership_')) {
       const requestId = parseInt(prefixedId.replace('membership_', ''), 10);
-      const { data: membershipRequest } = await supabase
+      const { data: membershipRequest, error } = await supabase
         .from('Request')
-        .select<'Request', MembershipRequest>('email')
+        .select('email')
         .eq('id', requestId)
         .maybeSingle();
 
-      if (!membershipRequest?.email) return null;
+      if (error || !membershipRequest?.email) return null;
 
-      const { data: contact } = await supabase
+      const { data: contact, error: contactError } = await supabase
         .from('contacts')
-        .select<'contacts', Contact>('id')
+        .select('id')
         .eq('email', membershipRequest.email)
         .eq('source', 'network_request')
         .eq('source_id', requestId.toString())
         .maybeSingle();
 
-      if (!contact?.id) {
+      if (contactError || !contact?.id) {
         toast({
           title: "Error fetching contact ID",
           description: "Could not find the contact",
