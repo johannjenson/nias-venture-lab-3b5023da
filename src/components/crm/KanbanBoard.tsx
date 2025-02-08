@@ -24,20 +24,12 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
   const { toast } = useToast();
 
   const fetchData = async () => {
-    let query = supabase
+    const { data: contactsData, error } = await supabase
       .from('contacts')
-      .select('*')
-      .returns<Database['public']['Tables']['contacts']['Row']>();
-
-    if (leadTypeFilter !== 'all') {
-      query = query.eq('lead_type', leadTypeFilter);
-    }
-
-    if (industryFilter !== 'all') {
-      query = query.eq('industry', industryFilter);
-    }
-
-    const { data: contactsData, error } = await query.order('created_at', { ascending: false });
+      .select()
+      .eq(leadTypeFilter !== 'all' ? 'lead_type' : 'id', leadTypeFilter !== 'all' ? leadTypeFilter : 'id')
+      .eq(industryFilter !== 'all' ? 'industry' : 'id', industryFilter !== 'all' ? industryFilter : 'id')
+      .order('created_at', { ascending: false });
 
     if (error) {
       toast({
@@ -51,17 +43,16 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
     if (viewType === 'user') {
       const transformedContacts = (contactsData || []).map((contact): Contact => ({
         ...contact,
-        lead_type: 'other',
+        lead_type: contact.lead_type || 'other',
         stage: contact.stage || 'mql_lead',
-        heat_rating: 0,
+        heat_rating: contact.heat_rating || 0,
         has_account: false,
       }));
       setContacts(transformedContacts);
     } else {
       const { data: leadsData, error: leadsError } = await supabase
         .from('leads')
-        .select('id, company, stage, last_contact_date')
-        .returns<LeadData>();
+        .select('id, company, stage, last_contact_date');
 
       if (leadsError) {
         toast({
@@ -74,16 +65,16 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
 
       const transformedContactsData = (contactsData || []).map((contact): Contact => ({
         ...contact,
-        lead_type: 'other',
+        lead_type: contact.lead_type || 'other',
         stage: contact.stage || 'mql_lead',
-        heat_rating: 0,
+        heat_rating: contact.heat_rating || 0,
         has_account: false,
       }));
 
       const views = (leadsData || []).map(lead => ({
         id: lead.id,
         company: lead.company || '',
-        stage: lead.stage,
+        stage: lead.stage || 'mql_lead',
         last_contact_date: lead.last_contact_date,
         contacts: transformedContactsData.filter(contact => contact.company_id === lead.id)
       }));
