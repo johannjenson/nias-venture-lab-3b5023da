@@ -110,7 +110,7 @@ const CRMTabs = ({
               </Badge>
             )}
           </TabsTrigger>
-          <TabsTrigger value="all-leads">All Leads</TabsTrigger>
+          <TabsTrigger value="all-leads">All</TabsTrigger>
         </TabsList>
         <div className="flex items-center">
           <CRMFilters
@@ -145,3 +145,4 @@ const CRMTabs = ({
 };
 
 export default CRMTabs;
+
