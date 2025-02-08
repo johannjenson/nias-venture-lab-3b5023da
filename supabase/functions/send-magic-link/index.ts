@@ -21,6 +21,7 @@ serve(async (req: Request) => {
 
   try {
     const { email, signInUrl }: RequestBody = await req.json();
+    console.log("Received request:", { email, signInUrl });
 
     // Generate an OTP token using Supabase auth API
     const otpResponse = await fetch(
@@ -35,6 +36,7 @@ serve(async (req: Request) => {
         email,
         email_redirect_to: signInUrl,
         create_user: true,
+        gotrue_meta_security: {}
       })
     });
 
@@ -72,8 +74,11 @@ serve(async (req: Request) => {
     }
 
     if (!responseData.link) {
+      console.error("No link in response data:", responseData);
       throw new Error('No link returned from Supabase');
     }
+
+    console.log("Magic link generated:", responseData.link);
 
     const emailResponse = await resend.emails.send({
       from: "Nias Network <membership@nias.io>",
