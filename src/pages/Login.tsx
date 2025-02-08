@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
@@ -52,11 +53,16 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      // First generate the sign in link from Supabase
-      const { data, error: signInError } = await supabase.auth.signInWithOtp({
+      // Generate OTP but don't send email (we'll send our own)
+      const { error: signInError } = await supabase.auth.signInWithOtp({
         email,
         options: {
           shouldCreateUser: true,
+          emailRedirectTo: 'https://nias.io/login',
+          // Disable the default email
+          data: {
+            disable_email: true
+          }
         },
       });
 
