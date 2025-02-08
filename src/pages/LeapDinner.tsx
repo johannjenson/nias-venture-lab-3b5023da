@@ -48,7 +48,7 @@ const LeapDinner = () => {
                   Connect with Industry Leaders
                 </h2>
                 <p className="text-gray-600 mb-8">
-                  In the lead up to four days of innovation and technology at LEAP 2024, join the Nias Network
+                  In the lead up to four days of innovation and technology at LEAP 2025, join the Nias Network
                   for an intimate dinner with fellow business leaders, investors, and industry experts.
                 </p>
                 <div className="space-y-6">
