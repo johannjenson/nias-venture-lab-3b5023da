@@ -8,4 +8,5 @@ export interface FormData {
   linkedinUrl: string;
   referredBy: string;
   additionalInfo: string;
+  industry: string;
 }

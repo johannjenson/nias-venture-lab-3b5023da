@@ -40,7 +40,8 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
           <BasicInfoForm
             formData={formData}
             onInputChange={handleInputChange}
-            onTitleChange={setFormData}
+            onTitleChange={(value) => setFormData(prev => ({ ...prev, title: value }))}
+            onIndustryChange={(value) => setFormData(prev => ({ ...prev, industry: value }))}
             onNext={handleNext}
           />
         ) : (

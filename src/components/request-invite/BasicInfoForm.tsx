@@ -4,15 +4,17 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { FormData } from "./types";
+import { industries } from "@/data/industries";
 
 interface BasicInfoFormProps {
   formData: FormData;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onTitleChange: (value: string) => void;
+  onIndustryChange: (value: string) => void;
   onNext: (e: React.FormEvent) => void;
 }
 
-const BasicInfoForm = ({ formData, onInputChange, onTitleChange, onNext }: BasicInfoFormProps) => {
+const BasicInfoForm = ({ formData, onInputChange, onTitleChange, onIndustryChange, onNext }: BasicInfoFormProps) => {
   return (
     <form onSubmit={onNext} className="space-y-4 mt-2">
       <div className="space-y-2">
@@ -77,6 +79,26 @@ const BasicInfoForm = ({ formData, onInputChange, onTitleChange, onNext }: Basic
             <SelectItem value="investor">Investor</SelectItem>
             <SelectItem value="advisor">Advisor</SelectItem>
             <SelectItem value="broker">Broker</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="industry">Industry</Label>
+        <Select
+          name="industry"
+          value={formData.industry}
+          onValueChange={onIndustryChange}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Select your industry" />
+          </SelectTrigger>
+          <SelectContent>
+            {industries.map(industry => (
+              <SelectItem key={industry.name.toLowerCase()} value={industry.name.toLowerCase()}>
+                {industry.name}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
       </div>
