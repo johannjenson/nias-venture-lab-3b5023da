@@ -53,6 +53,11 @@ export const MembershipCard = ({ request, onUpdateStatus }: MembershipCardProps)
             description: "The status was updated but we couldn't send the notification email.",
             variant: "destructive",
           });
+        } else {
+          toast({
+            title: "Status updated",
+            description: `Request status updated to ${newStatus} and notification sent.`,
+          });
         }
       }
     } catch (error) {
