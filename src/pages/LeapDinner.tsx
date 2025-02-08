@@ -8,6 +8,10 @@ import { BackButton } from "@/components/ui/back-button";
 const LeapDinner = () => {
   const [showRequestModal, setShowRequestModal] = useState(false);
 
+  const handleRequestClick = () => {
+    window.open('https://lu.ma/event/manage/evt-HfTMTxgNC8CbucS', '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Sticky Header */}
@@ -31,7 +35,7 @@ const LeapDinner = () => {
               </p>
               <Button
                 className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in"
-                onClick={() => setShowRequestModal(true)}
+                onClick={handleRequestClick}
               >
                 Request an Invite
               </Button>
