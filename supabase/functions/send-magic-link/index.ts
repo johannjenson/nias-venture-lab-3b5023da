@@ -41,14 +41,38 @@ serve(async (req: Request) => {
       })
     });
 
+    const responseText = await magicLinkResponse.text();
+    console.log("Magic link raw response:", responseText);
+
+    // If not ok status, handle the error
     if (!magicLinkResponse.ok) {
-      const error = await magicLinkResponse.text();
-      console.error("Failed to generate magic link:", error);
-      throw new Error('Failed to generate magic link: ' + error);
+      let errorMessage = "Failed to generate magic link";
+      try {
+        const errorData = JSON.parse(responseText);
+        // Check if it's a rate limit error
+        if (errorData.code === 429 || errorData.error_code === "over_email_send_rate_limit") {
+          return new Response(
+            JSON.stringify({ error: errorData.msg || "Rate limit exceeded. Please wait before trying again." }),
+            {
+              status: 429,
+              headers: { ...corsHeaders, "Content-Type": "application/json" },
+            }
+          );
+        }
+        errorMessage = `${errorMessage}: ${JSON.stringify(errorData)}`;
+      } catch (e) {
+        errorMessage = `${errorMessage}: ${responseText}`;
+      }
+      throw new Error(errorMessage);
     }
 
-    const responseData = await magicLinkResponse.json();
-    console.log("Magic link response:", JSON.stringify(responseData, null, 2));
+    let responseData;
+    try {
+      responseData = JSON.parse(responseText);
+    } catch (e) {
+      console.error("Failed to parse magic link response:", e);
+      throw new Error("Invalid response from auth service");
+    }
 
     if (!responseData.action_link) {
       throw new Error('No action link returned from Supabase');
@@ -79,7 +103,7 @@ serve(async (req: Request) => {
       JSON.stringify({ error: error.message }),
       {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
-        status: 400,
+        status: error.status || 400,
       }
     );
   }
