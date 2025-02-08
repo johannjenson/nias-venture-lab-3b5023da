@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
@@ -64,16 +63,13 @@ const Login = () => {
     setLastSubmitTime(now);
 
     try {
-      // Create OTP without sending email
+      // Create OTP without sending email by setting suppressEmail to true
       const { error: signInError } = await supabase.auth.signInWithOtp({
         email,
         options: {
           shouldCreateUser: true,
           emailRedirectTo: 'https://nias.io/login',
-          // Disable the default email by passing it as a custom option
-          data: {
-            suppress_email: true
-          }
+          suppressEmail: true
         },
       });
 
