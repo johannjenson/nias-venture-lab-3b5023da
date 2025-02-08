@@ -16,15 +16,6 @@ interface KanbanBoardProps {
   industryFilter: 'all' | IndustryType;
 }
 
-type ContactsResponse = Database['public']['Tables']['contacts']['Row'];
-
-interface LeadData {
-  id: string;
-  company: string;
-  stage: CompanyView['stage'];
-  last_contact_date: string | null;
-}
-
 const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardProps) => {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [companyViews, setCompanyViews] = useState<CompanyView[]>([]);
@@ -33,7 +24,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
   const fetchData = async () => {
     let query = supabase
       .from('contacts')
-      .select('*')
+      .select<'*', Database['public']['Tables']['contacts']['Row']>('*')
       .order('created_at', { ascending: false });
 
     if (leadTypeFilter !== 'all') {
@@ -56,7 +47,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
     }
 
     if (viewType === 'user') {
-      const transformedContacts = (contactsData || []).map((contact: ContactsResponse): Contact => ({
+      const transformedContacts = (contactsData || []).map((contact): Contact => ({
         ...contact,
         lead_type: 'other',
         stage: contact.stage || 'mql_lead',
@@ -67,8 +58,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
     } else {
       const { data: leadsData, error: leadsError } = await supabase
         .from('leads')
-        .select('id, company, stage, last_contact_date')
-        .returns<LeadData[]>();
+        .select('id, company, stage, last_contact_date');
 
       if (leadsError) {
         toast({
@@ -79,7 +69,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
         return;
       }
 
-      const transformedContactsData = (contactsData || []).map((contact: ContactsResponse): Contact => ({
+      const transformedContactsData = (contactsData || []).map((contact): Contact => ({
         ...contact,
         lead_type: 'other',
         stage: contact.stage || 'mql_lead',
