@@ -64,15 +64,15 @@ const Login = () => {
     setLastSubmitTime(now);
 
     try {
-      // Generate OTP but don't send email (we'll send our own)
+      // Create OTP without sending email
       const { error: signInError } = await supabase.auth.signInWithOtp({
         email,
         options: {
           shouldCreateUser: true,
           emailRedirectTo: 'https://nias.io/login',
-          // Disable the default email
+          // Disable the default email by passing it as a custom option
           data: {
-            disable_email: true
+            suppress_email: true
           }
         },
       });
