@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
@@ -13,14 +14,26 @@ const Login = () => {
   const [showRequestModal, setShowRequestModal] = useState(false);
 
   useEffect(() => {
+    // Check current session on mount
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        navigate("/");
+      }
+    };
+    checkSession();
+
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === "SIGNED_IN") {
+      console.log("Auth state changed:", event, session);
+      if (event === "SIGNED_IN" && session) {
         navigate("/");
       }
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      subscription.unsubscribe();
+    };
   }, [navigate]);
 
   return (
