@@ -49,20 +49,20 @@ const StageHeader = ({ label, count, stage }: StageHeaderProps) => {
 
   return (
     <div className="mb-4">
-      <div className="flex items-center gap-2">
-        <h3 className="font-semibold">{label}</h3>
-        {checklistItems.length > 0 && (
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="h-6 w-6 p-0"
-            onClick={() => setDialogOpen(true)}
-          >
-            <Info className="h-4 w-4" />
-          </Button>
-        )}
-      </div>
-      <div className="flex items-center justify-end mt-2">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <h3 className="font-semibold">{label}</h3>
+          {checklistItems.length > 0 && (
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="h-6 w-6 p-0"
+              onClick={() => setDialogOpen(true)}
+            >
+              <Info className="h-4 w-4" />
+            </Button>
+          )}
+        </div>
         <span className="text-sm text-gray-500">{count}</span>
       </div>
 
@@ -83,4 +83,3 @@ const StageHeader = ({ label, count, stage }: StageHeaderProps) => {
 };
 
 export default StageHeader;
-
