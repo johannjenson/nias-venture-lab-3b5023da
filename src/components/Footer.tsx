@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -22,8 +23,9 @@ const Footer = () => {
 
   const handleLogout = async () => {
     try {
-      // Clear any existing session from storage first
-      localStorage.removeItem('sb-' + supabase.projectId + '-auth-token');
+      // Clear any existing session from storage first using the project URL
+      const projectRef = new URL(supabase.supabaseUrl).hostname.split('.')[0];
+      localStorage.removeItem(`sb-${projectRef}-auth-token`);
       
       const { error } = await supabase.auth.signOut();
       if (error) {
