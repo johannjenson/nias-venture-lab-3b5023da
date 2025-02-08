@@ -22,9 +22,9 @@ serve(async (req: Request) => {
   try {
     const { email, signInUrl }: RequestBody = await req.json();
 
-    // Generate a magic link using Supabase auth API
-    const magicLinkResponse = await fetch(
-      `${Deno.env.get('SUPABASE_URL')}/auth/v1/magiclink`, {
+    // Generate an OTP token using Supabase auth API
+    const otpResponse = await fetch(
+      `${Deno.env.get('SUPABASE_URL')}/auth/v1/otp`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,20 +33,17 @@ serve(async (req: Request) => {
       },
       body: JSON.stringify({
         email,
-        redirect_to: signInUrl,
-        data: {
-          suppress_email: true,
-          use_custom_email: true
-        }
+        email_redirect_to: signInUrl,
+        create_user: true,
       })
     });
 
-    const responseText = await magicLinkResponse.text();
-    console.log("Magic link raw response:", responseText);
+    const responseText = await otpResponse.text();
+    console.log("OTP response:", responseText);
 
     // If not ok status, handle the error
-    if (!magicLinkResponse.ok) {
-      let errorMessage = "Failed to generate magic link";
+    if (!otpResponse.ok) {
+      let errorMessage = "Failed to generate OTP";
       try {
         const errorData = JSON.parse(responseText);
         // Check if it's a rate limit error
@@ -70,12 +67,12 @@ serve(async (req: Request) => {
     try {
       responseData = JSON.parse(responseText);
     } catch (e) {
-      console.error("Failed to parse magic link response:", e);
+      console.error("Failed to parse OTP response:", e);
       throw new Error("Invalid response from auth service");
     }
 
-    if (!responseData.action_link) {
-      throw new Error('No action link returned from Supabase');
+    if (!responseData.link) {
+      throw new Error('No link returned from Supabase');
     }
 
     const emailResponse = await resend.emails.send({
@@ -85,7 +82,7 @@ serve(async (req: Request) => {
       html: `
         <h1>Welcome to Nias Network!</h1>
         <p>Click the link below to sign in to your account:</p>
-        <p><a href="${responseData.action_link}">Sign In to Nias Network</a></p>
+        <p><a href="${responseData.link}">Sign In to Nias Network</a></p>
         <p>If you didn't request this link, you can safely ignore this email.</p>
         <p>Best regards,<br>The Nias Network Team</p>
       `,

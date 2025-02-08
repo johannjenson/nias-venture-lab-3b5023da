@@ -64,27 +64,7 @@ const Login = () => {
     setLastSubmitTime(now);
 
     try {
-      // Only create OTP first - it will handle rate limiting
-      const { error: signInError } = await supabase.auth.signInWithOtp({
-        email,
-        options: {
-          shouldCreateUser: true,
-          emailRedirectTo: 'https://nias.io/login',
-          data: {
-            suppress_email: true,
-            use_custom_email: true
-          }
-        },
-      });
-
-      if (signInError) {
-        if (signInError.message.includes('rate_limit')) {
-          throw new Error("Please wait a minute before requesting another magic link");
-        }
-        throw signInError;
-      }
-
-      // If OTP creation succeeds, send our custom email
+      // Try to send custom email through our edge function first
       const { error } = await supabase.functions.invoke('send-magic-link', {
         body: { 
           email,
@@ -93,10 +73,10 @@ const Login = () => {
       });
 
       if (error) {
-        // If the error is rate limiting, we don't want to show it since the OTP was created
-        if (!error.message.includes('rate_limit')) {
-          throw error;
+        if (error.message.includes('rate_limit')) {
+          throw new Error("Please wait a minute before requesting another magic link");
         }
+        throw error;
       }
 
       toast.success("Check your email for the magic link!");
