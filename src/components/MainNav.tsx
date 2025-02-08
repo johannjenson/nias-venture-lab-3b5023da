@@ -33,7 +33,7 @@ const MainNav = () => {
   const handleLogout = async () => {
     try {
       // Clear any existing session from storage first using the project URL
-      const projectRef = new URL(supabase.supabaseUrl).hostname.split('.')[0];
+      const projectRef = new URL(supabase.getUrl()).hostname.split('.')[0];
       localStorage.removeItem(`sb-${projectRef}-auth-token`);
       
       const { error } = await supabase.auth.signOut();
