@@ -3,15 +3,17 @@ import { useEffect, useState } from "react";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import RequestInviteModal from "@/components/RequestInviteModal";
+import { toast } from "sonner";
 
 const Login = () => {
   const navigate = useNavigate();
   const [showRequestModal, setShowRequestModal] = useState(false);
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     // Check current session on mount
@@ -22,6 +24,14 @@ const Login = () => {
       }
     };
     checkSession();
+
+    // Handle error parameters in URL
+    const error = searchParams.get('error');
+    const errorDescription = searchParams.get('error_description');
+    
+    if (error === 'access_denied' && errorDescription) {
+      toast.error(decodeURIComponent(errorDescription).replace(/\+/g, ' '));
+    }
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
@@ -34,7 +44,7 @@ const Login = () => {
     return () => {
       subscription.unsubscribe();
     };
-  }, [navigate]);
+  }, [navigate, searchParams]);
 
   return (
     <div className="min-h-screen bg-white">
