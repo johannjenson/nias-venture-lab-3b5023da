@@ -889,7 +889,7 @@ export type Database = {
     Functions: {
       has_user_account: {
         Args: {
-          email_address: string
+          user_email: string
         }
         Returns: boolean
       }
