@@ -5,7 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 export const useActualContactId = () => {
   const { toast } = useToast();
 
-  const getActualContactId = async (prefixedId: string) => {
+  const getActualContactId = async (prefixedId: string): Promise<string | null> => {
     if (prefixedId.startsWith('event_')) {
       const eventId = parseInt(prefixedId.replace('event_', ''), 10);
       const { data: eventRequest, error } = await supabase
@@ -23,14 +23,14 @@ export const useActualContactId = () => {
         return null;
       }
       
-      return eventRequest?.notes_uuid;
+      return eventRequest?.notes_uuid || null;
     }
 
     if (prefixedId.startsWith('membership_')) {
       const requestId = parseInt(prefixedId.replace('membership_', ''), 10);
       const { data: membershipRequest, error } = await supabase
         .from('Request')
-        .select('*')
+        .select('email')
         .eq('id', requestId)
         .single();
 
@@ -43,7 +43,8 @@ export const useActualContactId = () => {
         return null;
       }
 
-      // Find the corresponding contact for this membership request
+      if (!membershipRequest?.email) return null;
+
       const { data: contact, error: contactError } = await supabase
         .from('contacts')
         .select('id')
@@ -61,7 +62,7 @@ export const useActualContactId = () => {
         return null;
       }
 
-      return contact?.id;
+      return contact?.id || null;
     }
 
     if (prefixedId.startsWith('contact_')) {
@@ -73,4 +74,3 @@ export const useActualContactId = () => {
 
   return getActualContactId;
 };
-

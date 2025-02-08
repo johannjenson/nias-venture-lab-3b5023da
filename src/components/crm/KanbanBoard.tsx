@@ -40,21 +40,20 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
   }, [viewType, leadTypeFilter, industryFilter]);
 
   const fetchData = async () => {
-    let query = supabase
+    const query = supabase
       .from('contacts')
-      .select('*, company_id')
+      .select('*')
       .order('created_at', { ascending: false });
 
     if (leadTypeFilter !== 'all') {
-      query = query.eq('lead_type', leadTypeFilter);
+      query.eq('lead_type', leadTypeFilter);
     }
 
-    // Only add industry filter if a specific industry is selected
     if (industryFilter !== 'all') {
-      query = query.eq('industry', industryFilter);
+      query.eq('industry', industryFilter);
     }
 
-    const { data, error } = await query;
+    const { data: contactsData, error } = await query;
 
     if (error) {
       toast({
@@ -66,18 +65,11 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
     }
 
     if (viewType === 'user') {
-      setContacts(data || []);
+      setContacts(contactsData as Contact[]);
     } else {
-      let leadsQuery = supabase
+      const { data: leadsData, error: leadsError } = await supabase
         .from('leads')
         .select('id, company, stage, last_contact_date');
-
-      // Only add industry filter for company view if a specific industry is selected
-      if (industryFilter !== 'all') {
-        leadsQuery = leadsQuery.eq('industry', industryFilter);
-      }
-
-      const { data: leadsData, error: leadsError } = await leadsQuery;
 
       if (leadsError) {
         toast({
@@ -93,7 +85,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
         company: lead.company,
         stage: lead.stage,
         last_contact_date: lead.last_contact_date,
-        contacts: data?.filter(contact => contact.company_id === lead.id) || []
+        contacts: (contactsData || []).filter(contact => contact.company_id === lead.id) as Contact[]
       })).filter(company => company.contacts.length > 0);
 
       setCompanyViews(companyViews);

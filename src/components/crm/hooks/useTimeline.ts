@@ -68,22 +68,30 @@ export const useTimeline = (contactId: string, onChecklistUpdate: () => void) =>
       return;
     }
 
-    const noteItems: TimelineItem[] = notesData.map((note): TimelineItem => ({
+    const noteItems: TimelineItem[] = (notesData || []).map((note): TimelineItem => ({
       id: note.id,
       type: 'note',
       timestamp: note.created_at,
       content: note.content,
-      user: note.profiles
+      user: note.profiles ? {
+        email: note.profiles.email || null,
+        first_name: note.profiles.first_name || null,
+        last_name: note.profiles.last_name || null
+      } : null
     }));
 
-    const checklistItems: TimelineItem[] = checklistData.map((item): TimelineItem => ({
+    const checklistItems: TimelineItem[] = (checklistData || []).map((item): TimelineItem => ({
       id: item.id,
       type: 'checklist',
       timestamp: item.completed_at!,
       content: item.item_text,
       stage: item.stage,
       completed: true,
-      completed_by: item.profiles
+      completed_by: item.profiles ? {
+        email: item.profiles.email || null,
+        first_name: item.profiles.first_name || null,
+        last_name: item.profiles.last_name || null
+      } : null
     }));
 
     const allItems = [...noteItems, ...checklistItems].sort(
@@ -140,4 +148,3 @@ export const useTimeline = (contactId: string, onChecklistUpdate: () => void) =>
     toggleChecklistItem
   };
 };
-
