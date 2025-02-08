@@ -8,6 +8,7 @@ import { IndustryType } from "./types/contact";
 import StageHeader from "./components/StageHeader";
 import UserView from "./components/UserView";
 import CompanyStageView from "./components/CompanyView";
+import { Database } from "@/integrations/supabase/types";
 
 interface KanbanBoardProps {
   viewType: 'user' | 'company';
@@ -15,29 +16,18 @@ interface KanbanBoardProps {
   industryFilter: 'all' | IndustryType;
 }
 
-interface ContactData {
-  id: string;
-  created_at: string;
-  email: string;
-  first_name: string | null;
-  last_name: string | null;
-  company: string | null;
-  title: string | null;
-  lead_type: string | null;
-  industry: IndustryType | null;
+type ContactData = Database['public']['Tables']['contacts']['Row'] & {
+  lead_type: Contact['lead_type'];
   stage: Contact['stage'];
   heat_rating: number;
-  company_id: string | null;
-  goal?: string;
-  has_account?: boolean;
-}
+};
 
-interface LeadData {
+type LeadData = {
   id: string;
   company: string;
   stage: CompanyView['stage'];
   last_contact_date: string | null;
-}
+};
 
 const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardProps) => {
   const [contacts, setContacts] = useState<Contact[]>([]);
@@ -77,7 +67,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
       query = query.eq('industry', industryFilter);
     }
 
-    const { data: contactsData, error } = await query.returns<ContactData[]>();
+    const { data: contactsData, error } = await query;
 
     if (error) {
       toast({
@@ -105,12 +95,19 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
         return;
       }
 
-      const companyViews = leadsData.map(lead => ({
+      const transformedContactsData = contactsData?.map(contact => ({
+        ...contact,
+        lead_type: contact.lead_type as Contact['lead_type'],
+        stage: contact.stage as Contact['stage'],
+        heat_rating: contact.heat_rating || 0
+      })) || [];
+
+      const companyViews = (leadsData || []).map(lead => ({
         id: lead.id,
         company: lead.company,
         stage: lead.stage,
         last_contact_date: lead.last_contact_date,
-        contacts: contactsData.filter(contact => contact.company_id === lead.id)
+        contacts: transformedContactsData.filter(contact => contact.company_id === lead.id)
       }));
 
       setCompanyViews(companyViews);
