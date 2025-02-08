@@ -1,24 +1,44 @@
-import { useEffect } from "react";
+
+import { useEffect, useState } from "react";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { toast } from "sonner";
 
 const Register = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === "SIGNED_IN") {
+      console.log("Auth state changed:", event, session);
+      
+      if (event === "SIGNED_IN" && session) {
+        toast.success("Account created successfully!");
         navigate("/");
+      } else if (event === "USER_UPDATED") {
+        console.log("User updated event received");
+      } else if (event === "SIGNED_OUT") {
+        console.log("User signed out");
       }
     });
 
+    // Check for error parameters in URL
+    const error = searchParams.get('error');
+    const errorDescription = searchParams.get('error_description');
+    
+    if (error) {
+      console.error("Auth error:", error, errorDescription);
+      toast.error(decodeURIComponent(errorDescription || 'An error occurred during signup'));
+    }
+
     return () => subscription.unsubscribe();
-  }, [navigate]);
+  }, [navigate, searchParams]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -53,6 +73,7 @@ const Register = () => {
             }}
             providers={[]}
             redirectTo={window.location.origin}
+            onlyThirdPartyProviders={false}
             view="sign_up"
           />
         </div>
