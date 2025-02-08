@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { FormData } from "./types";
-import { IndustryType, industryTypes } from "../crm/types/contact";
+import { IndustryType } from "../crm/types/contact";
 
 interface BasicInfoFormProps {
   formData: FormData;
@@ -14,7 +14,7 @@ interface BasicInfoFormProps {
   onNext: (e: React.FormEvent) => void;
 }
 
-const BasicInfoForm = ({ formData, onInputChange, onTitleChange, onIndustryChange, onNext }: BasicInfoFormProps) => {
+const BasicInfoForm = ({ formData, onInputChange, onTitleChange, onNext }: BasicInfoFormProps) => {
   return (
     <form onSubmit={onNext} className="space-y-4 mt-2">
       <div className="space-y-2">
@@ -79,26 +79,6 @@ const BasicInfoForm = ({ formData, onInputChange, onTitleChange, onIndustryChang
             <SelectItem value="investor">Investor</SelectItem>
             <SelectItem value="advisor">Advisor</SelectItem>
             <SelectItem value="broker">Broker</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="industry">Industry</Label>
-        <Select
-          name="industry"
-          value={formData.industry}
-          onValueChange={onIndustryChange}
-        >
-          <SelectTrigger>
-            <SelectValue placeholder="Select your industry" />
-          </SelectTrigger>
-          <SelectContent>
-            {industryTypes.map(type => (
-              <SelectItem key={type.id} value={type.id}>
-                {type.label}
-              </SelectItem>
-            ))}
           </SelectContent>
         </Select>
       </div>
