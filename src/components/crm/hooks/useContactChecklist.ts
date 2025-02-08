@@ -2,9 +2,10 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { ChecklistItem } from "../types/contact-details";
+import { ChecklistItem, Contact } from "../types/contact-details";
+import { ContactStage } from "../types/kanban";
 
-export const useContactChecklist = (contactId: string, stage: string) => {
+export const useContactChecklist = (contactId: string, stage: ContactStage) => {
   const [checklist, setChecklist] = useState<ChecklistItem[]>([]);
   const { toast } = useToast();
 
