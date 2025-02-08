@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Check, Clock, XCircle, Users } from "lucide-react";
 import {
@@ -35,6 +36,25 @@ export const MembershipStatusButton = ({ currentStatus, onUpdateStatus }: Member
       setIsLoading(false);
     }
   };
+
+  // If status is approved or account related, display as non-interactive button
+  if (currentStatus === 'approved' || currentStatus === 'account_exists' || currentStatus === 'account_created') {
+    return (
+      <Button 
+        variant="outline" 
+        size="sm"
+        disabled
+        className={cn(
+          "min-w-[140px] transition-all bg-gray-100",
+          currentStatusInfo.color
+        )}
+        aria-label={`Current status: ${currentStatusInfo.label}`}
+      >
+        <StatusIcon className="mr-2 h-4 w-4" aria-hidden="true" />
+        {currentStatusInfo.label}
+      </Button>
+    );
+  }
 
   return (
     <DropdownMenu>
