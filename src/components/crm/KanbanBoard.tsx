@@ -30,25 +30,6 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
   const [companyViews, setCompanyViews] = useState<CompanyView[]>([]);
   const { toast } = useToast();
 
-  useEffect(() => {
-    fetchData();
-
-    const channel = supabase
-      .channel('contacts_changes')
-      .on('postgres_changes', { 
-        event: '*', 
-        schema: 'public', 
-        table: 'contacts' 
-      }, () => {
-        fetchData();
-      })
-      .subscribe();
-
-    return () => {
-      supabase.removeChannel(channel);
-    };
-  }, [viewType, leadTypeFilter, industryFilter]);
-
   const fetchData = async () => {
     let query = supabase
       .from('contacts')
@@ -79,7 +60,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
         ...contact,
         lead_type: 'other',
         stage: contact.stage || 'mql_lead',
-        heat_rating: contact.heat_rating || 0,
+        heat_rating: 0,
         has_account: false,
       }));
       setContacts(transformedContacts);
@@ -102,7 +83,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
         ...contact,
         lead_type: 'other',
         stage: contact.stage || 'mql_lead',
-        heat_rating: contact.heat_rating || 0,
+        heat_rating: 0,
         has_account: false,
       }));
 
@@ -117,6 +98,25 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
       setCompanyViews(views);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+
+    const channel = supabase
+      .channel('contacts_changes')
+      .on('postgres_changes', { 
+        event: '*', 
+        schema: 'public', 
+        table: 'contacts' 
+      }, () => {
+        fetchData();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [viewType, leadTypeFilter, industryFilter]);
 
   return (
     <div className="flex gap-4 overflow-x-auto pb-4">
