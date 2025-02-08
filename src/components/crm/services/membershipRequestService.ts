@@ -13,7 +13,7 @@ export const updateRequestStatus = async (
     }
 
     // Create user account
-    const { error: createAccountError } = await supabase.functions.invoke('create-approved-member', {
+    const { data, error: createAccountError } = await supabase.functions.invoke('create-approved-member', {
       body: {
         requestId,
         email: request.email,
@@ -24,6 +24,11 @@ export const updateRequestStatus = async (
 
     if (createAccountError) {
       throw createAccountError;
+    }
+
+    // If account already exists, we don't need to send the approval email
+    if (data?.status === 'account_exists') {
+      return;
     }
 
     // Send status notification email

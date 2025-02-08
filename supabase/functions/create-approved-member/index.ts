@@ -30,6 +30,36 @@ serve(async (req: Request) => {
 
     console.log(`Processing approved member request: ${requestId} for ${email}`);
 
+    // First, check if user already exists
+    const { data: existingUser } = await supabaseClient.auth.admin.listUsers();
+    const userExists = existingUser.users.some(user => user.email === email);
+
+    if (userExists) {
+      console.log(`User with email ${email} already exists, updating request status`);
+      
+      // Update the request status to reflect the account already exists
+      const { error: updateError } = await supabaseClient
+        .from('membership_requests')
+        .update({ request_status: 'account_exists' })
+        .eq('id', requestId);
+
+      if (updateError) {
+        console.error('Error updating request status:', updateError);
+        throw updateError;
+      }
+
+      return new Response(
+        JSON.stringify({ 
+          message: 'User account already exists',
+          status: 'account_exists'
+        }),
+        { 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 200,
+        }
+      );
+    }
+
     // Create the user account
     const { data: userData, error: createUserError } = await supabaseClient.auth.admin.createUser({
       email,
