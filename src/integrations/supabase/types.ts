@@ -510,7 +510,7 @@ export type Database = {
           email: string | null
           first_name: string | null
           id: number
-          industry: string | null
+          industry: Database["public"]["Enums"]["industry_type"] | null
           last_name: string | null
           linkedin_url: string | null
           moved_to_pipeline: boolean | null
@@ -526,7 +526,7 @@ export type Database = {
           email?: string | null
           first_name?: string | null
           id?: number
-          industry?: string | null
+          industry?: Database["public"]["Enums"]["industry_type"] | null
           last_name?: string | null
           linkedin_url?: string | null
           moved_to_pipeline?: boolean | null
@@ -542,7 +542,7 @@ export type Database = {
           email?: string | null
           first_name?: string | null
           id?: number
-          industry?: string | null
+          industry?: Database["public"]["Enums"]["industry_type"] | null
           last_name?: string | null
           linkedin_url?: string | null
           moved_to_pipeline?: boolean | null

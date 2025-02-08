@@ -1,4 +1,6 @@
 
+import { IndustryType } from "../crm/types/contact";
+
 export interface FormData {
   fullName: string;
   phoneNumber: string;
@@ -8,5 +10,5 @@ export interface FormData {
   linkedinUrl: string;
   referredBy: string;
   additionalInfo: string;
-  industry: string;
+  industry: IndustryType;
 }

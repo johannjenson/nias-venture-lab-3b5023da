@@ -4,13 +4,13 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { FormData } from "./types";
-import { industries } from "@/data/industries";
+import { IndustryType, industryTypes } from "../crm/types/contact";
 
 interface BasicInfoFormProps {
   formData: FormData;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onTitleChange: (value: string) => void;
-  onIndustryChange: (value: string) => void;
+  onIndustryChange: (value: IndustryType) => void;
   onNext: (e: React.FormEvent) => void;
 }
 
@@ -94,9 +94,9 @@ const BasicInfoForm = ({ formData, onInputChange, onTitleChange, onIndustryChang
             <SelectValue placeholder="Select your industry" />
           </SelectTrigger>
           <SelectContent>
-            {industries.map(industry => (
-              <SelectItem key={industry.name.toLowerCase()} value={industry.name.toLowerCase()}>
-                {industry.name}
+            {industryTypes.map(type => (
+              <SelectItem key={type.id} value={type.id}>
+                {type.label}
               </SelectItem>
             ))}
           </SelectContent>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { FormData } from "./types";
+import { IndustryType } from "../crm/types/contact";
 
 const initialFormData: FormData = {
   fullName: "",
@@ -10,7 +11,7 @@ const initialFormData: FormData = {
   email: "",
   company: "",
   title: "",
-  industry: "",
+  industry: "technology", // Set a default value from the enum
   linkedinUrl: "",
   referredBy: "",
   additionalInfo: "",
