@@ -23,7 +23,25 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { eventType, fullName, email, company }: EventRegistrationRequest = await req.json();
+    // Parse request body
+    const data = await req.json();
+    console.log("Received event confirmation request:", data);
+
+    const { eventType, fullName, email, company } = data as EventRegistrationRequest;
+
+    if (!fullName || !email || !company || !eventType) {
+      console.error("Missing required fields:", { fullName, email, company, eventType });
+      return new Response(
+        JSON.stringify({ error: "Missing required fields" }),
+        { 
+          status: 400,
+          headers: { 
+            "Content-Type": "application/json",
+            ...corsHeaders 
+          }
+        }
+      );
+    }
 
     const eventDetails = {
       forum: {
@@ -74,20 +92,31 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Confirmation email sent successfully:", emailResponse);
 
-    return new Response(JSON.stringify(emailResponse), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-        ...corsHeaders,
-      },
-    });
-  } catch (error: any) {
-    console.error("Error sending confirmation email:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify(emailResponse),
+      { 
+        headers: { 
+          "Content-Type": "application/json",
+          ...corsHeaders 
+        },
+        status: 200
+      }
+    );
+
+  } catch (error: any) {
+    console.error("Error in send-event-confirmation function:", error);
+    
+    return new Response(
+      JSON.stringify({
+        error: error.message,
+        details: error
+      }),
       {
         status: 500,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
+        headers: { 
+          "Content-Type": "application/json",
+          ...corsHeaders 
+        }
       }
     );
   }
