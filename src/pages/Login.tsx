@@ -16,6 +16,7 @@ const Login = () => {
   const [searchParams] = useSearchParams();
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [lastSubmitTime, setLastSubmitTime] = useState(0);
 
   useEffect(() => {
     // Check current session on mount
@@ -50,7 +51,17 @@ const Login = () => {
 
   const handleSendMagicLink = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Check if enough time has passed since last submit (2 seconds minimum)
+    const now = Date.now();
+    const timeSinceLastSubmit = now - lastSubmitTime;
+    if (timeSinceLastSubmit < 2000) {
+      toast.error("Please wait a moment before requesting another magic link");
+      return;
+    }
+
     setIsLoading(true);
+    setLastSubmitTime(now);
 
     try {
       // Generate OTP but don't send email (we'll send our own)
@@ -66,7 +77,12 @@ const Login = () => {
         },
       });
 
-      if (signInError) throw signInError;
+      if (signInError) {
+        if (signInError.message.includes('rate_limit')) {
+          throw new Error("Please wait a moment before requesting another magic link");
+        }
+        throw signInError;
+      }
 
       // Send our custom email
       const { error } = await supabase.functions.invoke('send-magic-link', {
@@ -79,9 +95,9 @@ const Login = () => {
       if (error) throw error;
 
       toast.success("Check your email for the magic link!");
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error sending magic link:', error);
-      toast.error("Failed to send magic link. Please try again.");
+      toast.error(error.message || "Failed to send magic link. Please try again.");
     } finally {
       setIsLoading(false);
     }
