@@ -16,12 +16,7 @@ interface KanbanBoardProps {
   industryFilter: 'all' | IndustryType;
 }
 
-type LeadData = {
-  id: string;
-  company: string | null;
-  stage: CompanyView['stage'];
-  last_contact_date: string | null;
-}
+type LeadData = Database['public']['Tables']['leads']['Row'];
 
 const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardProps) => {
   const [contacts, setContacts] = useState<Contact[]>([]);
@@ -31,7 +26,8 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
   const fetchData = async () => {
     let query = supabase
       .from('contacts')
-      .select('*');
+      .select('*')
+      .returns<Database['public']['Tables']['contacts']['Row']>();
 
     if (leadTypeFilter !== 'all') {
       query = query.eq('lead_type', leadTypeFilter);
@@ -64,7 +60,8 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
     } else {
       const { data: leadsData, error: leadsError } = await supabase
         .from('leads')
-        .select<string, LeadData>('id, company, stage, last_contact_date');
+        .select('id, company, stage, last_contact_date')
+        .returns<LeadData>();
 
       if (leadsError) {
         toast({

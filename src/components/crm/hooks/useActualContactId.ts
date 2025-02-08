@@ -3,9 +3,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Database } from "@/integrations/supabase/types";
 
-type EventRequest = Database['public']['Tables']['event_requests']['Row'];
-type MembershipRequest = Database['public']['Tables']['Request']['Row'];
-type ContactRecord = Database['public']['Tables']['contacts']['Row'];
+type Tables = Database['public']['Tables'];
+type EventRequest = Tables['event_requests']['Row'];
+type MembershipRequest = Tables['Request']['Row'];
+type ContactRecord = Tables['contacts']['Row'];
 
 export const useActualContactId = () => {
   const { toast } = useToast();
@@ -17,6 +18,7 @@ export const useActualContactId = () => {
         .from('event_requests')
         .select('notes_uuid')
         .eq('id', eventId)
+        .returns<Pick<EventRequest, 'notes_uuid'>>()
         .maybeSingle();
 
       if (eventError || !eventRequest?.notes_uuid) {
@@ -37,6 +39,7 @@ export const useActualContactId = () => {
         .from('Request')
         .select('email')
         .eq('id', requestId)
+        .returns<Pick<MembershipRequest, 'email'>>()
         .maybeSingle();
 
       if (membershipError || !membershipRequest?.email) return null;
@@ -47,6 +50,7 @@ export const useActualContactId = () => {
         .eq('email', membershipRequest.email)
         .eq('source', 'network_request')
         .eq('source_id', requestId.toString())
+        .returns<Pick<ContactRecord, 'id'>>()
         .maybeSingle();
 
       if (contactError || !contact?.id) {
