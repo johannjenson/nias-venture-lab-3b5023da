@@ -47,7 +47,12 @@ serve(async (req: Request) => {
       throw new Error('Failed to generate magic link: ' + error);
     }
 
-    const { data: { action_link } } = await magicLinkResponse.json();
+    const responseData = await magicLinkResponse.json();
+    console.log("Magic link response:", JSON.stringify(responseData, null, 2));
+
+    if (!responseData.action_link) {
+      throw new Error('No action link returned from Supabase');
+    }
 
     const emailResponse = await resend.emails.send({
       from: "Nias Network <membership@nias.io>",
@@ -56,7 +61,7 @@ serve(async (req: Request) => {
       html: `
         <h1>Welcome to Nias Network!</h1>
         <p>Click the link below to sign in to your account:</p>
-        <p><a href="${action_link}">Sign In to Nias Network</a></p>
+        <p><a href="${responseData.action_link}">Sign In to Nias Network</a></p>
         <p>If you didn't request this link, you can safely ignore this email.</p>
         <p>Best regards,<br>The Nias Network Team</p>
       `,
