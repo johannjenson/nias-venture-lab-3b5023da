@@ -18,7 +18,6 @@ const initialFormData: EventFormData = {
   email: "",
   company: "",
   title: "",
-  industry: "manufacturing",
   interests: "",
 };
 
@@ -39,7 +38,6 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
           email: formData.email,
           company: formData.company,
           title: formData.title,
-          industry: formData.industry,
           interests: formData.interests,
           event_type: 'forum'
         });
@@ -89,7 +87,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
           isSubmitting={isSubmitting}
           onInputChange={handleInputChange}
           onTitleChange={(value) => setFormData((prev) => ({ ...prev, title: value }))}
-          onIndustryChange={(value) => setFormData((prev) => ({ ...prev, industry: value as EventFormData['industry'] }))}
+          onIndustryChange={() => {}} // Kept for compatibility but no longer used
           onSubmit={handleSubmit}
         />
       </DialogContent>

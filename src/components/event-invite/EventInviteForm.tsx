@@ -10,7 +10,6 @@ import {
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
-import { industries } from "@/data/industries";
 import { EventFormData } from "./types";
 
 interface EventInviteFormProps {
@@ -27,7 +26,6 @@ const EventInviteForm = ({
   isSubmitting,
   onInputChange,
   onTitleChange,
-  onIndustryChange,
   onSubmit,
 }: EventInviteFormProps) => {
   return (
@@ -99,27 +97,6 @@ const EventInviteForm = ({
             <SelectItem value="investor">Investor</SelectItem>
             <SelectItem value="advisor">Advisor</SelectItem>
             <SelectItem value="broker">Broker</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="industry">Industry</Label>
-        <Select
-          name="industry"
-          value={formData.industry}
-          onValueChange={onIndustryChange}
-          disabled={isSubmitting}
-        >
-          <SelectTrigger>
-            <SelectValue placeholder="Select your industry" />
-          </SelectTrigger>
-          <SelectContent>
-            {industries.map(industry => (
-              <SelectItem key={industry.name.toLowerCase()} value={industry.name.toLowerCase()}>
-                {industry.name}
-              </SelectItem>
-            ))}
           </SelectContent>
         </Select>
       </div>
