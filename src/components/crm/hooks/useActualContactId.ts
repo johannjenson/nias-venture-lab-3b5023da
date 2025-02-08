@@ -27,7 +27,7 @@ export const useActualContactId = () => {
         .returns<EventRequest>()
         .maybeSingle();
 
-      if (eventError || !eventRequest?.notes_uuid) {
+      if (eventError || !eventRequest) {
         toast({
           title: "Error fetching contact ID",
           description: "Could not find the event request",
@@ -48,7 +48,7 @@ export const useActualContactId = () => {
         .returns<MembershipRequest>()
         .maybeSingle();
 
-      if (membershipError || !membershipRequest?.email) return null;
+      if (membershipError || !membershipRequest || !membershipRequest.email) return null;
 
       const { data: contact, error: contactError } = await supabase
         .from('contacts')
@@ -59,7 +59,7 @@ export const useActualContactId = () => {
         .returns<ContactRecord>()
         .maybeSingle();
 
-      if (contactError || !contact?.id) {
+      if (contactError || !contact) {
         toast({
           title: "Error fetching contact ID",
           description: "Could not find the contact",

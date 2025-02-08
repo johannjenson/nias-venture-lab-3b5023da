@@ -18,12 +18,12 @@ interface KanbanBoardProps {
 
 type ContactsResponse = Database['public']['Tables']['contacts']['Row'];
 
-type LeadData = {
+interface LeadData {
   id: string;
   company: string;
   stage: CompanyView['stage'];
   last_contact_date: string | null;
-};
+}
 
 const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardProps) => {
   const [contacts, setContacts] = useState<Contact[]>([]);
@@ -106,7 +106,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
         has_account: false,
       }));
 
-      const companyViews = (leadsData || []).map(lead => ({
+      const views = (leadsData || []).map(lead => ({
         id: lead.id,
         company: lead.company,
         stage: lead.stage,
@@ -114,7 +114,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
         contacts: transformedContactsData.filter(contact => contact.company_id === lead.id)
       }));
 
-      setCompanyViews(companyViews);
+      setCompanyViews(views);
     }
   };
 
