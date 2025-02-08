@@ -63,11 +63,15 @@ const Login = () => {
 
       if (signInError) throw signInError;
 
-      // Send our custom email
+      // Send our custom email - making sure we handle the null case for data.session
+      const signInUrl = data?.session?.access_token 
+        ? `https://nias.io/login#access_token=${data.session.access_token}`
+        : `https://nias.io/login`;
+
       const { error } = await supabase.functions.invoke('send-magic-link', {
         body: { 
           email,
-          signInUrl: `https://nias.io/login#access_token=${data?.session?.access_token}`
+          signInUrl
         },
       });
 
