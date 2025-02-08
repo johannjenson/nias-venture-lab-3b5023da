@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { useState } from "react";
 import { toast } from "sonner";
-import { DinnerInviteModalProps, DinnerFormData } from "./dinner-invite/types";
+import { DinnerInviteModalProps, DinnerFormData, IndustryType } from "./dinner-invite/types";
 import DinnerInviteForm from "./dinner-invite/DinnerInviteForm";
 import { submitDinnerInvite } from "./dinner-invite/dinnerInviteService";
 
@@ -18,7 +18,7 @@ const initialFormData: DinnerFormData = {
   email: "",
   company: "",
   role: "",
-  industry: "",
+  industry: "manufacturing" as IndustryType, // Set a default industry
   interests: "",
 };
 
@@ -52,7 +52,7 @@ const DinnerInviteModal = ({ open, onOpenChange }: DinnerInviteModalProps) => {
     setFormData((prev) => ({ ...prev, role: value }));
   };
 
-  const handleIndustryChange = (value: string) => {
+  const handleIndustryChange = (value: IndustryType) => {
     setFormData((prev) => ({ ...prev, industry: value }));
   };
 
