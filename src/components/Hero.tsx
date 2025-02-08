@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import MainNav from "./MainNav";
-import RequestInviteModal from "./request-invite/RequestInviteModal";
+import RequestInviteModal from "./RequestInviteModal";
 import EventBanner from "./hero/EventBanner";
 import HeroContent from "./hero/HeroContent";
 import AudienceCTAs from "./hero/AudienceCTAs";
