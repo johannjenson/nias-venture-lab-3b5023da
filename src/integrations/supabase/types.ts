@@ -125,7 +125,7 @@ export type Database = {
           created_at: string | null
           email: string | null
           id: number
-          industry: string | null
+          industry: Database["public"]["Enums"]["industry_type"] | null
           message: string | null
           moved_to_pipeline: boolean | null
           name: string | null
@@ -135,7 +135,7 @@ export type Database = {
           created_at?: string | null
           email?: string | null
           id?: number
-          industry?: string | null
+          industry?: Database["public"]["Enums"]["industry_type"] | null
           message?: string | null
           moved_to_pipeline?: boolean | null
           name?: string | null
@@ -145,7 +145,7 @@ export type Database = {
           created_at?: string | null
           email?: string | null
           id?: number
-          industry?: string | null
+          industry?: Database["public"]["Enums"]["industry_type"] | null
           message?: string | null
           moved_to_pipeline?: boolean | null
           name?: string | null
