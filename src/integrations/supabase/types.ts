@@ -36,6 +36,13 @@ export type Database = {
             foreignKeyName: "ai_transcripts_contact_id_fkey"
             columns: ["contact_id"]
             isOneToOne: false
+            referencedRelation: "consolidated_leads"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ai_transcripts_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
             referencedRelation: "contacts"
             referencedColumns: ["id"]
           },
@@ -88,6 +95,13 @@ export type Database = {
             columns: ["completed_by"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "checklist_items_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "consolidated_leads"
             referencedColumns: ["id"]
           },
           {
@@ -181,6 +195,13 @@ export type Database = {
             foreignKeyName: "contact_attachments_contact_id_fkey"
             columns: ["contact_id"]
             isOneToOne: false
+            referencedRelation: "consolidated_leads"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "contact_attachments_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
             referencedRelation: "contacts"
             referencedColumns: ["id"]
           },
@@ -223,6 +244,13 @@ export type Database = {
             foreignKeyName: "contact_notes_contact_id_fkey"
             columns: ["contact_id"]
             isOneToOne: false
+            referencedRelation: "consolidated_leads"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "contact_notes_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
             referencedRelation: "contacts"
             referencedColumns: ["id"]
           },
@@ -259,6 +287,7 @@ export type Database = {
           invitation_status: string | null
           last_login: string | null
           last_name: string | null
+          lead_source: string | null
           lead_type: Database["public"]["Enums"]["lead_type"] | null
           linkedin_url: string | null
           notes: string | null
@@ -287,6 +316,7 @@ export type Database = {
           invitation_status?: string | null
           last_login?: string | null
           last_name?: string | null
+          lead_source?: string | null
           lead_type?: Database["public"]["Enums"]["lead_type"] | null
           linkedin_url?: string | null
           notes?: string | null
@@ -315,6 +345,7 @@ export type Database = {
           invitation_status?: string | null
           last_login?: string | null
           last_name?: string | null
+          lead_source?: string | null
           lead_type?: Database["public"]["Enums"]["lead_type"] | null
           linkedin_url?: string | null
           notes?: string | null
@@ -582,6 +613,54 @@ export type Database = {
       }
     }
     Views: {
+      consolidated_leads: {
+        Row: {
+          company: string | null
+          created_at: string | null
+          email: string | null
+          first_name: string | null
+          has_account: boolean | null
+          id: string | null
+          industry: Database["public"]["Enums"]["industry_type"] | null
+          last_name: string | null
+          lead_source: string | null
+          notes: string | null
+          phone: string | null
+          stage: Database["public"]["Enums"]["contact_stage"] | null
+          title: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string | null
+          email?: string | null
+          first_name?: string | null
+          has_account?: never
+          id?: string | null
+          industry?: Database["public"]["Enums"]["industry_type"] | null
+          last_name?: string | null
+          lead_source?: string | null
+          notes?: string | null
+          phone?: string | null
+          stage?: Database["public"]["Enums"]["contact_stage"] | null
+          title?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string | null
+          email?: string | null
+          first_name?: string | null
+          has_account?: never
+          id?: string | null
+          industry?: Database["public"]["Enums"]["industry_type"] | null
+          last_name?: string | null
+          lead_source?: string | null
+          notes?: string | null
+          phone?: string | null
+          stage?: Database["public"]["Enums"]["contact_stage"] | null
+          title?: string | null
+        }
+        Relationships: []
+      }
       dinner_requests: {
         Row: {
           company: string | null
@@ -669,10 +748,16 @@ export type Database = {
           created_at: string | null
           email: string | null
           first_name: string | null
+          goal: string | null
           has_account: boolean | null
+          heat_rating: number | null
           id: string | null
           industry: Database["public"]["Enums"]["industry_type"] | null
+          invitation_sent_at: string | null
+          invitation_status: string | null
+          last_login: string | null
           last_name: string | null
+          lead_source: string | null
           lead_type: Database["public"]["Enums"]["lead_type"] | null
           linkedin_url: string | null
           notes: string | null
@@ -693,10 +778,16 @@ export type Database = {
           created_at?: string | null
           email?: string | null
           first_name?: string | null
+          goal?: string | null
           has_account?: never
+          heat_rating?: number | null
           id?: string | null
           industry?: Database["public"]["Enums"]["industry_type"] | null
+          invitation_sent_at?: string | null
+          invitation_status?: string | null
+          last_login?: string | null
           last_name?: string | null
+          lead_source?: string | null
           lead_type?: Database["public"]["Enums"]["lead_type"] | null
           linkedin_url?: string | null
           notes?: string | null
@@ -717,10 +808,16 @@ export type Database = {
           created_at?: string | null
           email?: string | null
           first_name?: string | null
+          goal?: string | null
           has_account?: never
+          heat_rating?: number | null
           id?: string | null
           industry?: Database["public"]["Enums"]["industry_type"] | null
+          invitation_sent_at?: string | null
+          invitation_status?: string | null
+          last_login?: string | null
           last_name?: string | null
+          lead_source?: string | null
           lead_type?: Database["public"]["Enums"]["lead_type"] | null
           linkedin_url?: string | null
           notes?: string | null
