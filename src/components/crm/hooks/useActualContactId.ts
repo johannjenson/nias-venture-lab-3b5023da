@@ -1,12 +1,23 @@
 
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Database } from "@/integrations/supabase/types";
 
-type Tables = Database['public']['Tables'];
-type EventRequest = Tables['event_requests']['Row'];
-type MembershipRequest = Tables['Request']['Row'];
-type ContactRecord = Tables['contacts']['Row'];
+type EventRequest = {
+  id: number;
+  notes_uuid: string;
+};
+
+type MembershipRequest = {
+  id: number;
+  email: string;
+};
+
+type Contact = {
+  id: string;
+  email: string;
+  source: string;
+  source_id: string;
+};
 
 export const useActualContactId = () => {
   const { toast } = useToast();
