@@ -49,7 +49,7 @@ const CRM = () => {
     <div className="min-h-screen bg-white">
       <CRMHeader onAddLead={() => setShowAddContact(true)} />
 
-      <main className="container mx-auto px-4 py-4 mt-22">
+      <main className="container mx-auto px-4 py-4 mt-23">
         <div className="max-w-7xl mx-auto">
           <CRMTabs
             leadTypeFilter={leadTypeFilter}
