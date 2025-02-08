@@ -10,7 +10,7 @@ export interface DinnerFormData {
   email: string;
   company: string;
   role: string;
-  industry: string;
+  industry: IndustryType;
   interests: string;
 }
 
