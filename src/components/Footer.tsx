@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -23,23 +22,19 @@ const Footer = () => {
 
   const handleLogout = async () => {
     try {
-      // First check if we have a session
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      if (!session) {
-        return; // If no session, do nothing
-      }
-
-      // Clear any existing session storage
-      localStorage.removeItem('supabase.auth.token');
+      // Clear any existing session from storage first
+      localStorage.removeItem('sb-' + supabase.projectId + '-auth-token');
       
       const { error } = await supabase.auth.signOut();
       if (error) {
+        console.error("Logout error:", error);
         toast({
           title: "Error",
           description: "Failed to log out. Please try again.",
           variant: "destructive",
         });
+      } else {
+        setUser(null);
       }
     } catch (error) {
       console.error("Unexpected error during logout:", error);
