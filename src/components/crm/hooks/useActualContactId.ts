@@ -7,7 +7,7 @@ interface EventRequest {
 }
 
 interface MembershipRequest {
-  email: string;
+  email: string | null;
 }
 
 interface ContactRecord {

@@ -75,7 +75,14 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
     }
 
     if (viewType === 'user') {
-      setContacts(contactsData as Contact[]);
+      const transformedContacts = (contactsData || []).map((contact: ContactsResponse): Contact => ({
+        ...contact,
+        lead_type: 'other',
+        stage: contact.stage || 'mql_lead',
+        heat_rating: contact.heat_rating || 0,
+        has_account: false,
+      }));
+      setContacts(transformedContacts);
     } else {
       const { data: leadsData, error: leadsError } = await supabase
         .from('leads')
@@ -93,7 +100,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
 
       const transformedContactsData = (contactsData || []).map((contact: ContactsResponse): Contact => ({
         ...contact,
-        lead_type: contact.lead_type || 'other',
+        lead_type: 'other',
         stage: contact.stage || 'mql_lead',
         heat_rating: contact.heat_rating || 0,
         has_account: false,
