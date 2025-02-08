@@ -13,7 +13,6 @@ const CRM = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [showAddContact, setShowAddContact] = useState(false);
-  const [viewByCompany, setViewByCompany] = useState(false);
   const [leadTypeFilter, setLeadTypeFilter] = useState<LeadType | 'all'>('all');
   const [industryFilter, setIndustryFilter] = useState<IndustryType | 'all'>('all');
 
@@ -57,8 +56,6 @@ const CRM = () => {
             onLeadTypeChange={setLeadTypeFilter}
             industryFilter={industryFilter}
             onIndustryChange={setIndustryFilter}
-            viewByCompany={viewByCompany}
-            onViewTypeChange={setViewByCompany}
           />
         </div>
       </main>
@@ -74,3 +71,4 @@ const CRM = () => {
 };
 
 export default CRM;
+

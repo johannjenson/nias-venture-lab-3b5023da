@@ -16,8 +16,6 @@ interface CRMTabsProps {
   onLeadTypeChange: (value: LeadType | 'all') => void;
   industryFilter: IndustryType | 'all';
   onIndustryChange: (value: IndustryType | 'all') => void;
-  viewByCompany: boolean;
-  onViewTypeChange: (checked: boolean) => void;
 }
 
 const CRMTabs = ({ 
@@ -25,8 +23,6 @@ const CRMTabs = ({
   onLeadTypeChange,
   industryFilter,
   onIndustryChange,
-  viewByCompany, 
-  onViewTypeChange 
 }: CRMTabsProps) => {
   const [pendingMembershipCount, setPendingMembershipCount] = useState(0);
   const [pendingEventCount, setPendingEventCount] = useState(0);
@@ -118,15 +114,13 @@ const CRMTabs = ({
             onLeadTypeChange={onLeadTypeChange}
             industryFilter={industryFilter}
             onIndustryChange={onIndustryChange}
-            viewByCompany={viewByCompany}
-            onViewTypeChange={onViewTypeChange}
           />
           <AIOptionsDropdown />
         </div>
       </div>
       <TabsContent value="pipeline">
         <KanbanBoard 
-          viewType={viewByCompany ? "company" : "user"}
+          viewType="user"
           leadTypeFilter={leadTypeFilter}
           industryFilter={industryFilter}
         />

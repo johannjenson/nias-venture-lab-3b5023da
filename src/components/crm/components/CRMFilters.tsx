@@ -1,7 +1,5 @@
 
-import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Switch } from "@/components/ui/switch";
 import { IndustryType, LeadType, industryTypes, leadTypes } from "../types/contact";
 
 interface CRMFiltersProps {
@@ -9,8 +7,6 @@ interface CRMFiltersProps {
   onLeadTypeChange: (value: LeadType | 'all') => void;
   industryFilter: IndustryType | 'all';
   onIndustryChange: (value: IndustryType | 'all') => void;
-  viewByCompany: boolean;
-  onViewTypeChange: (checked: boolean) => void;
 }
 
 const CRMFilters = ({ 
@@ -18,8 +14,6 @@ const CRMFilters = ({
   onLeadTypeChange,
   industryFilter,
   onIndustryChange,
-  viewByCompany, 
-  onViewTypeChange 
 }: CRMFiltersProps) => {
   return (
     <div className="flex items-center space-x-4">
@@ -56,19 +50,9 @@ const CRMFilters = ({
           ))}
         </SelectContent>
       </Select>
-
-      <div className="flex items-center space-x-2">
-        <Label htmlFor="view-toggle" className="text-sm text-gray-600">
-          {viewByCompany ? "Company View" : "User View"}
-        </Label>
-        <Switch
-          id="view-toggle"
-          checked={viewByCompany}
-          onCheckedChange={onViewTypeChange}
-        />
-      </div>
     </div>
   );
 };
 
 export default CRMFilters;
+
