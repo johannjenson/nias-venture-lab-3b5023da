@@ -8,44 +8,35 @@ export const useActualContactId = () => {
   const getActualContactId = async (prefixedId: string): Promise<string | null> => {
     if (prefixedId.startsWith('event_')) {
       const eventId = parseInt(prefixedId.replace('event_', ''), 10);
-      const { data: eventRequest, error } = await supabase
+      const { data: eventRequest } = await supabase
         .from('event_requests')
         .select('notes_uuid')
         .eq('id', eventId)
         .single();
 
-      if (error) {
+      if (!eventRequest?.notes_uuid) {
         toast({
           title: "Error fetching contact ID",
-          description: error.message,
+          description: "Could not find the event request",
           variant: "destructive",
         });
         return null;
       }
       
-      return eventRequest?.notes_uuid || null;
+      return eventRequest.notes_uuid;
     }
 
     if (prefixedId.startsWith('membership_')) {
       const requestId = parseInt(prefixedId.replace('membership_', ''), 10);
-      const { data: membershipRequest, error } = await supabase
+      const { data: membershipRequest } = await supabase
         .from('Request')
         .select('email')
         .eq('id', requestId)
         .single();
 
-      if (error) {
-        toast({
-          title: "Error fetching contact ID",
-          description: error.message,
-          variant: "destructive",
-        });
-        return null;
-      }
-
       if (!membershipRequest?.email) return null;
 
-      const { data: contact, error: contactError } = await supabase
+      const { data: contact } = await supabase
         .from('contacts')
         .select('id')
         .eq('email', membershipRequest.email)
@@ -53,16 +44,16 @@ export const useActualContactId = () => {
         .eq('source_id', requestId.toString())
         .single();
 
-      if (contactError) {
+      if (!contact?.id) {
         toast({
           title: "Error fetching contact ID",
-          description: contactError.message,
+          description: "Could not find the contact",
           variant: "destructive",
         });
         return null;
       }
 
-      return contact?.id || null;
+      return contact.id;
     }
 
     if (prefixedId.startsWith('contact_')) {

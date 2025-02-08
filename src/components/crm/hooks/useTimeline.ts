@@ -26,7 +26,7 @@ export const useTimeline = (contactId: string, onChecklistUpdate: () => void) =>
       .from('contact_notes')
       .select(`
         *,
-        profiles (
+        profiles:user_id (
           email,
           first_name,
           last_name
@@ -74,9 +74,9 @@ export const useTimeline = (contactId: string, onChecklistUpdate: () => void) =>
       timestamp: note.created_at,
       content: note.content,
       user: note.profiles ? {
-        email: note.profiles.email || null,
-        first_name: note.profiles.first_name || null,
-        last_name: note.profiles.last_name || null
+        email: note.profiles.email || '',
+        first_name: note.profiles.first_name || '',
+        last_name: note.profiles.last_name || ''
       } : null
     }));
 
@@ -88,9 +88,9 @@ export const useTimeline = (contactId: string, onChecklistUpdate: () => void) =>
       stage: item.stage,
       completed: true,
       completed_by: item.profiles ? {
-        email: item.profiles.email || null,
-        first_name: item.profiles.first_name || null,
-        last_name: item.profiles.last_name || null
+        email: item.profiles.email || '',
+        first_name: item.profiles.first_name || '',
+        last_name: item.profiles.last_name || ''
       } : null
     }));
 

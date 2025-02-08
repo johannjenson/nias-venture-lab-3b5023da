@@ -65,7 +65,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
     }
 
     if (viewType === 'user') {
-      setContacts(contactsData as Contact[]);
+      setContacts(contactsData || []);
     } else {
       const { data: leadsData, error: leadsError } = await supabase
         .from('leads')
@@ -85,7 +85,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
         company: lead.company,
         stage: lead.stage,
         last_contact_date: lead.last_contact_date,
-        contacts: (contactsData || []).filter(contact => contact.company_id === lead.id) as Contact[]
+        contacts: (contactsData || []).filter(contact => contact.company_id === lead.id)
       })).filter(company => company.contacts.length > 0);
 
       setCompanyViews(companyViews);

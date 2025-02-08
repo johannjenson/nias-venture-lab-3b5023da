@@ -91,6 +91,13 @@ export type Database = {
         }
         Relationships: [
           {
+            foreignKeyName: "checklist_items_completed_by_fkey"
+            columns: ["completed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "checklist_items_contact_id_fkey"
             columns: ["contact_id"]
             isOneToOne: false
@@ -252,6 +259,13 @@ export type Database = {
             columns: ["contact_id"]
             isOneToOne: false
             referencedRelation: "leads_with_user_status"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "contact_notes_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
         ]
