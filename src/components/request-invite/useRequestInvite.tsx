@@ -27,6 +27,21 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
     setIsSubmitting(true);
 
     try {
+      // First check if a request with this email already exists
+      const { data: existingRequest } = await supabase
+        .from('Request')
+        .select('email')
+        .eq('email', formData.email)
+        .maybeSingle();
+
+      if (existingRequest) {
+        toast.error("An application with this email already exists. Our team will be in touch soon!");
+        onCloseModal(false);
+        setFormData(initialFormData);
+        setStep(1);
+        return;
+      }
+
       // Split full name into first and last name
       const nameParts = formData.fullName.trim().split(' ');
       const firstName = nameParts[0];
