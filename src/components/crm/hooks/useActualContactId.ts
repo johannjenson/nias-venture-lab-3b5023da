@@ -10,7 +10,7 @@ export const useActualContactId = () => {
       const eventId = parseInt(prefixedId.replace('event_', ''), 10);
       const { data: eventRequest, error } = await supabase
         .from('event_requests')
-        .select('notes_uuid')  // Use the new notes_uuid field
+        .select('notes_uuid')
         .eq('id', eventId)
         .single();
 
@@ -48,6 +48,8 @@ export const useActualContactId = () => {
         .from('contacts')
         .select('id')
         .eq('email', membershipRequest.email)
+        .eq('source', 'network_request')
+        .eq('source_id', requestId.toString())
         .single();
 
       if (contactError) {
@@ -71,3 +73,4 @@ export const useActualContactId = () => {
 
   return getActualContactId;
 };
+
