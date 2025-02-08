@@ -5,11 +5,11 @@ import { ContactStage } from "../types/kanban";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface StageHeaderProps {
   label: string;
@@ -20,6 +20,7 @@ interface StageHeaderProps {
 
 const StageHeader = ({ label, count, stage }: StageHeaderProps) => {
   const [checklistItems, setChecklistItems] = useState<string[]>([]);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   useEffect(() => {
     const fetchDefaultChecklist = async () => {
@@ -51,27 +52,32 @@ const StageHeader = ({ label, count, stage }: StageHeaderProps) => {
       <div className="flex items-center gap-2">
         <h3 className="font-semibold">{label}</h3>
         {checklistItems.length > 0 && (
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-6 w-6 p-0">
-                  <Info className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <div className="space-y-1">
-                  {checklistItems.map((item, index) => (
-                    <p key={index} className="text-sm">• {item}</p>
-                  ))}
-                </div>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="h-6 w-6 p-0"
+            onClick={() => setDialogOpen(true)}
+          >
+            <Info className="h-4 w-4" />
+          </Button>
         )}
       </div>
       <div className="flex items-center justify-end mt-2">
         <span className="text-sm text-gray-500">{count}</span>
       </div>
+
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{label} Checklist</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-2">
+            {checklistItems.map((item, index) => (
+              <p key={index} className="text-sm">• {item}</p>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
