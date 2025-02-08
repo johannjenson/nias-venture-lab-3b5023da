@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from "react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Footer from "@/components/Footer";
@@ -15,8 +14,10 @@ const Login = () => {
   const [showRequestModal, setShowRequestModal] = useState(false);
   const [searchParams] = useSearchParams();
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [lastSubmitTime, setLastSubmitTime] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     // Check current session on mount
@@ -49,13 +50,37 @@ const Login = () => {
     };
   }, [navigate, searchParams]);
 
+  const handlePasswordLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        console.error('Login error:', error);
+        toast.error(error.message);
+      } else {
+        toast.success("Logged in successfully!");
+        navigate("/");
+      }
+    } catch (error: any) {
+      console.error('Unexpected login error:', error);
+      toast.error(error.message || "Failed to log in. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleSendMagicLink = async (e: React.FormEvent) => {
     e.preventDefault();
     
     const now = Date.now();
     const timeSinceLastSubmit = now - lastSubmitTime;
-    // Match Supabase's rate limit of 56 seconds
-    if (timeSinceLastSubmit < 60000) { // Using 60 seconds to be safe
+    if (timeSinceLastSubmit < 60000) {
       toast.error("Please wait at least 60 seconds before requesting another magic link");
       return;
     }
@@ -64,7 +89,6 @@ const Login = () => {
     setLastSubmitTime(now);
 
     try {
-      // Try to send custom email through our edge function first
       const { error } = await supabase.functions.invoke('send-magic-link', {
         body: { 
           email,
@@ -106,8 +130,9 @@ const Login = () => {
       <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-md mx-auto min-h-[400px]">
           <h1 className="text-4xl font-bold text-primary mb-8">Member Login</h1>
-          <div className="w-full">
-            <form onSubmit={handleSendMagicLink} className="space-y-4">
+          <div className="w-full space-y-8">
+            {/* Password Login Form */}
+            <form onSubmit={handlePasswordLogin} className="space-y-4">
               <div className="space-y-2">
                 <label htmlFor="email" className="text-sm font-medium">
                   Email address
@@ -121,14 +146,51 @@ const Login = () => {
                   required
                 />
               </div>
+              <div className="space-y-2">
+                <label htmlFor="password" className="text-sm font-medium">
+                  Password
+                </label>
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
               <Button 
                 type="submit" 
                 className="w-full"
                 disabled={isLoading}
               >
+                {isLoading ? "Logging in..." : "Login with Password"}
+              </Button>
+            </form>
+
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-white px-2 text-muted-foreground">
+                  Or continue with
+                </span>
+              </div>
+            </div>
+
+            {/* Magic Link Form */}
+            <form onSubmit={handleSendMagicLink} className="space-y-4">
+              <Button 
+                type="submit" 
+                variant="outline"
+                className="w-full"
+                disabled={isLoading || !email}
+              >
                 {isLoading ? "Sending magic link..." : "Send Magic Link"}
               </Button>
             </form>
+
             <div className="mt-4 space-y-2 text-center">
               <button
                 onClick={() => setShowRequestModal(true)}
