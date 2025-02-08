@@ -7,17 +7,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { UserCheck, MailOpen } from "lucide-react";
+import { UserCheck } from "lucide-react";
 import { LeadEntry } from "../types/contact";
-import { Button } from "@/components/ui/button";
 
 interface LeadsTableProps {
   leads: LeadEntry[];
   onLeadClick: (lead: LeadEntry) => void;
-  onCreateAccount: (lead: LeadEntry) => void;
 }
 
-const LeadsTable = ({ leads, onLeadClick, onCreateAccount }: LeadsTableProps) => {
+const LeadsTable = ({ leads, onLeadClick }: LeadsTableProps) => {
   return (
     <Table>
       <TableHeader>
@@ -29,7 +27,6 @@ const LeadsTable = ({ leads, onLeadClick, onCreateAccount }: LeadsTableProps) =>
           <TableHead>Industry</TableHead>
           <TableHead>Message</TableHead>
           <TableHead>Status</TableHead>
-          <TableHead>Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -37,8 +34,9 @@ const LeadsTable = ({ leads, onLeadClick, onCreateAccount }: LeadsTableProps) =>
           <TableRow 
             key={lead.id}
             className="cursor-pointer hover:bg-muted/50"
+            onClick={() => onLeadClick(lead)}
           >
-            <TableCell onClick={() => onLeadClick(lead)}>
+            <TableCell>
               <div className="flex items-center gap-2">
                 {lead.name || `${lead.first_name || ''} ${lead.last_name || ''}`}
                 {lead.has_account && (
@@ -49,28 +47,15 @@ const LeadsTable = ({ leads, onLeadClick, onCreateAccount }: LeadsTableProps) =>
                 )}
               </div>
             </TableCell>
-            <TableCell onClick={() => onLeadClick(lead)}>{lead.title}</TableCell>
-            <TableCell onClick={() => onLeadClick(lead)}>{lead.email}</TableCell>
-            <TableCell onClick={() => onLeadClick(lead)}>{lead.company}</TableCell>
-            <TableCell onClick={() => onLeadClick(lead)}>{lead.industry}</TableCell>
-            <TableCell onClick={() => onLeadClick(lead)} className="max-w-xs truncate">
+            <TableCell>{lead.title}</TableCell>
+            <TableCell>{lead.email}</TableCell>
+            <TableCell>{lead.company}</TableCell>
+            <TableCell>{lead.industry}</TableCell>
+            <TableCell className="max-w-xs truncate">
               {lead.additional_info}
             </TableCell>
-            <TableCell onClick={() => onLeadClick(lead)}>
-              {lead.type === 'contact' ? lead.stage : lead.request_status}
-            </TableCell>
             <TableCell>
-              {!lead.has_account && lead.id.startsWith('membership_') && lead.request_status === 'approved' && (
-                <Button
-                  onClick={() => onCreateAccount(lead)}
-                  variant="secondary"
-                  size="sm"
-                  className="w-full"
-                >
-                  <MailOpen className="w-4 h-4 mr-2" />
-                  Create Account
-                </Button>
-              )}
+              {lead.type === 'contact' ? lead.stage : lead.request_status}
             </TableCell>
           </TableRow>
         ))}
