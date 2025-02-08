@@ -9,7 +9,7 @@ const LeapDinner = () => {
   const [showRequestModal, setShowRequestModal] = useState(false);
 
   const handleRequestClick = () => {
-    window.open('https://lu.ma/event/manage/evt-HfTMTxgNC8CbucS', '_blank');
+    window.open('https://lu.ma/s1xw1r5z', '_blank');
   };
 
   return (
