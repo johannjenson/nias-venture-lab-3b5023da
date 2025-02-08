@@ -1,7 +1,15 @@
 
 import { useState, useEffect } from "react";
+import { Info } from "lucide-react";
 import { ContactStage } from "../types/kanban";
 import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface StageHeaderProps {
   label: string;
@@ -40,11 +48,26 @@ const StageHeader = ({ label, count, stage }: StageHeaderProps) => {
 
   return (
     <div className="mb-4">
-      <h3 className="font-semibold">{label}</h3>
-      <div className="mt-2 space-y-1">
-        {checklistItems.map((item, index) => (
-          <p key={index} className="text-sm text-gray-500">• {item}</p>
-        ))}
+      <div className="flex items-center gap-2">
+        <h3 className="font-semibold">{label}</h3>
+        {checklistItems.length > 0 && (
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="ghost" size="icon" className="h-6 w-6 p-0">
+                  <Info className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <div className="space-y-1">
+                  {checklistItems.map((item, index) => (
+                    <p key={index} className="text-sm">• {item}</p>
+                  ))}
+                </div>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        )}
       </div>
       <div className="flex items-center justify-end mt-2">
         <span className="text-sm text-gray-500">{count}</span>
@@ -54,3 +77,4 @@ const StageHeader = ({ label, count, stage }: StageHeaderProps) => {
 };
 
 export default StageHeader;
+
