@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -48,10 +49,6 @@ const Footer = () => {
 
   const navigation = {
     main: [
-      { name: "Events", submenu: [
-        { name: "Nias Business Forum", href: "/events/nias-business-forum" },
-        { name: "Nias Network Dinner at LEAP", href: "/events/leap-dinner" }
-      ]},
       { name: "Resources", submenu: [
         { name: "Opportunities", href: "/resources" },
         { name: "Member Login", href: "/login" },
@@ -146,3 +143,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
