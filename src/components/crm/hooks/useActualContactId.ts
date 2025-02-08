@@ -1,6 +1,19 @@
 
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { Database } from "@/integrations/supabase/types";
+
+type EventRequest = {
+  notes_uuid: string | null;
+}
+
+type MembershipRequest = {
+  email: string;
+}
+
+type Contact = {
+  id: string;
+}
 
 export const useActualContactId = () => {
   const { toast } = useToast();
@@ -12,7 +25,7 @@ export const useActualContactId = () => {
         .from('event_requests')
         .select('notes_uuid')
         .eq('id', eventId)
-        .single();
+        .maybeSingle<EventRequest>();
 
       if (error || !eventRequest?.notes_uuid) {
         toast({
@@ -29,23 +42,21 @@ export const useActualContactId = () => {
     if (prefixedId.startsWith('membership_')) {
       const requestId = parseInt(prefixedId.replace('membership_', ''), 10);
       
-      type RequestData = { email: string };
       const { data, error: membershipError } = await supabase
         .from('Request')
         .select('email')
         .eq('id', requestId)
-        .single<RequestData>();
+        .maybeSingle<MembershipRequest>();
 
       if (membershipError || !data?.email) return null;
 
-      type ContactData = { id: string };
       const { data: contact, error: contactError } = await supabase
         .from('contacts')
         .select('id')
         .eq('email', data.email)
         .eq('source', 'network_request')
         .eq('source_id', requestId.toString())
-        .single<ContactData>();
+        .maybeSingle<Contact>();
 
       if (contactError || !contact?.id) {
         toast({
