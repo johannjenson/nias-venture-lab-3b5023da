@@ -257,6 +257,7 @@ export type Database = {
           industry: Database["public"]["Enums"]["industry_type"] | null
           invitation_sent_at: string | null
           invitation_status: string | null
+          last_login: string | null
           last_name: string | null
           lead_type: Database["public"]["Enums"]["lead_type"] | null
           linkedin_url: string | null
@@ -284,6 +285,7 @@ export type Database = {
           industry?: Database["public"]["Enums"]["industry_type"] | null
           invitation_sent_at?: string | null
           invitation_status?: string | null
+          last_login?: string | null
           last_name?: string | null
           lead_type?: Database["public"]["Enums"]["lead_type"] | null
           linkedin_url?: string | null
@@ -311,6 +313,7 @@ export type Database = {
           industry?: Database["public"]["Enums"]["industry_type"] | null
           invitation_sent_at?: string | null
           invitation_status?: string | null
+          last_login?: string | null
           last_name?: string | null
           lead_type?: Database["public"]["Enums"]["lead_type"] | null
           linkedin_url?: string | null

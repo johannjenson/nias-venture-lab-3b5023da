@@ -67,5 +67,5 @@ export type LeadEntry = {
   linkedin_url?: string | null;
   referred_by?: string | null;
   has_account?: boolean;
+  last_login?: string | null;
 };
-

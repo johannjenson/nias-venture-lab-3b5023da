@@ -7,8 +7,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { UserCheck } from "lucide-react";
+import { UserCheck, Clock } from "lucide-react";
 import { LeadEntry } from "../types/contact";
+import { format } from "date-fns";
 
 interface LeadsTableProps {
   leads: LeadEntry[];
@@ -27,6 +28,7 @@ const LeadsTable = ({ leads, onLeadClick }: LeadsTableProps) => {
           <TableHead>Industry</TableHead>
           <TableHead>Message</TableHead>
           <TableHead>Status</TableHead>
+          <TableHead>Last Login</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -56,6 +58,16 @@ const LeadsTable = ({ leads, onLeadClick }: LeadsTableProps) => {
             </TableCell>
             <TableCell>
               {lead.type === 'contact' ? lead.stage : lead.request_status}
+            </TableCell>
+            <TableCell>
+              {lead.last_login ? (
+                <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                  <Clock className="h-3 w-3" />
+                  {format(new Date(lead.last_login), 'MMM d, yyyy HH:mm')}
+                </div>
+              ) : (
+                <span className="text-sm text-muted-foreground">Never</span>
+              )}
             </TableCell>
           </TableRow>
         ))}
