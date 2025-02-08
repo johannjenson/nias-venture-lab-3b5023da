@@ -409,6 +409,7 @@ export type Database = {
           interests: string | null
           moved_to_pipeline: boolean | null
           name: string | null
+          notes_uuid: string | null
           phone_number: string | null
           request_status: string | null
           title: string | null
@@ -424,6 +425,7 @@ export type Database = {
           interests?: string | null
           moved_to_pipeline?: boolean | null
           name?: string | null
+          notes_uuid?: string | null
           phone_number?: string | null
           request_status?: string | null
           title?: string | null
@@ -439,6 +441,7 @@ export type Database = {
           interests?: string | null
           moved_to_pipeline?: boolean | null
           name?: string | null
+          notes_uuid?: string | null
           phone_number?: string | null
           request_status?: string | null
           title?: string | null

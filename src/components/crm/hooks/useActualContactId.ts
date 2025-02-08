@@ -10,7 +10,7 @@ export const useActualContactId = () => {
       const eventId = parseInt(prefixedId.replace('event_', ''), 10);
       const { data: eventRequest, error } = await supabase
         .from('event_requests')
-        .select('uuid_id')
+        .select('notes_uuid')  // Use the new notes_uuid field
         .eq('id', eventId)
         .single();
 
@@ -23,7 +23,7 @@ export const useActualContactId = () => {
         return null;
       }
       
-      return eventRequest?.uuid_id;
+      return eventRequest?.notes_uuid;
     }
 
     if (prefixedId.startsWith('membership_')) {
@@ -60,6 +60,10 @@ export const useActualContactId = () => {
       }
 
       return contact?.id;
+    }
+
+    if (prefixedId.startsWith('contact_')) {
+      return prefixedId.replace('contact_', '');
     }
 
     return prefixedId;
