@@ -28,21 +28,24 @@ export const useActualContactId = () => {
 
     if (prefixedId.startsWith('membership_')) {
       const requestId = parseInt(prefixedId.replace('membership_', ''), 10);
+      
+      type RequestData = { email: string };
       const { data, error: membershipError } = await supabase
         .from('Request')
         .select('email')
         .eq('id', requestId)
-        .single();
+        .single<RequestData>();
 
       if (membershipError || !data?.email) return null;
 
+      type ContactData = { id: string };
       const { data: contact, error: contactError } = await supabase
         .from('contacts')
         .select('id')
         .eq('email', data.email)
         .eq('source', 'network_request')
         .eq('source_id', requestId.toString())
-        .single();
+        .single<ContactData>();
 
       if (contactError || !contact?.id) {
         toast({
