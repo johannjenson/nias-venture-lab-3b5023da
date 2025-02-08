@@ -17,10 +17,9 @@ interface RequestBody {
     firstName: string | null;
     lastName: string | null;
   };
-  tempPassword?: string;
 }
 
-const getEmailContent = (status: string, firstName: string, recipient: RequestBody['recipient'], tempPassword?: string) => {
+const getEmailContent = (status: string, firstName: string, recipient: RequestBody['recipient']) => {
   switch (status) {
     case 'approved':
       return {
@@ -34,16 +33,15 @@ const getEmailContent = (status: string, firstName: string, recipient: RequestBo
             </p>
 
             <div style="background-color: #F3F4F6; padding: 16px; border-radius: 8px; margin: 24px 0;">
-              <h2 style="color: #221F26; font-size: 18px; margin-bottom: 12px;">Your Login Credentials</h2>
+              <h2 style="color: #221F26; font-size: 18px; margin-bottom: 12px;">Login Instructions</h2>
               <p style="color: #4B5563; margin: 0; line-height: 1.5;">
-                We've created your account with the following credentials:
-              </p>
-              <ul style="color: #4B5563; margin: 12px 0; padding-left: 20px;">
-                <li style="margin-bottom: 8px;">Email: ${recipient.email}</li>
-                <li style="margin-bottom: 8px;">Temporary Password: <strong>${tempPassword}</strong></li>
-              </ul>
-              <p style="color: #4B5563; margin: 0; line-height: 1.5;">
-                For security reasons, we recommend changing your password after your first login.
+                To access your account:
+                <ol style="margin-top: 8px;">
+                  <li>Visit our login page</li>
+                  <li>Enter your email address: ${recipient.email}</li>
+                  <li>Click "Sign in with OTP"</li>
+                  <li>We'll send you a magic link to login</li>
+                </ol>
               </p>
             </div>
 
@@ -90,14 +88,14 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { requestId, status, recipient, tempPassword }: RequestBody = await req.json();
+    const { requestId, status, recipient }: RequestBody = await req.json();
 
-    if (!recipient.email) {
+    if (!recipient?.email) {
       throw new Error('Recipient email is required');
     }
 
     const firstName = recipient.firstName || 'there';
-    const emailContent = getEmailContent(status, firstName, recipient, tempPassword);
+    const emailContent = getEmailContent(status, firstName, recipient);
 
     console.log(`Sending ${status} notification to ${recipient.email} for request ${requestId}`);
 
@@ -130,3 +128,4 @@ const handler = async (req: Request): Promise<Response> => {
 };
 
 serve(handler);
+
