@@ -3,11 +3,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import type { Database } from "@/integrations/supabase/types";
 
-// Define minimal interfaces for the data we need
-type EventRequestRow = Database['public']['Tables']['event_requests']['Row'];
-type RequestRow = Database['public']['Tables']['Request']['Row'];
-type ContactsRow = Database['public']['Tables']['contacts']['Row'];
-
 export const useActualContactId = () => {
   const { toast } = useToast();
 
@@ -35,18 +30,18 @@ export const useActualContactId = () => {
     if (prefixedId.startsWith('membership_')) {
       const requestId = parseInt(prefixedId.replace('membership_', ''), 10);
       
-      const { data, error: membershipError } = await supabase
+      const { data: membershipRequest, error: membershipError } = await supabase
         .from('Request')
         .select('email')
         .eq('id', requestId)
         .maybeSingle();
 
-      if (membershipError || !data?.email) return null;
+      if (membershipError || !membershipRequest?.email) return null;
 
       const { data: contact, error: contactError } = await supabase
         .from('contacts')
         .select('id')
-        .eq('email', data.email)
+        .eq('email', membershipRequest.email)
         .eq('source', 'network_request')
         .eq('source_id', requestId.toString())
         .maybeSingle();
