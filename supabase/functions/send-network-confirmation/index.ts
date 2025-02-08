@@ -19,22 +19,31 @@ interface NetworkRequestConfirmation {
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return new Response(null, { 
+      headers: { ...corsHeaders },
+      status: 204
+    });
   }
 
   try {
-    // Ensure request has a body
-    if (!req.body) {
-      throw new Error("Request body is required");
-    }
-
-    const { fullName, email, company, title }: NetworkRequestConfirmation = await req.json();
+    // Parse request body
+    const data = await req.json();
+    const { fullName, email, company, title } = data as NetworkRequestConfirmation;
 
     if (!fullName || !email || !company || !title) {
-      throw new Error("Missing required fields");
+      return new Response(
+        JSON.stringify({ error: "Missing required fields" }),
+        { 
+          status: 400,
+          headers: { 
+            "Content-Type": "application/json",
+            ...corsHeaders 
+          }
+        }
+      );
     }
 
-    console.log("Attempting to send network request confirmation to:", email);
+    console.log("Sending network request confirmation to:", email);
 
     const emailResponse = await resend.emails.send({
       from: "Nias Network <network@nias.io>",
@@ -69,28 +78,33 @@ const handler = async (req: Request): Promise<Response> => {
       `,
     });
 
-    console.log("Confirmation email sent successfully:", emailResponse);
+    console.log("Email sent successfully:", emailResponse);
 
-    return new Response(JSON.stringify(emailResponse), {
-      headers: { 
-        "Content-Type": "application/json",
-        ...corsHeaders 
-      },
-    });
-  } catch (error) {
-    console.error("Error sending confirmation email:", error);
-    
-    // Ensure we return a proper JSON error response
     return new Response(
-      JSON.stringify({ 
-        error: error instanceof Error ? error.message : "An unexpected error occurred" 
+      JSON.stringify(emailResponse),
+      { 
+        headers: { 
+          "Content-Type": "application/json",
+          ...corsHeaders 
+        },
+        status: 200
+      }
+    );
+
+  } catch (error) {
+    console.error("Error in send-network-confirmation:", error);
+    
+    return new Response(
+      JSON.stringify({
+        error: error instanceof Error ? error.message : "An unexpected error occurred",
+        details: error
       }),
       {
         status: 500,
         headers: { 
           "Content-Type": "application/json",
           ...corsHeaders 
-        },
+        }
       }
     );
   }
