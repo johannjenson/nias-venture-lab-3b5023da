@@ -10,7 +10,6 @@ export const submitDinnerInvite = async (formData: DinnerFormData) => {
       email: formData.email,
       company: formData.company,
       title: formData.role,
-      industry: formData.industry,
       phone_number: formData.phoneNumber,
       interests: formData.interests,
       event_type: 'dinner'
