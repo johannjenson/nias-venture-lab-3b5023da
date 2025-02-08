@@ -54,8 +54,9 @@ const Login = () => {
     
     const now = Date.now();
     const timeSinceLastSubmit = now - lastSubmitTime;
-    if (timeSinceLastSubmit < 5000) {
-      toast.error("Please wait a moment before requesting another magic link");
+    // Increase rate limit to 10 seconds
+    if (timeSinceLastSubmit < 10000) {
+      toast.error("Please wait at least 10 seconds before requesting another magic link");
       return;
     }
 
@@ -63,17 +64,7 @@ const Login = () => {
     setLastSubmitTime(now);
 
     try {
-      // Send our custom email first
-      const { error } = await supabase.functions.invoke('send-magic-link', {
-        body: { 
-          email,
-          signInUrl: 'https://nias.io/login'
-        },
-      });
-
-      if (error) throw error;
-
-      // Then create OTP without sending email
+      // Only create OTP first - it will handle rate limiting
       const { error: signInError } = await supabase.auth.signInWithOtp({
         email,
         options: {
@@ -91,6 +82,21 @@ const Login = () => {
           throw new Error("Please wait a moment before requesting another magic link");
         }
         throw signInError;
+      }
+
+      // If OTP creation succeeds, send our custom email
+      const { error } = await supabase.functions.invoke('send-magic-link', {
+        body: { 
+          email,
+          signInUrl: 'https://nias.io/login'
+        },
+      });
+
+      if (error) {
+        // If the error is rate limiting, we don't want to show it since the OTP was created
+        if (!error.message.includes('rate_limit')) {
+          throw error;
+        }
       }
 
       toast.success("Check your email for the magic link!");
