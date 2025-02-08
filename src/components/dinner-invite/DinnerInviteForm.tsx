@@ -115,14 +115,24 @@ const DinnerInviteForm = ({
             <SelectValue placeholder="Select your industry" />
           </SelectTrigger>
           <SelectContent>
-            {industries.map((industry) => (
-              <SelectItem 
-                key={industry.name.toLowerCase().replace(" ", "_")} 
-                value={industry.name.toLowerCase().replace(" ", "_") as IndustryType}
-              >
-                {industry.name}
-              </SelectItem>
-            ))}
+            {industries.map((industry) => {
+              // Convert display name to enum value
+              const enumValue = industry.name.toLowerCase()
+                .replace(/ & /g, '_')  // Replace "& " with underscore
+                .replace(/[^a-z0-9]/g, '_')  // Replace any non-alphanumeric with underscore
+                .replace(/_+/g, '_')  // Replace multiple underscores with single
+                .replace(/_$/, '')    // Remove trailing underscore
+                as IndustryType;
+              
+              return (
+                <SelectItem 
+                  key={enumValue}
+                  value={enumValue}
+                >
+                  {industry.name}
+                </SelectItem>
+              );
+            })}
           </SelectContent>
         </Select>
       </div>
