@@ -284,6 +284,7 @@ export type Database = {
           last_login: string | null
           last_name: string | null
           lead_source: string | null
+          lead_type: Database["public"]["Enums"]["lead_type"] | null
           linkedin_url: string | null
           notes: string | null
           phone: string | null
@@ -304,6 +305,7 @@ export type Database = {
           last_login?: string | null
           last_name?: string | null
           lead_source?: string | null
+          lead_type?: Database["public"]["Enums"]["lead_type"] | null
           linkedin_url?: string | null
           notes?: string | null
           phone?: string | null
@@ -324,6 +326,7 @@ export type Database = {
           last_login?: string | null
           last_name?: string | null
           lead_source?: string | null
+          lead_type?: Database["public"]["Enums"]["lead_type"] | null
           linkedin_url?: string | null
           notes?: string | null
           phone?: string | null

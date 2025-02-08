@@ -18,9 +18,9 @@ export const useActualContactId = () => {
         .from('event_requests')
         .select('notes_uuid')
         .eq('id', eventId)
-        .maybeSingle();
+        .single();
 
-      if (eventError || !eventRequest) {
+      if (eventError || !eventRequest?.notes_uuid) {
         toast({
           title: "Error fetching contact ID",
           description: "Could not find the event request",
@@ -29,7 +29,7 @@ export const useActualContactId = () => {
         return null;
       }
       
-      return eventRequest.notes_uuid || null;
+      return eventRequest.notes_uuid;
     }
 
     if (prefixedId.startsWith('membership_')) {
@@ -38,11 +38,11 @@ export const useActualContactId = () => {
         .from('Request')
         .select('email')
         .eq('id', requestId)
-        .maybeSingle();
+        .single();
 
-      if (membershipError || !membershipRequest) return null;
+      if (membershipError || !membershipRequest?.email) return null;
 
-      const { data: contact, error: contactError } = await supabase
+      const { data: contact } = await supabase
         .from('contacts')
         .select('id')
         .eq('email', membershipRequest.email)
@@ -50,7 +50,7 @@ export const useActualContactId = () => {
         .eq('source_id', requestId.toString())
         .maybeSingle();
 
-      if (contactError || !contact) {
+      if (!contact?.id) {
         toast({
           title: "Error fetching contact ID",
           description: "Could not find the contact",

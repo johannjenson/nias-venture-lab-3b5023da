@@ -24,12 +24,17 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
   const { toast } = useToast();
 
   const fetchData = async () => {
-    const { data: contactsData, error } = await supabase
-      .from('contacts')
-      .select()
-      .eq(leadTypeFilter !== 'all' ? 'lead_type' : 'id', leadTypeFilter !== 'all' ? leadTypeFilter : 'id')
-      .eq(industryFilter !== 'all' ? 'industry' : 'id', industryFilter !== 'all' ? industryFilter : 'id')
-      .order('created_at', { ascending: false });
+    let query = supabase.from('contacts').select();
+    
+    if (leadTypeFilter !== 'all') {
+      query = query.eq('lead_type', leadTypeFilter);
+    }
+    
+    if (industryFilter !== 'all') {
+      query = query.eq('industry', industryFilter);
+    }
+    
+    const { data: contactsData, error } = await query.order('created_at', { ascending: false });
 
     if (error) {
       toast({
