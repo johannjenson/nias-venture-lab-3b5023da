@@ -43,34 +43,51 @@ serve(async (req: Request) => {
     const responseText = await otpResponse.text();
     console.log("OTP response:", responseText);
 
-    // If not ok status, handle the error
-    if (!otpResponse.ok) {
-      let errorMessage = "Failed to generate OTP";
-      try {
-        const errorData = JSON.parse(responseText);
-        // Check if it's a rate limit error
-        if (errorData.code === 429 || errorData.error_code === "over_email_send_rate_limit") {
-          return new Response(
-            JSON.stringify({ error: errorData.msg || "Rate limit exceeded. Please wait before trying again." }),
-            {
-              status: 429,
-              headers: { ...corsHeaders, "Content-Type": "application/json" },
-            }
-          );
-        }
-        errorMessage = `${errorMessage}: ${JSON.stringify(errorData)}`;
-      } catch (e) {
-        errorMessage = `${errorMessage}: ${responseText}`;
-      }
-      throw new Error(errorMessage);
-    }
-
     let responseData;
     try {
       responseData = JSON.parse(responseText);
     } catch (e) {
       console.error("Failed to parse OTP response:", e);
       throw new Error("Invalid response from auth service");
+    }
+
+    // Handle specific error cases
+    if (!otpResponse.ok) {
+      const errorMessage = responseData?.msg || responseData?.message || responseData?.error_description || 'Authentication error';
+      
+      // Handle rate limiting
+      if (responseData.code === 429 || responseData.error_code === "over_email_send_rate_limit") {
+        return new Response(
+          JSON.stringify({ error: "Rate limit exceeded. Please wait before trying again." }),
+          {
+            status: 429,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          }
+        );
+      }
+
+      // Handle database errors
+      if (errorMessage.includes('Database error')) {
+        console.error("Database error:", responseData);
+        return new Response(
+          JSON.stringify({ 
+            error: "Unable to create user profile. Please try again later.",
+            details: responseData 
+          }),
+          {
+            status: 500,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          }
+        );
+      }
+
+      return new Response(
+        JSON.stringify({ error: errorMessage }),
+        {
+          status: otpResponse.status,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
     }
 
     if (!responseData.link) {
@@ -105,7 +122,7 @@ serve(async (req: Request) => {
       JSON.stringify({ error: error.message }),
       {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
-        status: error.status || 400,
+        status: error.status || 500,
       }
     );
   }
