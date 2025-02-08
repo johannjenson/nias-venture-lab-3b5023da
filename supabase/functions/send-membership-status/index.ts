@@ -33,11 +33,15 @@ const getEmailContent = (status: string, firstName: string) => {
             </p>
 
             <div style="background-color: #F3F4F6; padding: 16px; border-radius: 8px; margin: 24px 0;">
-              <h2 style="color: #221F26; font-size: 18px; margin-bottom: 12px;">Next Steps to Access Your Account</h2>
-              <ol style="color: #4B5563; margin: 0; padding-left: 20px;">
-                <li style="margin-bottom: 8px;">Check your inbox for a separate email with password setup instructions</li>
-                <li style="margin-bottom: 8px;">Click the link in that email to set your password</li>
-                <li style="margin-bottom: 8px;">Once your password is set, you can log in using your email address</li>
+              <h2 style="color: #221F26; font-size: 18px; margin-bottom: 12px;">About Your Account</h2>
+              <p style="color: #4B5563; margin: 0; line-height: 1.5;">
+                We've created your account and you'll be able to sign in using your email address. If this is your first time logging in, simply:
+              </p>
+              <ol style="color: #4B5563; margin: 12px 0; padding-left: 20px;">
+                <li style="margin-bottom: 8px;">Go to the login page</li>
+                <li style="margin-bottom: 8px;">Click "Forgot Password"</li>
+                <li style="margin-bottom: 8px;">Enter your email address (${firstName ? firstName + ", " : ""}the same one you used for your application)</li>
+                <li style="margin-bottom: 8px;">Follow the instructions in the reset password email to set your password</li>
               </ol>
             </div>
 
@@ -46,7 +50,7 @@ const getEmailContent = (status: string, firstName: string) => {
             </p>
 
             <p style="color: #6B7280; font-size: 14px; margin-top: 32px;">
-              If you don't receive the password setup email within the next few minutes, please check your spam folder or contact our support team.
+              If you have any trouble accessing your account, please don't hesitate to contact our support team.
             </p>
           </div>
         `,
@@ -124,3 +128,4 @@ const handler = async (req: Request): Promise<Response> => {
 };
 
 serve(handler);
+
