@@ -25,9 +25,45 @@ export const useActualContactId = () => {
       
       return eventRequest?.uuid_id;
     }
+
+    if (prefixedId.startsWith('membership_')) {
+      const requestId = parseInt(prefixedId.replace('membership_', ''), 10);
+      const { data: membershipRequest, error } = await supabase
+        .from('Request')
+        .select('*')
+        .eq('id', requestId)
+        .single();
+
+      if (error) {
+        toast({
+          title: "Error fetching contact ID",
+          description: error.message,
+          variant: "destructive",
+        });
+        return null;
+      }
+
+      // Find the corresponding contact for this membership request
+      const { data: contact, error: contactError } = await supabase
+        .from('contacts')
+        .select('id')
+        .eq('email', membershipRequest.email)
+        .single();
+
+      if (contactError) {
+        toast({
+          title: "Error fetching contact ID",
+          description: contactError.message,
+          variant: "destructive",
+        });
+        return null;
+      }
+
+      return contact?.id;
+    }
+
     return prefixedId;
   };
 
   return getActualContactId;
 };
-
