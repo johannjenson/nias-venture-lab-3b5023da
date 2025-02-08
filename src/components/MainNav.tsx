@@ -31,8 +31,18 @@ const MainNav = () => {
   }, []);
 
   const handleLogout = async () => {
+    // First check if we have a session
+    const { data: { session } } = await supabase.auth.getSession();
+    
+    if (!session) {
+      // If no session, just redirect to home
+      navigate("/");
+      return;
+    }
+
     const { error } = await supabase.auth.signOut();
     if (error) {
+      console.error("Logout error:", error);
       toast({
         title: "Error",
         description: "Failed to log out. Please try again.",

@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -21,6 +22,13 @@ const Footer = () => {
   }, []);
 
   const handleLogout = async () => {
+    // First check if we have a session
+    const { data: { session } } = await supabase.auth.getSession();
+    
+    if (!session) {
+      return; // If no session, do nothing
+    }
+
     const { error } = await supabase.auth.signOut();
     if (error) {
       toast({
