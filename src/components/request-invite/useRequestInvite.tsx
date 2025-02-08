@@ -32,7 +32,7 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
       const firstName = nameParts[0];
       const lastName = nameParts.slice(1).join(' ');
 
-      const { error } = await supabase
+      const { error: dbError } = await supabase
         .from('Request')
         .insert([
           {
@@ -49,9 +49,10 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
           }
         ]);
 
-      if (error) throw error;
+      if (dbError) throw dbError;
 
-      const { error: emailError } = await supabase.functions.invoke('send-network-confirmation', {
+      // Send confirmation email
+      const { error: emailError, data } = await supabase.functions.invoke('send-network-confirmation', {
         body: {
           fullName: formData.fullName,
           email: formData.email,
@@ -62,6 +63,7 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
 
       if (emailError) {
         console.error('Error sending confirmation email:', emailError);
+        // Don't throw the error here, as we want the form submission to succeed even if email fails
       }
 
       toast.success("Thank you for your interest in joining the Nias Network. We'll review your application and be in touch soon!");
