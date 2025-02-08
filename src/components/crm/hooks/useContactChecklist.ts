@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { ChecklistItem, Contact } from "../types/contact-details";
+import { ChecklistItem } from "../types/contact-details";
 import { ContactStage } from "../types/kanban";
 
 export const useContactChecklist = (contactId: string, stage: ContactStage) => {
@@ -37,7 +37,7 @@ export const useContactChecklist = (contactId: string, stage: ContactStage) => {
       .from('checklist_items')
       .select('*')
       .eq('contact_id', actualContactId)
-      .eq('stage', stage);
+      .eq('stage', stage as ContactStage);
 
     if (existingError) {
       toast({
@@ -52,7 +52,7 @@ export const useContactChecklist = (contactId: string, stage: ContactStage) => {
       .from('checklist_items')
       .select('*')
       .is('contact_id', null)
-      .eq('stage', stage);
+      .eq('stage', stage as ContactStage);
 
     if (defaultError) {
       toast({
