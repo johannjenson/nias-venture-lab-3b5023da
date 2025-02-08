@@ -18,7 +18,7 @@ export const useActualContactId = () => {
         .from('event_requests')
         .select('notes_uuid')
         .eq('id', eventId)
-        .maybeSingle();
+        .single();
 
       if (error || !eventRequest?.notes_uuid) {
         toast({
