@@ -16,11 +16,7 @@ interface KanbanBoardProps {
   industryFilter: 'all' | IndustryType;
 }
 
-type ContactData = Database['public']['Tables']['contacts']['Row'] & {
-  lead_type: Contact['lead_type'];
-  stage: Contact['stage'];
-  heat_rating: number;
-};
+type ContactsResponse = Database['public']['Tables']['contacts']['Row'];
 
 type LeadData = {
   id: string;
@@ -95,12 +91,13 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
         return;
       }
 
-      const transformedContactsData = contactsData?.map(contact => ({
+      const transformedContactsData = (contactsData || []).map((contact: ContactsResponse): Contact => ({
         ...contact,
-        lead_type: contact.lead_type as Contact['lead_type'],
-        stage: contact.stage as Contact['stage'],
-        heat_rating: contact.heat_rating || 0
-      })) || [];
+        lead_type: contact.lead_type || 'other',
+        stage: contact.stage || 'mql_lead',
+        heat_rating: contact.heat_rating || 0,
+        has_account: false,
+      }));
 
       const companyViews = (leadsData || []).map(lead => ({
         id: lead.id,
