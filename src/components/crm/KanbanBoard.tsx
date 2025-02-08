@@ -16,6 +16,13 @@ interface KanbanBoardProps {
   industryFilter: 'all' | IndustryType;
 }
 
+type LeadData = {
+  id: string;
+  company: string | null;
+  stage: CompanyView['stage'];
+  last_contact_date: string | null;
+}
+
 const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardProps) => {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [companyViews, setCompanyViews] = useState<CompanyView[]>([]);
@@ -24,8 +31,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
   const fetchData = async () => {
     let query = supabase
       .from('contacts')
-      .select<'*', Database['public']['Tables']['contacts']['Row']>('*')
-      .order('created_at', { ascending: false });
+      .select('*');
 
     if (leadTypeFilter !== 'all') {
       query = query.eq('lead_type', leadTypeFilter);
@@ -35,7 +41,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
       query = query.eq('industry', industryFilter);
     }
 
-    const { data: contactsData, error } = await query;
+    const { data: contactsData, error } = await query.order('created_at', { ascending: false });
 
     if (error) {
       toast({
@@ -58,7 +64,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
     } else {
       const { data: leadsData, error: leadsError } = await supabase
         .from('leads')
-        .select('id, company, stage, last_contact_date');
+        .select<string, LeadData>('id, company, stage, last_contact_date');
 
       if (leadsError) {
         toast({
@@ -79,7 +85,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
 
       const views = (leadsData || []).map(lead => ({
         id: lead.id,
-        company: lead.company,
+        company: lead.company || '',
         stage: lead.stage,
         last_contact_date: lead.last_contact_date,
         contacts: transformedContactsData.filter(contact => contact.company_id === lead.id)
