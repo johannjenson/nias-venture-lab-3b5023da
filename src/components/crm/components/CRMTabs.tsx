@@ -95,7 +95,7 @@ const CRMTabs = ({
         <TabsList>
           <TabsTrigger value="pipeline">Pipeline</TabsTrigger>
           <TabsTrigger value="membership" className="flex items-center gap-2">
-            Membership Requests
+            Membership
             {pendingMembershipCount > 0 && (
               <Badge variant="destructive" className="h-5 px-2">
                 {pendingMembershipCount}
@@ -103,7 +103,7 @@ const CRMTabs = ({
             )}
           </TabsTrigger>
           <TabsTrigger value="events" className="flex items-center gap-2">
-            Event Requests
+            Events
             {pendingEventCount > 0 && (
               <Badge variant="destructive" className="h-5 px-2">
                 {pendingEventCount}
