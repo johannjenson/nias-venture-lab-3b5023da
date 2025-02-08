@@ -14,6 +14,18 @@ interface RequestBody {
   lastName: string;
 }
 
+// Generate a secure temporary password
+const generateTempPassword = () => {
+  const length = 12;
+  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    const randomIndex = crypto.getRandomValues(new Uint8Array(1))[0] % charset.length;
+    password += charset[randomIndex];
+  }
+  return password;
+};
+
 serve(async (req: Request) => {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
@@ -60,10 +72,13 @@ serve(async (req: Request) => {
       );
     }
 
-    // Create the user account
+    // Generate a temporary password
+    const tempPassword = generateTempPassword();
+
+    // Create the user account with the temporary password
     const { data: userData, error: createUserError } = await supabaseClient.auth.admin.createUser({
       email,
-      password: crypto.randomUUID(), // Generate a random password
+      password: tempPassword,
       email_confirm: true,
       user_metadata: {
         first_name: firstName,
@@ -76,21 +91,13 @@ serve(async (req: Request) => {
       throw createUserError;
     }
 
-    // Send password reset email so the user can set their own password
-    const { error: resetError } = await supabaseClient.auth.admin.generateLink({
-      type: 'recovery',
-      email,
-    });
-
-    if (resetError) {
-      console.error('Error generating reset link:', resetError);
-      throw resetError;
-    }
-
     // Update the request status to reflect the account creation
     const { error: updateError } = await supabaseClient
       .from('membership_requests')
-      .update({ request_status: 'account_created' })
+      .update({ 
+        request_status: 'account_created',
+        temp_password: tempPassword // Store the temporary password in the request record
+      })
       .eq('id', requestId);
 
     if (updateError) {
@@ -101,7 +108,8 @@ serve(async (req: Request) => {
     return new Response(
       JSON.stringify({ 
         message: 'User account created successfully',
-        userId: userData.user.id 
+        userId: userData.user.id,
+        tempPassword
       }),
       { 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },

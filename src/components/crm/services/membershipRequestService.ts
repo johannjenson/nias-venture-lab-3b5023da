@@ -31,7 +31,7 @@ export const updateRequestStatus = async (
       return;
     }
 
-    // Send status notification email
+    // Send status notification email with the temporary password
     const { error: emailError } = await supabase.functions.invoke('send-membership-status', {
       body: {
         requestId,
@@ -41,6 +41,7 @@ export const updateRequestStatus = async (
           firstName: request.first_name,
           lastName: request.last_name,
         },
+        tempPassword: data?.tempPassword,
       },
     });
 

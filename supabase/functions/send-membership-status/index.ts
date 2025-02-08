@@ -17,9 +17,10 @@ interface RequestBody {
     firstName: string | null;
     lastName: string | null;
   };
+  tempPassword?: string;
 }
 
-const getEmailContent = (status: string, firstName: string) => {
+const getEmailContent = (status: string, firstName: string, tempPassword?: string) => {
   switch (status) {
     case 'approved':
       return {
@@ -33,16 +34,17 @@ const getEmailContent = (status: string, firstName: string) => {
             </p>
 
             <div style="background-color: #F3F4F6; padding: 16px; border-radius: 8px; margin: 24px 0;">
-              <h2 style="color: #221F26; font-size: 18px; margin-bottom: 12px;">About Your Account</h2>
+              <h2 style="color: #221F26; font-size: 18px; margin-bottom: 12px;">Your Login Credentials</h2>
               <p style="color: #4B5563; margin: 0; line-height: 1.5;">
-                We've created your account and you'll be able to sign in using your email address. If this is your first time logging in, simply:
+                We've created your account with the following credentials:
               </p>
-              <ol style="color: #4B5563; margin: 12px 0; padding-left: 20px;">
-                <li style="margin-bottom: 8px;">Go to the login page</li>
-                <li style="margin-bottom: 8px;">Click "Forgot Password"</li>
-                <li style="margin-bottom: 8px;">Enter your email address (${firstName ? firstName + ", " : ""}the same one you used for your application)</li>
-                <li style="margin-bottom: 8px;">Follow the instructions in the reset password email to set your password</li>
-              </ol>
+              <ul style="color: #4B5563; margin: 12px 0; padding-left: 20px;">
+                <li style="margin-bottom: 8px;">Email: ${firstName ? firstName + ", " : ""}use <strong>${recipient.email}</strong></li>
+                <li style="margin-bottom: 8px;">Temporary Password: <strong>${tempPassword}</strong></li>
+              </ul>
+              <p style="color: #4B5563; margin: 0; line-height: 1.5;">
+                For security reasons, we recommend changing your password after your first login.
+              </p>
             </div>
 
             <p style="color: #4B5563; font-size: 16px; line-height: 1.5;">
@@ -88,14 +90,14 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { requestId, status, recipient }: RequestBody = await req.json();
+    const { requestId, status, recipient, tempPassword }: RequestBody = await req.json();
 
     if (!recipient.email) {
       throw new Error('Recipient email is required');
     }
 
     const firstName = recipient.firstName || 'there';
-    const emailContent = getEmailContent(status, firstName);
+    const emailContent = getEmailContent(status, firstName, tempPassword);
 
     console.log(`Sending ${status} notification to ${recipient.email} for request ${requestId}`);
 
@@ -128,4 +130,3 @@ const handler = async (req: Request): Promise<Response> => {
 };
 
 serve(handler);
-
