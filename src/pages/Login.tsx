@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
@@ -63,15 +62,11 @@ const Login = () => {
 
       if (signInError) throw signInError;
 
-      // Send our custom email - making sure we handle the null case for data.session
-      const signInUrl = data?.session?.access_token 
-        ? `https://nias.io/login#access_token=${data.session.access_token}`
-        : `https://nias.io/login`;
-
+      // Send our custom email
       const { error } = await supabase.functions.invoke('send-magic-link', {
         body: { 
           email,
-          signInUrl
+          signInUrl: 'https://nias.io/login'
         },
       });
 
