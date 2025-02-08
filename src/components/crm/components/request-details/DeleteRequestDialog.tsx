@@ -5,6 +5,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Trash2 } from "lucide-react";
 import { useState } from "react";
+import { useActualContactId } from "../../hooks/useActualContactId";
 
 interface DeleteRequestDialogProps {
   onDelete: () => void;
@@ -14,34 +15,42 @@ interface DeleteRequestDialogProps {
 export const DeleteRequestDialog = ({ onDelete, contactId }: DeleteRequestDialogProps) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const { toast } = useToast();
+  const getActualContactId = useActualContactId();
 
   const handleDelete = async () => {
     try {
       setIsDeleting(true);
+      
+      // Get the actual UUID from the potentially prefixed ID
+      const actualContactId = await getActualContactId(contactId);
+      
+      if (!actualContactId) {
+        throw new Error("Could not find contact ID");
+      }
 
       // Delete all associated checklist items
       await supabase
         .from('checklist_items')
         .delete()
-        .eq('contact_id', contactId);
+        .eq('contact_id', actualContactId);
 
       // Delete all associated notes
       await supabase
         .from('contact_notes')
         .delete()
-        .eq('contact_id', contactId);
+        .eq('contact_id', actualContactId);
 
       // Delete all associated attachments
       await supabase
         .from('contact_attachments')
         .delete()
-        .eq('contact_id', contactId);
+        .eq('contact_id', actualContactId);
 
       // Finally, delete the contact
       const { error } = await supabase
         .from('contacts')
         .delete()
-        .eq('id', contactId);
+        .eq('id', actualContactId);
 
       if (error) throw error;
 
