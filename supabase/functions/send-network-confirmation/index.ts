@@ -55,7 +55,7 @@ const handler = async (req: Request): Promise<Response> => {
           
           <p style="color: #4B5563; font-size: 16px; line-height: 1.5;">
             We have received your request to join the Nias Network. Our team will carefully review your application
-            and get back to you within 48 hours.
+            and get back to you shortly.
           </p>
 
           <div style="background-color: #F3F4F6; padding: 16px; border-radius: 8px; margin: 24px 0;">
