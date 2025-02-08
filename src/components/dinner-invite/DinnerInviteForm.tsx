@@ -118,10 +118,8 @@ const DinnerInviteForm = ({
             {industries.map((industry) => {
               // Convert display name to enum value
               const enumValue = industry.name.toLowerCase()
-                .replace(/ & /g, '_')  // Replace "& " with underscore
-                .replace(/[^a-z0-9]/g, '_')  // Replace any non-alphanumeric with underscore
-                .replace(/_+/g, '_')  // Replace multiple underscores with single
-                .replace(/_$/, '')    // Remove trailing underscore
+                .replace(/[\s&]+/g, '_')  // Replace spaces and & with underscore
+                .replace(/[^a-z0-9_]/g, '') // Remove any other special characters
                 as IndustryType;
               
               return (
