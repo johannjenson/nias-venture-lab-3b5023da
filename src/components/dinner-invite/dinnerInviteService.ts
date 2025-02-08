@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { DinnerFormData } from "./types";
 
 export const submitDinnerInvite = async (formData: DinnerFormData) => {
+  // Insert the event request into the database
   const { error } = await supabase
     .from('event_requests')
     .insert({
@@ -29,5 +30,6 @@ export const submitDinnerInvite = async (formData: DinnerFormData) => {
 
   if (emailError) {
     console.error('Error sending confirmation email:', emailError);
+    throw emailError;
   }
 };
