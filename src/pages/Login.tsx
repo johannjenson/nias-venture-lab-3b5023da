@@ -20,7 +20,6 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
-    // Check current session on mount
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
@@ -29,7 +28,6 @@ const Login = () => {
     };
     checkSession();
 
-    // Handle error parameters in URL
     const error = searchParams.get('error');
     const errorDescription = searchParams.get('error_description');
     
@@ -37,7 +35,6 @@ const Login = () => {
       toast.error(decodeURIComponent(errorDescription).replace(/\+/g, ' '));
     }
 
-    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       console.log("Auth state changed:", event, session);
       if (event === "SIGNED_IN" && session) {
@@ -55,21 +52,27 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data: { session }, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
       if (error) {
+        if (error.message.includes('Database error')) {
+          toast.error("Unable to log in at this time. Please try again later.");
+        } else if (error.message.includes('Invalid login')) {
+          toast.error("Invalid email or password");
+        } else {
+          toast.error(error.message);
+        }
         console.error('Login error:', error);
-        toast.error(error.message);
-      } else {
+      } else if (session) {
         toast.success("Logged in successfully!");
         navigate("/");
       }
     } catch (error: any) {
       console.error('Unexpected login error:', error);
-      toast.error(error.message || "Failed to log in. Please try again.");
+      toast.error("An unexpected error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -89,17 +92,14 @@ const Login = () => {
     setLastSubmitTime(now);
 
     try {
-      const { error } = await supabase.functions.invoke('send-magic-link', {
-        body: { 
-          email,
-          signInUrl: 'https://nias.io/login'
-        },
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: window.location.origin + '/login'
+        }
       });
 
       if (error) {
-        if (error.message.includes('rate_limit')) {
-          throw new Error("Please wait a minute before requesting another magic link");
-        }
         throw error;
       }
 
