@@ -22,9 +22,9 @@ serve(async (req: Request) => {
   try {
     const { email, signInUrl }: RequestBody = await req.json();
 
-    // Generate a sign-in link using Supabase auth admin API
-    const signInResponse = await fetch(
-      `${Deno.env.get('SUPABASE_URL')}/auth/v1/admin/generate-link`, {
+    // Generate a magic link using Supabase auth API
+    const magicLinkResponse = await fetch(
+      `${Deno.env.get('SUPABASE_URL')}/auth/v1/magiclink`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,16 +33,21 @@ serve(async (req: Request) => {
       },
       body: JSON.stringify({
         email,
-        type: 'magiclink',
-        redirect_to: signInUrl
+        redirect_to: signInUrl,
+        data: {
+          suppress_email: true,
+          use_custom_email: true
+        }
       })
     });
 
-    if (!signInResponse.ok) {
-      throw new Error('Failed to generate sign-in link');
+    if (!magicLinkResponse.ok) {
+      const error = await magicLinkResponse.text();
+      console.error("Failed to generate magic link:", error);
+      throw new Error('Failed to generate magic link: ' + error);
     }
 
-    const { properties: { action_link } } = await signInResponse.json();
+    const { data: { action_link } } = await magicLinkResponse.json();
 
     const emailResponse = await resend.emails.send({
       from: "Nias Network <membership@nias.io>",
