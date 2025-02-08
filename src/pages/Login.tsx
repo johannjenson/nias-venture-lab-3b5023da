@@ -54,9 +54,9 @@ const Login = () => {
     
     const now = Date.now();
     const timeSinceLastSubmit = now - lastSubmitTime;
-    // Increase rate limit to 10 seconds
-    if (timeSinceLastSubmit < 10000) {
-      toast.error("Please wait at least 10 seconds before requesting another magic link");
+    // Match Supabase's rate limit of 56 seconds
+    if (timeSinceLastSubmit < 60000) { // Using 60 seconds to be safe
+      toast.error("Please wait at least 60 seconds before requesting another magic link");
       return;
     }
 
@@ -79,7 +79,7 @@ const Login = () => {
 
       if (signInError) {
         if (signInError.message.includes('rate_limit')) {
-          throw new Error("Please wait a moment before requesting another magic link");
+          throw new Error("Please wait a minute before requesting another magic link");
         }
         throw signInError;
       }
