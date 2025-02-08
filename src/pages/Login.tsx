@@ -52,10 +52,10 @@ const Login = () => {
   const handleSendMagicLink = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Check if enough time has passed since last submit (2 seconds minimum)
+    // Check if enough time has passed since last submit (5 seconds minimum)
     const now = Date.now();
     const timeSinceLastSubmit = now - lastSubmitTime;
-    if (timeSinceLastSubmit < 2000) {
+    if (timeSinceLastSubmit < 5000) { // Increased to 5 seconds to be more conservative
       toast.error("Please wait a moment before requesting another magic link");
       return;
     }
