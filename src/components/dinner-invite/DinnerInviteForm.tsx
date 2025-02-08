@@ -116,11 +116,9 @@ const DinnerInviteForm = ({
           </SelectTrigger>
           <SelectContent>
             {industries.map((industry) => {
-              // Convert display name to enum value
               const enumValue = industry.name.toLowerCase()
-                .replace(/[\s&]+/g, '_')  // Replace spaces and & with underscore
-                .replace(/[^a-z0-9_]/g, '') // Remove any other special characters
-                as IndustryType;
+                .replace(/[\s&]+/g, '_')
+                .replace(/[^a-z0-9_]/g, '') as IndustryType;
               
               return (
                 <SelectItem 
@@ -163,4 +161,3 @@ const DinnerInviteForm = ({
 };
 
 export default DinnerInviteForm;
-
