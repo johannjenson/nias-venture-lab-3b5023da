@@ -51,7 +51,7 @@ export const updateRequestStatus = async (
   } else {
     // For other status updates
     const { error: updateError } = await supabase
-      .from('membership_requests')
+      .from('Request')
       .update({ request_status: status })
       .eq('id', requestId);
 

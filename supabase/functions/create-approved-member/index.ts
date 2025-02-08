@@ -51,7 +51,7 @@ serve(async (req: Request) => {
       
       // Update the request status to reflect the account already exists
       const { error: updateError } = await supabaseClient
-        .from('membership_requests')
+        .from('Request')
         .update({ request_status: 'account_exists' })
         .eq('id', requestId);
 
@@ -93,7 +93,7 @@ serve(async (req: Request) => {
 
     // Update the request status to reflect the account creation
     const { error: updateError } = await supabaseClient
-      .from('membership_requests')
+      .from('Request')
       .update({ 
         request_status: 'account_created',
         temp_password: tempPassword // Store the temporary password in the request record

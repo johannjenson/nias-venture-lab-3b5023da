@@ -517,6 +517,7 @@ export type Database = {
           phone_number: string | null
           referred_by: string | null
           request_status: string | null
+          temp_password: string | null
           title: string | null
         }
         Insert: {
@@ -533,6 +534,7 @@ export type Database = {
           phone_number?: string | null
           referred_by?: string | null
           request_status?: string | null
+          temp_password?: string | null
           title?: string | null
         }
         Update: {
@@ -549,6 +551,7 @@ export type Database = {
           phone_number?: string | null
           referred_by?: string | null
           request_status?: string | null
+          temp_password?: string | null
           title?: string | null
         }
         Relationships: []
