@@ -20,7 +20,7 @@ const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
     return new Response(null, { 
-      headers: { ...corsHeaders },
+      headers: corsHeaders,
       status: 204
     });
   }
@@ -28,9 +28,12 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     // Parse request body
     const data = await req.json();
+    console.log("Received request data:", data);
+
     const { fullName, email, company, title } = data as NetworkRequestConfirmation;
 
     if (!fullName || !email || !company || !title) {
+      console.error("Missing required fields:", { fullName, email, company, title });
       return new Response(
         JSON.stringify({ error: "Missing required fields" }),
         { 
