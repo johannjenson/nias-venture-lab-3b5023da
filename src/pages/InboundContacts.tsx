@@ -72,11 +72,6 @@ const InboundContacts = () => {
     console.log("Lead clicked:", lead);
   };
 
-  const handleCreateAccount = (lead: LeadEntry) => {
-    console.log("Create account clicked:", lead);
-    // This is a placeholder since inbound contacts don't need account creation
-  };
-
   if (isLoading) {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   }
@@ -112,8 +107,7 @@ const InboundContacts = () => {
           ) : contacts && contacts.length > 0 ? (
             <LeadsTable 
               leads={contacts} 
-              onLeadClick={handleLeadClick} 
-              onCreateAccount={handleCreateAccount}
+              onLeadClick={handleLeadClick}
             />
           ) : (
             <div className="text-center py-12 text-gray-500">

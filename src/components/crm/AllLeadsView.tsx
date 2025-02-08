@@ -20,69 +20,6 @@ const AllLeadsView = () => {
   const { toast } = useToast();
   const { leads, fetchAllLeads } = useLeads();
 
-  const handleCreateAccount = async (lead: LeadEntry) => {
-    if (!lead.email || !lead.first_name || !lead.last_name) {
-      toast({
-        title: "Missing Information",
-        description: "First name, last name and email are required to create an account",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    // Check if email is from zid.sa domain
-    if (lead.email.endsWith('@zid.sa')) {
-      toast({
-        title: "Cannot Create Account",
-        description: "Accounts cannot be created for @zid.sa email addresses",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    try {
-      const rawRequestId = lead.id.replace('membership_', '');
-      const requestId = parseInt(rawRequestId, 10);
-      
-      if (isNaN(requestId)) {
-        throw new Error('Invalid request ID format');
-      }
-
-      // First update the request status to account_created
-      const { error: updateError } = await supabase
-        .from('Request')
-        .update({ request_status: 'account_created' })
-        .eq('id', requestId);
-
-      if (updateError) throw updateError;
-
-      // Then create the user account
-      const { error } = await supabase.functions.invoke('create-approved-member', {
-        body: {
-          requestId,
-          email: lead.email,
-          firstName: lead.first_name,
-          lastName: lead.last_name,
-        },
-      });
-
-      if (error) throw error;
-
-      toast({
-        title: "Account Created",
-        description: "User account has been created and an email has been sent with login instructions",
-      });
-
-      fetchAllLeads();
-    } catch (error: any) {
-      toast({
-        title: "Error Creating Account",
-        description: error.message || "An error occurred while creating the account",
-        variant: "destructive",
-      });
-    }
-  };
-
   const handleLeadClick = async (leadEntry: LeadEntry) => {
     if (leadEntry.type === 'contact') {
       const { data: contact, error } = await supabase
@@ -136,8 +73,7 @@ const AllLeadsView = () => {
       <div className="rounded-md border">
         <LeadsTable 
           leads={filteredLeads} 
-          onLeadClick={handleLeadClick} 
-          onCreateAccount={handleCreateAccount}
+          onLeadClick={handleLeadClick}
         />
       </div>
 
