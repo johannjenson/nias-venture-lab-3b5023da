@@ -25,13 +25,17 @@ interface ContactData {
   title: string | null;
   lead_type: string | null;
   industry: IndustryType | null;
-  stage: string;
+  stage: Contact['stage'];
+  heat_rating: number;
+  company_id: string | null;
+  goal?: string;
+  has_account?: boolean;
 }
 
 interface LeadData {
   id: string;
   company: string;
-  stage: string;
+  stage: CompanyView['stage'];
   last_contact_date: string | null;
 }
 
@@ -60,21 +64,20 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
   }, [viewType, leadTypeFilter, industryFilter]);
 
   const fetchData = async () => {
-    const query = supabase
+    let query = supabase
       .from('contacts')
       .select('*')
-      .order('created_at', { ascending: false })
-      .returns<ContactData[]>();
+      .order('created_at', { ascending: false });
 
     if (leadTypeFilter !== 'all') {
-      query.eq('lead_type', leadTypeFilter);
+      query = query.eq('lead_type', leadTypeFilter);
     }
 
     if (industryFilter !== 'all') {
-      query.eq('industry', industryFilter);
+      query = query.eq('industry', industryFilter);
     }
 
-    const { data: contactsData, error } = await query;
+    const { data: contactsData, error } = await query.returns<ContactData[]>();
 
     if (error) {
       toast({
@@ -86,7 +89,7 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
     }
 
     if (viewType === 'user') {
-      setContacts(contactsData || []);
+      setContacts(contactsData as Contact[]);
     } else {
       const { data: leadsData, error: leadsError } = await supabase
         .from('leads')
@@ -107,8 +110,8 @@ const KanbanBoard = ({ viewType, leadTypeFilter, industryFilter }: KanbanBoardPr
         company: lead.company,
         stage: lead.stage,
         last_contact_date: lead.last_contact_date,
-        contacts: (contactsData || []).filter(contact => contact.company_id === lead.id)
-      })).filter(company => company.contacts.length > 0);
+        contacts: contactsData.filter(contact => contact.company_id === lead.id)
+      }));
 
       setCompanyViews(companyViews);
     }

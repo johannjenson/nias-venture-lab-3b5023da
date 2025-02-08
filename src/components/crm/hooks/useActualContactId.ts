@@ -1,7 +1,18 @@
 
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Database } from "@/integrations/supabase/types";
+
+interface EventRequest {
+  notes_uuid: string | null;
+}
+
+interface MembershipRequest {
+  email: string;
+}
+
+interface ContactRecord {
+  id: string;
+}
 
 export const useActualContactId = () => {
   const { toast } = useToast();
@@ -13,6 +24,7 @@ export const useActualContactId = () => {
         .from('event_requests')
         .select('notes_uuid')
         .eq('id', eventId)
+        .returns<EventRequest>()
         .single();
 
       if (!eventRequest?.notes_uuid) {
@@ -33,7 +45,7 @@ export const useActualContactId = () => {
         .from('Request')
         .select('email')
         .eq('id', requestId)
-        .returns<{ email: string } | null>()
+        .returns<MembershipRequest>()
         .single();
 
       if (!membershipRequest?.email) return null;
@@ -44,7 +56,7 @@ export const useActualContactId = () => {
         .eq('email', membershipRequest.email)
         .eq('source', 'network_request')
         .eq('source_id', requestId.toString())
-        .returns<{ id: string } | null>()
+        .returns<ContactRecord>()
         .single();
 
       if (!contact?.id) {
