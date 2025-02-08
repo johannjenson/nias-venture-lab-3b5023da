@@ -405,7 +405,7 @@ export type Database = {
           email: string | null
           event_type: string
           id: number
-          industry: string | null
+          industry: Database["public"]["Enums"]["industry_type"] | null
           interests: string | null
           moved_to_pipeline: boolean | null
           name: string | null
@@ -421,7 +421,7 @@ export type Database = {
           email?: string | null
           event_type: string
           id?: never
-          industry?: string | null
+          industry?: Database["public"]["Enums"]["industry_type"] | null
           interests?: string | null
           moved_to_pipeline?: boolean | null
           name?: string | null
@@ -437,7 +437,7 @@ export type Database = {
           email?: string | null
           event_type?: string
           id?: never
-          industry?: string | null
+          industry?: Database["public"]["Enums"]["industry_type"] | null
           interests?: string | null
           moved_to_pipeline?: boolean | null
           name?: string | null
@@ -670,7 +670,7 @@ export type Database = {
           created_at: string | null
           email: string | null
           id: number | null
-          industry: string | null
+          industry: Database["public"]["Enums"]["industry_type"] | null
           interests: string | null
           name: string | null
           phone_number: string | null
@@ -682,7 +682,7 @@ export type Database = {
           created_at?: string | null
           email?: string | null
           id?: number | null
-          industry?: string | null
+          industry?: Database["public"]["Enums"]["industry_type"] | null
           interests?: string | null
           name?: string | null
           phone_number?: string | null
@@ -694,7 +694,7 @@ export type Database = {
           created_at?: string | null
           email?: string | null
           id?: number | null
-          industry?: string | null
+          industry?: Database["public"]["Enums"]["industry_type"] | null
           interests?: string | null
           name?: string | null
           phone_number?: string | null
@@ -709,7 +709,7 @@ export type Database = {
           created_at: string | null
           email: string | null
           id: number | null
-          industry: string | null
+          industry: Database["public"]["Enums"]["industry_type"] | null
           interests: string | null
           name: string | null
           phone_number: string | null
@@ -721,7 +721,7 @@ export type Database = {
           created_at?: string | null
           email?: string | null
           id?: number | null
-          industry?: string | null
+          industry?: Database["public"]["Enums"]["industry_type"] | null
           interests?: string | null
           name?: string | null
           phone_number?: string | null
@@ -733,7 +733,7 @@ export type Database = {
           created_at?: string | null
           email?: string | null
           id?: number | null
-          industry?: string | null
+          industry?: Database["public"]["Enums"]["industry_type"] | null
           interests?: string | null
           name?: string | null
           phone_number?: string | null

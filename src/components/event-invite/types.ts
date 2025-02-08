@@ -18,3 +18,4 @@ export type IndustryType = 'manufacturing' | 'technology' | 'tourism' | 'healthc
   'mining' | 'logistics' | 'education' | 'finance' | 'real_estate' | 'agriculture' |
   'water' | 'defense' | 'sports' | 'aerospace' | 'retail' | 'creative' | 'biotech' |
   'construction' | 'ocean';
+
