@@ -70,7 +70,7 @@ const LeapDinner = () => {
                 </div>
               </div>
               <div className="bg-secondary p-8 rounded-lg">
-                <h3 className="text-2xl font-bold text-primary mb-6">About LEAP 2024</h3>
+                <h3 className="text-2xl font-bold text-primary mb-6">About LEAP 2025</h3>
                 <p className="text-gray-600 mb-4">
                   LEAP is one of the world's largest technology events, bringing together the global
                   technology community to discuss the latest trends, innovations, and opportunities
