@@ -10,15 +10,13 @@ import {
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
-import { DinnerFormData, IndustryType } from "./types";
-import { industries } from "@/data/industries";
+import { DinnerFormData } from "./types";
 
 interface DinnerInviteFormProps {
   formData: DinnerFormData;
   isSubmitting: boolean;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onRoleChange: (value: string) => void;
-  onIndustryChange: (value: IndustryType) => void;
   onSubmit: (e: React.FormEvent) => void;
 }
 
@@ -27,7 +25,6 @@ const DinnerInviteForm = ({
   isSubmitting,
   onInputChange,
   onRoleChange,
-  onIndustryChange,
   onSubmit,
 }: DinnerInviteFormProps) => {
   return (
@@ -99,36 +96,6 @@ const DinnerInviteForm = ({
             <SelectItem value="investor">Investor</SelectItem>
             <SelectItem value="advisor">Advisor</SelectItem>
             <SelectItem value="broker">Broker</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="industry">Industry</Label>
-        <Select
-          name="industry"
-          value={formData.industry}
-          onValueChange={onIndustryChange}
-          disabled={isSubmitting}
-        >
-          <SelectTrigger>
-            <SelectValue placeholder="Select your industry" />
-          </SelectTrigger>
-          <SelectContent>
-            {industries.map((industry) => {
-              const enumValue = industry.name.toLowerCase()
-                .replace(/[\s&]+/g, '_')
-                .replace(/[^a-z0-9_]/g, '') as IndustryType;
-              
-              return (
-                <SelectItem 
-                  key={enumValue}
-                  value={enumValue}
-                >
-                  {industry.name}
-                </SelectItem>
-              );
-            })}
           </SelectContent>
         </Select>
       </div>

@@ -18,7 +18,6 @@ const initialFormData: DinnerFormData = {
   email: "",
   company: "",
   role: "",
-  industry: "manufacturing" as IndustryType, // Set a default industry
   interests: "",
 };
 
@@ -52,10 +51,6 @@ const DinnerInviteModal = ({ open, onOpenChange }: DinnerInviteModalProps) => {
     setFormData((prev) => ({ ...prev, role: value }));
   };
 
-  const handleIndustryChange = (value: IndustryType) => {
-    setFormData((prev) => ({ ...prev, industry: value }));
-  };
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px]">
@@ -70,7 +65,6 @@ const DinnerInviteModal = ({ open, onOpenChange }: DinnerInviteModalProps) => {
           isSubmitting={isSubmitting}
           onInputChange={handleInputChange}
           onRoleChange={handleRoleChange}
-          onIndustryChange={handleIndustryChange}
           onSubmit={handleSubmit}
         />
       </DialogContent>
