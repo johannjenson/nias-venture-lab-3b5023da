@@ -10,7 +10,7 @@ const corsHeaders = {
 };
 
 interface RequestBody {
-  requestId: string;
+  requestId: number;
   status: 'approved' | 'waitlist' | 'rejected';
   recipient: {
     email: string | null;
@@ -20,7 +20,7 @@ interface RequestBody {
   tempPassword?: string;
 }
 
-const getEmailContent = (status: string, firstName: string, tempPassword?: string) => {
+const getEmailContent = (status: string, firstName: string, recipient: RequestBody['recipient'], tempPassword?: string) => {
   switch (status) {
     case 'approved':
       return {
@@ -39,7 +39,7 @@ const getEmailContent = (status: string, firstName: string, tempPassword?: strin
                 We've created your account with the following credentials:
               </p>
               <ul style="color: #4B5563; margin: 12px 0; padding-left: 20px;">
-                <li style="margin-bottom: 8px;">Email: ${firstName ? firstName + ", " : ""}use <strong>${recipient.email}</strong></li>
+                <li style="margin-bottom: 8px;">Email: ${recipient.email}</li>
                 <li style="margin-bottom: 8px;">Temporary Password: <strong>${tempPassword}</strong></li>
               </ul>
               <p style="color: #4B5563; margin: 0; line-height: 1.5;">
@@ -97,7 +97,7 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const firstName = recipient.firstName || 'there';
-    const emailContent = getEmailContent(status, firstName, tempPassword);
+    const emailContent = getEmailContent(status, firstName, recipient, tempPassword);
 
     console.log(`Sending ${status} notification to ${recipient.email} for request ${requestId}`);
 

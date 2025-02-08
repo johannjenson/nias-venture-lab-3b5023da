@@ -8,7 +8,7 @@ const corsHeaders = {
 };
 
 interface RequestBody {
-  requestId: string;
+  requestId: number;
   email: string;
   firstName: string;
   lastName: string;

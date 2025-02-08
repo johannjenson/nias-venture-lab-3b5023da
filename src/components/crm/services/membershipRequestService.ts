@@ -15,7 +15,7 @@ export const updateRequestStatus = async (
     // Create user account
     const { data, error: createAccountError } = await supabase.functions.invoke('create-approved-member', {
       body: {
-        requestId,
+        requestId: parseInt(requestId),
         email: request.email,
         firstName: request.first_name,
         lastName: request.last_name || '',
@@ -34,7 +34,7 @@ export const updateRequestStatus = async (
     // Send status notification email with the temporary password
     const { error: emailError } = await supabase.functions.invoke('send-membership-status', {
       body: {
-        requestId,
+        requestId: parseInt(requestId),
         status: 'approved',
         recipient: {
           email: request.email,
@@ -53,7 +53,7 @@ export const updateRequestStatus = async (
     const { error: updateError } = await supabase
       .from('Request')
       .update({ request_status: status })
-      .eq('id', requestId);
+      .eq('id', parseInt(requestId));
 
     if (updateError) {
       throw updateError;
@@ -63,7 +63,7 @@ export const updateRequestStatus = async (
     if (['waitlist', 'rejected'].includes(status)) {
       const { error: emailError } = await supabase.functions.invoke('send-membership-status', {
         body: {
-          requestId,
+          requestId: parseInt(requestId),
           status: status as 'waitlist' | 'rejected',
           recipient: {
             email: request.email,
