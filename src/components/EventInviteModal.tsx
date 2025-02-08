@@ -107,7 +107,7 @@ const EventInviteModal = ({ open, onOpenChange }: EventInviteModalProps) => {
         <DialogHeader className="space-y-2">
           <DialogTitle className="text-2xl font-bold">Join Us in Riyadh</DialogTitle>
           <DialogDescription>
-            Request your invitation to the Nias Business Forum on February 20th, 2024.
+            Request your invitation to the Nias Business Forum on February 13th, 2025.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 mt-2">
