@@ -25,7 +25,7 @@ const CRMFilters = ({
           <SelectValue placeholder="Filter by type" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">All Lead Types</SelectItem>
+          <SelectItem value="all">Type</SelectItem>
           {leadTypes.map(type => (
             <SelectItem key={type.id} value={type.id}>
               {type.label}
@@ -42,7 +42,7 @@ const CRMFilters = ({
           <SelectValue placeholder="Filter by industry" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">All Industries</SelectItem>
+          <SelectItem value="all">Industry</SelectItem>
           {industryTypes.map(type => (
             <SelectItem key={type.id} value={type.id}>
               {type.label}
