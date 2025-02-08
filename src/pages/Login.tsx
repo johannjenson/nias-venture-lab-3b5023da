@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
@@ -54,7 +55,7 @@ const Login = () => {
     // Check if enough time has passed since last submit (5 seconds minimum)
     const now = Date.now();
     const timeSinceLastSubmit = now - lastSubmitTime;
-    if (timeSinceLastSubmit < 5000) { // Increased to 5 seconds to be more conservative
+    if (timeSinceLastSubmit < 5000) {
       toast.error("Please wait a moment before requesting another magic link");
       return;
     }
@@ -63,13 +64,15 @@ const Login = () => {
     setLastSubmitTime(now);
 
     try {
-      // Create OTP without sending email by setting suppressEmail to true
+      // Create OTP without sending email by setting suppress_email in data object
       const { error: signInError } = await supabase.auth.signInWithOtp({
         email,
         options: {
           shouldCreateUser: true,
           emailRedirectTo: 'https://nias.io/login',
-          suppressEmail: true
+          data: {
+            suppress_email: true
+          }
         },
       });
 
