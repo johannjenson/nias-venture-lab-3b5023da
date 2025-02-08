@@ -69,15 +69,16 @@ const Login = () => {
                 },
               }}
               providers={[]}
-              view="sign_in"
+              view="magic_link"
               showLinks={false}
               localization={{
                 variables: {
-                  sign_in: {
-                    email_label: 'Email',
-                    password_label: 'Password',
-                    button_label: 'Sign In',
-                    loading_button_label: 'Signing in ...',
+                  magic_link: {
+                    button_label: "Send Magic Link",
+                    loading_button_label: "Sending magic link ...",
+                    email_input_label: "Email address",
+                    email_input_placeholder: "Your email address",
+                    confirmation_text: "Check your email for the magic link",
                   }
                 }
               }}
@@ -89,14 +90,6 @@ const Login = () => {
               >
                 Don't have an account? Request to Join
               </button>
-              <div>
-                <Link
-                  to="/forgot-password"
-                  className="text-sm text-gray-600 hover:text-gray-900"
-                >
-                  Forgot your password?
-                </Link>
-              </div>
             </div>
           </div>
           <RequestInviteModal 

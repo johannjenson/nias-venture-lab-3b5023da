@@ -20,6 +20,8 @@ interface RequestBody {
 }
 
 const getEmailContent = (status: string, firstName: string, recipient: RequestBody['recipient']) => {
+  const loginUrl = "https://www.nias.io/login";
+  
   switch (status) {
     case 'approved':
       return {
@@ -33,15 +35,15 @@ const getEmailContent = (status: string, firstName: string, recipient: RequestBo
             </p>
 
             <div style="background-color: #F3F4F6; padding: 16px; border-radius: 8px; margin: 24px 0;">
-              <h2 style="color: #221F26; font-size: 18px; margin-bottom: 12px;">Login Instructions</h2>
+              <h2 style="color: #221F26; font-size: 18px; margin-bottom: 12px;">Login to Your Account</h2>
               <p style="color: #4B5563; margin: 0; line-height: 1.5;">
-                To access your account:
-                <ol style="margin-top: 8px;">
-                  <li>Visit our login page</li>
-                  <li>Enter your email address: ${recipient.email}</li>
-                  <li>Click "Sign in with OTP"</li>
-                  <li>We'll send you a magic link to login</li>
-                </ol>
+                Click the button below to log in. We'll send you a secure magic link to access your account.
+              </p>
+              <a href="${loginUrl}" style="display: inline-block; background-color: #000000; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; margin-top: 16px;">
+                Login to Your Account
+              </a>
+              <p style="color: #6B7280; font-size: 14px; margin-top: 12px;">
+                Or copy this URL: ${loginUrl}
               </p>
             </div>
 
@@ -128,4 +130,3 @@ const handler = async (req: Request): Promise<Response> => {
 };
 
 serve(handler);
-
