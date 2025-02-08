@@ -11,6 +11,10 @@ import EventRegistration from "@/components/event/EventRegistration";
 const RiyadhEvent = () => {
   const [showRequestModal, setShowRequestModal] = useState(false);
 
+  const handleRequestClick = () => {
+    window.open('https://lu.ma/0zeu2i1e', '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Sticky Header */}
@@ -22,12 +26,12 @@ const RiyadhEvent = () => {
 
       <main className="pt-16">
         <EventHero
-          onRequestInvite={() => setShowRequestModal(true)}
+          onRequestInvite={handleRequestClick}
         />
         <EventOverview />
         <EventAudience />
         <EventRegistration 
-          onRequestInvite={() => setShowRequestModal(true)}
+          onRequestInvite={handleRequestClick}
         />
       </main>
 
