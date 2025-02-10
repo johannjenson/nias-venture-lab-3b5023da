@@ -19,7 +19,7 @@ export const useActualContactId = () => {
       const eventId = parseInt(prefixedId.replace('event_', ''), 10);
       const { data: eventRequest, error } = await supabase
         .from('event_requests')
-        .select('notes_uuid')
+        .select<'notes_uuid', EventRequest>('notes_uuid')
         .eq('id', eventId)
         .single();
 
@@ -40,7 +40,7 @@ export const useActualContactId = () => {
       
       const { data: membershipRequest, error: membershipError } = await supabase
         .from('Request')
-        .select('email')
+        .select<'email', MembershipRequest>('email')
         .eq('id', requestId)
         .single();
 
@@ -48,7 +48,7 @@ export const useActualContactId = () => {
 
       const { data: contact, error: contactError } = await supabase
         .from('contacts')
-        .select('id')
+        .select<'id', Contact>('id')
         .eq('email', membershipRequest.email)
         .eq('source', 'network_request')
         .eq('source_id', requestId.toString())
