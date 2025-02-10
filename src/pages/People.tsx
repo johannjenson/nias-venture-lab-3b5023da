@@ -1,3 +1,4 @@
+
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +15,7 @@ const People = () => {
     {
       name: "Fahad Alsudairy",
       role: "Real Estate",
-      imageUrl: "https://images.unsplash.com/photo-1551523713-c1473aa01d9f", // Arabian gazelle representing adaptability and resilience
+      imageUrl: "https://images.unsplash.com/photo-1549682794-0a55a354d9e8", // Arabian oryx representing strength and resilience
       linkedIn: "", // No LinkedIn profile
     },
     {
