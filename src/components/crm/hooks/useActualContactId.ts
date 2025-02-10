@@ -11,24 +11,24 @@ export const useActualContactId = () => {
   const { toast } = useToast();
 
   const getActualContactId = async (prefixedId: string): Promise<string | null> => {
-    if (prefixedId.startsWith('event_')) {
-      const eventId = parseInt(prefixedId.replace('event_', ''), 10);
-      const { data: eventRequest, error } = await supabase
+    if (prefixedId.startsWith('forum_')) {
+      const forumId = parseInt(prefixedId.replace('forum_', ''), 10);
+      const { data: forumRequest, error } = await supabase
         .from('event_requests')
         .select('*')
-        .eq('id', eventId)
+        .eq('id', forumId)
         .maybeSingle();
 
-      if (error || !eventRequest) {
+      if (error || !forumRequest) {
         toast({
           title: "Error fetching contact ID",
-          description: "Could not find the event request",
+          description: "Could not find the forum request",
           variant: "destructive",
         });
         return null;
       }
       
-      return eventRequest.notes_uuid ?? null;
+      return forumRequest.notes_uuid ?? null;
     }
 
     if (prefixedId.startsWith('membership_')) {
@@ -71,3 +71,4 @@ export const useActualContactId = () => {
 
   return getActualContactId;
 };
+

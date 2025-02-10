@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import People from "./pages/People";
-import RiyadhEvent from "./pages/RiyadhEvent";
+import RiyadhForum from "./pages/RiyadhEvent";
 import LeapDinner from "./pages/LeapDinner";
 import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
@@ -27,7 +27,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/people" element={<People />} />
-          <Route path="/events/nias-business-forum" element={<RiyadhEvent />} />
+          <Route path="/events/nias-business-forum" element={<RiyadhForum />} />
           <Route path="/events/leap-dinner" element={<LeapDinner />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/contact" element={<Contact />} />
@@ -47,3 +47,4 @@ const App = () => (
 );
 
 export default App;
+

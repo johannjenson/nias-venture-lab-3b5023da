@@ -1,10 +1,11 @@
+
 import { Button } from "@/components/ui/button";
 
-interface EventRegistrationProps {
+interface ForumRegistrationProps {
   onRequestInvite: () => void;
 }
 
-const EventRegistration = ({ onRequestInvite }: EventRegistrationProps) => {
+const ForumRegistration = ({ onRequestInvite }: ForumRegistrationProps) => {
   return (
     <section id="register" className="py-24 bg-secondary">
       <div className="max-w-7xl mx-auto px-6">
@@ -13,7 +14,7 @@ const EventRegistration = ({ onRequestInvite }: EventRegistrationProps) => {
             Request Your Invitation
           </h2>
           <p className="text-gray-600 mb-8">
-            This exclusive event is limited to qualified business leaders and investors.
+            This exclusive forum is limited to qualified business leaders and investors.
             Submit your details to request an invitation.
           </p>
           <Button 
@@ -28,4 +29,5 @@ const EventRegistration = ({ onRequestInvite }: EventRegistrationProps) => {
   );
 };
 
-export default EventRegistration;
+export default ForumRegistration;
+

@@ -3,12 +3,12 @@ import { useState } from "react";
 import EventInviteModal from "@/components/event-invite/EventInviteModal";
 import Footer from "@/components/Footer";
 import { BackButton } from "@/components/ui/back-button";
-import EventHero from "@/components/event/EventHero";
-import EventOverview from "@/components/event/EventOverview";
-import EventAudience from "@/components/event/EventAudience";
-import EventRegistration from "@/components/event/EventRegistration";
+import ForumHero from "@/components/event/EventHero";
+import ForumOverview from "@/components/event/EventOverview";
+import ForumAudience from "@/components/event/EventAudience";
+import ForumRegistration from "@/components/event/EventRegistration";
 
-const RiyadhEvent = () => {
+const RiyadhForum = () => {
   const [showRequestModal, setShowRequestModal] = useState(false);
 
   const handleRequestClick = () => {
@@ -25,12 +25,12 @@ const RiyadhEvent = () => {
       </div>
 
       <main className="pt-16">
-        <EventHero
+        <ForumHero
           onRequestInvite={handleRequestClick}
         />
-        <EventOverview />
-        <EventAudience />
-        <EventRegistration 
+        <ForumOverview />
+        <ForumAudience />
+        <ForumRegistration 
           onRequestInvite={handleRequestClick}
         />
       </main>
@@ -45,4 +45,5 @@ const RiyadhEvent = () => {
   );
 };
 
-export default RiyadhEvent;
+export default RiyadhForum;
+

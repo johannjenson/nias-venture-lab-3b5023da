@@ -1,10 +1,11 @@
+
 import { Button } from "@/components/ui/button";
 
-interface EventHeroProps {
+interface ForumHeroProps {
   onRequestInvite: () => void;
 }
 
-const EventHero = ({ onRequestInvite }: EventHeroProps) => {
+const ForumHero = ({ onRequestInvite }: ForumHeroProps) => {
   return (
     <header className="py-24 bg-secondary">
       <div className="max-w-7xl mx-auto px-6">
@@ -27,4 +28,5 @@ const EventHero = ({ onRequestInvite }: EventHeroProps) => {
   );
 };
 
-export default EventHero;
+export default ForumHero;
+

@@ -1,3 +1,4 @@
+
 const audiences = [
   {
     title: "Business Leaders",
@@ -13,7 +14,7 @@ const audiences = [
   }
 ];
 
-const EventAudience = () => {
+const ForumAudience = () => {
   return (
     <section className="py-24 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-6">
@@ -31,4 +32,5 @@ const EventAudience = () => {
   );
 };
 
-export default EventAudience;
+export default ForumAudience;
+
