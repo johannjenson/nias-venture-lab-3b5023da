@@ -1,4 +1,3 @@
-
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -33,7 +32,7 @@ const People = () => {
     {
       name: "Lukas Gaebler",
       role: "Tech",
-      imageUrl: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2", // Horses representing power and adaptability
+      imageUrl: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2", // Beautiful Arabian horses
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
     },
     {
