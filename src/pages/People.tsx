@@ -15,7 +15,7 @@ const People = () => {
     {
       name: "Fahad Alsudairy",
       role: "Real Estate",
-      imageUrl: "https://images.unsplash.com/photo-1535732759880-bbd5c7265e3f", // Arabian angel fish representing the rich marine life of the Red Sea
+      imageUrl: "/lovable-uploads/001f9ae1-9f2f-4f69-96da-77ae7a562316.png", // Arabian angel fish
       linkedIn: "", // No LinkedIn profile
     },
     {
