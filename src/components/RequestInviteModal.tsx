@@ -41,7 +41,7 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
             formData={formData}
             onInputChange={handleInputChange}
             onTitleChange={(value) => setFormData(prev => ({ ...prev, title: value }))}
-            onIndustryChange={(value) => setFormData(prev => ({ ...prev, industry: value }))}
+            onIndustryChange={(value) => setFormData(prev => ({ ...prev, industry: value as IndustryType }))}
             onNext={handleNext}
           />
         ) : (

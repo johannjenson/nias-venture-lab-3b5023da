@@ -12,3 +12,4 @@ export interface FormData {
   additionalInfo: string;
   industry: IndustryType;
 }
+

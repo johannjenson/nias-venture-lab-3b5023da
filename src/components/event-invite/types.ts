@@ -12,3 +12,4 @@ export interface EventFormData {
   title: string;
   interests: string;
 }
+

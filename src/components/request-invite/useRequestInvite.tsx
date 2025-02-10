@@ -11,7 +11,7 @@ const initialFormData: FormData = {
   email: "",
   company: "",
   title: "",
-  industry: "technology", // Set a default value from the enum
+  industry: "technology",
   linkedinUrl: "",
   referredBy: "",
   additionalInfo: "",
@@ -50,8 +50,7 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
         ]);
 
       if (dbError) {
-        // Check specifically for duplicate email error
-        if (dbError.code === '23505' && dbError.message?.includes('unique_contact_email')) {
+        if (dbError.code === '23505') {
           toast.error("An application with this email already exists. Our team will be in touch soon!");
           onCloseModal(false);
           setFormData(initialFormData);
@@ -73,7 +72,6 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
 
       if (emailError) {
         console.error('Error sending confirmation email:', emailError);
-        // Don't throw the error here, as we want the form submission to succeed even if email fails
       }
 
       toast.success("Thank you for your interest in joining the Nias Network. We'll review your application and be in touch soon!");

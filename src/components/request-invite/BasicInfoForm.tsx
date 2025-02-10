@@ -4,13 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { FormData } from "./types";
-import { IndustryType } from "../crm/types/contact";
 
 interface BasicInfoFormProps {
   formData: FormData;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onTitleChange: (value: string) => void;
-  onIndustryChange: (value: IndustryType) => void;
+  onIndustryChange: (value: string) => void;
   onNext: (e: React.FormEvent) => void;
 }
 
@@ -24,6 +23,7 @@ const BasicInfoForm = ({ formData, onInputChange, onTitleChange, onNext }: Basic
           name="fullName"
           value={formData.fullName}
           onChange={onInputChange}
+          placeholder="Enter your full name"
           required
         />
       </div>
@@ -36,6 +36,7 @@ const BasicInfoForm = ({ formData, onInputChange, onTitleChange, onNext }: Basic
           type="tel"
           value={formData.phoneNumber}
           onChange={onInputChange}
+          placeholder="Enter your phone number"
           required
         />
       </div>
@@ -48,6 +49,7 @@ const BasicInfoForm = ({ formData, onInputChange, onTitleChange, onNext }: Basic
           type="email"
           value={formData.email}
           onChange={onInputChange}
+          placeholder="Enter your business email"
           required
         />
       </div>
@@ -59,6 +61,7 @@ const BasicInfoForm = ({ formData, onInputChange, onTitleChange, onNext }: Basic
           name="company"
           value={formData.company}
           onChange={onInputChange}
+          placeholder="Enter your company name"
           required
         />
       </div>
@@ -66,7 +69,6 @@ const BasicInfoForm = ({ formData, onInputChange, onTitleChange, onNext }: Basic
       <div className="space-y-2">
         <Label htmlFor="title">Your Role</Label>
         <Select
-          name="title"
           value={formData.title}
           onValueChange={onTitleChange}
         >
