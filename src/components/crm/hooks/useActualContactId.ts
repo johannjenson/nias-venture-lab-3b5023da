@@ -20,9 +20,9 @@ export const useActualContactId = () => {
       const { data: eventRequest, error } = await supabase
         .from('event_requests')
         .select('notes_uuid')
-        .returns<EventRequest>()
         .eq('id', eventId)
-        .single();
+        .single()
+        .returns<EventRequest>();
 
       if (error || !eventRequest) {
         toast({
@@ -42,20 +42,20 @@ export const useActualContactId = () => {
       const { data: membershipRequest, error: membershipError } = await supabase
         .from('Request')
         .select('email')
-        .returns<MembershipRequest>()
         .eq('id', requestId)
-        .single();
+        .single()
+        .returns<MembershipRequest>();
 
       if (membershipError || !membershipRequest?.email) return null;
 
       const { data: contact, error: contactError } = await supabase
         .from('contacts')
         .select('id')
-        .returns<Contact>()
         .eq('email', membershipRequest.email)
         .eq('source', 'network_request')
         .eq('source_id', requestId.toString())
-        .single();
+        .single()
+        .returns<Contact>();
 
       if (contactError || !contact) {
         toast({
