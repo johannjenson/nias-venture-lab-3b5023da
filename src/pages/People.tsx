@@ -15,7 +15,7 @@ const People = () => {
     {
       name: "Fahad Alsudairy",
       role: "Real Estate",
-      imageUrl: "/lovable-uploads/001f9ae1-9f2f-4f69-96da-77ae7a562316.png", // Arabian angel fish
+      imageUrl: "https://images.unsplash.com/photo-1533450718592-29d45635f0a9", // Arabian camel representing strength and endurance in Saudi's landscape
       linkedIn: "", // No LinkedIn profile
     },
     {
@@ -115,3 +115,4 @@ const People = () => {
 };
 
 export default People;
+
