@@ -288,6 +288,8 @@ export type Database = {
           linkedin_url: string | null
           notes: string | null
           phone: string | null
+          source: string | null
+          source_id: string | null
           stage: Database["public"]["Enums"]["contact_stage"] | null
           title: string | null
           updated_at: string | null
@@ -309,6 +311,8 @@ export type Database = {
           linkedin_url?: string | null
           notes?: string | null
           phone?: string | null
+          source?: string | null
+          source_id?: string | null
           stage?: Database["public"]["Enums"]["contact_stage"] | null
           title?: string | null
           updated_at?: string | null
@@ -330,6 +334,8 @@ export type Database = {
           linkedin_url?: string | null
           notes?: string | null
           phone?: string | null
+          source?: string | null
+          source_id?: string | null
           stage?: Database["public"]["Enums"]["contact_stage"] | null
           title?: string | null
           updated_at?: string | null

@@ -24,12 +24,12 @@ export const createContactAndUpdateRequest = async (
 ) => {
   // First check if contact already exists
   const { data: existingContact, error: fetchError } = await supabase
-    .from('leads_with_user_status')
-    .select('*')
+    .from('contacts')
+    .select('id')
     .eq('email', contactData.email)
-    .maybeSingle();
+    .single();
 
-  if (fetchError) {
+  if (fetchError && fetchError.code !== 'PGRST116') {
     throw fetchError;
   }
 
