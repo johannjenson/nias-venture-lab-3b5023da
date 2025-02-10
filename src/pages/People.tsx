@@ -1,3 +1,4 @@
+
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +17,12 @@ const People = () => {
       role: "Finance",
       imageUrl: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d", // Antelope and zebra representing balance and precision
       linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162",
+    },
+    {
+      name: "Fahad Alsudairy",
+      role: "Real Estate",
+      imageUrl: "https://images.unsplash.com/photo-1551523713-c1473aa01d9f", // Arabian gazelle representing adaptability and resilience
+      linkedIn: "", // No LinkedIn profile
     },
     {
       name: "Johann Jenson",
@@ -109,3 +116,4 @@ const People = () => {
 };
 
 export default People;
+
