@@ -47,7 +47,7 @@ const EventOverview = () => {
             </div>
           </div>
           <div className="bg-secondary p-8 rounded-lg shadow-sm">
-            <h3 className="text-2xl font-bold text-primary mb-6">Event Details</h3>
+            <h3 className="text-2xl font-bold text-primary mb-6">Details</h3>
             <div className="space-y-4">
               <div>
                 <h4 className="font-semibold text-primary">Date & Time</h4>
