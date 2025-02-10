@@ -15,7 +15,7 @@ export const useActualContactId = () => {
       const eventId = parseInt(prefixedId.replace('event_', ''), 10);
       const { data: eventRequest, error } = await supabase
         .from('event_requests')
-        .select<'event_requests', EventRequest>('notes_uuid')
+        .select('*')
         .eq('id', eventId)
         .maybeSingle();
 
@@ -36,7 +36,7 @@ export const useActualContactId = () => {
       
       const { data: membershipRequest, error: membershipError } = await supabase
         .from('Request')
-        .select<'Request', MembershipRequest>('email')
+        .select('*')
         .eq('id', requestId)
         .maybeSingle();
 
@@ -44,7 +44,7 @@ export const useActualContactId = () => {
 
       const { data: contact, error: contactError } = await supabase
         .from('contacts')
-        .select<'contacts', Contact>('id')
+        .select('*')
         .eq('email', membershipRequest.email)
         .eq('source', 'network_request')
         .eq('source_id', requestId.toString())
