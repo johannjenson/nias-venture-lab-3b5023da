@@ -1,3 +1,4 @@
+
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +15,7 @@ const People = () => {
     {
       name: "Fahad Alsudairy",
       role: "Real Estate",
-      imageUrl: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d", // Arabian antelope representing native Saudi wildlife
+      imageUrl: "https://images.unsplash.com/photo-1438565434616-3ef039228b15", // Arabian mountain goats native to Saudi Arabia
       linkedIn: "", // No LinkedIn profile
     },
     {
