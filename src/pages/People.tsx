@@ -1,4 +1,3 @@
-
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -13,16 +12,16 @@ const People = () => {
       linkedIn: "", // Removed LinkedIn URL
     },
     {
-      name: "Ibrahim AlSemari",
-      role: "Finance",
-      imageUrl: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d", // Antelope and zebra representing balance and precision
-      linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162",
-    },
-    {
       name: "Fahad Alsudairy",
       role: "Real Estate",
       imageUrl: "https://images.unsplash.com/photo-1551523713-c1473aa01d9f", // Arabian gazelle representing adaptability and resilience
       linkedIn: "", // No LinkedIn profile
+    },
+    {
+      name: "Ibrahim AlSemari",
+      role: "Finance",
+      imageUrl: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d", // Antelope and zebra representing balance and precision
+      linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162",
     },
     {
       name: "Johann Jenson",
@@ -46,7 +45,6 @@ const People = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center">
           <Button
@@ -116,4 +114,3 @@ const People = () => {
 };
 
 export default People;
-
