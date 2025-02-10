@@ -9,6 +9,7 @@ import {
 import BasicInfoForm from "./request-invite/BasicInfoForm";
 import AdditionalInfoForm from "./request-invite/AdditionalInfoForm";
 import { useRequestInvite } from "./request-invite/useRequestInvite";
+import { IndustryType } from "./crm/types/contact";
 
 interface RequestInviteModalProps {
   open: boolean;

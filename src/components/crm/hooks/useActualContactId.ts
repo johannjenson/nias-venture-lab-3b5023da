@@ -21,8 +21,8 @@ export const useActualContactId = () => {
         .from('event_requests')
         .select('notes_uuid')
         .eq('id', eventId)
-        .single()
-        .returns<EventRequest>();
+        .returns<EventRequest>()
+        .single();
 
       if (error || !eventRequest) {
         toast({
@@ -43,8 +43,8 @@ export const useActualContactId = () => {
         .from('Request')
         .select('email')
         .eq('id', requestId)
-        .single()
-        .returns<MembershipRequest>();
+        .returns<MembershipRequest>()
+        .single();
 
       if (membershipError || !membershipRequest?.email) return null;
 
@@ -54,8 +54,8 @@ export const useActualContactId = () => {
         .eq('email', membershipRequest.email)
         .eq('source', 'network_request')
         .eq('source_id', requestId.toString())
-        .single()
-        .returns<Contact>();
+        .returns<Contact>()
+        .single();
 
       if (contactError || !contact) {
         toast({
