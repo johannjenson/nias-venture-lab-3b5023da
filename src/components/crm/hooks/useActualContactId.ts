@@ -3,13 +3,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import type { Database } from "@/integrations/supabase/types";
 
-type EventRequestRow = Database['public']['Tables']['event_requests']['Row'];
-type RequestRow = Database['public']['Tables']['Request']['Row'];
-type ContactRow = Database['public']['Tables']['contacts']['Row'];
-
-type EventRequest = { notes_uuid: EventRequestRow['notes_uuid'] };
-type MembershipRequest = { email: RequestRow['email'] };
-type Contact = { id: ContactRow['id'] };
+type EventRequest = Database['public']['Tables']['event_requests']['Row'];
+type MembershipRequest = Database['public']['Tables']['Request']['Row'];
+type Contact = Database['public']['Tables']['contacts']['Row'];
 
 export const useActualContactId = () => {
   const { toast } = useToast();
@@ -19,10 +15,9 @@ export const useActualContactId = () => {
       const eventId = parseInt(prefixedId.replace('event_', ''), 10);
       const { data: eventRequest, error } = await supabase
         .from('event_requests')
-        .select('notes_uuid')
+        .select<'event_requests', EventRequest>('notes_uuid')
         .eq('id', eventId)
-        .returns<EventRequest>()
-        .single();
+        .maybeSingle();
 
       if (error || !eventRequest) {
         toast({
@@ -41,21 +36,19 @@ export const useActualContactId = () => {
       
       const { data: membershipRequest, error: membershipError } = await supabase
         .from('Request')
-        .select('email')
+        .select<'Request', MembershipRequest>('email')
         .eq('id', requestId)
-        .returns<MembershipRequest>()
-        .single();
+        .maybeSingle();
 
       if (membershipError || !membershipRequest?.email) return null;
 
       const { data: contact, error: contactError } = await supabase
         .from('contacts')
-        .select('id')
+        .select<'contacts', Contact>('id')
         .eq('email', membershipRequest.email)
         .eq('source', 'network_request')
         .eq('source_id', requestId.toString())
-        .returns<Contact>()
-        .single();
+        .maybeSingle();
 
       if (contactError || !contact) {
         toast({
