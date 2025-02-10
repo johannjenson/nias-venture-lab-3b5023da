@@ -3,17 +3,13 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import type { Database } from "@/integrations/supabase/types";
 
-type EventRequest = {
-  notes_uuid: string | null;
-};
+type EventRequestRow = Database['public']['Tables']['event_requests']['Row'];
+type RequestRow = Database['public']['Tables']['Request']['Row'];
+type ContactRow = Database['public']['Tables']['contacts']['Row'];
 
-type MembershipRequest = {
-  email: string | null;
-};
-
-type Contact = {
-  id: string;
-};
+type EventRequest = Pick<EventRequestRow, 'notes_uuid'>;
+type MembershipRequest = Pick<RequestRow, 'email'>;
+type Contact = Pick<ContactRow, 'id'>;
 
 export const useActualContactId = () => {
   const { toast } = useToast();
@@ -28,7 +24,7 @@ export const useActualContactId = () => {
         .returns<EventRequest>()
         .maybeSingle();
 
-      if (error || !eventRequest?.notes_uuid) {
+      if (error || !eventRequest) {
         toast({
           title: "Error fetching contact ID",
           description: "Could not find the event request",
@@ -37,7 +33,7 @@ export const useActualContactId = () => {
         return null;
       }
       
-      return eventRequest.notes_uuid;
+      return eventRequest.notes_uuid ?? null;
     }
 
     if (prefixedId.startsWith('membership_')) {
@@ -61,7 +57,7 @@ export const useActualContactId = () => {
         .returns<Contact>()
         .maybeSingle();
 
-      if (contactError || !contact?.id) {
+      if (contactError || !contact) {
         toast({
           title: "Error fetching contact ID",
           description: "Could not find the contact",
