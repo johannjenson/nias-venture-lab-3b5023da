@@ -7,9 +7,9 @@ type EventRequestRow = Database['public']['Tables']['event_requests']['Row'];
 type RequestRow = Database['public']['Tables']['Request']['Row'];
 type ContactRow = Database['public']['Tables']['contacts']['Row'];
 
-type EventRequest = Pick<EventRequestRow, 'notes_uuid'>;
-type MembershipRequest = Pick<RequestRow, 'email'>;
-type Contact = Pick<ContactRow, 'id'>;
+type EventRequest = { notes_uuid: EventRequestRow['notes_uuid'] };
+type MembershipRequest = { email: RequestRow['email'] };
+type Contact = { id: ContactRow['id'] };
 
 export const useActualContactId = () => {
   const { toast } = useToast();
@@ -19,7 +19,8 @@ export const useActualContactId = () => {
       const eventId = parseInt(prefixedId.replace('event_', ''), 10);
       const { data: eventRequest, error } = await supabase
         .from('event_requests')
-        .select<'notes_uuid', EventRequest>('notes_uuid')
+        .select('notes_uuid')
+        .returns<EventRequest>()
         .eq('id', eventId)
         .single();
 
@@ -40,7 +41,8 @@ export const useActualContactId = () => {
       
       const { data: membershipRequest, error: membershipError } = await supabase
         .from('Request')
-        .select<'email', MembershipRequest>('email')
+        .select('email')
+        .returns<MembershipRequest>()
         .eq('id', requestId)
         .single();
 
@@ -48,7 +50,8 @@ export const useActualContactId = () => {
 
       const { data: contact, error: contactError } = await supabase
         .from('contacts')
-        .select<'id', Contact>('id')
+        .select('id')
+        .returns<Contact>()
         .eq('email', membershipRequest.email)
         .eq('source', 'network_request')
         .eq('source_id', requestId.toString())
