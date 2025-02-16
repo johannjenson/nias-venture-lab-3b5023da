@@ -2,10 +2,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
-import { BackButton } from "@/components/ui/back-button";
-import { CalendarIcon, Clock, MapPin, Users } from "lucide-react";
+import { CalendarIcon, Clock, MapPin, Users, Waves } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const SuhoorDinner = () => {
+  const navigate = useNavigate();
   const handleRequestClick = () => {
     window.open('https://lu.ma/zlllw0y3', '_blank');
   };
@@ -15,7 +16,12 @@ const SuhoorDinner = () => {
       {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center px-6">
-          <BackButton />
+          <button 
+            onClick={() => navigate('/')} 
+            className="hover:opacity-80 transition-opacity"
+          >
+            <Waves className="h-8 w-8 text-primary" />
+          </button>
         </div>
       </div>
 
