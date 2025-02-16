@@ -1,4 +1,3 @@
-
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -86,7 +85,7 @@ const MainNav = () => {
     {
       title: "Ramadan Iftar Dinner",
       href: "/events/iftar-dinner",
-      description: "Join us for an intimate Iftar dinner gathering on March 8th during the blessed month of Ramadan.",
+      description: "Join us for an intimate Iftar dinner gathering with fellow business leaders on March 8th in Riyadh.",
     },
   ];
 
