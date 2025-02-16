@@ -8,7 +8,7 @@ import Index from "./pages/Index";
 import People from "./pages/People";
 import RiyadhForum from "./pages/RiyadhEvent";
 import LeapDinner from "./pages/LeapDinner";
-import IftarDinner from "./pages/IftarDinner";
+import SuhoorDinner from "./pages/SuhoorDinner";
 import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -30,7 +30,7 @@ const App = () => (
           <Route path="/people" element={<People />} />
           <Route path="/events/nias-business-forum" element={<RiyadhForum />} />
           <Route path="/events/leap-dinner" element={<LeapDinner />} />
-          <Route path="/events/iftar-dinner" element={<IftarDinner />} />
+          <Route path="/events/suhoor-dinner" element={<SuhoorDinner />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
