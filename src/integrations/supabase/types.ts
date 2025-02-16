@@ -575,6 +575,8 @@ export type Database = {
       Request: {
         Row: {
           additional_info: string | null
+          attio_sync_error: string | null
+          attio_synced: boolean | null
           company: string | null
           created_at: string
           email: string | null
@@ -592,6 +594,8 @@ export type Database = {
         }
         Insert: {
           additional_info?: string | null
+          attio_sync_error?: string | null
+          attio_synced?: boolean | null
           company?: string | null
           created_at?: string
           email?: string | null
@@ -609,6 +613,8 @@ export type Database = {
         }
         Update: {
           additional_info?: string | null
+          attio_sync_error?: string | null
+          attio_synced?: boolean | null
           company?: string | null
           created_at?: string
           email?: string | null
