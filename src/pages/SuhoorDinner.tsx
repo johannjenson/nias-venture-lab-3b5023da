@@ -57,16 +57,16 @@ const SuhoorDinner = () => {
                     <div>
                       <h3 className="font-semibold text-primary">When</h3>
                       <p className="text-gray-600">Saturday, March 8th, 2024</p>
-                      <p className="text-gray-600">Pre-dawn</p>
+                      <p className="text-gray-600">Evening to Night</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Clock className="h-6 w-6 text-primary" />
                     <div>
                       <h3 className="font-semibold text-primary">Schedule</h3>
-                      <p className="text-gray-600">3:30 AM - Guest arrival and networking</p>
-                      <p className="text-gray-600">4:00 AM - Suhoor meal</p>
-                      <p className="text-gray-600">5:00 AM - Event concludes</p>
+                      <p className="text-gray-600">10:00 PM - Guest arrival and networking</p>
+                      <p className="text-gray-600">10:30 PM - Suhoor meal</p>
+                      <p className="text-gray-600">11:30 PM - Event concludes</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
