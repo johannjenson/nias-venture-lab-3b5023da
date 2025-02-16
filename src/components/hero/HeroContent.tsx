@@ -1,5 +1,6 @@
+
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Waves } from "lucide-react";
 
 interface HeroContentProps {
   onRequestInvite: () => void;
@@ -10,6 +11,7 @@ const HeroContent = ({ onRequestInvite }: HeroContentProps) => {
     <div className="flex-1 flex items-center bg-secondary pt-32 md:pt-16">
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-24">
         <div className="max-w-3xl mx-auto text-center">
+          <Waves className="h-12 w-12 text-primary mx-auto mb-8" />
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#221F26] mb-6">
             Land & Expand in Saudi Arabia
           </h1>
