@@ -1,25 +1,18 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { CalendarIcon, Clock, MapPin, Users, Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
 const SuhoorDinner = () => {
   const navigate = useNavigate();
   const handleRequestClick = () => {
     window.open('https://lu.ma/zlllw0y3', '_blank');
   };
-
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center px-6">
-          <button 
-            onClick={() => navigate('/')} 
-            className="hover:opacity-80 transition-opacity"
-          >
+          <button onClick={() => navigate('/')} className="hover:opacity-80 transition-opacity">
             <Waves className="h-8 w-8 text-primary" />
           </button>
         </div>
@@ -36,10 +29,7 @@ const SuhoorDinner = () => {
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">
                 Join us for an intimate Suhoor dinner gathering with fellow business leaders, investors, and industry experts
               </p>
-              <Button
-                className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in"
-                onClick={handleRequestClick}
-              >
+              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={handleRequestClick}>
                 Request an Invite
               </Button>
             </div>
@@ -62,7 +52,7 @@ const SuhoorDinner = () => {
                     <CalendarIcon className="h-6 w-6 text-primary" />
                     <div>
                       <h3 className="font-semibold text-primary">When</h3>
-                      <p className="text-gray-600">Saturday, March 8th, 2024</p>
+                      <p className="text-gray-600">Saturday, March 8th, 2025</p>
                       <p className="text-gray-600">Evening to Night</p>
                     </div>
                   </div>
@@ -113,8 +103,6 @@ const SuhoorDinner = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default SuhoorDinner;
