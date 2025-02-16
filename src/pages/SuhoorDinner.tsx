@@ -64,9 +64,9 @@ const SuhoorDinner = () => {
                     <Clock className="h-6 w-6 text-primary" />
                     <div>
                       <h3 className="font-semibold text-primary">Schedule</h3>
-                      <p className="text-gray-600">10:00 PM - Guest arrival and networking</p>
-                      <p className="text-gray-600">10:30 PM - Suhoor meal</p>
-                      <p className="text-gray-600">11:30 PM - Event concludes</p>
+                      <p className="text-gray-600">9:30 PM - Guest arrival and networking</p>
+                      <p className="text-gray-600">10:00 PM - Suhoor meal</p>
+                      <p className="text-gray-600">12:00 AM - Event concludes</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
