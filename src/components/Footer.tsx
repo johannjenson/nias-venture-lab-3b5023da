@@ -52,7 +52,7 @@ const Footer = () => {
       { name: "Events", submenu: [
         { name: "Business Forum", href: "/events/nias-business-forum" },
         { name: "LEAP Dinner", href: "/events/leap-dinner" },
-        { name: "Iftar Dinner", href: "/events/iftar-dinner" },
+        { name: "Suhoor Dinner", href: "/events/suhoor-dinner" },
       ]},
       { name: "Resources", submenu: [
         { name: "Opportunities", href: "/resources" },

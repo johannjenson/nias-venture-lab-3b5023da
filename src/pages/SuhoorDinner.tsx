@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { BackButton } from "@/components/ui/back-button";
 import { CalendarIcon, Clock, MapPin, Users } from "lucide-react";
 
-const IftarDinner = () => {
+const SuhoorDinner = () => {
   const handleRequestClick = () => {
     window.open('https://lu.ma/zlllw0y3', '_blank');
   };
@@ -25,10 +25,10 @@ const IftarDinner = () => {
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl">
               <h1 className="text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
-                Nias Network Iftar Dinner
+                Nias Network Suhoor Dinner
               </h1>
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">
-                Join us for an intimate Iftar dinner gathering with fellow business leaders, investors, and industry experts during the blessed month of Ramadan
+                Join us for an intimate Suhoor dinner gathering with fellow business leaders, investors, and industry experts
               </p>
               <Button
                 className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in"
@@ -46,7 +46,7 @@ const IftarDinner = () => {
             <div className="grid md:grid-cols-2 gap-16 items-start">
               <div>
                 <h2 className="text-3xl font-bold text-primary mb-6">
-                  Connect Over Breaking Fast
+                  Connect Over Suhoor
                 </h2>
                 <p className="text-gray-600 mb-8">
                   Experience the spirit of Ramadan while building meaningful connections with fellow business leaders. This intimate gathering provides a unique opportunity to network and explore potential collaborations in a warm and welcoming atmosphere.
@@ -57,17 +57,16 @@ const IftarDinner = () => {
                     <div>
                       <h3 className="font-semibold text-primary">When</h3>
                       <p className="text-gray-600">Saturday, March 8th, 2024</p>
-                      <p className="text-gray-600">Maghrib Prayer Time (Sunset)</p>
+                      <p className="text-gray-600">Pre-dawn</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Clock className="h-6 w-6 text-primary" />
                     <div>
                       <h3 className="font-semibold text-primary">Schedule</h3>
-                      <p className="text-gray-600">6:00 PM - Guest arrival and networking</p>
-                      <p className="text-gray-600">6:30 PM - Breaking fast and Maghrib prayer</p>
-                      <p className="text-gray-600">7:00 PM - Dinner and discussions</p>
-                      <p className="text-gray-600">9:00 PM - Event concludes</p>
+                      <p className="text-gray-600">3:30 AM - Guest arrival and networking</p>
+                      <p className="text-gray-600">4:00 AM - Suhoor meal</p>
+                      <p className="text-gray-600">5:00 AM - Event concludes</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -90,7 +89,7 @@ const IftarDinner = () => {
               <div className="bg-[#F5F2EB] p-8 rounded-lg">
                 <h3 className="text-2xl font-bold text-primary mb-6">What to Expect</h3>
                 <ul className="space-y-4 text-gray-600">
-                  <li>• Break fast with a curated selection of traditional and modern dishes</li>
+                  <li>• Share a traditional Suhoor meal in an elegant setting</li>
                   <li>• Connect with key decision-makers in an intimate setting</li>
                   <li>• Discuss business opportunities in Saudi Arabia</li>
                   <li>• Share insights and experiences with fellow leaders</li>
@@ -112,4 +111,4 @@ const IftarDinner = () => {
   );
 };
 
-export default IftarDinner;
+export default SuhoorDinner;
