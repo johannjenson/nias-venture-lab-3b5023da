@@ -7,7 +7,7 @@ import { CalendarIcon, Clock, MapPin, Users } from "lucide-react";
 
 const IftarDinner = () => {
   const handleRequestClick = () => {
-    window.open('https://lu.ma/niasiftar', '_blank');
+    window.open('https://lu.ma/zlllw0y3', '_blank');
   };
 
   return (
