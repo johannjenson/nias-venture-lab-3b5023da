@@ -5,13 +5,15 @@ import IndustryCard from "@/components/resources/IndustryCard";
 import SearchAndFilter from "@/components/resources/SearchAndFilter";
 import { industries } from "@/data/industries";
 import { Button } from "@/components/ui/button";
-import { BackButton } from "@/components/ui/back-button";
+import { Waves } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import RequestInviteModal from "@/components/RequestInviteModal";
 
 const Resources = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("score");
   const [showRequestModal, setShowRequestModal] = useState(false);
+  const navigate = useNavigate();
 
   const filteredAndSortedIndustries = industries
     .filter(industry => 
@@ -34,8 +36,14 @@ const Resources = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Sticky Header */}
-      <div className="fixed top-0 left-0 right-0 bg-white border-b z-50 px-4">
-        <div className="max-w-7xl mx-auto h-16 flex items-center justify-end">
+      <div className="fixed top-0 left-0 right-0 bg-white border-b z-50">
+        <div className="max-w-7xl mx-auto h-16 flex items-center justify-between px-6">
+          <button 
+            onClick={() => navigate('/')} 
+            className="hover:opacity-80 transition-opacity"
+          >
+            <Waves className="h-8 w-8 text-primary" />
+          </button>
           <Button
             onClick={() => setShowRequestModal(true)}
             className="bg-primary hover:bg-primary/90 text-white"
@@ -44,8 +52,6 @@ const Resources = () => {
           </Button>
         </div>
       </div>
-
-      <BackButton />
 
       <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-4xl mx-auto">
