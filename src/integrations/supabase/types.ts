@@ -431,6 +431,57 @@ export type Database = {
         }
         Relationships: []
       }
+      iftar_requests: {
+        Row: {
+          company: string | null
+          created_at: string | null
+          dietary_requirements: string | null
+          email: string
+          id: number
+          industry: Database["public"]["Enums"]["industry_type"] | null
+          moved_to_pipeline: boolean | null
+          name: string
+          notes_uuid: string | null
+          phone_number: string | null
+          request_status:
+            | Database["public"]["Enums"]["iftar_request_status"]
+            | null
+          title: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string | null
+          dietary_requirements?: string | null
+          email: string
+          id?: number
+          industry?: Database["public"]["Enums"]["industry_type"] | null
+          moved_to_pipeline?: boolean | null
+          name: string
+          notes_uuid?: string | null
+          phone_number?: string | null
+          request_status?:
+            | Database["public"]["Enums"]["iftar_request_status"]
+            | null
+          title?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string | null
+          dietary_requirements?: string | null
+          email?: string
+          id?: number
+          industry?: Database["public"]["Enums"]["industry_type"] | null
+          moved_to_pipeline?: boolean | null
+          name?: string
+          notes_uuid?: string | null
+          phone_number?: string | null
+          request_status?:
+            | Database["public"]["Enums"]["iftar_request_status"]
+            | null
+          title?: string | null
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           company: string | null
@@ -848,6 +899,7 @@ export type Database = {
         | "evaluation"
         | "closed_won"
         | "closed_lost"
+      iftar_request_status: "pending" | "approved" | "rejected" | "waitlist"
       industry_type:
         | "manufacturing"
         | "technology"
