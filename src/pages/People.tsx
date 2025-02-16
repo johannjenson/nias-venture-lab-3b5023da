@@ -1,5 +1,4 @@
-import { ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const People = () => {
@@ -46,15 +45,13 @@ const People = () => {
   return (
     <div className="min-h-screen bg-white">
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
-        <div className="max-w-7xl mx-auto h-16 flex items-center">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="ml-4"
-            onClick={() => navigate(-1)}
+        <div className="max-w-7xl mx-auto h-16 flex items-center px-6">
+          <button 
+            onClick={() => navigate('/')} 
+            className="hover:opacity-80 transition-opacity"
           >
-            <ArrowLeft className="h-6 w-6" />
-          </Button>
+            <Waves className="h-8 w-8 text-primary" />
+          </button>
         </div>
       </div>
 
