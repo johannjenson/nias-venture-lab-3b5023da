@@ -2,30 +2,18 @@
 import { corsHeaders } from '../_shared/cors.ts'
 
 interface RequestBody {
-  data: {
-    email: string;
-    name: {
-      first_name: string;
-      last_name: string;
-    };
-    phone_numbers: string[];
-    job: {
-      title: string;
-      company: {
-        name: string;
-      };
-    };
-    tags: string[];
-    custom_fields: {
-      industry: string;
-      referred_by: string;
-      additional_info: string;
-    };
-    social_links: Array<{
-      url: string;
-      type: string;
-    }>;
-  };
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+  company: string;
+  title: string;
+  industry: string;
+  linkedin_url: string;
+  referred_by: string;
+  additional_info: string;
+  tags: string[];
+  full_name: string;
 }
 
 Deno.serve(async (req) => {

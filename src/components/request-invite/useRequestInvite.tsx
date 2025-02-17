@@ -65,31 +65,20 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
       }
 
       // Structure payload for Make.com webhook
+      // Simplified, flattened structure that Make.com can easily map
       const makePayload = {
-        data: {
-          email: formData.email,
-          name: {
-            first_name: firstName,
-            last_name: lastName
-          },
-          phone_numbers: formData.phoneNumber ? [formData.phoneNumber] : [],
-          job: {
-            title: formData.title,
-            company: {
-              name: formData.company
-            }
-          },
-          tags: ["Network Request"],
-          custom_fields: {
-            industry: formData.industry,
-            referred_by: formData.referredBy,
-            additional_info: formData.additionalInfo
-          },
-          social_links: formData.linkedinUrl ? [{
-            url: formData.linkedinUrl,
-            type: "linkedin"
-          }] : []
-        }
+        first_name: firstName,
+        last_name: lastName,
+        email: formData.email,
+        phone: formData.phoneNumber,
+        company: formData.company,
+        title: formData.title,
+        industry: formData.industry,
+        linkedin_url: formData.linkedinUrl,
+        referred_by: formData.referredBy,
+        additional_info: formData.additionalInfo,
+        tags: ["Network Request"],
+        full_name: formData.fullName
       };
 
       // Push to Make.com
