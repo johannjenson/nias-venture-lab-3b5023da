@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { FormData } from "./types";
 import { IndustryType } from "../crm/types/contact";
+import { PostgrestError } from "@supabase/supabase-js";
 
 const initialFormData: FormData = {
   fullName: "",
@@ -50,14 +51,17 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
         ]);
 
       if (dbError) {
-        if (dbError.code === '23505') {
+        const pgError = dbError as PostgrestError;
+        
+        // Handle duplicate email error
+        if (pgError.code === '23505') {
           toast.error("An application with this email already exists. Our team will be in touch soon!");
           onCloseModal(false);
           setFormData(initialFormData);
           setStep(1);
           return;
         }
-        throw dbError;
+        throw pgError;
       }
 
       // Push to Attio
