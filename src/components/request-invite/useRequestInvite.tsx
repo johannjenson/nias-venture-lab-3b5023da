@@ -60,6 +60,16 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
         throw dbError;
       }
 
+      // Push to Attio
+      const { error: attioError } = await supabase.functions.invoke('push-to-attio', {
+        body: formData
+      });
+
+      if (attioError) {
+        console.error('Error pushing to Attio:', attioError);
+        // Don't throw the error as we still want to proceed with the rest of the flow
+      }
+
       // Send confirmation email
       const { error: emailError } = await supabase.functions.invoke('send-network-confirmation', {
         body: {
