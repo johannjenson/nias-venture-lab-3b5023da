@@ -27,22 +27,32 @@ Deno.serve(async (req) => {
     const firstName = names[0]
     const lastName = names.slice(1).join(' ')
 
-    // Create Attio request payload
+    // Create Attio request payload with all available information
     const payload = {
       name: fullName,
-      email_addresses: [{ email: email }],
+      email_addresses: [{ email }],
       phone_numbers: phoneNumber ? [{ phone: phoneNumber }] : [],
-      company: {
-        name: company,
+      attributes: {
+        first_name: firstName,
+        last_name: lastName,
+        title: title,
+        industry: industry,
+        linkedin_url: linkedinUrl,
+        referred_by: referredBy,
+        additional_info: additionalInfo,
       },
-      title: title,
-      industry: industry,
-      linkedin_url: linkedinUrl,
-      referred_by: referredBy,
-      additional_info: additionalInfo
+      workspace_profile: {
+        roles: [title], // Add role based on title
+      },
+      company: company ? {
+        name: company,
+        attributes: {
+          industry: industry
+        }
+      } : undefined,
     }
 
-    // Push to Attio
+    // Push to Attio with full payload
     const attioResponse = await fetch('https://api.attio.com/v2/people', {
       method: 'POST',
       headers: {
