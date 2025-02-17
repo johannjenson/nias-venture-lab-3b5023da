@@ -27,32 +27,38 @@ Deno.serve(async (req) => {
     const firstName = names[0]
     const lastName = names.slice(1).join(' ')
 
-    // Create Folk payload
+    // Create Folk payload following v3 API format
     const payload = {
-      email,
-      firstName,
-      lastName,
-      phone: phoneNumber,
-      company: {
-        name: company,
-      },
-      jobTitle: title,
-      labels: ["Network Request"],
-      customFields: {
-        industry,
-        referredBy,
-        additionalInfo,
-      },
-      urls: linkedinUrl ? [{
-        type: "linkedin",
-        url: linkedinUrl
-      }] : []
+      data: {
+        email: email,
+        name: {
+          first_name: firstName,
+          last_name: lastName
+        },
+        phone_numbers: phoneNumber ? [phoneNumber] : [],
+        job: {
+          title: title,
+          company: {
+            name: company
+          }
+        },
+        tags: ["Network Request"],
+        custom_fields: {
+          industry: industry,
+          referred_by: referredBy,
+          additional_info: additionalInfo
+        },
+        social_links: linkedinUrl ? [{
+          url: linkedinUrl,
+          type: "linkedin"
+        }] : []
+      }
     }
 
     console.log('Sending payload to Folk:', JSON.stringify(payload))
 
-    // Push to Folk API
-    const folkResponse = await fetch('https://api.folk.app/v2/people', {
+    // Push to Folk API v3
+    const folkResponse = await fetch('https://api.folk.app/v3/people', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${Deno.env.get('FOLK_API_KEY')}`,
@@ -64,7 +70,7 @@ Deno.serve(async (req) => {
     if (!folkResponse.ok) {
       const errorData = await folkResponse.json()
       console.error('Folk API error:', errorData)
-      throw new Error(`Folk API error: ${folkResponse.status}`)
+      throw new Error(`Folk API error: ${folkResponse.status} - ${JSON.stringify(errorData)}`)
     }
 
     const folkData = await folkResponse.json()

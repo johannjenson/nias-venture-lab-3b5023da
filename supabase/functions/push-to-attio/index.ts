@@ -1,5 +1,4 @@
 
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.38.4'
 import { corsHeaders } from '../_shared/cors.ts'
 
 interface RequestBody {
@@ -27,33 +26,29 @@ Deno.serve(async (req) => {
     const firstName = names[0]
     const lastName = names.slice(1).join(' ')
 
-    // Create Attio request payload with all available information
+    // Create Attio request payload with correct API format
     const payload = {
-      name: fullName,
-      email_addresses: [{ email }],
-      phone_numbers: phoneNumber ? [{ phone: phoneNumber }] : [],
+      object_type_id: "people",
       attributes: {
+        name: fullName,
         first_name: firstName,
         last_name: lastName,
+        email: [{ value: email }],
+        phone: phoneNumber ? [{ value: phoneNumber }] : [],
         title: title,
+        company_name: company,
         industry: industry,
-        linkedin_url: linkedinUrl,
+        linkedin: linkedinUrl,
         referred_by: referredBy,
         additional_info: additionalInfo,
-      },
-      workspace_profile: {
-        roles: [title], // Add role based on title
-      },
-      company: company ? {
-        name: company,
-        attributes: {
-          industry: industry
-        }
-      } : undefined,
+        tags: ["Network Request"]
+      }
     }
 
-    // Push to Attio with full payload
-    const attioResponse = await fetch('https://api.attio.com/v2/people', {
+    console.log('Sending payload to Attio:', JSON.stringify(payload))
+
+    // Push to Attio API with correct endpoint
+    const attioResponse = await fetch('https://api.attio.com/v2/objects', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${Deno.env.get('ATTIO_API_KEY')}`,
@@ -65,7 +60,7 @@ Deno.serve(async (req) => {
     if (!attioResponse.ok) {
       const errorData = await attioResponse.json()
       console.error('Attio API error:', errorData)
-      throw new Error(`Attio API error: ${attioResponse.status}`)
+      throw new Error(`Attio API error: ${attioResponse.status} - ${JSON.stringify(errorData)}`)
     }
 
     const attioData = await attioResponse.json()
