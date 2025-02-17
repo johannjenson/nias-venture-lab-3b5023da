@@ -67,7 +67,15 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
 
       if (attioError) {
         console.error('Error pushing to Attio:', attioError);
-        // Don't throw the error as we still want to proceed with the rest of the flow
+      }
+
+      // Push to Folk
+      const { error: folkError } = await supabase.functions.invoke('push-to-folk', {
+        body: formData
+      });
+
+      if (folkError) {
+        console.error('Error pushing to Folk:', folkError);
       }
 
       // Send confirmation email
