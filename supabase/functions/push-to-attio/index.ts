@@ -27,40 +27,33 @@ Deno.serve(async (req) => {
     const firstName = names[0]
     const lastName = names.slice(1).join(' ')
 
-    // Create record data according to Attio's API schema
+    // Create Attio request payload with all available information
     const payload = {
-      record_type: "person",
-      values: {
-        name: fullName,
-        email: [{
-          value: email,
-          is_primary: true
-        }],
-        phone: phoneNumber ? [{
-          value: phoneNumber,
-          is_primary: true
-        }] : [],
-        company_name: company,
+      name: fullName,
+      email_addresses: [{ email }],
+      phone_numbers: phoneNumber ? [{ phone: phoneNumber }] : [],
+      attributes: {
+        first_name: firstName,
+        last_name: lastName,
         title: title,
         industry: industry,
-        linkedin: linkedinUrl,
+        linkedin_url: linkedinUrl,
         referred_by: referredBy,
         additional_info: additionalInfo,
-        first_name: firstName,
-        last_name: lastName
-      }
+      },
+      workspace_profile: {
+        roles: [title], // Add role based on title
+      },
+      company: company ? {
+        name: company,
+        attributes: {
+          industry: industry
+        }
+      } : undefined,
     }
 
-    // Get workspace ID from environment variable
-    const workspaceId = Deno.env.get('ATTIO_WORKSPACE_ID')
-    if (!workspaceId) {
-      throw new Error('ATTIO_WORKSPACE_ID is not set')
-    }
-
-    console.log('Sending payload to Attio:', JSON.stringify(payload))
-
-    // Push to Attio using correct API endpoint structure
-    const attioResponse = await fetch(`https://api.attio.com/v2/workspaces/${workspaceId}/records`, {
+    // Push to Attio with full payload
+    const attioResponse = await fetch('https://api.attio.com/v2/people', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${Deno.env.get('ATTIO_API_KEY')}`,
