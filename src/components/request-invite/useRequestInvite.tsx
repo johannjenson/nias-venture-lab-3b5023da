@@ -64,31 +64,8 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
         throw pgError;
       }
 
-      // Structure payload for Attio
-      const attioPayload = {
-        data: {
-          object_record: {
-            object_type_id: "people",
-            attributes: {
-              name: formData.fullName,
-              first_name: firstName,
-              last_name: lastName,
-              email: [{ value: formData.email }],
-              phone: formData.phoneNumber ? [{ value: formData.phoneNumber }] : [],
-              title: formData.title,
-              company_name: formData.company,
-              industry: formData.industry,
-              linkedin: formData.linkedinUrl,
-              referred_by: formData.referredBy,
-              additional_info: formData.additionalInfo,
-              tags: ["Network Request"]
-            }
-          }
-        }
-      };
-
-      // Structure payload for Folk
-      const folkPayload = {
+      // Structure payload for Make.com webhook
+      const makePayload = {
         data: {
           email: formData.email,
           name: {
@@ -115,22 +92,42 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
         }
       };
 
+      // Push to Make.com
+      const { error: makeError } = await supabase.functions.invoke('push-to-make', {
+        body: makePayload
+      });
+
+      if (makeError) {
+        console.error('Error pushing to Make:', makeError);
+      }
+
       // Push to Attio
       const { error: attioError } = await supabase.functions.invoke('push-to-attio', {
-        body: attioPayload
+        body: {
+          data: {
+            object_record: {
+              object_type_id: "people",
+              attributes: {
+                name: formData.fullName,
+                first_name: firstName,
+                last_name: lastName,
+                email: [{ value: formData.email }],
+                phone: formData.phoneNumber ? [{ value: formData.phoneNumber }] : [],
+                title: formData.title,
+                company_name: formData.company,
+                industry: formData.industry,
+                linkedin: formData.linkedinUrl,
+                referred_by: formData.referredBy,
+                additional_info: formData.additionalInfo,
+                tags: ["Network Request"]
+              }
+            }
+          }
+        }
       });
 
       if (attioError) {
         console.error('Error pushing to Attio:', attioError);
-      }
-
-      // Push to Folk
-      const { error: folkError } = await supabase.functions.invoke('push-to-folk', {
-        body: folkPayload
-      });
-
-      if (folkError) {
-        console.error('Error pushing to Folk:', folkError);
       }
 
       // Send confirmation email
