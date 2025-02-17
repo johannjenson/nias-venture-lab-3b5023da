@@ -32,8 +32,13 @@ Deno.serve(async (req) => {
     const { data } = await req.json() as RequestBody;
     console.log('Received payload:', JSON.stringify(data));
 
-    // Push to Attio API
-    const attioResponse = await fetch('https://api.attio.com/v2/records', {
+    // Push to Attio API - Updated endpoint to workspace-specific format
+    const ATTIO_WORKSPACE_ID = Deno.env.get('ATTIO_WORKSPACE_ID');
+    if (!ATTIO_WORKSPACE_ID) {
+      throw new Error('Attio workspace ID is not configured');
+    }
+
+    const attioResponse = await fetch(`https://api.attio.com/v2/workspaces/${ATTIO_WORKSPACE_ID}/objects/people/records`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${Deno.env.get('ATTIO_API_KEY')}`,
