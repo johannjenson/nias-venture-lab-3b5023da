@@ -65,7 +65,6 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
       }
 
       // Structure payload for Make.com webhook
-      // Simplified, flattened structure that Make.com can easily map
       const makePayload = {
         first_name: firstName,
         last_name: lastName,
@@ -88,35 +87,6 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
 
       if (makeError) {
         console.error('Error pushing to Make:', makeError);
-      }
-
-      // Push to Attio
-      const { error: attioError } = await supabase.functions.invoke('push-to-attio', {
-        body: {
-          data: {
-            object_record: {
-              object_type_id: "people",
-              attributes: {
-                name: formData.fullName,
-                first_name: firstName,
-                last_name: lastName,
-                email: [{ value: formData.email }],
-                phone: formData.phoneNumber ? [{ value: formData.phoneNumber }] : [],
-                title: formData.title,
-                company_name: formData.company,
-                industry: formData.industry,
-                linkedin: formData.linkedinUrl,
-                referred_by: formData.referredBy,
-                additional_info: formData.additionalInfo,
-                tags: ["Network Request"]
-              }
-            }
-          }
-        }
-      });
-
-      if (attioError) {
-        console.error('Error pushing to Attio:', attioError);
       }
 
       // Send confirmation email
