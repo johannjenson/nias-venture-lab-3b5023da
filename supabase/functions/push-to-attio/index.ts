@@ -28,27 +28,31 @@ Deno.serve(async (req) => {
 
     // Create Attio request payload with correct API format
     const payload = {
-      object_type_id: "people",
-      attributes: {
-        name: fullName,
-        first_name: firstName,
-        last_name: lastName,
-        email: [{ value: email }],
-        phone: phoneNumber ? [{ value: phoneNumber }] : [],
-        title: title,
-        company_name: company,
-        industry: industry,
-        linkedin: linkedinUrl,
-        referred_by: referredBy,
-        additional_info: additionalInfo,
-        tags: ["Network Request"]
+      data: {
+        object_record: {
+          object_type_id: "people",
+          attributes: {
+            name: fullName,
+            first_name: firstName,
+            last_name: lastName,
+            email: [{ value: email }],
+            phone: phoneNumber ? [{ value: phoneNumber }] : [],
+            title: title,
+            company_name: company,
+            industry: industry,
+            linkedin: linkedinUrl,
+            referred_by: referredBy,
+            additional_info: additionalInfo,
+            tags: ["Network Request"]
+          }
+        }
       }
     }
 
     console.log('Sending payload to Attio:', JSON.stringify(payload))
 
     // Push to Attio API with correct endpoint
-    const attioResponse = await fetch('https://api.attio.com/v2/objects', {
+    const attioResponse = await fetch('https://api.attio.com/v2/records', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${Deno.env.get('ATTIO_API_KEY')}`,

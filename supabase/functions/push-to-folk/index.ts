@@ -57,8 +57,9 @@ Deno.serve(async (req) => {
 
     console.log('Sending payload to Folk:', JSON.stringify(payload))
 
-    // Push to Folk API v3
-    const folkResponse = await fetch('https://api.folk.app/v3/people', {
+    const FOLK_WORKSPACE_ID = Deno.env.get('FOLK_WORKSPACE_ID') || '';
+    // Push to Folk API v3 with workspace ID
+    const folkResponse = await fetch(`https://api.folk.app/v3/workspaces/${FOLK_WORKSPACE_ID}/people`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${Deno.env.get('FOLK_API_KEY')}`,
