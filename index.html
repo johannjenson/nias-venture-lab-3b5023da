@@ -13,6 +13,15 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Add noindex meta tag for CRM route
+      if (window.location.pathname.includes('/crm')) {
+        const meta = document.createElement('meta');
+        meta.name = 'robots';
+        meta.content = 'noindex';
+        document.head.appendChild(meta);
+      }
+    </script>
     <title>Nias Network - Land & Expand Your Business in Saudi Arabia</title>
     <meta name="description" content="Bringing together exceptional companies from around the world looking to do business in the Kingdom with serial and exited entrepreneurs, strategic investors, and acquisitive funds." />
     <meta name="author" content="Lovable" />
