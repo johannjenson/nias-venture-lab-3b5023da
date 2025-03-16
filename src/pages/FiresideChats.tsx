@@ -1,9 +1,10 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { CalendarIcon, Clock, Flame, MapPin, Ticket, Users, Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const FiresideChats = () => {
   const navigate = useNavigate();
@@ -14,6 +15,14 @@ const FiresideChats = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Nias Fireside Chats - Intimate Conversations Under the Stars in Al Amaariah</title>
+        <meta 
+          name="description" 
+          content="Join us for Nias Fireside Chats at Fahad's farmhouse in Al Amaariah. An evening of meaningful conversations, networking, and Suhoor dinner under the stars with business leaders." 
+        />
+      </Helmet>
+
       {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center px-6">
