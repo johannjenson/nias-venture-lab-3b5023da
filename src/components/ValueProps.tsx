@@ -1,3 +1,4 @@
+
 import { PlaneLanding, Users, Briefcase } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
@@ -29,10 +30,10 @@ const ValueProps = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
           <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-            Why Choose Nias
+            What is Nias?
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            We provide comprehensive support for businesses looking to establish and grow
+            We provide comprehensive support for top tier founders and funds looking to establish and grow
             their presence in Saudi Arabia.
           </p>
         </div>
