@@ -19,7 +19,7 @@ const FiresideChats = () => {
         <title>Nias Fireside Chats - Intimate Conversations Under the Stars in Al Amaariah</title>
         <meta 
           name="description" 
-          content="Join us for Nias Fireside Chats at Fahad's farmhouse in Al Amaariah. An evening of meaningful conversations, networking, and Suhoor dinner under the stars with business leaders." 
+          content="Join us for Nias Fireside Chats at Fahad's farmhouse in Al Amaariah. An evening of meaningful conversations, networking, and Iftar dinner under the stars with business leaders." 
         />
       </Helmet>
 
@@ -41,7 +41,7 @@ const FiresideChats = () => {
                 Nias Fireside Chats 🔥🪵
               </h1>
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">
-                Join us for an evening of Suhoor Dinner and intimate fireside conversations at Fahad's farmhouse in Al Amaariah
+                Join us for an evening of Iftar Dinner and intimate fireside conversations at Fahad's farmhouse in Al Amaariah
               </p>
               <Button
                 className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in"
@@ -62,7 +62,7 @@ const FiresideChats = () => {
                   An Evening Under the Stars
                 </h2>
                 <p className="text-gray-600 mb-8">
-                  Experience meaningful conversations in an intimate setting around the fire. Connect with fellow business leaders, investors, and thought leaders while enjoying Suhoor under the stars.
+                  Experience meaningful conversations in an intimate setting around the fire. Connect with fellow business leaders, investors, and thought leaders while enjoying Iftar under the stars.
                 </p>
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
@@ -76,9 +76,9 @@ const FiresideChats = () => {
                     <Clock className="h-6 w-6 text-primary" />
                     <div>
                       <h3 className="font-semibold text-primary">Schedule</h3>
-                      <p className="text-gray-600">9:00 PM - Guest arrival</p>
-                      <p className="text-gray-600">9:30 PM - Fireside discussions begin</p>
-                      <p className="text-gray-600">2:00 AM - Event concludes</p>
+                      <p className="text-gray-600">5:45 PM - Guest arrival</p>
+                      <p className="text-gray-600">6:15 PM - Fireside discussions begin</p>
+                      <p className="text-gray-600">9:00 PM - Event concludes</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -113,7 +113,7 @@ const FiresideChats = () => {
                     <p className="text-gray-600">Intimate conversations around the fire</p>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Join us for an evening Suhoor dinner and fireside discussions at Fahad's farmhouse. This exclusive gathering brings together business leaders in a relaxed, intimate setting to share ideas and forge meaningful connections.
+                    Join us for an evening Iftar dinner and fireside discussions at Fahad's farmhouse. This exclusive gathering brings together business leaders in a relaxed, intimate setting to share ideas and forge meaningful connections.
                   </p>
                   <p className="text-gray-600 italic">
                     "The most valuable connections are often made in the most informal settings."
@@ -127,7 +127,7 @@ const FiresideChats = () => {
                       <span className="text-primary">•</span> Curated discussions on business and investment in Saudi Arabia
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Traditional Suhoor meal in a spectacular outdoor setting
+                      <span className="text-primary">•</span> Traditional Iftar meal in a spectacular outdoor setting
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-primary">•</span> Meaningful networking with fellow leaders
