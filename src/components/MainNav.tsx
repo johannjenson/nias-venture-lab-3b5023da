@@ -76,12 +76,12 @@ const MainNav = () => {
     {
       title: "Nias Fireside Chats",
       href: "/events/fireside-chats",
-      description: "An intimate evening of Suhoor dinner and fireside conversations on March 20th, 2025 in Al Amaariah.",
+      description: "An intimate evening of Iftar meal and fireside conversations on March 20th, 2025 in Al Amaariah.",
     },
     {
-      title: "Ramadan Suhoor Dinner",
+      title: "Ramadan Iftar Meal",
       href: "/events/suhoor-dinner",
-      description: "Join us for an intimate Suhoor dinner gathering with fellow business leaders on March 8th in Riyadh.",
+      description: "Join us for an intimate Iftar meal gathering with fellow business leaders on March 8th in Riyadh.",
     },
     {
       title: "Nias Business Forum",
