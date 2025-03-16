@@ -74,6 +74,16 @@ const MainNav = () => {
 
   const events = [
     {
+      title: "Nias Fireside Chats",
+      href: "/events/fireside-chats",
+      description: "An intimate evening of Suhoor dinner and fireside conversations on March 20th, 2025 in Al Amaariah.",
+    },
+    {
+      title: "Ramadan Suhoor Dinner",
+      href: "/events/suhoor-dinner",
+      description: "Join us for an intimate Suhoor dinner gathering with fellow business leaders on March 8th in Riyadh.",
+    },
+    {
       title: "Nias Business Forum",
       href: "/events/nias-business-forum",
       description: "Join our inaugural business forum on February 13th connecting global companies with Saudi investors.",
@@ -82,11 +92,6 @@ const MainNav = () => {
       title: "Nias Network Dinner at LEAP",
       href: "/events/leap-dinner",
       description: "Connect with industry leaders at our exclusive dinner during LEAP 2024 in Riyadh on Sunday, February 9th from 7:00 PM.",
-    },
-    {
-      title: "Ramadan Suhoor Dinner",
-      href: "/events/suhoor-dinner",
-      description: "Join us for an intimate Suhoor dinner gathering with fellow business leaders on March 8th in Riyadh.",
     },
   ];
 
