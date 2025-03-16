@@ -19,7 +19,7 @@ const FiresideChats = () => {
         <title>Nias Fireside Chats - Intimate Conversations Under the Stars in Al Amaariah</title>
         <meta 
           name="description" 
-          content="Join us for Nias Fireside Chats at Fahad's farmhouse in Al Amaariah. An evening of meaningful conversations, networking, and Iftar dinner under the stars with business leaders." 
+          content="Join us for Nias Fireside Chats at Fahad's farmhouse in Al Amaariah. An evening of meaningful conversations, networking, and Iftar meal under the stars with business leaders." 
         />
       </Helmet>
 
@@ -41,7 +41,7 @@ const FiresideChats = () => {
                 Nias Fireside Chats 🔥🪵
               </h1>
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">
-                Join us for an evening of Iftar Dinner and intimate fireside conversations at Fahad's farmhouse in Al Amaariah
+                Join us for an evening of Iftar meal and intimate fireside conversations at Fahad's farmhouse in Al Amaariah
               </p>
               <Button
                 className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in"
@@ -113,7 +113,7 @@ const FiresideChats = () => {
                     <p className="text-gray-600">Intimate conversations around the fire</p>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Join us for an evening Iftar dinner and fireside discussions at Fahad's farmhouse. This exclusive gathering brings together business leaders in a relaxed, intimate setting to share ideas and forge meaningful connections.
+                    Join us for an evening Iftar meal and fireside discussions at Fahad's farmhouse. This exclusive gathering brings together business leaders in a relaxed, intimate setting to share ideas and forge meaningful connections.
                   </p>
                   <p className="text-gray-600 italic">
                     "The most valuable connections are often made in the most informal settings."
