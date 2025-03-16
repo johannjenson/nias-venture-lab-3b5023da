@@ -77,8 +77,6 @@ const FiresideChats = () => {
                     <div>
                       <h3 className="font-semibold text-primary">Where</h3>
                       <p className="text-gray-600">Al Amaariah, Riyadh, Saudi Arabia</p>
-                      <p className="text-gray-600 text-sm">Al Amaariah 13934, Saudi Arabia</p>
-                      <p className="text-gray-600 text-sm">Exact Location: 24°47'37.8"N 46°24'09.2"E</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -100,13 +98,6 @@ const FiresideChats = () => {
               </div>
               <div>
                 <div className="bg-[#F8F3E8] p-8 rounded-lg mb-8">
-                  <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded-lg mb-6">
-                    <img 
-                      src="/public/lovable-uploads/539853b0-076b-45f3-aa13-61228631b159.png" 
-                      alt="Fireside seating area at night" 
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
                   <h3 className="text-2xl font-bold text-primary mb-4">The Experience</h3>
                   <div className="flex items-center gap-3 mb-4">
                     <Flame className="h-5 w-5 text-amber-500" />
