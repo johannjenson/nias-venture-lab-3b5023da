@@ -1,26 +1,18 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { CalendarIcon, Clock, Flame, MapPin, Ticket, Users, Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-
 const FiresideChats = () => {
   const navigate = useNavigate();
-
   const handleRequestClick = () => {
     window.open('https://lu.ma/41qvuucz', '_blank');
   };
-
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       <Helmet>
         <title>Nias Fireside Chats - Intimate Conversations Under the Stars in Al Amaariah</title>
-        <meta 
-          name="description" 
-          content="Join us for Nias Fireside Chats at Fahad's farmhouse in Al Amaariah. An evening of meaningful conversations, networking, and Iftar meal under the stars with business leaders." 
-        />
+        <meta name="description" content="Join us for Nias Fireside Chats at Fahad's farmhouse in Al Amaariah. An evening of meaningful conversations, networking, and Iftar meal under the stars with business leaders." />
       </Helmet>
 
       {/* Sticky Header */}
@@ -40,13 +32,8 @@ const FiresideChats = () => {
               <h1 className="text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
                 Nias Fireside Chats 🔥🪵
               </h1>
-              <p className="text-xl text-gray-600 mb-8 animate-fade-in">
-                Join us for an evening of Iftar meal and intimate fireside conversations at Fahad's farmhouse in Al Amaariah
-              </p>
-              <Button
-                className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in"
-                onClick={handleRequestClick}
-              >
+              <p className="text-xl text-gray-600 mb-8 animate-fade-in">Join us for an evening Iftar meal and intimate fireside conversations at Fahad's farmhouse in Al Amaariah</p>
+              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={handleRequestClick}>
                 Request an Invite
               </Button>
             </div>
@@ -145,8 +132,6 @@ const FiresideChats = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default FiresideChats;
