@@ -9,7 +9,7 @@ const FiresideChats = () => {
   const navigate = useNavigate();
 
   const handleRequestClick = () => {
-    window.open('https://lu.ma/nias-fireside', '_blank');
+    window.open('https://lu.ma/41qvuucz', '_blank');
   };
 
   return (
