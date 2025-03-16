@@ -53,6 +53,7 @@ const Footer = () => {
         { name: "Business Forum", href: "/events/nias-business-forum" },
         { name: "LEAP Dinner", href: "/events/leap-dinner" },
         { name: "Suhoor Dinner", href: "/events/suhoor-dinner" },
+        { name: "Fireside Chats", href: "/events/fireside-chats" },
       ]},
       { name: "Resources", submenu: [
         { name: "Opportunities", href: "/resources" },
