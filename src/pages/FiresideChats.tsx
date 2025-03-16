@@ -64,7 +64,7 @@ const FiresideChats = () => {
                     <div>
                       <h3 className="font-semibold text-primary">Schedule</h3>
                       <p className="text-gray-600">5:45 PM - Guest arrival</p>
-                      <p className="text-gray-600">6:00 PM - Iftar begins</p>
+                      <p className="text-gray-600">6:05 PM - Iftar begins</p>
                       <p className="text-gray-600">6:15 PM - Fireside discussions begin</p>
                       <p className="text-gray-600">9:00 PM - Event concludes</p>
                     </div>
