@@ -32,9 +32,7 @@ const GithubFounderEvent = () => {
               <h1 className="text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
                 An Evening with GitHub Cofounder Tom Preston-Werner
               </h1>
-              <p className="text-xl text-gray-600 mb-8 animate-fade-in">
-                A gathering with industry leaders at Irqah Farmhouse in Riyadh
-              </p>
+              <p className="text-xl text-gray-600 mb-8 animate-fade-in">A gathering with government and industry leaders at the Nias Irqah Farmhouse in Riyadh</p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={handleRequestClick}>
                 Request an Invitation
               </Button>
@@ -67,8 +65,8 @@ const GithubFounderEvent = () => {
                       <h3 className="font-semibold text-primary">Programme</h3>
                       <p className="text-gray-600">7:30 PM - Reception and welcome of guests</p>
                       <p className="text-gray-600">8:30 PM - Dining experience</p>
-                      <p className="text-gray-600">9:30 PM - Conversation with Tom Preston-Werner and Rodrigo Ponce de Leon</p>
-                      <p className="text-gray-600">11:30 PM - Conclusion of event</p>
+                      <p className="text-gray-600">9:30 PM - A conversation with Tom Preston-Werner and Rodrigo Ponce de Leon moderated by Johann Jenson</p>
+                      <p className="text-gray-600">11:30 PM - Conclusion of the evening</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
