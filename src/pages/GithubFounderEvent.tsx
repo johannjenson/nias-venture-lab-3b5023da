@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import { CalendarIcon, Clock, Flame, MapPin, Ticket, Users, Waves, Github, Users2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-
 const GithubFounderEvent = () => {
   const navigate = useNavigate();
   const handleRequestClick = () => {
@@ -43,12 +42,8 @@ const GithubFounderEvent = () => {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-16 items-start">
               <div>
-                <h2 className="text-3xl font-bold text-primary mb-6">
-                  Building Tomorrow: Global Innovation Meets Saudi Opportunity
-                </h2>
-                <p className="text-gray-600 mb-8">
-                  Join us for an evening at Irqah Farmhouse where family office principals, government representatives, and business leaders can connect and engage in meaningful conversations with global entrepreneurs while enjoying a carefully prepared dinner.
-                </p>
+                <h2 className="text-3xl font-bold text-primary mb-6">For Builders & Capital Allocators</h2>
+                <p className="text-gray-600 mb-8">Join us for an evening at Irqah Farmhouse where family office principals, government representatives, and business leaders can connect and engage in meaningful conversations with exceptional entrepreneurs and advisors.</p>
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
                     <CalendarIcon className="h-6 w-6 text-primary" />
@@ -61,7 +56,7 @@ const GithubFounderEvent = () => {
                     <Clock className="h-6 w-6 text-primary" />
                     <div>
                       <h3 className="font-semibold text-primary">Programme</h3>
-                      <p className="text-gray-600">7:30 PM - Reception and welcome of guests</p>
+                      <p className="text-gray-600">7:30 PM - Reception and welcoming of guests</p>
                       <p className="text-gray-600">8:30 PM - Dining experience</p>
                       <p className="text-gray-600">9:30 PM - A conversation with Tom Preston-Werner and Rodrigo Ponce de Leon moderated by Johann Jenson</p>
                       <p className="text-gray-600">11:30 PM - Conclusion of the evening</p>
@@ -109,7 +104,7 @@ const GithubFounderEvent = () => {
                         <Users2 className="h-5 w-5 text-gray-800" />
                         <h4 className="text-lg font-semibold text-primary">Rodrigo Ponce de Leon</h4>
                       </div>
-                      <p className="text-gray-600">Rodrigo Ponce de Leon is a Partner at 180 Studios Holding - the hub for London's creative community and the headquarters for Soho House. He has successfully managed three venture capital funds, delivering impressive returns of 17x, 6x, and 6x. His expertise spans venture capital, media, and commercial real estate development.</p>
+                      <p className="text-gray-600">Rodrigo Ponce de Leon is a partner at 180 Studios Holding - the hub for London's creative community and the headquarters for Soho House. He has successfully managed three venture capital funds, delivering impressive returns of 17x, 6x, and 6x. His expertise spans venture capital, media, and commercial real estate development.</p>
                     </div>
                   </div>
                 </div>
