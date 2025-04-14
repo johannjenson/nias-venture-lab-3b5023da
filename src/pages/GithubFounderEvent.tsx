@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
@@ -115,7 +114,7 @@ This is a night to celebrate bold ideas, shared values, and the future of creati
                         <Users className="h-5 w-5 text-gray-800" />
                         <h4 className="text-lg font-semibold text-primary">You - The Visionary Leader</h4>
                       </div>
-                      <p className="text-gray-600">This exclusive gathering is meticulously curated for pioneering leaders who are shaping the future of technology, investment, media, and real estate. We are seeking visionary individuals from:</p>
+                      <p className="text-gray-600">This exclusive gathering is curated for pioneering leaders who are shaping the future of technology, investment, media, and real estate. We are seeking visionary individuals from:</p>
                       <ul className="list-disc pl-5 text-gray-600 mt-2 space-y-1">
                         <li>Family Offices & Private Wealth Management</li>
                         <li>Government Innovation Departments</li>
@@ -142,7 +141,7 @@ This is a night to celebrate bold ideas, shared values, and the future of creati
                       <div className="min-w-5 pt-0.5">
                         <span className="inline-block w-1.5 h-1.5 bg-primary rounded-full"></span>
                       </div>
-                      <p>Exclusive insights from Tom Preston-Werner on technological innovation and the future of collaborative software</p>
+                      <p>Insights from Tom Preston-Werner on technological innovation and the future of collaborative software</p>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="min-w-5 pt-0.5">
@@ -154,7 +153,7 @@ This is a night to celebrate bold ideas, shared values, and the future of creati
                       <div className="min-w-5 pt-0.5">
                         <span className="inline-block w-1.5 h-1.5 bg-primary rounded-full"></span>
                       </div>
-                      <p>Exceptional dining experience in an elegant and intimate setting</p>
+                      <p>Dining in an elegant and intimate setting</p>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="min-w-5 pt-0.5">
