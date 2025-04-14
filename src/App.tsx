@@ -10,6 +10,7 @@ import RiyadhForum from "./pages/RiyadhEvent";
 import LeapDinner from "./pages/LeapDinner";
 import SuhoorDinner from "./pages/SuhoorDinner";
 import FiresideChats from "./pages/FiresideChats";
+import GithubFounderEvent from "./pages/GithubFounderEvent";
 import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/events/leap-dinner" element={<LeapDinner />} />
           <Route path="/events/suhoor-dinner" element={<SuhoorDinner />} />
           <Route path="/events/fireside-chats" element={<FiresideChats />} />
+          <Route path="/events/github-founder" element={<GithubFounderEvent />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />

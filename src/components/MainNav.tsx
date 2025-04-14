@@ -74,6 +74,11 @@ const MainNav = () => {
 
   const events = [
     {
+      title: "An Evening with GitHub Cofounder",
+      href: "/events/github-founder",
+      description: "Join us for dinner and conversation with Tom Preston-Werner on March 20th, 2025 at Irqah Farmhouse in Riyadh.",
+    },
+    {
       title: "Nias Fireside Chats",
       href: "/events/fireside-chats",
       description: "An intimate evening of Iftar meal and fireside conversations on March 20th, 2025 in Al Amaariah.",
