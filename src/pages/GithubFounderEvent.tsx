@@ -4,15 +4,12 @@ import Footer from "@/components/Footer";
 import { CalendarIcon, Clock, Flame, MapPin, Ticket, Users, Waves, Github, Users2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-
 const GithubFounderEvent = () => {
   const navigate = useNavigate();
   const handleRequestClick = () => {
     window.open('https://lu.ma/lcqqdchq', '_blank', 'noopener,noreferrer');
   };
-
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       <Helmet>
         <title>An Evening with GitHub Cofounder Tom Preston-Werner - Exclusive Dinner in Riyadh</title>
         <meta name="description" content="Join us for an evening with GitHub cofounder Tom Preston-Werner at Irqah Farmhouse in Riyadh. Connect with leaders in technology, business, and government while enjoying meaningful conversations." />
@@ -35,10 +32,7 @@ const GithubFounderEvent = () => {
                 An Evening with GitHub Cofounder Tom Preston-Werner
               </h1>
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">Enjoy a relaxed gathering with key figures from Saudi Arabia's tech, government, and investor communities in the serene setting of our Irqah Farmhouse in Riyadh.</p>
-              <Button 
-                className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" 
-                onClick={handleRequestClick}
-              >
+              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={handleRequestClick}>
                 Request an Invitation
               </Button>
             </div>
@@ -189,11 +183,8 @@ This is a night to celebrate bold ideas, shared values, and the future of creati
               <h2 className="text-3xl font-bold text-primary mb-6">
                 Request Your Invitation
               </h2>
-              <p className="text-gray-600 mb-8">This exclusive gathering is limited to 50 leaders, family office principals, and government representatives. Please submit your details for consideration.</p>
-              <Button 
-                className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg" 
-                onClick={handleRequestClick}
-              >
+              <p className="text-gray-600 mb-8">This exclusive gathering is limited to 50 builders, business leaders, family office principals, and government representatives. Please submit your details for review.</p>
+              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg" onClick={handleRequestClick}>
                 Request an Invitation
               </Button>
             </div>
@@ -202,8 +193,6 @@ This is a night to celebrate bold ideas, shared values, and the future of creati
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default GithubFounderEvent;
