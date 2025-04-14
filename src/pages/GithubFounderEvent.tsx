@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import { CalendarIcon, Clock, Flame, MapPin, Ticket, Users, Waves, Github, Users2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-
 const GithubFounderEvent = () => {
   const navigate = useNavigate();
   const handleRequestClick = () => {
@@ -32,7 +31,7 @@ const GithubFounderEvent = () => {
                 <Github className="h-12 w-12 text-black" />
                 An Evening with GitHub Cofounder Tom Preston-Werner
               </h1>
-              <p className="text-xl text-gray-600 mb-8 animate-fade-in">Meet with KSA's tech, government, and investor community for a cozy dinner and gathering at our Irqah Farmhouse in Riyadh</p>
+              <p className="text-xl text-gray-600 mb-8 animate-fade-in">Enjoy a relaxed gathering with key figures from Saudi Arabia’s tech, government, and investor communities in the serene setting of our Irqah Farmhouse in Riyadh.</p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={handleRequestClick}>
                 Request an Invitation
               </Button>
@@ -106,7 +105,7 @@ const GithubFounderEvent = () => {
                         <Users2 className="h-5 w-5 text-gray-800" />
                         <h4 className="text-lg font-semibold text-primary">Rodrigo Ponce de Leon</h4>
                       </div>
-                      <p className="text-gray-600">Rodrigo Ponce de Leon is a partner at 180 Studios Holding - the hub for London's creative community and the headquarters for Soho House. He has successfully managed three venture capital funds, delivering impressive returns of 17x, 6x, and 6x. His expertise spans venture capital, media, and commercial real estate development.</p>
+                      <p className="text-gray-600">Rodrigo Ponce de Leon is a partner at 180 Studios Holding, the HQ of Soho House and a key hub for London’s creative scene. He has managed three high-performing VC funds and brings seasoned expertise in venture capital, media, and real estate development.</p>
                     </div>
                     <div>
                       <div className="flex items-center gap-3 mb-2">
