@@ -107,9 +107,7 @@ This is a night to celebrate bold ideas, shared values, and the future of creati
                         <Github className="h-5 w-5 text-gray-800" />
                         <h4 className="text-lg font-semibold text-primary">Tom Preston-Werner</h4>
                       </div>
-                      <p className="text-gray-600 mb-4">
-                        Tom Preston-Werner is the cofounder and former CEO of GitHub, acquired by Microsoft for $7.5 billion. A visionary technologist, he's the creator of Gravatar and author of the Semantic Versioning specification. Currently, Tom is focused on building collaboration software for media, gaming, and entertainment industries.
-                      </p>
+                      <p className="text-gray-600 mb-4">Tom Preston-Werner is the cofounder and former CEO of GitHub, acquired by Microsoft for $7.5 billion. A visionary technologist who originally came up with the idea for GitHub, he's the creator of Gravatar and author of the Semantic Versioning specification. Currently, Tom is focused on building collaboration software for media, gaming, and entertainment industries.</p>
                     </div>
                     <div>
                       <div className="flex items-center gap-3 mb-2">
