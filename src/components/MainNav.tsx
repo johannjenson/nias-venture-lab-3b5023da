@@ -1,4 +1,3 @@
-
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -67,29 +66,6 @@ const MainNav = () => {
     },
   ];
 
-  const past = [
-    {
-      title: "Nias Fireside Chats",
-      href: "/events/fireside-chats",
-      description: "An intimate evening of Iftar meal and fireside conversations on March 20th, 2025 in Al Amaariah.",
-    },
-    {
-      title: "Ramadan Iftar Meal",
-      href: "/events/suhoor-dinner",
-      description: "Join us for an intimate Iftar meal gathering with fellow business leaders on March 8th in Riyadh.",
-    },
-    {
-      title: "Nias Business Forum",
-      href: "/events/nias-business-forum",
-      description: "Join our inaugural business forum on February 13th connecting global companies with Saudi investors.",
-    },
-    {
-      title: "Nias Network Dinner at LEAP",
-      href: "/events/leap-dinner",
-      description: "Connect with industry leaders at our exclusive dinner during LEAP 2024 in Riyadh on Sunday, February 9th from 7:00 PM.",
-    },
-  ];
-
   const about = [
     {
       title: "People",
@@ -138,7 +114,6 @@ const MainNav = () => {
     <NavigationMenu className="absolute top-24 md:top-20 left-1/2 -translate-x-1/2 z-50 w-full md:w-auto px-4 md:px-0">
       <NavigationMenuList className="gap-6">
         <NavMenuItem title="Upcoming" items={upcoming} />
-        <NavMenuItem title="Past" items={past} />
         <NavMenuItem title="Resources" items={resources} />
         <NavMenuItem title="About" items={about} />
       </NavigationMenuList>
