@@ -1,17 +1,20 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { CalendarIcon, Clock, Flame, MapPin, Ticket, Users, Waves, Github, Users2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+
 const GithubFounderEvent = () => {
   const navigate = useNavigate();
   const handleRequestClick = () => {
     window.open('https://lu.ma/githubfounder', '_blank');
   };
+  
   return <div className="min-h-screen bg-white">
       <Helmet>
-        <title>An Evening with GitHub Cofounder Tom Preston-Werner - Exclusive Dinner in Riyadh</title>
+        <title>🚀 An Evening with GitHub Cofounder Tom Preston-Werner 🤝 Exclusive Dinner in Riyadh</title>
         <meta name="description" content="Join us for an evening with GitHub cofounder Tom Preston-Werner at Irqah Farmhouse in Riyadh. Connect with leaders in technology, business, and government while enjoying meaningful conversations." />
       </Helmet>
 
@@ -27,8 +30,9 @@ const GithubFounderEvent = () => {
         <section className="py-24 bg-[#F8F3E8]">
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl">
-              <h1 className="text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
-                An Evening with GitHub Cofounder Tom Preston-Werner
+              <h1 className="text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in flex items-center gap-4">
+                <Github className="h-12 w-12 text-black" />
+                An Evening with GitHub Cofounder Tom Preston-Werner 🚀🤝
               </h1>
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">A gathering with government and industry leaders at the Nias Irqah Farmhouse in Riyadh</p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={handleRequestClick}>
