@@ -1,10 +1,10 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { CalendarIcon, Clock, Flame, MapPin, Ticket, Users, Waves, Github, Users2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+
 const GithubFounderEvent = () => {
   const navigate = useNavigate();
   const handleRequestClick = () => {
@@ -16,7 +16,6 @@ const GithubFounderEvent = () => {
         <meta name="description" content="Join us for an evening with GitHub cofounder Tom Preston-Werner at Irqah Farmhouse in Riyadh. Connect with leaders in technology, business, and government while enjoying meaningful conversations." />
       </Helmet>
 
-      {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center px-6">
           <button onClick={() => navigate('/')} className="hover:opacity-80 transition-opacity">
@@ -26,7 +25,6 @@ const GithubFounderEvent = () => {
       </div>
 
       <main className="pt-16">
-        {/* Hero Section */}
         <section className="py-24 bg-[#F8F3E8]">
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl">
@@ -41,13 +39,12 @@ const GithubFounderEvent = () => {
           </div>
         </section>
 
-        {/* Event Details */}
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-16 items-start">
               <div>
                 <h2 className="text-3xl font-bold text-primary mb-6">
-                  An Exchange of Vision & Expertise
+                  Building Tomorrow: Global Innovation Meets Saudi Opportunity
                 </h2>
                 <p className="text-gray-600 mb-8">
                   Join us for an evening at Irqah Farmhouse where family office principals, government representatives, and business leaders can connect and engage in meaningful conversations with global entrepreneurs while enjoying a carefully prepared dinner.
@@ -145,7 +142,6 @@ const GithubFounderEvent = () => {
           </div>
         </section>
 
-        {/* Registration Section */}
         <section id="register" className="py-24 bg-secondary">
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-2xl mx-auto text-center">
