@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
@@ -122,7 +121,7 @@ This is a night to celebrate bold ideas, shared values, and the future of creati
                     <div>
                       <div className="flex items-center gap-3 mb-2">
                         <Users className="h-5 w-5 text-gray-800" />
-                        <h4 className="text-lg font-semibold text-primary">You - The Visionary Leader</h4>
+                        <h4 className="text-lg font-semibold text-primary">You - The Visionary</h4>
                       </div>
                       <p className="text-gray-600">This exclusive gathering is curated for pioneering leaders who are shaping the future of technology, investment, media, and real estate. We are seeking visionary individuals from:</p>
                       <ul className="list-disc pl-5 text-gray-600 mt-2 space-y-1">
