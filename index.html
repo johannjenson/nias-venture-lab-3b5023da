@@ -13,9 +13,6 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
     <script>
       // Add noindex meta tag for CRM route
       if (window.location.pathname.includes('/crm')) {
@@ -24,22 +21,6 @@
         meta.content = 'noindex';
         document.head.appendChild(meta);
       }
-      
-      // Add cache-busting query parameter to scripts
-      document.addEventListener('DOMContentLoaded', function() {
-        const timestamp = new Date().getTime();
-        const scripts = document.querySelectorAll('script[src]');
-        scripts.forEach(script => {
-          if (!script.src.includes('googletagmanager')) {
-            script.src = script.src + (script.src.includes('?') ? '&' : '?') + 'v=' + timestamp;
-          }
-        });
-        
-        const links = document.querySelectorAll('link[rel="stylesheet"]');
-        links.forEach(link => {
-          link.href = link.href + (link.href.includes('?') ? '&' : '?') + 'v=' + timestamp;
-        });
-      });
     </script>
     <title>Nias Network - Land & Expand Your Business in Saudi Arabia</title>
     <meta name="description" content="Bringing together exceptional companies from around the world looking to do business in the Kingdom with serial and exited entrepreneurs, strategic investors, and acquisitive funds." />
