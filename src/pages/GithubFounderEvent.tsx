@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
@@ -95,7 +96,7 @@ const GithubFounderEvent = () => {
               </div>
               <div>
                 <div className="bg-[#F8F3E8] p-8 rounded-lg mb-8">
-                  <h3 className="text-2xl font-bold text-primary mb-4">Featured Speakers</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-4">Guests of Honor</h3>
                   <div className="space-y-6">
                     <div>
                       <div className="flex items-center gap-3 mb-2">
@@ -111,7 +112,7 @@ const GithubFounderEvent = () => {
                         <Users2 className="h-5 w-5 text-gray-800" />
                         <h4 className="text-lg font-semibold text-primary">Rodrigo Ponce de Leon</h4>
                       </div>
-                      <p className="text-gray-600">Rodrigo Ponce de Leon is a Partner at 180 Studios - the hub for London's creative community and the headquarters for Soho House. He has successfully managed three venture capital funds, delivering impressive returns. His expertise spans from venture capital, media, and commercial real estate.</p>
+                      <p className="text-gray-600">Rodrigo Ponce de Leon is a Partner at 180 Studios Holding - the hub for London's creative community and the headquarters for Soho House. He has successfully managed three venture capital funds, delivering impressive returns of 17x, 6x, and 6x. His expertise spans venture capital, media, and commercial real estate development.</p>
                     </div>
                   </div>
                 </div>
@@ -120,23 +121,23 @@ const GithubFounderEvent = () => {
                   <h3 className="text-2xl font-bold text-primary mb-4">What to Expect</h3>
                   <ul className="space-y-3 text-gray-600">
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Insights from a technology pioneer who transformed global software development
+                      <span className="text-primary">•</span> Exclusive insights from Tom Preston-Werner on technological innovation and the future of collaborative software
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Quality dining experience in an elegant setting
+                      <span className="text-primary">•</span> Discussion on investment opportunities in media, software, and real estate with industry leaders
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Engaging discussion on technology innovation, media collaboration, and investment trends
+                      <span className="text-primary">•</span> Exceptional dining experience in an elegant and intimate setting
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Networking with family office principals, government representatives, and industry leaders
+                      <span className="text-primary">•</span> Connections with key decision-makers from family offices, government agencies, and business sectors
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Opportunity to forge strategic relationships with global technology visionaries
+                      <span className="text-primary">•</span> Strategic conversations about emerging trends and cross-sector collaboration opportunities
                     </li>
                   </ul>
                   <p className="text-gray-600 italic mt-4">
-                    "This gathering brings together influential decision-makers to exchange perspectives and establish meaningful strategic partnerships."
+                    "An opportunity to forge meaningful relationships with global innovators and local leaders shaping the future of technology, media, and investment."
                   </p>
                 </div>
               </div>
