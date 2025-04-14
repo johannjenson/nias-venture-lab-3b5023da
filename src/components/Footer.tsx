@@ -50,7 +50,7 @@ const Footer = () => {
   const navigation = {
     main: [
       { name: "Upcoming", submenu: [
-        { name: "GitHub Founder Event", href: "/events/github-founder" },
+        { name: "GitHub Founder Event", href: "/events/an-evening-with-github-cofounder-tom-preston-werner" },
       ]},
       { name: "Past", submenu: [
         { name: "Business Forum", href: "/events/nias-business-forum" },

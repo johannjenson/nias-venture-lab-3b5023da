@@ -6,6 +6,10 @@
       "destination": "/events/nias-business-forum"
     },
     {
+      "source": "/events/github-founder",
+      "destination": "/events/an-evening-with-github-cofounder-tom-preston-werner"
+    },
+    {
       "source": "/((?!.*\\.js|.*\\.css|.*\\.mjs|.*\\.jsx|.*\\.ts|.*\\.tsx).*)",
       "destination": "/"
     }

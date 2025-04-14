@@ -7,7 +7,7 @@ const EventBanner = () => {
       <span className="text-sm md:text-base">
         On April 20th, join us for an evening with GitHub cofounder Tom Preston-Werner at our Irqah Farmhouse in Riyadh.{" "}
         <a 
-          href="/events/github-founder"
+          href="/events/an-evening-with-github-cofounder-tom-preston-werner"
           className="underline font-medium hover:text-white/90"
         >
           Learn More

@@ -62,7 +62,7 @@ const MainNav = () => {
   const upcoming = [
     {
       title: "An Evening with GitHub Cofounder",
-      href: "/events/github-founder",
+      href: "/events/an-evening-with-github-cofounder-tom-preston-werner",
       description: "Join us for dinner and conversation with Tom Preston-Werner on April 20th, 2025 at Irqah Farmhouse in Riyadh.",
     },
   ];
