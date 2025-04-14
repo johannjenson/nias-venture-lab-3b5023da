@@ -17,7 +17,7 @@ const GithubFounderEvent = () => {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>An Evening with GitHub Cofounder Tom Preston-Werner - Exclusive Dinner in Riyadh</title>
-        <meta name="description" content="Join us for an exclusive evening with GitHub cofounder Tom Preston-Werner at Irqah Farmhouse in Riyadh. Connect with distinguished leaders and enjoy sophisticated discourse with global tech luminaries." />
+        <meta name="description" content="Join us for an evening with GitHub cofounder Tom Preston-Werner at Irqah Farmhouse in Riyadh. Connect with leaders in technology, business, and government while enjoying meaningful conversations." />
       </Helmet>
 
       {/* Sticky Header */}
@@ -35,10 +35,10 @@ const GithubFounderEvent = () => {
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl">
               <h1 className="text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
-                An Evening with GitHub Cofounder
+                An Evening with GitHub Cofounder Tom Preston-Werner
               </h1>
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">
-                A distinguished gathering with Tom Preston-Werner at the prestigious Irqah Farmhouse in Riyadh
+                A gathering with industry leaders at Irqah Farmhouse in Riyadh
               </p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={handleRequestClick}>
                 Request an Invitation
@@ -53,10 +53,10 @@ const GithubFounderEvent = () => {
             <div className="grid md:grid-cols-2 gap-16 items-start">
               <div>
                 <h2 className="text-3xl font-bold text-primary mb-6">
-                  A Curated Exchange of Vision & Expertise
+                  An Exchange of Vision & Expertise
                 </h2>
                 <p className="text-gray-600 mb-8">
-                  Experience a refined evening with technology visionaries in the elegant setting of Irqah Farmhouse. Connect with esteemed family office principals, government decision-makers, and distinguished business leaders while enjoying a meticulously prepared dinner and engaging in meaningful discourse with influential global entrepreneurs.
+                  Join us for an evening at Irqah Farmhouse where family office principals, government representatives, and business leaders can connect and engage in meaningful conversations with global entrepreneurs while enjoying a carefully prepared dinner.
                 </p>
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
@@ -70,10 +70,10 @@ const GithubFounderEvent = () => {
                     <Clock className="h-6 w-6 text-primary" />
                     <div>
                       <h3 className="font-semibold text-primary">Programme</h3>
-                      <p className="text-gray-600">7:30 PM - Reception and welcome of distinguished guests</p>
-                      <p className="text-gray-600">8:30 PM - Private dining experience commences</p>
-                      <p className="text-gray-600">9:30 PM - Moderated dialogue with Tom Preston-Werner and Rodrigo Ponce de Leon</p>
-                      <p className="text-gray-600">11:30 PM - Conclusion of proceedings</p>
+                      <p className="text-gray-600">7:30 PM - Reception and welcome of guests</p>
+                      <p className="text-gray-600">8:30 PM - Dining experience</p>
+                      <p className="text-gray-600">9:30 PM - Conversation with Tom Preston-Werner and Rodrigo Ponce de Leon</p>
+                      <p className="text-gray-600">11:30 PM - Conclusion of event</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -94,15 +94,15 @@ const GithubFounderEvent = () => {
                     <Users className="h-6 w-6 text-primary" />
                     <div>
                       <h3 className="font-semibold text-primary">Capacity</h3>
-                      <p className="text-gray-600">Limited to 50 distinguished guests</p>
-                      <p className="text-gray-600 text-sm">Priority waitlist available upon request</p>
+                      <p className="text-gray-600">Limited to 50 guests</p>
+                      <p className="text-gray-600 text-sm">Waitlist available upon request</p>
                     </div>
                   </div>
                 </div>
               </div>
               <div>
                 <div className="bg-[#F8F3E8] p-8 rounded-lg mb-8">
-                  <h3 className="text-2xl font-bold text-primary mb-4">Distinguished Speakers</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-4">Featured Speakers</h3>
                   <div className="space-y-6">
                     <div>
                       <div className="flex items-center gap-3 mb-2">
@@ -110,7 +110,7 @@ const GithubFounderEvent = () => {
                         <h4 className="text-lg font-semibold text-primary">Tom Preston-Werner</h4>
                       </div>
                       <p className="text-gray-600 mb-4">
-                        Tom Preston-Werner is the cofounder and former CEO of GitHub, the world's largest software development platform acquired by Microsoft for $7.5 billion. A visionary technologist, he's also the creator of Gravatar and author of the Semantic Versioning specification. Currently, Tom focuses on AI innovation and strategic climate technology investments with global impact.
+                        Tom Preston-Werner is the cofounder and former CEO of GitHub, acquired by Microsoft for $7.5 billion. A visionary technologist, he's the creator of Gravatar and author of the Semantic Versioning specification. Currently, Tom is focused on building collaboration software for media, gaming, and entertainment industries.
                       </p>
                     </div>
                     <div>
@@ -119,33 +119,33 @@ const GithubFounderEvent = () => {
                         <h4 className="text-lg font-semibold text-primary">Rodrigo Ponce de Leon</h4>
                       </div>
                       <p className="text-gray-600">
-                        Rodrigo Ponce de Leon is a distinguished fund manager with exemplary stewardship across three different investment vehicles. With profound insight into global capital markets and technology ecosystems, Rodrigo brings valuable perspective on strategic capital allocation, institutional investment frameworks, and navigating high-growth markets for extraordinary returns.
+                        Rodrigo Ponce de Leon is an accomplished fund manager with impressive returns across three different venture capital funds. With deep insights into global capital markets and technology ecosystems, Rodrigo brings valuable perspective on strategic investment opportunities and navigating high-growth markets.
                       </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="bg-[#F8F3E8] p-8 rounded-lg">
-                  <h3 className="text-2xl font-bold text-primary mb-4">The Experience</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-4">What to Expect</h3>
                   <ul className="space-y-3 text-gray-600">
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Exclusive insights from a technology pioneer who transformed global software development
+                      <span className="text-primary">•</span> Insights from a technology pioneer who transformed global software development
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Curated dining experience in an elegant private setting
+                      <span className="text-primary">•</span> Quality dining experience in an elegant setting
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Sophisticated discourse on technology innovation, governance implications, and investment trends
+                      <span className="text-primary">•</span> Engaging discussion on technology innovation, media collaboration, and investment trends
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Discreet networking with family office principals, government representatives, and industry leaders
+                      <span className="text-primary">•</span> Networking with family office principals, government representatives, and industry leaders
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Opportunity to forge strategic relationships with global technology visionaries and institutional investors
+                      <span className="text-primary">•</span> Opportunity to forge strategic relationships with global technology visionaries
                     </li>
                   </ul>
                   <p className="text-gray-600 italic mt-4">
-                    "This highly curated gathering brings together influential decision-makers in a sophisticated, private setting to exchange perspectives and establish meaningful strategic partnerships."
+                    "This gathering brings together influential decision-makers to exchange perspectives and establish meaningful strategic partnerships."
                   </p>
                 </div>
               </div>
@@ -161,7 +161,7 @@ const GithubFounderEvent = () => {
                 Request Your Invitation
               </h2>
               <p className="text-gray-600 mb-8">
-                This exclusive gathering is limited to 50 distinguished leaders, family office principals, and government representatives.
+                This exclusive gathering is limited to 50 leaders, family office principals, and government representatives.
                 Submit your details for consideration.
               </p>
               <Button 
