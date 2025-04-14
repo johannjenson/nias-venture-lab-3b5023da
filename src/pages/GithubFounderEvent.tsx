@@ -4,16 +4,12 @@ import Footer from "@/components/Footer";
 import { CalendarIcon, Clock, Flame, MapPin, Ticket, Users, Waves, Github, Users2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-
 const GithubFounderEvent = () => {
   const navigate = useNavigate();
-  
   const handleRequestClick = () => {
     window.open('https://lu.ma/githubfounder', '_blank');
   };
-  
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       <Helmet>
         <title>An Evening with GitHub Cofounder Tom Preston-Werner - Exclusive Dinner in Riyadh</title>
         <meta name="description" content="Join us for an evening with GitHub cofounder Tom Preston-Werner at Irqah Farmhouse in Riyadh. Connect with leaders in technology, business, and government while enjoying meaningful conversations." />
@@ -117,9 +113,7 @@ const GithubFounderEvent = () => {
                         <Users2 className="h-5 w-5 text-gray-800" />
                         <h4 className="text-lg font-semibold text-primary">Rodrigo Ponce de Leon</h4>
                       </div>
-                      <p className="text-gray-600">
-                        Rodrigo Ponce de Leon is a Partner at 180 Studios Holding, which manages the global Soho House member community and headquarters in Central London. With a distinguished track record, he has successfully managed three venture capital funds, delivering impressive returns of 17x, 6x, and 6x. His expertise spans strategic investments, technology ecosystems, and innovative real estate ventures.
-                      </p>
+                      <p className="text-gray-600">Rodrigo Ponce de Leon is a Partner at 180 Studios - the hub for London's creative community and the headquarters for Soho House. He has successfully managed three venture capital funds, delivering impressive returns. His expertise spans from venture capital, media, and commercial real estate.</p>
                     </div>
                   </div>
                 </div>
@@ -163,10 +157,7 @@ const GithubFounderEvent = () => {
                 This exclusive gathering is limited to 50 leaders, family office principals, and government representatives.
                 Submit your details for consideration.
               </p>
-              <Button 
-                className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
-                onClick={handleRequestClick}
-              >
+              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg" onClick={handleRequestClick}>
                 Request an Invitation
               </Button>
             </div>
@@ -175,8 +166,6 @@ const GithubFounderEvent = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default GithubFounderEvent;
