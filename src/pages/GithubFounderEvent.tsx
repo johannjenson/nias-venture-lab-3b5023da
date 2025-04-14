@@ -4,13 +4,11 @@ import Footer from "@/components/Footer";
 import { CalendarIcon, Clock, Flame, MapPin, Ticket, Users, Waves, Github, Users2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-
 const GithubFounderEvent = () => {
   const navigate = useNavigate();
   const handleRequestClick = () => {
     window.open('https://lu.ma/githubfounder', '_blank');
   };
-  
   return <div className="min-h-screen bg-white">
       <Helmet>
         <title>An Evening with GitHub Cofounder Tom Preston-Werner - Exclusive Dinner in Riyadh</title>
@@ -33,7 +31,7 @@ const GithubFounderEvent = () => {
                 <Github className="h-12 w-12 text-black" />
                 An Evening with GitHub Cofounder Tom Preston-Werner
               </h1>
-              <p className="text-xl text-gray-600 mb-8 animate-fade-in">A gathering with government and industry leaders at the Nias Irqah Farmhouse in Riyadh</p>
+              <p className="text-xl text-gray-600 mb-8 animate-fade-in">Meet with KSA's tech, government, and investor community for a cozy dinner and gathering at our Irqah Farmhouse in Riyadh</p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={handleRequestClick}>
                 Request an Invitation
               </Button>
@@ -46,7 +44,7 @@ const GithubFounderEvent = () => {
             <div className="grid md:grid-cols-2 gap-16 items-start">
               <div>
                 <h2 className="text-3xl font-bold text-primary mb-6">For Builders & Capital Allocators</h2>
-                <p className="text-gray-600 mb-8">Join us for an evening at Irqah Farmhouse where family office principals, government representatives, and business leaders can connect and engage in meaningful conversations with exceptional entrepreneurs and advisors.</p>
+                <p className="text-gray-600 mb-8">Join us for an evening at our Irqah Farmhouse where family office principals, government representatives, and business leaders connect and engage in meaningful conversations with exceptional entrepreneurs and advisors.</p>
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
                     <CalendarIcon className="h-6 w-6 text-primary" />
