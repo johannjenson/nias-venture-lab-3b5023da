@@ -75,7 +75,7 @@ const GithubFounderEvent = () => {
                     <MapPin className="h-6 w-6 text-primary" />
                     <div>
                       <h3 className="font-semibold text-primary">Venue</h3>
-                      <p className="text-gray-600">Irqah Farmhouse, Riyadh, Kingdom of Saudi Arabia</p>
+                      <p className="text-gray-600">Nias Irqah Farmhouse, Riyadh, Kingdom of Saudi Arabia</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
