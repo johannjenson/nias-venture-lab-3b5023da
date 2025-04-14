@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
@@ -14,7 +13,7 @@ const GithubFounderEvent = () => {
   
   return <div className="min-h-screen bg-white">
       <Helmet>
-        <title>🚀 An Evening with GitHub Cofounder Tom Preston-Werner 🤝 Exclusive Dinner in Riyadh</title>
+        <title>An Evening with GitHub Cofounder Tom Preston-Werner - Exclusive Dinner in Riyadh</title>
         <meta name="description" content="Join us for an evening with GitHub cofounder Tom Preston-Werner at Irqah Farmhouse in Riyadh. Connect with leaders in technology, business, and government while enjoying meaningful conversations." />
       </Helmet>
 
@@ -32,7 +31,7 @@ const GithubFounderEvent = () => {
             <div className="max-w-3xl">
               <h1 className="text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in flex items-center gap-4">
                 <Github className="h-12 w-12 text-black" />
-                An Evening with GitHub Cofounder Tom Preston-Werner 🚀🤝
+                An Evening with GitHub Cofounder Tom Preston-Werner
               </h1>
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">A gathering with government and industry leaders at the Nias Irqah Farmhouse in Riyadh</p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={handleRequestClick}>
