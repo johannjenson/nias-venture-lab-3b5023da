@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
@@ -31,7 +32,7 @@ const GithubFounderEvent = () => {
                 <Github className="h-12 w-12 text-black" />
                 An Evening with GitHub Cofounder Tom Preston-Werner
               </h1>
-              <p className="text-xl text-gray-600 mb-8 animate-fade-in">Enjoy a relaxed gathering with key figures from Saudi Arabia’s tech, government, and investor communities in the serene setting of our Irqah Farmhouse in Riyadh.</p>
+              <p className="text-xl text-gray-600 mb-8 animate-fade-in">Enjoy a relaxed gathering with key figures from Saudi Arabia's tech, government, and investor communities in the serene setting of our Irqah Farmhouse in Riyadh.</p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={handleRequestClick}>
                 Request an Invitation
               </Button>
@@ -131,26 +132,44 @@ This is a night to celebrate bold ideas, shared values, and the future of creati
                   </div>
                 </div>
 
-                <div className="bg-[#F8F3E8] p-8 rounded-lg">
-                  <h3 className="text-2xl font-bold text-primary mb-4">What to Expect</h3>
-                  <ul className="space-y-3 text-gray-600">
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Exclusive insights from Tom Preston-Werner on technological innovation and the future of collaborative software
+                <div className="bg-[#F8F3E8] p-8 rounded-lg shadow-sm border border-[#E8E4D9]">
+                  <h3 className="text-2xl font-bold text-primary mb-4 flex items-center gap-2">
+                    <Flame className="h-5 w-5 text-primary" />
+                    What to Expect
+                  </h3>
+                  <ul className="space-y-4 text-gray-600">
+                    <li className="flex items-start gap-3">
+                      <div className="min-w-5 pt-0.5">
+                        <span className="inline-block w-1.5 h-1.5 bg-primary rounded-full"></span>
+                      </div>
+                      <p>Exclusive insights from Tom Preston-Werner on technological innovation and the future of collaborative software</p>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Discussion on investment opportunities in media, software, and real estate with industry leaders
+                    <li className="flex items-start gap-3">
+                      <div className="min-w-5 pt-0.5">
+                        <span className="inline-block w-1.5 h-1.5 bg-primary rounded-full"></span>
+                      </div>
+                      <p>Discussion on investment opportunities in media, software, and real estate with industry leaders</p>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Exceptional dining experience in an elegant and intimate setting
+                    <li className="flex items-start gap-3">
+                      <div className="min-w-5 pt-0.5">
+                        <span className="inline-block w-1.5 h-1.5 bg-primary rounded-full"></span>
+                      </div>
+                      <p>Exceptional dining experience in an elegant and intimate setting</p>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Connections with key decision-makers from family offices, government agencies, and business sectors
+                    <li className="flex items-start gap-3">
+                      <div className="min-w-5 pt-0.5">
+                        <span className="inline-block w-1.5 h-1.5 bg-primary rounded-full"></span>
+                      </div>
+                      <p>Connections with key decision-makers from family offices, government agencies, and business sectors</p>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Strategic conversations about emerging trends and cross-sector collaboration opportunities
+                    <li className="flex items-start gap-3">
+                      <div className="min-w-5 pt-0.5">
+                        <span className="inline-block w-1.5 h-1.5 bg-primary rounded-full"></span>
+                      </div>
+                      <p>Strategic conversations about emerging trends and cross-sector collaboration opportunities</p>
                     </li>
                   </ul>
-                  <p className="text-gray-600 italic mt-4">
+                  <p className="text-gray-600 italic mt-6 border-t border-[#E8E4D9] pt-4">
                     "An opportunity to forge meaningful relationships with global innovators and local leaders shaping the future of technology, media, and investment."
                   </p>
                 </div>
