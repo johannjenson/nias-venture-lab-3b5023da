@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import RequestInviteModal from "@/components/RequestInviteModal";
+import { Helmet } from "react-helmet";
 
 const Resources = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,6 +36,20 @@ const Resources = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Vision 2030 Investment Opportunities | Nias Network</title>
+        <meta name="description" content="Explore Saudi Arabia's $3 trillion Vision 2030 investment opportunities across key industries with high potential for international businesses seeking market entry." />
+        <meta property="og:title" content="Vision 2030 Investment Opportunities | Nias Network" />
+        <meta property="og:description" content="Saudi Arabia is investing $3 trillion across key industries as part of Vision 2030. Discover the top industries with the highest potential for international businesses." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nias.io/resources" />
+        <meta property="og:image" content="https://nias.io/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Vision 2030 Investment Opportunities | Nias Network" />
+        <meta name="twitter:description" content="Saudi Arabia is investing $3 trillion across key industries as part of Vision 2030. Discover the top industries with the highest potential for international businesses." />
+        <meta name="twitter:image" content="https://nias.io/og-image.png" />
+      </Helmet>
+
       {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-white border-b z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center justify-between px-6">
