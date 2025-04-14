@@ -44,7 +44,9 @@ const GithubFounderEvent = () => {
             <div className="grid md:grid-cols-2 gap-16 items-start">
               <div>
                 <h2 className="text-3xl font-bold text-primary mb-6">For Builders & Capital Allocators</h2>
-                <p className="text-gray-600 mb-8">Join us for an evening at our Irqah Farmhouse where family office principals, government representatives, and business leaders connect and engage in meaningful conversations with exceptional entrepreneurs and advisors.</p>
+                <p className="text-gray-600 mb-8">Join us for a curated gathering at our Irqah Farmhouse, where pioneering builders, founders, and technologists — alongside family office principals, sovereign investors, and senior government leaders — come together for open, meaningful conversation.
+
+This is a night to celebrate bold ideas, shared values, and the future of creation — from the code that powers innovation to the stories that shape culture.</p>
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
                     <CalendarIcon className="h-6 w-6 text-primary" />
