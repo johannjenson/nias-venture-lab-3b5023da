@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { CalendarIcon, Clock, Flame, MapPin, Ticket, Users, Waves, Github, Users2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+
 const GithubFounderEvent = () => {
   const navigate = useNavigate();
   const handleRequestClick = () => {
@@ -52,7 +53,7 @@ This is a night to celebrate bold ideas, shared values, and the future of creati
                     <CalendarIcon className="h-6 w-6 text-primary" />
                     <div>
                       <h3 className="font-semibold text-primary">When</h3>
-                      <p className="text-gray-600">Monday, March 20th, 2025</p>
+                      <p className="text-gray-600">Monday, April 20th, 2025</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
