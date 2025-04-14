@@ -17,7 +17,7 @@ const GithubFounderEvent = () => {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>An Evening with GitHub Cofounder Tom Preston-Werner - Exclusive Dinner in Riyadh</title>
-        <meta name="description" content="Join us for an exclusive evening with GitHub cofounder Tom Preston-Werner at Irqah Farmhouse in Riyadh. Network with business leaders and enjoy dinner and discussion with tech luminaries." />
+        <meta name="description" content="Join us for an exclusive evening with GitHub cofounder Tom Preston-Werner at Irqah Farmhouse in Riyadh. Connect with distinguished leaders and enjoy sophisticated discourse with global tech luminaries." />
       </Helmet>
 
       {/* Sticky Header */}
@@ -38,10 +38,10 @@ const GithubFounderEvent = () => {
                 An Evening with GitHub Cofounder
               </h1>
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">
-                Join us for dinner and conversation with Tom Preston-Werner at the Irqah Farmhouse in Riyadh
+                A distinguished gathering with Tom Preston-Werner at the prestigious Irqah Farmhouse in Riyadh
               </p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={handleRequestClick}>
-                Request an Invite
+                Request an Invitation
               </Button>
             </div>
           </div>
@@ -53,10 +53,10 @@ const GithubFounderEvent = () => {
             <div className="grid md:grid-cols-2 gap-16 items-start">
               <div>
                 <h2 className="text-3xl font-bold text-primary mb-6">
-                  A Night of Tech & Business Insights
+                  A Curated Exchange of Vision & Expertise
                 </h2>
                 <p className="text-gray-600 mb-8">
-                  Experience an exclusive evening with technology visionaries in an intimate setting at Irqah Farmhouse. Connect with fellow business leaders while enjoying dinner and engaging discussions with influential tech entrepreneurs.
+                  Experience a refined evening with technology visionaries in the elegant setting of Irqah Farmhouse. Connect with esteemed family office principals, government decision-makers, and distinguished business leaders while enjoying a meticulously prepared dinner and engaging in meaningful discourse with influential global entrepreneurs.
                 </p>
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
@@ -69,40 +69,40 @@ const GithubFounderEvent = () => {
                   <div className="flex items-center gap-3">
                     <Clock className="h-6 w-6 text-primary" />
                     <div>
-                      <h3 className="font-semibold text-primary">Schedule</h3>
-                      <p className="text-gray-600">7:30 PM - Guest arrival</p>
-                      <p className="text-gray-600">8:30 PM - Dinner starts</p>
-                      <p className="text-gray-600">9:30 PM - Discussion with Tom Preston-Werner and Rodrigo Ponce de Leon</p>
-                      <p className="text-gray-600">11:30 PM - Event concludes</p>
+                      <h3 className="font-semibold text-primary">Programme</h3>
+                      <p className="text-gray-600">7:30 PM - Reception and welcome of distinguished guests</p>
+                      <p className="text-gray-600">8:30 PM - Private dining experience commences</p>
+                      <p className="text-gray-600">9:30 PM - Moderated dialogue with Tom Preston-Werner and Rodrigo Ponce de Leon</p>
+                      <p className="text-gray-600">11:30 PM - Conclusion of proceedings</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <MapPin className="h-6 w-6 text-primary" />
                     <div>
-                      <h3 className="font-semibold text-primary">Where</h3>
-                      <p className="text-gray-600">Irqah Farmhouse, Riyadh, Saudi Arabia</p>
+                      <h3 className="font-semibold text-primary">Venue</h3>
+                      <p className="text-gray-600">Irqah Farmhouse, Riyadh, Kingdom of Saudi Arabia</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Ticket className="h-6 w-6 text-primary" />
                     <div>
-                      <h3 className="font-semibold text-primary">Tickets</h3>
-                      <p className="text-gray-600">Free (Invitation only)</p>
+                      <h3 className="font-semibold text-primary">Attendance</h3>
+                      <p className="text-gray-600">By invitation only</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Users className="h-6 w-6 text-primary" />
                     <div>
                       <h3 className="font-semibold text-primary">Capacity</h3>
-                      <p className="text-gray-600">Limited to 50 guests</p>
-                      <p className="text-gray-600 text-sm">Waitlist available</p>
+                      <p className="text-gray-600">Limited to 50 distinguished guests</p>
+                      <p className="text-gray-600 text-sm">Priority waitlist available upon request</p>
                     </div>
                   </div>
                 </div>
               </div>
               <div>
                 <div className="bg-[#F8F3E8] p-8 rounded-lg mb-8">
-                  <h3 className="text-2xl font-bold text-primary mb-4">Our Speakers</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-4">Distinguished Speakers</h3>
                   <div className="space-y-6">
                     <div>
                       <div className="flex items-center gap-3 mb-2">
@@ -110,7 +110,7 @@ const GithubFounderEvent = () => {
                         <h4 className="text-lg font-semibold text-primary">Tom Preston-Werner</h4>
                       </div>
                       <p className="text-gray-600 mb-4">
-                        Tom Preston-Werner is the cofounder and former CEO of GitHub, the world's largest software development platform. He's also the creator of Gravatar and the author of the Semantic Versioning specification. Currently, Tom is focused on AI and climate tech investments and initiatives.
+                        Tom Preston-Werner is the cofounder and former CEO of GitHub, the world's largest software development platform acquired by Microsoft for $7.5 billion. A visionary technologist, he's also the creator of Gravatar and author of the Semantic Versioning specification. Currently, Tom focuses on AI innovation and strategic climate technology investments with global impact.
                       </p>
                     </div>
                     <div>
@@ -119,33 +119,33 @@ const GithubFounderEvent = () => {
                         <h4 className="text-lg font-semibold text-primary">Rodrigo Ponce de Leon</h4>
                       </div>
                       <p className="text-gray-600">
-                        Rodrigo Ponce de Leon is a seasoned fund manager with experience across three different funds. With a deep understanding of the investment landscape, Rodrigo brings valuable insights on scaling technology businesses and strategic capital allocation in high-growth markets.
+                        Rodrigo Ponce de Leon is a distinguished fund manager with exemplary stewardship across three different investment vehicles. With profound insight into global capital markets and technology ecosystems, Rodrigo brings valuable perspective on strategic capital allocation, institutional investment frameworks, and navigating high-growth markets for extraordinary returns.
                       </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="bg-[#F8F3E8] p-8 rounded-lg">
-                  <h3 className="text-2xl font-bold text-primary mb-4">What to Expect</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-4">The Experience</h3>
                   <ul className="space-y-3 text-gray-600">
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Exclusive insights from the cofounder who helped transform how developers collaborate
+                      <span className="text-primary">•</span> Exclusive insights from a technology pioneer who transformed global software development
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Gourmet dinner in a spectacular farmhouse setting
+                      <span className="text-primary">•</span> Curated dining experience in an elegant private setting
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Engaging discussions on technology, entrepreneurship and investment trends
+                      <span className="text-primary">•</span> Sophisticated discourse on technology innovation, governance implications, and investment trends
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Meaningful networking with fellow business leaders in an intimate setting
+                      <span className="text-primary">•</span> Discreet networking with family office principals, government representatives, and industry leaders
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span> Opportunity to build connections with tech visionaries and investors
+                      <span className="text-primary">•</span> Opportunity to forge strategic relationships with global technology visionaries and institutional investors
                     </li>
                   </ul>
                   <p className="text-gray-600 italic mt-4">
-                    "This exclusive gathering brings together business leaders in a relaxed, intimate setting to share ideas and forge meaningful connections."
+                    "This highly curated gathering brings together influential decision-makers in a sophisticated, private setting to exchange perspectives and establish meaningful strategic partnerships."
                   </p>
                 </div>
               </div>
@@ -161,14 +161,14 @@ const GithubFounderEvent = () => {
                 Request Your Invitation
               </h2>
               <p className="text-gray-600 mb-8">
-                This exclusive event is limited to 50 qualified business leaders and investors.
-                Submit your details to request an invitation.
+                This exclusive gathering is limited to 50 distinguished leaders, family office principals, and government representatives.
+                Submit your details for consideration.
               </p>
               <Button 
                 className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
                 onClick={handleRequestClick}
               >
-                Request an Invite
+                Request an Invitation
               </Button>
             </div>
           </div>
