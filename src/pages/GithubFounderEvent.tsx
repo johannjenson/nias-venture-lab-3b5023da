@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
@@ -119,7 +118,7 @@ const GithubFounderEvent = () => {
                         <h4 className="text-lg font-semibold text-primary">Rodrigo Ponce de Leon</h4>
                       </div>
                       <p className="text-gray-600">
-                        Rodrigo Ponce de Leon is an accomplished fund manager with impressive returns across three different venture capital funds. With deep insights into global capital markets and technology ecosystems, Rodrigo brings valuable perspective on strategic investment opportunities and navigating high-growth markets.
+                        Rodrigo Ponce de Leon is a Partner at 180 Studios Holding, which manages the global Soho House member community and headquarters in Central London. With a distinguished track record, he has successfully managed three venture capital funds, delivering impressive returns of 17x, 6x, and 6x. His expertise spans strategic investments, technology ecosystems, and innovative real estate ventures.
                       </p>
                     </div>
                   </div>
