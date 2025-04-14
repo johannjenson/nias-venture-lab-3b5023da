@@ -59,25 +59,15 @@ const MainNav = () => {
     }
   };
   
-  const about = [
-    {
-      title: "People",
-      href: "/people",
-      description: "Meet our crew at Nias.",
-    },
-    {
-      title: "Contact",
-      href: "/contact",
-      description: "Get in touch with our team.",
-    },
-  ];
-
-  const events = [
+  const upcoming = [
     {
       title: "An Evening with GitHub Cofounder",
       href: "/events/github-founder",
-      description: "Join us for dinner and conversation with Tom Preston-Werner on March 20th, 2025 at Irqah Farmhouse in Riyadh.",
+      description: "Join us for dinner and conversation with Tom Preston-Werner on April 20th, 2025 at Irqah Farmhouse in Riyadh.",
     },
+  ];
+
+  const past = [
     {
       title: "Nias Fireside Chats",
       href: "/events/fireside-chats",
@@ -97,6 +87,19 @@ const MainNav = () => {
       title: "Nias Network Dinner at LEAP",
       href: "/events/leap-dinner",
       description: "Connect with industry leaders at our exclusive dinner during LEAP 2024 in Riyadh on Sunday, February 9th from 7:00 PM.",
+    },
+  ];
+
+  const about = [
+    {
+      title: "People",
+      href: "/people",
+      description: "Meet our crew at Nias.",
+    },
+    {
+      title: "Contact",
+      href: "/contact",
+      description: "Get in touch with our team.",
     },
   ];
 
@@ -134,7 +137,8 @@ const MainNav = () => {
   return (
     <NavigationMenu className="absolute top-24 md:top-20 left-1/2 -translate-x-1/2 z-50 w-full md:w-auto px-4 md:px-0">
       <NavigationMenuList className="gap-6">
-        <NavMenuItem title="Events" items={events} />
+        <NavMenuItem title="Upcoming" items={upcoming} />
+        <NavMenuItem title="Past" items={past} />
         <NavMenuItem title="Resources" items={resources} />
         <NavMenuItem title="About" items={about} />
       </NavigationMenuList>

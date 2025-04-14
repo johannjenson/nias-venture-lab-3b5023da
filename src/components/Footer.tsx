@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -48,7 +49,10 @@ const Footer = () => {
 
   const navigation = {
     main: [
-      { name: "Events", submenu: [
+      { name: "Upcoming", submenu: [
+        { name: "GitHub Founder Event", href: "/events/github-founder" },
+      ]},
+      { name: "Past", submenu: [
         { name: "Business Forum", href: "/events/nias-business-forum" },
         { name: "LEAP Dinner", href: "/events/leap-dinner" },
         { name: "Suhoor Dinner", href: "/events/suhoor-dinner" },
