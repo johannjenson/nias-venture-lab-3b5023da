@@ -192,7 +192,7 @@ This is a night to celebrate bold ideas, shared values, and the future of creati
               <h2 className="text-3xl font-bold text-primary mb-6">
                 Request Your Invitation
               </h2>
-              <p className="text-gray-600 mb-8">This exclusive gathering is limited to 50 builders, business leaders, family office principals, and government representatives. Please submit your details for review.</p>
+              <p className="text-gray-600 mb-8">This exclusive gathering is limited to 50 builders, business leaders, family office principals, investors, and government representatives. Please submit your details for review.</p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg" onClick={handleRequestClick}>
                 Request an Invitation
               </Button>
