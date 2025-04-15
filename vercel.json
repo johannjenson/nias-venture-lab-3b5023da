@@ -10,6 +10,10 @@
       "destination": "/events/an-evening-with-github-cofounder-tom-preston-werner"
     },
     {
+      "source": "/github-founder",
+      "destination": "/events/an-evening-with-github-cofounder-tom-preston-werner"
+    },
+    {
       "source": "/((?!.*\\.js|.*\\.css|.*\\.mjs|.*\\.jsx|.*\\.ts|.*\\.tsx).*)",
       "destination": "/"
     }
