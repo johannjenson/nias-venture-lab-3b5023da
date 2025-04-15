@@ -13,9 +13,6 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
     <script>
       // Add noindex meta tag for CRM route
       if (window.location.pathname.includes('/crm')) {
@@ -23,20 +20,6 @@
         meta.name = 'robots';
         meta.content = 'noindex';
         document.head.appendChild(meta);
-      }
-      
-      // Clear any cached resources
-      if ('caches' in window) {
-        caches.keys().then(function(cacheNames) {
-          cacheNames.forEach(function(cacheName) {
-            caches.delete(cacheName);
-          });
-        });
-      }
-      
-      // Force reload if coming from cache
-      if (performance.navigation.type === 1) {
-        window.location.reload(true);
       }
     </script>
     <title>Nias Network - Land & Expand Your Business in Saudi Arabia</title>
@@ -53,6 +36,6 @@
   <body>
     <div id="root"></div>
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx?v=2025041501"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
