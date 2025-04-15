@@ -61,7 +61,7 @@ This is a night to celebrate bold ideas, shared values, and the future of creati
                     <CalendarIcon className="h-6 w-6 text-primary" />
                     <div>
                       <h3 className="font-semibold text-primary">When</h3>
-                      <p className="text-gray-600">Monday, April 20th, 2025</p>
+                      <p className="text-gray-600">Sunday, April 20th, 2025</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
