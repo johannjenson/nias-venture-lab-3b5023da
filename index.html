@@ -33,6 +33,11 @@
           });
         });
       }
+      
+      // Force reload if coming from cache
+      if (performance.navigation.type === 1) {
+        window.location.reload(true);
+      }
     </script>
     <title>Nias Network - Land & Expand Your Business in Saudi Arabia</title>
     <meta name="description" content="Bringing together exceptional companies from around the world looking to do business in the Kingdom with serial and exited entrepreneurs, strategic investors, and acquisitive funds." />
@@ -48,6 +53,6 @@
   <body>
     <div id="root"></div>
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx?v=123456"></script>
+    <script type="module" src="/src/main.tsx?v=2025041501"></script>
   </body>
 </html>
