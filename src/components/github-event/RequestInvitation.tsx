@@ -7,7 +7,7 @@ interface RequestInvitationProps {
 
 const RequestInvitation = ({ onRequestClick }: RequestInvitationProps) => {
   return (
-    <section id="register" className="py-12 bg-secondary mt-40">
+    <section id="register" className="py-24 bg-secondary mt-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-primary mb-6">
