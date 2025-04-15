@@ -35,6 +35,8 @@ const App = () => (
           <Route path="/events/suhoor-dinner" element={<SuhoorDinner />} />
           <Route path="/events/fireside-chats" element={<FiresideChats />} />
           <Route path="/events/an-evening-with-github-cofounder-tom-preston-werner" element={<GithubFounderEvent />} />
+          <Route path="/github-founder" element={<GithubFounderEvent />} />
+          <Route path="/events/github-founder" element={<GithubFounderEvent />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
