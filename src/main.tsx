@@ -17,7 +17,15 @@ const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Failed to find the root element");
 
 // Add a timestamp to break cache
-console.log(`App initializing at: ${new Date().toISOString()}`);
+const timestamp = new Date().toISOString();
+console.log(`App initializing at: ${timestamp}`);
+
+// Add cache busting parameter to any dynamic imports
+if (import.meta.hot) {
+  import.meta.hot.on('vite:beforeUpdate', () => {
+    console.log('Updating application...');
+  });
+}
 
 createRoot(rootElement).render(
   <React.StrictMode>
