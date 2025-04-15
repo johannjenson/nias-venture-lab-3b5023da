@@ -20,7 +20,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
         </div>
       </div>
 
-      <section className="py-24 bg-[#F8F3E8]">
+      <section className="pt-24 pb-24 bg-[#F8F3E8]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <h1 className="text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in flex items-center gap-4">
