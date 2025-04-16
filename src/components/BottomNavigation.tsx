@@ -15,7 +15,7 @@ const BottomNavigation = () => {
     { 
       icon: Calendar, 
       label: 'Events', 
-      href: '/events/venturesouq-tech-week-dinner' 
+      href: '/events/vntr-investor-forum' 
     },
     { 
       icon: Search, 

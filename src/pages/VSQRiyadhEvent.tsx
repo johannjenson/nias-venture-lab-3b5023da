@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet";
 import { Card, CardContent } from "@/components/ui/card";
+
 const VSQRiyadhEvent = () => {
   const navigate = useNavigate();
   const handleRequestClick = () => {
     window.open('https://www.vntr.vc/events/riyadh-697', '_blank', 'noopener,noreferrer');
   };
+  
   const speakers = [{
     name: "Khalid Aldoseri",
     title: "Vice Chairman",
@@ -94,13 +96,14 @@ const VSQRiyadhEvent = () => {
     name: "Mark Wadhwa",
     title: "Founder",
     organization: "Vinyl Factory",
-    linkedin: "https://www.linkedin.com/in/mark-wadhwa-8a8b3a1a0"
+    linkedin: ""
   }, {
     name: "Maximilian Plank",
     title: "Venture Partner / Managing Partner",
     organization: "Tenity / Antler / Stableton",
     linkedin: "https://www.linkedin.com/in/maximilian-plank-2a8b3a1a0"
   }];
+  
   const agenda = [{
     time: "9:00",
     description: "Registrations and coffee"
@@ -150,6 +153,7 @@ const VSQRiyadhEvent = () => {
     time: "22:00",
     description: "Closing"
   }];
+  
   return <div className="min-h-screen bg-white">
       <Helmet>
         <title>VNTR Investor Forum Riyadh | Nias Network</title>
@@ -272,4 +276,5 @@ const VSQRiyadhEvent = () => {
       <Footer />
     </div>;
 };
+
 export default VSQRiyadhEvent;
