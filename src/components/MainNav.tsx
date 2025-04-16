@@ -66,9 +66,9 @@ const MainNav = () => {
       description: "Join us for dinner and conversation with Tom Preston-Werner on April 20th, 2025 at Irqah Farmhouse in Riyadh.",
     },
     {
-      title: "VentureSouq Tech Week Dinner",
+      title: "VNTR Investor Forum Riyadh",
       href: "/events/venturesouq-tech-week-dinner",
-      description: "Connect with tech founders and investors during an exclusive dinner at Riyadh Tech Week on October 14th, 2025.",
+      description: "Join VNTR Investor Forum in Riyadh on April 23rd, 2025 for a day of keynotes, panels, and networking with industry leaders.",
     },
   ];
 
