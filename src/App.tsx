@@ -11,6 +11,7 @@ import LeapDinner from "./pages/LeapDinner";
 import SuhoorDinner from "./pages/SuhoorDinner";
 import FiresideChats from "./pages/FiresideChats";
 import GithubFounderEvent from "./pages/GithubFounderEvent";
+import VSQRiyadhEvent from "./pages/VSQRiyadhEvent";
 import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/events/suhoor-dinner" element={<SuhoorDinner />} />
           <Route path="/events/fireside-chats" element={<FiresideChats />} />
           <Route path="/events/an-evening-with-github-cofounder-tom-preston-werner" element={<GithubFounderEvent />} />
+          <Route path="/events/venturesouq-tech-week-dinner" element={<VSQRiyadhEvent />} />
           <Route path="/github-founder" element={<GithubFounderEvent />} />
           <Route path="/events/github-founder" element={<GithubFounderEvent />} />
           <Route path="/resources" element={<Resources />} />

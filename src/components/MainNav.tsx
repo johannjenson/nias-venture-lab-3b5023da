@@ -1,3 +1,4 @@
+
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -63,6 +64,11 @@ const MainNav = () => {
       title: "An Evening with GitHub Cofounder",
       href: "/events/an-evening-with-github-cofounder-tom-preston-werner",
       description: "Join us for dinner and conversation with Tom Preston-Werner on April 20th, 2025 at Irqah Farmhouse in Riyadh.",
+    },
+    {
+      title: "VentureSouq Tech Week Dinner",
+      href: "/events/venturesouq-tech-week-dinner",
+      description: "Connect with tech founders and investors during an exclusive dinner at Riyadh Tech Week on October 14th, 2025.",
     },
   ];
 

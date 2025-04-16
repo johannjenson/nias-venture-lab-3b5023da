@@ -14,6 +14,10 @@
       "destination": "/events/an-evening-with-github-cofounder-tom-preston-werner"
     },
     {
+      "source": "/events/vsq-dinner",
+      "destination": "/events/venturesouq-tech-week-dinner"
+    },
+    {
       "source": "/((?!.*\\.js|.*\\.css|.*\\.mjs|.*\\.jsx|.*\\.ts|.*\\.tsx).*)",
       "destination": "/"
     }
