@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from 'react';
 import Footer from "@/components/Footer";
 import { Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
