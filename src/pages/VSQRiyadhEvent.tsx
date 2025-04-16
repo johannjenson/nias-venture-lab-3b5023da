@@ -1,19 +1,16 @@
-
 import { useState } from "react";
 import Footer from "@/components/Footer";
 import { Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 const VSQRiyadhEvent = () => {
   const navigate = useNavigate();
   
   const handleRequestClick = () => {
-    window.open('https://app.vntr.vc', '_blank', 'noopener,noreferrer');
+    window.open('https://www.vntr.vc/events/riyadh-697', '_blank', 'noopener,noreferrer');
   };
 
   const speakers = [
@@ -60,10 +57,9 @@ const VSQRiyadhEvent = () => {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>VNTR Investor Forum Riyadh | Nias Network</title>
-        <meta name="description" content="Join VNTR Investor Forum in Riyadh on April 23rd, 2025 for a day of keynotes, panels, and networking with industry leaders." />
+        <meta name="description" content="Join VNTR Investor Forum in Riyadh on April 23rd, 2025 for a day of keynotes, panels, and networking with industry leaders, in partnership with Nias Network." />
       </Helmet>
       
-      {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center px-6">
           <button 
@@ -76,7 +72,6 @@ const VSQRiyadhEvent = () => {
       </div>
 
       <main className="pt-16">
-        {/* Hero Section */}
         <section className="py-24 bg-secondary">
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-3xl">
@@ -84,7 +79,7 @@ const VSQRiyadhEvent = () => {
                 VNTR Investor Forum Riyadh
               </h1>
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">
-                A comprehensive gathering of investors and industry leaders in Riyadh
+                A comprehensive gathering of investors and industry leaders in Riyadh, in partnership with Nias Network
               </p>
               <Button
                 className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in"
@@ -96,11 +91,9 @@ const VSQRiyadhEvent = () => {
           </div>
         </section>
 
-        {/* Event Details and Agenda */}
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 gap-16">
-              {/* Event Details */}
               <div className="bg-secondary/20 p-8 rounded-lg">
                 <h2 className="text-3xl font-bold text-primary mb-6">
                   Event Details
@@ -118,7 +111,7 @@ const VSQRiyadhEvent = () => {
                   <div>
                     <h3 className="font-semibold text-primary mb-2">Registration</h3>
                     <p className="text-gray-600">
-                      Register at <a href="https://app.vntr.vc" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">app.vntr.vc</a>
+                      Register at <a href="https://www.vntr.vc/events/riyadh-697" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.vntr.vc/events/riyadh-697</a>
                     </p>
                   </div>
                 </div>
@@ -129,7 +122,6 @@ const VSQRiyadhEvent = () => {
                 </div>
               </div>
               
-              {/* Agenda */}
               <div>
                 <h2 className="text-3xl font-bold text-primary mb-6">
                   Agenda
@@ -153,7 +145,6 @@ const VSQRiyadhEvent = () => {
           </div>
         </section>
 
-        {/* Speakers Section */}
         <section className="py-24 bg-secondary/30">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-3xl font-bold text-primary mb-10 text-center">
@@ -162,9 +153,6 @@ const VSQRiyadhEvent = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {speakers.map((speaker) => (
                 <div key={speaker.name} className="bg-white p-6 rounded-lg shadow-sm">
-                  <Avatar className="h-16 w-16 mb-4">
-                    <AvatarFallback>{speaker.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                  </Avatar>
                   <h3 className="font-semibold text-primary">{speaker.name}</h3>
                   <p className="text-sm text-gray-600">{speaker.title}</p>
                   <p className="text-sm text-gray-600 mb-3">{speaker.organization}</p>
@@ -189,7 +177,6 @@ const VSQRiyadhEvent = () => {
           </div>
         </section>
 
-        {/* Registration Section */}
         <section id="register" className="py-24 bg-secondary">
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-2xl mx-auto text-center">
@@ -197,7 +184,7 @@ const VSQRiyadhEvent = () => {
                 Register for VNTR Investor Forum
               </h2>
               <p className="text-gray-600 mb-8">
-                Secure your spot at this exclusive forum bringing together top investors and industry leaders in Riyadh.
+                Secure your spot at this exclusive forum bringing together top investors and industry leaders in Riyadh, in partnership with Nias Network.
               </p>
               <Button 
                 className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
