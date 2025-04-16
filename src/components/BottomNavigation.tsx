@@ -14,8 +14,8 @@ const BottomNavigation = () => {
     },
     { 
       icon: Calendar, 
-      label: 'Events', 
-      href: '/events/vntr-investor-forum' 
+      label: 'Upcoming', 
+      href: '/events/an-evening-with-github-cofounder-tom-preston-werner' 
     },
     { 
       icon: Search, 
