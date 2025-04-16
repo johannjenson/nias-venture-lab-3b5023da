@@ -235,7 +235,7 @@ const VSQRiyadhEvent = () => {
 
         <section className="py-24 bg-secondary/30">
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-3xl font-bold text-primary mb-10 text-center">Speakers</h2>
+            <h2 className="text-3xl font-bold text-primary mb-10 text-left">Speakers</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {speakers.map(speaker => <div key={speaker.name} className="bg-white p-6 rounded-lg shadow-sm">
                   <h3 className="font-semibold text-primary">{speaker.name}</h3>
