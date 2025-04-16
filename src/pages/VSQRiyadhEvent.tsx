@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const VSQRiyadhEvent = () => {
   const navigate = useNavigate();
@@ -94,18 +96,16 @@ const VSQRiyadhEvent = () => {
           </div>
         </section>
 
-        {/* Event Details */}
+        {/* Event Details and Agenda */}
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="grid md:grid-cols-2 gap-16 items-start">
-              <div>
+            <div className="grid grid-cols-1 gap-16">
+              {/* Event Details */}
+              <div className="bg-secondary/20 p-8 rounded-lg">
                 <h2 className="text-3xl font-bold text-primary mb-6">
                   Event Details
                 </h2>
-                <p className="text-gray-600 mb-8">
-                  VNTR Investor Forum Riyadh brings together investors, entrepreneurs, and industry leaders for a day of insights, networking, and opportunities in the Saudi investment landscape.
-                </p>
-                <div className="space-y-6">
+                <div className="grid md:grid-cols-3 gap-8">
                   <div>
                     <h3 className="font-semibold text-primary mb-2">Date & Time</h3>
                     <p className="text-gray-600">April 23rd, 2025 | 9:00 AM - 10:00 PM AST</p>
@@ -122,15 +122,30 @@ const VSQRiyadhEvent = () => {
                     </p>
                   </div>
                 </div>
+                <div className="mt-8">
+                  <p className="text-gray-600">
+                    VNTR Investor Forum Riyadh brings together investors, entrepreneurs, and industry leaders for a day of insights, networking, and opportunities in the Saudi investment landscape.
+                  </p>
+                </div>
               </div>
-              <div className="bg-secondary p-8 rounded-lg">
-                <h3 className="text-2xl font-bold text-primary mb-6">Agenda</h3>
-                <div className="space-y-3 max-h-[400px] overflow-y-auto pr-4">
+              
+              {/* Agenda */}
+              <div>
+                <h2 className="text-3xl font-bold text-primary mb-6">
+                  Agenda
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {agenda.map((item) => (
-                    <div key={item.time} className="flex gap-4">
-                      <div className="min-w-[60px] text-primary font-semibold">{item.time}</div>
-                      <div className="text-gray-600">{item.description}</div>
-                    </div>
+                    <Card key={item.time} className="bg-secondary/10 border-none">
+                      <CardContent className="p-4 flex items-start gap-4">
+                        <div className="bg-primary text-primary-foreground rounded p-2 min-w-[60px] text-center font-semibold">
+                          {item.time}
+                        </div>
+                        <div className="text-gray-700 pt-2">
+                          {item.description}
+                        </div>
+                      </CardContent>
+                    </Card>
                   ))}
                 </div>
               </div>
