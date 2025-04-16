@@ -67,7 +67,7 @@ const MainNav = () => {
     },
     {
       title: "VNTR Investor Forum Riyadh",
-      href: "/events/venturesouq-tech-week-dinner",
+      href: "/events/vntr-investor-dinner",
       description: "Join VNTR Investor Forum in Riyadh on April 23rd, 2025 for a day of keynotes, panels, and networking with industry leaders.",
     },
   ];

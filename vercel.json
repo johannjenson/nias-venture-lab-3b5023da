@@ -15,11 +15,15 @@
     },
     {
       "source": "/events/vntr-forum",
-      "destination": "/events/venturesouq-tech-week-dinner"
+      "destination": "/events/vntr-investor-dinner"
     },
     {
       "source": "/events/vsq-dinner",
-      "destination": "/events/venturesouq-tech-week-dinner"
+      "destination": "/events/vntr-investor-dinner"
+    },
+    {
+      "source": "/events/venturesouq-tech-week-dinner",
+      "destination": "/events/vntr-investor-dinner"
     },
     {
       "source": "/((?!.*\\.js|.*\\.css|.*\\.mjs|.*\\.jsx|.*\\.ts|.*\\.tsx).*)",
