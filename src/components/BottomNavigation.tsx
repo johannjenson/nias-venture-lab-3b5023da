@@ -2,9 +2,16 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, Calendar, Search, User } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const BottomNavigation = () => {
   const location = useLocation();
+  const isMobile = useIsMobile();
+  
+  // Don't render the navigation bar on desktop
+  if (!isMobile) {
+    return null;
+  }
 
   const navItems = [
     { 
