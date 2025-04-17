@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Calendar, Search, User } from 'lucide-react';
+import { HomeIcon, Bookmark, UserCircle } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const BottomNavigation = () => {
@@ -15,22 +15,17 @@ const BottomNavigation = () => {
 
   const navItems = [
     { 
-      icon: Home, 
+      icon: HomeIcon, 
       label: 'Home', 
       href: '/' 
     },
     { 
-      icon: Calendar, 
-      label: 'Github Event', 
-      href: '/events/an-evening-with-github-cofounder-tom-preston-werner' 
-    },
-    { 
-      icon: Search, 
+      icon: Bookmark, 
       label: 'Resources', 
       href: '/resources' 
     },
     { 
-      icon: User, 
+      icon: UserCircle, 
       label: 'Profile', 
       href: '/login' 
     }
