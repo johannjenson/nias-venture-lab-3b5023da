@@ -50,6 +50,7 @@ const Footer = () => {
     main: [
       { name: "Upcoming", submenu: [
         { name: "GitHub Founder Event", href: "/events/an-evening-with-github-cofounder-tom-preston-werner" },
+        { name: "VNTR Investor Forum", href: "/events/vntr-investor-forum" },
       ]},
       { name: "Past", submenu: [
         { name: "Business Forum", href: "/events/nias-business-forum" },
