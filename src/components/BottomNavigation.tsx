@@ -25,11 +25,6 @@ const BottomNavigation = () => {
       href: '/events/an-evening-with-github-cofounder-tom-preston-werner' 
     },
     { 
-      icon: Calendar, 
-      label: 'VNTR Forum', 
-      href: '/events/vntr-investor-forum' 
-    },
-    { 
       icon: Search, 
       label: 'Resources', 
       href: '/resources' 
