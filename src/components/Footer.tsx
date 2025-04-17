@@ -49,7 +49,7 @@ const Footer = () => {
   const navigation = {
     main: [
       { name: "Upcoming", submenu: [
-        { name: "GitHub Founder Event", href: "/events/an-evening-with-github-cofounder-tom-preston-werner" },
+        { name: "GitHub Founder Evening", href: "/events/an-evening-with-github-cofounder-tom-preston-werner" },
         { name: "VNTR Investor Forum", href: "/events/vntr-investor-forum" },
       ]},
       { name: "Past", submenu: [
