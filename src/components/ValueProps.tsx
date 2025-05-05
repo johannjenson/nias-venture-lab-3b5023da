@@ -4,6 +4,10 @@ import { Button } from "./ui/button";
 import { useState } from "react";
 import RequestInviteModal from "./RequestInviteModal";
 
+interface ValuePropsProps {
+  openRequestModal: () => void;
+}
+
 const features = [
   {
     name: "Smooth Landing",
@@ -22,8 +26,13 @@ const features = [
   },
 ];
 
-const ValueProps = () => {
+const ValueProps = ({ openRequestModal }: ValuePropsProps) => {
   const [showRequestModal, setShowRequestModal] = useState(false);
+
+  const handleRequestInvite = () => {
+    setShowRequestModal(true);
+    openRequestModal();
+  };
 
   return (
     <div className="py-24 bg-secondary/30 sm:py-32">
@@ -58,7 +67,7 @@ const ValueProps = () => {
           <Button 
             size="lg"
             className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white"
-            onClick={() => setShowRequestModal(true)}
+            onClick={handleRequestInvite}
           >
             Join the Nias Network
           </Button>
