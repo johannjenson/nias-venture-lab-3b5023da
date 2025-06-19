@@ -23,20 +23,29 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
 
       <section className="pt-28 pb-16 bg-[#F8F3E8]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-4">
-              <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 flex items-center gap-1">
-                <Lock className="h-3 w-3" />
-                Private Event
-              </Badge>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <img 
+                src="/lovable-uploads/9b26f755-15ed-4b3d-a18a-afffa45a500f.png" 
+                alt="Evening gathering at Irqah Farmhouse with palm trees and guests"
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
             </div>
-            <h1 className="text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
-              An Evening with 180 Studios
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 animate-fade-in">Join us for a private celebration in the lead up to the global announcement for 180 Studios and Filament, a next-generation version control system for media and film production. Enjoy a curated gathering at our Irqah Farmhouse, where technology leaders, media innovators, and strategic investors come together for open, meaningful conversation in the serene setting of Riyadh.</p>
-            <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
-              RSVP
-            </Button>
+            <div className="order-1 lg:order-2">
+              <div className="flex items-center gap-3 mb-4">
+                <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 flex items-center gap-1">
+                  <Lock className="h-3 w-3" />
+                  Private Event
+                </Badge>
+              </div>
+              <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
+                An Evening with 180 Studios
+              </h1>
+              <p className="text-lg lg:text-xl text-gray-600 mb-8 animate-fade-in">Join us for a private celebration in the lead up to the global announcement for 180 Studios and Filament, a next-generation version control system for media and film production. Enjoy a curated gathering at our Irqah Farmhouse, where technology leaders, media innovators, and strategic investors come together for open, meaningful conversation in the serene setting of Riyadh.</p>
+              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
+                RSVP
+              </Button>
+            </div>
           </div>
         </div>
       </section>
