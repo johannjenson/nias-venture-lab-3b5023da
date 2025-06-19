@@ -8,7 +8,7 @@ import EventSEO from "@/components/studios180-event/EventSEO";
 
 const Studios180Event = () => {
   const handleRequestClick = () => {
-    window.open('https://lu.ma/studios180evening', '_blank', 'noopener,noreferrer');
+    window.open('https://lu.ma/68r4t2h5', '_blank', 'noopener,noreferrer');
   };
 
   return (
