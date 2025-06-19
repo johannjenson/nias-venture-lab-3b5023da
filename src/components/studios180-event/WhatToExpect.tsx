@@ -19,7 +19,7 @@ const WhatToExpect = () => {
           <div className="min-w-5 pt-0.5">
             <span className="inline-block w-1.5 h-1.5 bg-primary rounded-full"></span>
           </div>
-          <p>Discussion on investment opportunities in media, creative industries, and experiential venues with industry leaders</p>
+          <p>Informal discussions on investment opportunities in media, creative industries, and experiential venues with industry leaders</p>
         </li>
         <li className="flex items-start gap-3">
           <div className="min-w-5 pt-0.5">
@@ -47,4 +47,4 @@ const WhatToExpect = () => {
   );
 };
 
-export default WhatToExpect;
+export default WhatToExpected;
