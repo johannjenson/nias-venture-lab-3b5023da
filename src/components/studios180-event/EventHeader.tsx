@@ -35,11 +35,11 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
               <div className="flex items-center gap-3 mb-4">
                 <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 flex items-center gap-1">
                   <Lock className="h-3 w-3" />
-                  Private Event
+                  Private Gathering
                 </Badge>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
-                An Evening with 180 Studios
+                An Evening with London's creative powerhouse 180 Studios
               </h1>
               <p className="text-lg lg:text-xl text-gray-600 mb-8 animate-fade-in">Join us for an exclusive evening celebrating the future of creative collaboration technology. 180 Studios is pioneering revolutionary tools that will transform how creative teams work together across media, entertainment, and beyond. This intimate gathering brings together visionary leaders, innovative technologists, and strategic partners who are shaping the next generation of creative workflows and community spaces.</p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
