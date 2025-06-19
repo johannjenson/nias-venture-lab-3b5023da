@@ -11,9 +11,9 @@ const RequestInvitation = ({ onRequestClick }: RequestInvitationProps) => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-primary mb-6">
-            RSVP
+            Join us
           </h2>
-          <p className="text-gray-600 mb-8">This exclusive gathering is limited to 25 technology leaders, business executives, family office principals, investors, and government representatives. Please submit your details for review.</p>
+          <p className="text-gray-600 mb-8">This exclusive evening is designed for 25 visionary leaders from technology, media, investment, and government sectors. We're bringing together pioneering minds to celebrate innovation and forge meaningful connections in an intimate setting. Submit your details to be considered for this curated experience.</p>
           <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg" onClick={onRequestClick}>
             RSVP
           </Button>
