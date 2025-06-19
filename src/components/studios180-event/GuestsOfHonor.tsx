@@ -1,4 +1,3 @@
-
 import { Building, Users, Users2 } from "lucide-react";
 
 const GuestsOfHonor = () => {
@@ -11,7 +10,7 @@ const GuestsOfHonor = () => {
             <Building className="h-5 w-5 text-gray-800" />
             <h4 className="text-lg font-semibold text-primary">Tim Robinson</h4>
           </div>
-          <p className="text-gray-600 mb-4">Tim Robinson is one of the owners of 180 Studios, London's premier creative hub and event space. Located in the heart of London, 180 Studios is renowned for hosting world-class exhibitions, immersive experiences, and cutting-edge cultural events. Tim brings extensive expertise in creative industries, venue operations, and building platforms that bring together artists, innovators, and industry leaders.</p>
+          <p className="text-gray-600 mb-4">Tim Robinson is one of the owners of 180 Studios, London's premier creative hub and event space. Located in the heart of London, 180 Studios is renowned for hosting world-class exhibitions, immersive experiences, and cutting-edge cultural events. 180 Strand is home to London Fashion Week and serves as the creative headquarters for global brands including LVMH, TikTok, and IKEA's creative teams. Tim brings extensive expertise in creative industries, venue operations, commercial real estate, and building platforms that bring together artists, innovators, and industry leaders.</p>
         </div>
         <div>
           <div className="flex items-center gap-3 mb-2">
