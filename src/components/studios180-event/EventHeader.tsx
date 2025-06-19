@@ -33,7 +33,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
             <h1 className="text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
               An Evening with 180 Studios
             </h1>
-            <p className="text-xl text-gray-600 mb-8 animate-fade-in">Join us for a celebration in the lead up to the global PR announcement of Filament, 180 Studios' revolutionary version control system for media production. Enjoy a curated gathering at our Irqah Farmhouse, where technology leaders, media innovators, and strategic investors come together for open, meaningful conversation in the serene setting of Riyadh.</p>
+            <p className="text-xl text-gray-600 mb-8 animate-fade-in">Join us for a private celebration in the lead up to the global announcement for 180 Studios and Filament, a next-generation version control system for media and film production. Enjoy a curated gathering at our Irqah Farmhouse, where technology leaders, media innovators, and strategic investors come together for open, meaningful conversation in the serene setting of Riyadh.</p>
             <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
               RSVP
             </Button>
