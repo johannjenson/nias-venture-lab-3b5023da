@@ -1,3 +1,4 @@
+
 import { CalendarIcon, Clock, MapPin, Ticket, Users } from "lucide-react";
 
 const EventDetails = () => {
@@ -44,7 +45,6 @@ This is a night to celebrate bold innovation, shared vision, and the future of m
           <div>
             <h3 className="font-semibold text-primary">Capacity</h3>
             <p className="text-gray-600">Limited to 25 guests</p>
-            <p className="text-gray-600 text-sm">Waitlist available upon request</p>
           </div>
         </div>
       </div>

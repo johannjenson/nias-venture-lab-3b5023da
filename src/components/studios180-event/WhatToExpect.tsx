@@ -47,4 +47,4 @@ const WhatToExpect = () => {
   );
 };
 
-export default WhatToExpected;
+export default WhatToExpect;
