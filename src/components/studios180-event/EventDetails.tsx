@@ -1,3 +1,4 @@
+
 import { CalendarIcon, Clock, MapPin, Ticket, Users } from "lucide-react";
 
 const EventDetails = () => {
@@ -12,7 +13,7 @@ This is a night to celebrate bold innovation, shared vision, and the future of m
           <CalendarIcon className="h-6 w-6 text-primary" />
           <div>
             <h3 className="font-semibold text-primary">When</h3>
-            <p className="text-gray-600">Wednesday 25th June 2025</p>
+            <p className="text-gray-600">Tuesday 24th June 2025</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
