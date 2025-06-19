@@ -51,7 +51,17 @@ This is a night to celebrate bold creativity, shared vision, and the future of m
       </div>
       
       <div className="mt-8">
-        <h3 className="font-semibold text-primary mb-4">About 180 Studios</h3>
+        <h3 className="font-semibold text-primary mb-4">180 Studios Overview</h3>
+        <div className="aspect-video rounded-lg overflow-hidden shadow-lg mb-6">
+          <iframe
+            src="https://www.youtube.com/embed/qgJO1T4qv9E"
+            title="180 Studios Overview"
+            className="w-full h-full"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
         <div className="aspect-video rounded-lg overflow-hidden shadow-lg">
           <iframe
             src="https://www.youtube.com/embed/D7t2usTZUTc"
