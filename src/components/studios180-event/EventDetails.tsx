@@ -21,8 +21,8 @@ This is a night to celebrate bold creativity, shared vision, and the future of m
           <div>
             <h3 className="font-semibold text-primary">Programme</h3>
             <p className="text-gray-600">7:30 PM - Reception and welcoming of guests</p>
-            <p className="text-gray-600">8:30 PM - Dining</p>
-            <p className="text-gray-600">9:30 PM - A conversation with Tim Robinson and Rodrigo Ponce de Leon moderated by Johann Jenson</p>
+            <p className="text-gray-600">8:30 PM - Dining with live music</p>
+            <p className="text-gray-600">9:30 PM - Networking</p>
             <p className="text-gray-600">11:30 PM - Conclusion of the evening</p>
           </div>
         </div>
@@ -44,7 +44,7 @@ This is a night to celebrate bold creativity, shared vision, and the future of m
           <Users className="h-6 w-6 text-primary" />
           <div>
             <h3 className="font-semibold text-primary">Capacity</h3>
-            <p className="text-gray-600">Limited to 50 guests</p>
+            <p className="text-gray-600">Limited to 25 guests</p>
             <p className="text-gray-600 text-sm">Waitlist available upon request</p>
           </div>
         </div>
