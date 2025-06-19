@@ -39,6 +39,7 @@ const App = () => (
           <Route path="/events/fireside-chats" element={<FiresideChats />} />
           <Route path="/events/an-evening-with-github-cofounder-tom-preston-werner" element={<GithubFounderEvent />} />
           <Route path="/events/an-evening-with-180-studios" element={<Studios180Event />} />
+          <Route path="/events/studios180-event" element={<Studios180Event />} />
           <Route path="/events/vntr-investor-forum" element={<VSQRiyadhEvent />} />
           <Route path="/github-founder" element={<GithubFounderEvent />} />
           <Route path="/events/github-founder" element={<GithubFounderEvent />} />
