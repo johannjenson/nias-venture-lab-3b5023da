@@ -12,7 +12,7 @@ This is a night to celebrate bold innovation, shared vision, and the future of m
           <CalendarIcon className="h-6 w-6 text-primary" />
           <div>
             <h3 className="font-semibold text-primary">When</h3>
-            <p className="text-gray-600">Date to be announced</p>
+            <p className="text-gray-600">Monday 23rd December 2024</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
