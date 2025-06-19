@@ -23,20 +23,21 @@ const GuestsOfHonor = () => {
         <div>
           <div className="flex items-center gap-3 mb-2">
             <Users className="h-5 w-5 text-gray-800" />
-            <h4 className="text-lg font-semibold text-primary">You - The Creative Visionary</h4>
+            <h4 className="text-lg font-semibold text-primary">You - The Technology Visionary</h4>
           </div>
-          <p className="text-gray-600">This exclusive gathering is curated for pioneering leaders who are shaping the future of creative industries, media, and strategic investment. We are seeking visionary individuals from:</p>
+          <p className="text-gray-600">This exclusive gathering is curated for pioneering leaders who are shaping the future of technology, media production, and strategic investment. We are seeking visionary individuals from:</p>
           <ul className="list-disc pl-5 text-gray-600 mt-2 space-y-1">
-            <li>Creative Industries & Media Production</li>
+            <li>Technology & Media Production Platforms</li>
+            <li>Software Development & Engineering</li>
+            <li>Creative Technologies & Innovation</li>
             <li>Family Offices & Private Wealth Management</li>
-            <li>Government Cultural & Economic Development</li>
+            <li>Government Technology & Economic Development</li>
             <li>Media Venture Capital & Angel Investors</li>
-            <li>Entertainment & Experience Design</li>
             <li>Strategic Business Executives</li>
             <li>Real Estate and Venue Development</li>
           </ul>
           <p className="text-gray-600 mt-2 italic">
-            If you are a forward-thinking leader committed to driving meaningful connections and transformative collaborations in the creative economy, this evening is designed for you.
+            If you are a forward-thinking leader committed to driving meaningful connections and transformative collaborations in the technology and media ecosystem, this evening is designed for you.
           </p>
         </div>
       </div>
