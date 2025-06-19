@@ -32,12 +32,8 @@ const BottomNavigation = () => {
 
   const upcomingEvents = [
     { 
-      label: 'GitHub Founder Evening', 
-      href: '/events/an-evening-with-github-cofounder-tom-preston-werner' 
-    },
-    { 
-      label: 'VNTR Investor Forum', 
-      href: '/events/vntr-investor-forum' 
+      label: '180 Studios Evening', 
+      href: '/events/studios180-event' 
     },
   ];
 

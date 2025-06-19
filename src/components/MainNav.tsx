@@ -1,3 +1,4 @@
+
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -60,6 +61,14 @@ const MainNav = () => {
   
   const upcoming = [
     {
+      title: "An Evening with 180 Studios",
+      href: "/events/studios180-event",
+      description: "Join us for dinner and conversation with Tim Robinson on December 23rd, 2024 at Irqah Farmhouse in Riyadh.",
+    },
+  ];
+
+  const past = [
+    {
       title: "An Evening with GitHub Cofounder",
       href: "/events/an-evening-with-github-cofounder-tom-preston-werner",
       description: "Join us for dinner and conversation with Tom Preston-Werner on April 20th, 2025 at Irqah Farmhouse in Riyadh.",
@@ -68,6 +77,26 @@ const MainNav = () => {
       title: "VNTR Investor Forum Riyadh",
       href: "/events/vntr-investor-forum",
       description: "Join VNTR Investor Forum in Riyadh on April 23rd, 2025 for a day of keynotes, panels, and networking with industry leaders.",
+    },
+    {
+      title: "Business Forum",
+      href: "/events/nias-business-forum",
+      description: "Our inaugural business forum bringing together industry leaders.",
+    },
+    {
+      title: "LEAP Dinner",
+      href: "/events/leap-dinner",
+      description: "An exclusive dinner during LEAP 2024 in Riyadh.",
+    },
+    {
+      title: "Suhoor Dinner",
+      href: "/events/suhoor-dinner",
+      description: "A special Ramadan gathering with our community.",
+    },
+    {
+      title: "Fireside Chats",
+      href: "/events/fireside-chats",
+      description: "Intimate conversations with industry thought leaders.",
     },
   ];
 
@@ -119,6 +148,7 @@ const MainNav = () => {
     <NavigationMenu className="absolute top-24 md:top-20 left-1/2 -translate-x-1/2 z-50 w-full md:w-auto px-4 md:px-0">
       <NavigationMenuList className="gap-6">
         <NavMenuItem title="Upcoming" items={upcoming} />
+        <NavMenuItem title="Past" items={past} />
         <NavMenuItem title="Resources" items={resources} />
         <NavMenuItem title="About" items={about} />
       </NavigationMenuList>
