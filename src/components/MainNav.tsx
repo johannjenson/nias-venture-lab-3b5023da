@@ -63,7 +63,7 @@ const MainNav = () => {
     {
       title: "An Evening with 180 Studios",
       href: "/events/studios180-event",
-      description: "Join us for dinner and conversation with Tim Robinson on December 23rd, 2024 at Irqah Farmhouse in Riyadh.",
+      description: "Join us for dinner and conversation with Tim Robinson on December 23rd, 2025 at Irqah Farmhouse in Riyadh.",
     },
   ];
 
@@ -126,8 +126,9 @@ const MainNav = () => {
     }] : []),
     ...(!user ? [{
       title: "Member Login",
-      href: "/login",
+      href: "https://access.nias.io",
       description: "Access your Nias member account.",
+      onClick: () => window.open("https://access.nias.io", "_blank", "noopener,noreferrer"),
     }] : []),
     ...(user ? [
       {
