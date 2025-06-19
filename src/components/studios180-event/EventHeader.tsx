@@ -41,7 +41,9 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
                 An Evening with London's creative powerhouse 180 Studios
               </h1>
-              <p className="text-lg lg:text-xl text-gray-600 mb-8 animate-fade-in">Join us for an exclusive evening celebrating the future of creative collaboration technology. 180 Studios is pioneering revolutionary tools that will transform how creative teams work together across media, entertainment, and beyond. This intimate gathering brings together visionary leaders, innovative technologists, and strategic partners who are shaping the next generation of creative workflows and community spaces.</p>
+              <p className="text-lg lg:text-xl text-gray-600 mb-8 animate-fade-in">Join us for an exclusive evening with 180 Studios — one of Central London's most profitable and culturally influential destinations. 
+
+More than just a creative campus, 180 Studios is home to global powerhouses such as Soho House, TikTok, IMG Models, and the Financial Times, all operating under one roof in a space that blends culture, commerce, and technology.</p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
                 RSVP
               </Button>

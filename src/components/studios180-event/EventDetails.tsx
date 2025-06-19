@@ -1,13 +1,10 @@
-
 import { CalendarIcon, Clock, MapPin, Ticket, Users } from "lucide-react";
 
 const EventDetails = () => {
   return (
     <div>
-      <h2 className="text-3xl font-bold text-primary mb-6">Celebrating Technology Visionaries, Media Innovators, & Strategic Capital</h2>
-      <p className="text-gray-600 mb-8">Join us for a curated gathering at our Irqah Farmhouse, where technology leaders, media innovators, and strategic investors — alongside family office principals, sovereign funds, and senior government leaders — come together for open, meaningful conversation.
-
-This is a night to celebrate bold innovation, shared vision, and the future of media technology — from the platforms that revolutionize production workflows to the stories that shape culture.</p>
+      <h2 className="text-3xl font-bold text-primary mb-6">Join us for a conversation about redefining the intersection of physical infrastructure and digital innovation — and how you can be part of it.</h2>
+      <p className="text-gray-600 mb-8">This is a unique opportunity to hear directly from the leadership team behind the venture, as they share their vision for the future: a bold expansion that combines physical spaces, cutting-edge software, and automation into a single, scalable platform.</p>
       <div className="space-y-6">
         <div className="flex items-center gap-3">
           <CalendarIcon className="h-6 w-6 text-primary" />
