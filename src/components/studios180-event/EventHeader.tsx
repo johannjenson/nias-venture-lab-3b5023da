@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { Building, Waves } from "lucide-react";
+import { Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface EventHeaderProps {
@@ -23,8 +23,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
       <section className="pt-28 pb-16 bg-[#F8F3E8]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
-            <h1 className="text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in flex items-center gap-4">
-              <Building className="h-12 w-12 text-black" />
+            <h1 className="text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
               An Evening with 180 Studios
             </h1>
             <p className="text-xl text-gray-600 mb-8 animate-fade-in">Enjoy a relaxed gathering with key figures from Saudi Arabia's creative, media, and business communities alongside 180 Studios leadership in the serene setting of our Irqah Farmhouse in Riyadh.</p>
