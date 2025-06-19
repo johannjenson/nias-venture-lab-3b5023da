@@ -1,4 +1,3 @@
-
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -63,7 +62,7 @@ const MainNav = () => {
     {
       title: "An Evening with 180 Studios",
       href: "/events/studios180-event",
-      description: "Join us for dinner and conversation with Tim Robinson on December 23rd, 2025 at Irqah Farmhouse in Riyadh.",
+      description: "Join us for dinner and conversation with Tim Robinson on December 23rd, 2025 at Irqah Farmhouse in Riyadh. (Private invite-only event)",
     },
   ];
 

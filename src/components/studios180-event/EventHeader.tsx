@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
-import { Waves } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Waves, Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface EventHeaderProps {
@@ -23,6 +24,12 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
       <section className="pt-28 pb-16 bg-[#F8F3E8]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-4">
+              <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 flex items-center gap-1">
+                <Lock className="h-3 w-3" />
+                Private Event
+              </Badge>
+            </div>
             <h1 className="text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
               An Evening with 180 Studios
             </h1>
