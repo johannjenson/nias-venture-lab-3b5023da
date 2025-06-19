@@ -1,0 +1,47 @@
+
+import { Building, Users, Users2 } from "lucide-react";
+
+const GuestsOfHonor = () => {
+  return (
+    <div className="bg-[#F8F3E8] p-8 rounded-lg mb-8">
+      <h3 className="text-2xl font-bold text-primary mb-4">Guests of Honor</h3>
+      <div className="space-y-6">
+        <div>
+          <div className="flex items-center gap-3 mb-2">
+            <Building className="h-5 w-5 text-gray-800" />
+            <h4 className="text-lg font-semibold text-primary">Tim Robinson</h4>
+          </div>
+          <p className="text-gray-600 mb-4">Tim Robinson is one of the owners of 180 Studios, London's premier creative hub and event space. Located in the heart of London, 180 Studios is renowned for hosting world-class exhibitions, immersive experiences, and cutting-edge cultural events. Tim brings extensive expertise in creative industries, venue operations, and building platforms that bring together artists, innovators, and industry leaders.</p>
+        </div>
+        <div>
+          <div className="flex items-center gap-3 mb-2">
+            <Users2 className="h-5 w-5 text-gray-800" />
+            <h4 className="text-lg font-semibold text-primary">Rodrigo Ponce de Leon</h4>
+          </div>
+          <p className="text-gray-600">Rodrigo Ponce de Leon is a partner at 180 Studios Holding, the HQ of Soho House and a key hub for London's creative scene. He has managed three high-performing VC funds and brings seasoned expertise in venture capital, media, and real estate development.</p>
+        </div>
+        <div>
+          <div className="flex items-center gap-3 mb-2">
+            <Users className="h-5 w-5 text-gray-800" />
+            <h4 className="text-lg font-semibold text-primary">You - The Creative Visionary</h4>
+          </div>
+          <p className="text-gray-600">This exclusive gathering is curated for pioneering leaders who are shaping the future of creative industries, media, and strategic investment. We are seeking visionary individuals from:</p>
+          <ul className="list-disc pl-5 text-gray-600 mt-2 space-y-1">
+            <li>Creative Industries & Media Production</li>
+            <li>Family Offices & Private Wealth Management</li>
+            <li>Government Cultural & Economic Development</li>
+            <li>Media Venture Capital & Angel Investors</li>
+            <li>Entertainment & Experience Design</li>
+            <li>Strategic Business Executives</li>
+            <li>Real Estate and Venue Development</li>
+          </ul>
+          <p className="text-gray-600 mt-2 italic">
+            If you are a forward-thinking leader committed to driving meaningful connections and transformative collaborations in the creative economy, this evening is designed for you.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default GuestsOfHonor;
