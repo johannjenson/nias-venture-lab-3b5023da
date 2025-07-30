@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Hero from "@/components/Hero";
 import ValueProps from "@/components/ValueProps";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import Footer from "@/components/Footer";
 import RequestInviteModal from "@/components/RequestInviteModal";
 import { useLocation, useSearchParams } from "react-router-dom";
@@ -21,6 +22,7 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Hero openRequestModal={() => setShowRequestModal(true)} />
       <ValueProps openRequestModal={() => setShowRequestModal(true)} />
+      <NewsletterSignup />
       <Footer />
       <RequestInviteModal 
         open={showRequestModal} 
