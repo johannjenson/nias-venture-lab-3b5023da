@@ -74,6 +74,21 @@ const NewsletterSignup = () => {
         description: "Thank you for signing up for our newsletter.",
       });
 
+      // Send confirmation email to johann@nias.io
+      try {
+        await supabase.functions.invoke('send-newsletter-confirmation', {
+          body: {
+            fullName: fullName.trim(),
+            email: email.trim(),
+            phone: phone.trim() || null
+          }
+        });
+        console.log('Confirmation email sent successfully');
+      } catch (emailError) {
+        console.error('Failed to send confirmation email:', emailError);
+        // Don't fail the whole process if email fails
+      }
+
       // Reset form
       setFullName("");
       setEmail("");
