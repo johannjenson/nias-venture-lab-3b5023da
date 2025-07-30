@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 const NewsletterSignup = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
@@ -36,6 +37,7 @@ const NewsletterSignup = () => {
           first_name,
           last_name,
           email: email.trim(),
+          phone: phone.trim() || null,
           lead_source: 'newsletter',
           stage: 'mql_lead'
         });
@@ -52,6 +54,7 @@ const NewsletterSignup = () => {
       // Reset form
       setFullName("");
       setEmail("");
+      setPhone("");
     } catch (error) {
       console.error('Newsletter signup error:', error);
       toast({
@@ -77,30 +80,42 @@ const NewsletterSignup = () => {
           Get the first instalment of our guide, <em>Why Expansion Capital</em>, by registering.
         </div>
         
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
-          <Input
-            type="text"
-            placeholder="Your Full Name"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            className="flex-1 bg-white text-black placeholder:text-gray-500 border-0 h-12"
-            disabled={isLoading}
-          />
-          <Input
-            type="email"
-            placeholder="Your Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="flex-1 bg-white text-black placeholder:text-gray-500 border-0 h-12"
-            disabled={isLoading}
-          />
-          <Button 
-            type="submit" 
-            className="bg-white text-black hover:bg-gray-100 px-8 h-12 font-medium"
-            disabled={isLoading}
-          >
-            {isLoading ? "Submitting..." : "Submit"}
-          </Button>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-2xl mx-auto">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Input
+              type="text"
+              placeholder="Your Full Name"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              className="flex-1 bg-white text-black placeholder:text-gray-500 border-0 h-12"
+              disabled={isLoading}
+            />
+            <Input
+              type="email"
+              placeholder="Your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="flex-1 bg-white text-black placeholder:text-gray-500 border-0 h-12"
+              disabled={isLoading}
+            />
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Input
+              type="tel"
+              placeholder="Your Phone Number (Optional)"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="flex-1 bg-white text-black placeholder:text-gray-500 border-0 h-12"
+              disabled={isLoading}
+            />
+            <Button 
+              type="submit" 
+              className="bg-white text-black hover:bg-gray-100 px-8 h-12 font-medium"
+              disabled={isLoading}
+            >
+              {isLoading ? "Submitting..." : "Submit"}
+            </Button>
+          </div>
         </form>
       </div>
     </section>
