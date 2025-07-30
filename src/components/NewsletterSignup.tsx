@@ -5,7 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
 const NewsletterSignup = () => {
-  const [firstName, setFirstName] = useState("");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
@@ -13,7 +13,7 @@ const NewsletterSignup = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!firstName.trim() || !email.trim()) {
+    if (!fullName.trim() || !email.trim()) {
       toast({
         title: "Please fill in all fields",
         variant: "destructive",
@@ -24,11 +24,17 @@ const NewsletterSignup = () => {
     setIsLoading(true);
 
     try {
+      // Split full name into first and last name
+      const nameParts = fullName.trim().split(' ');
+      const first_name = nameParts[0];
+      const last_name = nameParts.slice(1).join(' ') || '';
+      
       // Insert contact directly to contacts table
       const { error } = await supabase
         .from('contacts')
         .insert({
-          first_name: firstName.trim(),
+          first_name,
+          last_name,
           email: email.trim(),
           lead_source: 'newsletter',
           stage: 'mql_lead'
@@ -44,7 +50,7 @@ const NewsletterSignup = () => {
       });
 
       // Reset form
-      setFirstName("");
+      setFullName("");
       setEmail("");
     } catch (error) {
       console.error('Newsletter signup error:', error);
@@ -59,7 +65,7 @@ const NewsletterSignup = () => {
   };
 
   return (
-    <section className="py-20 bg-[#1a2757]">
+    <section className="py-20 bg-black">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold text-white mb-6">
           Nias Expansion Capital Guide
@@ -74,9 +80,9 @@ const NewsletterSignup = () => {
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
           <Input
             type="text"
-            placeholder="Your First Name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Your Full Name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
             className="flex-1 bg-white text-black placeholder:text-gray-500 border-0 h-12"
             disabled={isLoading}
           />
