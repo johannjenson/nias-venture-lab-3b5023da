@@ -62,13 +62,13 @@ const NewsletterSignup = () => {
     <section className="py-20 bg-[#1a2757]">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold text-white mb-6">
-          VT Angel Curriculum
+          Nias Expansion Capital Guide
         </h2>
         <div className="text-white text-lg mb-2">
-          Curious about VT and Angel Investing?
+          Curious about Nias and Expansion Capital?
         </div>
         <div className="text-white text-lg mb-8">
-          Get the first instalment of our guide, <em>Why Angel Invest</em>, by registering.
+          Get the first instalment of our guide, <em>Why Expansion Capital</em>, by registering.
         </div>
         
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
