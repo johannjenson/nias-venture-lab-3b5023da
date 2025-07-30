@@ -28,7 +28,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation email to johann@nias.io
     const emailResponse = await resend.emails.send({
-      from: "Nias <onboarding@resend.dev>",
+      from: "Nias <network@nias.io>",
       to: ["johann@nias.io"],
       subject: "New Newsletter Registration - Nias Expansion Capital",
       html: `
