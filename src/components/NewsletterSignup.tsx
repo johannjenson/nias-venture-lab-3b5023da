@@ -30,20 +30,43 @@ const NewsletterSignup = () => {
       const first_name = nameParts[0];
       const last_name = nameParts.slice(1).join(' ') || '';
       
-      // Insert contact directly to contacts table
-      const { error } = await supabase
+      // Check if contact already exists
+      const { data: existingContact } = await supabase
         .from('contacts')
-        .insert({
-          first_name,
-          last_name,
-          email: email.trim(),
-          phone: phone.trim() || null,
-          lead_source: 'newsletter',
-          stage: 'mql_lead'
-        });
+        .select('id')
+        .eq('email', email.trim())
+        .single();
 
-      if (error) {
-        throw error;
+      if (existingContact) {
+        // Update existing contact
+        const { error } = await supabase
+          .from('contacts')
+          .update({
+            first_name,
+            last_name,
+            phone: phone.trim() || null,
+          })
+          .eq('email', email.trim());
+
+        if (error) {
+          throw error;
+        }
+      } else {
+        // Insert new contact
+        const { error } = await supabase
+          .from('contacts')
+          .insert({
+            first_name,
+            last_name,
+            email: email.trim(),
+            phone: phone.trim() || null,
+            lead_source: 'newsletter',
+            stage: 'mql_lead'
+          });
+
+        if (error) {
+          throw error;
+        }
       }
 
       toast({
