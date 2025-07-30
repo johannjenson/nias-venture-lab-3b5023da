@@ -109,13 +109,13 @@ const NewsletterSignup = () => {
     <section className="py-20 bg-black">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold text-white mb-6">
-          Nias Expansion Capital Guide
+          2025 Nias Expansion Capital Guide
         </h2>
         <div className="text-white text-lg mb-2">
           Curious about Nias and Expansion Capital?
         </div>
         <div className="text-white text-lg mb-8">
-          Get the first instalment of our guide, <em>Why Expansion Capital</em>, by registering.
+          Get the first instalment of our guide by registering.
         </div>
         
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-2xl mx-auto">
