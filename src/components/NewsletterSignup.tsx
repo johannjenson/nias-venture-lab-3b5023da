@@ -114,7 +114,7 @@ const NewsletterSignup = () => {
             <img 
               src="/lovable-uploads/6f6f8013-6ce7-4925-a141-f2fa66cad892.png" 
               alt="2025 Nias Expansion Capital Guide"
-              className="w-64 h-64 object-cover rounded-lg shadow-2xl"
+              className="w-64 object-contain rounded-lg shadow-2xl"
             />
           </div>
           
