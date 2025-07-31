@@ -107,18 +107,30 @@ const NewsletterSignup = () => {
 
   return (
     <section className="py-20 bg-black">
-      <div className="max-w-4xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold text-white mb-6">
-          2025 Nias Expansion Capital Guide
-        </h2>
-        <div className="text-white text-lg mb-2">
-          Curious about Nias and Expansion Capital?
-        </div>
-        <div className="text-white text-lg mb-8">
-          Get the first instalment of our guide by registering.
-        </div>
-        
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-2xl mx-auto">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex flex-col lg:flex-row items-center gap-12">
+          {/* Thumbnail */}
+          <div className="w-full lg:w-1/3 flex justify-center">
+            <img 
+              src="/lovable-uploads/6f6f8013-6ce7-4925-a141-f2fa66cad892.png" 
+              alt="2025 Nias Expansion Capital Guide"
+              className="w-full max-w-sm rounded-lg shadow-2xl"
+            />
+          </div>
+          
+          {/* Content */}
+          <div className="w-full lg:w-2/3 text-center lg:text-left">
+            <h2 className="text-4xl font-bold text-white mb-6">
+              2025 Nias Expansion Capital Guide
+            </h2>
+            <div className="text-white text-lg mb-2">
+              Curious about Nias and Expansion Capital?
+            </div>
+            <div className="text-white text-lg mb-8">
+              Get the first instalment of our guide by registering.
+            </div>
+            
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-2xl lg:max-w-none">
           <div className="flex flex-col sm:flex-row gap-4">
             <Input
               type="text"
@@ -154,7 +166,9 @@ const NewsletterSignup = () => {
               {isLoading ? "Submitting..." : "Submit"}
             </Button>
           </div>
-        </form>
+         </form>
+          </div>
+        </div>
       </div>
     </section>
   );
