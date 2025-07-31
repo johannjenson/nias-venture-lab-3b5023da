@@ -105,7 +105,7 @@ const NewsletterSignup = () => {
           {/* Content */}
           <div className="w-full lg:w-2/3 text-center lg:text-left">
             <h2 className="text-4xl font-bold text-white mb-6">Curious about Nias & Expansion Capital?</h2>
-            <p className="text-lg text-gray-300 mb-8">Register below to get our comprehensive 2025 Expansion Capital Guide delivered to your inbox.</p>
+            <p className="text-lg text-gray-300 mb-8">Get the first instalment of our guide focused on Saudi Arabia and Kuwait</p>
             
             <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-2xl lg:max-w-none">
           <div className="flex flex-col sm:flex-row gap-4">
