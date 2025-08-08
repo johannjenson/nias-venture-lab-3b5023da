@@ -14,7 +14,7 @@ interface NavMenuListProps {
 
 export const NavMenuList = ({ items }: NavMenuListProps) => {
   return (
-    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1 lg:w-[600px] bg-white">
+    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1 lg:w-[600px] bg-popover border border-border shadow-lg rounded-md z-50">
       {items.map((item) => (
         <ListItem 
           key={item.title} 

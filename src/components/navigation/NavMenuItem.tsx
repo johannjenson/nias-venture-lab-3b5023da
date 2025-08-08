@@ -21,7 +21,7 @@ interface NavMenuItemProps {
 export const NavMenuItem = ({ title, items }: NavMenuItemProps) => {
   return (
     <NavigationMenuItem>
-      <NavigationMenuTrigger className="text-black bg-transparent hover:bg-white hover:text-black transition-colors">
+      <NavigationMenuTrigger className="text-foreground bg-transparent hover:bg-accent hover:text-accent-foreground transition-colors">
         {title}
       </NavigationMenuTrigger>
       <NavigationMenuContent>
