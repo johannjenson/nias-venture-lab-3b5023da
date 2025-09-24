@@ -13,6 +13,7 @@ import SuhoorDinner from "./pages/SuhoorDinner";
 import FiresideChats from "./pages/FiresideChats";
 import GithubFounderEvent from "./pages/GithubFounderEvent";
 import Studios180Event from "./pages/Studios180Event";
+import MooveEvent from "./pages/MooveEvent";
 import VSQRiyadhEvent from "./pages/VSQRiyadhEvent";
 import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/events/an-evening-with-github-cofounder-tom-preston-werner" element={<GithubFounderEvent />} />
           <Route path="/events/an-evening-with-180-studios" element={<Studios180Event />} />
           <Route path="/events/studios180-event" element={<Studios180Event />} />
+          <Route path="/events/an-evening-with-moove-ceo" element={<MooveEvent />} />
           <Route path="/events/vntr-investor-forum" element={<VSQRiyadhEvent />} />
           <Route path="/github-founder" element={<GithubFounderEvent />} />
           <Route path="/events/github-founder" element={<GithubFounderEvent />} />
