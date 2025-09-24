@@ -4,9 +4,9 @@ const EventDetails = () => {
   return (
     <div>
       <div>
-        <h2 className="text-3xl font-bold text-primary mb-6">Join us for a conversation about revolutionizing mobility and the future of autonomous vehicles</h2>
+        <h2 className="text-3xl font-bold text-primary mb-6">Join us for a conversation about revolutionizing mobility and financial inclusion</h2>
         <p className="text-gray-600 mb-8">
-          This is a unique opportunity to hear directly from Ladi Delano, Co-CEO of Moove, as he shares their vision for scaling one of the world's largest autonomous ride-hailing fleets. Moove partners with Waymo, Uber, Bolt, and Grab to finance and operate vehicles across emerging markets, with AV margins projected to exceed 50% by 2026.
+          This is a unique opportunity to hear directly from Ladi Delano, Co-Founder and Co-CEO of Moove, as he shares insights into building one of Africa's most valuable startups. From $50 million to nearly $400 million in annualized revenue while achieving profitability, Moove is pioneering vehicle-as-a-service across emerging markets and scaling autonomous vehicle operations with Waymo.
         </p>
       </div>
 
@@ -23,8 +23,8 @@ const EventDetails = () => {
           <div>
             <h3 className="font-semibold text-primary">Programme</h3>
             <p className="text-gray-600">7:30 PM - Reception and welcoming of guests</p>
-            <p className="text-gray-600">8:30 PM - Presentation by Ladi Delano</p>
-            <p className="text-gray-600">9:30 PM - Dining and networking</p>
+            <p className="text-gray-600">8:30 PM - Fireside chat with Ladi Delano</p>
+            <p className="text-gray-600">9:30 PM - Networking dinner</p>
             <p className="text-gray-600">11:00 PM - Conclusion of the evening</p>
           </div>
         </div>
@@ -45,21 +45,21 @@ const EventDetails = () => {
         <div className="flex items-center gap-3">
           <TrendingUp className="h-6 w-6 text-primary" />
           <div>
-            <h3 className="font-semibold text-primary">Market Opportunity</h3>
-            <p className="text-gray-600">Leading mobility fintech in emerging markets</p>
-            <p className="text-gray-600">39,000+ vehicle fleet scaling to EVs and AVs</p>
-            <p className="text-gray-600">Operating across 29 cities globally</p>
-            <p className="text-gray-600">Soon kicking off Series C funding round</p>
+            <h3 className="font-semibold text-primary">Growth Story</h3>
+            <p className="text-gray-600">From $50M to $400M annualized revenue in one year</p>
+            <p className="text-gray-600">Achieved EBITDA profitability in September 2024</p>
+            <p className="text-gray-600">Operating across 12+ markets globally</p>
+            <p className="text-gray-600">Currently raising at $2B+ valuation</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
           <DollarSign className="h-6 w-6 text-primary" />
           <div>
-            <h3 className="font-semibold text-primary">Strategic Advantages</h3>
+            <h3 className="font-semibold text-primary">Strategic Positioning</h3>
             <p className="text-gray-600">Backed by Uber, Mubadala, BlackRock, and Prosus</p>
-            <p className="text-gray-600">Exclusive partnerships with Waymo, Uber, Bolt, and Grab</p>
-            <p className="text-gray-600">Projected AV margins exceeding 50% by 2026</p>
-            <p className="text-gray-600">Pioneering vehicle-as-a-service model in emerging markets</p>
+            <p className="text-gray-600">Exclusive partnerships with Waymo for autonomous vehicles</p>
+            <p className="text-gray-600">$1B+ debt facility secured for fleet expansion</p>
+            <p className="text-gray-600">Leading vehicle-as-a-service in emerging markets</p>
           </div>
         </div>
       </div>
@@ -67,15 +67,10 @@ const EventDetails = () => {
       <div className="mt-8">
         <h3 className="font-semibold text-primary mb-4">About Moove</h3>
         <p className="text-gray-600 mb-4">
-          Moove is a global mobility fintech that democratizes vehicle ownership by partnering with platforms 
-          like Uber, Bolt, and Grab to provide revenue-based vehicle financing. The company operates one of 
-          the world's largest autonomous-ready fleets and is pioneering the transition to electric and 
-          autonomous vehicles in emerging markets.
+          Founded in 2020 by Ladi Delano and Jide Odunsi, Moove is a mobility fintech that democratizes vehicle ownership through innovative credit-scoring and revenue-based financing. Operating across UAE, Mexico, India, and other key markets, Moove enables drivers to access vehicle financing for ride-hailing, logistics, and deliveries while repaying through a percentage of their weekly income.
         </p>
         <p className="text-gray-600">
-          With exclusive partnerships across the mobility ecosystem, Moove is uniquely positioned to capitalize 
-          on the autonomous vehicle revolution, combining financial technology with operational expertise to 
-          scale sustainable transportation solutions globally.
+          As one of Africa's most valuable startups, Moove represents the new wave of fintech innovation combining financial inclusion with mobility infrastructure. The company's partnership with Waymo positions it uniquely at the forefront of the autonomous vehicle revolution in emerging markets.
         </p>
       </div>
     </div>
