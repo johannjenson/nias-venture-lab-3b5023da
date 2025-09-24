@@ -41,7 +41,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 An Evening with Moove Co-CEO Ladi Delano
               </h1>
               <p className="text-lg lg:text-xl text-gray-600 mb-8 animate-fade-in">
-                Join us for an exclusive gathering with Ladi Delano, Co-CEO of Moove.io, one of the most influential leaders shaping the future of mobility. Explore how technology is transforming transportation across emerging markets and the path toward autonomous vehicles.
+                Join us for an exclusive gathering with Ladi Delano, Co-CEO of Moove.io, backed by Uber, Mubadala, BlackRock, and Prosus. Explore how technology is transforming transportation across emerging markets and the path toward autonomous vehicles.
               </p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
                 Request Your Invitation

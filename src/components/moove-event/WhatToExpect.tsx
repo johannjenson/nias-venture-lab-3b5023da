@@ -12,7 +12,7 @@ const WhatToExpect = () => {
         <ul className="space-y-3 text-gray-600">
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-            <span>Deep dive into Moove's $300M funding round and autonomous vehicle strategy</span>
+            <span>Deep dive into Moove's journey to profitability and global expansion strategy</span>
           </li>
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
