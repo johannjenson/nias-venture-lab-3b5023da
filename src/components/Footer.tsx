@@ -51,10 +51,8 @@ const Footer = () => {
     main: [
       { name: "Upcoming", submenu: [
       ]},
-      { name: "Past Events", submenu: [
-        { name: "180 Studios Evening", href: "/events/studios180-event" },
-      ]},
       { name: "Past", submenu: [
+        { name: "180 Studios Evening", href: "/events/studios180-event" },
         { name: "GitHub Founder Evening", href: "/events/an-evening-with-github-cofounder-tom-preston-werner" },
         { name: "VNTR Investor Forum", href: "/events/vntr-investor-forum" },
         { name: "Business Forum", href: "/events/nias-business-forum" },
