@@ -60,6 +60,14 @@ const MainNav = () => {
   
   const upcoming = [
     {
+      title: "An Evening with Moove Co-CEO Ladi Delano",
+      href: "/events/an-evening-with-moove-ceo",
+      description: "Join us for dinner and conversation with Ladi Delano on October 7th, 2025 at Al Amaaria in Riyadh. (Private invite-only gathering)",
+    },
+  ];
+
+  const pastEvents = [
+    {
       title: "An Evening with London's creative powerhouse 180 Studios",
       href: "/events/studios180-event",
       description: "Join us for dinner and conversation with Tim Robinson on June 24th, 2025 at Irqah Farmhouse in Riyadh. (Private invite-only gathering)",
@@ -115,6 +123,7 @@ const MainNav = () => {
     <NavigationMenu className="absolute top-24 md:top-20 left-1/2 -translate-x-1/2 z-50 w-full md:w-auto px-4 md:px-0">
       <NavigationMenuList className="gap-6">
         <NavMenuItem title="Upcoming" items={upcoming} />
+        <NavMenuItem title="Past Events" items={pastEvents} />
         <NavMenuItem title="Resources" items={resources} />
         <NavMenuItem title="About" items={about} />
       </NavigationMenuList>

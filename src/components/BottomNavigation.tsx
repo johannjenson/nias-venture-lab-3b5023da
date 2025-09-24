@@ -32,8 +32,8 @@ const BottomNavigation = () => {
 
   const upcomingEvents = [
     { 
-      label: '180 Studios Evening', 
-      href: '/events/studios180-event' 
+      label: 'Moove Evening', 
+      href: '/events/an-evening-with-moove-ceo' 
     },
   ];
 
