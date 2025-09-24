@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Car, Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -19,30 +20,33 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
         </div>
       </div>
 
-      <section 
-        className="pt-28 pb-16 relative bg-gradient-to-r from-slate-900/90 to-blue-900/90"
-        style={{
-          backgroundImage: "url('/moove-founders.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundBlendMode: 'overlay'
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 animate-fade-in flex items-center gap-4">
-              <Car className="h-10 w-10 md:h-12 md:w-12 text-blue-400" />
-              An Evening with Moove Co-CEO Ladi Delano
-            </h1>
-            <p className="text-lg md:text-xl text-gray-100 mb-6 animate-fade-in">
-              Join us for an exclusive gathering with Ladi Delano, Co-CEO of Moove.io, the global mobility fintech scaling a 39,000+ vehicle fleet into autonomous vehicles across 29 cities.
-            </p>
-            <p className="text-base md:text-lg text-gray-200 mb-8 animate-fade-in">
-              October 7th • Al Amaaria • Exploring the future of mobility, AI infrastructure, and financial inclusion
-            </p>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg animate-fade-in shadow-xl" onClick={onRequestClick}>
-              Request Your Invitation
-            </Button>
+      <section className="pt-28 pb-16 bg-secondary">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <img 
+                src="/moove-founders.jpg" 
+                alt="Ladi Delano, Co-CEO of Moove, at a company event"
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+            <div className="order-1 lg:order-2">
+              <div className="flex items-center gap-3 mb-4">
+                <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 flex items-center gap-1">
+                  <Car className="h-3 w-3" />
+                  Mobility Tech
+                </Badge>
+              </div>
+              <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
+                An Evening with Moove Co-CEO Ladi Delano
+              </h1>
+              <p className="text-lg lg:text-xl text-gray-600 mb-8 animate-fade-in">
+                Join us for an exclusive gathering with Ladi Delano, Co-CEO of Moove.io, the global mobility fintech backed by Uber, Mubadala, BlackRock, and Prosus. Moove is scaling a 39,000+ vehicle fleet into EVs and AVs across 29 cities, soon kicking off their Series C round.
+              </p>
+              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
+                Request Your Invitation
+              </Button>
+            </div>
           </div>
         </div>
       </section>
