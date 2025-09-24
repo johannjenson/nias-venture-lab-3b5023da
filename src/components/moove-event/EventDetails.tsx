@@ -4,9 +4,9 @@ const EventDetails = () => {
   return (
     <div>
       <div>
-        <h2 className="text-3xl font-bold text-primary mb-6">Join us for a conversation about revolutionizing mobility and financial inclusion</h2>
+        <h2 className="text-3xl font-bold text-primary mb-6">The Future of Mobility: From Financial Inclusion to Autonomous Vehicles</h2>
         <p className="text-gray-600 mb-8">
-          This is a unique opportunity to hear directly from Ladi Delano, Co-Founder and Co-CEO of Moove, as he shares insights into building one of Africa's most valuable startups. From $50 million to nearly $400 million in annualized revenue while achieving profitability, Moove is pioneering vehicle-as-a-service across emerging markets and scaling autonomous vehicle operations with Waymo.
+          This is a unique opportunity to explore the transformation of urban transportation with Ladi Delano, Co-Founder and Co-CEO of Moove. From democratizing vehicle ownership in emerging markets to pioneering autonomous vehicle operations with Waymo, discover how mobility innovation is reshaping cities and creating new economic opportunities globally.
         </p>
       </div>
 
@@ -39,27 +39,27 @@ const EventDetails = () => {
           <Users className="h-6 w-6 text-primary" />
           <div>
             <h3 className="font-semibold text-primary">Audience</h3>
-            <p className="text-gray-600">Family offices, sovereign wealth funds, and government leaders</p>
+            <p className="text-gray-600">Leaders in mobility, technology, and sustainable finance</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
           <TrendingUp className="h-6 w-6 text-primary" />
           <div>
-            <h3 className="font-semibold text-primary">Growth Story</h3>
-            <p className="text-gray-600">From $50M to $400M annualized revenue in one year</p>
-            <p className="text-gray-600">Achieved EBITDA profitability in September 2024</p>
-            <p className="text-gray-600">Operating across 12+ markets globally</p>
-            <p className="text-gray-600">Currently raising at $2B+ valuation</p>
+            <h3 className="font-semibold text-primary">Innovation Journey</h3>
+            <p className="text-gray-600">From startup to market leader in just four years</p>
+            <p className="text-gray-600">Achieving profitability while expanding globally</p>
+            <p className="text-gray-600">Operating across 12+ markets in three continents</p>
+            <p className="text-gray-600">Preparing for the next chapter with Series C</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
           <DollarSign className="h-6 w-6 text-primary" />
           <div>
-            <h3 className="font-semibold text-primary">Strategic Positioning</h3>
-            <p className="text-gray-600">Backed by Uber, Mubadala, BlackRock, and Prosus</p>
-            <p className="text-gray-600">Exclusive partnerships with Waymo for autonomous vehicles</p>
-            <p className="text-gray-600">$1B+ debt facility secured for fleet expansion</p>
-            <p className="text-gray-600">Leading vehicle-as-a-service in emerging markets</p>
+            <h3 className="font-semibold text-primary">Technology Leadership</h3>
+            <p className="text-gray-600">Pioneer in credit-scoring for emerging markets</p>
+            <p className="text-gray-600">Strategic partnerships with Waymo and Uber</p>
+            <p className="text-gray-600">Building autonomous-ready fleet infrastructure</p>
+            <p className="text-gray-600">Leading vehicle-as-a-service innovation</p>
           </div>
         </div>
       </div>
@@ -67,10 +67,10 @@ const EventDetails = () => {
       <div className="mt-8">
         <h3 className="font-semibold text-primary mb-4">About Moove</h3>
         <p className="text-gray-600 mb-4">
-          Founded in 2020 by Ladi Delano and Jide Odunsi, Moove is a mobility fintech that democratizes vehicle ownership through innovative credit-scoring and revenue-based financing. Operating across UAE, Mexico, India, and other key markets, Moove enables drivers to access vehicle financing for ride-hailing, logistics, and deliveries while repaying through a percentage of their weekly income.
+          Founded in 2020 by Ladi Delano and Jide Odunsi, Moove has become one of the fastest-growing mobility companies globally. Operating across UAE, Mexico, India, and other key markets, Moove enables drivers to access vehicle financing through innovative credit-scoring while building the infrastructure for tomorrow's autonomous transportation.
         </p>
         <p className="text-gray-600">
-          As one of Africa's most valuable startups, Moove represents the new wave of fintech innovation combining financial inclusion with mobility infrastructure. The company's partnership with Waymo positions it uniquely at the forefront of the autonomous vehicle revolution in emerging markets.
+          As both a fintech and mobility company, Moove represents a new paradigm in transportation - one where financial inclusion, technological innovation, and sustainable mobility converge to create lasting impact in emerging markets and beyond.
         </p>
       </div>
     </div>
