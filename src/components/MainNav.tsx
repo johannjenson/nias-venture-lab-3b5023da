@@ -59,11 +59,6 @@ const MainNav = () => {
   };
   
   const upcoming = [
-    {
-      title: "An Evening with Moove Co-CEO Ladi Delano",
-      href: "/events/an-evening-with-moove-ceo",
-      description: "Join us for dinner and conversation with Ladi Delano on October 7th, 2025 at Al Amaaria in Riyadh. (Private invite-only gathering)",
-    },
   ];
 
   const pastEvents = [

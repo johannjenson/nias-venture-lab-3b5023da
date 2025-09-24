@@ -31,10 +31,6 @@ const BottomNavigation = () => {
   }
 
   const upcomingEvents = [
-    { 
-      label: 'Moove Evening', 
-      href: '/events/an-evening-with-moove-ceo' 
-    },
   ];
 
   const navItems = [
