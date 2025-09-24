@@ -1,4 +1,4 @@
-import { CalendarIcon, Clock, MapPin, Users, TrendingUp, DollarSign } from "lucide-react";
+import { CalendarIcon, Clock, MapPin, Users, TrendingUp, Zap } from "lucide-react";
 
 const EventDetails = () => {
   return (
@@ -53,7 +53,7 @@ const EventDetails = () => {
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <DollarSign className="h-6 w-6 text-primary" />
+          <Zap className="h-6 w-6 text-primary" />
           <div>
             <h3 className="font-semibold text-primary">Technology Leadership</h3>
             <p className="text-gray-600">Pioneer in credit-scoring for emerging markets</p>
