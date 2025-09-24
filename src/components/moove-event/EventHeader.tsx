@@ -19,20 +19,28 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
         </div>
       </div>
 
-      <section className="pt-28 pb-16 bg-gradient-to-br from-slate-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-6">
+      <section 
+        className="pt-28 pb-16 relative bg-gradient-to-r from-slate-900/90 to-blue-900/90"
+        style={{
+          backgroundImage: "url('/moove-founders.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundBlendMode: 'overlay'
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in flex items-center gap-4">
-              <Car className="h-10 w-10 md:h-12 md:w-12 text-blue-600" />
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 animate-fade-in flex items-center gap-4">
+              <Car className="h-10 w-10 md:h-12 md:w-12 text-blue-400" />
               An Evening with Moove Co-CEO Ladi Delano
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 mb-6 animate-fade-in">
+            <p className="text-lg md:text-xl text-gray-100 mb-6 animate-fade-in">
               Join us for an exclusive gathering with Ladi Delano, Co-CEO of Moove.io, the global mobility fintech scaling a 39,000+ vehicle fleet into autonomous vehicles across 29 cities.
             </p>
-            <p className="text-base md:text-lg text-gray-500 mb-8 animate-fade-in">
+            <p className="text-base md:text-lg text-gray-200 mb-8 animate-fade-in">
               October 7th • Al Amaaria • Exploring the future of mobility, AI infrastructure, and financial inclusion
             </p>
-            <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg animate-fade-in shadow-xl" onClick={onRequestClick}>
               Request Your Invitation
             </Button>
           </div>
