@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Car, Waves } from "lucide-react";
+import { Lock, Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface EventHeaderProps {
@@ -33,8 +33,8 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
             <div className="order-1 lg:order-2">
               <div className="flex items-center gap-3 mb-4">
                 <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 flex items-center gap-1">
-                  <Car className="h-3 w-3" />
-                  Mobility Tech
+                  <Lock className="h-3 w-3" />
+                  Private Gathering
                 </Badge>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
