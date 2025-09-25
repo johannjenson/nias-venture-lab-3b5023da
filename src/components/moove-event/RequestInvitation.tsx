@@ -15,7 +15,7 @@ const RequestInvitation = ({ onRequestClick }: RequestInvitationProps) => {
           <p className="text-gray-600 mb-8">
             This exclusive gathering is limited to a select group of family office principals, 
             sovereign wealth fund leaders, and government representatives. Join us for an evening 
-            exploring the future of autonomous mobility, AI infrastructure, and financial inclusion 
+            exploring the future of autonomous mobility and financial inclusion 
             with one of the industry's most visionary leaders.
           </p>
           <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg" onClick={onRequestClick}>

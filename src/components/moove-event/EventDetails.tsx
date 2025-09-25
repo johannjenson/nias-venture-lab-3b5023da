@@ -67,7 +67,7 @@ const EventDetails = () => {
       <div className="mt-8">
         <h3 className="font-semibold text-primary mb-4">About Moove</h3>
         <p className="text-gray-600 mb-4">
-          Founded in 2020 by Ladi Delano and Jide Odunsi, Moove has become one of the fastest-growing mobility companies globally. Operating across UAE, Mexico, India, and other key markets, Moove enables drivers to access vehicle financing through innovative credit-scoring while building the infrastructure for tomorrow's autonomous transportation.
+          Founded in 2020 by Ladi Delano and Jide Odunsi, Moove has become one of the fastest-growing mobility companies globally. Operating across UAE, Mexico, India, Japan, the US, and other key markets, Moove enables drivers to access vehicle financing through innovative credit-scoring while building the infrastructure for tomorrow's autonomous transportation.
         </p>
         <p className="text-gray-600">
           As both a fintech and mobility company, Moove represents a new paradigm in transportation - one where financial inclusion, technological innovation, and sustainable mobility converge to create lasting impact in emerging markets and beyond.
