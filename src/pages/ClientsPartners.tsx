@@ -16,14 +16,14 @@ const ClientsPartners = () => {
       name: "180 Studios",
       website: "180Studios.com",
       url: "https://180studios.com",
-      description: "We hosted an exclusive dinner with 180 Studios' leadership team, exploring opportunities in immersive arts and creative spaces across the Middle East",
+      description: "Supporting strategic partnerships with Misk City and the Misk Foundation, as well as connections with creative studios looking to establish presence in the Kingdom",
       logo: studiosLogo
     },
     {
       name: "Moove",
       website: "Moove.io", 
       url: "https://moove.io",
-      description: "Collaborated on an intimate gathering with Moove's CEO to discuss mobility solutions and transportation innovation in Saudi Arabia's growing cities",
+      description: "Facilitating partnerships with sovereign investors and family offices to support Moove's expansion and growth initiatives across the Middle East region",
       logo: mooveLogo
     }
   ];
@@ -33,7 +33,7 @@ const ClientsPartners = () => {
       name: "The Diwan",
       website: "The-Diwan.com",
       url: "https://the-diwan.com", 
-      description: "Our strategic partner for investment advisory services, helping connect Vision 2030 opportunities with the right capital and expertise",
+      description: "Collaborating with this non-profit organization to support business expansion into other Gulf States including Kuwait and Qatar, leveraging their regional expertise",
       logo: diwanLogo
     },
     {
@@ -74,7 +74,7 @@ const ClientsPartners = () => {
                 Clients & Partners
               </h1>
               <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-                We collaborate with innovative organizations and strategic partners to create meaningful impact and drive sustainable growth.
+                We support ambitious companies expanding into the Gulf region by connecting them with family offices, exited entrepreneurs, strategic investors, and acquisitive funds across Saudi Arabia and the broader GCC.
               </p>
             </div>
           </div>
