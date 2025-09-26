@@ -183,7 +183,7 @@ const People = () => {
               {counselSupport.map((person) => (
                 <li key={person.name}>
                   <img
-                    className="aspect-[10/9] w-full rounded-2xl object-cover object-top"
+                    className="aspect-[10/9] w-full rounded-2xl object-cover object-center"
                     src={person.imageUrl}
                     alt=""
                   />
