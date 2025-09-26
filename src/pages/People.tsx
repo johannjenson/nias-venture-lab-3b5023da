@@ -1,9 +1,25 @@
 import { Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import johannImage from "@/assets/johann-jenson.png";
+import { processJohannImage } from "@/utils/processJohannImage";
 
 const People = () => {
   const navigate = useNavigate();
+  const [processedJohannImage, setProcessedJohannImage] = useState<string>(johannImage);
+
+  useEffect(() => {
+    const processImage = async () => {
+      try {
+        const processedUrl = await processJohannImage();
+        setProcessedJohannImage(processedUrl);
+      } catch (error) {
+        console.error('Failed to process Johann image:', error);
+      }
+    };
+    
+    processImage();
+  }, []);
   
   const foundingPartners = [
     {
@@ -15,7 +31,7 @@ const People = () => {
     {
       name: "Johann Jenson",
       role: "Partner",
-      imageUrl: johannImage,
+      imageUrl: processedJohannImage,
       linkedIn: "https://www.linkedin.com/in/johannjenson/",
     },
     {
