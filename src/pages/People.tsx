@@ -5,6 +5,7 @@ import johannImage from "@/assets/johann-jenson.png";
 import richardImage from "@/assets/richard-schrems.png";
 import ibrahimImage from "@/assets/ibrahim-alshuwaier.png";
 import fahadImage from "@/assets/fahad-alsudairy.png";
+import ibrahimAlsemariImage from "@/assets/ibrahim-alsemari.png";
 
 const People = () => {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ const People = () => {
     {
       name: "Ibrahim AlSemari",
       role: "Finance",
-      imageUrl: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d",
+      imageUrl: ibrahimAlsemariImage,
       linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162",
     },
     {
