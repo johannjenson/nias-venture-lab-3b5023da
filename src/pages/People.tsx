@@ -3,36 +3,22 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import johannImage from "@/assets/johann-jenson.png";
 import richardImage from "@/assets/richard-schrems.png";
-import { processJohannImage } from "@/utils/processJohannImage";
+import ibrahimImage from "@/assets/ibrahim-alshuwaier.png";
 
 const People = () => {
   const navigate = useNavigate();
-  const [processedJohannImage, setProcessedJohannImage] = useState<string>(johannImage);
-
-  useEffect(() => {
-    const processImage = async () => {
-      try {
-        const processedUrl = await processJohannImage();
-        setProcessedJohannImage(processedUrl);
-      } catch (error) {
-        console.error('Failed to process Johann image:', error);
-      }
-    };
-    
-    processImage();
-  }, []);
   
   const foundingPartners = [
     {
       name: "Ibrahim Alshuwaier",
       role: "Business Development & Partnerships",
-      imageUrl: "https://images.unsplash.com/photo-1472396961693-142e6e269027",
+      imageUrl: ibrahimImage,
       linkedIn: "",
     },
     {
       name: "Johann Jenson",
       role: "Finance & Platform",
-      imageUrl: processedJohannImage,
+      imageUrl: johannImage,
       linkedIn: "https://www.linkedin.com/in/johannjenson/",
     },
     {
@@ -99,7 +85,7 @@ const People = () => {
               {foundingPartners.map((person) => (
                 <li key={person.name}>
                   <img
-                    className="aspect-[3/2] w-full rounded-2xl object-cover"
+                    className="aspect-[3/2] w-full rounded-2xl object-cover object-center"
                     src={person.imageUrl}
                     alt=""
                   />
@@ -145,7 +131,7 @@ const People = () => {
               {supportTeam.map((person) => (
                 <li key={person.name}>
                   <img
-                    className="aspect-[3/2] w-full rounded-2xl object-cover"
+                    className="aspect-[3/2] w-full rounded-2xl object-cover object-center"
                     src={person.imageUrl}
                     alt=""
                   />
