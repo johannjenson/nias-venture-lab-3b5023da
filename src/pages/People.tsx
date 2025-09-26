@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import johannImage from "@/assets/johann-jenson.png";
 import richardImage from "@/assets/richard-schrems.png";
 import ibrahimImage from "@/assets/ibrahim-alshuwaier.png";
+import fahadImage from "@/assets/fahad-alsudairy.png";
 
 const People = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const People = () => {
     {
       name: "Fahad Alsudairy",
       role: "Real Estate",
-      imageUrl: "https://images.unsplash.com/photo-1438565434616-3ef039228b15",
+      imageUrl: fahadImage,
       linkedIn: "",
     },
   ];
@@ -88,7 +89,7 @@ const People = () => {
               {foundingPartners.map((person) => (
                 <li key={person.name}>
                   <img
-                    className="aspect-[5/4] w-full rounded-2xl object-cover object-top"
+                    className="aspect-[10/9] w-full rounded-2xl object-cover object-top"
                     src={person.imageUrl}
                     alt=""
                   />
@@ -134,7 +135,7 @@ const People = () => {
               {associates.map((person) => (
                 <li key={person.name}>
                   <img
-                    className="aspect-[5/4] w-full rounded-2xl object-cover object-top"
+                    className="aspect-[10/9] w-full rounded-2xl object-cover object-top"
                     src={person.imageUrl}
                     alt=""
                   />
