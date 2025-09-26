@@ -1,8 +1,12 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { Waves } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import Footer from "@/components/Footer";
+import MainNav from "@/components/MainNav";
 
 const ClientsPartners = () => {
+  const navigate = useNavigate();
   const clients = [
     {
       name: "180 Studios",
@@ -42,7 +46,19 @@ const ClientsPartners = () => {
         <link rel="canonical" href="https://nias.io/clients-partners" />
       </Helmet>
 
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-white">
+        <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
+          <div className="max-w-7xl mx-auto h-16 flex items-center px-6">
+            <button 
+              onClick={() => navigate('/')} 
+              className="hover:opacity-80 transition-opacity"
+            >
+              <Waves className="h-8 w-8 text-primary" />
+            </button>
+          </div>
+        </div>
+        
+        <MainNav />
         {/* Header */}
         <header className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
