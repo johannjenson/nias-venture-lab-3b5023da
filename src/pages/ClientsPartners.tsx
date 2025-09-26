@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import { Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Footer from "@/components/Footer";
-import MainNav from "@/components/MainNav";
 
 const ClientsPartners = () => {
   const navigate = useNavigate();
@@ -57,8 +56,6 @@ const ClientsPartners = () => {
             </button>
           </div>
         </div>
-        
-        <MainNav />
         {/* Header */}
         <header className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
