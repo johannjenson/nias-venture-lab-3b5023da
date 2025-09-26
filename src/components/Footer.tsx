@@ -67,6 +67,7 @@ const Footer = () => {
       ]},
       { name: "About", submenu: [
         { name: "People", href: "/people" },
+        { name: "Clients & Partners", href: "/clients-partners" },
         { name: "Contact", href: "/contact" }
       ]},
     ],
