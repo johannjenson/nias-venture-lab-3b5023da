@@ -3,6 +3,10 @@ import { Helmet } from "react-helmet";
 import { Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Footer from "@/components/Footer";
+import mooveLogo from "@/assets/moove-logo.png";
+import diwanLogo from "@/assets/diwan-logo.avif";
+import studiosLogo from "@/assets/180-studios-logo.png";
+import infntLogo from "@/assets/infnt-logo.png";
 
 const ClientsPartners = () => {
   const navigate = useNavigate();
@@ -11,13 +15,15 @@ const ClientsPartners = () => {
       name: "180 Studios",
       website: "180Studios.com",
       url: "https://180studios.com",
-      description: "London's creative powerhouse and premier immersive arts venue"
+      description: "London's creative powerhouse and premier immersive arts venue",
+      logo: studiosLogo
     },
     {
       name: "Moove",
       website: "Moove.io", 
       url: "https://moove.io",
-      description: "Mobility-as-a-Service platform transforming urban transportation"
+      description: "Mobility-as-a-Service platform transforming urban transportation",
+      logo: mooveLogo
     }
   ];
 
@@ -26,13 +32,15 @@ const ClientsPartners = () => {
       name: "The Diwan",
       website: "The-Diwan.com",
       url: "https://the-diwan.com", 
-      description: "Strategic advisory and investment platform"
+      description: "Strategic advisory and investment platform",
+      logo: diwanLogo
     },
     {
       name: "Infnt",
       website: "infntsolutions.com",
       url: "https://infntsolutions.com",
-      description: "Innovative technology solutions and digital transformation"
+      description: "Innovative technology solutions and digital transformation",
+      logo: infntLogo
     }
   ];
 
@@ -138,6 +146,40 @@ const ClientsPartners = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+            </section>
+
+            {/* Logos Section */}
+            <section className="mt-20 mb-8">
+              <div className="flex justify-center items-center gap-8 md:gap-12 flex-wrap max-w-4xl mx-auto">
+                <div className="flex items-center justify-center h-16 w-32">
+                  <img 
+                    src={studiosLogo} 
+                    alt="180 Studios" 
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+                <div className="flex items-center justify-center h-16 w-32">
+                  <img 
+                    src={mooveLogo} 
+                    alt="Moove" 
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+                <div className="flex items-center justify-center h-16 w-32">
+                  <img 
+                    src={diwanLogo} 
+                    alt="The Diwan" 
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+                <div className="flex items-center justify-center h-16 w-32">
+                  <img 
+                    src={infntLogo} 
+                    alt="Infnt" 
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
               </div>
             </section>
           </div>
