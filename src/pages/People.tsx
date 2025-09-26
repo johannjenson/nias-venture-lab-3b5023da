@@ -1,44 +1,49 @@
 import { Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import johannImage from "@/assets/johann-jenson.png";
 
 const People = () => {
   const navigate = useNavigate();
-  const team = [
+  
+  const foundingPartners = [
     {
       name: "Ibrahim Alshuwaier",
       role: "Business Development",
-      imageUrl: "https://images.unsplash.com/photo-1472396961693-142e6e269027", // Two brown deer representing strategic vision
-      linkedIn: "", // Removed LinkedIn URL
-    },
-    {
-      name: "Fahad Alsudairy",
-      role: "Real Estate",
-      imageUrl: "https://images.unsplash.com/photo-1438565434616-3ef039228b15", // Arabian mountain goats native to Saudi Arabia
-      linkedIn: "", // No LinkedIn profile
-    },
-    {
-      name: "Ibrahim AlSemari",
-      role: "Finance",
-      imageUrl: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d", // Antelope and zebra representing balance and precision
-      linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162",
+      imageUrl: "https://images.unsplash.com/photo-1472396961693-142e6e269027",
+      linkedIn: "",
     },
     {
       name: "Johann Jenson",
-      role: "Product",
-      imageUrl: "https://images.unsplash.com/photo-1493962853295-0fd70327578a", // Brown ox representing strength and stability
+      role: "Partner",
+      imageUrl: johannImage,
       linkedIn: "https://www.linkedin.com/in/johannjenson/",
-    },
-    {
-      name: "Lukas Gaebler",
-      role: "Tech",
-      imageUrl: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2", // Beautiful Arabian horses
-      linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
     },
     {
       name: "Richard Schrems",
       role: "Operations",
-      imageUrl: "https://images.unsplash.com/photo-1469041797191-50ace28483c3", // Camels representing endurance and adaptability
+      imageUrl: "https://images.unsplash.com/photo-1469041797191-50ace28483c3",
       linkedIn: "https://sa.linkedin.com/in/richardschrems",
+    },
+  ];
+
+  const supportTeam = [
+    {
+      name: "Fahad Alsudairy",
+      role: "Real Estate",
+      imageUrl: "https://images.unsplash.com/photo-1438565434616-3ef039228b15",
+      linkedIn: "",
+    },
+    {
+      name: "Ibrahim AlSemari",
+      role: "Finance",
+      imageUrl: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d",
+      linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162",
+    },
+    {
+      name: "Lukas Gaebler",
+      role: "Tech",
+      imageUrl: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2",
+      linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
     },
   ];
 
@@ -65,45 +70,97 @@ const People = () => {
               Meet the crew at Nias
             </p>
           </div>
-          <ul
-            role="list"
-            className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4"
-          >
-            {team.map((person) => (
-              <li key={person.name}>
-                <img
-                  className="aspect-[3/2] w-full rounded-2xl object-cover"
-                  src={person.imageUrl}
-                  alt=""
-                />
-                <h3 className="mt-6 text-lg font-semibold leading-8 text-gray-900">
-                  {person.name}
-                </h3>
-                <p className="text-base leading-7 text-gray-600">{person.role}</p>
-                {person.linkedIn && (
-                  <ul role="list" className="mt-6 flex gap-x-6">
-                    <li>
-                      <a
-                        href={person.linkedIn}
-                        className="text-gray-400 hover:text-gray-500"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <span className="sr-only">LinkedIn</span>
-                        <svg fill="currentColor" viewBox="0 0 24 24" className="h-5 w-5">
-                          <path
-                            fillRule="evenodd"
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
+          {/* Founding Partners */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-primary mb-8 text-center">
+              Founding Partners
+            </h3>
+            <ul
+              role="list"
+              className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+            >
+              {foundingPartners.map((person) => (
+                <li key={person.name}>
+                  <img
+                    className="aspect-[3/2] w-full rounded-2xl object-cover"
+                    src={person.imageUrl}
+                    alt=""
+                  />
+                  <h3 className="mt-6 text-lg font-semibold leading-8 text-gray-900">
+                    {person.name}
+                  </h3>
+                  <p className="text-base leading-7 text-gray-600">{person.role}</p>
+                  {person.linkedIn && (
+                    <ul role="list" className="mt-6 flex gap-x-6">
+                      <li>
+                        <a
+                          href={person.linkedIn}
+                          className="text-gray-400 hover:text-gray-500"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <span className="sr-only">LinkedIn</span>
+                          <svg fill="currentColor" viewBox="0 0 24 24" className="h-5 w-5">
+                            <path
+                              fillRule="evenodd"
+                              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Support Team */}
+          <div>
+            <h3 className="text-2xl font-bold text-primary mb-8 text-center">
+              Support Team
+            </h3>
+            <ul
+              role="list"
+              className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+            >
+              {supportTeam.map((person) => (
+                <li key={person.name}>
+                  <img
+                    className="aspect-[3/2] w-full rounded-2xl object-cover"
+                    src={person.imageUrl}
+                    alt=""
+                  />
+                  <h3 className="mt-6 text-lg font-semibold leading-8 text-gray-900">
+                    {person.name}
+                  </h3>
+                  <p className="text-base leading-7 text-gray-600">{person.role}</p>
+                  {person.linkedIn && (
+                    <ul role="list" className="mt-6 flex gap-x-6">
+                      <li>
+                        <a
+                          href={person.linkedIn}
+                          className="text-gray-400 hover:text-gray-500"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <span className="sr-only">LinkedIn</span>
+                          <svg fill="currentColor" viewBox="0 0 24 24" className="h-5 w-5">
+                            <path
+                              fillRule="evenodd"
+                              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
