@@ -2,6 +2,7 @@ import { Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import johannImage from "@/assets/johann-jenson.png";
+import richardImage from "@/assets/richard-schrems.png";
 import { processJohannImage } from "@/utils/processJohannImage";
 
 const People = () => {
@@ -24,20 +25,20 @@ const People = () => {
   const foundingPartners = [
     {
       name: "Ibrahim Alshuwaier",
-      role: "Business Development",
+      role: "Business Development & Partnerships",
       imageUrl: "https://images.unsplash.com/photo-1472396961693-142e6e269027",
       linkedIn: "",
     },
     {
       name: "Johann Jenson",
-      role: "Partner",
+      role: "Finance & Platform",
       imageUrl: processedJohannImage,
       linkedIn: "https://www.linkedin.com/in/johannjenson/",
     },
     {
       name: "Richard Schrems",
       role: "Operations",
-      imageUrl: "https://images.unsplash.com/photo-1469041797191-50ace28483c3",
+      imageUrl: richardImage,
       linkedIn: "https://sa.linkedin.com/in/richardschrems",
     },
   ];
