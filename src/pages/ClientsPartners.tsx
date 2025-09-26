@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import mooveLogo from "@/assets/moove-logo.png";
 import diwanLogo from "@/assets/diwan-logo.avif";
 import studiosLogo from "@/assets/180-studios-logo.png";
-import infntLogo from "@/assets/infnt-logo.png";
+import infntLogo from "@/assets/infnt-logo.svg";
 
 const ClientsPartners = () => {
   const navigate = useNavigate();
@@ -156,7 +156,7 @@ const ClientsPartners = () => {
                   <img 
                     src={studiosLogo} 
                     alt="180 Studios" 
-                    className="max-h-full max-w-full object-contain"
+                    className="max-h-full max-w-full object-contain filter invert"
                   />
                 </div>
                 <div className="flex items-center justify-center h-16 w-32">
@@ -170,7 +170,7 @@ const ClientsPartners = () => {
                   <img 
                     src={diwanLogo} 
                     alt="The Diwan" 
-                    className="max-h-full max-w-full object-contain"
+                    className="max-h-full max-w-full object-contain filter invert"
                   />
                 </div>
                 <div className="flex items-center justify-center h-16 w-32">
