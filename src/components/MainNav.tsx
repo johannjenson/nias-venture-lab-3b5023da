@@ -76,6 +76,11 @@ const MainNav = () => {
       description: "Meet our crew at Nias.",
     },
     {
+      title: "Clients & Partners",
+      href: "/clients-partners",
+      description: "Our trusted clients and strategic partners.",
+    },
+    {
       title: "Contact",
       href: "/contact",
       description: "Get in touch with our team.",

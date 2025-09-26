@@ -24,6 +24,7 @@ import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import CRM from "./pages/CRM";
 import InboundContacts from "./pages/InboundContacts";
+import ClientsPartners from "./pages/ClientsPartners";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,7 @@ const App = () => (
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/crm" element={<CRM />} />
           <Route path="/resources/inbound-contacts" element={<InboundContacts />} />
+          <Route path="/clients-partners" element={<ClientsPartners />} />
         </Routes>
         <BottomNavigation />
         <Toaster />
