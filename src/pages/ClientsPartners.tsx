@@ -10,6 +10,7 @@ import infntLogo from "@/assets/infnt-logo.svg";
 
 const ClientsPartners = () => {
   const navigate = useNavigate();
+
   const clients = [
     {
       name: "180 Studios",
@@ -64,50 +65,62 @@ const ClientsPartners = () => {
             </button>
           </div>
         </div>
-        {/* Header */}
-        <header className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Clients & Partners
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              We collaborate with innovative organizations and strategic partners to create meaningful impact and drive sustainable growth.
-            </p>
+
+        {/* Hero Section */}
+        <section className="pt-28 pb-16 bg-[#F8F3E8]">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center">
+              <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6">
+                Clients & Partners
+              </h1>
+              <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+                We collaborate with innovative organizations and strategic partners to create meaningful impact and drive sustainable growth.
+              </p>
+            </div>
           </div>
-        </header>
+        </section>
 
         {/* Main Content */}
-        <main className="px-4 sm:px-6 lg:px-8 pb-24">
+        <main className="px-4 sm:px-6 lg:px-8 py-16">
           <div className="max-w-6xl mx-auto">
             {/* Clients Section */}
             <section className="mb-20">
               <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
                   Our Clients
                 </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                   Organizations that trust us to deliver exceptional results and transformative solutions.
                 </p>
               </div>
               
-              <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <div className="space-y-8 max-w-4xl mx-auto">
                 {clients.map((client) => (
-                  <div key={client.name} className="bg-card rounded-xl p-8 border border-border hover:shadow-lg transition-all duration-300">
-                    <div className="text-center">
-                      <h3 className="text-2xl font-bold text-foreground mb-2">
-                        {client.name}
-                      </h3>
-                      <a 
-                        href={client.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:text-primary/80 transition-colors mb-4 inline-block"
-                      >
-                        {client.website}
-                      </a>
-                      <p className="text-muted-foreground">
-                        {client.description}
-                      </p>
+                  <div key={client.name} className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
+                    <div className="flex items-center gap-6">
+                      <div className="flex-shrink-0 w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+                        <img 
+                          src={client.logo} 
+                          alt={`${client.name} logo`} 
+                          className="max-w-full max-h-full object-contain"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                          {client.name}
+                        </h3>
+                        <a 
+                          href={client.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:text-primary/80 transition-colors mb-3 inline-block text-sm font-medium"
+                        >
+                          {client.website}
+                        </a>
+                        <p className="text-gray-600">
+                          {client.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -117,69 +130,44 @@ const ClientsPartners = () => {
             {/* Partners Section */}
             <section>
               <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
                   Our Partners
                 </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                   Strategic alliances that amplify our capabilities and extend our reach across markets.
                 </p>
               </div>
               
-              <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <div className="space-y-8 max-w-4xl mx-auto">
                 {partners.map((partner) => (
-                  <div key={partner.name} className="bg-card rounded-xl p-8 border border-border hover:shadow-lg transition-all duration-300">
-                    <div className="text-center">
-                      <h3 className="text-2xl font-bold text-foreground mb-2">
-                        {partner.name}
-                      </h3>
-                      <a 
-                        href={partner.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:text-primary/80 transition-colors mb-4 inline-block"
-                      >
-                        {partner.website}
-                      </a>
-                      <p className="text-muted-foreground">
-                        {partner.description}
-                      </p>
+                  <div key={partner.name} className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
+                    <div className="flex items-center gap-6">
+                      <div className="flex-shrink-0 w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+                        <img 
+                          src={partner.logo} 
+                          alt={`${partner.name} logo`} 
+                          className={`max-w-full max-h-full object-contain ${partner.name === 'The Diwan' ? 'filter invert' : ''}`}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                          {partner.name}
+                        </h3>
+                        <a 
+                          href={partner.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:text-primary/80 transition-colors mb-3 inline-block text-sm font-medium"
+                        >
+                          {partner.website}
+                        </a>
+                        <p className="text-gray-600">
+                          {partner.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 ))}
-              </div>
-            </section>
-
-            {/* Logos Section */}
-            <section className="mt-20 mb-8">
-              <div className="flex justify-center items-center gap-8 md:gap-12 flex-wrap max-w-4xl mx-auto">
-                <div className="flex items-center justify-center h-16 w-32">
-                  <img 
-                    src={studiosLogo} 
-                    alt="180 Studios" 
-                    className="max-h-full max-w-full object-contain filter invert"
-                  />
-                </div>
-                <div className="flex items-center justify-center h-16 w-32">
-                  <img 
-                    src={mooveLogo} 
-                    alt="Moove" 
-                    className="max-h-full max-w-full object-contain"
-                  />
-                </div>
-                <div className="flex items-center justify-center h-16 w-32">
-                  <img 
-                    src={diwanLogo} 
-                    alt="The Diwan" 
-                    className="max-h-full max-w-full object-contain filter invert"
-                  />
-                </div>
-                <div className="flex items-center justify-center h-16 w-32">
-                  <img 
-                    src={infntLogo} 
-                    alt="Infnt" 
-                    className="max-h-full max-w-full object-contain"
-                  />
-                </div>
               </div>
             </section>
           </div>
