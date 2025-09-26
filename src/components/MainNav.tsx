@@ -123,8 +123,7 @@ const MainNav = () => {
     <NavigationMenu className="absolute top-24 md:top-20 left-1/2 -translate-x-1/2 z-50 w-full md:w-auto px-4 md:px-0">
       <NavigationMenuList className="gap-6">
         <NavMenuItem title="Upcoming" items={upcoming} />
-        <NavMenuItem title="Past Events" items={pastEvents} />
-        <NavMenuItem title="Resources" items={resources} />
+        <NavMenuItem title="Past" items={pastEvents} />
         <NavMenuItem title="About" items={about} />
       </NavigationMenuList>
     </NavigationMenu>
