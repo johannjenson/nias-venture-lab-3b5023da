@@ -72,7 +72,7 @@ const People = () => {
             <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
               People
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 mb-5 text-lg leading-8 text-gray-600">
               Meet the crew at Nias
             </p>
           </div>
@@ -88,7 +88,7 @@ const People = () => {
               {foundingPartners.map((person) => (
                 <li key={person.name}>
                   <img
-                    className="aspect-[3/2] w-full rounded-2xl object-cover object-center"
+                    className="aspect-[3/2] w-full rounded-2xl object-cover object-bottom"
                     src={person.imageUrl}
                     alt=""
                   />
@@ -134,7 +134,7 @@ const People = () => {
               {associates.map((person) => (
                 <li key={person.name}>
                   <img
-                    className="aspect-[3/2] w-full rounded-2xl object-cover object-center"
+                    className="aspect-[3/2] w-full rounded-2xl object-cover object-bottom"
                     src={person.imageUrl}
                     alt=""
                   />
@@ -180,7 +180,7 @@ const People = () => {
               {counselSupport.map((person) => (
                 <li key={person.name}>
                   <img
-                    className="aspect-[3/2] w-full rounded-2xl object-cover object-center"
+                    className="aspect-[3/2] w-full rounded-2xl object-cover object-bottom"
                     src={person.imageUrl}
                     alt=""
                   />
