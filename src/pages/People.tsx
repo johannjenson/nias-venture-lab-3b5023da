@@ -6,6 +6,7 @@ import richardImage from "@/assets/richard-schrems.png";
 import ibrahimImage from "@/assets/ibrahim-alshuwaier.png";
 import fahadImage from "@/assets/fahad-alsudairy.png";
 import ibrahimAlsemariImage from "@/assets/ibrahim-alsemari.png";
+import lukasImage from "@/assets/lukas-gaebler.png";
 
 const People = () => {
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ const People = () => {
     {
       name: "Lukas Gaebler",
       role: "Tech",
-      imageUrl: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2",
+      imageUrl: lukasImage,
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
     },
   ];
@@ -182,7 +183,7 @@ const People = () => {
               {counselSupport.map((person) => (
                 <li key={person.name}>
                   <img
-                    className="aspect-[3/2] w-full rounded-2xl object-cover object-top"
+                    className="aspect-[10/9] w-full rounded-2xl object-cover object-top"
                     src={person.imageUrl}
                     alt=""
                   />
