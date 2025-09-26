@@ -10,32 +10,35 @@ const People = () => {
   
   const foundingPartners = [
     {
-      name: "Ibrahim Alshuwaier",
-      role: "Business Development & Partnerships",
-      imageUrl: ibrahimImage,
-      linkedIn: "",
-    },
-    {
       name: "Johann Jenson",
       role: "Finance & Platform",
       imageUrl: johannImage,
       linkedIn: "https://www.linkedin.com/in/johannjenson/",
     },
     {
+      name: "Ibrahim Alshuwaier",
+      role: "Business Development & Partnerships",
+      imageUrl: ibrahimImage,
+      linkedIn: "",
+    },
+  ];
+
+  const associates = [
+    {
       name: "Richard Schrems",
       role: "Operations",
       imageUrl: richardImage,
       linkedIn: "https://sa.linkedin.com/in/richardschrems",
     },
-  ];
-
-  const supportTeam = [
     {
       name: "Fahad Alsudairy",
       role: "Real Estate",
       imageUrl: "https://images.unsplash.com/photo-1438565434616-3ef039228b15",
       linkedIn: "",
     },
+  ];
+
+  const counselSupport = [
     {
       name: "Ibrahim AlSemari",
       role: "Finance",
@@ -80,7 +83,7 @@ const People = () => {
             </h3>
             <ul
               role="list"
-              className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+              className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-2"
             >
               {foundingPartners.map((person) => (
                 <li key={person.name}>
@@ -119,16 +122,62 @@ const People = () => {
             </ul>
           </div>
 
-          {/* Support Team */}
-          <div>
+          {/* Associates */}
+          <div className="mb-16">
             <h3 className="text-2xl font-bold text-primary mb-8 text-center">
-              Support Team
+              Associates
             </h3>
             <ul
               role="list"
-              className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+              className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-2"
             >
-              {supportTeam.map((person) => (
+              {associates.map((person) => (
+                <li key={person.name}>
+                  <img
+                    className="aspect-[3/2] w-full rounded-2xl object-cover object-center"
+                    src={person.imageUrl}
+                    alt=""
+                  />
+                  <h3 className="mt-6 text-lg font-semibold leading-8 text-gray-900">
+                    {person.name}
+                  </h3>
+                  <p className="text-base leading-7 text-gray-600">{person.role}</p>
+                  {person.linkedIn && (
+                    <ul role="list" className="mt-6 flex gap-x-6">
+                      <li>
+                        <a
+                          href={person.linkedIn}
+                          className="text-gray-400 hover:text-gray-500"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <span className="sr-only">LinkedIn</span>
+                          <svg fill="currentColor" viewBox="0 0 24 24" className="h-5 w-5">
+                            <path
+                              fillRule="evenodd"
+                              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Counsel & Support */}
+          <div>
+            <h3 className="text-2xl font-bold text-primary mb-8 text-center">
+              Counsel & Support
+            </h3>
+            <ul
+              role="list"
+              className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-2"
+            >
+              {counselSupport.map((person) => (
                 <li key={person.name}>
                   <img
                     className="aspect-[3/2] w-full rounded-2xl object-cover object-center"
