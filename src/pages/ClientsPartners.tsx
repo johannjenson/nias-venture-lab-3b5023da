@@ -16,14 +16,14 @@ const ClientsPartners = () => {
       name: "180 Studios",
       website: "180Studios.com",
       url: "https://180studios.com",
-      description: "London's creative powerhouse and premier immersive arts venue",
+      description: "We hosted an exclusive dinner with 180 Studios' leadership team, exploring opportunities in immersive arts and creative spaces across the Middle East",
       logo: studiosLogo
     },
     {
       name: "Moove",
       website: "Moove.io", 
       url: "https://moove.io",
-      description: "Mobility-as-a-Service platform transforming urban transportation",
+      description: "Collaborated on an intimate gathering with Moove's CEO to discuss mobility solutions and transportation innovation in Saudi Arabia's growing cities",
       logo: mooveLogo
     }
   ];
@@ -33,14 +33,14 @@ const ClientsPartners = () => {
       name: "The Diwan",
       website: "The-Diwan.com",
       url: "https://the-diwan.com", 
-      description: "Strategic advisory and investment platform",
+      description: "Our strategic partner for investment advisory services, helping connect Vision 2030 opportunities with the right capital and expertise",
       logo: diwanLogo
     },
     {
       name: "Infnt",
       website: "infntsolutions.com",
       url: "https://infntsolutions.com",
-      description: "Innovative technology solutions and digital transformation",
+      description: "Technology partner supporting our digital infrastructure and helping portfolio companies scale their tech capabilities in the region",
       logo: infntLogo
     }
   ];
