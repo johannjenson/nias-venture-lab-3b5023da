@@ -40,7 +40,7 @@ const ClientsPartners = () => {
       name: "Infnt",
       website: "infntsolutions.com",
       url: "https://infntsolutions.com",
-      description: "Technology partner supporting our digital infrastructure and helping portfolio companies scale their tech capabilities in the region",
+      description: "Our technology and events partner, supporting our digital infrastructure while helping orchestrate our exclusive gatherings and networking events across the region",
       logo: infntLogo
     }
   ];
