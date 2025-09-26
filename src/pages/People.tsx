@@ -88,7 +88,7 @@ const People = () => {
               {foundingPartners.map((person) => (
                 <li key={person.name}>
                   <img
-                    className="aspect-[3/2] w-full rounded-2xl object-cover object-bottom"
+                    className="aspect-[3/2] w-full rounded-2xl object-cover object-top"
                     src={person.imageUrl}
                     alt=""
                   />
@@ -134,7 +134,7 @@ const People = () => {
               {associates.map((person) => (
                 <li key={person.name}>
                   <img
-                    className="aspect-[3/2] w-full rounded-2xl object-cover object-bottom"
+                    className="aspect-[3/2] w-full rounded-2xl object-cover object-top"
                     src={person.imageUrl}
                     alt=""
                   />
@@ -180,7 +180,7 @@ const People = () => {
               {counselSupport.map((person) => (
                 <li key={person.name}>
                   <img
-                    className="aspect-[3/2] w-full rounded-2xl object-cover object-bottom"
+                    className="aspect-[3/2] w-full rounded-2xl object-cover object-top"
                     src={person.imageUrl}
                     alt=""
                   />
