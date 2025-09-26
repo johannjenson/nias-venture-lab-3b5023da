@@ -171,10 +171,10 @@ const People = () => {
             </ul>
           </div>
 
-          {/* Counsel & Support */}
+          {/* Counsel & Advisory */}
           <div>
             <h3 className="text-2xl font-bold text-primary mb-8 text-center">
-              Counsel & Support
+              Counsel & Advisory
             </h3>
             <ul
               role="list"
