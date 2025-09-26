@@ -23,7 +23,7 @@ const ClientsPartners = () => {
       name: "Moove",
       website: "Moove.io", 
       url: "https://moove.io",
-      description: "Facilitating partnerships with sovereign investors and family offices to support Moove's expansion and growth initiatives across the Middle East region",
+      description: "Facilitating partnerships with sovereign investors and family offices to support Moove's KSA expansion and growth initiatives in the Kingdom",
       logo: mooveLogo
     }
   ];
@@ -33,7 +33,7 @@ const ClientsPartners = () => {
       name: "The Diwan",
       website: "The-Diwan.com",
       url: "https://the-diwan.com", 
-      description: "Collaborating with this non-profit organization to support business expansion into other Gulf States including Kuwait and Qatar, leveraging their regional expertise",
+      description: "Collaborating with this non-profit organization and their high-level government networks to support business expansion into other Gulf States including Kuwait and Qatar",
       logo: diwanLogo
     },
     {
