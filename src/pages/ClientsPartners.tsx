@@ -98,7 +98,7 @@ const ClientsPartners = () => {
                 {clients.map((client) => (
                   <div key={client.name} className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
                     <div className="flex items-center gap-6">
-                      <div className="flex-shrink-0 w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+                      <div className="flex-shrink-0 w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
                         <img 
                           src={client.logo} 
                           alt={`${client.name} logo`} 
@@ -142,7 +142,7 @@ const ClientsPartners = () => {
                 {partners.map((partner) => (
                   <div key={partner.name} className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
                     <div className="flex items-center gap-6">
-                      <div className="flex-shrink-0 w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
+                      <div className="flex-shrink-0 w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center p-2">
                         <img 
                           src={partner.logo} 
                           alt={`${partner.name} logo`} 
