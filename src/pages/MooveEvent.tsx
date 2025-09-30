@@ -6,7 +6,7 @@ import EventSEO from "@/components/moove-event/EventSEO";
 
 const MooveEvent = () => {
   const handleRequestClick = () => {
-    window.open('https://lu.ma/moove-riyadh', '_blank', 'noopener,noreferrer');
+    window.open('https://luma.com/1qyexkvs', '_blank', 'noopener,noreferrer');
   };
 
   return (
