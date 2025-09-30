@@ -32,7 +32,7 @@ const EventDetails = () => {
           <MapPin className="h-6 w-6 text-primary" />
           <div>
             <h3 className="font-semibold text-primary">Venue</h3>
-            <p className="text-gray-600">Private Residence, Al Amaaria, Riyadh</p>
+            <p className="text-gray-600">Private Residence, Riyadh</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
