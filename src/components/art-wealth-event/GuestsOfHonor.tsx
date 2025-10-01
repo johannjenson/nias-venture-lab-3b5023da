@@ -3,6 +3,7 @@ import ahmedMater from "@/assets/ahmed-mater.jpg";
 import othmanAlKhozaim from "@/assets/othman-alkhozaim.jpg";
 import nidaaHanifa from "@/assets/nidaa-hanifa.png";
 import sarahAlbaiz from "@/assets/sarah-albaiz.webp";
+import svetlanaMarich from "@/assets/svetlana-marich.jpg";
 
 const GuestsOfHonor = () => {
   return (
@@ -26,6 +27,25 @@ const GuestsOfHonor = () => {
           </div>
           <p className="text-gray-600 text-sm">
             Founder of INVISIBLE WEALTH Consulting, Jennifer partners with individuals and institutions to usher in the next generation of wealth. With experience at Goldman Sachs, JPMorgan, and Fidelity, she helps current and future wealth holders navigate the rich complexities of self and wealth—because the new wealth paradigm extends far beyond money.
+          </p>
+        </div>
+
+        <div className="border-l-4 border-primary pl-6">
+          <div className="flex items-center gap-3 mb-4">
+            <img 
+              src={svetlanaMarich} 
+              alt="Svetlana Marich" 
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary grayscale"
+            />
+            <div>
+              <a href="https://malevich.co.uk/team" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-primary hover:underline">
+                Svetlana Marich
+              </a>
+              <p className="text-sm text-gray-600">Founder, Malevich.io & Former Worldwide Deputy Chairman, Phillips</p>
+            </div>
+          </div>
+          <p className="text-gray-600 text-sm">
+            Curator, writer, and contemporary art expert based in London. As Worldwide Deputy Chairman at Phillips (2016-2023), Svetlana brought extensive expertise to the auction world. She founded Malevich.io in 2017 to support artists through exhibitions and production, collaborating with institutions like Centre Pompidou, Serpentine Galleries, and Goldsmiths CCA. In 2023, she established Malevich's art advisory arm, focusing on building collections for private museums and institutions.
           </p>
         </div>
 
