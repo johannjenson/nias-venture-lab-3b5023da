@@ -34,7 +34,7 @@ const EventDetails = () => {
           <Users className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
           <div>
             <div className="font-semibold text-primary mb-1">Audience</div>
-            <div className="text-gray-600">Art collectors, wealth managers, family offices, cultural leaders, and investors</div>
+            <div className="text-gray-600">Art collectors, wealth managers, family offices, cultural leaders, and fund managers</div>
           </div>
         </div>
 
