@@ -15,7 +15,7 @@ const GuestsOfHonor = () => {
             <img 
               src={jenniferWines} 
               alt="Jennifer Wines" 
-              className="w-20 h-20 rounded-full object-cover border-2 border-primary"
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary grayscale"
             />
             <div>
               <a href="https://jenniferwines.com" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-primary hover:underline">
