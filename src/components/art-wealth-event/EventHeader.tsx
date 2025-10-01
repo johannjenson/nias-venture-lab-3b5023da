@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Waves, Palette } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import heroImage from "@/assets/art-wealth-hero.jpg";
 
 interface EventHeaderProps {
   onRequestClick: () => void;
@@ -21,17 +22,26 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
 
       <section className="pt-28 pb-16 bg-[#F8F3E8]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in flex items-center gap-4">
-              <Palette className="h-12 w-12 text-primary" />
-              Canvases & Capital: Art & Wealth in the New Arabia
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 animate-fade-in">
-              Join us for an exclusive evening exploring the intersection of Saudi contemporary art and wealth management, featuring distinguished artists and industry leaders at J17 in JAX, Riyadh.
-            </p>
-            <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
-              Request Your Invitation
-            </Button>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <img 
+                src={heroImage} 
+                alt="Contemporary art exhibition venue at JAX District"
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+            <div className="order-1 lg:order-2">
+              <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in flex items-center gap-4">
+                <Palette className="h-12 w-12 text-primary" />
+                Canvases & Capital: Art & Wealth in the New Arabia
+              </h1>
+              <p className="text-xl text-gray-600 mb-8 animate-fade-in">
+                Join us for an exclusive evening exploring the intersection of Saudi contemporary art and wealth management, featuring distinguished artists and industry leaders at J17 in JAX, Riyadh.
+              </p>
+              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
+                Request Your Invitation
+              </Button>
+            </div>
           </div>
         </div>
       </section>

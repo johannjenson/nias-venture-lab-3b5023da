@@ -5,7 +5,10 @@ const EventDetails = () => {
     <div>
       <h2 className="text-3xl font-bold text-primary mb-6">Event Details</h2>
       <p className="text-gray-600 mb-8">
-        An intimate gathering where Saudi Arabia's most prominent contemporary artists meet global wealth management leaders to discuss art as cultural heritage, investment asset, and catalyst for the Kingdom's creative renaissance.
+        An intimate gathering where Saudi Arabia's most prominent contemporary artists meet global wealth management leaders, collectors, and family offices to explore art as cultural heritage, investment asset, and catalyst for the Kingdom's creative renaissance. This exclusive evening brings together the visionaries shaping Saudi Arabia's contemporary art scene with the stewards of cultural wealth, creating meaningful dialogue at the intersection of artistic expression and strategic wealth preservation.
+      </p>
+      <p className="text-gray-600 mb-8">
+        As Saudi Arabia emerges as a cultural powerhouse on the global stage, this gathering offers a rare opportunity to understand how contemporary Saudi art is gaining international recognition while exploring sophisticated approaches to art as an alternative asset class. Through intimate panel discussions and curated networking, attendees will gain insights into building meaningful collections that serve both as cultural legacy and strategic financial instruments.
       </p>
 
       <div className="space-y-6">
@@ -46,7 +49,7 @@ const EventDetails = () => {
           <div>
             <div className="font-semibold text-primary mb-1">Format</div>
             <div className="text-gray-600">
-              Two curated panel discussions followed by networking reception
+              Three curated panel discussions followed by networking reception
             </div>
           </div>
         </div>

@@ -22,7 +22,17 @@ const WhatToExpect = () => {
             <h4 className="text-lg font-semibold text-primary">Panel 2: Art as Asset</h4>
           </div>
           <p className="text-gray-600 ml-9 text-sm">
-            Jennifer Wines leads a discussion on stewarding cultural wealth—how art serves as both heritage preservation and investment asset. Learn strategies for building meaningful collections, navigating the art market, and integrating fine art into comprehensive wealth management portfolios.
+            Jennifer Wines, Nidaa Hanifa, and Sarah Albaiz lead a discussion on stewarding cultural wealth—how art serves as both heritage preservation and investment asset. Learn strategies for building meaningful collections, navigating the art market, and integrating fine art into comprehensive wealth management portfolios.
+          </p>
+        </div>
+
+        <div>
+          <div className="flex items-center gap-3 mb-3">
+            <TrendingUp className="h-6 w-6 text-primary" />
+            <h4 className="text-lg font-semibold text-primary">Panel 3: Building Cultural Legacy</h4>
+          </div>
+          <p className="text-gray-600 ml-9 text-sm">
+            A deep dive into how family offices and institutional collectors can build enduring cultural legacies through strategic art acquisition. Explore the intersection of patronage, preservation, and portfolio diversification in the context of Saudi Arabia's cultural transformation.
           </p>
         </div>
 
