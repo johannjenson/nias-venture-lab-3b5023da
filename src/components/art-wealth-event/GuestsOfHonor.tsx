@@ -21,11 +21,11 @@ const GuestsOfHonor = () => {
               <a href="https://jenniferwines.com" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-primary hover:underline">
                 Jennifer Wines
               </a>
-              <p className="text-sm text-gray-600">Art Advisor & Wealth Management Expert</p>
+              <p className="text-sm text-gray-600">Founder, INVISIBLE WEALTH Consulting</p>
             </div>
           </div>
           <p className="text-gray-600 text-sm">
-            Renowned art advisor specializing in building museum-quality collections for high-net-worth individuals and institutions. Jennifer brings decades of experience at the intersection of fine art and wealth preservation.
+            Founder of INVISIBLE WEALTH Consulting, Jennifer partners with individuals and institutions to usher in the next generation of wealth. With experience at Goldman Sachs, JPMorgan, and Fidelity, she helps current and future wealth holders navigate the rich complexities of self and wealth—because the new wealth paradigm extends far beyond money.
           </p>
         </div>
 
