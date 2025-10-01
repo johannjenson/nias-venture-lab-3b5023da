@@ -32,7 +32,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
             </div>
             <div className="order-1 lg:order-2">
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
-                Canvases & Capital: Art & Wealth
+                Canvases & Capital: Art & Wealth in the New KSA
               </h1>
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">
                 Join us for an exclusive evening exploring the intersection of Saudi contemporary art and wealth management, featuring distinguished artists and industry leaders at J17 in JAX, Riyadh.
