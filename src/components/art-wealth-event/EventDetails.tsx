@@ -3,8 +3,7 @@ import { Calendar, Clock, MapPin, Users, Presentation } from "lucide-react";
 const EventDetails = () => {
   return (
     <div className="mb-12">
-      <h2 className="text-3xl font-bold text-primary mb-6">Event Details</h2>
-      <p className="text-gray-600 mb-8">
+      <p className="text-2xl font-semibold text-foreground mb-10 leading-relaxed">
         An intimate gathering where Saudi Arabia's most prominent contemporary artists meet global wealth management leaders to explore art as cultural heritage, investment asset, and catalyst for the Kingdom's creative renaissance.
       </p>
 
