@@ -1,6 +1,7 @@
 import jenniferWines from "@/assets/jennifer-wines.jpg";
 import ahmedMater from "@/assets/ahmed-mater.jpg";
 import othmanAlKhozaim from "@/assets/othman-alkhozaim.jpg";
+import nidaaHanifa from "@/assets/nidaa-hanifa.png";
 
 const GuestsOfHonor = () => {
   return (
@@ -65,9 +66,11 @@ const GuestsOfHonor = () => {
 
         <div className="border-l-4 border-primary pl-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center border-2 border-primary">
-              <span className="text-2xl font-bold text-primary">NH</span>
-            </div>
+            <img 
+              src={nidaaHanifa} 
+              alt="Nidaa Hanifa" 
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary"
+            />
             <div>
               <a href="https://hanifa-consulting.com" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-primary hover:underline">
                 Nidaa Hanifa
