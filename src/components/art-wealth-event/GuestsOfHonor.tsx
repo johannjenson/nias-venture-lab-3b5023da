@@ -3,7 +3,7 @@ import ahmedMater from "@/assets/ahmed-mater.jpg";
 import othmanAlKhozaim from "@/assets/othman-alkhozaim.jpg";
 import nidaaHanifa from "@/assets/nidaa-hanifa.png";
 import sarahAlbaiz from "@/assets/sarah-albaiz.webp";
-import svetlanaMarich from "@/assets/svetlana-marich.jpg";
+import svetlanaMarich from "@/assets/svetlana-marich-photo.png";
 
 const GuestsOfHonor = () => {
   return (
