@@ -4,9 +4,9 @@ import { Badge } from "@/components/ui/badge";
 const WhatToExpect = () => {
   return (
     <div className="bg-secondary/30 rounded-xl p-8 mt-8">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between gap-3 mb-6 flex-wrap">
         <h3 className="text-2xl font-bold text-primary">Evening Programme</h3>
-        <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
+        <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 whitespace-nowrap shrink-0">
           Limited Capacity
         </Badge>
       </div>

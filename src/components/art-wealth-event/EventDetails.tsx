@@ -10,7 +10,7 @@ const EventDetails = () => {
           <Calendar className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
           <div>
             <div className="font-semibold text-primary mb-1">When</div>
-            <div className="text-gray-600">October 25, 2025</div>
+            <div className="text-gray-600">October 26, 2025</div>
           </div>
         </div>
 
