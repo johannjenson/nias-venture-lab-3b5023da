@@ -1,11 +1,10 @@
-import { Palette } from "lucide-react";
 import jenniferWines from "@/assets/jennifer-wines.jpg";
 import ahmedMater from "@/assets/ahmed-mater.jpg";
 import othmanAlKhozaim from "@/assets/othman-alkhozaim.jpg";
 
 const GuestsOfHonor = () => {
   return (
-    <div className="mb-12">
+    <div>
       <h3 className="text-2xl font-bold text-primary mb-6">Distinguished Guests</h3>
       
       <div className="space-y-8">
@@ -17,7 +16,9 @@ const GuestsOfHonor = () => {
               className="w-20 h-20 rounded-full object-cover border-2 border-primary"
             />
             <div>
-              <h4 className="text-xl font-semibold text-primary">Jennifer Wines</h4>
+              <a href="https://jenniferwines.com" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-primary hover:underline">
+                Jennifer Wines
+              </a>
               <p className="text-sm text-gray-600">Art Advisor & Wealth Management Expert</p>
             </div>
           </div>
@@ -51,7 +52,9 @@ const GuestsOfHonor = () => {
               className="w-20 h-20 rounded-full object-cover border-2 border-primary"
             />
             <div>
-              <h4 className="text-xl font-semibold text-primary">Ahmed Mater</h4>
+              <a href="https://www.ahmedmater.com" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-primary hover:underline">
+                Ahmed Mater
+              </a>
               <p className="text-sm text-gray-600">Saudi Artist & Physician</p>
             </div>
           </div>
@@ -66,7 +69,9 @@ const GuestsOfHonor = () => {
               <span className="text-2xl font-bold text-primary">NH</span>
             </div>
             <div>
-              <h4 className="text-xl font-semibold text-primary">Nidaa Hanifa</h4>
+              <a href="https://hanifa-consulting.com" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-primary hover:underline">
+                Nidaa Hanifa
+              </a>
               <p className="text-sm text-gray-600">Art Consultant & Cultural Strategist</p>
             </div>
           </div>
@@ -81,12 +86,14 @@ const GuestsOfHonor = () => {
               <span className="text-2xl font-bold text-primary">SA</span>
             </div>
             <div>
-              <h4 className="text-xl font-semibold text-primary">Sarah Albaiz</h4>
-              <p className="text-sm text-gray-600">Saudi Artist & Product Manager</p>
+              <a href="https://qantara.studio" target="_blank" rel="noopener noreferrer" className="text-xl font-semibold text-primary hover:underline">
+                Sarah Albaiz
+              </a>
+              <p className="text-sm text-gray-600">Founder, Qantara Studio</p>
             </div>
           </div>
           <p className="text-gray-600 text-sm">
-            A digital conceptual artist and Senior Product Manager at HudHud Maps. Sarah's work examines how technology intersects with Saudi Arabia's cultural narrative, focusing on inclusive modes of cultural reclamation and preservation. Her innovative approach bridges the worlds of art, technology, and strategic product development.
+            Founder of Qantara Studio, a pioneering initiative focused on building systems for cultural asset infrastructure in Saudi Arabia. Sarah's work bridges technology and cultural preservation, creating innovative platforms that document and celebrate the Kingdom's artistic heritage while fostering new forms of creative expression.
           </p>
         </div>
       </div>

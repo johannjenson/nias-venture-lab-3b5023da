@@ -2,7 +2,7 @@ import { Calendar, Clock, MapPin, Users, Presentation } from "lucide-react";
 
 const EventDetails = () => {
   return (
-    <div>
+    <div className="mb-12">
       <h2 className="text-3xl font-bold text-primary mb-6">Event Details</h2>
       <p className="text-gray-600 mb-8">
         An intimate gathering where Saudi Arabia's most prominent contemporary artists meet global wealth management leaders, collectors, and family offices to explore art as cultural heritage, investment asset, and catalyst for the Kingdom's creative renaissance. This exclusive evening brings together the visionaries shaping Saudi Arabia's contemporary art scene with the stewards of cultural wealth, creating meaningful dialogue at the intersection of artistic expression and strategic wealth preservation.

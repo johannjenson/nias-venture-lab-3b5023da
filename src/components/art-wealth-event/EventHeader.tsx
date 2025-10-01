@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Waves, Palette } from "lucide-react";
+import { Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/art-wealth-hero.jpg";
 
@@ -31,9 +31,8 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
               />
             </div>
             <div className="order-1 lg:order-2">
-              <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in flex items-center gap-4">
-                <Palette className="h-12 w-12 text-primary" />
-                Canvases & Capital: Art & Wealth in the New Arabia
+              <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
+                Canvases & Capital: Art & Wealth
               </h1>
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">
                 Join us for an exclusive evening exploring the intersection of Saudi contemporary art and wealth management, featuring distinguished artists and industry leaders at J17 in JAX, Riyadh.
