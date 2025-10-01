@@ -3,9 +3,8 @@ import { Calendar, Clock, MapPin, Users, Presentation } from "lucide-react";
 const EventDetails = () => {
   return (
     <div>
-      <h2 className="text-3xl font-bold text-primary mb-6">Join us for an evening exploring the intersection of contemporary Saudi art and wealth management — and discover how you can be part of the Kingdom's creative renaissance.</h2>
-      <p className="text-gray-600 mb-4">An intimate gathering where Saudi Arabia's most prominent contemporary artists meet global wealth management leaders to explore art as cultural heritage, investment asset, and catalyst for transforming the Kingdom's creative economy.</p>
-      <p className="text-gray-600 mb-8 italic">This gathering is being held in the lead-up to the 9th Future Investment Initiative.</p>
+      <h2 className="text-3xl font-bold text-primary mb-6">Join us for an evening exploring the intersection of contemporary Saudi art and wealth management in the lead-up to the 9th Future Investment Initiative — and discover how you can be part of the Kingdom's creative renaissance.</h2>
+      <p className="text-gray-600 mb-8">An intimate gathering where Saudi Arabia's most prominent contemporary artists meet global wealth management leaders to explore art as cultural heritage, investment asset, and catalyst for transforming the Kingdom's creative economy.</p>
       <div className="space-y-6">
         <div className="flex items-start gap-4">
           <Calendar className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
