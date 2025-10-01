@@ -47,6 +47,14 @@ const EventDetails = () => {
             </div>
           </div>
         </div>
+
+        <div className="flex items-start gap-4">
+          <Users className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+          <div>
+            <div className="font-semibold text-primary mb-1">Capacity</div>
+            <div className="text-gray-600">Limited to 50 attendees</div>
+          </div>
+        </div>
       </div>
     </div>
   );
