@@ -27,7 +27,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
               <img 
                 src={heroImage} 
                 alt="Contemporary art exhibition venue at JAX District"
-                className="w-full h-auto rounded-lg shadow-lg object-cover object-bottom"
+                className="w-full h-full max-h-[500px] rounded-lg shadow-lg object-cover object-bottom"
               />
             </div>
             <div className="order-1 lg:order-2">
