@@ -45,7 +45,7 @@ const GuestsOfHonor = () => {
             </div>
           </div>
           <p className="text-gray-600 text-sm">
-            Curator, writer, and contemporary art expert based in London. As Worldwide Deputy Chairman at Phillips (2016-2023), Svetlana brought extensive expertise to the auction world. She founded Malevich.io in 2017 to support artists through exhibitions and production, collaborating with institutions like Centre Pompidou, Serpentine Galleries, and Goldsmiths CCA. In 2023, she established Malevich's art advisory arm, focusing on building collections for private museums and institutions.
+            Curator, writer, and contemporary art expert based in London. As Worldwide Deputy Chairman at Phillips Auction House (2016-2023), Svetlana brought extensive expertise to the auction world. She founded Malevich.io in 2017 to support artists through exhibitions and production, collaborating with institutions like Centre Pompidou, Serpentine Galleries, and Goldsmiths CCA. In 2023, she established Malevich's art advisory arm, focusing on building collections for private museums and institutions.
           </p>
         </div>
 
