@@ -6,7 +6,7 @@ import EventSEO from "@/components/art-wealth-event/EventSEO";
 
 const ArtWealthEvent = () => {
   const handleRequestClick = () => {
-    window.open('https://luma.com/art-wealth-riyadh', '_blank', 'noopener,noreferrer');
+    window.open('https://luma.com/wic6la5i', '_blank', 'noopener,noreferrer');
   };
 
   return (
