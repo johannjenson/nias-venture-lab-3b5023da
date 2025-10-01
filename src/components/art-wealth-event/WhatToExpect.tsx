@@ -1,9 +1,15 @@
 import { Presentation, TrendingUp, Users } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 const WhatToExpect = () => {
   return (
-    <div className="bg-secondary/30 rounded-xl p-8">
-      <h3 className="text-2xl font-bold text-primary mb-6">Evening Programme</h3>
+    <div className="bg-secondary/30 rounded-xl p-8 mt-8">
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-2xl font-bold text-primary">Evening Programme</h3>
+        <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
+          Limited Capacity
+        </Badge>
+      </div>
       
       <div className="space-y-6">
         <div>
