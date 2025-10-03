@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Lock, Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import venueImage from "@/assets/moove-event-venue.jpg";
 
 interface EventHeaderProps {
   onRequestClick: () => void;
@@ -25,8 +26,8 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="order-2 lg:order-1">
               <img 
-                src="/moove-founders.jpg" 
-                alt="Ladi Delano, Co-CEO of Moove, at a company event"
+                src={venueImage} 
+                alt="Evening venue with palm trees and guests at a private gathering in Riyadh"
                 className="w-full h-auto rounded-lg shadow-lg"
               />
             </div>
