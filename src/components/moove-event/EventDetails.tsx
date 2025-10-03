@@ -64,6 +64,14 @@ const EventDetails = () => {
         </div>
       </div>
       
+      <div className="mt-8 mb-8">
+        <img 
+          src="/moove-founders.jpg" 
+          alt="Ladi Delano and Jide Odunsi, Co-CEOs of Moove"
+          className="w-full h-auto rounded-lg shadow-lg"
+        />
+      </div>
+      
       <div className="mt-8">
         <h3 className="font-semibold text-primary mb-4">About Moove</h3>
         <p className="text-gray-600 mb-4">
