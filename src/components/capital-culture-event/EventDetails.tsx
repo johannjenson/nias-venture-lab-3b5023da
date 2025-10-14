@@ -29,7 +29,11 @@ const EventDetails = () => {
           </div>
           <div className="flex gap-4">
             <span className="text-primary font-medium w-24 shrink-0">9:45 PM</span>
-            <span className="text-gray-600">Roundtable Sessions & Networking</span>
+            <span className="text-gray-600">Dinner & Networking</span>
+          </div>
+          <div className="flex gap-4">
+            <span className="text-primary font-medium w-24 shrink-0">10:30 PM</span>
+            <span className="text-gray-600">Roundtable Sessions</span>
           </div>
           <div className="flex gap-4">
             <span className="text-primary font-medium w-24 shrink-0">11:30 PM</span>
