@@ -1,65 +1,60 @@
-import { Calendar, MapPin, Users, Target } from "lucide-react";
+import { Calendar, Clock, MapPin, Users, Presentation } from "lucide-react";
 
 const EventDetails = () => {
   return (
-    <div className="space-y-8">
-      <div>
-        <h2 className="text-3xl font-bold text-primary mb-4">Why It Matters</h2>
-        <div className="space-y-4 text-gray-600">
-          <p className="leading-relaxed">
-            <strong>Capital flows are changing:</strong> Global family offices, sovereigns, and institutional investors are shifting from passive property allocations to active, thematic real-estate strategies.
-          </p>
-          <p className="leading-relaxed">
-            <strong>Creative placemaking is ascendant:</strong> Assets anchored by culture, design, content, and community consistently outperform traditional developments.
-          </p>
-          <p className="leading-relaxed">
-            <strong>Structures define success:</strong> The difference between a vision and a deal is the architecture of capital, regulation, and governance — from SPVs and joint ventures to Shariah-compliant funds.
-          </p>
-          <p className="leading-relaxed">
-            Nias is uniquely positioned to host this conversation — bridging creative capital and institutional finance, and connecting global opportunities to Gulf capital and policy priorities.
-          </p>
-        </div>
-      </div>
-
-      <div className="border-t pt-8 space-y-6">
+    <div>
+      <h2 className="text-3xl font-bold text-primary mb-6">An exclusive summit convening the most influential players in global real estate for a day of insight, connection, and deal-making.</h2>
+      <p className="text-gray-600 mb-8">
+        Hosted by Nias during Cityscape Riyadh, Capital & Culture explores how the world's most valuable urban projects are increasingly defined not just by square meters, but by cultural impact, creative placemaking, and sophisticated cross-border financial architecture.
+      </p>
+      <div className="space-y-6">
         <div className="flex items-start gap-4">
-          <Calendar className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+          <Calendar className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
           <div>
-            <h3 className="font-semibold text-primary mb-2">When</h3>
-            <p className="text-gray-600">November 18, 2025</p>
-            <p className="text-sm text-gray-500">During Cityscape Riyadh</p>
+            <div className="font-semibold text-primary mb-1">When</div>
+            <div className="text-gray-600">November 18, 2025</div>
           </div>
         </div>
 
         <div className="flex items-start gap-4">
-          <MapPin className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+          <Clock className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
           <div>
-            <h3 className="font-semibold text-primary mb-2">Venue</h3>
-            <p className="text-gray-600">Riyadh, Saudi Arabia</p>
-            <p className="text-sm text-gray-500">Location details provided upon confirmation</p>
+            <div className="font-semibold text-primary mb-1">Time</div>
+            <div className="text-gray-600">7:00 PM - 11:30 PM</div>
           </div>
         </div>
 
         <div className="flex items-start gap-4">
-          <Users className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+          <MapPin className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
           <div>
-            <h3 className="font-semibold text-primary mb-2">Audience</h3>
-            <ul className="text-gray-600 space-y-1 text-sm">
-              <li>• Sovereign wealth funds & government investment arms</li>
-              <li>• Family offices (MENA, Europe, Asia)</li>
-              <li>• Global developers and REITs</li>
-              <li>• Institutional investors (pension, insurance, endowments)</li>
-              <li>• Banks, law firms, tax & structuring advisors</li>
-              <li>• Urban design, architecture, and creative district developers</li>
-            </ul>
+            <div className="font-semibold text-primary mb-1">Venue</div>
+            <div className="text-gray-600">Private Residence, Riyadh</div>
+            <div className="text-sm text-gray-500 mt-1">Location details provided upon confirmation</div>
           </div>
         </div>
 
         <div className="flex items-start gap-4">
-          <Target className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+          <Users className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
           <div>
-            <h3 className="font-semibold text-primary mb-2">Format</h3>
-            <p className="text-gray-600">Opening keynote, two expert panels, and invite-only roundtable sessions for deal-making and partnership discussions</p>
+            <div className="font-semibold text-primary mb-1">Audience</div>
+            <div className="text-gray-600 space-y-1 text-sm">
+              <div>• Sovereign wealth funds & government investment arms</div>
+              <div>• Family offices (MENA, Europe, Asia)</div>
+              <div>• Global developers and REITs</div>
+              <div>• Institutional investors (pension, insurance, endowments)</div>
+              <div>• Banks, law firms, tax & structuring advisors</div>
+              <div>• Urban design, architecture, and creative district developers</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-start gap-4">
+          <Presentation className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+          <div>
+            <div className="font-semibold text-primary mb-1">Format</div>
+            <div className="text-gray-600">
+              Opening keynote, two expert panels, and invite-only roundtable sessions
+            </div>
           </div>
         </div>
       </div>

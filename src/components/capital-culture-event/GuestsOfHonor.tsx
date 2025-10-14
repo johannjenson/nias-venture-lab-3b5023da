@@ -1,54 +1,29 @@
-import { Scale, Briefcase, Users2 } from "lucide-react";
 import markWadhwa from "@/assets/mark-wadhwa.png";
 
 const GuestsOfHonor = () => {
   return (
-    <div className="mb-12">
-      <h2 className="text-3xl font-bold text-primary mb-8">Event Program</h2>
+    <div>
+      <h3 className="text-2xl font-bold text-primary mb-6">Featured Speaker</h3>
       
-      <div className="space-y-6">
-        <div className="border-l-4 border-primary pl-6 py-2">
-          <div className="flex items-start gap-3 mb-2">
-            <img src={markWadhwa} alt="Mark Wadhwa" className="w-12 h-12 rounded-full object-cover flex-shrink-0" />
+      <div className="space-y-8">
+        <div className="border-l-4 border-primary pl-6">
+          <div className="flex items-center gap-3 mb-4">
+            <img 
+              src={markWadhwa} 
+              alt="Mark Wadhwa" 
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary"
+            />
             <div>
-              <h3 className="font-semibold text-primary text-lg">Opening Keynote</h3>
-              <p className="text-sm text-gray-500 mb-2">"Beyond Buildings: Real Estate as a Cultural Asset Class"</p>
-              <p className="text-gray-600 font-medium">Mark Wadhwa</p>
-              <p className="text-sm text-gray-500">Founder of 180 Studios (home to Soho House HQ & LVMH Creative)</p>
+              <h4 className="text-xl font-semibold text-primary">Mark Wadhwa</h4>
+              <p className="text-sm text-gray-600">Founder, 180 Studios</p>
             </div>
           </div>
-        </div>
-
-        <div className="border-l-4 border-primary pl-6 py-2">
-          <div className="flex items-start gap-3 mb-2">
-            <Users2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-            <div>
-              <h3 className="font-semibold text-primary text-lg">Panel I</h3>
-              <p className="text-sm text-gray-500 mb-2">"Capital Meets Culture: Financing the New Urban Renaissance"</p>
-              <p className="text-gray-600 text-sm">How investors, developers, and sovereign entities are building high-value districts where art, culture, and commerce converge.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-l-4 border-primary pl-6 py-2">
-          <div className="flex items-start gap-3 mb-2">
-            <Scale className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-            <div>
-              <h3 className="font-semibold text-primary text-lg">Panel II</h3>
-              <p className="text-sm text-gray-500 mb-2">"Structures of Trust: Cross-Border Deals, Regulation & Governance"</p>
-              <p className="text-gray-600 text-sm">How legal, tax, and financial engineering underpin the world's most successful property transactions.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-l-4 border-primary pl-6 py-2">
-          <div className="flex items-start gap-3 mb-2">
-            <Briefcase className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-            <div>
-              <h3 className="font-semibold text-primary text-lg">Roundtable Sessions</h3>
-              <p className="text-sm text-gray-500 mb-2">"From Vision to Term Sheet"</p>
-              <p className="text-gray-600 text-sm">Invite-only working sessions connecting investors, developers, and advisors around live opportunities.</p>
-            </div>
+          <p className="text-gray-600 text-sm mb-3">
+            Founder of 180 Studios in London, home to Soho House headquarters and LVMH's creative operations. Mark's pioneering work demonstrates how cultural programming, design, and creative ecosystems drive property value and urban competitiveness.
+          </p>
+          <div className="mt-4 bg-secondary/30 rounded-lg p-4">
+            <p className="text-sm font-semibold text-primary mb-1">Keynote Address</p>
+            <p className="text-sm text-gray-600">"Beyond Buildings: Real Estate as a Cultural Asset Class"</p>
           </div>
         </div>
       </div>
