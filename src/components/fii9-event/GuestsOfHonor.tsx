@@ -1,5 +1,6 @@
 import { Crown, Building2, Lightbulb } from "lucide-react";
 import ibrahimNeaz from "@/assets/ibrahim-neaz.webp";
+import princeKhalid from "@/assets/prince-khalid.png";
 
 const GuestsOfHonor = () => {
   return (
@@ -10,7 +11,11 @@ const GuestsOfHonor = () => {
         {/* Royal Guest */}
         <div className="border-l-4 border-primary pl-6">
           <div className="flex items-center gap-3 mb-3">
-            <Crown className="h-5 w-5 text-primary" />
+            <img 
+              src={princeKhalid} 
+              alt="H.H. Prince Khalid Bin Bader Al Saud" 
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary"
+            />
             <div>
               <h4 className="text-lg font-semibold text-primary">H.H. Prince Khalid Bin Bader Al Saud</h4>
             </div>
