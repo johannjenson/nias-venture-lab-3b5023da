@@ -1,5 +1,4 @@
-import { Scale, Briefcase, Users2 } from "lucide-react";
-import markWadhwa from "@/assets/mark-wadhwa.png";
+import { Building2, Scale, Briefcase, Users2 } from "lucide-react";
 
 const GuestsOfHonor = () => {
   return (
@@ -9,7 +8,7 @@ const GuestsOfHonor = () => {
       <div className="space-y-6">
         <div className="border-l-4 border-primary pl-6 py-2">
           <div className="flex items-start gap-3 mb-2">
-            <img src={markWadhwa} alt="Mark Wadhwa" className="w-12 h-12 rounded-full object-cover flex-shrink-0" />
+            <Building2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
             <div>
               <h3 className="font-semibold text-primary text-lg">Opening Keynote</h3>
               <p className="text-sm text-gray-500 mb-2">"Beyond Buildings: Real Estate as a Cultural Asset Class"</p>
