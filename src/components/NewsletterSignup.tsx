@@ -96,14 +96,7 @@ const NewsletterSignup = () => {
   };
   return <section className="py-20 bg-black">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Thumbnail */}
-          <div className="w-full lg:w-1/3 flex justify-center">
-            <img src="/lovable-uploads/6f6f8013-6ce7-4925-a141-f2fa66cad892.png" alt="2025 Nias Expansion Capital Guide" className="w-64 object-contain rounded-lg shadow-2xl" />
-          </div>
-          
-          {/* Content */}
-          <div className="w-full lg:w-2/3 text-center lg:text-left">
+        <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold text-white mb-6">Curious about Nias & Expansion Capital?</h2>
             <p className="text-lg text-gray-300 mb-8">Get the first instalment of our guide focused on Saudi Arabia and Kuwait</p>
             
@@ -119,7 +112,6 @@ const NewsletterSignup = () => {
             </Button>
           </div>
          </form>
-          </div>
         </div>
       </div>
     </section>;
