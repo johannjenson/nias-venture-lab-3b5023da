@@ -1,5 +1,6 @@
 import { CalendarIcon, Clock, MapPin, Users, Bus } from "lucide-react";
-import fii9Logos from "@/assets/fii9-logos.png";
+import fii9Organizers from "@/assets/fii9-organizers.png";
+import fii9Sponsors from "@/assets/fii9-sponsors.png";
 
 const EventDetails = () => {
   return (
@@ -74,8 +75,15 @@ const EventDetails = () => {
         </ul>
       </div>
 
-      <div className="mt-8">
-        <img src={fii9Logos} alt="Event Partners: NTDP, Avra, NIAS.io, and INFNT" className="w-full h-auto" />
+      <div className="mt-8 space-y-6">
+        <div>
+          <h4 className="text-sm font-semibold text-gray-500 mb-3">Event Sponsors</h4>
+          <img src={fii9Sponsors} alt="Event Sponsors: NTDP and Avra" className="w-full h-auto" />
+        </div>
+        <div>
+          <h4 className="text-sm font-semibold text-gray-500 mb-3">Event Organizers</h4>
+          <img src={fii9Organizers} alt="Event Organizers: NIAS.io and INFNT" className="w-full h-auto" />
+        </div>
       </div>
     </div>
   );
