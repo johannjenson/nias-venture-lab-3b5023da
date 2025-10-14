@@ -3,10 +3,40 @@ import { Calendar, Clock, MapPin, Users, Presentation } from "lucide-react";
 const EventDetails = () => {
   return (
     <div>
-      <h2 className="text-3xl font-bold text-primary mb-6">An exclusive summit convening the most influential players in global real estate for a day of insight, connection, and deal-making.</h2>
+      <h2 className="text-3xl font-bold text-primary mb-6">An exclusive summit convening the most influential players in global real estate for an evening of insight, connection, and deal-making.</h2>
       <p className="text-gray-600 mb-8">
         Hosted by Nias during Cityscape Riyadh, Capital & Culture explores how the world's most valuable urban projects are increasingly defined not just by square meters, but by cultural impact, creative placemaking, and sophisticated cross-border financial architecture.
       </p>
+      
+      <div className="bg-secondary/30 rounded-lg p-6 mb-8">
+        <h3 className="font-semibold text-primary mb-4">Evening Schedule</h3>
+        <div className="space-y-3 text-sm">
+          <div className="flex gap-4">
+            <span className="text-primary font-medium w-24 shrink-0">7:00 PM</span>
+            <span className="text-gray-600">Welcome Reception</span>
+          </div>
+          <div className="flex gap-4">
+            <span className="text-primary font-medium w-24 shrink-0">7:30 PM</span>
+            <span className="text-gray-600">Opening Keynote with Mark Wadhwa</span>
+          </div>
+          <div className="flex gap-4">
+            <span className="text-primary font-medium w-24 shrink-0">8:15 PM</span>
+            <span className="text-gray-600">Panel 1: Capital Meets Culture</span>
+          </div>
+          <div className="flex gap-4">
+            <span className="text-primary font-medium w-24 shrink-0">9:00 PM</span>
+            <span className="text-gray-600">Panel 2: Structures of Trust</span>
+          </div>
+          <div className="flex gap-4">
+            <span className="text-primary font-medium w-24 shrink-0">9:45 PM</span>
+            <span className="text-gray-600">Roundtable Sessions & Networking</span>
+          </div>
+          <div className="flex gap-4">
+            <span className="text-primary font-medium w-24 shrink-0">11:30 PM</span>
+            <span className="text-gray-600">Close</span>
+          </div>
+        </div>
+      </div>
       <div className="space-y-6">
         <div className="flex items-start gap-4">
           <Calendar className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
