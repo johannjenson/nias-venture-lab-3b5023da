@@ -48,7 +48,8 @@ const EventDetails = () => {
           <Bus className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
           <div>
             <h3 className="text-lg font-semibold text-primary mb-1">Transportation</h3>
-            <p className="text-gray-600">Complimentary bus service available for participants</p>
+            <p className="text-gray-600">Transfer bus for Future Investment Initiative (FII) participants</p>
+            <p className="text-gray-600 font-semibold mt-1">Departing from the Ritz at 6:30 PM</p>
           </div>
         </div>
 
