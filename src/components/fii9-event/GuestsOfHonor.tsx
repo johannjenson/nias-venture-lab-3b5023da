@@ -52,17 +52,17 @@ const GuestsOfHonor = () => {
           <div className="space-y-4">
             <div className="bg-white rounded-lg p-4 border border-gray-200">
               <p className="font-semibold text-primary">Bipul Sinha</p>
-              <p className="text-sm text-gray-600">CEO, Rubrik • Public Company • $18B Market Cap</p>
+              <p className="text-sm text-gray-600">CEO, Rubrik</p>
             </div>
             
             <div className="bg-white rounded-lg p-4 border border-gray-200">
               <p className="font-semibold text-primary">Mark Ghermezian</p>
-              <p className="text-sm text-gray-600">Co-founder, Braze • Public Company • $3B Market Cap</p>
+              <p className="text-sm text-gray-600">Co-founder, Braze</p>
             </div>
             
             <div className="bg-white rounded-lg p-4 border border-gray-200">
               <p className="font-semibold text-primary">Qasar Younis</p>
-              <p className="text-sm text-gray-600">CEO, Applied Intuition • Valued at $15B</p>
+              <p className="text-sm text-gray-600">CEO, Applied Intuition</p>
             </div>
             
             <div className="bg-white rounded-lg p-4 border border-gray-200">
