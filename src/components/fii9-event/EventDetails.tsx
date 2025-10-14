@@ -1,4 +1,5 @@
 import { CalendarIcon, Clock, MapPin, Users, Bus } from "lucide-react";
+import fii9Logos from "@/assets/fii9-logos.png";
 
 const EventDetails = () => {
   return (
@@ -71,6 +72,10 @@ const EventDetails = () => {
           <li>• Intimate networking in The Garage's signature Majlis setting</li>
           <li>• Exclusive access to global innovation leaders</li>
         </ul>
+      </div>
+
+      <div className="mt-8">
+        <img src={fii9Logos} alt="Event Partners: NTDP, Avra, NIAS.io, and INFNT" className="w-full h-auto" />
       </div>
     </div>
   );
