@@ -1,4 +1,5 @@
 import { Crown, Building2, Lightbulb } from "lucide-react";
+import ibrahimNeaz from "@/assets/ibrahim-neaz.webp";
 
 const GuestsOfHonor = () => {
   return (
@@ -22,7 +23,11 @@ const GuestsOfHonor = () => {
         {/* NTDP Leader */}
         <div className="border-l-4 border-primary pl-6">
           <div className="flex items-center gap-3 mb-3">
-            <Building2 className="h-5 w-5 text-primary" />
+            <img 
+              src={ibrahimNeaz} 
+              alt="Ibrahim Neaz" 
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary grayscale"
+            />
             <div>
               <h4 className="text-lg font-semibold text-primary">Ibrahim Neaz</h4>
               <p className="text-sm text-gray-600">CEO, National Technology Development Program (NTDP)</p>
