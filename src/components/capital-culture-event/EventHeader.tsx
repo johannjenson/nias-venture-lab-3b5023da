@@ -45,7 +45,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 Capital & Culture: Structuring the Future of Cities
               </h1>
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">
-                Where creativity meets capital, and global deals shape the next generation of urban living.
+                An invitation-only summit where global capital and cultural vision converge to shape the future of cities.
               </p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
                 Request Your Invitation

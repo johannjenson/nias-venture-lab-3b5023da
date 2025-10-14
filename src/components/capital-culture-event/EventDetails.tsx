@@ -1,4 +1,4 @@
-import { Calendar, Clock, MapPin, Users, Presentation } from "lucide-react";
+import { Calendar, Clock, MapPin, Users } from "lucide-react";
 
 const EventDetails = () => {
   return (
@@ -82,15 +82,6 @@ const EventDetails = () => {
           </div>
         </div>
 
-        <div className="flex items-start gap-4">
-          <Presentation className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-          <div>
-            <div className="font-semibold text-primary mb-1">Format</div>
-            <div className="text-gray-600">
-              Opening keynote, two expert panels, and invite-only roundtable sessions
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

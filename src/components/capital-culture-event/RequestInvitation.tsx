@@ -10,10 +10,10 @@ const RequestInvitation = ({ onRequestClick }: RequestInvitationProps) => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-primary mb-6">
-            Request Your Invitation
+            Attendance by Invitation Only
           </h2>
           <p className="text-gray-600 mb-8">
-            This exclusive summit is limited to key decision-makers in global real estate. Join sovereign wealth funds, family offices, institutional investors, developers, and advisors shaping the future of urban living.
+            Capital & Culture is a closed summit exclusively convening principals and senior decision-makers from leading sovereign wealth funds, global family offices, institutional investors, and premier real estate developers. Participation is strictly limited and by invitation only.
           </p>
           <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg" onClick={onRequestClick}>
             Request an Invitation
