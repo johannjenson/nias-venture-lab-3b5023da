@@ -5,6 +5,7 @@ import johannImage from "@/assets/johann-jenson.png";
 import richardImage from "@/assets/richard-schrems.png";
 import ibrahimImage from "@/assets/ibrahim-alshuwaier.png";
 import fahadImage from "@/assets/fahad-alsudairy.png";
+import turkiImage from "@/assets/turki-alshubaki.jpg";
 import ibrahimAlsemariImage from "@/assets/ibrahim-alsemari.png";
 import lukasImage from "@/assets/lukas-gaebler.png";
 
@@ -37,6 +38,12 @@ const People = () => {
       name: "Fahad Alsudairy",
       role: "Real Estate",
       imageUrl: fahadImage,
+      linkedIn: "",
+    },
+    {
+      name: "Turki Alshubaki",
+      role: "Real Estate",
+      imageUrl: turkiImage,
       linkedIn: "",
     },
   ];
