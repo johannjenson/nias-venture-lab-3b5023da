@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import johannImage from "@/assets/johann-jenson.png";
 import richardImage from "@/assets/richard-schrems.png";
 import ibrahimImage from "@/assets/ibrahim-alshuwaier.png";
-import fahadImage from "@/assets/fahad-alsudairy.png";
+import fahadImage from "@/assets/fahad-alsudairy-new.jpg";
 import turkiImage from "@/assets/turki-alshubaki.jpg";
 import ibrahimAlsemariImage from "@/assets/ibrahim-alsemari.png";
 import lukasImage from "@/assets/lukas-gaebler.png";
