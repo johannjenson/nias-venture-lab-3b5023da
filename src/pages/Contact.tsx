@@ -37,6 +37,19 @@ const Contact = () => {
 
       if (error) throw error;
 
+      // Send notification email
+      const { error: emailError } = await supabase.functions.invoke('send-contact-notification', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+      });
+
+      if (emailError) {
+        console.error('Error sending notification email:', emailError);
+      }
+
       toast.success("Message sent! We'll get back to you soon.");
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
