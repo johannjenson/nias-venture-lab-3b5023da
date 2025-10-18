@@ -59,7 +59,7 @@ const BottomNavigation = () => {
 
   return (
     <>
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-50">
+      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-[100]" style={{ position: 'fixed' }}>
         <div className="flex justify-around py-3">
           {navItems.map((item) => (
             item.hasSubmenu ? (
@@ -77,7 +77,7 @@ const BottomNavigation = () => {
                     </span>
                   </button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="mb-12">
+                <DropdownMenuContent align="center" side="top" className="mb-2">
                   {upcomingEvents.map((event) => (
                     <DropdownMenuItem key={event.href} asChild>
                       <Link 
