@@ -39,7 +39,7 @@ const ValueProps = ({ openRequestModal }: ValuePropsProps) => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
           <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-            What is Nias?
+            What is NIAS?
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
             We provide comprehensive support for top tier founders and funds looking to establish and grow
@@ -69,7 +69,7 @@ const ValueProps = ({ openRequestModal }: ValuePropsProps) => {
             className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white"
             onClick={handleRequestInvite}
           >
-            Join the Nias Network
+            Join the NIAS Network
           </Button>
         </div>
       </div>

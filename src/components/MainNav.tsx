@@ -73,7 +73,7 @@ const MainNav = () => {
     {
       title: "People",
       href: "/people",
-      description: "Meet our crew at Nias.",
+      description: "Meet our crew at NIAS.",
     },
     {
       title: "Clients & Partners",
@@ -101,7 +101,7 @@ const MainNav = () => {
     ...(!user ? [{
       title: "Member Login",
       href: "https://access.nias.io",
-      description: "Access your Nias member account.",
+      description: "Access your NIAS member account.",
       onClick: () => window.open("https://access.nias.io", "_blank", "noopener,noreferrer"),
     }] : []),
     ...(user ? [

@@ -23,7 +23,7 @@ const HeroContent = ({ onRequestInvite }: HeroContentProps) => {
               className="bg-primary hover:bg-primary/90 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg w-full md:w-auto"
               onClick={onRequestInvite}
             >
-              Join the Nias Network
+              Join the NIAS Network
             </Button>
             <a 
               href="/resources"

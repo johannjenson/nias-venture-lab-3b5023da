@@ -97,7 +97,7 @@ const NewsletterSignup = () => {
   return <section className="py-20 bg-black">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl font-bold text-white mb-6">Curious about Nias & Expansion Capital?</h2>
+            <h2 className="text-4xl font-bold text-white mb-6">Curious about NIAS & Expansion Capital?</h2>
             <p className="text-lg text-gray-300 mb-8">Get the first instalment of our guide focused on Saudi Arabia and Kuwait</p>
             
             <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-2xl lg:max-w-none">

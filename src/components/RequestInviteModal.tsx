@@ -32,7 +32,7 @@ const RequestInviteModal = ({ open, onOpenChange }: RequestInviteModalProps) => 
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader className="space-y-2">
-          <DialogTitle className="text-2xl font-bold">Join the Nias Network</DialogTitle>
+          <DialogTitle className="text-2xl font-bold">Join the NIAS Network</DialogTitle>
           <DialogDescription>
             Connect with Saudi investors, founders, and advisors to accelerate your business growth in the Kingdom.
           </DialogDescription>
