@@ -34,6 +34,16 @@ const BottomNavigation = () => {
     { label: "FII9 Recap", href: "/events/fii9-recap" }
   ];
 
+  const pastEvents = [
+    { label: "180 Studios Evening", href: "/events/studios180-event" },
+    { label: "GitHub Founder Evening", href: "/events/an-evening-with-github-cofounder-tom-preston-werner" },
+    { label: "VNTR Investor Forum", href: "/events/vntr-investor-forum" },
+    { label: "Business Forum", href: "/events/nias-business-forum" },
+    { label: "LEAP Dinner", href: "/events/leap-dinner" },
+    { label: "Suhoor Dinner", href: "/events/suhoor-dinner" },
+    { label: "Fireside Chats", href: "/events/fireside-chats" },
+  ];
+
   const handleNavClick = () => {
     window.scrollTo(0, 0);
   };
@@ -45,28 +55,39 @@ const BottomNavigation = () => {
       href: '/' 
     },
     { 
+      icon: Calendar,
+      label: 'Upcoming',
+      href: '#',
+      hasSubmenu: true,
+      submenu: upcomingEvents
+    },
+    { 
+      icon: Calendar,
+      label: 'Past',
+      href: '#',
+      hasSubmenu: true,
+      submenu: pastEvents
+    },
+    { 
       icon: Bookmark, 
       label: 'Resources', 
       href: '/resources' 
     },
-    { 
-      icon: Calendar,
-      label: 'Upcoming',
-      href: '#',
-      hasSubmenu: true
-    }
   ];
 
   return (
     <>
-      <nav className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.08)] z-[100]" style={{ position: 'fixed' }}>
-        <div className="flex justify-around items-center h-16 px-2 max-w-lg mx-auto">
+      <nav 
+        className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.08)] z-[100]"
+        style={{ position: 'fixed', margin: 0, padding: 0 }}
+      >
+        <div className="flex justify-around items-center h-16 max-w-lg mx-auto">
           {navItems.map((item) => (
             item.hasSubmenu ? (
               <DropdownMenu key={item.label}>
                 <DropdownMenuTrigger asChild>
                   <button 
-                    className={`flex flex-col items-center justify-center gap-1 px-4 py-2 rounded-xl transition-all duration-200 active:scale-95 ${
+                    className={`flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 active:scale-95 ${
                       location.pathname.includes('/events/') 
                         ? 'text-primary bg-primary/10' 
                         : 'text-gray-600 hover:text-primary hover:bg-gray-100'
@@ -87,10 +108,10 @@ const BottomNavigation = () => {
                 <DropdownMenuContent 
                   align="center" 
                   side="top" 
-                  className="mb-2 bg-white border border-gray-200 shadow-lg rounded-xl min-w-[200px] animate-in fade-in-0 zoom-in-95"
+                  className="mb-2 bg-white border border-gray-200 shadow-lg rounded-xl min-w-[200px] animate-in fade-in-0 zoom-in-95 max-h-[60vh] overflow-y-auto"
                   sideOffset={8}
                 >
-                  {upcomingEvents.map((event) => (
+                  {item.submenu?.map((event) => (
                     <DropdownMenuItem 
                       key={event.href} 
                       asChild
@@ -111,7 +132,7 @@ const BottomNavigation = () => {
               <Link 
                 key={item.href} 
                 to={item.href} 
-                className={`flex flex-col items-center justify-center gap-1 px-4 py-2 rounded-xl transition-all duration-200 active:scale-95 ${
+                className={`flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 active:scale-95 ${
                   location.pathname === item.href 
                     ? 'text-primary bg-primary/10' 
                     : 'text-gray-600 hover:text-primary hover:bg-gray-100'

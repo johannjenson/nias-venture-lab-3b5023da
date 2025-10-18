@@ -105,3 +105,10 @@
 .hide-newsletter .text-center.mb-16 {
   display: none;
 }
+
+/* Ensure mobile navigation sticks to bottom */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+}
