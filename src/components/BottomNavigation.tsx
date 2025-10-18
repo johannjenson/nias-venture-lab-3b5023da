@@ -59,30 +59,46 @@ const BottomNavigation = () => {
 
   return (
     <>
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-[100]" style={{ position: 'fixed' }}>
-        <div className="flex justify-around py-3">
+      <nav className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.08)] z-[100]" style={{ position: 'fixed' }}>
+        <div className="flex justify-around items-center h-16 px-2 max-w-lg mx-auto">
           {navItems.map((item) => (
             item.hasSubmenu ? (
               <DropdownMenu key={item.label}>
                 <DropdownMenuTrigger asChild>
-                  <button className={`flex flex-col items-center ${
-                    location.pathname.includes('/events/') 
-                      ? 'text-primary' 
-                      : 'text-gray-500'
-                  }`}>
-                    <item.icon className="h-6 w-6" />
-                    <span className="text-xs mt-1 flex items-center">
+                  <button 
+                    className={`flex flex-col items-center justify-center gap-1 px-4 py-2 rounded-xl transition-all duration-200 active:scale-95 ${
+                      location.pathname.includes('/events/') 
+                        ? 'text-primary bg-primary/10' 
+                        : 'text-gray-600 hover:text-primary hover:bg-gray-100'
+                    }`}
+                  >
+                    <div className="relative">
+                      <item.icon className="h-5 w-5" strokeWidth={2.5} />
+                      {location.pathname.includes('/events/') && (
+                        <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
+                      )}
+                    </div>
+                    <span className="text-[10px] font-medium flex items-center gap-0.5">
                       {item.label}
-                      <ChevronDown className="h-3 w-3 ml-1" />
+                      <ChevronDown className="h-3 w-3" strokeWidth={2.5} />
                     </span>
                   </button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="center" side="top" className="mb-2">
+                <DropdownMenuContent 
+                  align="center" 
+                  side="top" 
+                  className="mb-2 bg-white border border-gray-200 shadow-lg rounded-xl min-w-[200px] animate-in fade-in-0 zoom-in-95"
+                  sideOffset={8}
+                >
                   {upcomingEvents.map((event) => (
-                    <DropdownMenuItem key={event.href} asChild>
+                    <DropdownMenuItem 
+                      key={event.href} 
+                      asChild
+                      className="rounded-lg cursor-pointer"
+                    >
                       <Link 
                         to={event.href}
-                        className="w-full text-sm"
+                        className="w-full text-sm py-3 px-4 hover:bg-primary/10 hover:text-primary transition-colors"
                         onClick={handleNavClick}
                       >
                         {event.label}
@@ -95,15 +111,20 @@ const BottomNavigation = () => {
               <Link 
                 key={item.href} 
                 to={item.href} 
-                className={`flex flex-col items-center ${
+                className={`flex flex-col items-center justify-center gap-1 px-4 py-2 rounded-xl transition-all duration-200 active:scale-95 ${
                   location.pathname === item.href 
-                    ? 'text-primary' 
-                    : 'text-gray-500'
+                    ? 'text-primary bg-primary/10' 
+                    : 'text-gray-600 hover:text-primary hover:bg-gray-100'
                 }`}
                 onClick={handleNavClick}
               >
-                <item.icon className="h-6 w-6" />
-                <span className="text-xs mt-1">{item.label}</span>
+                <div className="relative">
+                  <item.icon className="h-5 w-5" strokeWidth={2.5} />
+                  {location.pathname === item.href && (
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
+                  )}
+                </div>
+                <span className="text-[10px] font-medium">{item.label}</span>
               </Link>
             )
           ))}
