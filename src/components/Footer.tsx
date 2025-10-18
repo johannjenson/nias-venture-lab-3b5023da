@@ -134,7 +134,7 @@ const Footer = () => {
           ))}
         </div>
         <p className="mt-10 text-center text-xs leading-5 text-gray-500">
-          &copy; {new Date().getFullYear()} Nias.io. All rights reserved.
+          &copy; {new Date().getFullYear()} NIAS.io. All rights reserved.
           <span className="mx-2">·</span>
           <a href="/privacy-policy" className="hover:text-gray-900">Privacy Policy</a>
           <span className="mx-2">·</span>
