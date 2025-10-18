@@ -31,7 +31,12 @@ const BottomNavigation = () => {
   }
 
   const upcomingEvents = [
+    { label: "FII9 Recap", href: "/events/fii9-recap" }
   ];
+
+  const handleNavClick = () => {
+    window.scrollTo(0, 0);
+  };
 
   const navItems = [
     { 
@@ -78,6 +83,7 @@ const BottomNavigation = () => {
                       <Link 
                         to={event.href}
                         className="w-full text-sm"
+                        onClick={handleNavClick}
                       >
                         {event.label}
                       </Link>
@@ -94,6 +100,7 @@ const BottomNavigation = () => {
                     ? 'text-primary' 
                     : 'text-gray-500'
                 }`}
+                onClick={handleNavClick}
               >
                 <item.icon className="h-6 w-6" />
                 <span className="text-xs mt-1">{item.label}</span>
