@@ -53,10 +53,10 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 <p>The Majlis at The Garage, Riyadh</p>
               </div>
               <Button 
-                className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" 
-                onClick={onRequestClick}
+                disabled
+                className="bg-gray-400 hover:bg-gray-400 text-gray-600 px-8 py-6 text-lg animate-fade-in cursor-not-allowed" 
               >
-                Request Your Invitation
+                Invite Only
               </Button>
             </div>
           </div>

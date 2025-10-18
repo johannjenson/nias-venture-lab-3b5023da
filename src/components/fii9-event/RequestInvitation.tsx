@@ -15,8 +15,11 @@ const RequestInvitation = ({ onRequestClick }: RequestInvitationProps) => {
           <p className="text-gray-600 mb-8">
             This exclusive celebration is limited to global founders, innovation leaders, government representatives, and select ecosystem builders. Space is extremely limited. Submit your details to join the waitlist.
           </p>
-          <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg" onClick={onRequestClick}>
-            Request an Invitation
+          <Button 
+            disabled
+            className="bg-gray-400 hover:bg-gray-400 text-gray-600 px-8 py-6 text-lg cursor-not-allowed"
+          >
+            Invite Only
           </Button>
         </div>
       </div>
