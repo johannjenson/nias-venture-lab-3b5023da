@@ -6,6 +6,7 @@ import richardImage from "@/assets/richard-schrems.png";
 import ibrahimImage from "@/assets/ibrahim-alshuwaier.png";
 import fahadImage from "@/assets/fahad-alsudairy-new.png";
 import turkiImage from "@/assets/turki-alshubaki.jpg";
+import mohammedImage from "@/assets/mohammed-khalid-ibn-salamah.jpg";
 import ibrahimAlsemariImage from "@/assets/ibrahim-alsemari.png";
 import lukasImage from "@/assets/lukas-gaebler.png";
 
@@ -36,7 +37,7 @@ const People = () => {
     },
     {
       name: "Fahad Alsudairy",
-      role: "Real Estate",
+      role: "Sports & Entertainment",
       imageUrl: fahadImage,
       linkedIn: "",
     },
@@ -44,6 +45,12 @@ const People = () => {
       name: "Turki Alshubaki",
       role: "Real Estate",
       imageUrl: turkiImage,
+      linkedIn: "",
+    },
+    {
+      name: "Mohammed Khalid Ibn Salamah",
+      role: "Real Estate",
+      imageUrl: mohammedImage,
       linkedIn: "",
     },
   ];
@@ -83,7 +90,7 @@ const People = () => {
               People
             </h2>
             <p className="mt-6 mb-10 text-lg leading-8 text-gray-600">
-              Meet the crew at Nias
+              Meet the crew at NIAS
             </p>
           </div>
           {/* Founding Partners */}
