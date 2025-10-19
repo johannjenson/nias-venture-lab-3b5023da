@@ -37,6 +37,13 @@ const ClientsPartners = () => {
       logo: diwanLogo
     },
     {
+      name: "Jizaal",
+      website: "jizaal.com",
+      url: "https://jizaal.com",
+      description: "Engaging at the intersection of culture, digital experience, and the Kingdom's vision to diversify its visitor economy",
+      logo: "" // Logo path to be added
+    },
+    {
       name: "Infnt",
       website: "infntsolutions.com",
       url: "https://infntsolutions.com",
