@@ -45,7 +45,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 FII9 Recap: Celebrating Saudi Arabia's Innovation Ecosystem
               </h1>
               <p className="text-xl text-gray-600 mb-6 animate-fade-in">
-                An exclusive evening honoring Avra's latest cohort and the visionaries shaping the future of entrepreneurship in the Kingdom.
+                A memorable evening with 25+ AI & emerging technology founders from Silicon Valley, honoring Avra's latest cohort and the visionaries shaping the future of entrepreneurship in the Kingdom.
               </p>
               <div className="text-sm text-gray-500 mb-6 space-y-1">
                 <p className="font-semibold">Hosted by East40, Avra, NIAS.io, and NTDP</p>
