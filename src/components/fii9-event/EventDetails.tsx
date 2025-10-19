@@ -41,8 +41,8 @@ const EventDetails = () => {
           <MapPin className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
           <div>
             <h3 className="text-lg font-semibold text-primary mb-1">Venue</h3>
-            <p className="text-gray-600">The Majlis at The Garage</p>
-            <p className="text-gray-600">Riyadh's Premier Innovation Hub</p>
+            <p className="text-gray-600">Private Venue, Riyadh</p>
+            <p className="text-gray-600 text-sm">(Location details shared with confirmed guests)</p>
           </div>
         </div>
 
@@ -70,7 +70,7 @@ const EventDetails = () => {
         <ul className="text-gray-600 space-y-2">
           <li>• Artisanal canapes and refreshments</li>
           <li>• Curated mocktail bar</li>
-          <li>• Intimate networking in The Garage's signature Majlis setting</li>
+          <li>• Intimate networking in an exclusive Majlis setting</li>
           <li>• Exclusive access to global innovation leaders</li>
         </ul>
       </div>

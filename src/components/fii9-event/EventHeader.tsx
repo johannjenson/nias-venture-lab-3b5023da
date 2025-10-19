@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Waves, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
-import heroImage from "@/assets/fii9-garage.jpg";
+import heroImage from "@/assets/capital-culture-hero.png";
 
 interface EventHeaderProps {
   onRequestClick: () => void;
@@ -27,7 +27,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
             <div className="order-2 lg:order-1">
               <img 
                 src={heroImage} 
-                alt="The Garage venue in Riyadh - Saudi Arabia's innovation hub"
+                alt="FII9 Recap celebration event in Riyadh"
                 className="w-full h-full max-h-[500px] rounded-lg shadow-lg object-cover"
               />
             </div>
@@ -50,7 +50,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
               <div className="text-sm text-gray-500 mb-6 space-y-1">
                 <p className="font-semibold">Hosted by EAST40, Avra, NIAS.io, and NTDP</p>
                 <p>October 29, 2025 • 7:00 PM - 9:00 PM</p>
-                <p>The Majlis at The Garage, Riyadh</p>
+                <p>Private Venue, Riyadh</p>
               </div>
               <Button 
                 disabled

@@ -47,9 +47,9 @@ const WhatToExpect = () => {
             <Users className="h-6 w-6 text-primary" />
           </div>
           <div>
-            <h4 className="font-semibold text-primary mb-2">The Garage Experience</h4>
+            <h4 className="font-semibold text-primary mb-2">Exclusive Setting</h4>
             <p className="text-gray-600 text-sm">
-              Experience Riyadh's premier innovation hub and understand NTDP's pivotal role in advancing Saudi Arabia's technology and entrepreneurship landscape.
+              Experience an intimate gathering at a premier private venue, understanding NTDP's pivotal role in advancing Saudi Arabia's technology and entrepreneurship landscape.
             </p>
           </div>
         </div>
