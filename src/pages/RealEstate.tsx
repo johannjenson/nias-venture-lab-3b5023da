@@ -114,7 +114,7 @@ const RealEstate = () => {
         <img 
           src={heroBackground}
           alt="Riyadh skyline"
-          className="absolute inset-0 w-full h-full object-cover z-0 grayscale opacity-30"
+          className="absolute inset-0 w-full h-full object-cover z-0 grayscale opacity-50"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background z-0" />
         
