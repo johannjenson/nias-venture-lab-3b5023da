@@ -1,7 +1,8 @@
 import { CalendarIcon, Clock, MapPin, Users, Bus } from "lucide-react";
 import fii9Organizers from "@/assets/fii9-organizers.png";
-import fii9Sponsors from "@/assets/fii9-sponsors.png";
 import east40Logo from "@/assets/east40-logo.webp";
+import avraLogo from "@/assets/avra-logo.png";
+import ntdpLogo from "@/assets/ntdp-logo.png";
 
 const EventDetails = () => {
   return (
@@ -86,8 +87,9 @@ const EventDetails = () => {
         <div>
           <h4 className="text-sm font-semibold text-gray-500 mb-3">Event Sponsors</h4>
           <div className="flex items-center gap-6 flex-wrap">
-            <img src={fii9Sponsors} alt="Event Sponsors: NTDP and Avra" className="h-12 w-auto" />
+            <img src={avraLogo} alt="avra" className="h-12 w-auto" />
             <img src={east40Logo} alt="East 40" className="h-12 w-auto invert" />
+            <img src={ntdpLogo} alt="NTDP" className="h-12 w-auto" />
           </div>
         </div>
         <div>
