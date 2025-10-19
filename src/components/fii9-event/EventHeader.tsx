@@ -49,7 +49,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
               </p>
               <div className="text-sm text-gray-500 mb-6 space-y-1">
                 <p className="font-semibold">Hosted by avra, East 40, and NTDP</p>
-                <p>October 29, 2025 • 7:00 PM - 9:00 PM</p>
+                <p>October 29, 2025 • 5:00 PM - 7:00 PM</p>
                 <p>Private Venue, Riyadh</p>
               </div>
               <Button 
