@@ -87,9 +87,9 @@ const EventDetails = () => {
         <div>
           <h4 className="text-sm font-semibold text-gray-500 mb-3">Event Sponsors</h4>
           <div className="flex items-center gap-6 flex-wrap">
-            <img src={avraLogo} alt="avra" className="h-12 w-auto" />
-            <img src={east40Logo} alt="East 40" className="h-12 w-auto invert" />
-            <img src={ntdpLogo} alt="NTDP" className="h-12 w-auto" />
+            <img src={avraLogo} alt="avra" className="h-11 w-auto" />
+            <img src={east40Logo} alt="East 40" className="h-11 w-auto invert" />
+            <img src={ntdpLogo} alt="NTDP" className="h-11 w-auto" />
           </div>
         </div>
         <div>
