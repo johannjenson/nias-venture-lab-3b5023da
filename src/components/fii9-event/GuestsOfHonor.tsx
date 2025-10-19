@@ -1,6 +1,7 @@
 import { Crown, Building2, Lightbulb } from "lucide-react";
 import ibrahimNeyaz from "@/assets/ibrahim-neyaz.jpg";
 import princeKhalid from "@/assets/prince-khalid.png";
+import anuHariharan from "@/assets/anu-hariharan.jpg";
 
 const GuestsOfHonor = () => {
   return (
@@ -43,6 +44,24 @@ const GuestsOfHonor = () => {
           </p>
         </div>
 
+        {/* Avra Founder */}
+        <div className="border-l-4 border-primary pl-6">
+          <div className="flex items-center gap-3 mb-3">
+            <img 
+              src={anuHariharan} 
+              alt="Anu Hariharan" 
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary"
+            />
+            <div>
+              <h4 className="text-lg font-semibold text-primary">Anu Hariharan</h4>
+              <p className="text-sm text-gray-600">Founder & Managing Director, Avra</p>
+            </div>
+          </div>
+          <p className="text-gray-600 text-sm">
+            Former Y Combinator partner and a16z investor, now leading Avra to back exceptional founders building transformative companies globally.
+          </p>
+        </div>
+
         {/* Global Innovation Leaders */}
         <div className="mt-8">
           <h4 className="text-lg font-semibold text-primary mb-4 flex items-center gap-2">
@@ -63,11 +82,6 @@ const GuestsOfHonor = () => {
             <div className="bg-white rounded-lg p-4 border border-gray-200">
               <p className="font-semibold text-primary">Qasar Younis</p>
               <p className="text-sm text-gray-600">CEO, Applied Intuition</p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-4 border border-gray-200">
-              <p className="font-semibold text-primary">Anu Hariharan</p>
-              <p className="text-sm text-gray-600">Founder, Avra</p>
             </div>
             
             <div className="bg-white rounded-lg p-4 border border-gray-200">
