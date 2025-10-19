@@ -10,16 +10,16 @@ const RequestInvitation = ({ onRequestClick }: RequestInvitationProps) => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-primary mb-6">
-            Attendance by Invitation Only
+            Confirm Your Attendance
           </h2>
           <p className="text-gray-600 mb-8">
             This exclusive celebration is limited to global founders, innovation leaders, government representatives, and select ecosystem builders. Space is extremely limited.
           </p>
           <Button 
-            disabled
-            className="bg-gray-400 hover:bg-gray-400 text-gray-600 px-8 py-6 text-lg cursor-not-allowed"
+            onClick={onRequestClick}
+            className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
           >
-            Invite Only
+            RSVP
           </Button>
         </div>
       </div>

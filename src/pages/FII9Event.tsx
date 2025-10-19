@@ -9,8 +9,7 @@ const FII9Event = () => {
   const isMobile = useIsMobile();
   
   const handleRequestClick = () => {
-    // TODO: Replace with actual Luma link when available
-    window.open('https://lu.ma/fii9-recap', '_blank', 'noopener,noreferrer');
+    window.open('https://luma.com/rxo8tdf9', '_blank', 'noopener,noreferrer');
   };
 
   return (
