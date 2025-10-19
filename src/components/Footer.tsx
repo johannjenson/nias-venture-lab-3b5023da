@@ -63,7 +63,7 @@ const Footer = () => {
       { name: "Resources", submenu: [
         { name: "Opportunities", href: "/resources" },
         { name: "Real Estate", href: "/real-estate" },
-        { name: "Member Login", href: "https://access.nias.io" },
+        { name: "Member Login", href: "https://access.nias.io", target: "_blank" },
         ...(user ? [{ name: "Log Out", href: "#", onClick: handleLogout }] : []),
       ]},
       { name: "About", submenu: [
@@ -114,6 +114,8 @@ const Footer = () => {
                           <a
                             href={subitem.href}
                             className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                            target={subitem.target}
+                            rel={subitem.target === "_blank" ? "noopener noreferrer" : undefined}
                           >
                             {subitem.name}
                           </a>

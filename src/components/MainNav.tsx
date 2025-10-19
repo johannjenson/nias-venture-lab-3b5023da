@@ -139,6 +139,7 @@ const MainNav = () => {
       title: "Member Login",
       href: "https://access.nias.io",
       description: "Access your NIAS member account.",
+      onClick: () => window.open("https://access.nias.io", "_blank", "noopener,noreferrer"),
     },
   ];
 
