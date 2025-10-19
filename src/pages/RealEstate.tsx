@@ -11,6 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import turkiImage from "@/assets/turki-alshubaki.jpg";
 import mohammedImage from "@/assets/mohammed-khalid-ibn-salamah.jpg";
+import heroBackground from "@/assets/riyadh-skyline.png";
 
 const RealEstate = () => {
   const navigate = useNavigate();
@@ -108,8 +109,21 @@ const RealEstate = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative pt-32 pb-16 px-6 overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div 
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${heroBackground})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'grayscale(100%)',
+            opacity: 0.15
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background z-0" />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <Building2 className="h-16 w-16 text-primary mx-auto mb-6" />
             <h1 className="text-5xl font-bold text-foreground mb-6">
