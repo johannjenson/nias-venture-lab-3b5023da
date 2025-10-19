@@ -135,6 +135,11 @@ const MainNav = () => {
       href: "/real-estate",
       description: "Discover exclusive property opportunities in Riyadh and Khobar.",
     },
+    {
+      title: "Member Login",
+      href: "https://access.nias.io",
+      description: "Access your NIAS member account.",
+    },
   ];
 
   return (
