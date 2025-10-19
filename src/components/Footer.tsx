@@ -50,6 +50,7 @@ const Footer = () => {
   const navigation = {
     main: [
       { name: "Upcoming", submenu: [
+        { name: "FII9 Recap", href: "/events/fii9-event" },
       ]},
       { name: "Past", submenu: [
         { name: "180 Studios Evening", href: "/events/studios180-event" },
