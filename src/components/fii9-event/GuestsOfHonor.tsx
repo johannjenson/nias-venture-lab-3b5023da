@@ -9,6 +9,24 @@ const GuestsOfHonor = () => {
       <h3 className="text-2xl font-bold text-primary mb-6">Distinguished Guests</h3>
       
       <div className="space-y-6">
+        {/* Avra Founder */}
+        <div className="border-l-4 border-primary pl-6">
+          <div className="flex items-center gap-3 mb-3">
+            <img 
+              src={anuHariharan} 
+              alt="Anu Hariharan" 
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary grayscale"
+            />
+            <div>
+              <h4 className="text-lg font-semibold text-primary">Anu Hariharan</h4>
+              <p className="text-sm text-gray-600">Founder of avra</p>
+            </div>
+          </div>
+          <p className="text-gray-600 text-sm">
+            Helping great founders become exceptional CEOs.
+          </p>
+        </div>
+
         {/* Royal Guest */}
         <div className="border-l-4 border-primary pl-6">
           <div className="flex items-center gap-3 mb-3">
@@ -41,24 +59,6 @@ const GuestsOfHonor = () => {
           </div>
           <p className="text-gray-600 text-sm">
             Leading Saudi Arabia's technology ecosystem development and supporting the next generation of tech entrepreneurs.
-          </p>
-        </div>
-
-        {/* Avra Founder */}
-        <div className="border-l-4 border-primary pl-6">
-          <div className="flex items-center gap-3 mb-3">
-            <img 
-              src={anuHariharan} 
-              alt="Anu Hariharan" 
-              className="w-20 h-20 rounded-full object-cover border-2 border-primary"
-            />
-            <div>
-              <h4 className="text-lg font-semibold text-primary">Anu Hariharan</h4>
-              <p className="text-sm text-gray-600">Founder & Managing Director, Avra</p>
-            </div>
-          </div>
-          <p className="text-gray-600 text-sm">
-            Former Y Combinator partner and a16z investor, now leading Avra to back exceptional founders building transformative companies globally.
           </p>
         </div>
 
