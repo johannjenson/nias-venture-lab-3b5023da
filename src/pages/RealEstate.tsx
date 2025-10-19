@@ -113,7 +113,7 @@ const RealEstate = () => {
           <div className="text-center max-w-4xl mx-auto">
             <Building2 className="h-16 w-16 text-primary mx-auto mb-6" />
             <h1 className="text-5xl font-bold text-foreground mb-6">
-              Real Estate Opportunities in Saudi Arabia
+              Real Estate Opportunities in the Kingdom of Saudi Arabia
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               Unlock exclusive access to Riyadh and Khobar's most promising property markets. 
