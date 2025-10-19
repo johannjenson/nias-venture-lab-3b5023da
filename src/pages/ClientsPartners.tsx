@@ -7,6 +7,7 @@ import mooveLogo from "@/assets/moove-logo.png";
 import diwanLogo from "@/assets/diwan-logo.avif";
 import studiosLogo from "@/assets/180-studios-logo.png";
 import infntLogo from "@/assets/infnt-logo.svg";
+import jizaalLogo from "@/assets/jizaal-logo.jpg";
 
 const ClientsPartners = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const ClientsPartners = () => {
       website: "jizaal.com",
       url: "https://jizaal.com",
       description: "Engaging at the intersection of culture, digital experience, and the Kingdom's vision to diversify its visitor economy",
-      logo: "" // Logo path to be added
+      logo: jizaalLogo
     },
     {
       name: "Infnt",
