@@ -29,6 +29,9 @@ const MainNav = () => {
     return () => subscription.unsubscribe();
   }, []);
 
+  // Don't render navigation on mobile
+  if (isMobile) return null;
+
   const handleLogout = async () => {
     try {
       // Clear any existing session from storage first
