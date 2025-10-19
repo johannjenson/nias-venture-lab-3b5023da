@@ -62,6 +62,7 @@ const Footer = () => {
       ]},
       { name: "Resources", submenu: [
         { name: "Opportunities", href: "/resources" },
+        { name: "Real Estate", href: "/real-estate" },
         { name: "Member Login", href: "/login" },
         ...(user ? [{ name: "Log Out", href: "#", onClick: handleLogout }] : []),
       ]},

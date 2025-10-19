@@ -124,12 +124,27 @@ const MainNav = () => {
     ] : []),
   ];
 
+  const opportunities = [
+    {
+      title: "Vision 2030 Opportunities",
+      href: "/resources",
+      description: "Explore investment opportunities aligned with Saudi Vision 2030.",
+    },
+    {
+      title: "Real Estate",
+      href: "/real-estate",
+      description: "Discover exclusive property opportunities in Riyadh and Khobar.",
+    },
+  ];
+
   return (
     <NavigationMenu className="absolute top-24 md:top-20 left-1/2 -translate-x-1/2 z-50 w-full md:w-auto px-4 md:px-0">
       <NavigationMenuList className="gap-6">
         <NavMenuItem title="Upcoming" items={upcoming} />
         <NavMenuItem title="Past" items={pastEvents} />
+        <NavMenuItem title="Opportunities" items={opportunities} />
         <NavMenuItem title="About" items={about} />
+        {user && <NavMenuItem title="Resources" items={resources} />}
       </NavigationMenuList>
     </NavigationMenu>
   );
