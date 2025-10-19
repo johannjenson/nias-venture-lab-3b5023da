@@ -1,5 +1,6 @@
 import { Industry } from "@/types/industry";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ScoreInfoModal from "./ScoreInfoModal";
 
 interface IndustryCardHeaderProps {
@@ -8,11 +9,23 @@ interface IndustryCardHeaderProps {
 
 const IndustryCardHeader = ({ industry }: IndustryCardHeaderProps) => {
   const [showScoreInfo, setShowScoreInfo] = useState(false);
+  const navigate = useNavigate();
+  
+  const isRealEstate = industry.name === "Real Estate";
 
   return (
     <div className="flex items-start justify-between mb-4">
       <div>
-        <h3 className="text-2xl font-semibold text-primary">{industry.name}</h3>
+        {isRealEstate ? (
+          <h3 
+            className="text-2xl font-semibold text-primary cursor-pointer hover:underline"
+            onClick={() => navigate('/real-estate')}
+          >
+            {industry.name}
+          </h3>
+        ) : (
+          <h3 className="text-2xl font-semibold text-primary">{industry.name}</h3>
+        )}
         <p className="text-gray-600 mt-1">{industry.description}</p>
       </div>
       <div className="flex flex-col items-end ml-4">

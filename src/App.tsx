@@ -28,6 +28,7 @@ import CRM from "./pages/CRM";
 import InboundContacts from "./pages/InboundContacts";
 import ClientsPartners from "./pages/ClientsPartners";
 import FII9Event from "./pages/FII9Event";
+import RealEstate from "./pages/RealEstate";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,7 @@ const App = () => (
           <Route path="/github-founder" element={<GithubFounderEvent />} />
           <Route path="/events/github-founder" element={<GithubFounderEvent />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/real-estate" element={<RealEstate />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-use" element={<TermsOfUse />} />
