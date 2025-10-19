@@ -27,7 +27,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to NIAS Real Estate team
     const emailResponse = await resend.emails.send({
-      from: "NIAS Real Estate <onboarding@resend.dev>",
+      from: "NIAS Real Estate <noreply@nias.io>",
       to: ["realestate@nias.io"],
       subject: `New Real Estate Inquiry from ${name}`,
       html: `
@@ -43,7 +43,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation email to the inquirer
     await resend.emails.send({
-      from: "NIAS Real Estate <onboarding@resend.dev>",
+      from: "NIAS Real Estate <noreply@nias.io>",
       to: [email],
       subject: "Thank you for your inquiry - NIAS Real Estate",
       html: `
