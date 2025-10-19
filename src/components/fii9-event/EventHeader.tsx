@@ -32,15 +32,6 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
               />
             </div>
             <div className="order-1 lg:order-2">
-              <div className="flex items-center gap-2 mb-4">
-                <Badge variant="outline" className="bg-white/50 backdrop-blur">
-                  <Sparkles className="h-3 w-3 mr-1" />
-                  Invitation Only
-                </Badge>
-                <Badge variant="outline" className="bg-white/50 backdrop-blur">
-                  FII9 Recap
-                </Badge>
-              </div>
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
                 avra × East 40 × NTDP: Bringing Together Global Founders and Saudi's Startup Ecosystem
               </h1>
