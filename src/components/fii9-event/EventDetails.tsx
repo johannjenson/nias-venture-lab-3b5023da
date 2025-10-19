@@ -21,7 +21,7 @@ const EventDetails = () => {
           <div>
             <h3 className="text-lg font-semibold text-primary mb-1">When</h3>
             <p className="text-gray-600">Tuesday, October 29, 2025</p>
-            <p className="text-gray-600">5:00 PM - 7:00 PM</p>
+            <p className="text-gray-600">7:00 PM - 9:00 PM</p>
           </div>
         </div>
 
@@ -30,10 +30,10 @@ const EventDetails = () => {
           <div>
             <h3 className="text-lg font-semibold text-primary mb-1">Programme</h3>
             <ul className="text-gray-600 space-y-1">
-              <li>• 5:00 PM - Arrival & Welcome Reception</li>
-              <li>• 5:30 PM - Brief Welcome Addresses</li>
-              <li>• 5:45 PM - Evening Networking & Discussions</li>
-              <li>• 7:00 PM - Conclusion</li>
+              <li>• 7:00 PM - Arrival & Welcome Reception</li>
+              <li>• 7:30 PM - Brief Welcome Addresses</li>
+              <li>• 7:45 PM - Evening Networking & Discussions</li>
+              <li>• 9:00 PM - Conclusion</li>
             </ul>
           </div>
         </div>
