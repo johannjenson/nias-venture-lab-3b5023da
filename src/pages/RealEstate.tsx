@@ -70,12 +70,12 @@ const RealEstate = () => {
     {
       name: "Turki AlShubaiki",
       image: turkiImage,
-      bio: "Joining NIAS as part of our new Real Estate vertical - a dedicated arm focused on opportunities within Riyadh's dynamic property market. With over eight years of experience across residential, commercial, and industrial real estate, I specialize in helping investors, buyers, and tenants identify the right opportunities and make well-informed decisions. Over the years, I've built a strong network of developers, landowners, contractors, and investors, allowing me to provide exclusive access, market insights, and brokerage support across Riyadh's most promising areas."
+      bio: "With over eight years of experience across residential, commercial, and industrial real estate, I specialize in helping investors, buyers, and tenants identify the right opportunities and make well-informed decisions. Over the years, I've built a strong network of developers, landowners, contractors, and investors, allowing me to provide exclusive access, market insights, and brokerage support across Riyadh's most promising areas."
     },
     {
       name: "Mohammed Ibn Salamah",
       image: mohammedImage,
-      bio: "Joining NIAS Real Estate as part of our growing team dedicated to exploring and expanding off-market opportunities within Riyadh and Khobar's vibrant property markets. Growing up between Khobar and Riyadh with over 10 years of experience in the real estate sector, I specialize in building strong relationships with leading real estate companies, and working across land acquisitions, residential units of all types, and contractor partnerships. My experience allows me to connect clients with the right opportunities and provide tailored insights to support their investment and development goals."
+      bio: "Growing up between Khobar and Riyadh with over 10 years of experience in the real estate sector, I specialize in building strong relationships with leading real estate companies, and working across land acquisitions, residential units of all types, and contractor partnerships. My experience allows me to connect clients with the right opportunities and provide tailored insights to support their investment and development goals."
     }
   ];
 
