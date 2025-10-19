@@ -13,7 +13,7 @@ const WhatToExpect = () => {
           <div>
             <h4 className="font-semibold text-primary mb-2">Celebration of Innovation</h4>
             <p className="text-gray-600 text-sm">
-              Honor Avra's latest cohort and their contributions to bridging global innovation with Saudi Arabia's entrepreneurial ecosystem.
+              Honor avra's latest cohort and their contributions to bridging global innovation with Saudi Arabia's entrepreneurial ecosystem.
             </p>
           </div>
         </div>
@@ -55,11 +55,6 @@ const WhatToExpect = () => {
         </div>
       </div>
 
-      <div className="mt-6 pt-6 border-t border-gray-300">
-        <p className="text-sm text-gray-700 font-medium">
-          This evening positions Riyadh as the global meeting point where international innovation converges with Saudi opportunity, creating meaningful connections that drive the Kingdom's entrepreneurial future.
-        </p>
-      </div>
     </div>
   );
 };

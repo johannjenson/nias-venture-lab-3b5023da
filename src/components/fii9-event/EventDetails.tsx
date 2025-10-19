@@ -11,8 +11,8 @@ const EventDetails = () => {
       <p className="text-gray-600 mb-8 leading-relaxed">
         Following the Future Investment Initiative, we invite you to an exclusive celebration 
         of entrepreneurship and innovation. This intimate gathering brings together global founders 
-        from Avra's portfolio, Saudi government leaders, and key ecosystem builders for an evening 
-        of meaningful connections and collaborative opportunities.
+        from avra's program, Saudi government leaders, global operators, and key ecosystem builders 
+        for an evening of meaningful connection.
       </p>
 
       <div className="space-y-6">
@@ -21,7 +21,7 @@ const EventDetails = () => {
           <div>
             <h3 className="text-lg font-semibold text-primary mb-1">When</h3>
             <p className="text-gray-600">Tuesday, October 29, 2025</p>
-            <p className="text-gray-600">7:00 PM - 9:00 PM</p>
+            <p className="text-gray-600">5:00 PM - 7:00 PM</p>
           </div>
         </div>
 
@@ -30,10 +30,10 @@ const EventDetails = () => {
           <div>
             <h3 className="text-lg font-semibold text-primary mb-1">Programme</h3>
             <ul className="text-gray-600 space-y-1">
-              <li>• 7:00 PM - Arrival & Welcome Reception</li>
-              <li>• 7:30 PM - Brief Welcome Addresses</li>
-              <li>• 7:45 PM - Evening Networking & Discussions</li>
-              <li>• 9:00 PM - Conclusion</li>
+              <li>• 5:00 PM - Arrival & Welcome Reception</li>
+              <li>• 5:30 PM - Brief Welcome Addresses</li>
+              <li>• 5:45 PM - Evening Networking & Discussions</li>
+              <li>• 7:00 PM - Conclusion</li>
             </ul>
           </div>
         </div>
@@ -51,8 +51,8 @@ const EventDetails = () => {
           <Bus className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
           <div>
             <h3 className="text-lg font-semibold text-primary mb-1">Transportation</h3>
-            <p className="text-gray-600">Transfer bus for Future Investment Initiative (FII) participants</p>
-            <p className="text-gray-600 font-semibold mt-1">Departing from the Ritz at 6:30 PM</p>
+            <p className="text-gray-600">Transfer bus for Future Investment Initiative (FII) participants. Departing from the Via Riyadh at 4:30 PM.</p>
+            <p className="text-gray-600 text-sm mt-1">Golf carts are available to take you from the Ritz Carlton to Via Riyadh throughout FII.</p>
           </div>
         </div>
 
@@ -71,9 +71,15 @@ const EventDetails = () => {
         <ul className="text-gray-600 space-y-2">
           <li>• Artisanal canapes and refreshments</li>
           <li>• Curated mocktail bar</li>
+          <li>• Coffee cart and pastries</li>
           <li>• Intimate networking in an exclusive Majlis setting</li>
           <li>• Exclusive access to global innovation leaders</li>
         </ul>
+      </div>
+
+      <div className="mt-8 bg-white border-l-4 border-primary p-6 rounded-lg">
+        <p className="text-gray-700 mb-4">Warm regards,</p>
+        <p className="text-gray-700 font-semibold">Anu Hariharan, Khalid Bin Bader Al Saud, & Ibrahim Neyaz</p>
       </div>
 
       <div className="mt-8 space-y-6">

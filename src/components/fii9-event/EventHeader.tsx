@@ -42,14 +42,14 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 </Badge>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
-                FII9 Recap: Celebrating Saudi Arabia's Innovation Ecosystem
+                avra × East 40 × NTDP: Bringing Together Global Founders and Saudi's Startup Ecosystem
               </h1>
               <p className="text-xl text-gray-600 mb-6 animate-fade-in">
-                A memorable evening with 25+ AI & emerging technology founders from Silicon Valley, honoring Avra's latest cohort and the visionaries shaping the future of entrepreneurship in the Kingdom.
+                Join us for a memorable evening with 25+ AI & emerging technology founders from Silicon Valley hosted by avra, East 40, and NTDP. An exclusive evening honoring avra's latest cohort and the visionaries shaping the future of entrepreneurship in the Kingdom.
               </p>
               <div className="text-sm text-gray-500 mb-6 space-y-1">
-                <p className="font-semibold">Hosted by East40, Avra, NIAS.io, and NTDP</p>
-                <p>October 29, 2025 • 7:00 PM - 9:00 PM</p>
+                <p className="font-semibold">Hosted by avra, East 40, and NTDP</p>
+                <p>October 29, 2025 • 5:00 PM - 7:00 PM</p>
                 <p>Private Venue, Riyadh</p>
               </div>
               <Button 
