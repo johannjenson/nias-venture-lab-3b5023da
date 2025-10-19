@@ -48,7 +48,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 An exclusive evening honoring Avra's latest cohort and the visionaries shaping the future of entrepreneurship in the Kingdom.
               </p>
               <div className="text-sm text-gray-500 mb-6 space-y-1">
-                <p className="font-semibold">Hosted by EAST40, Avra, NIAS.io, and NTDP</p>
+                <p className="font-semibold">Hosted by East40, Avra, NIAS.io, and NTDP</p>
                 <p>October 29, 2025 • 7:00 PM - 9:00 PM</p>
                 <p>Private Venue, Riyadh</p>
               </div>

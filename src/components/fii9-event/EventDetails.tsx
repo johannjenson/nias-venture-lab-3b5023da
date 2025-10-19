@@ -78,11 +78,11 @@ const EventDetails = () => {
       <div className="mt-8 space-y-6">
         <div>
           <h4 className="text-sm font-semibold text-gray-500 mb-3">Event Sponsors</h4>
-          <img src={fii9Sponsors} alt="Event Sponsors: NTDP and Avra" className="w-full h-auto" />
+          <img src={fii9Sponsors} alt="Event Sponsors: NTDP and Avra" className="w-3/4 h-auto" />
         </div>
         <div>
           <h4 className="text-sm font-semibold text-gray-500 mb-3">Event Organizers</h4>
-          <img src={fii9Organizers} alt="Event Organizers: NIAS.io and INFNT" className="w-full h-auto" />
+          <img src={fii9Organizers} alt="Event Organizers: NIAS.io and INFNT" className="w-3/4 h-auto" />
         </div>
       </div>
     </div>
