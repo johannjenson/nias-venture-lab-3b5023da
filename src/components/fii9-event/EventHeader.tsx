@@ -33,7 +33,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
             </div>
             <div className="order-1 lg:order-2">
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
-                avra × East 40 × NTDP: Bringing Together Global Founders and Saudi's Startup Ecosystem
+                avra × EAST40 × NTDP: Bringing Together Global Founders and Saudi's Startup Ecosystem
               </h1>
               <p className="text-xl text-gray-600 mb-6 animate-fade-in">
                 Join us for a memorable evening with 25+ AI & emerging technology founders from Silicon Valley hosted by avra, East 40, and NTDP. An exclusive evening honoring avra's latest cohort and the visionaries shaping the future of entrepreneurship in the Kingdom.
