@@ -39,7 +39,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 Join us for a memorable evening with 25+ AI & emerging technology founders from Silicon Valley hosted by avra, East 40, and NTDP. An exclusive evening honoring avra's latest cohort and the visionaries shaping the future of entrepreneurship in the Kingdom.
               </p>
               <div className="text-sm text-gray-500 mb-6 space-y-1">
-                <p className="font-semibold">Hosted by avra, East 40, and NTDP</p>
+                <p className="font-semibold">Hosted by avra, EAST40, and NTDP</p>
                 <p>October 29, 2025 • 5:00 PM - 7:00 PM</p>
                 <p>Private Venue, Riyadh</p>
               </div>
