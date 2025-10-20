@@ -9,6 +9,24 @@ const GuestsOfHonor = () => {
       <h3 className="text-2xl font-bold text-primary mb-6">Distinguished Guests</h3>
       
       <div className="space-y-6">
+        {/* NTDP Leader */}
+        <div className="border-l-4 border-primary pl-6">
+          <div className="flex items-center gap-3 mb-3">
+            <img 
+              src={ibrahimNeyaz} 
+              alt="Ibrahim Neyaz" 
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary"
+            />
+            <div>
+              <h4 className="text-lg font-semibold text-primary">Ibrahim Neyaz</h4>
+              <p className="text-sm text-gray-600">CEO, National Technology Development Program (NTDP)</p>
+            </div>
+          </div>
+          <p className="text-gray-600 text-sm">
+            Leading Saudi Arabia's technology ecosystem development and supporting the next generation of tech entrepreneurs.
+          </p>
+        </div>
+
         {/* Avra Founder */}
         <div className="border-l-4 border-primary pl-6">
           <div className="flex items-center gap-3 mb-3">
@@ -41,24 +59,6 @@ const GuestsOfHonor = () => {
           </div>
           <p className="text-gray-600 text-sm">
             Royal visionary and innovation champion supporting Saudi Arabia's entrepreneurial transformation.
-          </p>
-        </div>
-
-        {/* NTDP Leader */}
-        <div className="border-l-4 border-primary pl-6">
-          <div className="flex items-center gap-3 mb-3">
-            <img 
-              src={ibrahimNeyaz} 
-              alt="Ibrahim Neyaz" 
-              className="w-20 h-20 rounded-full object-cover border-2 border-primary"
-            />
-            <div>
-              <h4 className="text-lg font-semibold text-primary">Ibrahim Neyaz</h4>
-              <p className="text-sm text-gray-600">CEO, National Technology Development Program (NTDP)</p>
-            </div>
-          </div>
-          <p className="text-gray-600 text-sm">
-            Leading Saudi Arabia's technology ecosystem development and supporting the next generation of tech entrepreneurs.
           </p>
         </div>
 

@@ -80,16 +80,16 @@ const EventDetails = () => {
 
       <div className="mt-8 bg-white border-l-4 border-primary p-6 rounded-lg">
         <p className="text-gray-700 mb-4">Warm regards,</p>
-        <p className="text-gray-700 font-semibold">Anu Hariharan, Khalid Bin Bader Al Saud, & Ibrahim Neyaz</p>
+        <p className="text-gray-700 font-semibold">Ibrahim Neyaz, Anu Hariharan, & Khalid Bin Bader Al Saud</p>
       </div>
 
       <div className="mt-8 space-y-6">
         <div>
           <h4 className="text-sm font-semibold text-gray-500 mb-3">Event Sponsors</h4>
           <div className="flex items-center gap-6 flex-wrap">
-            <img src={avraLogo} alt="avra" className="h-11 w-auto" />
-            <img src={east40Logo} alt="East 40" className="h-11 w-auto invert" />
             <img src={ntdpLogo} alt="NTDP" className="h-11 w-auto" />
+            <img src={avraLogo} alt="avra" className="h-11 w-auto" />
+            <img src={east40Logo} alt="EAST40" className="h-11 w-auto invert" />
           </div>
         </div>
         <div>
