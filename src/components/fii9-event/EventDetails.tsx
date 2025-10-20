@@ -52,8 +52,7 @@ const EventDetails = () => {
           <Bus className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
           <div>
             <h3 className="text-lg font-semibold text-primary mb-1">Transportation</h3>
-            <p className="text-gray-600">Transfer bus for Future Investment Initiative (FII) participants. Departing from the Via Riyadh at 4:30 PM.</p>
-            <p className="text-gray-600 text-sm mt-1">Golf carts are available to take you from the Ritz Carlton to Via Riyadh throughout FII.</p>
+            <p className="text-gray-600">Transfer bus will be available for FII participants. Buses will depart at 4:30pm nearby FII. More details to be shared closer to the event.</p>
           </div>
         </div>
 
