@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Waves, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
-import heroImage from "@/assets/capital-culture-hero.png";
+import heroImage from "@/assets/fii9-hero.png";
 
 interface EventHeaderProps {
   onRequestClick: () => void;
