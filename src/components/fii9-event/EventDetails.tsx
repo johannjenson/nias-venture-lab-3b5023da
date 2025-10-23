@@ -82,18 +82,12 @@ const EventDetails = () => {
         <p className="text-gray-700 font-semibold">Ibrahim Neyaz, Anu Hariharan, & Khalid Bin Bader Al Saud</p>
       </div>
 
-      <div className="mt-8 space-y-6">
-        <div>
-          <h4 className="text-sm font-semibold text-gray-500 mb-3">Hosts</h4>
-          <div className="flex items-center gap-6 flex-wrap">
-            <img src={ntdpLogo} alt="NTDP" className="h-11 w-auto" />
-            <img src={avraLogo} alt="avra" className="h-11 w-auto" />
-            <img src={east40Logo} alt="EAST40" className="h-11 w-auto invert" />
-          </div>
-        </div>
-        <div>
-          <h4 className="text-sm font-semibold text-gray-500 mb-3">Sponsors</h4>
-          <img src={fii9Organizers} alt="Event Organizers: NIAS.io and INFNT" className="h-[60px] w-auto" />
+      <div className="mt-8">
+        <h4 className="text-sm font-semibold text-gray-500 mb-3">Hosts</h4>
+        <div className="flex items-center gap-6 flex-wrap">
+          <img src={ntdpLogo} alt="NTDP" className="h-11 w-auto" />
+          <img src={avraLogo} alt="avra" className="h-11 w-auto" />
+          <img src={east40Logo} alt="EAST40" className="h-11 w-auto invert" />
         </div>
       </div>
     </div>
