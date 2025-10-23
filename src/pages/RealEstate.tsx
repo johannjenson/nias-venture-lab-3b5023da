@@ -182,7 +182,7 @@ const RealEstate = () => {
                       className="w-48 h-48 rounded-full object-cover mb-6 border-4 border-primary/20"
                     />
                     <h3 className="text-2xl font-bold mb-2">{member.name}</h3>
-                    <p className="text-sm text-primary font-semibold mb-4">NIAS Real Estate</p>
+                    <p className="text-sm text-primary font-semibold mb-4">NIAS Real Estate Consultant</p>
                     <p className="text-muted-foreground leading-relaxed">{member.bio}</p>
                   </div>
                 </CardContent>
