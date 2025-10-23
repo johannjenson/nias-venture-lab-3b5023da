@@ -84,7 +84,7 @@ const EventDetails = () => {
 
       <div className="mt-8 space-y-6">
         <div>
-          <h4 className="text-sm font-semibold text-gray-500 mb-3">Event Sponsors</h4>
+          <h4 className="text-sm font-semibold text-gray-500 mb-3">Hosts</h4>
           <div className="flex items-center gap-6 flex-wrap">
             <img src={ntdpLogo} alt="NTDP" className="h-11 w-auto" />
             <img src={avraLogo} alt="avra" className="h-11 w-auto" />
@@ -92,7 +92,7 @@ const EventDetails = () => {
           </div>
         </div>
         <div>
-          <h4 className="text-sm font-semibold text-gray-500 mb-3">Event Organizers</h4>
+          <h4 className="text-sm font-semibold text-gray-500 mb-3">Sponsors</h4>
           <img src={fii9Organizers} alt="Event Organizers: NIAS.io and INFNT" className="h-[60px] w-auto" />
         </div>
       </div>
