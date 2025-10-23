@@ -55,6 +55,7 @@ const GuestsOfHonor = () => {
             />
             <div>
               <h4 className="text-lg font-semibold text-primary">H.H. Prince Khalid Bin Bader Al Saud</h4>
+              <p className="text-sm text-gray-600">Managing Director & Vice Chairman, EAST40 Holding</p>
             </div>
           </div>
           <p className="text-gray-600 text-sm">
