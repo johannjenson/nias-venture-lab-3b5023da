@@ -17,8 +17,8 @@ const EventDetails = () => {
           <CalendarIcon className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
           <div>
             <h3 className="text-lg font-semibold text-primary mb-1">When</h3>
-            <p className="text-gray-600">Sunday, October 27, 2025</p>
-            <p className="text-gray-600">Monday, October 28, 2025</p>
+            <p className="text-gray-600">Monday, October 27, 2025</p>
+            <p className="text-gray-600">Tuesday, October 28, 2025</p>
             <p className="text-gray-600 mt-2 font-semibold">8:00 PM - 2:00 AM</p>
           </div>
         </div>
