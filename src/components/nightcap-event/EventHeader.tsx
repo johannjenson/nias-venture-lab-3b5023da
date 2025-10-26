@@ -27,8 +27,8 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
             <div className="order-2 lg:order-1">
               <img 
                 src={nightcapHero}
-                alt="Night Cap venue at Al Mahdiya with traditional blue doors"
-                className="w-full h-auto rounded-lg shadow-lg grayscale"
+                alt="Night Cap at The Greek Villa"
+                className="w-full h-auto rounded-lg shadow-lg"
               />
             </div>
             <div className="order-1 lg:order-2">
@@ -43,7 +43,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 </Badge>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
-                Night Cap
+                Night Cap at The Greek Villa
               </h1>
               <p className="text-lg lg:text-xl text-gray-600 mb-8 animate-fade-in">
                 An intimate evening gathering at a private villa in Al Mahdiya. Join family offices, investors, and dignitaries for relaxed conversations and meaningful connections in an exclusive setting.
