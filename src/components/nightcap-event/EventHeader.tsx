@@ -45,8 +45,11 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
                 Informal Night Cap at The Greek Villa
               </h1>
-              <p className="text-lg lg:text-xl text-gray-600 mb-8 animate-fade-in">
-                We don't just imagine a better future — we gather the people who will build it. Join innovators, changemakers, family offices, and diplomatic leaders for an intimate evening at The Greek Villa. Where vision meets action, and meaningful connections spark transformative partnerships.
+              <blockquote className="text-xl lg:text-2xl italic text-primary/80 mb-6 border-l-4 border-primary pl-4 animate-fade-in">
+                "We don't just imagine a better future — we gather the people who will build it."
+              </blockquote>
+              <p className="text-lg text-gray-600 mb-8 animate-fade-in">
+                Join innovators, changemakers, family offices, and diplomatic leaders for an intimate evening at The Greek Villa. Where vision meets action, and meaningful connections spark transformative partnerships.
               </p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
                 Request Your Invite
