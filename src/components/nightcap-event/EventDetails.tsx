@@ -8,8 +8,8 @@ const EventDetails = () => {
       <h2 className="text-3xl font-bold text-primary mb-6">Gathering Details</h2>
       
       <p className="text-gray-600 mb-8 leading-relaxed">
-        An intimate evening gathering at a private villa for meaningful conversations with family offices, dignitaries, and select investors. 
-        Join us for a relaxed night at Al Mahdiya, where strategic capital meets innovation.
+        Following the day's engagements at the Future Investment Initiative and other global forums, join us for an intimate evening gathering at a private villa. 
+        Meaningful conversations with family offices, dignitaries, and select investors in a relaxed setting at Al Mahdiya, where strategic capital meets innovation.
       </p>
 
       <div className="space-y-6">
