@@ -30,6 +30,7 @@ const EventDetails = () => {
             <p className="text-gray-600">Private Villa at Al Mahdiya</p>
             <p className="text-gray-600 text-sm">20 minutes from The Ritz, Riyadh</p>
             <p className="text-gray-600 text-sm mt-1">(Exact location details shared with confirmed guests)</p>
+            <p className="text-gray-600 text-sm mt-2 font-semibold">Limited to 30 guests • Waitlist available</p>
           </div>
         </div>
 
@@ -47,8 +48,7 @@ const EventDetails = () => {
           <div>
             <h3 className="text-lg font-semibold text-primary mb-1">Attendance</h3>
             <p className="text-gray-600 font-semibold">By Invitation Only</p>
-            <p className="text-gray-600 text-sm mt-1">Intimate gathering • Capacity: 50 guests</p>
-            <p className="text-gray-600 text-sm">Family offices, investors, and dignitaries</p>
+            <p className="text-gray-600 text-sm mt-1">Family offices, investors, and dignitaries</p>
           </div>
         </div>
       </div>
