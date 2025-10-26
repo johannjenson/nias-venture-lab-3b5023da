@@ -52,7 +52,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 Limited to 50 guests
               </p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
-                RSVP
+                Request Your Invite
               </Button>
             </div>
           </div>
