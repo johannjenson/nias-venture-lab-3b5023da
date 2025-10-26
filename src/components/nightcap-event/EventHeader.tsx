@@ -45,7 +45,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 Night Cap
               </h1>
               <p className="text-lg lg:text-xl text-gray-600 mb-8 animate-fade-in">
-                Join us for an informal evening gathering at Al Mahdiya. A relaxed setting to continue conversations, forge connections, and enjoy the night with fellow innovators and leaders.
+                An intimate evening gathering at a private villa in Al Mahdiya. Join family offices, investors, and dignitaries for relaxed conversations and meaningful connections in an exclusive setting.
               </p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
                 RSVP
