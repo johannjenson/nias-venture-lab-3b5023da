@@ -39,11 +39,11 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 </Badge>
                 <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 flex items-center gap-1">
                   <Moon className="h-3 w-3" />
-                  Evening Event
+                  Evening Gathering
                 </Badge>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
-                Night Cap at The Greek Villa
+                Informal Night Cap at The Greek Villa
               </h1>
               <p className="text-lg lg:text-xl text-gray-600 mb-8 animate-fade-in">
                 We don't just imagine a better future — we gather the people who will build it. Join innovators, changemakers, family offices, and diplomatic leaders for an intimate evening at The Greek Villa. Where vision meets action, and meaningful connections spark transformative partnerships.

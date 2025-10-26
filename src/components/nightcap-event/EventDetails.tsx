@@ -5,7 +5,7 @@ import niasLogo from "@/assets/nias-logo.png";
 const EventDetails = () => {
   return (
     <div>
-      <h2 className="text-3xl font-bold text-primary mb-6">Event Details</h2>
+      <h2 className="text-3xl font-bold text-primary mb-6">Gathering Details</h2>
       
       <p className="text-gray-600 mb-8 leading-relaxed">
         An intimate evening gathering at a private villa for meaningful conversations with family offices, dignitaries, and select investors. 
