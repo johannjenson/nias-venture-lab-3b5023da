@@ -46,7 +46,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 Night Cap at The Greek Villa
               </h1>
               <p className="text-lg lg:text-xl text-gray-600 mb-8 animate-fade-in">
-                An intimate evening gathering at a private villa in Al Mahdiya. Join family offices, investors, and dignitaries for relaxed conversations and meaningful connections in an exclusive setting.
+                We don't just imagine a better future — we gather the people who will build it. Join innovators, changemakers, family offices, and diplomatic leaders for an intimate evening at The Greek Villa. Where vision meets action, and meaningful connections spark transformative partnerships.
               </p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
                 RSVP
