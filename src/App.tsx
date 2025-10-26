@@ -28,6 +28,7 @@ import CRM from "./pages/CRM";
 import InboundContacts from "./pages/InboundContacts";
 import ClientsPartners from "./pages/ClientsPartners";
 import FII9Event from "./pages/FII9Event";
+import NightCapEvent from "./pages/NightCapEvent";
 import RealEstate from "./pages/RealEstate";
 
 const queryClient = new QueryClient();
@@ -51,6 +52,7 @@ const App = () => (
           <Route path="/events/capital-culture-riyadh" element={<CapitalCultureEvent />} />
           <Route path="/events/vntr-investor-forum" element={<VSQRiyadhEvent />} />
           <Route path="/events/fii9-recap" element={<FII9Event />} />
+          <Route path="/events/night-cap" element={<NightCapEvent />} />
           <Route path="/github-founder" element={<GithubFounderEvent />} />
           <Route path="/events/github-founder" element={<GithubFounderEvent />} />
           <Route path="/resources" element={<Resources />} />
