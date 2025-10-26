@@ -68,8 +68,10 @@ const EventDetails = () => {
       <div className="mt-8">
         <h4 className="text-sm font-semibold text-gray-500 mb-4">Hosts</h4>
         <div className="flex items-center gap-12 flex-wrap">
-          <img src={diwanLogo} alt="The Diwan" className="h-32 w-auto filter invert" />
-          <img src={niasLogo} alt="NIAS.io" className="h-24 w-auto" />
+          <a href="https://www.the-diwan.com/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+            <img src={diwanLogo} alt="The Diwan" className="h-24 w-auto filter invert" />
+          </a>
+          <img src={niasLogo} alt="NIAS.io" className="h-16 w-auto" />
         </div>
       </div>
     </div>
