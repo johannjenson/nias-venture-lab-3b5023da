@@ -9,8 +9,7 @@ const NightCapEvent = () => {
   const isMobile = useIsMobile();
   
   const handleRequestClick = () => {
-    // Replace with actual RSVP link when available
-    window.open('https://luma.com/nightcap', '_blank', 'noopener,noreferrer');
+    window.open('https://luma.com/bde61x7h', '_blank', 'noopener,noreferrer');
   };
 
   return (
