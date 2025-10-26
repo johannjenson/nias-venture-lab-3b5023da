@@ -12,7 +12,7 @@ const GuestsOfHonor = () => {
             <h3 className="text-xl font-semibold text-primary mb-2">To Be Announced</h3>
             <p className="text-gray-600">
               We're curating a special lineup of guests for this intimate gathering. 
-              Details will be shared with confirmed attendees closer to the event.
+              Details will be shared with confirmed attendees closer to the date.
             </p>
           </div>
         </div>
