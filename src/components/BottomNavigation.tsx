@@ -31,7 +31,7 @@ const BottomNavigation = () => {
   }
 
   const upcomingEvents = [
-    { label: "FII9 Recap", href: "/events/fii9-recap" }
+    // FII9 event hidden from navigation
   ];
 
   const pastEvents = [

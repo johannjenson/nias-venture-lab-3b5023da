@@ -62,11 +62,7 @@ const MainNav = () => {
   };
   
   const upcoming = [
-    {
-      title: "FII9 Recap: Celebrating Saudi Arabia's Innovation Ecosystem",
-      href: "/events/fii9-recap",
-      description: "An exclusive evening honoring Avra's latest cohort and the visionaries shaping the future of entrepreneurship in the Kingdom.",
-    },
+    // FII9 event hidden from navigation
   ];
 
   const pastEvents = [
