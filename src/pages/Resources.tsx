@@ -37,15 +37,15 @@ const Resources = () => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Vision 2030 Investment Opportunities | Nias Network</title>
+        <title>Vision 2030 Investment Opportunities | NIAS Network</title>
         <meta name="description" content="Explore Saudi Arabia's $3 trillion Vision 2030 investment opportunities across key industries with high potential for international businesses seeking market entry." />
-        <meta property="og:title" content="Vision 2030 Investment Opportunities | Nias Network" />
+        <meta property="og:title" content="Vision 2030 Investment Opportunities | NIAS Network" />
         <meta property="og:description" content="Saudi Arabia is investing $3 trillion across key industries as part of Vision 2030. Discover the top industries with the highest potential for international businesses." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://nias.io/resources" />
         <meta property="og:image" content="https://nias.io/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Vision 2030 Investment Opportunities | Nias Network" />
+        <meta name="twitter:title" content="Vision 2030 Investment Opportunities | NIAS Network" />
         <meta name="twitter:description" content="Saudi Arabia is investing $3 trillion across key industries as part of Vision 2030. Discover the top industries with the highest potential for international businesses." />
         <meta name="twitter:image" content="https://nias.io/og-image.png" />
       </Helmet>

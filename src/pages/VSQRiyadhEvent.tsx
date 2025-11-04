@@ -152,8 +152,8 @@ const VSQRiyadhEvent = () => {
   }];
   return <div className="min-h-screen bg-white">
       <Helmet>
-        <title>VNTR Investor Forum Riyadh | Nias Network</title>
-        <meta name="description" content="Join VNTR Investor Forum in Riyadh on April 23rd, 2025 for a day of keynotes, panels, and networking with industry leaders, in partnership with Nias Network." />
+        <title>VNTR Investor Forum Riyadh | NIAS Network</title>
+        <meta name="description" content="Join VNTR Investor Forum in Riyadh on April 23rd, 2025 for a day of keynotes, panels, and networking with industry leaders, in partnership with NIAS Network." />
       </Helmet>
       
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
