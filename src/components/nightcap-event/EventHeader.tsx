@@ -42,7 +42,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 </Badge>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
-                Informal Night Cap at The Greek Villa
+                Informal Night Caps at The Greek Villa
               </h1>
               <blockquote className="text-xl lg:text-2xl italic text-primary/80 mb-6 border-l-4 border-primary pl-4 animate-fade-in">
                 "We don't just imagine a better future — we gather the people who will build it."

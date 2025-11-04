@@ -74,7 +74,7 @@ const MainNav = () => {
     {
       title: "Night Cap",
       href: "/events/night-cap",
-      description: "An intimate evening discussion on the future of venture capital and entrepreneurship in Saudi Arabia.",
+      description: "An intimate evening gathering at The Greek Villa with innovators, family offices, and diplomatic leaders.",
     },
     {
       title: "An Evening with London's creative powerhouse 180 Studios",
