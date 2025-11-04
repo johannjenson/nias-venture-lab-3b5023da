@@ -89,9 +89,6 @@ const ClientsPartners = () => {
                 <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
                   Our Clients
                 </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                  Organizations that trust us to deliver exceptional results and transformative solutions.
-                </p>
               </div>
               
               <div className="space-y-8 max-w-4xl mx-auto">
@@ -133,9 +130,6 @@ const ClientsPartners = () => {
                 <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
                   Our Partners
                 </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                  Strategic alliances that amplify our capabilities and extend our reach across markets.
-                </p>
               </div>
               
               <div className="space-y-8 max-w-4xl mx-auto">
