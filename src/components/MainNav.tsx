@@ -72,6 +72,11 @@ const MainNav = () => {
       description: "A recap of our exclusive gathering during FII9 in Riyadh, featuring global investors and innovators.",
     },
     {
+      title: "Night Cap",
+      href: "/events/night-cap",
+      description: "An intimate evening discussion on the future of venture capital and entrepreneurship in Saudi Arabia.",
+    },
+    {
       title: "An Evening with London's creative powerhouse 180 Studios",
       href: "/events/studios180-event",
       description: "Join us for dinner and conversation with Tim Robinson on June 24th, 2025 at Irqah Farmhouse in Riyadh. (Private invite-only gathering)",
