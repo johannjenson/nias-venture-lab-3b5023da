@@ -53,6 +53,7 @@ const Footer = () => {
         // FII9 event hidden from navigation
       ]},
       { name: "Past", submenu: [
+        { name: "FII9 Recap", href: "/events/fii9-event" },
         { name: "180 Studios Evening", href: "/events/studios180-event" },
         { name: "GitHub Founder Evening", href: "/events/an-evening-with-github-cofounder-tom-preston-werner" },
         { name: "VNTR Investor Forum", href: "/events/vntr-investor-forum" },

@@ -67,6 +67,11 @@ const MainNav = () => {
 
   const pastEvents = [
     {
+      title: "FII9 Recap",
+      href: "/events/fii9-event",
+      description: "Relive the highlights from our FII9 gathering in Riyadh.",
+    },
+    {
       title: "An Evening with London's creative powerhouse 180 Studios",
       href: "/events/studios180-event",
       description: "Join us for dinner and conversation with Tim Robinson on June 24th, 2025 at Irqah Farmhouse in Riyadh. (Private invite-only gathering)",
