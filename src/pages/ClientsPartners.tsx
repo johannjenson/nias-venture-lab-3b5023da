@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import { Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Footer from "@/components/Footer";
-import mooveLogo from "@/assets/moove-logo.png";
 import diwanLogo from "@/assets/diwan-logo.avif";
 import studiosLogo from "@/assets/180-studios-logo.png";
 import infntLogo from "@/assets/infnt-logo.svg";
@@ -19,13 +18,6 @@ const ClientsPartners = () => {
       url: "https://180studios.com",
       description: "Supporting strategic partnerships with Misk City and the Misk Foundation, as well as connections with creative studios looking to establish presence in the Kingdom",
       logo: studiosLogo
-    },
-    {
-      name: "Moove",
-      website: "Moove.io", 
-      url: "https://moove.io",
-      description: "Facilitating partnerships with sovereign investors and family offices to support Moove's KSA expansion and growth initiatives in the Kingdom",
-      logo: mooveLogo
     }
   ];
 
@@ -58,7 +50,7 @@ const ClientsPartners = () => {
       <Helmet>
         <title>Clients & Partners - Nias</title>
         <meta name="description" content="Discover our trusted clients and strategic partners who collaborate with Nias to drive innovation and growth across industries." />
-        <meta name="keywords" content="Nias clients, Nias partners, 180 Studios, Moove, The Diwan, Infnt, strategic partnerships" />
+        <meta name="keywords" content="Nias clients, Nias partners, 180 Studios, The Diwan, Infnt, strategic partnerships" />
         <link rel="canonical" href="https://nias.io/clients-partners" />
       </Helmet>
 
