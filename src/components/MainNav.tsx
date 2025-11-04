@@ -68,7 +68,7 @@ const MainNav = () => {
   const pastEvents = [
     {
       title: "FII9 Recap",
-      href: "/events/fii9-event",
+      href: "/events/fii9-recap",
       description: "Relive the highlights from our FII9 gathering in Riyadh.",
     },
     {
