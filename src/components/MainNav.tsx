@@ -69,7 +69,7 @@ const MainNav = () => {
     {
       title: "FII9 Recap",
       href: "/events/fii9-recap",
-      description: "A recap of our exclusive gathering during FII9 in Riyadh, featuring global investors and innovators.",
+      description: "A recap of an exclusive gathering we organized during FII9 in Riyadh for global investors and innovators.",
     },
     {
       title: "FII9 Night Caps",
