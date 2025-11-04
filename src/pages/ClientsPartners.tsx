@@ -16,7 +16,7 @@ const ClientsPartners = () => {
       name: "180 Studios",
       website: "180Studios.com",
       url: "https://180studios.com",
-      description: "Supporting strategic partnerships with Misk City and the Misk Foundation, as well as connections with creative studios looking to establish presence in the Kingdom",
+      description: "Supporting global expansion including strategic partnerships, go-to-market planning, and research for their Riyadh location while connecting them to the city's thriving Tech, Arts, and Entertainment ecosystems",
       logo: studiosLogo
     }
   ];
