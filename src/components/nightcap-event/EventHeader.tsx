@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Waves, Lock, Moon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import nightcapHero from "@/assets/nightcap-hero.png";
 
 interface EventHeaderProps {
   onRequestClick: () => void;
@@ -26,7 +25,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="order-2 lg:order-1">
               <img 
-                src={nightcapHero}
+                src="/lovable-uploads/nightcap-hero-new.jpg"
                 alt="Night Cap at The Greek Villa"
                 className="w-full h-auto rounded-lg shadow-lg"
               />
