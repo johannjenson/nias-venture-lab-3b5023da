@@ -36,7 +36,7 @@ const BottomNavigation = () => {
 
   const pastEvents = [
     { label: "FII9 Recap", href: "/events/fii9-recap" },
-    { label: "Night Cap", href: "/events/night-cap" },
+    { label: "FII9 Night Caps", href: "/events/night-cap" },
     { label: "180 Studios Evening", href: "/events/studios180-event" },
     { label: "GitHub Founder Evening", href: "/events/an-evening-with-github-cofounder-tom-preston-werner" },
     { label: "VNTR Investor Forum", href: "/events/vntr-investor-forum" },

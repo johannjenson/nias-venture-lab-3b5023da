@@ -72,7 +72,7 @@ const MainNav = () => {
       description: "A recap of our exclusive gathering during FII9 in Riyadh, featuring global investors and innovators.",
     },
     {
-      title: "Night Cap",
+      title: "FII9 Night Caps",
       href: "/events/night-cap",
       description: "An intimate evening gathering at The Greek Villa with innovators, family offices, and diplomatic leaders.",
     },

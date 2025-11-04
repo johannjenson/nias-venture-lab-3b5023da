@@ -54,7 +54,7 @@ const Footer = () => {
       ]},
       { name: "Past", submenu: [
         { name: "FII9 Recap", href: "/events/fii9-recap" },
-        { name: "Night Cap", href: "/events/night-cap" },
+        { name: "FII9 Night Caps", href: "/events/night-cap" },
         { name: "180 Studios Evening", href: "/events/studios180-event" },
         { name: "GitHub Founder Evening", href: "/events/an-evening-with-github-cofounder-tom-preston-werner" },
         { name: "VNTR Investor Forum", href: "/events/vntr-investor-forum" },
