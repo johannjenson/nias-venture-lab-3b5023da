@@ -16,7 +16,7 @@ const ClientsPartners = () => {
       name: "180 Studios",
       website: "180Studios.com",
       url: "https://180studios.com",
-      description: "Supporting global expansion including strategic partnerships, go-to-market planning, and research for their Riyadh location while connecting the London team with Riyadh city's thriving Tech, Arts, and Entertainment ecosystems",
+      description: "Supporting global expansion including strategic partnerships, go-to-market planning, and research for their Riyadh location while connecting the 180's global team with the city's thriving Tech, Creative, Art, and Entertainment ecosystems",
       logo: studiosLogo
     }
   ];
