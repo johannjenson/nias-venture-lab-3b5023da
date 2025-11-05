@@ -50,7 +50,7 @@ const Footer = () => {
   const navigation = {
     main: [
       { name: "Upcoming", submenu: [
-        // FII9 event hidden from navigation
+        { name: "Biban25 Art Gala Dinner", href: "/events/biban25-art-gala-dinner" },
       ]},
       { name: "Past", submenu: [
         { name: "FII9 Recap", href: "/events/fii9-recap" },

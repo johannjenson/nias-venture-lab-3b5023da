@@ -29,6 +29,7 @@ import InboundContacts from "./pages/InboundContacts";
 import ClientsPartners from "./pages/ClientsPartners";
 import FII9Event from "./pages/FII9Event";
 import NightCapEvent from "./pages/NightCapEvent";
+import Biban25Event from "./pages/Biban25Event";
 import RealEstate from "./pages/RealEstate";
 
 const queryClient = new QueryClient();
@@ -53,6 +54,7 @@ const App = () => (
           <Route path="/events/vntr-investor-forum" element={<VSQRiyadhEvent />} />
           <Route path="/events/fii9-recap" element={<FII9Event />} />
           <Route path="/events/night-cap" element={<NightCapEvent />} />
+          <Route path="/events/biban25-art-gala-dinner" element={<Biban25Event />} />
           <Route path="/github-founder" element={<GithubFounderEvent />} />
           <Route path="/events/github-founder" element={<GithubFounderEvent />} />
           <Route path="/resources" element={<Resources />} />

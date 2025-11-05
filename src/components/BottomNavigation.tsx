@@ -31,7 +31,7 @@ const BottomNavigation = () => {
   }
 
   const upcomingEvents = [
-    // FII9 event hidden from navigation
+    { label: "Biban25 Art Gala Dinner", href: "/events/biban25-art-gala-dinner" },
   ];
 
   const pastEvents = [

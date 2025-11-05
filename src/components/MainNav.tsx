@@ -62,7 +62,11 @@ const MainNav = () => {
   };
   
   const upcoming = [
-    // FII9 event hidden from navigation
+    {
+      title: "Biban25 Art Gala Dinner",
+      href: "/events/biban25-art-gala-dinner",
+      description: "An exclusive evening with founders, investors, and industry leaders at Shamalat Art Co. on November 7, 2025.",
+    },
   ];
 
   const pastEvents = [
