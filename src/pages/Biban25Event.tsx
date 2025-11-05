@@ -9,7 +9,7 @@ const Biban25Event = () => {
   const isMobile = useIsMobile();
   
   const handleRequestClick = () => {
-    window.open('https://forms.gle/CkJriJXGVYgxLF7w9', '_blank', 'noopener,noreferrer');
+    window.open('https://luma.com/pezw898x', '_blank', 'noopener,noreferrer');
   };
 
   return (

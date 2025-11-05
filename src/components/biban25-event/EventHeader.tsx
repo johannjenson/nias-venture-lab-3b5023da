@@ -49,7 +49,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 Join us for an exclusive evening with founders, investors, and industry leaders shaping the future of Saudi Arabia's innovation ecosystem.
               </p>
               <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" onClick={onRequestClick}>
-                RSVP Now
+                Request an Invite
               </Button>
             </div>
           </div>
