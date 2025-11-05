@@ -43,7 +43,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 </Badge>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
-                Biban25 Art Gala Dinner
+                Intersect x NIAS: Biban25 Art Gala Dinner
               </h1>
               <p className="text-xl text-gray-600 mb-8 animate-fade-in">
                 Join us for an exclusive evening with founders, investors, and industry leaders shaping the future of Saudi Arabia's innovation ecosystem.
