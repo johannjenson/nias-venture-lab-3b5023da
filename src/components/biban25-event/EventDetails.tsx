@@ -4,7 +4,7 @@ const EventDetails = () => {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-3xl font-bold text-primary mb-6">About the Event</h2>
+        <h2 className="text-3xl font-bold text-primary mb-6">About the Dinner</h2>
         <p className="text-gray-600 mb-4 leading-relaxed">
           Join us for an exclusive evening with founders, investors, and industry leaders shaping the future of Saudi Arabia's innovation ecosystem.
         </p>
@@ -27,7 +27,7 @@ const EventDetails = () => {
             <div className="w-2 h-2 rounded-full bg-primary mt-2"></div>
             <div>
               <p className="font-semibold text-gray-900">Opening Remarks</p>
-              <p className="text-gray-600 text-sm">Welcome address and event overview</p>
+              <p className="text-gray-600 text-sm">Welcome address and dinner overview</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
