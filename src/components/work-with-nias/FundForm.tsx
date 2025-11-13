@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -10,13 +11,15 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { useState } from "react";
 import { Loader2 } from "lucide-react";
 
 const fundSchema = z.object({
+  email: z.string().email("Invalid email address").min(1, "Email is required"),
+  phone: z.string().min(1, "Phone number is required").max(50),
   fund_aum_vintage: z.string().min(1, "This field is required").max(2000),
   investment_strategy: z.string().min(1, "This field is required").max(2000),
   historical_performance: z.string().min(1, "This field is required").max(2000),
@@ -33,6 +36,8 @@ const FundForm = () => {
   const form = useForm<FundFormData>({
     resolver: zodResolver(fundSchema),
     defaultValues: {
+      email: "",
+      phone: "",
       fund_aum_vintage: "",
       investment_strategy: "",
       historical_performance: "",
@@ -49,6 +54,8 @@ const FundForm = () => {
         .from("partnership_applications" as any)
         .insert({
           application_type: "fund",
+          advisor_name: data.email,
+          advisor_role: data.phone,
           fund_aum_vintage: data.fund_aum_vintage,
           investment_strategy: data.investment_strategy,
           historical_performance: data.historical_performance,
@@ -72,7 +79,7 @@ const FundForm = () => {
   return (
     <div>
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-primary mb-2">Stream 2 — Funds</h2>
+        <h2 className="text-2xl font-bold text-primary mb-2">Funds</h2>
         <p className="text-sm text-muted-foreground">
           For investment funds seeking Gulf partnerships, co-locations, or LP relationships
         </p>
@@ -82,10 +89,38 @@ const FundForm = () => {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
             control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>1. Email</FormLabel>
+                <FormControl>
+                  <Input type="email" placeholder="contact@fund.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>2. Phone Number</FormLabel>
+                <FormControl>
+                  <Input type="tel" placeholder="+1 (555) 000-0000" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
             name="fund_aum_vintage"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>1. What is your fund's total AUM and current fund vintage?</FormLabel>
+                <FormLabel>3. What is your fund's total AUM and current fund vintage?</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Describe your fund's AUM, vintage year, and fund structure..."
@@ -103,7 +138,7 @@ const FundForm = () => {
             name="investment_strategy"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>2. What is your investment strategy and sector focus?</FormLabel>
+                <FormLabel>4. What is your investment strategy and sector focus?</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Describe your investment thesis, target sectors, check sizes, and stage focus..."
@@ -121,7 +156,7 @@ const FundForm = () => {
             name="historical_performance"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>3. What is your historical performance (IRR, TVPI, DPI)?</FormLabel>
+                <FormLabel>5. What is your historical performance (IRR, TVPI, DPI)?</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Share key performance metrics and track record..."
@@ -139,7 +174,7 @@ const FundForm = () => {
             name="gulf_strategy"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>4. How does the Gulf region fit into your fund's long-term strategy?</FormLabel>
+                <FormLabel>6. How does the Gulf region fit into your fund's long-term strategy?</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Explain your regional thesis, timeline, and objectives..."
@@ -157,7 +192,7 @@ const FundForm = () => {
             name="partnership_type"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>5. What type of partnership or presence are you seeking in the Gulf?</FormLabel>
+                <FormLabel>7. What type of partnership or presence are you seeking in the Gulf?</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="e.g., co-location, ecosystem partnerships, innovation programs, anchor LPs, regional SPVs..."
@@ -175,7 +210,7 @@ const FundForm = () => {
             name="additional_info"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>6. Additional Information (Optional)</FormLabel>
+                <FormLabel>8. Additional Information (Optional)</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Any other relevant information..."

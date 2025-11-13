@@ -26,6 +26,8 @@ import { Loader2 } from "lucide-react";
 
 const companySchema = z.object({
   company_name: z.string().min(1, "Company name is required").max(200),
+  email: z.string().email("Invalid email address").min(1, "Email is required"),
+  phone: z.string().min(1, "Phone number is required").max(50),
   revenue_usd: z.string().min(1, "Revenue is required").max(100),
   profit_margin: z.string().min(1, "Profit margin is required").max(50),
   growth_rate: z.string().min(1, "Growth rate is required").max(50),
@@ -45,6 +47,8 @@ const CompanyForm = () => {
     resolver: zodResolver(companySchema),
     defaultValues: {
       company_name: "",
+      email: "",
+      phone: "",
       revenue_usd: "",
       profit_margin: "",
       growth_rate: "",
@@ -64,6 +68,8 @@ const CompanyForm = () => {
         .insert({
           application_type: "company",
           company_name: data.company_name,
+          advisor_name: data.email,
+          advisor_role: data.phone,
           revenue_usd: data.revenue_usd,
           profit_margin: data.profit_margin,
           growth_rate: data.growth_rate,
@@ -89,7 +95,7 @@ const CompanyForm = () => {
   return (
     <div>
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-primary mb-2">Stream 1 — Companies</h2>
+        <h2 className="text-2xl font-bold text-primary mb-2">Companies</h2>
         <p className="text-sm text-muted-foreground">
           For operating businesses seeking entry or expansion into the GCC
         </p>
@@ -102,9 +108,37 @@ const CompanyForm = () => {
             name="company_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Company Name</FormLabel>
+                <FormLabel>1. Company Name</FormLabel>
                 <FormControl>
                   <Input placeholder="Your Company Ltd." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>2. Email</FormLabel>
+                <FormControl>
+                  <Input type="email" placeholder="contact@company.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>3. Phone Number</FormLabel>
+                <FormControl>
+                  <Input type="tel" placeholder="+1 (555) 000-0000" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -116,7 +150,7 @@ const CompanyForm = () => {
             name="revenue_usd"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Last 12 Months Revenue (USD)</FormLabel>
+                <FormLabel>4. Last 12 Months Revenue (USD)</FormLabel>
                 <FormControl>
                   <Input placeholder="e.g., $150M" {...field} />
                 </FormControl>
@@ -130,7 +164,7 @@ const CompanyForm = () => {
             name="profit_margin"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Profit Margin (%)</FormLabel>
+                <FormLabel>5. Profit Margin (%)</FormLabel>
                 <FormControl>
                   <Input placeholder="e.g., 25%" {...field} />
                 </FormControl>
@@ -144,7 +178,7 @@ const CompanyForm = () => {
             name="growth_rate"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Last 12 Months Growth (%)</FormLabel>
+                <FormLabel>6. Last 12 Months Growth (%)</FormLabel>
                 <FormControl>
                   <Input placeholder="e.g., 40%" {...field} />
                 </FormControl>
@@ -158,7 +192,7 @@ const CompanyForm = () => {
             name="geographic_footprint"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Geographic Footprint (Countries of Operation)</FormLabel>
+                <FormLabel>7. Geographic Footprint (Countries of Operation)</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="List countries where you operate..."
@@ -176,7 +210,7 @@ const CompanyForm = () => {
             name="gulf_expansion_plans"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Describe Your Gulf Expansion Plans</FormLabel>
+                <FormLabel>8. Describe Your Gulf Expansion Plans</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Outline your strategy, timeline, and objectives..."
@@ -194,7 +228,7 @@ const CompanyForm = () => {
             name="strategic_metric_type"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Key Strategic Metric</FormLabel>
+                <FormLabel>9. Key Strategic Metric</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
@@ -233,7 +267,7 @@ const CompanyForm = () => {
             name="additional_info"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Additional Information (Optional)</FormLabel>
+                <FormLabel>10. Additional Information (Optional)</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Any other relevant information..."
