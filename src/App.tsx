@@ -31,6 +31,7 @@ import FII9Event from "./pages/FII9Event";
 import NightCapEvent from "./pages/NightCapEvent";
 import Biban25Event from "./pages/Biban25Event";
 import RealEstate from "./pages/RealEstate";
+import WorkWithNias from "./pages/WorkWithNias";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +60,7 @@ const App = () => (
           <Route path="/events/github-founder" element={<GithubFounderEvent />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/real-estate" element={<RealEstate />} />
+          <Route path="/work-with-nias" element={<WorkWithNias />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-use" element={<TermsOfUse />} />
