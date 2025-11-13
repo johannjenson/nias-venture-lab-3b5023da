@@ -46,7 +46,7 @@ const FundForm = () => {
     setIsSubmitting(true);
     try {
       const { error } = await supabase
-        .from("partnership_applications")
+        .from("partnership_applications" as any)
         .insert({
           application_type: "fund",
           fund_aum_vintage: data.fund_aum_vintage,

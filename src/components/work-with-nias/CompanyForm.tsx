@@ -60,7 +60,7 @@ const CompanyForm = () => {
     setIsSubmitting(true);
     try {
       const { error } = await supabase
-        .from("partnership_applications")
+        .from("partnership_applications" as any)
         .insert({
           application_type: "company",
           company_name: data.company_name,
