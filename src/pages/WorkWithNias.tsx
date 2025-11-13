@@ -81,7 +81,7 @@ const WorkWithNias = () => {
                 <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-lg p-4 text-left">
                   <Users className="h-5 w-5 text-primary mb-2" />
                   <h3 className="font-semibold text-foreground mb-1 text-sm">Advisors</h3>
-                  <p className="text-xs text-muted-foreground">Trusted partners sharing quality dealflow</p>
+                  <p className="text-xs text-muted-foreground">Proven track record, strategic networks in target markets</p>
                 </div>
               </div>
             </div>
