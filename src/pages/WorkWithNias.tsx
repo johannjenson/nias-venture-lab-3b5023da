@@ -8,6 +8,7 @@ import { Building2, TrendingUp, Waves, Users } from "lucide-react";
 import CompanyForm from "@/components/work-with-nias/CompanyForm";
 import FundForm from "@/components/work-with-nias/FundForm";
 import AdvisorForm from "@/components/work-with-nias/AdvisorForm";
+import heroBackground from "@/assets/work-with-nias-hero.png";
 
 const WorkWithNias = () => {
   const navigate = useNavigate();
@@ -43,7 +44,13 @@ const WorkWithNias = () => {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background/50 to-background z-0" />
+        {/* Background Image with Overlay */}
+        <img 
+          src={heroBackground}
+          alt="Saudi Arabia landscape"
+          className="absolute inset-0 w-full h-full object-cover z-0 grayscale opacity-50"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background z-0" />
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center max-w-4xl mx-auto">
