@@ -88,7 +88,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation email to applicant
     const confirmationEmail = await resend.emails.send({
-      from: "NIAS Partnerships <onboarding@resend.dev>",
+      from: "NIAS Partnerships <partnerships@nias.io>",
       to: [email],
       subject: "Your NIAS Partnership Application",
       html: getEmailTemplate(applicationType, displayName),
@@ -98,8 +98,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification to NIAS team
     const notificationEmail = await resend.emails.send({
-      from: "NIAS Application System <onboarding@resend.dev>",
-      to: ["team@nias.io"], // Replace with actual NIAS team email
+      from: "NIAS Partnerships <partnerships@nias.io>",
+      to: ["team@nias.io"],
       subject: `New ${applicationType.toUpperCase()} Partnership Application`,
       html: `
         <h2>New Partnership Application Received</h2>
