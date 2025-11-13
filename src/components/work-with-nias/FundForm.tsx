@@ -66,7 +66,22 @@ const FundForm = () => {
 
       if (error) throw error;
 
-      toast.success("Application submitted successfully! We'll be in touch within 7-10 days.");
+      // Send confirmation email
+      try {
+        await supabase.functions.invoke('send-partnership-confirmation', {
+          body: {
+            applicationType: 'fund',
+            email: data.email,
+            companyName: 'Fund Application',
+            phone: data.phone,
+          }
+        });
+      } catch (emailError) {
+        console.error('Error sending confirmation email:', emailError);
+        // Don't fail the submission if email fails
+      }
+
+      toast.success("Application submitted successfully! Check your email for confirmation.");
       form.reset();
     } catch (error) {
       console.error("Error submitting application:", error);
