@@ -1,1 +1,4 @@
 project_id = "govawobduzmxagqmfobp"
+
+[functions.send-partnership-confirmation]
+verify_jwt = false
