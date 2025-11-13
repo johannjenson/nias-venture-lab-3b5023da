@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Building2, TrendingUp, Waves } from "lucide-react";
+import { Building2, TrendingUp, Waves, Users } from "lucide-react";
 import CompanyForm from "@/components/work-with-nias/CompanyForm";
 import FundForm from "@/components/work-with-nias/FundForm";
+import AdvisorForm from "@/components/work-with-nias/AdvisorForm";
 
 const WorkWithNias = () => {
   const navigate = useNavigate();
-  const [applicationType, setApplicationType] = useState<"company" | "fund">("company");
+  const [applicationType, setApplicationType] = useState<"company" | "fund" | "advisor">("company");
 
   return (
     <div className="min-h-screen bg-background">
@@ -65,19 +66,26 @@ const WorkWithNias = () => {
               NIAS.io works with a highly curated set of global operators and investment platforms.
               To maintain the quality of our ecosystem, we review opportunities through two streams:
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <div className="flex items-start gap-3 text-left max-w-xs">
+            <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <div className="flex items-start gap-3 text-left">
                 <Building2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">Companies</h3>
                   <p className="text-sm text-muted-foreground">&gt;$100M revenue, multinational footprint</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 text-left max-w-xs">
+              <div className="flex items-start gap-3 text-left">
                 <TrendingUp className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">Investment Funds</h3>
                   <p className="text-sm text-muted-foreground">Institutional-grade, with Gulf relevance</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 text-left">
+                <Users className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">Advisors</h3>
+                  <p className="text-sm text-muted-foreground">Trusted partners sharing quality dealflow</p>
                 </div>
               </div>
             </div>
@@ -96,29 +104,38 @@ const WorkWithNias = () => {
             <ToggleGroup 
               type="single" 
               value={applicationType}
-              onValueChange={(value) => value && setApplicationType(value as "company" | "fund")}
+              onValueChange={(value) => value && setApplicationType(value as "company" | "fund" | "advisor")}
               className="bg-muted/50 p-1 rounded-lg border border-border shadow-sm"
             >
               <ToggleGroupItem 
                 value="company" 
-                className="px-8 py-3 data-[state=on]:bg-background data-[state=on]:shadow-sm"
+                className="px-6 py-3 data-[state=on]:bg-background data-[state=on]:shadow-sm"
               >
                 <Building2 className="h-4 w-4 mr-2" />
                 Companies
               </ToggleGroupItem>
               <ToggleGroupItem 
                 value="fund"
-                className="px-8 py-3 data-[state=on]:bg-background data-[state=on]:shadow-sm"
+                className="px-6 py-3 data-[state=on]:bg-background data-[state=on]:shadow-sm"
               >
                 <TrendingUp className="h-4 w-4 mr-2" />
                 Funds
+              </ToggleGroupItem>
+              <ToggleGroupItem 
+                value="advisor"
+                className="px-6 py-3 data-[state=on]:bg-background data-[state=on]:shadow-sm"
+              >
+                <Users className="h-4 w-4 mr-2" />
+                Advisors
               </ToggleGroupItem>
             </ToggleGroup>
           </div>
 
           {/* Forms */}
           <div className="bg-card border border-border rounded-xl p-8 lg:p-12 shadow-sm">
-            {applicationType === "company" ? <CompanyForm /> : <FundForm />}
+            {applicationType === "company" && <CompanyForm />}
+            {applicationType === "fund" && <FundForm />}
+            {applicationType === "advisor" && <AdvisorForm />}
           </div>
 
           {/* Footer Note */}
