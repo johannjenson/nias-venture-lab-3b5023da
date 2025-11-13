@@ -28,6 +28,8 @@ import { Loader2 } from "lucide-react";
 
 const advisorSchema = z.object({
   advisor_name: z.string().min(1, "Advisor/firm name is required").max(200),
+  email: z.string().email("Invalid email address").min(1, "Email is required"),
+  phone: z.string().min(1, "Phone number is required").max(50),
   advisor_role: z.string().min(1, "Please describe your advisory role").max(1000),
   opportunity_description: z.string().min(1, "Please describe the opportunity").max(2000),
   relationship_type: z.string().min(1, "Please select your relationship"),
@@ -54,6 +56,8 @@ const AdvisorForm = () => {
     resolver: zodResolver(advisorSchema),
     defaultValues: {
       advisor_name: "",
+      email: "",
+      phone: "",
       advisor_role: "",
       opportunity_description: "",
       relationship_type: "",
@@ -81,7 +85,8 @@ const AdvisorForm = () => {
         .insert({
           application_type: "advisor",
           advisor_name: data.advisor_name,
-          advisor_role: data.advisor_role,
+          company_name: data.email,
+          advisor_role: data.phone + " | " + data.advisor_role,
           opportunity_description: data.opportunity_description,
           relationship_type: data.relationship_type === "other" 
             ? data.relationship_other 
@@ -112,7 +117,7 @@ const AdvisorForm = () => {
   return (
     <div>
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-primary mb-2">Stream 3 — Advisors</h2>
+        <h2 className="text-2xl font-bold text-primary mb-2">Advisors</h2>
         <p className="text-sm text-muted-foreground">
           For trusted advisors, intermediaries, and ecosystem partners sharing high-quality dealflow with NIAS
         </p>
@@ -140,10 +145,38 @@ const AdvisorForm = () => {
 
           <FormField
             control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>2. Email</FormLabel>
+                <FormControl>
+                  <Input type="email" placeholder="contact@advisory.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>3. Phone Number</FormLabel>
+                <FormControl>
+                  <Input type="tel" placeholder="+1 (555) 000-0000" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
             name="advisor_role"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>2. Nature of Your Advisory Role</FormLabel>
+                <FormLabel>4. Nature of Your Advisory Role</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="e.g., strategic advisor, board member, consultant, introducer, banker, operator, subject-matter expert..."
@@ -161,7 +194,7 @@ const AdvisorForm = () => {
             name="opportunity_description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>3. Describe the Opportunity You Are Referring</FormLabel>
+                <FormLabel>5. Describe the Opportunity You Are Referring</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Company, fund, or transaction context — no confidential information required..."
@@ -179,7 +212,7 @@ const AdvisorForm = () => {
             name="relationship_type"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>4. What Is Your Relationship With the Company/Fund?</FormLabel>
+                <FormLabel>6. What Is Your Relationship With the Company/Fund?</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
@@ -222,7 +255,7 @@ const AdvisorForm = () => {
             name="gulf_relevance"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>5. Why Is This Opportunity Relevant to the Gulf?</FormLabel>
+                <FormLabel>7. Why Is This Opportunity Relevant to the Gulf?</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Sector alignment, market readiness, regional value..."
@@ -236,7 +269,7 @@ const AdvisorForm = () => {
           />
 
           <div className="border-t pt-6">
-            <h3 className="text-lg font-semibold mb-4">6. Maturity & Metrics of the Opportunity</h3>
+            <h3 className="text-lg font-semibold mb-4">8. Maturity & Metrics of the Opportunity</h3>
             
             <FormField
               control={form.control}
@@ -361,7 +394,7 @@ const AdvisorForm = () => {
             name="partnership_engagement_type"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>7. What Type of Partnership or Engagement Are You Proposing?</FormLabel>
+                <FormLabel>9. What Type of Partnership or Engagement Are You Proposing?</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
@@ -401,7 +434,7 @@ const AdvisorForm = () => {
             name="additional_info"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>8. Additional Information (Optional)</FormLabel>
+                <FormLabel>10. Additional Information (Optional)</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Any other relevant information..."
