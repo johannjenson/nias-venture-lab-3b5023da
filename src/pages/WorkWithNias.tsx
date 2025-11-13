@@ -43,7 +43,7 @@ const WorkWithNias = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 px-6 overflow-hidden">
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
         {/* Background Image with Overlay */}
         <img 
           src={heroBackground}
@@ -58,53 +58,44 @@ const WorkWithNias = () => {
             <h1 className="text-5xl font-bold text-foreground mb-6">
               Work with NIAS
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
               For Global Companies & Funds Expanding into the Gulf
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Info Section */}
-      <section className="py-16 px-6 bg-muted/30">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-base text-foreground/80 mb-6">
-              NIAS.io works with a highly curated set of global operators and investment platforms.
-              To maintain the quality of our ecosystem, we review opportunities through two streams:
-            </p>
-            <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              <div className="flex items-start gap-3 text-left">
-                <Building2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold text-foreground mb-1">Companies</h3>
-                  <p className="text-sm text-muted-foreground">&gt;$100M revenue, multinational footprint</p>
+            
+            {/* Info Cards - Moved into Hero */}
+            <div className="mt-12 mb-8">
+              <p className="text-sm text-foreground/70 mb-8 max-w-2xl mx-auto">
+                NIAS.io works with a highly curated set of global operators and investment platforms.
+              </p>
+              <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+                <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-lg p-4 text-left">
+                  <Building2 className="h-5 w-5 text-primary mb-2" />
+                  <h3 className="font-semibold text-foreground mb-1 text-sm">Companies</h3>
+                  <p className="text-xs text-muted-foreground">&gt;$100M revenue, multinational footprint</p>
                 </div>
-              </div>
-              <div className="flex items-start gap-3 text-left">
-                <TrendingUp className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold text-foreground mb-1">Investment Funds</h3>
-                  <p className="text-sm text-muted-foreground">Institutional-grade, with Gulf relevance</p>
+                <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-lg p-4 text-left">
+                  <TrendingUp className="h-5 w-5 text-primary mb-2" />
+                  <h3 className="font-semibold text-foreground mb-1 text-sm">Investment Funds</h3>
+                  <p className="text-xs text-muted-foreground">Institutional-grade, with Gulf relevance</p>
                 </div>
-              </div>
-              <div className="flex items-start gap-3 text-left">
-                <Users className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold text-foreground mb-1">Advisors</h3>
-                  <p className="text-sm text-muted-foreground">Trusted partners sharing quality dealflow</p>
+                <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-lg p-4 text-left">
+                  <Users className="h-5 w-5 text-primary mb-2" />
+                  <h3 className="font-semibold text-foreground mb-1 text-sm">Advisors</h3>
+                  <p className="text-xs text-muted-foreground">Trusted partners sharing quality dealflow</p>
                 </div>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground mt-8">
-              Please complete the relevant section below. Our team will review and respond within 7–10 days.
-            </p>
           </div>
         </div>
       </section>
 
       {/* Form Section */}
-      <section id="application-form" className="py-16 px-6">
+      <section id="application-form" className="py-12 px-6 bg-muted/20">
+        <div className="max-w-3xl mx-auto mb-8 text-center">
+          <p className="text-sm text-muted-foreground">
+            Please complete the relevant form below. Our team will review and respond within 7–10 days.
+          </p>
+        </div>
         <div className="max-w-3xl mx-auto">
           {/* Toggle */}
           <div className="flex justify-center mb-12">
@@ -139,7 +130,7 @@ const WorkWithNias = () => {
           </div>
 
           {/* Forms */}
-          <div className="bg-card border border-border rounded-xl p-8 lg:p-12 shadow-sm">
+          <div className="bg-card border border-border rounded-xl p-6 lg:p-10 shadow-sm">
             {applicationType === "company" && <CompanyForm />}
             {applicationType === "fund" && <FundForm />}
             {applicationType === "advisor" && <AdvisorForm />}
