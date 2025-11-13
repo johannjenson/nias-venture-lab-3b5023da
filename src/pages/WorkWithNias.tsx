@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-import MainNav from "@/components/MainNav";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Building2, TrendingUp } from "lucide-react";
+import { Building2, TrendingUp, Waves } from "lucide-react";
 import CompanyForm from "@/components/work-with-nias/CompanyForm";
 import FundForm from "@/components/work-with-nias/FundForm";
 
 const WorkWithNias = () => {
+  const navigate = useNavigate();
   const [applicationType, setApplicationType] = useState<"company" | "fund">("company");
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen bg-background">
       <Helmet>
         <title>Work with NIAS | Strategic Partnerships for Global Expansion</title>
         <meta 
@@ -20,80 +22,111 @@ const WorkWithNias = () => {
         />
       </Helmet>
 
-      <MainNav />
+      {/* Sticky Header */}
+      <div className="fixed top-0 left-0 right-0 bg-background border-b z-50">
+        <div className="max-w-7xl mx-auto h-16 flex items-center justify-between px-6">
+          <button 
+            onClick={() => navigate('/')} 
+            className="hover:opacity-80 transition-opacity"
+          >
+            <Waves className="h-8 w-8 text-primary" />
+          </button>
+          <Button
+            onClick={() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' })}
+            className="bg-primary hover:bg-primary/90 text-white"
+          >
+            Apply Now
+          </Button>
+        </div>
+      </div>
 
-      <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative py-20 lg:py-28 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold text-primary mb-6 tracking-tight">
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-16 px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background/50 to-background z-0" />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
+            <Building2 className="h-16 w-16 text-primary mx-auto mb-6" />
+            <h1 className="text-5xl font-bold text-foreground mb-6">
               Work with NIAS
             </h1>
-            <p className="text-xl text-muted-foreground mb-4 leading-relaxed">
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               For Global Companies & Funds Expanding into the Gulf
             </p>
-            <div className="max-w-3xl mx-auto">
-              <p className="text-base text-foreground/80 mb-4">
-                NIAS.io works with a highly curated set of global operators and investment platforms.
-                To maintain the quality of our ecosystem, we review opportunities through two streams:
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-sm text-foreground/70 mb-8">
-                <div className="flex items-center gap-2">
-                  <Building2 className="h-4 w-4 text-primary" />
-                  <span>Companies (&gt;$100M revenue, multinational footprint)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="h-4 w-4 text-primary" />
-                  <span>Investment Funds (institutional-grade, Gulf relevance)</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Info Section */}
+      <section className="py-16 px-6 bg-muted/30">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-base text-foreground/80 mb-6">
+              NIAS.io works with a highly curated set of global operators and investment platforms.
+              To maintain the quality of our ecosystem, we review opportunities through two streams:
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <div className="flex items-start gap-3 text-left max-w-xs">
+                <Building2 className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">Companies</h3>
+                  <p className="text-sm text-muted-foreground">&gt;$100M revenue, multinational footprint</p>
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground">
-                Please complete the relevant section below. Our team will review and respond within 7–10 days.
-              </p>
+              <div className="flex items-start gap-3 text-left max-w-xs">
+                <TrendingUp className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">Investment Funds</h3>
+                  <p className="text-sm text-muted-foreground">Institutional-grade, with Gulf relevance</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
-
-        {/* Form Section */}
-        <section className="py-16 bg-background">
-          <div className="max-w-3xl mx-auto px-6">
-            {/* Toggle */}
-            <div className="flex justify-center mb-12">
-              <ToggleGroup 
-                type="single" 
-                value={applicationType}
-                onValueChange={(value) => value && setApplicationType(value as "company" | "fund")}
-                className="bg-muted/50 p-1 rounded-lg border border-border"
-              >
-                <ToggleGroupItem 
-                  value="company" 
-                  className="px-8 py-3 data-[state=on]:bg-background data-[state=on]:shadow-sm"
-                >
-                  <Building2 className="h-4 w-4 mr-2" />
-                  Companies
-                </ToggleGroupItem>
-                <ToggleGroupItem 
-                  value="fund"
-                  className="px-8 py-3 data-[state=on]:bg-background data-[state=on]:shadow-sm"
-                >
-                  <TrendingUp className="h-4 w-4 mr-2" />
-                  Funds
-                </ToggleGroupItem>
-              </ToggleGroup>
-            </div>
-
-            {/* Forms */}
-            <div className="bg-card border border-border rounded-xl p-8 lg:p-12 shadow-sm">
-              {applicationType === "company" ? <CompanyForm /> : <FundForm />}
-            </div>
-
-            {/* Footer Note */}
-            <p className="text-center text-sm text-muted-foreground mt-8">
-              After submission, NIAS will conduct an initial review. If aligned, our Partnerships Team will reach out to coordinate a deeper discussion.
+            <p className="text-sm text-muted-foreground mt-8">
+              Please complete the relevant section below. Our team will review and respond within 7–10 days.
             </p>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
+
+      {/* Form Section */}
+      <section id="application-form" className="py-16 px-6">
+        <div className="max-w-3xl mx-auto">
+          {/* Toggle */}
+          <div className="flex justify-center mb-12">
+            <ToggleGroup 
+              type="single" 
+              value={applicationType}
+              onValueChange={(value) => value && setApplicationType(value as "company" | "fund")}
+              className="bg-muted/50 p-1 rounded-lg border border-border shadow-sm"
+            >
+              <ToggleGroupItem 
+                value="company" 
+                className="px-8 py-3 data-[state=on]:bg-background data-[state=on]:shadow-sm"
+              >
+                <Building2 className="h-4 w-4 mr-2" />
+                Companies
+              </ToggleGroupItem>
+              <ToggleGroupItem 
+                value="fund"
+                className="px-8 py-3 data-[state=on]:bg-background data-[state=on]:shadow-sm"
+              >
+                <TrendingUp className="h-4 w-4 mr-2" />
+                Funds
+              </ToggleGroupItem>
+            </ToggleGroup>
+          </div>
+
+          {/* Forms */}
+          <div className="bg-card border border-border rounded-xl p-8 lg:p-12 shadow-sm">
+            {applicationType === "company" ? <CompanyForm /> : <FundForm />}
+          </div>
+
+          {/* Footer Note */}
+          <p className="text-center text-sm text-muted-foreground mt-8">
+            After submission, NIAS will conduct an initial review. If aligned, our Partnerships Team will reach out to coordinate a deeper discussion.
+          </p>
+        </div>
+      </section>
 
       <Footer />
     </div>
