@@ -149,6 +149,11 @@ const MainNav = () => {
       description: "Discover exclusive property opportunities in Riyadh and Khobar.",
     },
     {
+      title: "Work with NIAS",
+      href: "/work-with-nias",
+      description: "Global companies & funds expanding into the Gulf.",
+    },
+    {
       title: "Member Login",
       href: "https://access.nias.io",
       description: "Access your NIAS member account.",
