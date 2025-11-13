@@ -90,8 +90,8 @@ const WorkWithNias = () => {
       </section>
 
       {/* Form Section */}
-      <section id="application-form" className="py-12 px-6 bg-muted/20">
-        <div className="max-w-3xl mx-auto mb-8 text-center">
+      <section id="application-form" className="pt-6 pb-12 px-6 bg-muted/20">
+        <div className="max-w-3xl mx-auto mb-6 text-center">
           <p className="text-sm text-muted-foreground">
             Please complete the relevant form below. Our team will review and respond within 7–10 days.
           </p>
