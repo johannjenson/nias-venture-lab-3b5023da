@@ -66,6 +66,7 @@ const Footer = () => {
       { name: "Resources", submenu: [
         { name: "Opportunities", href: "/resources" },
         { name: "Real Estate", href: "/real-estate" },
+        { name: "Work with NIAS", href: "/work-with-nias" },
         { name: "Member Login", href: "https://access.nias.io", target: "_blank" },
         ...(user ? [{ name: "Log Out", href: "#", onClick: handleLogout }] : []),
       ]},
