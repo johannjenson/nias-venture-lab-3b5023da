@@ -20,6 +20,7 @@ import { Loader2 } from "lucide-react";
 const fundSchema = z.object({
   email: z.string().email("Invalid email address").min(1, "Email is required"),
   phone: z.string().min(1, "Phone number is required").max(50),
+  fund_name: z.string().min(1, "Fund name is required").max(200),
   fund_aum_vintage: z.string().min(1, "This field is required").max(2000),
   investment_strategy: z.string().min(1, "This field is required").max(2000),
   historical_performance: z.string().min(1, "This field is required").max(2000),
@@ -38,6 +39,7 @@ const FundForm = () => {
     defaultValues: {
       email: "",
       phone: "",
+      fund_name: "",
       fund_aum_vintage: "",
       investment_strategy: "",
       historical_performance: "",
@@ -56,6 +58,7 @@ const FundForm = () => {
           application_type: "fund",
           advisor_name: data.email,
           advisor_role: data.phone,
+          company_name: data.fund_name,
           fund_aum_vintage: data.fund_aum_vintage,
           investment_strategy: data.investment_strategy,
           historical_performance: data.historical_performance,
@@ -72,7 +75,7 @@ const FundForm = () => {
           body: {
             applicationType: 'fund',
             email: data.email,
-            companyName: 'Fund Application',
+            companyName: data.fund_name,
             phone: data.phone,
           }
         });
@@ -132,10 +135,24 @@ const FundForm = () => {
 
           <FormField
             control={form.control}
+            name="fund_name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>3. Name of Fund</FormLabel>
+                <FormControl>
+                  <Input placeholder="e.g., Acme Ventures Fund III" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
             name="fund_aum_vintage"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>3. What is your fund's total AUM and current fund vintage?</FormLabel>
+                <FormLabel>4. What is your fund's total AUM and current fund vintage?</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Describe your fund's AUM, vintage year, and fund structure..."
@@ -153,7 +170,7 @@ const FundForm = () => {
             name="investment_strategy"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>4. What is your investment strategy and sector focus?</FormLabel>
+                <FormLabel>5. What is your investment strategy and sector focus?</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Describe your investment thesis, target sectors, check sizes, and stage focus..."
@@ -171,7 +188,7 @@ const FundForm = () => {
             name="historical_performance"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>5. What is your historical performance (IRR, TVPI, DPI)?</FormLabel>
+                <FormLabel>6. What is your historical performance (IRR, TVPI, DPI)?</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Share key performance metrics and track record..."
@@ -189,7 +206,7 @@ const FundForm = () => {
             name="gulf_strategy"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>6. How does the Gulf region fit into your fund's long-term strategy?</FormLabel>
+                <FormLabel>7. How does the Gulf region fit into your fund's long-term strategy?</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Explain your regional thesis, timeline, and objectives..."
@@ -207,7 +224,7 @@ const FundForm = () => {
             name="partnership_type"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>7. What type of partnership or presence are you seeking in the Gulf?</FormLabel>
+                <FormLabel>8. What type of partnership or presence are you seeking in the Gulf?</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="e.g., co-location, ecosystem partnerships, innovation programs, anchor LPs, regional SPVs..."
@@ -225,7 +242,7 @@ const FundForm = () => {
             name="additional_info"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>8. Additional Information (Optional)</FormLabel>
+                <FormLabel>9. Additional Information (Optional)</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Any other relevant information..."
