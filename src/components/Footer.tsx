@@ -51,9 +51,9 @@ const Footer = () => {
     main: [
       { name: "Upcoming", submenu: [
         { name: "VIP Dinner: US-Saudi Forum", href: "/events/us-saudi-forum-dinner" },
-        { name: "Biban25 Art Gala Dinner", href: "/events/biban25-art-gala-dinner" },
       ]},
       { name: "Past", submenu: [
+        { name: "Biban25 Art Gala Dinner", href: "/events/biban25-art-gala-dinner" },
         { name: "FII9 Recap", href: "/events/fii9-recap" },
         { name: "FII9 Night Caps", href: "/events/night-cap" },
         { name: "180 Studios Evening", href: "/events/studios180-event" },
