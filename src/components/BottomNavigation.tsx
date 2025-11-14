@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { HomeIcon, Bookmark, Calendar, ChevronDown } from 'lucide-react';
+import { HomeIcon, Briefcase, Calendar, ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { 
   DropdownMenu,
@@ -71,9 +71,9 @@ const BottomNavigation = () => {
       submenu: pastEvents
     },
     { 
-      icon: Bookmark, 
-      label: 'Resources', 
-      href: '/resources' 
+      icon: Briefcase, 
+      label: 'Apply', 
+      href: '/work-with-nias' 
     },
   ];
 

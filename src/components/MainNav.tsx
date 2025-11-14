@@ -99,6 +99,11 @@ const MainNav = () => {
       description: "Our trusted clients and strategic partners.",
     },
     {
+      title: "Work with NIAS",
+      href: "/work-with-nias",
+      description: "Global companies & funds expanding into the Gulf.",
+    },
+    {
       title: "Contact",
       href: "/contact",
       description: "Get in touch with our team.",
@@ -147,11 +152,6 @@ const MainNav = () => {
       title: "Real Estate",
       href: "/real-estate",
       description: "Discover exclusive property opportunities in Riyadh and Khobar.",
-    },
-    {
-      title: "Work with NIAS",
-      href: "/work-with-nias",
-      description: "Global companies & funds expanding into the Gulf.",
     },
     {
       title: "Member Login",
