@@ -6,7 +6,7 @@ import EventSEO from "@/components/us-saudi-dinner/EventSEO";
 
 const USSaudiForumDinner = () => {
   const handleRequestClick = () => {
-    window.open('https://lu.ma/68r4t2h5', '_blank', 'noopener,noreferrer');
+    window.open('https://luma.com/cgaw53p1', '_blank', 'noopener,noreferrer');
   };
 
   return (
