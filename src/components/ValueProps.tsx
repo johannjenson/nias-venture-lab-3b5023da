@@ -1,8 +1,7 @@
 
 import { PlaneLanding, Users, Briefcase } from "lucide-react";
 import { Button } from "./ui/button";
-import { useState } from "react";
-import RequestInviteModal from "./RequestInviteModal";
+import { Link } from "react-router-dom";
 
 interface ValuePropsProps {
   openRequestModal: () => void;
@@ -27,13 +26,6 @@ const features = [
 ];
 
 const ValueProps = ({ openRequestModal }: ValuePropsProps) => {
-  const [showRequestModal, setShowRequestModal] = useState(false);
-
-  const handleRequestInvite = () => {
-    setShowRequestModal(true);
-    openRequestModal();
-  };
-
   return (
     <div className="py-24 bg-secondary/30 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -64,20 +56,16 @@ const ValueProps = ({ openRequestModal }: ValuePropsProps) => {
           </dl>
         </div>
         <div className="mt-16 text-center">
-          <Button 
-            size="lg"
-            className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white"
-            onClick={handleRequestInvite}
-          >
-            Join the NIAS Network
-          </Button>
+          <Link to="/work-with-nias">
+            <Button 
+              size="lg"
+              className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white"
+            >
+              Work with NIAS
+            </Button>
+          </Link>
         </div>
       </div>
-
-      <RequestInviteModal 
-        open={showRequestModal} 
-        onOpenChange={setShowRequestModal} 
-      />
     </div>
   );
 };
