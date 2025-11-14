@@ -36,7 +36,7 @@ const EventDetails = () => {
           <div>
             <h3 className="text-xl font-semibold text-primary mb-2">Venue</h3>
             <p className="text-gray-600">
-              Le Diplomate<br />
+              Central DC<br />
               Washington D.C.
             </p>
           </div>
