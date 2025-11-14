@@ -13,7 +13,7 @@ const RequestInvitation = ({ onRequestClick }: RequestInvitationProps) => {
             Request Your Invitation
           </h2>
           <p className="text-gray-600 mb-8">
-            This exclusive dinner is limited to 20 carefully selected leaders from business, 
+            This exclusive dinner is limited to 15 carefully selected leaders from business, 
             investment, and government sectors. Join us for this intimate gathering on the eve 
             of the US-Saudi Investment Forum.
           </p>

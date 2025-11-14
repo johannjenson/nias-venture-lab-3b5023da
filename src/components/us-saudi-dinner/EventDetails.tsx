@@ -24,9 +24,9 @@ const EventDetails = () => {
           <div>
             <h3 className="text-xl font-semibold text-primary mb-2">Programme</h3>
             <p className="text-gray-600">
-              7:00 PM - Welcome Drinks<br />
-              8:00 PM - Dinner<br />
-              9:00 PM - 11:00 PM - Networking
+              5:00 PM - Welcome Drinks<br />
+              6:00 PM - Dinner<br />
+              7:00 PM - 9:00 PM - Networking
             </p>
           </div>
         </div>
@@ -46,7 +46,7 @@ const EventDetails = () => {
           <Users className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
           <div>
             <h3 className="text-xl font-semibold text-primary mb-2">Capacity</h3>
-            <p className="text-gray-600">Limited to 20 select attendees</p>
+            <p className="text-gray-600">Limited to 15 select attendees</p>
           </div>
         </div>
       </div>
