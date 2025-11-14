@@ -67,14 +67,14 @@ const MainNav = () => {
       href: "/events/us-saudi-forum-dinner",
       description: "An exclusive gathering for business leaders on the eve of the US-Saudi Investment Forum. November 18, 2025, Washington D.C.",
     },
+  ];
+
+  const pastEvents = [
     {
       title: "Biban25 Art Gala Dinner",
       href: "/events/biban25-art-gala-dinner",
       description: "An exclusive evening with founders, investors, and industry leaders at Shamalat Art Co. on November 7, 2025.",
     },
-  ];
-
-  const pastEvents = [
     {
       title: "FII9 Recap",
       href: "/events/fii9-recap",
