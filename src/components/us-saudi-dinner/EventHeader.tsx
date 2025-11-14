@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Waves } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Waves, Lock, UserCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/us-saudi-forum-hero.jpg";
 
@@ -31,6 +32,16 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
               />
             </div>
             <div className="order-1 lg:order-2">
+              <div className="flex items-center gap-3 mb-4">
+                <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 flex items-center gap-1">
+                  <Lock className="h-3 w-3" />
+                  Private Dinner
+                </Badge>
+                <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 flex items-center gap-1">
+                  <UserCheck className="h-3 w-3" />
+                  Invite-only
+                </Badge>
+              </div>
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
                 VIP Dinner: US-Saudi Investment Forum
               </h1>
