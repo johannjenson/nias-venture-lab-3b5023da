@@ -50,6 +50,7 @@ const Footer = () => {
   const navigation = {
     main: [
       { name: "Upcoming", submenu: [
+        { name: "VIP Dinner: US-Saudi Forum", href: "/events/us-saudi-forum-dinner" },
         { name: "Biban25 Art Gala Dinner", href: "/events/biban25-art-gala-dinner" },
       ]},
       { name: "Past", submenu: [
