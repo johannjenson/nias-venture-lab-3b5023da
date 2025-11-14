@@ -23,7 +23,11 @@ const EventDetails = () => {
           <Clock className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
           <div>
             <h3 className="text-xl font-semibold text-primary mb-2">Programme</h3>
-            <p className="text-gray-600">7:00 PM - Reception and Dinner</p>
+            <p className="text-gray-600">
+              7:00 PM - Welcome Drinks<br />
+              8:00 PM - Dinner<br />
+              9:00 PM - 11:00 PM - Networking
+            </p>
           </div>
         </div>
 
