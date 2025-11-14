@@ -166,7 +166,7 @@ const MainNav = () => {
       <NavigationMenuList className="gap-6">
         <NavMenuItem title="Upcoming" items={upcoming} />
         <NavMenuItem title="Past" items={pastEvents} />
-        <NavMenuItem title="Opportunities" items={opportunities} />
+        <NavMenuItem title="Resources" items={opportunities} />
         <NavMenuItem title="About" items={about} />
         {user && <NavMenuItem title="Resources" items={resources} />}
       </NavigationMenuList>
