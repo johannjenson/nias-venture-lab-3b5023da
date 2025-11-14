@@ -63,6 +63,11 @@ const MainNav = () => {
   
   const upcoming = [
     {
+      title: "VIP Dinner: US-Saudi Forum",
+      href: "/events/us-saudi-forum-dinner",
+      description: "An exclusive gathering for business leaders on the eve of the US-Saudi Investment Forum. November 18, 2025, Washington D.C.",
+    },
+    {
       title: "Biban25 Art Gala Dinner",
       href: "/events/biban25-art-gala-dinner",
       description: "An exclusive evening with founders, investors, and industry leaders at Shamalat Art Co. on November 7, 2025.",
