@@ -11,8 +11,8 @@ const WhatToExpect = () => {
           <div>
             <h3 className="text-xl font-semibold text-primary mb-2">Strategic Dialogue</h3>
             <p className="text-gray-600">
-              Engage in meaningful conversations about investment opportunities, bilateral trade, 
-              and the future of US-Saudi economic partnership.
+              Engage in meaningful conversations about technology innovation, investment opportunities in emerging sectors, 
+              bilateral trade, and the future of US-Saudi economic and technological partnership.
             </p>
           </div>
         </div>
@@ -33,8 +33,8 @@ const WhatToExpect = () => {
           <div>
             <h3 className="text-xl font-semibold text-primary mb-2">Exclusive Setting</h3>
             <p className="text-gray-600">
-              An intimate dinner environment designed for authentic relationship building 
-              and high-level business discussions in Washington D.C.'s premier French brasserie.
+              An intimate dinner environment in a distinguished French brasserie in Central DC, designed for authentic relationship building 
+              and high-level discussions on innovation, strategic partnerships, and cross-border collaboration.
             </p>
           </div>
         </div>

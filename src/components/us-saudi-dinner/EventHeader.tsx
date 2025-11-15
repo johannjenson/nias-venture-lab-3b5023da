@@ -46,7 +46,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 VIP Dinner: US-Saudi Investment Forum
               </h1>
               <p className="text-lg lg:text-xl text-gray-600 mb-8 animate-fade-in">
-                An exclusive gathering for select business leaders, investors, and government officials on the eve of the US-Saudi Investment Forum in Washington D.C.
+                An exclusive gathering for select business leaders, investors, and government officials to explore technology innovation, strategic investments, and bilateral opportunities on the eve of the US-Saudi Investment Forum in Washington D.C.
               </p>
               <Button 
                 className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" 
