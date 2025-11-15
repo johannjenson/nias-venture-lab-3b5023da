@@ -6,7 +6,7 @@ const EventDetails = () => {
       <div>
         <h2 className="text-3xl font-bold text-primary mb-6">Event Details</h2>
         <p className="text-lg text-gray-600 mb-8">
-          Join us for an intimate evening of dialogue and connection with key stakeholders shaping US-Saudi economic relations. This exclusive dinner brings together a select group of investors, business leaders, and government officials for meaningful conversations ahead of the official forum.
+          Join us for an intimate evening of dialogue and connection with key stakeholders shaping US-Saudi economic relations and technological collaboration. This exclusive dinner brings together a select group of investors, business leaders, and government officials for meaningful conversations on innovation, investment opportunities, and strategic partnerships ahead of the official forum.
         </p>
       </div>
 
@@ -36,7 +36,7 @@ const EventDetails = () => {
           <div>
             <h3 className="text-xl font-semibold text-primary mb-2">Venue</h3>
             <p className="text-gray-600">
-              Central DC<br />
+              A French Brasserie in Central DC<br />
               Washington D.C.
             </p>
           </div>
