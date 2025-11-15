@@ -43,7 +43,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 </Badge>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
-                VIP Dinner: US-Saudi Investment Forum
+                NIAS VIP Dinner: US-Saudi Investment Forum
               </h1>
               <p className="text-lg lg:text-xl text-gray-600 mb-8 animate-fade-in">
                 An exclusive gathering for select business leaders, investors, and government officials to explore technology innovation, strategic investments, and bilateral opportunities on the eve of the US-Saudi Investment Forum in Washington D.C.
