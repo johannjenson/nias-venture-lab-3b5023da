@@ -33,7 +33,7 @@ const WhatToExpect = () => {
           <div>
             <h3 className="text-xl font-semibold text-primary mb-2">Exclusive Setting</h3>
             <p className="text-gray-600">
-              An intimate dinner environment in a distinguished French brasserie in Central DC, designed for authentic relationship building 
+              An intimate seated dinner in a distinguished French brasserie in Central DC, designed for authentic relationship building 
               and high-level discussions on innovation, strategic partnerships, and cross-border collaboration.
             </p>
           </div>
