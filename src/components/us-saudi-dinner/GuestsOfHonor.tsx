@@ -1,6 +1,7 @@
 import godfreyXuereb from "@/assets/godfrey-xuereb.png";
 import barbaraLeaf from "@/assets/barbara-leaf.jpg";
 import aliTulbah from "@/assets/ali-tulbah.jpg";
+import sallyDonnelly from "@/assets/sally-donnelly.png";
 
 const GuestsOfHonor = () => {
   return (
@@ -59,6 +60,24 @@ const GuestsOfHonor = () => {
           </div>
           <p className="text-gray-600 text-sm">
             Former Associate Director for Cabinet Affairs in the George W. Bush White House and frequent speaker on US-GCC bilateral relations with extensive expertise in US-Middle East strategic partnerships.
+          </p>
+        </div>
+
+        {/* Sally Donnelly */}
+        <div className="border-l-4 border-primary pl-6">
+          <div className="flex items-center gap-3 mb-3">
+            <img 
+              src={sallyDonnelly} 
+              alt="Sally Donnelly" 
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary grayscale"
+            />
+            <div>
+              <h4 className="text-lg font-semibold text-primary">Sally Donnelly</h4>
+              <p className="text-sm text-gray-600">Former Senior Advisor to Secretary of Defense</p>
+            </div>
+          </div>
+          <p className="text-gray-600 text-sm">
+            Former Senior Advisor to Secretary of Defense James N. Mattis with extensive expertise in defense policy and US strategic partnerships.
           </p>
         </div>
       </div>
