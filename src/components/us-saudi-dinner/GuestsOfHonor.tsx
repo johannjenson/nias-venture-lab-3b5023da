@@ -1,4 +1,4 @@
-import godfreyXuereb from "@/assets/godfrey-xuereb.jpg";
+import godfreyXuereb from "@/assets/godfrey-xuereb.png";
 import barbaraLeaf from "@/assets/barbara-leaf.jpg";
 
 const GuestsOfHonor = () => {
