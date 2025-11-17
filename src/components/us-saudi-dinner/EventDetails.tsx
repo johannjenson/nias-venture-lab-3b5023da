@@ -27,8 +27,8 @@ const EventDetails = () => {
             <h3 className="text-xl font-semibold text-primary mb-2">Programme</h3>
             <p className="text-gray-600">
               5:00 PM - Welcome Drinks<br />
-              6:00 PM - Seated Dinner<br />
-              7:00 PM - 9:00 PM - Networking
+              6:00 PM - 8:30 PM - Seated Dinner<br />
+              8:00 PM - 9:00 PM - Night cap
             </p>
           </div>
         </div>
