@@ -61,12 +61,6 @@ const GuestsOfHonor = () => {
             Former Associate Director for Cabinet Affairs in the George W. Bush White House and frequent speaker on US-GCC bilateral relations with extensive expertise in US-Middle East strategic partnerships.
           </p>
         </div>
-
-        <div className="mt-6 bg-[#F8F3E8] rounded-lg p-4">
-          <p className="text-sm text-gray-700 italic">
-            This exclusive gathering brings together distinguished diplomatic leaders and key stakeholders shaping US-Saudi strategic partnerships in technology, innovation, and investment.
-          </p>
-        </div>
       </div>
     </div>
   );
