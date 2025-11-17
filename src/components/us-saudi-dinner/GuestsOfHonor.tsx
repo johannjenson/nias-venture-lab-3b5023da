@@ -1,5 +1,6 @@
 import godfreyXuereb from "@/assets/godfrey-xuereb.png";
 import barbaraLeaf from "@/assets/barbara-leaf.jpg";
+import aliTulbah from "@/assets/ali-tulbah.jpg";
 
 const GuestsOfHonor = () => {
   return (
@@ -40,6 +41,24 @@ const GuestsOfHonor = () => {
           </div>
           <p className="text-gray-600 text-sm">
             Ambassador Xuereb represents Malta's diplomatic and economic interests in the United States, fostering strategic partnerships and cross-border collaboration in innovation and investment.
+          </p>
+        </div>
+
+        {/* Ali H. Tulbah */}
+        <div className="border-l-4 border-primary pl-6">
+          <div className="flex items-center gap-3 mb-3">
+            <img 
+              src={aliTulbah} 
+              alt="Ali H. Tulbah" 
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary grayscale"
+            />
+            <div>
+              <h4 className="text-lg font-semibold text-primary">Ali H. Tulbah</h4>
+              <p className="text-sm text-gray-600">Senior Managing Director, Middle East & North Africa, McLarty Associates</p>
+            </div>
+          </div>
+          <p className="text-gray-600 text-sm">
+            Ali H. Tulbah leads McLarty Associates' Middle East & North Africa practice. He previously served as Associate Director for Cabinet Affairs in the George W. Bush White House and as Chief of Staff in the Coalition Provisional Authority in Baghdad. A frequent speaker on US-GCC bilateral relations, Mr. Tulbah is an active member of the US-Saudi Business Council and brings extensive expertise in US-Middle East strategic partnerships.
           </p>
         </div>
 
