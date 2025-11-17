@@ -13,7 +13,7 @@ const GuestsOfHonor = () => {
             <img 
               src={barbaraLeaf} 
               alt="Ambassador Barbara A. Leaf" 
-              className="w-20 h-20 rounded-full object-cover border-2 border-primary"
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary grayscale"
             />
             <div>
               <h4 className="text-lg font-semibold text-primary">Ambassador Barbara A. Leaf</h4>
@@ -31,7 +31,7 @@ const GuestsOfHonor = () => {
             <img 
               src={godfreyXuereb} 
               alt="H.E. Godfrey Xuereb" 
-              className="w-20 h-20 rounded-full object-cover object-center border-2 border-primary scale-110"
+              className="w-20 h-20 rounded-full object-cover object-center border-2 border-primary scale-110 grayscale"
             />
             <div>
               <h4 className="text-lg font-semibold text-primary">H.E. Godfrey Xuereb</h4>
