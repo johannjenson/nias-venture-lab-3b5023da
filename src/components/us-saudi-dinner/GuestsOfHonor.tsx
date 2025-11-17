@@ -22,7 +22,7 @@ const GuestsOfHonor = () => {
             </div>
           </div>
           <p className="text-gray-600 text-sm">
-            With over three decades of diplomatic experience, Ambassador Leaf served as the 25th Assistant Secretary of State for Near Eastern Affairs, developing and implementing policies across the Middle East region. She brings unparalleled expertise in US-Middle East relations, strategic partnerships, and regional economic development.
+            Former Assistant Secretary of State for Near Eastern Affairs with over three decades of diplomatic experience in US-Middle East relations and strategic partnerships.
           </p>
         </div>
 
@@ -40,7 +40,7 @@ const GuestsOfHonor = () => {
             </div>
           </div>
           <p className="text-gray-600 text-sm">
-            Ambassador Xuereb represents Malta's diplomatic and economic interests in the United States, fostering strategic partnerships and cross-border collaboration in innovation and investment.
+            Ambassador of Malta to the United States, fostering strategic partnerships in innovation and investment.
           </p>
         </div>
 
@@ -58,7 +58,7 @@ const GuestsOfHonor = () => {
             </div>
           </div>
           <p className="text-gray-600 text-sm">
-            Ali H. Tulbah leads McLarty Associates' Middle East & North Africa practice. He previously served as Associate Director for Cabinet Affairs in the George W. Bush White House and as Chief of Staff in the Coalition Provisional Authority in Baghdad. A frequent speaker on US-GCC bilateral relations, Mr. Tulbah is an active member of the US-Saudi Business Council and brings extensive expertise in US-Middle East strategic partnerships.
+            Former Associate Director for Cabinet Affairs in the George W. Bush White House and frequent speaker on US-GCC bilateral relations with extensive expertise in US-Middle East strategic partnerships.
           </p>
         </div>
 
