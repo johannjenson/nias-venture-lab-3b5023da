@@ -50,6 +50,12 @@ const EventDetails = () => {
           </div>
         </div>
       </div>
+
+      <div className="mt-6 bg-[#F8F3E8] rounded-lg p-4">
+        <p className="text-sm text-gray-700 italic">
+          This exclusive gathering brings together distinguished diplomatic leaders and key stakeholders shaping US-Saudi strategic partnerships in technology, innovation, and investment.
+        </p>
+      </div>
     </div>
   );
 };
