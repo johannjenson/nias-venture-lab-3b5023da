@@ -1,5 +1,5 @@
 import { CalendarIcon, Clock, MapPin, Users } from "lucide-react";
-import diwanLogo from "@/assets/diwan-logo.avif";
+import diwanLogo from "@/assets/diwan-logo.png";
 import niasLogo from "@/assets/nias-logo.png";
 
 const EventDetails = () => {
@@ -69,7 +69,7 @@ const EventDetails = () => {
         <h4 className="text-sm font-semibold text-gray-500 mb-4">Hosts</h4>
         <div className="flex items-center gap-12 flex-wrap">
           <a href="https://www.the-diwan.com/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity p-4">
-            <img src={diwanLogo} alt="The Diwan" className="h-24 w-auto filter invert" />
+            <img src={diwanLogo} alt="The Diwan" className="h-16 w-auto" />
           </a>
           <div className="p-4">
             <img src={niasLogo} alt="NIAS.io" className="h-16 w-auto" />
