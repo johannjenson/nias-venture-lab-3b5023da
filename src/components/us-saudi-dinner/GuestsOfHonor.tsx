@@ -73,7 +73,7 @@ const GuestsOfHonor = () => {
             />
             <div>
               <h4 className="text-lg font-semibold text-primary">Sally Donnelly</h4>
-              <p className="text-sm text-gray-600">Former Senior Advisor to Secretary of Defense</p>
+              <p className="text-sm text-gray-600">Founding Partner, Pallas Advisors | Former Senior Advisor to Secretary of Defense</p>
             </div>
           </div>
           <p className="text-gray-600 text-sm">
