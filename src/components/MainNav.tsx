@@ -61,10 +61,15 @@ const MainNav = () => {
     }
   };
   
-  const upcoming = [
+  const upcoming: Array<{title: string; href: string; description: string}> = [
   ];
 
   const pastEvents = [
+    {
+      title: "Doers Summit Dubai Panel",
+      href: "/events/doers-summit-dubai-panel",
+      description: "The Playbook for Landing & Expanding in Saudi Arabia. November 26, 2025, Dubai, UAE.",
+    },
     {
       title: "US-Saudi VIP Dinner in DC",
       href: "/events/us-saudi-forum-dinner",
@@ -169,7 +174,7 @@ const MainNav = () => {
   return (
     <NavigationMenu className="absolute top-24 md:top-20 left-1/2 -translate-x-1/2 z-50 w-full md:w-auto px-4 md:px-0">
       <NavigationMenuList className="gap-6">
-        <NavMenuItem title="Upcoming" items={upcoming} />
+        {upcoming.length > 0 && <NavMenuItem title="Upcoming" items={upcoming} />}
         <NavMenuItem title="Past" items={pastEvents} />
         <NavMenuItem title="Resources" items={opportunities} />
         <NavMenuItem title="About" items={about} />

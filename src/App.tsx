@@ -33,6 +33,7 @@ import Biban25Event from "./pages/Biban25Event";
 import RealEstate from "./pages/RealEstate";
 import WorkWithNias from "./pages/WorkWithNias";
 import USSaudiForumDinner from "./pages/USSaudiForumDinner";
+import DoersSummitEvent from "./pages/DoersSummitEvent";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,7 @@ const App = () => (
           <Route path="/events/night-cap" element={<NightCapEvent />} />
           <Route path="/events/biban25-art-gala-dinner" element={<Biban25Event />} />
           <Route path="/events/us-saudi-forum-dinner" element={<USSaudiForumDinner />} />
+          <Route path="/events/doers-summit-dubai-panel" element={<DoersSummitEvent />} />
           <Route path="/github-founder" element={<GithubFounderEvent />} />
           <Route path="/events/github-founder" element={<GithubFounderEvent />} />
           <Route path="/resources" element={<Resources />} />

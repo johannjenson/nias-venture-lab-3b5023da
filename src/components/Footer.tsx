@@ -49,9 +49,8 @@ const Footer = () => {
 
   const navigation = {
     main: [
-      { name: "Upcoming", submenu: [
-      ]},
       { name: "Past", submenu: [
+        { name: "Doers Summit Dubai Panel", href: "/events/doers-summit-dubai-panel" },
         { name: "US-Saudi VIP Dinner in DC", href: "/events/us-saudi-forum-dinner" },
         { name: "Biban25 Art Gala Dinner", href: "/events/biban25-art-gala-dinner" },
         { name: "FII9 Recap", href: "/events/fii9-recap" },
