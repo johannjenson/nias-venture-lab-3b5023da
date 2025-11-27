@@ -41,15 +41,12 @@ const EventHeader = ({ onAttendClick }: EventHeaderProps) => {
                   <MapPin className="h-3 w-3" />
                   Dubai, UAE
                 </Badge>
-                <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
-                  Panel Discussion
-                </Badge>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-6 animate-fade-in">
                 The Playbook for Landing & Expanding in Saudi Arabia
               </h1>
-              <p className="text-lg lg:text-xl text-gray-600 mb-8 animate-fade-in">
-                The GCC is becoming the world's fastest-rising market for tech, capital, and frontier innovation. This panel unpacks real expansion journeys: how founders broke into the GCC & Saudi, secured investment, navigated regulation, and scaled from local to regional.
+              <p className="text-lg text-gray-600 mb-8 animate-fade-in">
+                How founders broke into the GCC & Saudi, secured investment, navigated regulation, and scaled from local to regional.
               </p>
               <Button 
                 className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg animate-fade-in" 
