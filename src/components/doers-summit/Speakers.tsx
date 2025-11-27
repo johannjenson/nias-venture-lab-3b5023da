@@ -1,4 +1,8 @@
 import { Card } from "@/components/ui/card";
+import abeerImage from "@/assets/doers-summit/abeer-abdalla.jpeg";
+import aliImage from "@/assets/doers-summit/ali-abulhasan.png";
+import richardImage from "@/assets/doers-summit/richard-schrems.jpeg";
+import johannImage from "@/assets/doers-summit/johann-jenson.png";
 
 const Speakers = () => {
   const speakers = [
@@ -6,31 +10,31 @@ const Speakers = () => {
       name: "Abeer Abdalla",
       title: "Managing Editor",
       company: "The Saudi Times",
-      image: "", // Will be updated when user provides photos
+      image: abeerImage,
     },
     {
       name: "Ali Abulhasan",
       title: "Co-Founder & CEO",
       company: "Tap Payments",
-      image: "", // Will be updated when user provides photos
+      image: aliImage,
     },
     {
       name: "Richard Schrems",
       title: "Co-founder and CEO",
       company: "palm.hr",
-      image: "", // Will be updated when user provides photos
+      image: richardImage,
     },
     {
       name: "Johann Jenson",
       title: "Founding Partner",
       company: "NIAS.io",
-      image: "", // Will be updated when user provides photos
+      image: johannImage,
     },
     {
       name: "Hassan Bakkala",
       title: "Government Liaison Executive",
       company: "",
-      image: "", // Will be updated when user provides photos
+      image: "",
     },
   ];
 
@@ -46,7 +50,7 @@ const Speakers = () => {
                   <img 
                     src={speaker.image} 
                     alt={speaker.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover grayscale"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-gray-400 text-xl font-bold">
