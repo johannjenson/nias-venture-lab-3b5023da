@@ -34,7 +34,7 @@ const BottomNavigation = () => {
   ];
 
   const pastEvents = [
-    { label: "VIP Dinner in DC: US-Saudi Investment Forum", href: "/events/us-saudi-forum-dinner" },
+    { label: "US-Saudi VIP Dinner in DC", href: "/events/us-saudi-forum-dinner" },
     { label: "Biban25 Art Gala Dinner", href: "/events/biban25-art-gala-dinner" },
     { label: "FII9 Recap", href: "/events/fii9-recap" },
     { label: "FII9 Night Caps", href: "/events/night-cap" },
