@@ -30,10 +30,11 @@ const BottomNavigation = () => {
     return null;
   }
 
-  const upcomingEvents = [
+  const upcomingEvents: Array<{label: string; href: string}> = [
   ];
 
   const pastEvents = [
+    { label: "Doers Summit Dubai Panel", href: "/events/doers-summit-dubai-panel" },
     { label: "US-Saudi VIP Dinner in DC", href: "/events/us-saudi-forum-dinner" },
     { label: "Biban25 Art Gala Dinner", href: "/events/biban25-art-gala-dinner" },
     { label: "FII9 Recap", href: "/events/fii9-recap" },
@@ -57,13 +58,13 @@ const BottomNavigation = () => {
       label: 'Home', 
       href: '/' 
     },
-    { 
+    ...(upcomingEvents.length > 0 ? [{ 
       icon: Calendar,
       label: 'Upcoming',
       href: '#',
       hasSubmenu: true,
       submenu: upcomingEvents
-    },
+    }] : []),
     { 
       icon: Calendar,
       label: 'Past',
