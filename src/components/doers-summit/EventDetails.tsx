@@ -31,21 +31,6 @@ const EventDetails = () => {
           </div>
         </div>
       </div>
-
-      <div className="border-t pt-8">
-        <h3 className="text-xl font-semibold text-gray-900 mb-4">About Doers Summit</h3>
-        <p className="text-gray-600 mb-4">
-          Doers Summit brings together founders, operators, and investors to share real stories and actionable insights from building companies across emerging markets.
-        </p>
-        <a 
-          href="https://www.doerssummit.com/city/dubai" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="text-primary hover:underline font-medium"
-        >
-          Learn more about Doers Summit →
-        </a>
-      </div>
     </div>
   );
 };
