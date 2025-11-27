@@ -66,7 +66,7 @@ const MainNav = () => {
 
   const pastEvents = [
     {
-      title: "VIP Dinner in DC: US-Saudi Investment Forum",
+      title: "US-Saudi VIP Dinner in DC",
       href: "/events/us-saudi-forum-dinner",
       description: "An exclusive gathering for business leaders on the eve of the US-Saudi Investment Forum. November 18, 2025, Washington D.C.",
     },

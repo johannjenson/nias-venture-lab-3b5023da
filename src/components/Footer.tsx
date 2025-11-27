@@ -52,7 +52,7 @@ const Footer = () => {
       { name: "Upcoming", submenu: [
       ]},
       { name: "Past", submenu: [
-        { name: "VIP Dinner in DC: US-Saudi Investment Forum", href: "/events/us-saudi-forum-dinner" },
+        { name: "US-Saudi VIP Dinner in DC", href: "/events/us-saudi-forum-dinner" },
         { name: "Biban25 Art Gala Dinner", href: "/events/biban25-art-gala-dinner" },
         { name: "FII9 Recap", href: "/events/fii9-recap" },
         { name: "FII9 Night Caps", href: "/events/night-cap" },
