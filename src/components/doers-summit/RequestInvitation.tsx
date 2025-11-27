@@ -12,7 +12,7 @@ const RequestInvitation = ({ onAttendClick }: RequestInvitationProps) => {
           Join NIAS at Doers Summit Dubai
         </h2>
         <p className="text-lg text-gray-600 mb-8">
-          Don't miss this opportunity to learn from founders and operators who have successfully expanded into Saudi Arabia and the GCC.
+          Learn from founders and operators who have successfully expanded into Saudi Arabia and the GCC.
         </p>
         <Button 
           className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
