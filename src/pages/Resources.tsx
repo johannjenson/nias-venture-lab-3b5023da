@@ -145,6 +145,23 @@ const Resources = () => {
               <IndustryCard key={industry.name} industry={industry} />
             ))}
           </div>
+
+          {/* Bottom CTA */}
+          <div className="mt-16 mb-8 bg-gradient-to-r from-primary/10 to-secondary/20 rounded-2xl p-8 md:p-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Ready to Expand into Saudi Arabia?
+            </h2>
+            <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+              Join the NIAS Network and connect with Saudi investors, founders, and advisors to accelerate your business growth in the Kingdom.
+            </p>
+            <Button
+              onClick={() => setShowRequestModal(true)}
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
+            >
+              Apply to Join NIAS
+            </Button>
+          </div>
         </div>
       </main>
       <Footer />
