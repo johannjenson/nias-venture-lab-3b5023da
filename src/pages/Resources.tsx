@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import IndustryCard from "@/components/resources/IndustryCard";
 import SearchAndFilter from "@/components/resources/SearchAndFilter";
 import IndustryStats from "@/components/resources/IndustryStats";
+import IndustryBubbleChart from "@/components/resources/IndustryBubbleChart";
 import { industries } from "@/data/industries";
 import { Button } from "@/components/ui/button";
 import { Waves } from "lucide-react";
@@ -125,6 +126,8 @@ const Resources = () => {
             }
             totalInvestment="$3+ trillion"
           />
+
+          <IndustryBubbleChart industries={filteredAndSortedIndustries} />
 
           <SearchAndFilter
             searchTerm={searchTerm}
