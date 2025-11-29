@@ -6,7 +6,7 @@ import coverageThumb from "@/assets/doers-summit/summit-coverage-thumb.png";
 
 const EventContent = () => {
   return (
-    <section className="py-4 bg-white">
+    <section className="pt-0 pb-4 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-start mb-16">
           <div className="space-y-12">
