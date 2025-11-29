@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const healthcareIndustry: Industry = {
   name: "Healthcare",
-  score: 80,
+  score: 82,
   description: "Healthcare infrastructure, biotechnology, and pharmaceutical manufacturing.",
-  investment: "$250+ billion",
+  investment: "$350+ billion",
   keyAreas: ["Medical Technology", "Pharmaceuticals", "Healthcare Services"],
-  tam: "$500 billion",
+  tam: "$650 billion",
   techTailwinds: ["Telemedicine", "AI Diagnostics", "Digital Health Records", "Biotech Innovation"],
   leaders: [
     { name: "Al Nahdi Medical Company", marketCap: "$3.2B" },

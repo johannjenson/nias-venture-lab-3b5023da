@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const retailIndustry: Industry = {
   name: "Retail",
-  score: 84,
+  score: 85,
   description: "Modern retail development including e-commerce platforms, smart stores, and luxury retail.",
-  investment: "$550+ billion",
+  investment: "$620+ billion",
   keyAreas: ["E-commerce", "Smart Retail", "Luxury Market"],
-  tam: "$800 billion",
+  tam: "$950 billion",
   techTailwinds: ["Digital Payments", "AI Analytics", "IoT in Retail", "AR Shopping"],
   leaders: [
     { name: "Fawaz Al Hokair Group", marketCap: "$4.2B" },

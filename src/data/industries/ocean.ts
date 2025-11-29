@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const oceanIndustry: Industry = {
   name: "Ocean Economy",
-  score: 81,
+  score: 83,
   description: "Development of marine resources, aquaculture, and coastal tourism.",
-  investment: "$175+ billion",
+  investment: "$210+ billion",
   keyAreas: ["Marine Tourism", "Aquaculture", "Port Development"],
-  tam: "$300 billion",
+  tam: "$380 billion",
   techTailwinds: ["Marine Tech", "Sustainable Fishing", "Ocean Data", "Clean Energy"],
   leaders: [
     { name: "National Shipping", marketCap: "$3.2B" },

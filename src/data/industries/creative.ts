@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const creativeIndustry: Industry = {
   name: "Creative Industries",
-  score: 82,
+  score: 84,
   description: "Development of film, gaming, and digital content creation industries.",
-  investment: "$240+ billion",
+  investment: "$290+ billion",
   keyAreas: ["Film Production", "Gaming Development", "Digital Content"],
-  tam: "$400 billion",
+  tam: "$500 billion",
   techTailwinds: ["Virtual Production", "Cloud Gaming", "Digital Distribution", "XR Content"],
   leaders: [
     { name: "MBC Group", marketCap: "$2.8B" },

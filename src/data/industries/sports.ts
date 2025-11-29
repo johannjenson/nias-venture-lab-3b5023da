@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const sportsIndustry: Industry = {
   name: "Sports & Entertainment",
-  score: 81,
+  score: 83,
   description: "Sports facilities, entertainment venues, and cultural attractions development.",
-  investment: "$200+ billion",
+  investment: "$250+ billion",
   keyAreas: ["Sports Infrastructure", "Entertainment Venues", "Cultural Facilities"],
-  tam: "$300 billion",
+  tam: "$380 billion",
   techTailwinds: ["Streaming Technology", "Smart Venues", "Fan Engagement Platforms"],
   leaders: [
     { name: "Saudi Sports Company", marketCap: "$1.5B" },

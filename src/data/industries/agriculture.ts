@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const agricultureIndustry: Industry = {
   name: "Agriculture & Food Security",
-  score: 83,
+  score: 85,
   description: "Sustainable agriculture, food production, and agricultural technology initiatives.",
-  investment: "$180+ billion",
+  investment: "$220+ billion",
   keyAreas: ["AgTech", "Food Production", "Sustainable Farming"],
-  tam: "$400 billion",
+  tam: "$480 billion",
   techTailwinds: ["Precision Agriculture", "Vertical Farming", "Biotechnology"],
   leaders: [
     { name: "Almarai", marketCap: "$8.0B" },

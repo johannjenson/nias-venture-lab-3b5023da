@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const constructionIndustry: Industry = {
   name: "Smart Construction",
-  score: 83,
+  score: 85,
   description: "Advanced construction technologies, sustainable building materials, and smart infrastructure.",
-  investment: "$420+ billion",
+  investment: "$520+ billion",
   keyAreas: ["Sustainable Materials", "Smart Buildings", "Construction Tech"],
-  tam: "$900 billion",
+  tam: "$1.1 trillion",
   techTailwinds: ["3D Printing", "Modular Construction", "IoT Integration", "Digital Twins"],
   leaders: [
     { name: "Saudi Ceramics", marketCap: "$2.1B" },

@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const aerospaceIndustry: Industry = {
   name: "Aerospace",
-  score: 86,
+  score: 88,
   description: "Aviation manufacturing, space technology, and aerospace research initiatives.",
-  investment: "$350+ billion",
+  investment: "$420+ billion",
   keyAreas: ["Aviation Manufacturing", "Space Technology", "Aerospace R&D"],
-  tam: "$500 billion",
+  tam: "$650 billion",
   techTailwinds: ["Space Exploration Technologies", "Advanced Materials", "AI in Flight Operations"],
   leaders: [
     { name: "Saudi Arabian Airlines", marketCap: "$5.0B" },

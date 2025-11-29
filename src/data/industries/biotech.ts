@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const biotechIndustry: Industry = {
   name: "Biotechnology",
-  score: 85,
+  score: 86,
   description: "Development of biotechnology research, pharmaceuticals, and medical innovations.",
-  investment: "$380+ billion",
+  investment: "$450+ billion",
   keyAreas: ["Biomedical Research", "Drug Development", "Genomics"],
-  tam: "$600 billion",
+  tam: "$750 billion",
   techTailwinds: ["Gene Editing", "Precision Medicine", "Bioinformatics", "Synthetic Biology"],
   leaders: [
     { name: "SPIMACO", marketCap: "$1.8B" },

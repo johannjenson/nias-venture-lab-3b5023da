@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const miningIndustry: Industry = {
   name: "Mining & Minerals",
-  score: 82,
+  score: 84,
   description: "Exploration and processing of mineral resources, focusing on rare earth elements and phosphates.",
-  investment: "$320+ billion",
+  investment: "$380+ billion",
   keyAreas: ["Mineral Processing", "Mining Technology", "Resource Exploration"],
-  tam: "$600 billion",
+  tam: "$700 billion",
   techTailwinds: ["Automation", "Data Analytics", "Sustainable Practices"],
   leaders: [
     { name: "Ma'aden", marketCap: "$42.3B" },
