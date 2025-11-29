@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const biotechIndustry: Industry = {
   name: "Biotechnology",
   score: 86,
-  description: "Development of biotechnology research, pharmaceuticals, and medical innovations.",
+  description: "Establishment of advanced biotechnology research centers focused on genomics and precision medicine, expansion of pharmaceutical development and manufacturing capabilities for both generic and specialized drugs, and fostering medical innovations including gene therapy and regenerative medicine to position Saudi Arabia at the forefront of life sciences.",
   investment: "$450+ billion",
   keyAreas: ["Biomedical Research", "Drug Development", "Genomics"],
   tam: "$750 billion",

@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const healthcareIndustry: Industry = {
   name: "Healthcare",
   score: 82,
-  description: "Healthcare infrastructure, biotechnology, and pharmaceutical manufacturing.",
+  description: "Comprehensive expansion of world-class healthcare infrastructure including specialized hospitals and medical centers, advancement of biotechnology research and development capabilities, and establishment of pharmaceutical manufacturing facilities to reduce import dependency and enhance healthcare self-sufficiency.",
   investment: "$350+ billion",
   keyAreas: ["Medical Technology", "Pharmaceuticals", "Healthcare Services"],
   tam: "$650 billion",

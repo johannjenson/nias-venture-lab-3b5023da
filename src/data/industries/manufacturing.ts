@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const manufacturingIndustry: Industry = {
   name: "Manufacturing",
   score: 93,
-  description: "Advanced manufacturing with focus on Industry 4.0, localization of military industries, and renewable energy equipment.",
+  description: "Transformation of manufacturing sector through Industry 4.0 adoption including smart factories with AI and robotics, strategic localization of military and defense industries to build domestic capabilities, and production of renewable energy equipment such as solar panels and wind turbines to support green energy initiatives.",
   investment: "$550+ billion",
   keyAreas: ["Industrial automation", "Defense manufacturing", "Clean tech production"],
   tam: "$2.4 trillion",

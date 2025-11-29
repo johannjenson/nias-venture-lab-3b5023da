@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const educationIndustry: Industry = {
   name: "Education",
   score: 80,
-  description: "Modernization of education system, e-learning platforms, and vocational training.",
+  description: "Comprehensive modernization of the education system integrating STEM curriculum and critical thinking skills, development of sophisticated e-learning platforms with AI-powered personalized learning, and expansion of vocational training programs aligned with industry needs to prepare Saudi youth for the jobs of the future.",
   investment: "$180+ billion",
   keyAreas: ["EdTech", "Vocational Training", "Digital Learning"],
   tam: "$350 billion",

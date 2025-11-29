@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const creativeIndustry: Industry = {
   name: "Creative Industries",
   score: 84,
-  description: "Development of film, gaming, and digital content creation industries.",
+  description: "Comprehensive development of Saudi Arabia's film production, gaming studios, and digital content creation industries, leveraging cutting-edge technology and creative talent to establish the Kingdom as a regional entertainment hub.",
   investment: "$290+ billion",
   keyAreas: ["Film Production", "Gaming Development", "Digital Content"],
   tam: "$500 billion",

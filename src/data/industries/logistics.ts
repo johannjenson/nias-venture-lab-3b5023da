@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const logisticsIndustry: Industry = {
   name: "Logistics & Transportation",
   score: 89,
-  description: "Development of transportation infrastructure, ports, and logistics networks.",
+  description: "Strategic development of multimodal transportation infrastructure including highways and railways, expansion and modernization of major ports to serve as regional trade hubs, and creation of sophisticated logistics networks with smart warehousing and distribution centers connecting Saudi Arabia to global markets.",
   investment: "$500+ billion",
   keyAreas: ["Smart Logistics", "Port Development", "Transportation Networks"],
   tam: "$950 billion",
