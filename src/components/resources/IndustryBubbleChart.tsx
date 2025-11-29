@@ -2,6 +2,7 @@ import { Industry } from "@/types/industry";
 import { parseToNearestBillion, formatBillions } from "@/utils/industryDataParser";
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ZAxis, Cell } from "recharts";
 import { Card } from "@/components/ui/card";
+import { useState } from "react";
 
 interface IndustryBubbleChartProps {
   industries: Industry[];
@@ -17,6 +18,8 @@ interface BubbleDataPoint {
 }
 
 const IndustryBubbleChart = ({ industries, onBubbleClick }: IndustryBubbleChartProps) => {
+  const [selectedBubble, setSelectedBubble] = useState<string | null>(null);
+  
   // Transform industry data for the chart
   const chartData: BubbleDataPoint[] = industries.map((industry, index) => ({
     name: industry.name,
@@ -85,8 +88,17 @@ const IndustryBubbleChart = ({ industries, onBubbleClick }: IndustryBubbleChartP
             data={chartData} 
             fill="#3b82f6"
             onClick={(data) => {
-              if (data && onBubbleClick) {
-                onBubbleClick(data.name);
+              if (data) {
+                if (selectedBubble === data.name) {
+                  // Second click - scroll to section
+                  if (onBubbleClick) {
+                    onBubbleClick(data.name);
+                  }
+                  setSelectedBubble(null);
+                } else {
+                  // First click - just select to show tooltip
+                  setSelectedBubble(data.name);
+                }
               }
             }}
             style={{ cursor: 'pointer' }}
