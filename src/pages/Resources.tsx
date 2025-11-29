@@ -135,7 +135,25 @@ const Resources = () => {
             seeking market entry.
           </p>
           <p className="text-sm text-gray-500 mb-8">
-            Last updated: September 2025 • Data sources: Vision 2030 Annual Report, market research
+            Last updated: September 2025 • Data sources:{" "}
+            <a 
+              href="https://www.vision2030.gov.sa/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              Vision 2030 Annual Report
+            </a>
+            ,{" "}
+            <a 
+              href="https://www.mckinsey.com/featured-insights/middle-east-and-north-africa/saudi-arabia" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              McKinsey Saudi Arabia Analysis
+            </a>
+            , market research
           </p>
 
           <IndustryStats
