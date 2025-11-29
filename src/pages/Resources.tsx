@@ -134,27 +134,6 @@ const Resources = () => {
             Below are the top industries with the highest potential for international businesses 
             seeking market entry.
           </p>
-          <p className="text-sm text-gray-500 mb-8">
-            Last updated: September 2025 • Data sources:{" "}
-            <a 
-              href="https://www.vision2030.gov.sa/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              Vision 2030 Annual Report
-            </a>
-            ,{" "}
-            <a 
-              href="https://www.mckinsey.com/featured-insights/middle-east-and-north-africa/saudi-arabia" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              McKinsey Saudi Arabia Analysis
-            </a>
-            , market research
-          </p>
 
           <IndustryStats
             totalIndustries={filteredAndSortedIndustries.length}
@@ -210,6 +189,13 @@ const Resources = () => {
             >
               Apply to Join NIAS
             </Button>
+          </div>
+
+          {/* Data Sources */}
+          <div className="mt-16 pt-8 border-t border-gray-200">
+            <p className="text-sm text-gray-500 text-center">
+              Last updated: September 2025 • Data sources: Vision 2030 Annual Report, McKinsey Saudi Arabia Analysis, market research
+            </p>
           </div>
         </div>
       </main>
