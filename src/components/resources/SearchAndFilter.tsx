@@ -35,8 +35,9 @@ const SearchAndFilter = ({
 
   return (
     <div className="space-y-4 mb-8">
-      <div className="flex gap-4">
-        <div className="flex-1">
+      <div className="flex flex-col md:flex-row gap-4">
+        {/* Search bar - full width on mobile */}
+        <div className="w-full md:flex-1">
           <Input
             placeholder="Search industries, descriptions, key areas, or industry leaders..."
             value={searchTerm}
@@ -45,71 +46,74 @@ const SearchAndFilter = ({
           />
         </div>
         
-        <Popover open={isFilterOpen} onOpenChange={setIsFilterOpen}>
-          <PopoverTrigger asChild>
-            <Button variant="outline" className="gap-2">
-              <Filter className="h-4 w-4" />
-              Filters
-              {minScore > 0 && (
-                <span className="ml-1 rounded-full bg-primary text-white text-xs px-2 py-0.5">
-                  1
-                </span>
-              )}
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-80">
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-medium mb-3">Minimum Opportunity Score</h4>
-                <div className="space-y-2">
-                  <Slider
-                    value={[minScore]}
-                    onValueChange={(values) => setMinScore(values[0])}
-                    max={100}
-                    step={5}
-                    className="w-full"
-                  />
-                  <div className="flex justify-between text-sm text-gray-500">
-                    <span>0</span>
-                    <span className="font-medium text-primary">{minScore}+</span>
-                    <span>100</span>
+        {/* Filter, Sort, Export buttons - grouped on mobile */}
+        <div className="flex gap-4">
+          <Popover open={isFilterOpen} onOpenChange={setIsFilterOpen}>
+            <PopoverTrigger asChild>
+              <Button variant="outline" className="gap-2">
+                <Filter className="h-4 w-4" />
+                Filters
+                {minScore > 0 && (
+                  <span className="ml-1 rounded-full bg-primary text-white text-xs px-2 py-0.5">
+                    1
+                  </span>
+                )}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-80">
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-medium mb-3">Minimum Opportunity Score</h4>
+                  <div className="space-y-2">
+                    <Slider
+                      value={[minScore]}
+                      onValueChange={(values) => setMinScore(values[0])}
+                      max={100}
+                      step={5}
+                      className="w-full"
+                    />
+                    <div className="flex justify-between text-sm text-gray-500">
+                      <span>0</span>
+                      <span className="font-medium text-primary">{minScore}+</span>
+                      <span>100</span>
+                    </div>
                   </div>
                 </div>
+                
+                {minScore > 0 && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setMinScore(0)}
+                    className="w-full"
+                  >
+                    Clear Filters
+                  </Button>
+                )}
               </div>
-              
-              {minScore > 0 && (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setMinScore(0)}
-                  className="w-full"
-                >
-                  Clear Filters
-                </Button>
-              )}
-            </div>
-          </PopoverContent>
-        </Popover>
+            </PopoverContent>
+          </Popover>
 
-        <Select value={sortBy} onValueChange={setSortBy}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Sort by..." />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="score">Sort by Score</SelectItem>
-            <SelectItem value="investment">Sort by Investment</SelectItem>
-            <SelectItem value="name">Sort by Name</SelectItem>
-          </SelectContent>
-        </Select>
+          <Select value={sortBy} onValueChange={setSortBy}>
+            <SelectTrigger className="w-[140px]">
+              <SelectValue placeholder="Sort by..." />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="score">Sort by Score</SelectItem>
+              <SelectItem value="investment">Sort by Investment</SelectItem>
+              <SelectItem value="name">Sort by Name</SelectItem>
+            </SelectContent>
+          </Select>
 
-        <Button
-          variant="outline"
-          onClick={onExport}
-          className="gap-2"
-        >
-          <Download className="h-4 w-4" />
-          Export
-        </Button>
+          <Button
+            variant="outline"
+            onClick={onExport}
+            className="gap-2"
+          >
+            <Download className="h-4 w-4" />
+            <span className="hidden sm:inline">Export</span>
+          </Button>
+        </div>
       </div>
 
       <div className="text-sm text-gray-600">
