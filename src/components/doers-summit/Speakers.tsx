@@ -3,6 +3,7 @@ import abeerImage from "@/assets/doers-summit/abeer-abdalla.jpeg";
 import aliImage from "@/assets/doers-summit/ali-abulhasan.png";
 import richardImage from "@/assets/doers-summit/richard-schrems.jpeg";
 import johannImage from "@/assets/doers-summit/johann-jenson.png";
+import hassanImage from "@/assets/doers-summit/hassan-bakkala.jpg";
 
 const Speakers = () => {
   const speakers = [
@@ -34,7 +35,7 @@ const Speakers = () => {
       name: "Hassan Bakkala",
       title: "Government Liaison Executive",
       company: "",
-      image: "",
+      image: hassanImage,
     },
   ];
 
