@@ -63,7 +63,7 @@ const Resources = () => {
             onClick={() => setShowRequestModal(true)}
             className="bg-primary hover:bg-primary/90 text-white"
           >
-            Join the Nias Network
+            Join the NIAS Network
           </Button>
         </div>
       </div>
