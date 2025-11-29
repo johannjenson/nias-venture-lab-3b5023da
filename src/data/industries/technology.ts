@@ -9,11 +9,11 @@ export const technologyIndustry: Industry = {
   tam: "$1.8 trillion",
   techTailwinds: ["5G Networks", "Edge Computing", "Quantum Computing", "Blockchain"],
   leaders: [
-    { name: "stc", marketCap: "$58.7B" },
+    { name: "stc", marketCap: "$55.3B" },
     { name: "Mobily", marketCap: "$16.2B" },
     { name: "Elm", marketCap: "$12.8B" },
     { name: "Zain", marketCap: "$10.5B" },
-    { name: "Saudi Telecom Company", marketCap: "$20.0B" },
+    { name: "Saudi Telecom Company", marketCap: "$55.3B" },
     { name: "Axiom Telecom", marketCap: "$1.2B" }
   ]
 };

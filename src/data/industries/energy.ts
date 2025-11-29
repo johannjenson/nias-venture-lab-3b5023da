@@ -9,7 +9,7 @@ export const energyIndustry: Industry = {
   tam: "$1.5 trillion",
   techTailwinds: ["Smart Grid Technology", "Energy Storage", "AI Energy Management", "IoT Monitoring"],
   leaders: [
-    { name: "ACWA Power", marketCap: "$10.0B" },
+    { name: "ACWA Power", marketCap: "$62.7B" },
     { name: "First Solar", marketCap: "$8.5B" },
     { name: "Siemens Gamesa", marketCap: "$12.0B" },
     { name: "Vestas", marketCap: "$9.2B" },
