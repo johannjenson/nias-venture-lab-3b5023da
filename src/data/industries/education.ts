@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const educationIndustry: Industry = {
   name: "Education",
-  score: 78,
+  score: 80,
   description: "Modernization of education system, e-learning platforms, and vocational training.",
-  investment: "$150+ billion",
+  investment: "$180+ billion",
   keyAreas: ["EdTech", "Vocational Training", "Digital Learning"],
-  tam: "$300 billion",
+  tam: "$350 billion",
   techTailwinds: ["E-Learning Platforms", "AI Tutors", "Gamification"],
   leaders: [
     { name: "Al-Falak", marketCap: "$1.0B" },

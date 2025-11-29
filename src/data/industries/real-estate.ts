@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const realEstateIndustry: Industry = {
   name: "Real Estate",
-  score: 84,
+  score: 86,
   description: "Development of smart cities, residential projects, and commercial spaces.",
-  investment: "$1+ trillion",
+  investment: "$1.3+ trillion",
   keyAreas: ["Smart Cities", "Residential Development", "Commercial Real Estate"],
-  tam: "$1.2 trillion",
+  tam: "$1.6 trillion",
   techTailwinds: ["Smart Home Technology", "Sustainable Building Practices", "AI in Property Management"],
   leaders: [
     { name: "Emaar Properties", marketCap: "$15.2B" },

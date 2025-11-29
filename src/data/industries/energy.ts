@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const energyIndustry: Industry = {
   name: "Renewable Energy",
-  score: 88,
+  score: 91,
   description: "Solar, wind, and green hydrogen projects as part of the Saudi Green Initiative.",
-  investment: "$700+ billion",
+  investment: "$850+ billion",
   keyAreas: ["Solar Power", "Wind Energy", "Green Hydrogen"],
-  tam: "$1.5 trillion",
+  tam: "$2 trillion",
   techTailwinds: ["Smart Grid Technology", "Energy Storage", "AI Energy Management", "IoT Monitoring"],
   leaders: [
     { name: "ACWA Power", marketCap: "$62.7B" },

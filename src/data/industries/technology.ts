@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const technologyIndustry: Industry = {
   name: "Technology",
-  score: 90,
+  score: 92,
   description: "Digital infrastructure, smart cities, and emerging technologies including AI, IoT, and cloud computing.",
-  investment: "$500+ billion",
+  investment: "$600+ billion",
   keyAreas: ["Artificial Intelligence", "Smart City Solutions", "Cloud Services"],
-  tam: "$1.8 trillion",
+  tam: "$2.5 trillion",
   techTailwinds: ["5G Networks", "Edge Computing", "Quantum Computing", "Blockchain"],
   leaders: [
     { name: "stc", marketCap: "$55.3B" },

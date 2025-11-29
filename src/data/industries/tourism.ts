@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const tourismIndustry: Industry = {
   name: "Tourism & Entertainment",
-  score: 85,
+  score: 87,
   description: "Development of tourism destinations, cultural sites, entertainment facilities, and eSports venues.",
-  investment: "$800+ billion",
+  investment: "$900+ billion",
   keyAreas: ["Hospitality", "Cultural Tourism", "Entertainment Venues", "eSports"],
-  tam: "$1 trillion",
+  tam: "$1.2 trillion",
   techTailwinds: ["AR/VR Experiences", "Digital Payments", "Smart Tourism", "IoT Integration"],
   leaders: [
     { name: "Al Habtoor Group", marketCap: "$5.0B" },

@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const financeIndustry: Industry = {
   name: "Financial Services",
-  score: 86,
+  score: 88,
   description: "FinTech solutions, digital banking, and Islamic finance innovations.",
-  investment: "$280+ billion",
+  investment: "$320+ billion",
   keyAreas: ["FinTech", "Digital Banking", "Islamic Finance"],
-  tam: "$500 billion",
+  tam: "$650 billion",
   techTailwinds: ["Digital Wallets", "Blockchain", "AI in Risk Management"],
   leaders: [
     { name: "Al Rajhi Bank", marketCap: "$20.0B" },

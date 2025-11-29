@@ -2,11 +2,11 @@ import { Industry } from "@/types/industry";
 
 export const waterIndustry: Industry = {
   name: "Water & Environment",
-  score: 85,
+  score: 87,
   description: "Water management, desalination projects, and environmental conservation initiatives.",
-  investment: "$230+ billion",
+  investment: "$280+ billion",
   keyAreas: ["Water Technology", "Environmental Solutions", "Waste Management"],
-  tam: "$300 billion",
+  tam: "$400 billion",
   techTailwinds: ["Smart Water Management", "IoT for Environmental Monitoring", "Recycling Technologies"],
   leaders: [
     { name: "ACWA Power", marketCap: "$10.0B" },
