@@ -33,7 +33,7 @@ const Speakers = () => {
     },
     {
       name: "Hassan Bakkala",
-      title: "Government Liaison Executive",
+      title: "Family Office Principal",
       company: "",
       image: hassanImage,
     },
