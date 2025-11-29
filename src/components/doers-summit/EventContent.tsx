@@ -8,7 +8,7 @@ const EventContent = () => {
   return (
     <section className="py-4 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-16 items-start mb-16">
           <div className="space-y-12">
             <EventDetails />
             
@@ -40,11 +40,12 @@ const EventContent = () => {
                 <p className="text-sm text-gray-600 mt-2">The Saudi Times</p>
               </a>
             </div>
-            
-            <WhatToExpect />
           </div>
           <Speakers />
         </div>
+        
+        {/* What to Expect - Full Width */}
+        <WhatToExpect />
       </div>
     </section>
   );
