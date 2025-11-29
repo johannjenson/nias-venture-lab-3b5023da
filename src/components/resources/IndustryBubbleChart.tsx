@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 
 interface IndustryBubbleChartProps {
   industries: Industry[];
+  onBubbleClick?: (industryName: string) => void;
 }
 
 interface BubbleDataPoint {
@@ -15,7 +16,7 @@ interface BubbleDataPoint {
   color: string;
 }
 
-const IndustryBubbleChart = ({ industries }: IndustryBubbleChartProps) => {
+const IndustryBubbleChart = ({ industries, onBubbleClick }: IndustryBubbleChartProps) => {
   // Transform industry data for the chart
   const chartData: BubbleDataPoint[] = industries.map((industry, index) => ({
     name: industry.name,
@@ -48,7 +49,7 @@ const IndustryBubbleChart = ({ industries }: IndustryBubbleChartProps) => {
       <div className="mb-4">
         <h3 className="text-xl font-bold text-primary mb-2">Industry Opportunity Landscape</h3>
         <p className="text-sm text-gray-600">
-          Bubble size represents Total Addressable Market (TAM). Hover over bubbles for details.
+          Bubble size represents Total Addressable Market (TAM). Click any bubble to jump to that industry.
         </p>
       </div>
 
@@ -83,6 +84,12 @@ const IndustryBubbleChart = ({ industries }: IndustryBubbleChartProps) => {
           <Scatter 
             data={chartData} 
             fill="#3b82f6"
+            onClick={(data) => {
+              if (data && onBubbleClick) {
+                onBubbleClick(data.name);
+              }
+            }}
+            style={{ cursor: 'pointer' }}
           >
             {chartData.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={entry.color} />

@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import IndustryCard from "@/components/resources/IndustryCard";
 import SearchAndFilter from "@/components/resources/SearchAndFilter";
@@ -11,6 +11,7 @@ import { Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import RequestInviteModal from "@/components/RequestInviteModal";
 import { Helmet } from "react-helmet";
+import { useToast } from "@/hooks/use-toast";
 
 const Resources = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,6 +19,19 @@ const Resources = () => {
   const [minScore, setMinScore] = useState(0);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const navigate = useNavigate();
+  const { toast } = useToast();
+
+  // Show toast when filters are applied
+  useEffect(() => {
+    if (minScore > 0 || searchTerm) {
+      const count = filteredAndSortedIndustries.length;
+      toast({
+        title: "Filters Applied",
+        description: `Showing ${count} ${count === 1 ? 'industry' : 'industries'} matching your criteria`,
+        duration: 3000,
+      });
+    }
+  }, [minScore, searchTerm]);
 
   const filteredAndSortedIndustries = industries
     .filter(industry => {
@@ -69,10 +83,17 @@ const Resources = () => {
     a.click();
     document.body.removeChild(a);
     window.URL.revokeObjectURL(url);
+    
+    // Show success toast
+    toast({
+      title: "Export Successful! 🎉",
+      description: `Downloaded ${filteredAndSortedIndustries.length} industries as CSV`,
+      duration: 3000,
+    });
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white scroll-smooth">
       <Helmet>
         <title>Vision 2030 Investment Opportunities | NIAS Network</title>
         <meta name="description" content="Explore Saudi Arabia's $3 trillion Vision 2030 investment opportunities across key industries with high potential for international businesses seeking market entry." />
@@ -127,7 +148,17 @@ const Resources = () => {
             totalInvestment="$3+ trillion"
           />
 
-          <IndustryBubbleChart industries={filteredAndSortedIndustries} />
+          <IndustryBubbleChart 
+            industries={filteredAndSortedIndustries}
+            onBubbleClick={(industryName) => {
+              const element = document.getElementById(
+                `industry-${industryName.toLowerCase().replace(/\s+/g, '-')}`
+              );
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }}
+          />
 
           <SearchAndFilter
             searchTerm={searchTerm}
@@ -141,8 +172,8 @@ const Resources = () => {
           />
 
           <div className="space-y-8">
-            {filteredAndSortedIndustries.map((industry) => (
-              <IndustryCard key={industry.name} industry={industry} />
+            {filteredAndSortedIndustries.map((industry, index) => (
+              <IndustryCard key={industry.name} industry={industry} index={index} />
             ))}
           </div>
 
