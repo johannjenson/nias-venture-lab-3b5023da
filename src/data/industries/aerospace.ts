@@ -15,5 +15,6 @@ export const aerospaceIndustry: Industry = {
     { name: "Lockheed Martin", marketCap: "$100.0B" },
     { name: "Northrop Grumman", marketCap: "$70.0B" },
     { name: "Raytheon Technologies", marketCap: "$80.0B" }
-  ]
+  ],
+  ministry: "Ministry of Defence"
 };

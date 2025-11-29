@@ -15,5 +15,6 @@ export const tourismIndustry: Industry = {
     { name: "Makkah Construction", marketCap: "$2.0B" },
     { name: "Al Othaim Holding", marketCap: "$1.5B" },
     { name: "Red Sea Global", marketCap: "$1.0B" }
-  ]
+  ],
+  ministry: "Ministry of Tourism"
 };

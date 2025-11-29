@@ -15,5 +15,6 @@ export const constructionIndustry: Industry = {
     { name: "Red Sea International", marketCap: "$0.9B" },
     { name: "Construction Products Holding", marketCap: "$0.8B" },
     { name: "Advanced Construction", marketCap: "$0.6B" }
-  ]
+  ],
+  ministry: "Ministry of Municipalities and Housing"
 };

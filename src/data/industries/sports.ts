@@ -15,5 +15,6 @@ export const sportsIndustry: Industry = {
     { name: "Al-Hilal FC", marketCap: "$0.8B" },
     { name: "Al-Nassr FC", marketCap: "$0.7B" },
     { name: "Saudi Arabian Football Federation", marketCap: "$0.5B" }
-  ]
+  ],
+  ministry: "Ministry of Sport"
 };

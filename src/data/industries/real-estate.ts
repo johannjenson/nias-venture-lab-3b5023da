@@ -15,5 +15,6 @@ export const realEstateIndustry: Industry = {
     { name: "JLL", marketCap: "$10.0B" },
     { name: "Colliers International", marketCap: "$8.0B" },
     { name: "Knight Frank", marketCap: "$6.0B" }
-  ]
+  ],
+  ministry: "Ministry of Municipalities and Housing"
 };

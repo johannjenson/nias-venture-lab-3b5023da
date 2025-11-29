@@ -15,5 +15,6 @@ export const creativeIndustry: Industry = {
     { name: "Manga Productions", marketCap: "$0.8B" },
     { name: "Nebras Films", marketCap: "$0.4B" },
     { name: "Saudi Gaming", marketCap: "$0.3B" }
-  ]
+  ],
+  ministry: "Ministry of Culture"
 };

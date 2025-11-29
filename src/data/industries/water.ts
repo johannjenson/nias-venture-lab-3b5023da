@@ -15,5 +15,6 @@ export const waterIndustry: Industry = {
     { name: "Saudi Water Partnership Company", marketCap: "$2.5B" },
     { name: "National Water Company", marketCap: "$3.0B" },
     { name: "Al-Khodari Sons Company", marketCap: "$1.0B" }
-  ]
+  ],
+  ministry: "Ministry of Environment, Water, and Agriculture"
 };

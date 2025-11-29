@@ -15,5 +15,6 @@ export const logisticsIndustry: Industry = {
     { name: "FedEx", marketCap: "$80.0B" },
     { name: "UPS", marketCap: "$100.0B" },
     { name: "Saudi Railway Company", marketCap: "$2.5B" }
-  ]
+  ],
+  ministry: "Ministry of Transport and Logistic Services"
 };

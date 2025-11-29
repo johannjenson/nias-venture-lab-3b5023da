@@ -15,5 +15,6 @@ export const manufacturingIndustry: Industry = {
     { name: "Sipchem", marketCap: "$15.1B" },
     { name: "Tasnee", marketCap: "$8.4B" },
     { name: "Saudi Ceramic", marketCap: "$2.1B" }
-  ]
+  ],
+  ministry: "Ministry of Industry and Mineral Resources"
 };

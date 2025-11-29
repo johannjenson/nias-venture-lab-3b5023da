@@ -15,5 +15,6 @@ export const energyIndustry: Industry = {
     { name: "Vestas", marketCap: "$9.2B" },
     { name: "Saudi Electricity Company", marketCap: "$25.3B" },
     { name: "Desert Technologies", marketCap: "$1.8B" }
-  ]
+  ],
+  ministry: "Ministry of Energy"
 };
