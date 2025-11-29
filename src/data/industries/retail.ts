@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const retailIndustry: Industry = {
   name: "Retail",
   score: 85,
-  description: "Modern retail development including e-commerce platforms, smart stores, and luxury retail.",
+  description: "Transformation of the retail sector through advanced e-commerce platforms leveraging AI and data analytics, deployment of smart stores with automated checkout and personalized experiences, and expansion of luxury retail offerings attracting high-end international brands to sophisticated shopping destinations across major Saudi cities.",
   investment: "$620+ billion",
   keyAreas: ["E-commerce", "Smart Retail", "Luxury Market"],
   tam: "$950 billion",

@@ -36,7 +36,7 @@ const IndustryCardHeader = ({ industry }: IndustryCardHeaderProps) => {
         >
           <ProgressRing score={industry.score} size={100} />
         </button>
-        <div className="text-xs text-gray-500 mt-2 text-center max-w-[100px]">
+        <div className="text-xs text-gray-500 mt-2 text-center whitespace-nowrap">
           NIAS Opportunity Score
         </div>
       </div>

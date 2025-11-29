@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const defenseIndustry: Industry = {
   name: "Defense & Security",
   score: 90,
-  description: "Military technology, cybersecurity, and defense manufacturing localization.",
+  description: "Strategic advancement of indigenous military technology capabilities, comprehensive cybersecurity infrastructure protecting critical national assets, and large-scale defense manufacturing localization programs aimed at achieving greater self-sufficiency and technological sovereignty in national security.",
   investment: "$340+ billion",
   keyAreas: ["Defense Manufacturing", "Cybersecurity", "Military Technology"],
   tam: "$700 billion",

@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const realEstateIndustry: Industry = {
   name: "Real Estate",
   score: 86,
-  description: "Development of smart cities, residential projects, and commercial spaces.",
+  description: "Ambitious development of integrated smart cities featuring IoT infrastructure, large-scale residential communities with modern amenities, premium commercial spaces, and mixed-use developments that blend sustainability with cutting-edge design and technology throughout the Kingdom.",
   investment: "$1.3+ trillion",
   keyAreas: ["Smart Cities", "Residential Development", "Commercial Real Estate"],
   tam: "$1.6 trillion",

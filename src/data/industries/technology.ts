@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const technologyIndustry: Industry = {
   name: "Technology",
   score: 92,
-  description: "Digital infrastructure, smart cities, and emerging technologies including AI, IoT, and cloud computing.",
+  description: "Strategic development of advanced digital infrastructure, integrated smart city platforms, and transformative emerging technologies including artificial intelligence, IoT ecosystems, cloud computing services, and next-generation connectivity solutions driving Saudi Arabia's digital transformation.",
   investment: "$600+ billion",
   keyAreas: ["Artificial Intelligence", "Smart City Solutions", "Cloud Services"],
   tam: "$2.5 trillion",

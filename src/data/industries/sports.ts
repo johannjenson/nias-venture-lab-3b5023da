@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const sportsIndustry: Industry = {
   name: "Sports & Entertainment",
   score: 83,
-  description: "Sports facilities, entertainment venues, and cultural attractions development.",
+  description: "Construction of world-class sports facilities and stadiums hosting international events, development of diverse entertainment venues including theme parks and concert halls, and creation of cultural attractions that celebrate Saudi heritage while providing modern recreational experiences for residents and tourists.",
   investment: "$250+ billion",
   keyAreas: ["Sports Infrastructure", "Entertainment Venues", "Cultural Facilities"],
   tam: "$380 billion",

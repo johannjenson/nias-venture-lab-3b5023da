@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const waterIndustry: Industry = {
   name: "Water & Environment",
   score: 87,
-  description: "Water management, desalination projects, and environmental conservation initiatives.",
+  description: "Advanced water resource management systems, state-of-the-art desalination plants utilizing renewable energy to ensure sustainable water supply, comprehensive wastewater treatment facilities, and environmental conservation initiatives focused on preserving aquatic ecosystems and promoting water security across the Kingdom.",
   investment: "$280+ billion",
   keyAreas: ["Water Technology", "Environmental Solutions", "Waste Management"],
   tam: "$400 billion",

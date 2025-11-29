@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const agricultureIndustry: Industry = {
   name: "Agriculture & Food Security",
   score: 85,
-  description: "Sustainable agriculture, food production, and agricultural technology initiatives.",
+  description: "Development of sustainable agriculture practices including precision farming and water-efficient irrigation, expansion of domestic food production capabilities to enhance food security, and implementation of cutting-edge agricultural technology initiatives such as vertical farming and hydroponics systems.",
   investment: "$220+ billion",
   keyAreas: ["AgTech", "Food Production", "Sustainable Farming"],
   tam: "$480 billion",

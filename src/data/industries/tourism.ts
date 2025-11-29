@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const tourismIndustry: Industry = {
   name: "Tourism & Entertainment",
   score: 87,
-  description: "Development of tourism destinations, cultural sites, entertainment facilities, and eSports venues.",
+  description: "Strategic development of diverse tourism destinations from Red Sea resorts to mountain retreats, preservation and modernization of UNESCO World Heritage cultural sites, construction of entertainment facilities including theme parks and cinemas, and establishment of cutting-edge eSports arenas positioning Saudi Arabia as a premier global tourism destination.",
   investment: "$900+ billion",
   keyAreas: ["Hospitality", "Cultural Tourism", "Entertainment Venues", "eSports"],
   tam: "$1.2 trillion",

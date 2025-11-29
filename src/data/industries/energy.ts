@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const energyIndustry: Industry = {
   name: "Renewable Energy",
   score: 91,
-  description: "Solar, wind, and green hydrogen projects as part of the Saudi Green Initiative.",
+  description: "Large-scale deployment of solar power plants, wind energy farms, and pioneering green hydrogen production facilities as integral components of the Saudi Green Initiative, positioning the Kingdom as a global leader in renewable energy transition and sustainable power generation.",
   investment: "$850+ billion",
   keyAreas: ["Solar Power", "Wind Energy", "Green Hydrogen"],
   tam: "$2 trillion",

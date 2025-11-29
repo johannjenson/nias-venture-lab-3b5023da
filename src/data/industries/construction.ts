@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const constructionIndustry: Industry = {
   name: "Smart Construction",
   score: 85,
-  description: "Advanced construction technologies, sustainable building materials, and smart infrastructure.",
+  description: "Implementation of advanced construction technologies including 3D printing and modular building systems, development and production of sustainable building materials with reduced carbon footprint, and creation of smart infrastructure integrated with IoT sensors and digital management systems for efficient urban development.",
   investment: "$520+ billion",
   keyAreas: ["Sustainable Materials", "Smart Buildings", "Construction Tech"],
   tam: "$1.1 trillion",

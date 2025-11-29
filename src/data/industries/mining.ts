@@ -3,7 +3,7 @@ import { Industry } from "@/types/industry";
 export const miningIndustry: Industry = {
   name: "Mining & Minerals",
   score: 84,
-  description: "Exploration and processing of mineral resources, focusing on rare earth elements and phosphates.",
+  description: "Advanced exploration, extraction, and processing of diverse mineral resources including strategic rare earth elements, high-grade phosphates, and precious metals, utilizing state-of-the-art mining technology and sustainable practices to maximize resource value and environmental responsibility.",
   investment: "$380+ billion",
   keyAreas: ["Mineral Processing", "Mining Technology", "Resource Exploration"],
   tam: "$700 billion",
