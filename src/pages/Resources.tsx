@@ -123,7 +123,7 @@ const Resources = () => {
                 ? filteredAndSortedIndustries.reduce((sum, ind) => sum + ind.score, 0) / filteredAndSortedIndustries.length
                 : 0
             }
-            totalInvestment="$9.8+ trillion"
+            totalInvestment="$3+ trillion"
           />
 
           <SearchAndFilter

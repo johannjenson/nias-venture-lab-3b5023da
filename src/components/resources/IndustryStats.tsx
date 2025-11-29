@@ -39,7 +39,7 @@ const IndustryStats = ({ totalIndustries, avgScore, totalInvestment }: IndustryS
             <DollarSign className="h-5 w-5 text-primary" />
           </div>
           <div>
-            <p className="text-sm text-gray-600">Total Investment</p>
+            <p className="text-sm text-gray-600">Vision 2030 Investment</p>
             <p className="text-2xl font-bold text-primary">{totalInvestment}</p>
           </div>
         </div>
