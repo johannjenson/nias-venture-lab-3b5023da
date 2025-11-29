@@ -21,7 +21,7 @@ const EventHeader = ({ onAttendClick }: EventHeaderProps) => {
         </div>
       </div>
 
-      <section className="pt-28 pb-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      <section className="pt-28 pb-8 bg-gradient-to-br from-blue-50 via-white to-purple-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="order-2 lg:order-1">
