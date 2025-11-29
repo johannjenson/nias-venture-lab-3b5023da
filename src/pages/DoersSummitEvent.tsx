@@ -5,17 +5,13 @@ import RequestInvitation from "@/components/doers-summit/RequestInvitation";
 import EventSEO from "@/components/doers-summit/EventSEO";
 
 const DoersSummitEvent = () => {
-  const handleAttendClick = () => {
-    window.open('https://www.doerssummit.com/agenda/dubai-agenda', '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className="min-h-screen bg-white">
       <EventSEO />
-      <EventHeader onAttendClick={handleAttendClick} />
+      <EventHeader onAttendClick={() => window.open('https://www.doerssummit.com/agenda/dubai-agenda', '_blank', 'noopener,noreferrer')} />
       <main className="pt-16">
         <EventContent />
-        <RequestInvitation onAttendClick={handleAttendClick} />
+        <RequestInvitation />
       </main>
       <Footer />
     </div>

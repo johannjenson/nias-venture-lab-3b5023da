@@ -1,6 +1,5 @@
 import EventDetails from "./EventDetails";
 import Speakers from "./Speakers";
-import WhatToExpect from "./WhatToExpect";
 import { ExternalLink } from "lucide-react";
 import coverageThumb from "@/assets/doers-summit/summit-coverage-thumb.png";
 
@@ -8,7 +7,7 @@ const EventContent = () => {
   return (
     <section className="pt-0 pb-4 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-start mb-16">
+        <div className="grid md:grid-cols-2 gap-16 items-start">
           <div className="space-y-12">
             <EventDetails />
             
@@ -43,9 +42,6 @@ const EventContent = () => {
           </div>
           <Speakers />
         </div>
-        
-        {/* What to Expect - Full Width */}
-        <WhatToExpect />
       </div>
     </section>
   );
