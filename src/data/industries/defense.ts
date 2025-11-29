@@ -15,5 +15,6 @@ export const defenseIndustry: Industry = {
     { name: "Northrop Grumman", marketCap: "$70.0B" },
     { name: "BAE Systems", marketCap: "$60.0B" },
     { name: "General Dynamics", marketCap: "$50.0B" }
-  ]
+  ],
+  ministry: "Ministry of Defence"
 };

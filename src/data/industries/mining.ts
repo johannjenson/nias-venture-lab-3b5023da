@@ -15,5 +15,6 @@ export const miningIndustry: Industry = {
     { name: "Alamos Gold", marketCap: "$5.0B" },
     { name: "Newmont Corporation", marketCap: "$50.0B" },
     { name: "Anglo American", marketCap: "$40.0B" }
-  ]
+  ],
+  ministry: "Ministry of Industry and Mineral Resources"
 };

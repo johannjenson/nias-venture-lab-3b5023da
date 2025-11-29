@@ -15,5 +15,6 @@ export const financeIndustry: Industry = {
     { name: "Riyad Bank", marketCap: "$15.0B" },
     { name: "Arab National Bank", marketCap: "$5.0B" },
     { name: "Alinma Bank", marketCap: "$8.0B" }
-  ]
+  ],
+  ministry: "Ministry of Finance"
 };

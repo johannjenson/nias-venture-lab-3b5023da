@@ -15,5 +15,6 @@ export const agricultureIndustry: Industry = {
     { name: "Al-Faisaliah Group", marketCap: "$1.5B" },
     { name: "Al-Jazeera Agricultural Company", marketCap: "$1.0B" },
     { name: "Al-Othaim Foods", marketCap: "$0.8B" }
-  ]
+  ],
+  ministry: "Ministry of Environment, Water, and Agriculture"
 };

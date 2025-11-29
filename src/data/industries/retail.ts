@@ -15,5 +15,6 @@ export const retailIndustry: Industry = {
     { name: "Al Othaim Markets", marketCap: "$2.1B" },
     { name: "Extra", marketCap: "$1.2B" },
     { name: "Panda Retail Company", marketCap: "$0.9B" }
-  ]
+  ],
+  ministry: "Ministry of Commerce"
 };

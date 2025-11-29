@@ -15,5 +15,6 @@ export const educationIndustry: Industry = {
     { name: "Mawhiba", marketCap: "$0.6B" },
     { name: "Qurtuba International School", marketCap: "$0.4B" },
     { name: "International Schools Group", marketCap: "$0.7B" }
-  ]
+  ],
+  ministry: "Ministry of Education"
 };

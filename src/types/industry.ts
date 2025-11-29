@@ -12,4 +12,5 @@ export interface Industry {
   tam: string;
   techTailwinds: string[];
   leaders: IndustryLeader[];
+  ministry: string;
 }

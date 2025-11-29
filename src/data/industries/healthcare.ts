@@ -15,5 +15,6 @@ export const healthcareIndustry: Industry = {
     { name: "Al-Dawaa Pharmacies", marketCap: "$1.0B" },
     { name: "Saudi German Hospital", marketCap: "$0.8B" },
     { name: "Mawhiba", marketCap: "$0.5B" }
-  ]
+  ],
+  ministry: "Ministry of Health"
 };

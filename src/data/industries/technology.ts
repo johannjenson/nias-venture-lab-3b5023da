@@ -15,5 +15,6 @@ export const technologyIndustry: Industry = {
     { name: "Zain", marketCap: "$10.5B" },
     { name: "Saudi Telecom Company", marketCap: "$55.3B" },
     { name: "Axiom Telecom", marketCap: "$1.2B" }
-  ]
+  ],
+  ministry: "Ministry of Communications and Information Technology"
 };
