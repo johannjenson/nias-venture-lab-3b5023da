@@ -3,6 +3,7 @@ import { useState } from "react";
 import Footer from "@/components/Footer";
 import IndustryCard from "@/components/resources/IndustryCard";
 import SearchAndFilter from "@/components/resources/SearchAndFilter";
+import IndustryStats from "@/components/resources/IndustryStats";
 import { industries } from "@/data/industries";
 import { Button } from "@/components/ui/button";
 import { Waves } from "lucide-react";
@@ -13,16 +14,22 @@ import { Helmet } from "react-helmet";
 const Resources = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("score");
+  const [minScore, setMinScore] = useState(0);
   const [showRequestModal, setShowRequestModal] = useState(false);
   const navigate = useNavigate();
 
   const filteredAndSortedIndustries = industries
-    .filter(industry => 
-      industry.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      industry.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      industry.keyAreas.some(area => area.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      industry.leaders.some(leader => leader.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    )
+    .filter(industry => {
+      const matchesSearch = 
+        industry.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        industry.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        industry.keyAreas.some(area => area.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        industry.leaders.some(leader => leader.name.toLowerCase().includes(searchTerm.toLowerCase()));
+      
+      const matchesScore = industry.score >= minScore;
+      
+      return matchesSearch && matchesScore;
+    })
     .sort((a, b) => {
       if (sortBy === "score") {
         return b.score - a.score;
@@ -33,6 +40,35 @@ const Resources = () => {
         return a.name.localeCompare(b.name);
       }
     });
+
+  const handleExport = () => {
+    // Create CSV content
+    const headers = ['Industry', 'Score', 'Investment', 'TAM', 'Description', 'Key Areas'];
+    const rows = filteredAndSortedIndustries.map(industry => [
+      industry.name,
+      industry.score,
+      industry.investment,
+      industry.tam,
+      industry.description,
+      industry.keyAreas.join('; ')
+    ]);
+    
+    const csvContent = [
+      headers.join(','),
+      ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
+    ].join('\n');
+    
+    // Download CSV
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `vision-2030-industries-${new Date().toISOString().split('T')[0]}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -71,17 +107,34 @@ const Resources = () => {
       <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold text-primary mb-4">Vision 2030 Investment Opportunities</h1>
-          <p className="text-lg text-gray-600 mb-8">
+          <p className="text-lg text-gray-600 mb-4">
             Saudi Arabia is investing $3 trillion across key industries as part of Vision 2030. 
             Below are the top industries with the highest potential for international businesses 
             seeking market entry.
           </p>
+          <p className="text-sm text-gray-500 mb-8">
+            Last updated: September 2025 • Data sources: Vision 2030 Annual Report, market research
+          </p>
+
+          <IndustryStats
+            totalIndustries={filteredAndSortedIndustries.length}
+            avgScore={
+              filteredAndSortedIndustries.length > 0
+                ? filteredAndSortedIndustries.reduce((sum, ind) => sum + ind.score, 0) / filteredAndSortedIndustries.length
+                : 0
+            }
+            totalInvestment="$9.8+ trillion"
+          />
 
           <SearchAndFilter
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
             sortBy={sortBy}
             setSortBy={setSortBy}
+            minScore={minScore}
+            setMinScore={setMinScore}
+            onExport={handleExport}
+            totalResults={filteredAndSortedIndustries.length}
           />
 
           <div className="space-y-8">
