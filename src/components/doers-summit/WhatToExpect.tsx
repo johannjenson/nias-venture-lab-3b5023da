@@ -1,30 +1,34 @@
 import { Target, Building2, MapPin, TrendingUp, Handshake } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const WhatToExpect = () => {
+  const navigate = useNavigate();
+  
   const playbook = [
     {
       title: "Align",
-      description: "Understand the GCC market dynamics and align your business model with regional priorities and opportunities.",
+      description: "Understand market dynamics and regional priorities.",
       icon: Target,
     },
     {
       title: "Incorporate",
-      description: "Navigate the legal and regulatory requirements to establish your business entity in Saudi Arabia and the GCC.",
+      description: "Navigate legal and regulatory requirements.",
       icon: Building2,
     },
     {
       title: "Localize",
-      description: "Adapt your operations, products, and services to meet local market needs and cultural expectations.",
+      description: "Adapt to local market needs and culture.",
       icon: MapPin,
     },
     {
       title: "Capitalize",
-      description: "Secure investment and funding from regional investors, VCs, and government initiatives.",
+      description: "Secure investment from regional investors.",
       icon: TrendingUp,
     },
     {
       title: "Partner",
-      description: "Build strategic relationships with local partners, distributors, and government entities for sustainable growth.",
+      description: "Build strategic local relationships.",
       icon: Handshake,
     },
   ];
@@ -37,7 +41,7 @@ const WhatToExpect = () => {
           A framework for successfully entering and scaling in the Saudi market
         </p>
       </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
         {playbook.map((item, index) => {
           const Icon = item.icon;
           return (
@@ -50,6 +54,15 @@ const WhatToExpect = () => {
             </div>
           );
         })}
+      </div>
+      
+      <div className="text-center">
+        <Button 
+          className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
+          onClick={() => navigate('/work-with-nias')}
+        >
+          Apply to Work with NIAS
+        </Button>
       </div>
     </div>
   );
