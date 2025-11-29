@@ -22,10 +22,10 @@ const IndustryBubbleChart = ({ industries }: IndustryBubbleChartProps) => {
     investment: parseToNearestBillion(industry.investment),
     score: industry.score,
     tam: parseToNearestBillion(industry.tam),
-    // Generate colors based on score ranges
-    color: industry.score >= 90 ? '#10b981' : 
-           industry.score >= 85 ? '#3b82f6' : 
-           industry.score >= 80 ? '#8b5cf6' : '#6b7280'
+    // Generate greyscale colors based on score ranges
+    color: industry.score >= 90 ? '#1f2937' : 
+           industry.score >= 85 ? '#4b5563' : 
+           industry.score >= 80 ? '#6b7280' : '#9ca3af'
   }));
 
   const CustomTooltip = ({ active, payload }: any) => {
@@ -93,19 +93,19 @@ const IndustryBubbleChart = ({ industries }: IndustryBubbleChartProps) => {
 
       <div className="flex gap-6 justify-center mt-4 text-sm">
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-[#10b981]"></div>
+          <div className="w-4 h-4 rounded-full bg-[#1f2937]"></div>
           <span className="text-gray-600">Score 90+</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-[#3b82f6]"></div>
+          <div className="w-4 h-4 rounded-full bg-[#4b5563]"></div>
           <span className="text-gray-600">Score 85-89</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-[#8b5cf6]"></div>
+          <div className="w-4 h-4 rounded-full bg-[#6b7280]"></div>
           <span className="text-gray-600">Score 80-84</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-[#6b7280]"></div>
+          <div className="w-4 h-4 rounded-full bg-[#9ca3af]"></div>
           <span className="text-gray-600">Score &lt;80</span>
         </div>
       </div>
