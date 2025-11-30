@@ -16,5 +16,6 @@ export const tourismIndustry: Industry = {
     { name: "Al Othaim Holding", marketCap: "$1.5B" },
     { name: "Red Sea Global", marketCap: "$1.0B" }
   ],
-  ministry: "Ministry of Tourism"
+  ministry: "Ministry of Tourism",
+  regulatoryAgencies: ["GEA (General Entertainment Authority)", "SCT (Saudi Commission for Tourism and National Heritage)"]
 };

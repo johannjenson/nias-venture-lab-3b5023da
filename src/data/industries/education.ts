@@ -16,5 +16,6 @@ export const educationIndustry: Industry = {
     { name: "Qurtuba International School", marketCap: "$0.4B" },
     { name: "International Schools Group", marketCap: "$0.7B" }
   ],
-  ministry: "Ministry of Education"
+  ministry: "Ministry of Education",
+  regulatoryAgencies: ["ETEC (Education & Training Evaluation Commission)", "TVTC (Technical and Vocational Training Corporation)"]
 };

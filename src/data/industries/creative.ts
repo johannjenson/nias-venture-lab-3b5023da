@@ -16,5 +16,6 @@ export const creativeIndustry: Industry = {
     { name: "Nebras Films", marketCap: "$0.4B" },
     { name: "Saudi Gaming", marketCap: "$0.3B" }
   ],
-  ministry: "Ministry of Culture"
+  ministry: "Ministry of Culture",
+  regulatoryAgencies: ["GCAM (General Commission for Audiovisual Media)", "Film Commission", "Saudi Esports Federation"]
 };

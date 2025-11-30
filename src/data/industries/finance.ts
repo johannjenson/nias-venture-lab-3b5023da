@@ -16,5 +16,6 @@ export const financeIndustry: Industry = {
     { name: "Arab National Bank", marketCap: "$5.0B" },
     { name: "Alinma Bank", marketCap: "$8.0B" }
   ],
-  ministry: "Ministry of Finance"
+  ministry: "Ministry of Finance",
+  regulatoryAgencies: ["SAMA (Saudi Central Bank)", "CMA (Capital Market Authority)", "SFDA (Saudi Financial Development Authority)"]
 };

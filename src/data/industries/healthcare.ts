@@ -16,5 +16,6 @@ export const healthcareIndustry: Industry = {
     { name: "Saudi German Hospital", marketCap: "$0.8B" },
     { name: "Mawhiba", marketCap: "$0.5B" }
   ],
-  ministry: "Ministry of Health"
+  ministry: "Ministry of Health",
+  regulatoryAgencies: ["SFDA (Saudi Food and Drug Authority)", "SCFHS (Saudi Commission for Health Specialties)", "CBAHI (Central Board for Accreditation of Healthcare Institutions)"]
 };

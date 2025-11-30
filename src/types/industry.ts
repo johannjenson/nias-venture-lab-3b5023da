@@ -13,4 +13,5 @@ export interface Industry {
   techTailwinds: string[];
   leaders: IndustryLeader[];
   ministry: string;
+  regulatoryAgencies: string[];
 }

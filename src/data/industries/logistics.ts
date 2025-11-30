@@ -16,5 +16,6 @@ export const logisticsIndustry: Industry = {
     { name: "UPS", marketCap: "$100.0B" },
     { name: "Saudi Railway Company", marketCap: "$2.5B" }
   ],
-  ministry: "Ministry of Transport and Logistic Services"
+  ministry: "Ministry of Transport and Logistic Services",
+  regulatoryAgencies: ["GACA (General Authority of Civil Aviation)", "Mawani (Saudi Ports Authority)", "SAR (Saudi Railways Organization)"]
 };

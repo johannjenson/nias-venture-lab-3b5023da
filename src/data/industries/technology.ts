@@ -16,5 +16,6 @@ export const technologyIndustry: Industry = {
     { name: "Saudi Telecom Company", marketCap: "$55.3B" },
     { name: "Axiom Telecom", marketCap: "$1.2B" }
   ],
-  ministry: "Ministry of Communications and Information Technology"
+  ministry: "Ministry of Communications and Information Technology",
+  regulatoryAgencies: ["CITC (Communications, Space & Technology Commission)", "SDAIA (Saudi Data & AI Authority)", "NCA (National Cybersecurity Authority)"]
 };

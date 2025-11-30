@@ -16,5 +16,6 @@ export const biotechIndustry: Industry = {
     { name: "Biotech Corp", marketCap: "$0.7B" },
     { name: "Advanced Pharma", marketCap: "$0.5B" }
   ],
-  ministry: "Ministry of Health"
+  ministry: "Ministry of Health",
+  regulatoryAgencies: ["SFDA (Saudi Food and Drug Authority)", "KACST (King Abdulaziz City for Science and Technology)"]
 };

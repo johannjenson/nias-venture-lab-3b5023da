@@ -19,13 +19,22 @@ const IndustryMetrics = ({ industry }: IndustryMetricsProps) => {
 
   return (
     <>
-      {/* Ministry Section */}
+      {/* Ministry and Regulatory Agencies Section */}
       <div className="mt-4 mb-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
         <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
           Government Ministry
         </div>
-        <div className="text-sm font-semibold text-gray-900">
+        <div className="text-sm font-semibold text-gray-900 mb-3">
           {industry.ministry}
+        </div>
+        
+        <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
+          Key Regulatory Agencies
+        </div>
+        <div className="text-sm text-gray-700 space-y-1">
+          {industry.regulatoryAgencies.map((agency, index) => (
+            <div key={index}>{agency}</div>
+          ))}
         </div>
       </div>
 

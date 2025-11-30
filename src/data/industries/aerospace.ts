@@ -16,5 +16,6 @@ export const aerospaceIndustry: Industry = {
     { name: "Northrop Grumman", marketCap: "$70.0B" },
     { name: "Raytheon Technologies", marketCap: "$80.0B" }
   ],
-  ministry: "Ministry of Defence"
+  ministry: "Ministry of Defence",
+  regulatoryAgencies: ["GACA (General Authority of Civil Aviation)", "SSA (Saudi Space Agency)"]
 };
