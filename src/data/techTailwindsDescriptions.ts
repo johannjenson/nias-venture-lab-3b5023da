@@ -22,6 +22,12 @@ import { realEstate2Tailwinds } from "./techTailwinds/realEstate2Tailwinds";
 import { constructionTailwinds } from "./techTailwinds/constructionTailwinds";
 import { miningTailwinds } from "./techTailwinds/miningTailwinds";
 import { sportsTailwinds } from "./techTailwinds/sportsTailwinds";
+import { aerospace2Tailwinds } from "./techTailwinds/aerospace2Tailwinds";
+import { finance2Tailwinds } from "./techTailwinds/finance2Tailwinds";
+import { logistics2Tailwinds } from "./techTailwinds/logistics2Tailwinds";
+import { manufacturing2Tailwinds } from "./techTailwinds/manufacturing2Tailwinds";
+import { technology2Tailwinds } from "./techTailwinds/technology2Tailwinds";
+import { tourism2Tailwinds } from "./techTailwinds/tourism2Tailwinds";
 
 export const techTailwindsDescriptions: Record<string, TechTailwindDescription> = {
   ...industryTailwinds,
@@ -46,5 +52,11 @@ export const techTailwindsDescriptions: Record<string, TechTailwindDescription> 
   ...realEstate2Tailwinds,
   ...constructionTailwinds,
   ...miningTailwinds,
-  ...sportsTailwinds
+  ...sportsTailwinds,
+  ...aerospace2Tailwinds,
+  ...finance2Tailwinds,
+  ...logistics2Tailwinds,
+  ...manufacturing2Tailwinds,
+  ...technology2Tailwinds,
+  ...tourism2Tailwinds
 };
