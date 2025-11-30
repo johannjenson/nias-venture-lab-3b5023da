@@ -18,6 +18,8 @@ import { educationAreas } from "./keyAreas/educationAreas";
 import { oceanAreas } from "./keyAreas/oceanAreas";
 import { waterEnvironmentAreas } from "./keyAreas/waterEnvironmentAreas";
 import { realEstate2Areas } from "./keyAreas/realEstate2Areas";
+import { constructionAreas } from "./keyAreas/constructionAreas";
+import { miningAreas } from "./keyAreas/miningAreas";
 
 export const keyAreaDescriptions: Record<string, KeyAreaDescription> = {
   ...manufacturingAreas,
@@ -38,5 +40,7 @@ export const keyAreaDescriptions: Record<string, KeyAreaDescription> = {
   ...educationAreas,
   ...oceanAreas,
   ...waterEnvironmentAreas,
-  ...realEstate2Areas
+  ...realEstate2Areas,
+  ...constructionAreas,
+  ...miningAreas
 };
