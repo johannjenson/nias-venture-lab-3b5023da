@@ -87,6 +87,8 @@ const IndustryBubbleChart = ({ industries, onBubbleClick }: IndustryBubbleChartP
           <Scatter 
             data={chartData} 
             fill="#3b82f6"
+            stroke="white"
+            strokeWidth={2}
             onClick={(data) => {
               if (data) {
                 if (selectedBubble === data.name) {
