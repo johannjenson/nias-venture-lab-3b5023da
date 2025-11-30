@@ -16,5 +16,6 @@ export const constructionIndustry: Industry = {
     { name: "Construction Products Holding", marketCap: "$0.8B" },
     { name: "Advanced Construction", marketCap: "$0.6B" }
   ],
-  ministry: "Ministry of Municipalities and Housing"
+  ministry: "Ministry of Municipalities and Housing",
+  regulatoryAgencies: ["SASO (Saudi Standards Organization)", "Saudi Building Code National Committee"]
 };

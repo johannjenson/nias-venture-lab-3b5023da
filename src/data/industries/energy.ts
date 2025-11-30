@@ -16,5 +16,6 @@ export const energyIndustry: Industry = {
     { name: "Saudi Electricity Company", marketCap: "$25.3B" },
     { name: "Desert Technologies", marketCap: "$1.8B" }
   ],
-  ministry: "Ministry of Energy"
+  ministry: "Ministry of Energy",
+  regulatoryAgencies: ["ECRA (Energy & Cogeneration Regulatory Authority)", "REPDO (Renewable Energy Project Development Office)"]
 };

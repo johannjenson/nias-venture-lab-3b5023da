@@ -16,5 +16,6 @@ export const agricultureIndustry: Industry = {
     { name: "Al-Jazeera Agricultural Company", marketCap: "$1.0B" },
     { name: "Al-Othaim Foods", marketCap: "$0.8B" }
   ],
-  ministry: "Ministry of Environment, Water, and Agriculture"
+  ministry: "Ministry of Environment, Water, and Agriculture",
+  regulatoryAgencies: ["SALIC (Saudi Agricultural & Livestock Investment Company)", "SFDA (Saudi Food and Drug Authority)"]
 };

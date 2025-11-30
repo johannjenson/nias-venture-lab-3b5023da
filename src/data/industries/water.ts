@@ -16,5 +16,6 @@ export const waterIndustry: Industry = {
     { name: "National Water Company", marketCap: "$3.0B" },
     { name: "Al-Khodari Sons Company", marketCap: "$1.0B" }
   ],
-  ministry: "Ministry of Environment, Water, and Agriculture"
+  ministry: "Ministry of Environment, Water, and Agriculture",
+  regulatoryAgencies: ["WRC (Water & Electricity Regulatory Authority)", "SWCC (Saline Water Conversion Corporation)", "NWC (National Water Company)"]
 };

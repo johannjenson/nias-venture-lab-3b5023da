@@ -16,5 +16,6 @@ export const oceanIndustry: Industry = {
     { name: "Coastal Tourism Co", marketCap: "$0.5B" },
     { name: "Blue Economy Corp", marketCap: "$0.4B" }
   ],
-  ministry: "Ministry of Environment, Water, and Agriculture"
+  ministry: "Ministry of Environment, Water, and Agriculture",
+  regulatoryAgencies: ["Mawani (Saudi Ports Authority)", "NCWCD (National Center for Wildlife)"]
 };

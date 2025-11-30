@@ -16,5 +16,6 @@ export const defenseIndustry: Industry = {
     { name: "BAE Systems", marketCap: "$60.0B" },
     { name: "General Dynamics", marketCap: "$50.0B" }
   ],
-  ministry: "Ministry of Defence"
+  ministry: "Ministry of Defence",
+  regulatoryAgencies: ["GAMI (General Authority for Military Industries)", "NCA (National Cybersecurity Authority)"]
 };

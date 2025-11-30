@@ -16,5 +16,6 @@ export const retailIndustry: Industry = {
     { name: "Extra", marketCap: "$1.2B" },
     { name: "Panda Retail Company", marketCap: "$0.9B" }
   ],
-  ministry: "Ministry of Commerce"
+  ministry: "Ministry of Commerce",
+  regulatoryAgencies: ["SFDA (Saudi Food and Drug Authority)", "SASO (Saudi Standards Organization)"]
 };

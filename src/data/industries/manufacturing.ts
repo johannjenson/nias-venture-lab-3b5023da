@@ -16,5 +16,6 @@ export const manufacturingIndustry: Industry = {
     { name: "Tasnee", marketCap: "$8.4B" },
     { name: "Saudi Ceramic", marketCap: "$2.1B" }
   ],
-  ministry: "Ministry of Industry and Mineral Resources"
+  ministry: "Ministry of Industry and Mineral Resources",
+  regulatoryAgencies: ["SASO (Saudi Standards Organization)", "SIDF (Saudi Industrial Development Fund)", "MODON (Saudi Authority for Industrial Cities)"]
 };
