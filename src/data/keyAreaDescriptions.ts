@@ -6,6 +6,9 @@ import { healthcareAreas } from "./keyAreas/healthcareAreas";
 import { creativeAreas } from "./keyAreas/creativeAreas";
 import { energyAreas } from "./keyAreas/energyAreas";
 import { defenseAreas } from "./keyAreas/defenseAreas";
+import { logisticsAreas } from "./keyAreas/logisticsAreas";
+import { financeAreas } from "./keyAreas/financeAreas";
+import { aerospaceAreas } from "./keyAreas/aerospaceAreas";
 
 export const keyAreaDescriptions: Record<string, KeyAreaDescription> = {
   ...manufacturingAreas,
@@ -14,5 +17,8 @@ export const keyAreaDescriptions: Record<string, KeyAreaDescription> = {
   ...healthcareAreas,
   ...creativeAreas,
   ...energyAreas,
-  ...defenseAreas
+  ...defenseAreas,
+  ...logisticsAreas,
+  ...financeAreas,
+  ...aerospaceAreas
 };
