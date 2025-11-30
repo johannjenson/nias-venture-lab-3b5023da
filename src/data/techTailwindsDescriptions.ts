@@ -7,6 +7,9 @@ import { tourismTailwinds } from "./techTailwinds/tourismTailwinds";
 import { creativeTailwinds } from "./techTailwinds/creativeTailwinds";
 import { energyTailwinds } from "./techTailwinds/energyTailwinds";
 import { defenseTailwinds } from "./techTailwinds/defenseTailwinds";
+import { logisticsTailwinds } from "./techTailwinds/logisticsTailwinds";
+import { financeTailwinds } from "./techTailwinds/financeTailwinds";
+import { aerospaceTailwinds } from "./techTailwinds/aerospaceTailwinds";
 
 export const techTailwindsDescriptions: Record<string, TechTailwindDescription> = {
   ...industryTailwinds,
@@ -16,5 +19,8 @@ export const techTailwindsDescriptions: Record<string, TechTailwindDescription> 
   ...tourismTailwinds,
   ...creativeTailwinds,
   ...energyTailwinds,
-  ...defenseTailwinds
+  ...defenseTailwinds,
+  ...logisticsTailwinds,
+  ...financeTailwinds,
+  ...aerospaceTailwinds
 };
