@@ -12,6 +12,9 @@ import { financeTailwinds } from "./techTailwinds/financeTailwinds";
 import { aerospaceTailwinds } from "./techTailwinds/aerospaceTailwinds";
 import { waterTailwinds } from "./techTailwinds/waterTailwinds";
 import { realEstateTailwinds } from "./techTailwinds/realEstateTailwinds";
+import { biotechTailwinds } from "./techTailwinds/biotechTailwinds";
+import { agricultureTailwinds } from "./techTailwinds/agricultureTailwinds";
+import { retailTailwinds } from "./techTailwinds/retailTailwinds";
 
 export const techTailwindsDescriptions: Record<string, TechTailwindDescription> = {
   ...industryTailwinds,
@@ -26,5 +29,8 @@ export const techTailwindsDescriptions: Record<string, TechTailwindDescription> 
   ...financeTailwinds,
   ...aerospaceTailwinds,
   ...waterTailwinds,
-  ...realEstateTailwinds
+  ...realEstateTailwinds,
+  ...biotechTailwinds,
+  ...agricultureTailwinds,
+  ...retailTailwinds
 };
