@@ -21,6 +21,12 @@ import { realEstate2Areas } from "./keyAreas/realEstate2Areas";
 import { constructionAreas } from "./keyAreas/constructionAreas";
 import { miningAreas } from "./keyAreas/miningAreas";
 import { sportsAreas } from "./keyAreas/sportsAreas";
+import { aerospace2Areas } from "./keyAreas/aerospace2Areas";
+import { finance2Areas } from "./keyAreas/finance2Areas";
+import { logistics2Areas } from "./keyAreas/logistics2Areas";
+import { manufacturing2Areas } from "./keyAreas/manufacturing2Areas";
+import { technology2Areas } from "./keyAreas/technology2Areas";
+import { tourism2Areas } from "./keyAreas/tourism2Areas";
 
 export const keyAreaDescriptions: Record<string, KeyAreaDescription> = {
   ...manufacturingAreas,
@@ -44,5 +50,11 @@ export const keyAreaDescriptions: Record<string, KeyAreaDescription> = {
   ...realEstate2Areas,
   ...constructionAreas,
   ...miningAreas,
-  ...sportsAreas
+  ...sportsAreas,
+  ...aerospace2Areas,
+  ...finance2Areas,
+  ...logistics2Areas,
+  ...manufacturing2Areas,
+  ...technology2Areas,
+  ...tourism2Areas
 };
