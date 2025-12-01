@@ -7,6 +7,7 @@ import diwanLogo from "@/assets/diwan-logo.avif";
 import studiosLogo from "@/assets/180-studios-logo.png";
 import infntLogo from "@/assets/infnt-logo.svg";
 import jizaalLogo from "@/assets/jizaal-logo.jpg";
+import saudiTimesLogo from "@/assets/saudi-times-logo.png";
 
 const ClientsPartners = () => {
   const navigate = useNavigate();
@@ -22,6 +23,13 @@ const ClientsPartners = () => {
   ];
 
   const partners = [
+    {
+      name: "The Saudi Times",
+      website: "thesauditimes.net",
+      url: "https://thesauditimes.net",
+      description: "Partnering with this leading news publication to share insights and stories about business, innovation, and development in Saudi Arabia",
+      logo: saudiTimesLogo
+    },
     {
       name: "The Diwan",
       website: "The-Diwan.com",
