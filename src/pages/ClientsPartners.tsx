@@ -27,7 +27,7 @@ const ClientsPartners = () => {
       name: "The Saudi Times",
       website: "thesauditimes.net",
       url: "https://thesauditimes.net",
-      description: "A leading English-language news publication covering business, innovation, and economic development in Saudi Arabia and the wider Gulf region",
+      description: "A leading bilingual news publication covering business, innovation, and economic development in Saudi Arabia and the wider Gulf region",
       logo: saudiTimesLogo
     },
     {
