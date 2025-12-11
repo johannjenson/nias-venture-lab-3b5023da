@@ -70,7 +70,7 @@ const WorkWithNias = () => {
             {/* Info Cards - Moved into Hero */}
             <div className="mt-12 mb-8">
               <p className="text-sm text-foreground/70 mb-8 max-w-2xl mx-auto">
-                NIAS.io works with a highly curated set of global operators and investment platforms.
+                NIAS works with a highly curated set of top tier global operators and investment fund managers.
               </p>
               <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
                 <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-lg p-4 text-left">
