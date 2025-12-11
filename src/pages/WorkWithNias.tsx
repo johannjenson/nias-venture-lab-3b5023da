@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Building2, TrendingUp, Waves, Users } from "lucide-react";
+import { Building2, TrendingUp, Waves, Users, Calendar } from "lucide-react";
 import CompanyForm from "@/components/work-with-nias/CompanyForm";
 import FundForm from "@/components/work-with-nias/FundForm";
 import AdvisorForm from "@/components/work-with-nias/AdvisorForm";
 import heroBackground from "@/assets/work-with-nias-hero.png";
+import johannProfile from "@/assets/johann-jenson-profile.jpeg";
 
 const WorkWithNias = () => {
   const navigate = useNavigate();
@@ -144,6 +145,34 @@ const WorkWithNias = () => {
           <p className="text-center text-sm text-muted-foreground mt-8">
             After submission, NIAS will conduct an initial review. If aligned, our Partnerships Team will reach out to coordinate a deeper discussion.
           </p>
+        </div>
+      </section>
+
+      {/* Meet & Greet Section */}
+      <section className="py-16 px-6 bg-background">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-foreground mb-8">
+            Book a 15-min Meet & Greet
+          </h2>
+          <div className="flex flex-col items-center">
+            <img 
+              src={johannProfile}
+              alt="Johann Jenson"
+              className="w-32 h-32 rounded-full object-cover grayscale mb-4"
+            />
+            <h3 className="text-lg font-semibold text-foreground">Johann Jenson</h3>
+            <p className="text-muted-foreground mb-6">Founding Partner</p>
+            <Button asChild>
+              <a
+                href="https://calendar.app.google/uBmFhFXNBK6etNeH6"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Calendar className="h-4 w-4 mr-2" />
+                Schedule a Call
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 
