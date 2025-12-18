@@ -57,6 +57,14 @@ const AudienceCTAs = () => {
             </p>
           </div>
 
+          {/* Upcoming Gatherings */}
+          <div className="mb-16">
+            <h3 className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium mb-4">Upcoming Gatherings</h3>
+            <p className="text-sm text-muted-foreground">
+              Join the <a href="#network" className="text-foreground underline underline-offset-2 hover:text-foreground/80 transition-colors">Network</a> to find out about upcoming gatherings.
+            </p>
+          </div>
+
           {/* Past Gatherings */}
           <div>
             <h3 className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium mb-8">Past Gatherings</h3>
