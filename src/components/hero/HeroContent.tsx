@@ -1,10 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Waves } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import saudiTimesLogo from "@/assets/saudi-times-logo.png";
 import diwanLogo from "@/assets/diwan-logo.png";
 
+const regions = ["Saudi Arabia", "Kuwait", "the GCC"];
+
 const HeroContent = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsVisible(false);
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % regions.length);
+        setIsVisible(true);
+      }, 400);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="flex-1 flex flex-col bg-secondary/30">
       {/* Hero Section */}
@@ -14,7 +32,14 @@ const HeroContent = () => {
             {/* Wave Icon */}
             <Waves className="h-10 w-10 md:h-12 md:w-12 text-foreground mx-auto mb-12" strokeWidth={2} />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.15]">
-              Land & Expand<br />in <span className="font-medium">Saudi Arabia</span>
+              Land & Expand<br />in{" "}
+              <span 
+                className={`font-medium inline-block transition-all duration-400 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+                }`}
+              >
+                {regions[currentIndex]}
+              </span>
             </h1>
             <p className="text-base md:text-lg text-muted-foreground mb-12 max-w-xl mx-auto leading-relaxed">
               Uniting top tier frontier tech, energy, sports, art, and entertainment companies with the Kingdom's most influential entrepreneurs, government leaders, strategic investors, and acquisitive funds.
