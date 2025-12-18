@@ -59,7 +59,7 @@ const HeroContent = () => {
                 className="w-full sm:w-44 border-nias-green text-nias-green hover:bg-nias-green hover:text-nias-green-foreground h-12 text-sm font-medium tracking-wide"
               >
                 <a href="https://access.nias.io/" target="_blank" rel="noopener noreferrer">
-                  For Founders
+                  For Founders & Advisors
                 </a>
               </Button>
               <Button
