@@ -16,12 +16,10 @@ const MainNav = () => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
     });
 
-    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
@@ -29,7 +27,6 @@ const MainNav = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  // Don't render navigation on mobile
   if (isMobile) return null;
 
   const handleLogout = async () => {
@@ -72,12 +69,15 @@ const MainNav = () => {
     },
   ];
 
-  const gatherings = [
+  const upcomingGatherings = [
     {
-      title: "Upcoming",
+      title: "View All Upcoming",
       href: "/events",
-      description: "View our upcoming exclusive gatherings and events.",
+      description: "Browse all upcoming exclusive gatherings and events.",
     },
+  ];
+
+  const pastGatherings = [
     {
       title: "Doers Summit Dubai Panel",
       href: "/events/doers-summit-dubai-panel",
@@ -97,6 +97,11 @@ const MainNav = () => {
       title: "FII9 Night Caps",
       href: "/events/night-cap",
       description: "An intimate evening gathering at The Greek Villa.",
+    },
+    {
+      title: "180 Studios Evening",
+      href: "/events/studios180-event",
+      description: "Dinner and conversation with Tim Robinson.",
     },
   ];
 
@@ -140,7 +145,8 @@ const MainNav = () => {
     <NavigationMenu className="absolute top-24 md:top-20 left-1/2 -translate-x-1/2 z-50 w-full md:w-auto px-4 md:px-0">
       <NavigationMenuList className="gap-6">
         <NavMenuItem title="Opportunities" items={opportunities} />
-        <NavMenuItem title="Gatherings" items={gatherings} />
+        <NavMenuItem title="Upcoming" items={upcomingGatherings} />
+        <NavMenuItem title="Past" items={pastGatherings} />
         <NavMenuItem title="About" items={about} />
       </NavigationMenuList>
     </NavigationMenu>

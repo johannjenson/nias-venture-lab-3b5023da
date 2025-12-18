@@ -49,8 +49,10 @@ const Footer = () => {
         { name: "Vision 2030", href: "/resources" },
         { name: "Real Estate", href: "/real-estate" },
       ]},
-      { name: "Gatherings", submenu: [
-        { name: "Upcoming", href: "/events" },
+      { name: "Upcoming", submenu: [
+        { name: "View All", href: "/events" },
+      ]},
+      { name: "Past", submenu: [
         { name: "Doers Summit Panel", href: "/events/doers-summit-dubai-panel" },
         { name: "US-Saudi VIP Dinner", href: "/events/us-saudi-forum-dinner" },
         { name: "Biban25 Art Gala", href: "/events/biban25-art-gala-dinner" },
