@@ -9,14 +9,14 @@ const EventBanner = () => {
   ];
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-foreground text-background py-3 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto flex items-center justify-center gap-8">
-        <div className="hidden md:flex items-center gap-8">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-foreground text-background py-4 px-6 md:px-12">
+      <div className="max-w-6xl mx-auto flex items-center justify-center gap-12">
+        <div className="hidden md:flex items-center gap-10">
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-sm text-background/70 hover:text-background transition-colors"
+              className="text-xs uppercase tracking-[0.15em] text-background/60 hover:text-background transition-colors font-medium"
             >
               {item.name}
             </a>
@@ -24,7 +24,7 @@ const EventBanner = () => {
         </div>
         <Link 
           to="/work-with-nias" 
-          className="text-olive hover:opacity-80 transition-opacity text-sm font-medium"
+          className="text-olive hover:text-olive/80 transition-colors text-xs uppercase tracking-[0.15em] font-medium"
         >
           Work with NIAS
         </Link>

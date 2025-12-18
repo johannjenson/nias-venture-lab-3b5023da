@@ -125,11 +125,11 @@ const Footer = () => {
 
   return (
     <footer className="bg-foreground text-background">
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <div className="flex flex-wrap justify-center gap-12 md:gap-16">
+      <div className="mx-auto max-w-6xl px-6 md:px-12 py-16 md:py-20">
+        <div className="flex flex-wrap justify-center gap-16 md:gap-20">
           {/* Network */}
           <div>
-            <h3 className="text-sm font-medium text-background mb-4">Network</h3>
+            <h3 className="text-[11px] uppercase tracking-[0.2em] font-medium text-background mb-5">Network</h3>
             <ul className="space-y-3">
               {navigation.network.map((item) => (
                 <li key={item.name}>
@@ -137,7 +137,7 @@ const Footer = () => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-background/60 hover:text-background transition-colors"
+                    className="text-sm text-background/50 hover:text-background transition-colors"
                   >
                     {item.name}
                   </a>
@@ -146,15 +146,15 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Opportunities */}
+          {/* Explore */}
           <div>
-            <h3 className="text-sm font-medium text-background mb-4">Opportunities</h3>
+            <h3 className="text-[11px] uppercase tracking-[0.2em] font-medium text-background mb-5">Explore</h3>
             <ul className="space-y-3">
               {navigation.opportunities.map((item) => (
                 <li key={item.name}>
                   <Link
                     to={item.href}
-                    className="text-sm text-background/60 hover:text-background transition-colors"
+                    className="text-sm text-background/50 hover:text-background transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -165,21 +165,21 @@ const Footer = () => {
 
           {/* About */}
           <div>
-            <h3 className="text-sm font-medium text-background mb-4">About</h3>
+            <h3 className="text-[11px] uppercase tracking-[0.2em] font-medium text-background mb-5">About</h3>
             <ul className="space-y-3">
               {navigation.about.map((item) => (
                 <li key={item.name}>
                   {item.onClick ? (
                     <button
                       onClick={item.onClick}
-                      className="text-sm text-background/60 hover:text-background transition-colors"
+                      className="text-sm text-background/50 hover:text-background transition-colors"
                     >
                       {item.name}
                     </button>
                   ) : (
                     <Link
                       to={item.href}
-                      className="text-sm text-background/60 hover:text-background transition-colors"
+                      className="text-sm text-background/50 hover:text-background transition-colors"
                     >
                       {item.name}
                     </Link>
@@ -191,28 +191,28 @@ const Footer = () => {
         </div>
 
         {/* Bottom section */}
-        <div className="mt-12 pt-8 border-t border-background/10">
+        <div className="mt-16 pt-8 border-t border-background/10">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-5">
               {navigation.social.map((item) => (
                 <a 
                   key={item.name} 
                   href={item.href} 
-                  className="text-background/40 hover:text-background/60 transition-colors" 
+                  className="text-background/30 hover:text-background/60 transition-colors" 
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
                   <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-5 w-5" aria-hidden="true" />
+                  <item.icon className="h-4 w-4" aria-hidden="true" />
                 </a>
               ))}
             </div>
-            <p className="text-xs text-background/50">
+            <p className="text-[11px] text-background/40 tracking-wide">
               &copy; {new Date().getFullYear()} NIAS. All rights reserved.
               <span className="mx-2">·</span>
-              <Link to="/privacy-policy" className="hover:text-background">Privacy Policy</Link>
+              <Link to="/privacy-policy" className="hover:text-background/60 transition-colors">Privacy Policy</Link>
               <span className="mx-2">·</span>
-              <Link to="/terms-of-use" className="hover:text-background">Terms of Use</Link>
+              <Link to="/terms-of-use" className="hover:text-background/60 transition-colors">Terms of Use</Link>
             </p>
           </div>
         </div>
