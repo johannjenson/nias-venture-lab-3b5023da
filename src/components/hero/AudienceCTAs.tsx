@@ -29,7 +29,7 @@ const GatheringCard = ({ event }: { event: Gathering }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Hero image overlay on hover */}
+      {/* Hero image overlay on hover - no mask, hides text */}
       {event.heroImage && (
         <div 
           className={`absolute inset-0 transition-opacity duration-300 ${
@@ -41,20 +41,15 @@ const GatheringCard = ({ event }: { event: Gathering }) => {
             alt={event.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-foreground/60" />
         </div>
       )}
       
-      {/* Content */}
-      <div className={`relative z-10 transition-colors duration-300 ${
-        isHovered && event.heroImage ? "text-background" : ""
+      {/* Content - hidden when hovering with hero image */}
+      <div className={`transition-opacity duration-300 ${
+        isHovered && event.heroImage ? "opacity-0" : "opacity-100"
       }`}>
-        <h4 className={`text-sm font-medium mb-2 transition-colors ${
-          isHovered && event.heroImage ? "text-background" : "text-foreground group-hover:text-foreground/80"
-        }`}>{event.title}</h4>
-        <div className={`text-xs leading-relaxed ${
-          isHovered && event.heroImage ? "text-background/80" : "text-muted-foreground"
-        }`}>
+        <h4 className="text-sm font-medium text-foreground mb-2 group-hover:text-foreground/80 transition-colors">{event.title}</h4>
+        <div className="text-xs text-muted-foreground leading-relaxed">
           <span>{event.date}</span>
           <span className="block mt-0.5">{event.location}</span>
         </div>
@@ -132,7 +127,7 @@ const AudienceCTAs = () => {
     },
     {
       title: "NIAS Business Forum",
-      date: "2024",
+      date: "February 13, 2025",
       location: "Riyadh",
       href: "/events/nias-business-forum",
     },
