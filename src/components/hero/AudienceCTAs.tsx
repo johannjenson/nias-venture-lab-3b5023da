@@ -241,7 +241,7 @@ const AudienceCTAs = () => {
                 className="w-full bg-nias-green hover:bg-nias-green/90 text-nias-green-foreground h-11 text-sm font-medium"
               >
                 <a href="https://access.nias.io/" target="_blank" rel="noopener noreferrer">
-                  For Founders & Advisors <ArrowRight className="ml-2 h-4 w-4" />
+                  Request Access <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
             </div>
