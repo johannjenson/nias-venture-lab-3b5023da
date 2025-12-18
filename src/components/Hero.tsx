@@ -24,7 +24,7 @@ const Hero = ({ openRequestModal }: HeroProps) => {
       <EventBanner />
       <MainNav />
       <HeroContent onRequestInvite={handleRequestInvite} />
-      <AudienceCTAs onRequestInvite={handleRequestInvite} />
+      <AudienceCTAs />
       <RequestInviteModal 
         open={showRequestModal} 
         onOpenChange={setShowRequestModal} 
