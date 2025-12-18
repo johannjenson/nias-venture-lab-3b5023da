@@ -9,7 +9,7 @@ const HeroContent = () => {
         <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
           <div className="max-w-3xl mx-auto text-center">
             {/* Wave Icon */}
-            <Waves className="h-10 w-10 md:h-12 md:w-12 text-foreground mx-auto mb-8" strokeWidth={1.5} />
+            <Waves className="h-10 w-10 md:h-12 md:w-12 text-foreground mx-auto mb-12" strokeWidth={2.5} />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.15]">
               Land & Expand<br />in <span className="font-medium">Saudi Arabia</span>
             </h1>
@@ -19,19 +19,19 @@ const HeroContent = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button
                 asChild
-                className="bg-foreground hover:bg-foreground/90 text-background px-8 h-12 text-sm font-medium tracking-wide"
+                className="bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground px-8 h-12 text-sm font-medium tracking-wide"
               >
-                <a href="https://access.nias.io/" target="_blank" rel="noopener noreferrer">
-                  For Founders <ArrowRight className="ml-2 h-4 w-4" />
+                <a href="https://access.nias.io/investors" target="_blank" rel="noopener noreferrer">
+                  For Investors <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
               <Button
                 asChild
                 variant="outline"
-                className="border-foreground/20 text-foreground hover:bg-foreground hover:text-background px-8 h-12 text-sm font-medium tracking-wide"
+                className="border-nias-green text-nias-green hover:bg-nias-green hover:text-nias-green-foreground px-8 h-12 text-sm font-medium tracking-wide"
               >
-                <a href="https://access.nias.io/investors" target="_blank" rel="noopener noreferrer">
-                  For Investors
+                <a href="https://access.nias.io/" target="_blank" rel="noopener noreferrer">
+                  For Founders
                 </a>
               </Button>
             </div>
