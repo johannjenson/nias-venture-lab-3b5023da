@@ -32,32 +32,14 @@ const AudienceCTAs = () => {
     {
       title: "180 Studios Evening",
       date: "September 18, 2024",
-      location: "London",
+      location: "Riyadh",
       href: "/events/studios180-event",
-    },
-    {
-      title: "Capital & Culture",
-      date: "June 24, 2024",
-      location: "Riyadh",
-      href: "/events/capital-culture",
-    },
-    {
-      title: "Art & Wealth",
-      date: "May 15, 2024",
-      location: "Riyadh",
-      href: "/events/art-wealth",
     },
     {
       title: "GitHub Founder Dinner",
       date: "April 10, 2024",
-      location: "San Francisco",
-      href: "/events/github-founder-dinner",
-    },
-    {
-      title: "Moove Event",
-      date: "March 20, 2024",
       location: "Riyadh",
-      href: "/events/moove",
+      href: "/events/github-founder-dinner",
     },
   ];
 
@@ -68,7 +50,7 @@ const AudienceCTAs = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">
-              The NIAS Network
+              The <span className="font-semibold">NIAS</span> Network
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               A carefully curated community of founders, investors, advisors, and leaders united by a shared interest in the Saudi market.
@@ -119,7 +101,7 @@ const AudienceCTAs = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">
-              What is NIAS?
+              What is <span className="font-semibold">NIAS</span>?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We provide comprehensive support for top tier founders and funds looking to establish and grow their presence in Saudi Arabia.
@@ -242,7 +224,7 @@ const AudienceCTAs = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-background mb-6">
-              Curious about NIAS & Expansion Capital?
+              Curious about <span className="font-semibold">NIAS</span> & Expansion Capital?
             </h2>
             <p className="text-lg text-background/70 max-w-2xl mx-auto mb-8">
               Get the first instalment of our guide focused on Saudi Arabia and Kuwait
