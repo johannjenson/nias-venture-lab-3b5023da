@@ -10,10 +10,16 @@ const NiasLogo = ({ className = "", variant = "dark" }: NiasLogoProps) => {
   
   return (
     <Link to="/" className={`flex flex-col items-start leading-none ${className}`}>
-      <span className={`font-sans font-bold text-xl tracking-tight ${textColor}`}>
+      <span 
+        className={`font-bold text-2xl tracking-tight ${textColor}`}
+        style={{ fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif' }}
+      >
         NIAS
       </span>
-      <span className={`font-sans text-sm ${textColor}`} style={{ fontFamily: 'Arial, sans-serif' }}>
+      <span 
+        className={`text-xs ${textColor} -mt-0.5`} 
+        style={{ fontFamily: 'Arial, sans-serif', marginLeft: '0.15em' }}
+      >
         نياس
       </span>
     </Link>
