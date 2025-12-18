@@ -118,7 +118,7 @@ const Resources = () => {
             <Waves className="h-8 w-8 text-primary" />
           </button>
           <Button
-            onClick={() => setShowRequestModal(true)}
+            onClick={() => navigate('/#network')}
             className="bg-primary hover:bg-primary/90 text-white"
           >
             Join the NIAS Network
