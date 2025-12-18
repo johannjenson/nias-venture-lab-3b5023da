@@ -126,11 +126,11 @@ const Footer = () => {
   return (
     <footer className="bg-foreground text-background">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="flex flex-wrap justify-center gap-12 md:gap-16">
           {/* Logo */}
-          <div className="col-span-2 md:col-span-1">
+          <div>
             <Link to="/" className="inline-block">
-              <NiasLogo className="text-background" />
+              <NiasLogo className="text-background" variant="light" />
             </Link>
           </div>
 

@@ -220,13 +220,13 @@ const AudienceCTAs = () => {
       </div>
 
       {/* Expansion Capital Section with Form */}
-      <div className="py-20 md:py-28 bg-foreground">
+      <div className="py-20 md:py-28 bg-olive">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-background mb-6">
-              Curious about <span className="font-semibold">NIAS</span> & Expansion Capital?
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">
+              Curious about Expansion Capital?
             </h2>
-            <p className="text-lg text-background/70 max-w-2xl mx-auto mb-8">
+            <p className="text-lg text-foreground/70 max-w-2xl mx-auto mb-8">
               Get the first instalment of our guide focused on Saudi Arabia and Kuwait
             </p>
             <ExpansionCapitalForm />
@@ -328,7 +328,7 @@ const ExpansionCapitalForm = () => {
         />
         <Button 
           type="submit" 
-          className="bg-background text-foreground hover:bg-background/90 px-8 h-12 font-medium"
+          className="bg-foreground text-background hover:bg-foreground/90 px-8 h-12 font-medium"
           disabled={isLoading}
         >
           {isLoading ? "Submitting..." : "Submit"}
