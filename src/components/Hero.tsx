@@ -1,5 +1,4 @@
 import { useState } from "react";
-import MainNav from "./MainNav";
 import RequestInviteModal from "./RequestInviteModal";
 import EventBanner from "./hero/EventBanner";
 import HeroContent from "./hero/HeroContent";
@@ -11,7 +10,6 @@ const Hero = () => {
   return (
     <div className="relative min-h-screen flex flex-col">
       <EventBanner />
-      <MainNav />
       <HeroContent />
       <AudienceCTAs />
       <RequestInviteModal 
