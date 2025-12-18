@@ -8,9 +8,6 @@ const HeroContent = () => {
       <div className="flex-1 flex items-center">
         <div className="w-full max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block text-olive border border-olive/30 rounded-full px-4 py-1.5 text-sm font-medium tracking-wide mb-8">
-              Private Membership Network
-            </span>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
               Land & Expand<br />in <span className="font-semibold">Saudi Arabia</span>
             </h1>
