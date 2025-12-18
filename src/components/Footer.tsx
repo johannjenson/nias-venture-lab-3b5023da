@@ -127,13 +127,6 @@ const Footer = () => {
     <footer className="bg-foreground text-background">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <div className="flex flex-wrap justify-center gap-12 md:gap-16">
-          {/* Logo */}
-          <div>
-            <Link to="/" className="inline-block">
-              <NiasLogo className="text-background" variant="light" />
-            </Link>
-          </div>
-
           {/* Network */}
           <div>
             <h3 className="text-sm font-medium text-background mb-4">Network</h3>

@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const EventBanner = () => {
   const navItems = [
     { name: "Network", href: "#network" },
-    { name: "Gatherings", href: "#gatherings" },
-    { name: "Opportunities", href: "#opportunities" },
+    { name: "Gather", href: "#gatherings" },
+    { name: "Explore", href: "#opportunities" },
   ];
 
   return (
