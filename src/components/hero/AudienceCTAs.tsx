@@ -7,39 +7,39 @@ const AudienceCTAs = () => {
   const pastGatherings = [
     {
       title: "Doers Summit Dubai Panel",
-      date: "November 26, 2024",
+      date: "November 26, 2025",
       location: "Dubai",
-      href: "/events/doers-summit-dubai-panel",
+      href: "/gatherings/doers-summit-dubai-panel",
     },
     {
       title: "US-Saudi VIP Dinner",
-      date: "November 18, 2024",
+      date: "November 18, 2025",
       location: "Washington D.C.",
-      href: "/events/us-saudi-forum-dinner",
+      href: "/gatherings/us-saudi-forum-dinner",
     },
     {
       title: "Biban25 Art Gala",
-      date: "November 7, 2024",
+      date: "November 7, 2025",
       location: "Riyadh",
-      href: "/events/biban25-art-gala-dinner",
+      href: "/gatherings/biban25-art-gala-dinner",
     },
     {
       title: "FII9 Night Caps",
-      date: "October 29, 2024",
+      date: "October 29, 2025",
       location: "Riyadh",
-      href: "/events/night-cap",
+      href: "/gatherings/night-cap",
     },
     {
       title: "180 Studios Evening",
-      date: "September 18, 2024",
+      date: "September 18, 2025",
       location: "Riyadh",
-      href: "/events/studios180-event",
+      href: "/gatherings/studios180",
     },
     {
       title: "GitHub Founder Dinner",
-      date: "April 10, 2024",
+      date: "April 10, 2025",
       location: "Riyadh",
-      href: "/events/github-founder-dinner",
+      href: "/gatherings/github-founder-dinner",
     },
   ];
 
@@ -50,7 +50,7 @@ const AudienceCTAs = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">
-              The <span className="font-semibold">NIAS</span> Network
+              Network
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               A carefully curated community of founders, investors, advisors, and leaders united by a shared interest in the Saudi market.
@@ -101,7 +101,7 @@ const AudienceCTAs = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">
-              What is <span className="font-semibold">NIAS</span>?
+              Work with <span className="font-semibold">NIAS</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We provide comprehensive support for top tier founders and funds looking to establish and grow their presence in Saudi Arabia.
@@ -153,10 +153,10 @@ const AudienceCTAs = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">
-              <span className="font-semibold">NIAS</span> Gatherings
+              Gather
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Exclusive events bringing together our network of founders, investors, and industry leaders.
+              Exclusive gatherings bringing together our network of founders, investors, and industry leaders.
             </p>
           </div>
 
