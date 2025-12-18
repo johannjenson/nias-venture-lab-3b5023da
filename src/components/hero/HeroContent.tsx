@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Waves } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const HeroContent = () => {
   return (
@@ -33,6 +34,15 @@ const HeroContent = () => {
                 <a href="https://access.nias.io/" target="_blank" rel="noopener noreferrer">
                   For Founders
                 </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="border-foreground/20 text-foreground hover:bg-foreground hover:text-background px-8 h-12 text-sm font-medium tracking-wide"
+              >
+                <Link to="/resources">
+                  View Opportunities
+                </Link>
               </Button>
             </div>
           </div>

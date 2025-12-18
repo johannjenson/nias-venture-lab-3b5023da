@@ -45,6 +45,93 @@ const AudienceCTAs = () => {
 
   return (
     <div className="bg-background">
+      {/* Gatherings Section */}
+      <div id="gatherings" className="py-24 md:py-32">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-4xl font-light text-foreground mb-5 tracking-tight">
+              Gather
+            </h2>
+            <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
+              Exclusive gatherings bringing together our network of founders, investors, and industry leaders.
+            </p>
+          </div>
+
+          {/* Past Gatherings */}
+          <div>
+            <h3 className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium mb-8">Past Gatherings</h3>
+            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {pastGatherings.map((event) => (
+                <Link 
+                  key={event.title}
+                  to={event.href}
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="block p-5 bg-secondary/40 border border-border/30 hover:border-border/60 transition-colors group"
+                >
+                  <h4 className="text-sm font-medium text-foreground mb-2 group-hover:text-foreground/80 transition-colors">{event.title}</h4>
+                  <div className="text-xs text-muted-foreground leading-relaxed">
+                    <span>{event.date}</span>
+                    <span className="block mt-0.5">{event.location}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Work with NIAS Section */}
+      <div className="py-24 md:py-32 bg-secondary/30">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-4xl font-light text-foreground mb-5 tracking-tight">
+              Work with <span className="font-medium">NIAS</span>
+            </h2>
+            <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
+              We provide comprehensive support for top tier founders and funds looking to establish and grow their presence in Saudi Arabia.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-12 md:gap-16 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="mb-6 mx-auto flex h-14 w-14 items-center justify-center bg-foreground">
+                <svg className="h-6 w-6 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+              </div>
+              <h3 className="text-base font-medium text-foreground mb-3 tracking-tight">Smooth Landing</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">Navigate regulatory requirements and local partnerships with confidence.</p>
+            </div>
+            <div className="text-center">
+              <div className="mb-6 mx-auto flex h-14 w-14 items-center justify-center bg-foreground">
+                <svg className="h-6 w-6 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 className="text-base font-medium text-foreground mb-3 tracking-tight">Trusted Advisors</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">Connect with experienced professionals who understand your needs.</p>
+            </div>
+            <div className="text-center">
+              <div className="mb-6 mx-auto flex h-14 w-14 items-center justify-center bg-foreground">
+                <svg className="h-6 w-6 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-base font-medium text-foreground mb-3 tracking-tight">Strategic Financing</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">Access funding opportunities aligned with Vision 2030.</p>
+            </div>
+          </div>
+          
+          <div className="mt-16 text-center">
+            <Button asChild className="bg-foreground hover:bg-foreground/90 text-background h-11 px-8 text-sm font-medium">
+              <Link to="/work-with-nias" onClick={() => window.scrollTo(0, 0)}>
+                Work with NIAS <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+
       {/* Network Section */}
       <div id="network" className="py-24 md:py-32">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
@@ -99,92 +186,6 @@ const AudienceCTAs = () => {
         </div>
       </div>
 
-      {/* Work with NIAS Section */}
-      <div className="py-24 md:py-32 bg-secondary/30">
-        <div className="max-w-6xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-light text-foreground mb-5 tracking-tight">
-              Work with <span className="font-medium">NIAS</span>
-            </h2>
-            <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
-              We provide comprehensive support for top tier founders and funds looking to establish and grow their presence in Saudi Arabia.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-12 md:gap-16 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="mb-6 mx-auto flex h-14 w-14 items-center justify-center bg-foreground">
-                <svg className="h-6 w-6 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
-              </div>
-              <h3 className="text-base font-medium text-foreground mb-3 tracking-tight">Smooth Landing</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">Navigate regulatory requirements and local partnerships with confidence.</p>
-            </div>
-            <div className="text-center">
-              <div className="mb-6 mx-auto flex h-14 w-14 items-center justify-center bg-foreground">
-                <svg className="h-6 w-6 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-base font-medium text-foreground mb-3 tracking-tight">Trusted Advisors</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">Connect with experienced professionals who understand your needs.</p>
-            </div>
-            <div className="text-center">
-              <div className="mb-6 mx-auto flex h-14 w-14 items-center justify-center bg-foreground">
-                <svg className="h-6 w-6 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-base font-medium text-foreground mb-3 tracking-tight">Strategic Financing</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">Access funding opportunities aligned with Vision 2030.</p>
-            </div>
-          </div>
-          
-          <div className="mt-16 text-center">
-            <Button asChild className="bg-foreground hover:bg-foreground/90 text-background h-11 px-8 text-sm font-medium">
-              <Link to="/work-with-nias">
-                Work with NIAS <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Gatherings Section */}
-      <div id="gatherings" className="py-24 md:py-32">
-        <div className="max-w-6xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-light text-foreground mb-5 tracking-tight">
-              Gather
-            </h2>
-            <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
-              Exclusive gatherings bringing together our network of founders, investors, and industry leaders.
-            </p>
-          </div>
-
-          {/* Past Gatherings */}
-          <div>
-            <h3 className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium mb-8">Past Gatherings</h3>
-            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {pastGatherings.map((event) => (
-                <Link 
-                  key={event.title}
-                  to={event.href}
-                  className="block p-5 bg-secondary/40 border border-border/30 hover:border-border/60 transition-colors group"
-                >
-                  <h4 className="text-sm font-medium text-foreground mb-2 group-hover:text-foreground/80 transition-colors">{event.title}</h4>
-                  <div className="text-xs text-muted-foreground leading-relaxed">
-                    <span>{event.date}</span>
-                    <span className="block mt-0.5">{event.location}</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Explore Section */}
       <div id="opportunities" className="py-24 md:py-32 bg-secondary/30">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
@@ -200,6 +201,7 @@ const AudienceCTAs = () => {
           <div className="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto">
             <Link 
               to="/resources"
+              onClick={() => window.scrollTo(0, 0)}
               className="block p-8 bg-background border border-border/30 hover:border-border/60 transition-colors group"
             >
               <h3 className="text-lg font-medium text-foreground mb-3 flex items-center justify-between tracking-tight">
@@ -210,6 +212,7 @@ const AudienceCTAs = () => {
             </Link>
             <Link 
               to="/real-estate"
+              onClick={() => window.scrollTo(0, 0)}
               className="block p-8 bg-background border border-border/30 hover:border-border/60 transition-colors group"
             >
               <h3 className="text-lg font-medium text-foreground mb-3 flex items-center justify-between tracking-tight">
@@ -230,7 +233,7 @@ const AudienceCTAs = () => {
               Curious about <span className="text-nias-gold">Expansion Capital</span>?
             </h2>
             <p className="text-base text-nias-dark-foreground/70 max-w-lg mx-auto mb-10 leading-relaxed">
-              Get the first instalment of our guide focused on Saudi Arabia and Kuwait
+              Download our guide focused on Saudi Arabia & Kuwait
             </p>
             <ExpansionCapitalForm />
           </div>
