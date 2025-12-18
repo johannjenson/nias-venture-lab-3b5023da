@@ -50,7 +50,7 @@ const HeroContent = () => {
                 className="w-full sm:w-52 bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground h-12 text-sm font-medium tracking-wide"
               >
                 <a href="https://access.nias.io/investors" target="_blank" rel="noopener noreferrer">
-                  For Investors <ArrowRight className="ml-2 h-4 w-4" />
+                  For Capital Allocators <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
               <Button
