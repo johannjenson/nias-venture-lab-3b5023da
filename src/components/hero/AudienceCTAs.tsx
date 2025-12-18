@@ -58,36 +58,39 @@ const AudienceCTAs = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
-            <div className="p-8 bg-secondary/40 border border-border/30 hover:border-border/60 transition-colors">
-              <h3 className="text-lg font-medium text-foreground mb-3 tracking-tight">NIAS Access</h3>
+            {/* NIAS Access - Green theme */}
+            <div className="p-8 bg-secondary/40 border border-nias-green/30 hover:border-nias-green/60 transition-colors">
+              <h3 className="text-lg font-medium text-foreground mb-3 tracking-tight">NIAS <span className="text-nias-green">Access</span></h3>
               <p className="mb-8 text-muted-foreground text-sm leading-relaxed">For founders, executives, and operators looking to expand into the Kingdom.</p>
               <Button 
                 asChild
-                className="w-full bg-foreground hover:bg-foreground/90 text-background h-11 text-sm font-medium"
+                className="w-full bg-nias-green hover:bg-nias-green/90 text-nias-green-foreground h-11 text-sm font-medium"
               >
                 <a href="https://access.nias.io/" target="_blank" rel="noopener noreferrer">
                   Request Access <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
             </div>
-            <div className="p-8 bg-secondary/40 border border-border/30 hover:border-border/60 transition-colors">
-              <h3 className="text-lg font-medium text-foreground mb-3 tracking-tight">NIAS Private</h3>
+            {/* NIAS Private - Blue theme */}
+            <div className="p-8 bg-secondary/40 border border-nias-blue/30 hover:border-nias-blue/60 transition-colors">
+              <h3 className="text-lg font-medium text-foreground mb-3 tracking-tight">NIAS <span className="text-nias-blue">Private</span></h3>
               <p className="mb-8 text-muted-foreground text-sm leading-relaxed">For qualified investors seeking deal flow and co-investment opportunities in the GCC.</p>
               <Button 
                 asChild
-                className="w-full bg-foreground hover:bg-foreground/90 text-background h-11 text-sm font-medium"
+                className="w-full bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground h-11 text-sm font-medium"
               >
                 <a href="https://access.nias.io/investors" target="_blank" rel="noopener noreferrer">
                   Request Membership <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
             </div>
-            <div className="p-8 bg-secondary/40 border border-border/30">
-              <h3 className="text-lg font-medium text-foreground mb-3 tracking-tight">NIAS Family Office</h3>
-              <p className="mb-8 text-muted-foreground text-sm leading-relaxed">For family offices seeking bespoke advisory and exclusive investment access.</p>
+            {/* NIAS Family Office - Black and Gold theme */}
+            <div className="p-8 bg-nias-dark border border-nias-gold/30">
+              <h3 className="text-lg font-medium text-nias-dark-foreground mb-3 tracking-tight">NIAS <span className="text-nias-gold">Family Office</span></h3>
+              <p className="mb-8 text-nias-dark-foreground/70 text-sm leading-relaxed">For family offices seeking bespoke advisory and exclusive investment access.</p>
               <Button 
                 disabled
-                className="w-full bg-muted/50 text-muted-foreground cursor-not-allowed h-11 text-sm font-medium"
+                className="w-full bg-nias-gold/20 text-nias-gold border border-nias-gold/30 cursor-not-allowed h-11 text-sm font-medium"
               >
                 <Lock className="mr-2 h-3.5 w-3.5" /> Invite Only
               </Button>
