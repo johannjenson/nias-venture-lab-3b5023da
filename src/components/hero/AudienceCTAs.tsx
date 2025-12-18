@@ -226,7 +226,7 @@ const AudienceCTAs = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">
               Curious about Expansion Capital?
             </h2>
-            <p className="text-lg text-foreground/70 max-w-2xl mx-auto mb-8">
+            <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-8 font-normal">
               Get the first instalment of our guide focused on Saudi Arabia and Kuwait
             </p>
             <ExpansionCapitalForm />
