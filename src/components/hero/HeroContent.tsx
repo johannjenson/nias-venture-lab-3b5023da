@@ -47,7 +47,7 @@ const HeroContent = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button
                 asChild
-                className="bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground px-8 h-12 text-sm font-medium tracking-wide"
+                className="w-full sm:w-44 bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground h-12 text-sm font-medium tracking-wide"
               >
                 <a href="https://access.nias.io/investors" target="_blank" rel="noopener noreferrer">
                   For Investors <ArrowRight className="ml-2 h-4 w-4" />
@@ -56,7 +56,7 @@ const HeroContent = () => {
               <Button
                 asChild
                 variant="outline"
-                className="border-nias-green text-nias-green hover:bg-nias-green hover:text-nias-green-foreground px-8 h-12 text-sm font-medium tracking-wide"
+                className="w-full sm:w-44 border-nias-green text-nias-green hover:bg-nias-green hover:text-nias-green-foreground h-12 text-sm font-medium tracking-wide"
               >
                 <a href="https://access.nias.io/" target="_blank" rel="noopener noreferrer">
                   For Founders
@@ -65,7 +65,7 @@ const HeroContent = () => {
               <Button
                 asChild
                 variant="outline"
-                className="border-foreground/20 text-foreground hover:bg-foreground hover:text-background px-8 h-12 text-sm font-medium tracking-wide"
+                className="w-full sm:w-44 border-foreground/20 text-foreground hover:bg-foreground hover:text-background h-12 text-sm font-medium tracking-wide"
               >
                 <Link to="/resources">
                   View Opportunities
