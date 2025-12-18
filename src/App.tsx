@@ -60,6 +60,13 @@ const App = () => (
           <Route path="/events/biban25-art-gala-dinner" element={<Biban25Event />} />
           <Route path="/events/us-saudi-forum-dinner" element={<USSaudiForumDinner />} />
           <Route path="/events/doers-summit-dubai-panel" element={<DoersSummitEvent />} />
+          {/* Gatherings routes (aliases for events) */}
+          <Route path="/gatherings/doers-summit-dubai-panel" element={<DoersSummitEvent />} />
+          <Route path="/gatherings/us-saudi-forum-dinner" element={<USSaudiForumDinner />} />
+          <Route path="/gatherings/biban25-art-gala-dinner" element={<Biban25Event />} />
+          <Route path="/gatherings/night-cap" element={<NightCapEvent />} />
+          <Route path="/gatherings/studios180" element={<Studios180Event />} />
+          <Route path="/gatherings/github-founder-dinner" element={<GithubFounderEvent />} />
           <Route path="/github-founder" element={<GithubFounderEvent />} />
           <Route path="/events/github-founder" element={<GithubFounderEvent />} />
           <Route path="/resources" element={<Resources />} />
