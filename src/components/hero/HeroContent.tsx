@@ -3,10 +3,10 @@ import { ArrowRight, Waves } from "lucide-react";
 
 const HeroContent = () => {
   return (
-    <div className="flex-1 flex flex-col bg-secondary/30 pt-32 md:pt-24">
+    <div className="flex-1 flex flex-col bg-secondary/30 pt-16 md:pt-16">
       {/* Hero Section */}
       <div className="flex-1 flex items-center">
-        <div className="w-full max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
+        <div className="w-full max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-16">
           <div className="max-w-4xl mx-auto text-center">
             {/* Wave Icon */}
             <Waves className="h-12 w-12 text-foreground mx-auto mb-8" strokeWidth={2} />
