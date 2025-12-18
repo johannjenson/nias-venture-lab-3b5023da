@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Waves } from "lucide-react";
 import { Link } from "react-router-dom";
+import saudiTimesLogo from "@/assets/saudi-times-logo.png";
+import diwanLogo from "@/assets/diwan-logo.png";
 
 const HeroContent = () => {
   return (
@@ -68,6 +70,33 @@ const HeroContent = () => {
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-light tracking-tight mb-2">15+</div>
               <div className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-background/50 font-medium">Annual Gatherings</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Partnership Section */}
+      <div className="bg-background py-12 md:py-16">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
+          <div className="text-center">
+            <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium mb-8">In Partnership With</p>
+            <div className="flex items-center justify-center gap-12 md:gap-16">
+              <a 
+                href="https://thesauditimes.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="opacity-70 hover:opacity-100 transition-opacity"
+              >
+                <img src={saudiTimesLogo} alt="The Saudi Times" className="h-8 md:h-10 w-auto" />
+              </a>
+              <a 
+                href="https://thediwan.org" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="opacity-70 hover:opacity-100 transition-opacity"
+              >
+                <img src={diwanLogo} alt="The Diwan" className="h-8 md:h-10 w-auto" />
+              </a>
             </div>
           </div>
         </div>
