@@ -54,16 +54,6 @@ const Footer = () => {
       { name: "Vision 2030", href: "/resources" },
       { name: "Real Estate", href: "/real-estate" },
     ],
-    upcoming: [
-      { name: "Coming Soon", href: "#", disabled: true },
-    ],
-    past: [
-      { name: "Doers Summit Panel", href: "/events/doers-summit-dubai-panel" },
-      { name: "US-Saudi VIP Dinner", href: "/events/us-saudi-forum-dinner" },
-      { name: "Biban25 Art Gala", href: "/events/biban25-art-gala-dinner" },
-      { name: "FII9 Night Caps", href: "/events/night-cap" },
-      { name: "180 Studios Evening", href: "/events/studios180-event" },
-    ],
     about: [
       { name: "Team", href: "/people" },
       { name: "Clients & Partners", href: "/clients-partners" },
@@ -136,7 +126,7 @@ const Footer = () => {
   return (
     <footer className="bg-foreground text-background">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Logo */}
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="inline-block">
@@ -168,37 +158,6 @@ const Footer = () => {
             <h3 className="text-sm font-medium text-background mb-4">Opportunities</h3>
             <ul className="space-y-3">
               {navigation.opportunities.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    to={item.href}
-                    className="text-sm text-background/60 hover:text-background transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Upcoming */}
-          <div>
-            <h3 className="text-sm font-medium text-background mb-4">Upcoming</h3>
-            <ul className="space-y-3">
-              {navigation.upcoming.map((item) => (
-                <li key={item.name}>
-                  <span className="text-sm text-background/40 italic">
-                    {item.name}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Past */}
-          <div>
-            <h3 className="text-sm font-medium text-background mb-4">Past</h3>
-            <ul className="space-y-3">
-              {navigation.past.map((item) => (
                 <li key={item.name}>
                   <Link
                     to={item.href}

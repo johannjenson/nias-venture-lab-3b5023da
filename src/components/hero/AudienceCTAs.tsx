@@ -153,7 +153,7 @@ const AudienceCTAs = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">
-              Gatherings
+              <span className="font-semibold">NIAS</span> Gatherings
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Exclusive events bringing together our network of founders, investors, and industry leaders.
