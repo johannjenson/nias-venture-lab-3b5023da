@@ -49,7 +49,7 @@ const AudienceCTAs = () => {
       <div id="gatherings" className="py-24 md:py-32">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-light text-foreground mb-5 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-light text-foreground mb-5 tracking-tight">
               Gather
             </h2>
             <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
@@ -92,7 +92,7 @@ const AudienceCTAs = () => {
       <div className="py-24 md:py-32 bg-secondary/30">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-light text-foreground mb-5 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-light text-foreground mb-5 tracking-tight">
               Work with <span className="font-medium">NIAS</span>
             </h2>
             <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
@@ -144,7 +144,7 @@ const AudienceCTAs = () => {
       <div id="network" className="py-24 md:py-32">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-light text-foreground mb-5 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-light text-foreground mb-5 tracking-tight">
               Network
             </h2>
             <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
@@ -198,7 +198,7 @@ const AudienceCTAs = () => {
       <div id="opportunities" className="py-24 md:py-32 bg-secondary/30">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-light text-foreground mb-5 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-light text-foreground mb-5 tracking-tight">
               Explore
             </h2>
             <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
