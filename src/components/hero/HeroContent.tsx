@@ -15,7 +15,7 @@ const HeroContent = () => {
               Land & Expand<br />in <span className="font-medium">Saudi Arabia</span>
             </h1>
             <p className="text-base md:text-lg text-muted-foreground mb-12 max-w-xl mx-auto leading-relaxed">
-              Bringing together exceptional frontier tech, sports & entertainment, art & lifestyle, and energy companies from around the world with serial entrepreneurs, government leaders, strategic investors, and acquisitive funds in the Kingdom.
+              Uniting top tier frontier tech, energy, sports, art, and entertainment companies with the Kingdom's most influential entrepreneurs, government leaders, strategic investors, and acquisitive funds.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button
