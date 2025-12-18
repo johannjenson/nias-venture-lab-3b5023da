@@ -235,13 +235,13 @@ const AudienceCTAs = () => {
             {/* NIAS Access - Green theme */}
             <div className="p-8 bg-secondary/40 border border-nias-green/30 hover:border-nias-green/60 transition-colors">
               <h3 className="text-lg font-medium text-foreground mb-3 tracking-tight">NIAS <span className="text-nias-green">Access</span></h3>
-              <p className="mb-8 text-muted-foreground text-sm leading-relaxed">For founders, executives, and operators looking to expand into the Kingdom.</p>
+              <p className="mb-8 text-muted-foreground text-sm leading-relaxed">For founders, executives, advisors, and operators looking to expand into the Kingdom.</p>
               <Button 
                 asChild
                 className="w-full bg-nias-green hover:bg-nias-green/90 text-nias-green-foreground h-11 text-sm font-medium"
               >
                 <a href="https://access.nias.io/" target="_blank" rel="noopener noreferrer">
-                  Request Access <ArrowRight className="ml-2 h-4 w-4" />
+                  For Founders & Advisors <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
             </div>
