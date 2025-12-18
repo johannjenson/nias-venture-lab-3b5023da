@@ -82,7 +82,7 @@ const HeroContent = () => {
             <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium mb-8">In Partnership With</p>
             <div className="flex items-center justify-center gap-12 md:gap-16">
               <a 
-                href="https://thesauditimes.com" 
+                href="https://thesauditimes.net/en/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="opacity-70 hover:opacity-100 transition-opacity"
@@ -90,12 +90,12 @@ const HeroContent = () => {
                 <img src={saudiTimesLogo} alt="The Saudi Times" className="h-8 md:h-10 w-auto" />
               </a>
               <a 
-                href="https://thediwan.org" 
+                href="https://www.the-diwan.com/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="opacity-70 hover:opacity-100 transition-opacity"
               >
-                <img src={diwanLogo} alt="The Diwan" className="h-8 md:h-10 w-auto" />
+                <img src={diwanLogo} alt="The Diwan" className="h-16 md:h-20 w-auto" />
               </a>
             </div>
           </div>
