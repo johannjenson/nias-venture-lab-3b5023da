@@ -1,33 +1,104 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 
+// Hero images for gatherings
+import fii9Hero from "@/assets/fii9-hero.png";
+import nightcapHero from "@/assets/nightcap-hero.png";
+import biban25Hero from "@/assets/biban25-hero.png";
+import usSaudiHero from "@/assets/us-saudi-forum-hero.jpg";
+import saudiPlaybookHero from "@/assets/doers-summit/saudi-playbook-hero.png";
+
+interface Gathering {
+  title: string;
+  date: string;
+  location: string;
+  href: string;
+  heroImage?: string;
+}
+
+const GatheringCard = ({ event }: { event: Gathering }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <Link 
+      to={event.href}
+      onClick={() => window.scrollTo(0, 0)}
+      className="block p-5 bg-secondary/40 border border-border/30 hover:border-border/60 transition-colors group relative overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Hero image overlay on hover */}
+      {event.heroImage && (
+        <div 
+          className={`absolute inset-0 transition-opacity duration-300 ${
+            isHovered ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <img 
+            src={event.heroImage} 
+            alt={event.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-foreground/60" />
+        </div>
+      )}
+      
+      {/* Content */}
+      <div className={`relative z-10 transition-colors duration-300 ${
+        isHovered && event.heroImage ? "text-background" : ""
+      }`}>
+        <h4 className={`text-sm font-medium mb-2 transition-colors ${
+          isHovered && event.heroImage ? "text-background" : "text-foreground group-hover:text-foreground/80"
+        }`}>{event.title}</h4>
+        <div className={`text-xs leading-relaxed ${
+          isHovered && event.heroImage ? "text-background/80" : "text-muted-foreground"
+        }`}>
+          <span>{event.date}</span>
+          <span className="block mt-0.5">{event.location}</span>
+        </div>
+      </div>
+    </Link>
+  );
+};
+
 const AudienceCTAs = () => {
-  const pastGatherings = [
+  const pastGatherings: Gathering[] = [
     {
       title: "Doers Summit Dubai Panel",
       date: "November 26, 2025",
       location: "Dubai",
       href: "/gatherings/doers-summit-dubai-panel",
+      heroImage: saudiPlaybookHero,
     },
     {
       title: "US-Saudi VIP Dinner",
       date: "November 18, 2025",
       location: "Washington D.C.",
       href: "/gatherings/us-saudi-forum-dinner",
+      heroImage: usSaudiHero,
     },
     {
       title: "Biban25 Art Gala",
       date: "November 7, 2025",
       location: "Riyadh",
       href: "/gatherings/biban25-art-gala-dinner",
+      heroImage: biban25Hero,
     },
     {
       title: "FII9 Night Caps",
       date: "October 29, 2025",
       location: "Riyadh",
       href: "/gatherings/night-cap",
+      heroImage: nightcapHero,
+    },
+    {
+      title: "FII9 Recap",
+      date: "October 29, 2025",
+      location: "Riyadh",
+      href: "/events/fii9-recap",
+      heroImage: fii9Hero,
     },
     {
       title: "180 Studios Evening",
@@ -40,6 +111,30 @@ const AudienceCTAs = () => {
       date: "April 10, 2025",
       location: "Riyadh",
       href: "/gatherings/github-founder-dinner",
+    },
+    {
+      title: "Fireside Chats",
+      date: "March 20, 2025",
+      location: "Riyadh",
+      href: "/events/fireside-chats",
+    },
+    {
+      title: "Suhoor Dinner",
+      date: "March 8, 2025",
+      location: "Riyadh",
+      href: "/events/suhoor-dinner",
+    },
+    {
+      title: "LEAP Dinner",
+      date: "February 9, 2025",
+      location: "Riyadh",
+      href: "/events/leap-dinner",
+    },
+    {
+      title: "NIAS Business Forum",
+      date: "2024",
+      location: "Riyadh",
+      href: "/events/nias-business-forum",
     },
   ];
 
@@ -70,18 +165,7 @@ const AudienceCTAs = () => {
             <h3 className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium mb-8">Past Gatherings</h3>
             <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
               {pastGatherings.map((event) => (
-                <Link 
-                  key={event.title}
-                  to={event.href}
-                  onClick={() => window.scrollTo(0, 0)}
-                  className="block p-5 bg-secondary/40 border border-border/30 hover:border-border/60 transition-colors group"
-                >
-                  <h4 className="text-sm font-medium text-foreground mb-2 group-hover:text-foreground/80 transition-colors">{event.title}</h4>
-                  <div className="text-xs text-muted-foreground leading-relaxed">
-                    <span>{event.date}</span>
-                    <span className="block mt-0.5">{event.location}</span>
-                  </div>
-                </Link>
+                <GatheringCard key={event.title} event={event} />
               ))}
             </div>
           </div>
