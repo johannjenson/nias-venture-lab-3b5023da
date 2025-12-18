@@ -391,42 +391,38 @@ const ExpansionCapitalForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3 max-w-xl mx-auto">
-      <div className="flex flex-col sm:flex-row gap-3">
-        <input
-          type="text"
-          placeholder="Your Full Name"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-          className="flex-1 bg-nias-dark-foreground/10 text-nias-dark-foreground placeholder:text-nias-dark-foreground/50 border border-nias-gold/20 h-11 px-4 text-sm"
-          disabled={isLoading}
-        />
-        <input
-          type="email"
-          placeholder="Your Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="flex-1 bg-nias-dark-foreground/10 text-nias-dark-foreground placeholder:text-nias-dark-foreground/50 border border-nias-gold/20 h-11 px-4 text-sm"
-          disabled={isLoading}
-        />
-      </div>
-      <div className="flex flex-col sm:flex-row gap-3">
-        <input
-          type="tel"
-          placeholder="Phone Number (Optional)"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          className="flex-1 bg-nias-dark-foreground/10 text-nias-dark-foreground placeholder:text-nias-dark-foreground/50 border border-nias-gold/20 h-11 px-4 text-sm"
-          disabled={isLoading}
-        />
-        <Button 
-          type="submit" 
-          className="bg-nias-gold text-nias-dark hover:bg-nias-gold/90 px-8 h-11 text-sm font-medium"
-          disabled={isLoading}
-        >
-          {isLoading ? "Submitting..." : "Submit"}
-        </Button>
-      </div>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2 sm:gap-3 max-w-xl mx-auto">
+      <input
+        type="text"
+        placeholder="Your Full Name"
+        value={fullName}
+        onChange={(e) => setFullName(e.target.value)}
+        className="w-full bg-nias-dark-foreground/10 text-nias-dark-foreground placeholder:text-nias-dark-foreground/50 border border-nias-gold/20 h-11 px-4 text-sm"
+        disabled={isLoading}
+      />
+      <input
+        type="email"
+        placeholder="Your Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="w-full bg-nias-dark-foreground/10 text-nias-dark-foreground placeholder:text-nias-dark-foreground/50 border border-nias-gold/20 h-11 px-4 text-sm"
+        disabled={isLoading}
+      />
+      <input
+        type="tel"
+        placeholder="Phone Number (Optional)"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+        className="w-full bg-nias-dark-foreground/10 text-nias-dark-foreground placeholder:text-nias-dark-foreground/50 border border-nias-gold/20 h-11 px-4 text-sm"
+        disabled={isLoading}
+      />
+      <Button 
+        type="submit" 
+        className="w-full bg-nias-gold text-nias-dark hover:bg-nias-gold/90 h-11 text-sm font-medium"
+        disabled={isLoading}
+      >
+        {isLoading ? "Submitting..." : "Submit"}
+      </Button>
     </form>
   );
 };

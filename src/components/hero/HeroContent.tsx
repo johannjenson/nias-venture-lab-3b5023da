@@ -30,7 +30,7 @@ const HeroContent = () => {
         <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
           <div className="max-w-3xl mx-auto text-center">
             {/* Wave Icon */}
-            <Waves className="h-10 w-10 md:h-12 md:w-12 text-foreground mx-auto mb-12" strokeWidth={2} />
+            <Waves className="h-10 w-10 md:h-12 md:w-12 text-foreground mx-auto mb-6 md:mb-12" strokeWidth={2} />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.15]">
               Land & Expand<br />in{" "}
               <span 
