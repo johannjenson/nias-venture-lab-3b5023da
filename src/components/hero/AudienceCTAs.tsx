@@ -223,13 +223,13 @@ const AudienceCTAs = () => {
       </div>
 
       {/* Expansion Capital Section with Form */}
-      <div className="py-24 md:py-32 bg-olive">
+      <div className="py-24 md:py-32 bg-nias-dark">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-light text-foreground mb-5 tracking-tight">
-              Curious about Expansion Capital?
+            <h2 className="text-3xl md:text-4xl font-light text-nias-dark-foreground mb-5 tracking-tight">
+              Curious about <span className="text-nias-gold">Expansion Capital</span>?
             </h2>
-            <p className="text-base text-foreground/70 max-w-lg mx-auto mb-10 leading-relaxed">
+            <p className="text-base text-nias-dark-foreground/70 max-w-lg mx-auto mb-10 leading-relaxed">
               Get the first instalment of our guide focused on Saudi Arabia and Kuwait
             </p>
             <ExpansionCapitalForm />
@@ -308,7 +308,7 @@ const ExpansionCapitalForm = () => {
           placeholder="Your Full Name"
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
-          className="flex-1 bg-background text-foreground placeholder:text-muted-foreground border-0 h-11 px-4 text-sm"
+          className="flex-1 bg-nias-dark-foreground/10 text-nias-dark-foreground placeholder:text-nias-dark-foreground/50 border border-nias-gold/20 h-11 px-4 text-sm"
           disabled={isLoading}
         />
         <input
@@ -316,7 +316,7 @@ const ExpansionCapitalForm = () => {
           placeholder="Your Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="flex-1 bg-background text-foreground placeholder:text-muted-foreground border-0 h-11 px-4 text-sm"
+          className="flex-1 bg-nias-dark-foreground/10 text-nias-dark-foreground placeholder:text-nias-dark-foreground/50 border border-nias-gold/20 h-11 px-4 text-sm"
           disabled={isLoading}
         />
       </div>
@@ -326,12 +326,12 @@ const ExpansionCapitalForm = () => {
           placeholder="Phone Number (Optional)"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
-          className="flex-1 bg-background text-foreground placeholder:text-muted-foreground border-0 h-11 px-4 text-sm"
+          className="flex-1 bg-nias-dark-foreground/10 text-nias-dark-foreground placeholder:text-nias-dark-foreground/50 border border-nias-gold/20 h-11 px-4 text-sm"
           disabled={isLoading}
         />
         <Button 
           type="submit" 
-          className="bg-foreground text-background hover:bg-foreground/90 px-8 h-11 text-sm font-medium"
+          className="bg-nias-gold text-nias-dark hover:bg-nias-gold/90 px-8 h-11 text-sm font-medium"
           disabled={isLoading}
         >
           {isLoading ? "Submitting..." : "Submit"}

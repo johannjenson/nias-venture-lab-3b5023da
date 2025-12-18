@@ -24,7 +24,7 @@ const EventBanner = () => {
         </div>
         <Link 
           to="/work-with-nias" 
-          className="text-olive hover:text-olive/80 transition-colors text-xs uppercase tracking-[0.15em] font-medium"
+          className="text-nias-gold hover:text-nias-gold/80 transition-colors text-xs uppercase tracking-[0.15em] font-medium"
         >
           Work with NIAS
         </Link>
