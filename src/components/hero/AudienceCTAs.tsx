@@ -167,7 +167,7 @@ const AudienceCTAs = () => {
       </div>
 
       {/* Gatherings Section */}
-      <div className="py-20 md:py-28">
+      <div id="gatherings" className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">
@@ -201,7 +201,7 @@ const AudienceCTAs = () => {
       </div>
 
       {/* Opportunities Section */}
-      <div className="py-20 md:py-28 bg-secondary/30">
+      <div id="opportunities" className="py-20 md:py-28 bg-secondary/30">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">

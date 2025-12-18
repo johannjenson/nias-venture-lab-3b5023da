@@ -1,155 +1,33 @@
-import {
-  NavigationMenu,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-import React, { useEffect, useState } from "react";
-import { NavMenuItem } from "./navigation/NavMenuItem";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { supabase } from "@/integrations/supabase/client";
-import { User } from "@supabase/supabase-js";
-import { toast } from "@/hooks/use-toast";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
+import NiasLogo from "./NiasLogo";
 
 const MainNav = () => {
-  const isMobile = useIsMobile();
-  const navigate = useNavigate();
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  if (isMobile) return null;
-
-  const handleLogout = async () => {
-    try {
-      localStorage.removeItem(`sb-govawobduzmxagqmfobp-auth-token`);
-      
-      const { error } = await supabase.auth.signOut();
-      if (error) {
-        console.error("Logout error:", error);
-        toast({
-          title: "Error",
-          description: "Failed to log out. Please try again.",
-          variant: "destructive",
-        });
-      } else {
-        setUser(null);
-        navigate("/");
-      }
-    } catch (error) {
-      console.error("Unexpected error during logout:", error);
-      toast({
-        title: "Error",
-        description: "An unexpected error occurred. Please try again.",
-        variant: "destructive",
-      });
-      navigate("/");
-    }
-  };
-
-  const opportunities = [
-    {
-      title: "Vision 2030",
-      href: "/resources",
-      description: "Explore investment opportunities aligned with Saudi Vision 2030.",
-    },
-    {
-      title: "Real Estate",
-      href: "/real-estate",
-      description: "Discover exclusive property opportunities in Riyadh and Khobar.",
-    },
-  ];
-
-  const upcomingGatherings = [
-    {
-      title: "View All Upcoming",
-      href: "/events",
-      description: "Browse all upcoming exclusive gatherings and events.",
-    },
-  ];
-
-  const pastGatherings = [
-    {
-      title: "Doers Summit Dubai Panel",
-      href: "/events/doers-summit-dubai-panel",
-      description: "The Playbook for Landing & Expanding in Saudi Arabia.",
-    },
-    {
-      title: "US-Saudi VIP Dinner in DC",
-      href: "/events/us-saudi-forum-dinner",
-      description: "An exclusive gathering on the eve of the US-Saudi Investment Forum.",
-    },
-    {
-      title: "Biban25 Art Gala Dinner",
-      href: "/events/biban25-art-gala-dinner",
-      description: "An exclusive evening at Shamalat Art Co.",
-    },
-    {
-      title: "FII9 Night Caps",
-      href: "/events/night-cap",
-      description: "An intimate evening gathering at The Greek Villa.",
-    },
-    {
-      title: "180 Studios Evening",
-      href: "/events/studios180-event",
-      description: "Dinner and conversation with Tim Robinson.",
-    },
-  ];
-
-  const about = [
-    {
-      title: "Team",
-      href: "/people",
-      description: "Meet the NIAS founding team.",
-    },
-    {
-      title: "Clients & Partners",
-      href: "/clients-partners",
-      description: "Our trusted clients and strategic partners.",
-    },
-    {
-      title: "Contact",
-      href: "/contact",
-      description: "Get in touch with our team.",
-    },
-    ...(user ? [
-      {
-        title: "Inbound Contacts",
-        href: "/resources/inbound-contacts",
-        description: "View and manage contact form submissions",
-      },
-      {
-        title: "CRM",
-        href: "/crm",
-        description: "Relationship Management",
-      },
-      {
-        title: "Log Out",
-        href: "#",
-        description: "Sign out of your account",
-        onClick: handleLogout,
-      }
-    ] : []),
+  const navItems = [
+    { name: "Network", href: "#network" },
+    { name: "Gatherings", href: "#gatherings" },
+    { name: "Opportunities", href: "#opportunities" },
   ];
 
   return (
-    <NavigationMenu className="absolute top-24 md:top-20 left-1/2 -translate-x-1/2 z-50 w-full md:w-auto px-4 md:px-0">
-      <NavigationMenuList className="gap-6">
-        <NavMenuItem title="Opportunities" items={opportunities} />
-        <NavMenuItem title="Upcoming" items={upcomingGatherings} />
-        <NavMenuItem title="Past" items={pastGatherings} />
-        <NavMenuItem title="About" items={about} />
-      </NavigationMenuList>
-    </NavigationMenu>
+    <nav className="absolute top-16 md:top-14 left-0 right-0 z-40 py-4 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <Link to="/" className="flex items-center">
+          <NiasLogo />
+        </Link>
+        <div className="hidden md:flex items-center gap-8">
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
   );
 };
 
