@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
+import { Link } from "react-router-dom";
+import NiasLogo from "./NiasLogo";
 
 const Footer = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -44,27 +46,29 @@ const Footer = () => {
   };
 
   const navigation = {
-    main: [
-      { name: "Opportunities", submenu: [
-        { name: "Vision 2030", href: "/resources" },
-        { name: "Real Estate", href: "/real-estate" },
-      ]},
-      { name: "Upcoming", submenu: [
-        { name: "View All", href: "/events" },
-      ]},
-      { name: "Past", submenu: [
-        { name: "Doers Summit Panel", href: "/events/doers-summit-dubai-panel" },
-        { name: "US-Saudi VIP Dinner", href: "/events/us-saudi-forum-dinner" },
-        { name: "Biban25 Art Gala", href: "/events/biban25-art-gala-dinner" },
-        { name: "FII9 Night Caps", href: "/events/night-cap" },
-        { name: "180 Studios Evening", href: "/events/studios180-event" },
-      ]},
-      { name: "About", submenu: [
-        { name: "Team", href: "/people" },
-        { name: "Clients & Partners", href: "/clients-partners" },
-        { name: "Contact", href: "/contact" },
-        ...(user ? [{ name: "Log Out", href: "#", onClick: handleLogout }] : []),
-      ]},
+    network: [
+      { name: "For Founders", href: "https://access.nias.io/", external: true },
+      { name: "For Investors", href: "https://access.nias.io/investors", external: true },
+    ],
+    opportunities: [
+      { name: "Vision 2030", href: "/resources" },
+      { name: "Real Estate", href: "/real-estate" },
+    ],
+    upcoming: [
+      { name: "View All", href: "/events" },
+    ],
+    past: [
+      { name: "Doers Summit Panel", href: "/events/doers-summit-dubai-panel" },
+      { name: "US-Saudi VIP Dinner", href: "/events/us-saudi-forum-dinner" },
+      { name: "Biban25 Art Gala", href: "/events/biban25-art-gala-dinner" },
+      { name: "FII9 Night Caps", href: "/events/night-cap" },
+      { name: "180 Studios Evening", href: "/events/studios180-event" },
+    ],
+    about: [
+      { name: "Team", href: "/people" },
+      { name: "Clients & Partners", href: "/clients-partners" },
+      { name: "Contact", href: "/contact" },
+      ...(user ? [{ name: "Log Out", href: "#", onClick: handleLogout }] : []),
     ],
     social: [
       {
@@ -96,58 +100,173 @@ const Footer = () => {
     ],
   };
 
+  const FooterLink = ({ item }: { item: { name: string; href: string; external?: boolean; onClick?: () => void } }) => {
+    if (item.onClick) {
+      return (
+        <button
+          onClick={item.onClick}
+          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          {item.name}
+        </button>
+      );
+    }
+    if (item.external) {
+      return (
+        <a
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          {item.name}
+        </a>
+      );
+    }
+    return (
+      <Link
+        to={item.href}
+        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+      >
+        {item.name}
+      </Link>
+    );
+  };
+
   return (
     <footer className="bg-foreground text-background">
-      <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
-        <nav className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
-          {navigation.main.map((item) => (
-            <div key={item.name} className="pb-6">
-              <div>
-                <span className="text-sm font-semibold leading-6 text-background">
-                  {item.name}
-                </span>
-                {item.submenu && (
-                  <ul className="mt-2 space-y-2">
-                    {item.submenu.map((subitem) => (
-                      <li key={subitem.name}>
-                        {subitem.onClick ? (
-                          <button
-                            onClick={subitem.onClick}
-                            className="text-sm leading-6 text-background/60 hover:text-background"
-                          >
-                            {subitem.name}
-                          </button>
-                        ) : (
-                          <a
-                            href={subitem.href}
-                            className="text-sm leading-6 text-background/60 hover:text-background"
-                          >
-                            {subitem.name}
-                          </a>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </div>
-          ))}
-        </nav>
-        <div className="mt-10 flex justify-center space-x-10">
-          {navigation.social.map((item) => (
-            <a key={item.name} href={item.href} className="text-background/40 hover:text-background/60" target="_blank" rel="noopener noreferrer">
-              <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
-            </a>
-          ))}
+      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
+          {/* Logo */}
+          <div className="col-span-2 md:col-span-1">
+            <Link to="/" className="inline-block">
+              <NiasLogo className="text-background" />
+            </Link>
+          </div>
+
+          {/* Network */}
+          <div>
+            <h3 className="text-sm font-medium text-background mb-4">Network</h3>
+            <ul className="space-y-3">
+              {navigation.network.map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-background/60 hover:text-background transition-colors"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Opportunities */}
+          <div>
+            <h3 className="text-sm font-medium text-background mb-4">Opportunities</h3>
+            <ul className="space-y-3">
+              {navigation.opportunities.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.href}
+                    className="text-sm text-background/60 hover:text-background transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Upcoming */}
+          <div>
+            <h3 className="text-sm font-medium text-background mb-4">Upcoming</h3>
+            <ul className="space-y-3">
+              {navigation.upcoming.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.href}
+                    className="text-sm text-background/60 hover:text-background transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Past */}
+          <div>
+            <h3 className="text-sm font-medium text-background mb-4">Past</h3>
+            <ul className="space-y-3">
+              {navigation.past.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.href}
+                    className="text-sm text-background/60 hover:text-background transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* About */}
+          <div>
+            <h3 className="text-sm font-medium text-background mb-4">About</h3>
+            <ul className="space-y-3">
+              {navigation.about.map((item) => (
+                <li key={item.name}>
+                  {item.onClick ? (
+                    <button
+                      onClick={item.onClick}
+                      className="text-sm text-background/60 hover:text-background transition-colors"
+                    >
+                      {item.name}
+                    </button>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className="text-sm text-background/60 hover:text-background transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <p className="mt-10 text-center text-xs leading-5 text-background/50">
-          &copy; {new Date().getFullYear()} NIAS. All rights reserved.
-          <span className="mx-2">·</span>
-          <a href="/privacy-policy" className="hover:text-background">Privacy Policy</a>
-          <span className="mx-2">·</span>
-          <a href="/terms-of-use" className="hover:text-background">Terms of Use</a>
-        </p>
+
+        {/* Bottom section */}
+        <div className="mt-12 pt-8 border-t border-background/10">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div className="flex items-center space-x-6">
+              {navigation.social.map((item) => (
+                <a 
+                  key={item.name} 
+                  href={item.href} 
+                  className="text-background/40 hover:text-background/60 transition-colors" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <span className="sr-only">{item.name}</span>
+                  <item.icon className="h-5 w-5" aria-hidden="true" />
+                </a>
+              ))}
+            </div>
+            <p className="text-xs text-background/50">
+              &copy; {new Date().getFullYear()} NIAS. All rights reserved.
+              <span className="mx-2">·</span>
+              <Link to="/privacy-policy" className="hover:text-background">Privacy Policy</Link>
+              <span className="mx-2">·</span>
+              <Link to="/terms-of-use" className="hover:text-background">Terms of Use</Link>
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
   );
