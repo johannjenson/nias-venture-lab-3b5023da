@@ -55,7 +55,7 @@ const Footer = () => {
       { name: "Real Estate", href: "/real-estate" },
     ],
     upcoming: [
-      { name: "View All", href: "/events" },
+      { name: "Coming Soon", href: "#", disabled: true },
     ],
     past: [
       { name: "Doers Summit Panel", href: "/events/doers-summit-dubai-panel" },
@@ -186,12 +186,9 @@ const Footer = () => {
             <ul className="space-y-3">
               {navigation.upcoming.map((item) => (
                 <li key={item.name}>
-                  <Link
-                    to={item.href}
-                    className="text-sm text-background/60 hover:text-background transition-colors"
-                  >
+                  <span className="text-sm text-background/40 italic">
                     {item.name}
-                  </Link>
+                  </span>
                 </li>
               ))}
             </ul>
