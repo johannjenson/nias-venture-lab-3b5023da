@@ -7,17 +7,17 @@ const HeroContent = () => {
       {/* Hero Section */}
       <div className="flex-1 flex items-center">
         <div className="w-full max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mx-auto text-center">
             <span className="inline-block text-olive border border-olive/30 rounded-full px-4 py-1.5 text-sm font-medium tracking-wide mb-8">
               Private Membership Network
             </span>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
-              Land & Expand<br />in Saudi Arabia
+              Land & Expand<br />in <span className="font-semibold">Saudi Arabia</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed">
-              Bringing together exceptional tech, energy, sports, art, and entertainment companies from around the world with serial entrepreneurs, strategic investors, and acquisitive funds in the Kingdom.
+            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+              Bringing together exceptional frontier tech, energy, sports & entertainment, art & lifestyle companies from around the world with serial entrepreneurs, strategic investors, and acquisitive funds in the Kingdom.
             </p>
-            <div className="flex flex-col sm:flex-row items-start gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 asChild
                 className="bg-foreground hover:bg-foreground/90 text-background px-8 py-6 text-base font-medium rounded-lg"
