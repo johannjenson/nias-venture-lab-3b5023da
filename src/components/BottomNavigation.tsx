@@ -25,10 +25,8 @@ const BottomNavigation = () => {
     }
   }, [searchParams]);
   
-  // Don't render the navigation bar on desktop
-  if (!isMobile) {
-    return null;
-  }
+  // Remove this component entirely - don't render on any device
+  return null;
 
   const upcomingEvents: Array<{label: string; href: string}> = [
   ];

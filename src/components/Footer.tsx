@@ -192,7 +192,7 @@ const Footer = () => {
 
         {/* Bottom section */}
         <div className="mt-16 pt-8 border-t border-background/10">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="flex flex-col items-center md:flex-row md:justify-between gap-4">
             <div className="flex items-center space-x-5">
               {navigation.social.map((item) => (
                 <a 
@@ -207,7 +207,7 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-            <p className="text-[11px] text-background/40 tracking-wide">
+            <p className="text-[11px] text-background/40 tracking-wide text-center">
               &copy; {new Date().getFullYear()} NIAS. All rights reserved.
               <span className="mx-2">·</span>
               <Link to="/privacy-policy" className="hover:text-background/60 transition-colors">Privacy Policy</Link>
