@@ -95,7 +95,7 @@ const HeroContent = () => {
                 rel="noopener noreferrer"
                 className="opacity-70 hover:opacity-100 transition-opacity"
               >
-                <img src={diwanLogo} alt="The Diwan" className="h-16 md:h-20 w-auto" />
+                <img src={diwanLogo} alt="The Diwan" className="h-24 md:h-[7.5rem] w-auto" />
               </a>
             </div>
           </div>
