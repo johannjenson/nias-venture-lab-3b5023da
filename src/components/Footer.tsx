@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -8,12 +7,10 @@ const Footer = () => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
     });
 
-    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
@@ -23,7 +20,6 @@ const Footer = () => {
 
   const handleLogout = async () => {
     try {
-      // Clear any existing session from storage first
       localStorage.removeItem(`sb-govawobduzmxagqmfobp-auth-token`);
       
       const { error } = await supabase.auth.signOut();
@@ -49,31 +45,23 @@ const Footer = () => {
 
   const navigation = {
     main: [
-      { name: "Past", submenu: [
-        { name: "Doers Summit Dubai Panel", href: "/events/doers-summit-dubai-panel" },
-        { name: "US-Saudi VIP Dinner in DC", href: "/events/us-saudi-forum-dinner" },
-        { name: "Biban25 Art Gala Dinner", href: "/events/biban25-art-gala-dinner" },
-        { name: "FII9 Recap", href: "/events/fii9-recap" },
+      { name: "Opportunities", submenu: [
+        { name: "Vision 2030", href: "/resources" },
+        { name: "Real Estate", href: "/real-estate" },
+      ]},
+      { name: "Gatherings", submenu: [
+        { name: "Upcoming", href: "/events" },
+        { name: "Doers Summit Panel", href: "/events/doers-summit-dubai-panel" },
+        { name: "US-Saudi VIP Dinner", href: "/events/us-saudi-forum-dinner" },
+        { name: "Biban25 Art Gala", href: "/events/biban25-art-gala-dinner" },
         { name: "FII9 Night Caps", href: "/events/night-cap" },
         { name: "180 Studios Evening", href: "/events/studios180-event" },
-        { name: "GitHub Founder Evening", href: "/events/an-evening-with-github-cofounder-tom-preston-werner" },
-        { name: "VNTR Investor Forum", href: "/events/vntr-investor-forum" },
-        { name: "Business Forum", href: "/events/nias-business-forum" },
-        { name: "LEAP Dinner", href: "/events/leap-dinner" },
-        { name: "Suhoor Dinner", href: "/events/suhoor-dinner" },
-        { name: "Fireside Chats", href: "/events/fireside-chats" },
-      ]},
-      { name: "Resources", submenu: [
-        { name: "Opportunities", href: "/resources" },
-        { name: "Real Estate", href: "/real-estate" },
-        { name: "Member Login", href: "https://access.nias.io", target: "_blank" },
-        ...(user ? [{ name: "Log Out", href: "#", onClick: handleLogout }] : []),
       ]},
       { name: "About", submenu: [
-        { name: "People", href: "/people" },
+        { name: "Team", href: "/people" },
         { name: "Clients & Partners", href: "/clients-partners" },
-        { name: "Work with NIAS", href: "/work-with-nias" },
-        { name: "Contact", href: "/contact" }
+        { name: "Contact", href: "/contact" },
+        ...(user ? [{ name: "Log Out", href: "#", onClick: handleLogout }] : []),
       ]},
     ],
     social: [
@@ -107,13 +95,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-white">
+    <footer className="bg-foreground text-background">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
         <nav className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
           {navigation.main.map((item) => (
             <div key={item.name} className="pb-6">
               <div>
-                <span className="text-sm font-semibold leading-6 text-gray-900">
+                <span className="text-sm font-semibold leading-6 text-background">
                   {item.name}
                 </span>
                 {item.submenu && (
@@ -123,16 +111,14 @@ const Footer = () => {
                         {subitem.onClick ? (
                           <button
                             onClick={subitem.onClick}
-                            className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                            className="text-sm leading-6 text-background/60 hover:text-background"
                           >
                             {subitem.name}
                           </button>
                         ) : (
                           <a
                             href={subitem.href}
-                            className="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                            target={subitem.target}
-                            rel={subitem.target === "_blank" ? "noopener noreferrer" : undefined}
+                            className="text-sm leading-6 text-background/60 hover:text-background"
                           >
                             {subitem.name}
                           </a>
@@ -147,18 +133,18 @@ const Footer = () => {
         </nav>
         <div className="mt-10 flex justify-center space-x-10">
           {navigation.social.map((item) => (
-            <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500" target="_blank" rel="noopener noreferrer">
+            <a key={item.name} href={item.href} className="text-background/40 hover:text-background/60" target="_blank" rel="noopener noreferrer">
               <span className="sr-only">{item.name}</span>
               <item.icon className="h-6 w-6" aria-hidden="true" />
             </a>
           ))}
         </div>
-        <p className="mt-10 text-center text-xs leading-5 text-gray-500">
-          &copy; {new Date().getFullYear()} NIAS.io. All rights reserved.
+        <p className="mt-10 text-center text-xs leading-5 text-background/50">
+          &copy; {new Date().getFullYear()} NIAS. All rights reserved.
           <span className="mx-2">·</span>
-          <a href="/privacy-policy" className="hover:text-gray-900">Privacy Policy</a>
+          <a href="/privacy-policy" className="hover:text-background">Privacy Policy</a>
           <span className="mx-2">·</span>
-          <a href="/terms-of-use" className="hover:text-gray-900">Terms of Use</a>
+          <a href="/terms-of-use" className="hover:text-background">Terms of Use</a>
         </p>
       </div>
     </footer>

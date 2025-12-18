@@ -1,6 +1,5 @@
-
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Waves } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface HeroContentProps {
   onRequestInvite: () => void;
@@ -8,29 +7,36 @@ interface HeroContentProps {
 
 const HeroContent = ({ onRequestInvite }: HeroContentProps) => {
   return (
-    <div className="flex-1 flex items-center bg-secondary pt-32 md:pt-16">
+    <div className="flex-1 flex items-center bg-background pt-32 md:pt-16">
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-24">
         <div className="max-w-3xl mx-auto text-center">
-          <Waves className="h-12 w-12 text-primary mx-auto mb-8" />
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#221F26] mb-6">
-            Land & Expand in Saudi Arabia
+          <span className="inline-block text-olive border border-olive/30 rounded-full px-4 py-1.5 text-sm font-medium tracking-wide mb-8">
+            Private Membership Network
+          </span>
+          <h1 className="text-4xl md:text-6xl font-display tracking-tight text-foreground mb-6 leading-tight">
+            Do Good Things<br />For Good People
           </h1>
-          <p className="text-base md:text-lg text-[#555555] mb-8 md:mb-12 max-w-2xl mx-auto">
-            Bringing together exceptional tech, energy, sports, art, and entertainment companies from around the world looking to do business in the Kingdom with serial and exited entrepreneurs, strategic investors, and acquisitive funds.
+          <p className="text-base md:text-lg text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">
+            NIAS is a private network for frontier tech, energy, sports, art, and entertainment companies from around the world looking to do business in the Kingdom with reputable founders, partners, advisors, and government representatives.
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
             <Button
-              className="bg-primary hover:bg-primary/90 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg w-full md:w-auto"
-              onClick={onRequestInvite}
+              asChild
+              className="bg-foreground hover:bg-foreground/90 text-background px-6 md:px-8 py-5 md:py-6 text-base md:text-lg w-full md:w-auto rounded-full"
             >
-              Join the NIAS Network
+              <a href="https://access.nias.io/" target="_blank" rel="noopener noreferrer">
+                For Founders <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
             </Button>
-            <a 
-              href="/resources"
-              className="text-base md:text-lg text-[#333333] font-medium flex items-center gap-2 hover:text-primary transition-colors"
+            <Button
+              asChild
+              variant="outline"
+              className="border-foreground text-foreground hover:bg-foreground hover:text-background px-6 md:px-8 py-5 md:py-6 text-base md:text-lg w-full md:w-auto rounded-full"
             >
-              View Opportunities <ArrowRight className="h-5 w-5" />
-            </a>
+              <a href="https://access.nias.io/investors" target="_blank" rel="noopener noreferrer">
+                For Investors
+              </a>
+            </Button>
           </div>
         </div>
       </div>

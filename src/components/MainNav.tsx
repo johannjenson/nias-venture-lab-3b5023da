@@ -34,7 +34,6 @@ const MainNav = () => {
 
   const handleLogout = async () => {
     try {
-      // Clear any existing session from storage first
       localStorage.removeItem(`sb-govawobduzmxagqmfobp-auth-token`);
       
       const { error } = await supabase.auth.signOut();
@@ -56,52 +55,56 @@ const MainNav = () => {
         description: "An unexpected error occurred. Please try again.",
         variant: "destructive",
       });
-      // Still navigate home in case of error
       navigate("/");
     }
   };
-  
-  const upcoming: Array<{title: string; href: string; description: string}> = [
+
+  const opportunities = [
+    {
+      title: "Vision 2030",
+      href: "/resources",
+      description: "Explore investment opportunities aligned with Saudi Vision 2030.",
+    },
+    {
+      title: "Real Estate",
+      href: "/real-estate",
+      description: "Discover exclusive property opportunities in Riyadh and Khobar.",
+    },
   ];
 
-  const pastEvents = [
+  const gatherings = [
+    {
+      title: "Upcoming",
+      href: "/events",
+      description: "View our upcoming exclusive gatherings and events.",
+    },
     {
       title: "Doers Summit Dubai Panel",
       href: "/events/doers-summit-dubai-panel",
-      description: "The Playbook for Landing & Expanding in Saudi Arabia. November 26, 2025, Dubai, UAE.",
+      description: "The Playbook for Landing & Expanding in Saudi Arabia.",
     },
     {
       title: "US-Saudi VIP Dinner in DC",
       href: "/events/us-saudi-forum-dinner",
-      description: "An exclusive gathering for business leaders on the eve of the US-Saudi Investment Forum. November 18, 2025, Washington D.C.",
+      description: "An exclusive gathering on the eve of the US-Saudi Investment Forum.",
     },
     {
       title: "Biban25 Art Gala Dinner",
       href: "/events/biban25-art-gala-dinner",
-      description: "An exclusive evening with founders, investors, and industry leaders at Shamalat Art Co. on November 7, 2025.",
-    },
-    {
-      title: "FII9 Recap",
-      href: "/events/fii9-recap",
-      description: "A recap of an exclusive gathering we organized during FII9 in Riyadh for global investors and innovators.",
+      description: "An exclusive evening at Shamalat Art Co.",
     },
     {
       title: "FII9 Night Caps",
       href: "/events/night-cap",
-      description: "An intimate evening gathering at The Greek Villa with innovators, family offices, and diplomatic leaders.",
-    },
-    {
-      title: "An Evening with London's creative powerhouse 180 Studios",
-      href: "/events/studios180-event",
-      description: "Join us for dinner and conversation with Tim Robinson on June 24th, 2025 at Irqah Farmhouse in Riyadh. (Private invite-only gathering)",
+      description: "An intimate evening gathering at The Greek Villa.",
     },
   ];
 
   const about = [
     {
-      title: "People",
+      title: "Team",
       href: "/people",
-      description: "Meet our crew at NIAS.",
+      description: "Meet the NIAS founding team.",
     },
     {
       title: "Clients & Partners",
@@ -109,39 +112,20 @@ const MainNav = () => {
       description: "Our trusted clients and strategic partners.",
     },
     {
-      title: "Work with NIAS",
-      href: "/work-with-nias",
-      description: "Global companies & funds expanding into the Gulf.",
-    },
-    {
       title: "Contact",
       href: "/contact",
       description: "Get in touch with our team.",
     },
-  ];
-
-  const resources = [
-    {
-      title: "Vision 2030 Opportunities",
-      href: "/resources",
-      description: "Explore investment opportunities aligned with Saudi Vision 2030.",
-    },
-    ...(user ? [{
-      title: "Inbound Contacts",
-      href: "/resources/inbound-contacts",
-      description: "View and manage contact form submissions",
-    }] : []),
-    ...(!user ? [{
-      title: "Member Login",
-      href: "https://access.nias.io",
-      description: "Access your NIAS member account.",
-      onClick: () => window.open("https://access.nias.io", "_blank", "noopener,noreferrer"),
-    }] : []),
     ...(user ? [
       {
-        title: "Relationship Management",
+        title: "Inbound Contacts",
+        href: "/resources/inbound-contacts",
+        description: "View and manage contact form submissions",
+      },
+      {
+        title: "CRM",
         href: "/crm",
-        description: "You eat what you hunt",
+        description: "Relationship Management",
       },
       {
         title: "Log Out",
@@ -152,33 +136,12 @@ const MainNav = () => {
     ] : []),
   ];
 
-  const opportunities = [
-    {
-      title: "Vision 2030 Opportunities",
-      href: "/resources",
-      description: "Explore investment opportunities aligned with Saudi Vision 2030.",
-    },
-    {
-      title: "Real Estate",
-      href: "/real-estate",
-      description: "Discover exclusive property opportunities in Riyadh and Khobar.",
-    },
-    {
-      title: "Member Login",
-      href: "https://access.nias.io",
-      description: "Access your NIAS member account.",
-      onClick: () => window.open("https://access.nias.io", "_blank", "noopener,noreferrer"),
-    },
-  ];
-
   return (
     <NavigationMenu className="absolute top-24 md:top-20 left-1/2 -translate-x-1/2 z-50 w-full md:w-auto px-4 md:px-0">
       <NavigationMenuList className="gap-6">
-        {upcoming.length > 0 && <NavMenuItem title="Upcoming" items={upcoming} />}
-        <NavMenuItem title="Past" items={pastEvents} />
-        <NavMenuItem title="Resources" items={opportunities} />
+        <NavMenuItem title="Opportunities" items={opportunities} />
+        <NavMenuItem title="Gatherings" items={gatherings} />
         <NavMenuItem title="About" items={about} />
-        {user && <NavMenuItem title="Resources" items={resources} />}
       </NavigationMenuList>
     </NavigationMenu>
   );
