@@ -28,6 +28,18 @@
     --olive: 36 25% 45%;
     --olive-foreground: 0 0% 100%;
 
+    --nias-green: 140 35% 40%;
+    --nias-green-foreground: 0 0% 100%;
+
+    --nias-blue: 222 35% 45%;
+    --nias-blue-foreground: 0 0% 100%;
+
+    --nias-gold: 40 45% 60%;
+    --nias-gold-foreground: 0 0% 8%;
+
+    --nias-dark: 0 0% 8%;
+    --nias-dark-foreground: 0 0% 100%;
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
@@ -71,6 +83,18 @@
 
     --olive: 36 25% 55%;
     --olive-foreground: 0 0% 100%;
+
+    --nias-green: 140 35% 40%;
+    --nias-green-foreground: 0 0% 100%;
+
+    --nias-blue: 222 35% 50%;
+    --nias-blue-foreground: 0 0% 100%;
+
+    --nias-gold: 40 45% 60%;
+    --nias-gold-foreground: 0 0% 8%;
+
+    --nias-dark: 0 0% 8%;
+    --nias-dark-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;

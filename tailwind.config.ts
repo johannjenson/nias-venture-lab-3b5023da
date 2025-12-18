@@ -60,6 +60,22 @@ export default {
           DEFAULT: "hsl(var(--olive))",
           foreground: "hsl(var(--olive-foreground))",
         },
+        "nias-green": {
+          DEFAULT: "hsl(var(--nias-green))",
+          foreground: "hsl(var(--nias-green-foreground))",
+        },
+        "nias-blue": {
+          DEFAULT: "hsl(var(--nias-blue))",
+          foreground: "hsl(var(--nias-blue-foreground))",
+        },
+        "nias-gold": {
+          DEFAULT: "hsl(var(--nias-gold))",
+          foreground: "hsl(var(--nias-gold-foreground))",
+        },
+        "nias-dark": {
+          DEFAULT: "hsl(var(--nias-dark))",
+          foreground: "hsl(var(--nias-dark-foreground))",
+        },
       },
       keyframes: {
         "accordion-down": {
