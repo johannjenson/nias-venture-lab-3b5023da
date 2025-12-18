@@ -1,11 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
-interface HeroContentProps {
-  onRequestInvite: () => void;
-}
-
-const HeroContent = ({ onRequestInvite }: HeroContentProps) => {
+const HeroContent = () => {
   return (
     <div className="flex-1 flex flex-col bg-secondary/30 pt-32 md:pt-24">
       {/* Hero Section */}

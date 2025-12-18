@@ -1,18 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar } from "lucide-react";
+import { ArrowRight, Calendar, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const AudienceCTAs = () => {
-  const upcomingGatherings = [
-    {
-      title: "180 Studios Evening",
-      date: "June 24, 2025",
-      location: "Riyadh",
-      href: "/events/studios180-event",
-      description: "Dinner and conversation with Tim Robinson from London's creative powerhouse.",
-    },
-  ];
-
   const pastGatherings = [
     {
       title: "Doers Summit Dubai Panel",
@@ -32,6 +22,18 @@ const AudienceCTAs = () => {
       location: "Riyadh",
       href: "/events/biban25-art-gala-dinner",
     },
+    {
+      title: "FII9 Night Caps",
+      date: "October 29, 2024",
+      location: "Riyadh",
+      href: "/events/night-cap",
+    },
+    {
+      title: "180 Studios Evening",
+      date: "September 18, 2024",
+      location: "London",
+      href: "/events/studios180-event",
+    },
   ];
 
   return (
@@ -48,37 +50,99 @@ const AudienceCTAs = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="p-8 md:p-10 rounded-xl bg-secondary/50 border border-border/50">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="p-8 rounded-xl bg-secondary/50 border border-border/50">
               <h3 className="text-xl md:text-2xl font-medium text-foreground mb-4">NIAS Access</h3>
-              <p className="mb-6 text-muted-foreground">For founders, executives, and operators looking to expand into the Kingdom with strategic introductions and market intelligence.</p>
+              <p className="mb-6 text-muted-foreground text-sm">For founders, executives, and operators looking to expand into the Kingdom.</p>
               <Button 
                 asChild
-                className="bg-foreground hover:bg-foreground/90 text-background"
+                className="w-full bg-foreground hover:bg-foreground/90 text-background"
               >
                 <a href="https://access.nias.io/" target="_blank" rel="noopener noreferrer">
                   Request Access <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
             </div>
-            <div className="p-8 md:p-10 rounded-xl bg-secondary/50 border border-border/50">
+            <div className="p-8 rounded-xl bg-secondary/50 border border-border/50">
               <h3 className="text-xl md:text-2xl font-medium text-foreground mb-4">NIAS Private</h3>
-              <p className="mb-6 text-muted-foreground">For qualified investors seeking deal flow, co-investment opportunities, and access to off-market opportunities in the GCC.</p>
+              <p className="mb-6 text-muted-foreground text-sm">For qualified investors seeking deal flow and co-investment opportunities in the GCC.</p>
               <Button 
                 asChild
-                className="bg-foreground hover:bg-foreground/90 text-background"
+                className="w-full bg-foreground hover:bg-foreground/90 text-background"
               >
                 <a href="https://access.nias.io/investors" target="_blank" rel="noopener noreferrer">
                   Request Membership <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
             </div>
+            <div className="p-8 rounded-xl bg-secondary/50 border border-border/50">
+              <h3 className="text-xl md:text-2xl font-medium text-foreground mb-4">NIAS Family Office</h3>
+              <p className="mb-6 text-muted-foreground text-sm">For family offices seeking bespoke advisory and exclusive investment access.</p>
+              <Button 
+                disabled
+                className="w-full bg-muted text-muted-foreground cursor-not-allowed"
+              >
+                <Lock className="mr-2 h-4 w-4" /> Invite Only
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* What is NIAS Section */}
+      <div className="py-20 md:py-28 bg-secondary/30">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">
+              What is NIAS?
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              We provide comprehensive support for top tier founders and funds looking to establish and grow their presence in Saudi Arabia.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="text-center">
+              <div className="mb-6 mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-foreground">
+                <svg className="h-8 w-8 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-medium text-foreground mb-3">Smooth Landing</h3>
+              <p className="text-muted-foreground">Navigate regulatory requirements and local partnerships with confidence.</p>
+            </div>
+            <div className="text-center">
+              <div className="mb-6 mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-foreground">
+                <svg className="h-8 w-8 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-medium text-foreground mb-3">Trusted Advisors</h3>
+              <p className="text-muted-foreground">Connect with experienced professionals who understand your needs.</p>
+            </div>
+            <div className="text-center">
+              <div className="mb-6 mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-foreground">
+                <svg className="h-8 w-8 text-background" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-medium text-foreground mb-3">Strategic Financing</h3>
+              <p className="text-muted-foreground">Access funding opportunities aligned with Vision 2030.</p>
+            </div>
+          </div>
+          
+          <div className="mt-16 text-center">
+            <Button asChild className="bg-foreground hover:bg-foreground/90 text-background">
+              <Link to="/work-with-nias">
+                Work with NIAS <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
 
       {/* Gatherings Section */}
-      <div className="py-20 md:py-28 bg-secondary/30">
+      <div className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">
@@ -89,69 +153,30 @@ const AudienceCTAs = () => {
             </p>
           </div>
 
-          {/* Upcoming */}
-          {upcomingGatherings.length > 0 && (
-            <div className="mb-16">
-              <h3 className="text-sm uppercase tracking-widest text-olive font-medium mb-6">Upcoming</h3>
-              <div className="space-y-4">
-                {upcomingGatherings.map((event) => (
-                  <Link 
-                    key={event.title}
-                    to={event.href}
-                    className="block p-6 md:p-8 rounded-xl bg-background border border-border hover:border-foreground/20 transition-colors"
-                  >
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                      <div>
-                        <h4 className="text-xl md:text-2xl font-medium text-foreground mb-2">{event.title}</h4>
-                        <p className="text-muted-foreground mb-2">{event.description}</p>
-                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                          <span className="flex items-center gap-1">
-                            <Calendar className="h-4 w-4" />
-                            {event.date}
-                          </span>
-                          <span>{event.location}</span>
-                        </div>
-                      </div>
-                      <ArrowRight className="h-5 w-5 text-foreground hidden md:block" />
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Past */}
+          {/* Past Gatherings */}
           <div>
             <h3 className="text-sm uppercase tracking-widest text-muted-foreground font-medium mb-6">Past Gatherings</h3>
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
               {pastGatherings.map((event) => (
                 <Link 
                   key={event.title}
                   to={event.href}
-                  className="block p-6 rounded-xl bg-background border border-border hover:border-foreground/20 transition-colors"
+                  className="block p-6 rounded-xl bg-secondary/50 border border-border/50 hover:border-foreground/20 transition-colors"
                 >
-                  <h4 className="text-lg font-medium text-foreground mb-2">{event.title}</h4>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <h4 className="text-base font-medium text-foreground mb-2">{event.title}</h4>
+                  <div className="text-sm text-muted-foreground">
                     <span>{event.date}</span>
-                    <span>•</span>
-                    <span>{event.location}</span>
+                    <span className="block">{event.location}</span>
                   </div>
                 </Link>
               ))}
-            </div>
-            <div className="text-center mt-8">
-              <Button asChild variant="outline">
-                <Link to="/events">
-                  View All Past Gatherings
-                </Link>
-              </Button>
             </div>
           </div>
         </div>
       </div>
 
       {/* Opportunities Section */}
-      <div className="py-20 md:py-28">
+      <div className="py-20 md:py-28 bg-secondary/30">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">
@@ -165,7 +190,7 @@ const AudienceCTAs = () => {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Link 
               to="/resources"
-              className="block p-8 md:p-10 rounded-xl bg-secondary/50 border border-border/50 hover:border-foreground/20 transition-colors group"
+              className="block p-8 md:p-10 rounded-xl bg-background border border-border/50 hover:border-foreground/20 transition-colors group"
             >
               <h3 className="text-xl md:text-2xl font-medium text-foreground mb-4 flex items-center justify-between">
                 Vision 2030
@@ -175,7 +200,7 @@ const AudienceCTAs = () => {
             </Link>
             <Link 
               to="/real-estate"
-              className="block p-8 md:p-10 rounded-xl bg-secondary/50 border border-border/50 hover:border-foreground/20 transition-colors group"
+              className="block p-8 md:p-10 rounded-xl bg-background border border-border/50 hover:border-foreground/20 transition-colors group"
             >
               <h3 className="text-xl md:text-2xl font-medium text-foreground mb-4 flex items-center justify-between">
                 Real Estate
@@ -183,6 +208,25 @@ const AudienceCTAs = () => {
               </h3>
               <p className="text-muted-foreground">Discover exclusive property opportunities in Riyadh and Khobar.</p>
             </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Expansion Capital Section */}
+      <div className="py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-6">
+              Curious about NIAS & Expansion Capital?
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+              Learn how we help companies raise capital while expanding into the Saudi market.
+            </p>
+            <Button asChild variant="outline" className="border-foreground text-foreground hover:bg-foreground hover:text-background">
+              <Link to="/contact">
+                Get in Touch <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
