@@ -26,7 +26,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, AlertCircle, Coins, TrendingUp, TrendingDown, Minus, BarChart3, Building2, Rocket, Crown } from "lucide-react";
+import { Loader2, AlertCircle, Coins, TrendingUp, TrendingDown, Minus, BarChart3, Building2, Rocket, Crown, Cpu, Trophy, Zap, GraduationCap, Palette, MoreHorizontal } from "lucide-react";
 import PhoneInputWithCode from "./PhoneInputWithCode";
 import { cn } from "@/lib/utils";
 
@@ -68,13 +68,27 @@ const companySchema = z.object({
 type CompanyFormData = z.infer<typeof companySchema>;
 
 const primarySectors = [
-  { value: "frontier_technology", label: "Frontier Technology" },
-  { value: "sports_entertainment", label: "Sports & Entertainment" },
-  { value: "energy", label: "Energy" },
-  { value: "education", label: "Education" },
-  { value: "art_lifestyle", label: "Art & Lifestyle" },
-  { value: "other", label: "Other (please specify)" },
+  { value: "frontier_technology", label: "Frontier Tech", icon: Cpu },
+  { value: "sports_entertainment", label: "Sports & Entertainment", icon: Trophy },
+  { value: "energy", label: "Energy", icon: Zap },
+  { value: "education", label: "Education", icon: GraduationCap },
+  { value: "art_lifestyle", label: "Art & Lifestyle", icon: Palette },
+  { value: "other", label: "Other", icon: MoreHorizontal },
 ];
+
+const countries = [
+  "United States", "United Kingdom", "Canada", "Germany", "France", "Australia",
+  "Switzerland", "Netherlands", "Sweden", "Norway", "Denmark", "Finland",
+  "Ireland", "Belgium", "Austria", "Spain", "Italy", "Portugal",
+  "Japan", "South Korea", "Singapore", "Hong Kong", "China", "India",
+  "United Arab Emirates", "Saudi Arabia", "Qatar", "Kuwait", "Bahrain", "Oman",
+  "Israel", "Turkey", "South Africa", "Nigeria", "Egypt", "Morocco",
+  "Brazil", "Mexico", "Argentina", "Chile", "Colombia",
+  "New Zealand", "Malaysia", "Indonesia", "Thailand", "Vietnam", "Philippines",
+  "Poland", "Czech Republic", "Hungary", "Romania", "Greece",
+  "Russia", "Ukraine", "Kazakhstan", "Pakistan", "Bangladesh",
+  "Other"
+].sort();
 
 const revenueBands = [
   { value: "under_10m", label: "<$10M", icon: Coins, description: "Early stage" },
@@ -318,9 +332,20 @@ const CompanyForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>HQ Country</FormLabel>
-                  <FormControl>
-                    <Input placeholder="e.g., United States" {...field} />
-                  </FormControl>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select country" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {countries.map((country) => (
+                        <SelectItem key={country} value={country}>
+                          {country}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
@@ -348,20 +373,32 @@ const CompanyForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Primary Sector</FormLabel>
-                <Select onValueChange={field.onChange} value={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a sector" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {primarySectors.map((sector) => (
-                      <SelectItem key={sector.value} value={sector.value}>
-                        {sector.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <FormControl>
+                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                    {primarySectors.map((sector) => {
+                      const Icon = sector.icon;
+                      const isSelected = field.value === sector.value;
+                      return (
+                        <button
+                          key={sector.value}
+                          type="button"
+                          onClick={() => field.onChange(sector.value)}
+                          className={cn(
+                            "flex flex-col items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                            isSelected
+                              ? "border-primary bg-primary/5 shadow-sm"
+                              : "border-border bg-background hover:bg-muted/50"
+                          )}
+                        >
+                          <Icon className={cn("h-5 w-5 mb-1.5", isSelected ? "text-primary" : "text-muted-foreground")} />
+                          <span className={cn("text-xs font-medium text-center leading-tight", isSelected ? "text-primary" : "text-foreground")}>
+                            {sector.label}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
