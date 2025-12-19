@@ -61,9 +61,20 @@ const WorkWithNias = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             <Waves className="h-12 w-12 text-primary mx-auto mb-8 animate-wave" />
-            <h1 className="text-4xl md:text-5xl tracking-tight text-foreground mb-10">
+            <h1 className="text-4xl md:text-5xl tracking-tight text-foreground mb-4">
               Work with <span className="font-semibold">NIAS</span>
             </h1>
+            <p className="text-sm text-muted-foreground mb-10">
+              NIAS works with a curated set of global operators, fund managers, and advisors.{" "}
+              <a 
+                href="https://access.nias.io/client" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                Learn more →
+              </a>
+            </p>
             
             {/* Selectable Cards */}
             <div className="grid sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
@@ -123,18 +134,7 @@ const WorkWithNias = () => {
           </div>
 
           {/* Footer Note */}
-          <div className="mt-6 text-center space-y-1">
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              NIAS works with a curated set of global operators, fund managers, and advisors.{" "}
-              <a 
-                href="https://access.nias.io/client" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                Learn more →
-              </a>
-            </p>
+          <div className="mt-6 text-center">
             <p className="text-xs text-muted-foreground/70 leading-relaxed">
               Our team will review and respond within 7–10 days.
             </p>
