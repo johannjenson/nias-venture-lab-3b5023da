@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { TrendingUp, Waves, Users, Calendar, Building2, ArrowLeft } from "lucide-react";
 import CompanyForm from "@/components/work-with-nias/CompanyForm";
 import FundForm from "@/components/work-with-nias/FundForm";
@@ -66,23 +65,47 @@ const WorkWithNias = () => {
               Work with <span className="font-semibold">NIAS</span>
             </h1>
             
-            {/* Info Cards */}
+            {/* Selectable Cards */}
             <div className="grid sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
-              <div className="bg-background/90 backdrop-blur-sm border border-border/40 rounded-lg p-4 text-left">
+              <button
+                onClick={() => {
+                  setApplicationType("company");
+                  document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className={`bg-background/90 backdrop-blur-sm border rounded-lg p-4 text-left transition-all hover:border-primary/50 hover:shadow-md ${
+                  applicationType === "company" ? "border-primary ring-1 ring-primary/20" : "border-border/40"
+                }`}
+              >
                 <Building2 className="h-4 w-4 text-primary mb-2" />
                 <h3 className="font-medium text-foreground mb-1 text-sm">Companies</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">&gt;$100M revenue, multinational footprint</p>
-              </div>
-              <div className="bg-background/90 backdrop-blur-sm border border-border/40 rounded-lg p-4 text-left">
+                <p className="text-xs text-muted-foreground leading-relaxed">&gt;$50M revenue, multinational footprint</p>
+              </button>
+              <button
+                onClick={() => {
+                  setApplicationType("fund");
+                  document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className={`bg-background/90 backdrop-blur-sm border rounded-lg p-4 text-left transition-all hover:border-primary/50 hover:shadow-md ${
+                  applicationType === "fund" ? "border-primary ring-1 ring-primary/20" : "border-border/40"
+                }`}
+              >
                 <TrendingUp className="h-4 w-4 text-primary mb-2" />
                 <h3 className="font-medium text-foreground mb-1 text-sm">Investment Funds</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">Institutional-grade, Gulf relevance</p>
-              </div>
-              <div className="bg-background/90 backdrop-blur-sm border border-border/40 rounded-lg p-4 text-left">
+              </button>
+              <button
+                onClick={() => {
+                  setApplicationType("advisor");
+                  document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className={`bg-background/90 backdrop-blur-sm border rounded-lg p-4 text-left transition-all hover:border-primary/50 hover:shadow-md ${
+                  applicationType === "advisor" ? "border-primary ring-1 ring-primary/20" : "border-border/40"
+                }`}
+              >
                 <Users className="h-4 w-4 text-primary mb-2" />
                 <h3 className="font-medium text-foreground mb-1 text-sm">Advisors</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">Proven track record, strategic networks</p>
-              </div>
+              </button>
             </div>
           </div>
         </div>
@@ -91,37 +114,6 @@ const WorkWithNias = () => {
       {/* Form Section */}
       <section id="application-form" className="py-12 px-6 bg-muted/30">
         <div className="max-w-2xl mx-auto">
-          {/* Toggle */}
-          <div className="flex justify-center mb-8">
-            <ToggleGroup 
-              type="single" 
-              value={applicationType}
-              onValueChange={(value) => value && setApplicationType(value as "company" | "fund" | "advisor")}
-              className="bg-background p-1 rounded-lg border border-border/50 shadow-sm"
-            >
-              <ToggleGroupItem 
-                value="company" 
-                className="px-5 py-2.5 text-sm data-[state=on]:bg-muted data-[state=on]:shadow-sm rounded-md"
-              >
-                <Building2 className="h-4 w-4 mr-2" />
-                Companies
-              </ToggleGroupItem>
-              <ToggleGroupItem 
-                value="fund"
-                className="px-5 py-2.5 text-sm data-[state=on]:bg-muted data-[state=on]:shadow-sm rounded-md"
-              >
-                <TrendingUp className="h-4 w-4 mr-2" />
-                Funds
-              </ToggleGroupItem>
-              <ToggleGroupItem 
-                value="advisor"
-                className="px-5 py-2.5 text-sm data-[state=on]:bg-muted data-[state=on]:shadow-sm rounded-md"
-              >
-                <Users className="h-4 w-4 mr-2" />
-                Advisors
-              </ToggleGroupItem>
-            </ToggleGroup>
-          </div>
 
           {/* Forms */}
           <div className="bg-card border border-border/50 rounded-xl p-6 lg:p-8 shadow-sm">
