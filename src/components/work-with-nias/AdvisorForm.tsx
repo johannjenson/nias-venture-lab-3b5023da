@@ -25,7 +25,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, Hotel, Home, Building, Briefcase, Users, Building2, X } from "lucide-react";
+import { Loader2, Hotel, Home, Building, Briefcase, Users, Building2, X, Upload } from "lucide-react";
 import PhoneInputWithCode from "./PhoneInputWithCode";
 import { cn } from "@/lib/utils";
 
@@ -71,6 +71,7 @@ const officeSpaceOptions = [
 const AdvisorForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -107,6 +108,29 @@ const AdvisorForm = () => {
   const onSubmit = async (data: AdvisorFormData) => {
     setIsSubmitting(true);
     try {
+      let fileUrl = "";
+      
+      // Upload file to Supabase Storage if present
+      if (uploadedFile) {
+        const fileExt = uploadedFile.name.split('.').pop();
+        const fileName = `${Date.now()}-${data.advisor_name.replace(/[^a-zA-Z0-9]/g, '_')}.${fileExt}`;
+        const filePath = `advisor-decks/${fileName}`;
+        
+        const { data: uploadData, error: uploadError } = await supabase.storage
+          .from('partnership_files')
+          .upload(filePath, uploadedFile);
+        
+        if (uploadError) {
+          console.error('File upload error:', uploadError);
+          toast.error('Failed to upload file. Submitting without attachment.');
+        } else {
+          const { data: urlData } = supabase.storage
+            .from('partnership_files')
+            .getPublicUrl(filePath);
+          fileUrl = urlData.publicUrl;
+        }
+      }
+
       const { error } = await supabase
         .from("partnership_applications" as any)
         .insert({
@@ -126,7 +150,7 @@ const AdvisorForm = () => {
           fund_sector_focus: data.opportunity_type === "fund" ? data.fund_sector_focus : null,
           partnership_engagement_type: data.partnership_engagement_type,
           partnership_engagement_details: data.partnership_engagement_details || null,
-          additional_info: data.additional_info || null,
+          additional_info: fileUrl || data.additional_info || null,
         });
 
       if (error) throw error;
@@ -144,7 +168,7 @@ const AdvisorForm = () => {
               "Opportunity Description", "Relationship Type", "Gulf Relevance", 
               "Opportunity Type", "Company Revenue Band", "Company Footprint", 
               "Fund AUM Band", "Fund Sector Focus", "Engagement Type", 
-              "Engagement Details", "Accommodation", "Office Space", "Additional Info"
+              "Engagement Details", "Accommodation", "Office Space", "Additional Info", "Deck URL"
             ],
             values: [
               new Date().toISOString(),
@@ -164,7 +188,8 @@ const AdvisorForm = () => {
               data.partnership_engagement_details || "",
               accommodationLabel,
               officeSpaceLabel,
-              data.additional_info || ""
+              data.additional_info || "",
+              fileUrl
             ]
           }
         });
@@ -188,6 +213,7 @@ const AdvisorForm = () => {
 
       toast.success("Application submitted successfully!");
       setIsSubmitted(true);
+      setUploadedFile(null);
       form.reset();
     } catch (error) {
       console.error("Error submitting application:", error);
@@ -622,6 +648,32 @@ const AdvisorForm = () => {
                 </FormItem>
               )}
             />
+          </div>
+
+          {/* File Upload */}
+          <div className="space-y-2">
+            <Label>Supporting deck or info memo (PDF)</Label>
+            <p className="text-sm text-muted-foreground">Optional · Max 20MB</p>
+            <Input
+              type="file"
+              accept=".pdf"
+              onChange={(e) => {
+                const file = e.target.files?.[0] || null;
+                if (file && file.size > 20 * 1024 * 1024) {
+                  e.target.value = '';
+                  setUploadedFile(null);
+                  alert('File size must be less than 20MB');
+                  return;
+                }
+                setUploadedFile(file);
+              }}
+              className="cursor-pointer"
+            />
+            {uploadedFile && (
+              <p className="text-sm text-muted-foreground">
+                Selected: {uploadedFile.name} ({(uploadedFile.size / (1024 * 1024)).toFixed(2)}MB)
+              </p>
+            )}
           </div>
 
           <Button 
