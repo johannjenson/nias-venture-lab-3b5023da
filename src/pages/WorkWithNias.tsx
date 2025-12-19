@@ -86,7 +86,7 @@ const WorkWithNias = () => {
             </p>
 
             {/* Prefer to chat first - moved here */}
-            <div className="flex flex-col items-center mb-10">
+            <div className="flex flex-col items-center mt-8 mb-14">
               <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Prefer to chat first?</p>
               <div className="flex items-center gap-4">
                 <img 
