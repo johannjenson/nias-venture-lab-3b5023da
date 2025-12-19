@@ -26,8 +26,9 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, AlertCircle } from "lucide-react";
+import { Loader2, AlertCircle, Coins, TrendingUp, TrendingDown, Minus, BarChart3, Building2, Rocket, Crown } from "lucide-react";
 import PhoneInputWithCode from "./PhoneInputWithCode";
+import { cn } from "@/lib/utils";
 
 const companySchema = z.object({
   company_name: z.string().min(1, "Company name is required").max(200),
@@ -76,18 +77,18 @@ const primarySectors = [
 ];
 
 const revenueBands = [
-  { value: "under_10m", label: "<$10M" },
-  { value: "10_25m", label: "$10–25M" },
-  { value: "25_50m", label: "$25–50M" },
-  { value: "50_100m", label: "$50–100M" },
-  { value: "100m_plus", label: "$100M+" },
+  { value: "under_10m", label: "<$10M", icon: Coins, description: "Early stage" },
+  { value: "10_25m", label: "$10–25M", icon: BarChart3, description: "Scaling" },
+  { value: "25_50m", label: "$25–50M", icon: Building2, description: "Growth" },
+  { value: "50_100m", label: "$50–100M", icon: Rocket, description: "Expansion" },
+  { value: "100m_plus", label: "$100M+", icon: Crown, description: "Enterprise" },
 ];
 
 const ebitdaStatuses = [
-  { value: "profitable", label: "Profitable" },
-  { value: "breakeven", label: "Break-even" },
-  { value: "loss_improving", label: "Loss-making but improving" },
-  { value: "loss_making", label: "Loss-making" },
+  { value: "profitable", label: "Profitable", icon: TrendingUp, color: "text-green-600" },
+  { value: "breakeven", label: "Break-even", icon: Minus, color: "text-amber-600" },
+  { value: "loss_improving", label: "Improving", description: "Loss-making but improving", icon: TrendingUp, color: "text-blue-600" },
+  { value: "loss_making", label: "Loss-making", icon: TrendingDown, color: "text-red-600" },
 ];
 
 const mandateOptions = [
@@ -674,20 +675,33 @@ const CompanyForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Revenue Band</FormLabel>
-                <Select onValueChange={field.onChange} value={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select revenue band" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {revenueBands.map((band) => (
-                      <SelectItem key={band.value} value={band.value}>
-                        {band.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <FormControl>
+                  <div className="grid grid-cols-5 gap-2">
+                    {revenueBands.map((band) => {
+                      const Icon = band.icon;
+                      const isSelected = field.value === band.value;
+                      return (
+                        <button
+                          key={band.value}
+                          type="button"
+                          onClick={() => field.onChange(band.value)}
+                          className={cn(
+                            "flex flex-col items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                            isSelected
+                              ? "border-primary bg-primary/5 shadow-sm"
+                              : "border-border bg-background hover:bg-muted/50"
+                          )}
+                        >
+                          <Icon className={cn("h-5 w-5 mb-1.5", isSelected ? "text-primary" : "text-muted-foreground")} />
+                          <span className={cn("text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
+                            {band.label}
+                          </span>
+                          <span className="text-[10px] text-muted-foreground mt-0.5">{band.description}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
@@ -715,20 +729,37 @@ const CompanyForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>EBITDA Status</FormLabel>
-                <Select onValueChange={field.onChange} value={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select EBITDA status" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {ebitdaStatuses.map((status) => (
-                      <SelectItem key={status.value} value={status.value}>
-                        {status.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <FormControl>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    {ebitdaStatuses.map((status) => {
+                      const Icon = status.icon;
+                      const isSelected = field.value === status.value;
+                      return (
+                        <button
+                          key={status.value}
+                          type="button"
+                          onClick={() => field.onChange(status.value)}
+                          className={cn(
+                            "flex flex-col items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                            isSelected
+                              ? "border-primary bg-primary/5 shadow-sm"
+                              : "border-border bg-background hover:bg-muted/50"
+                          )}
+                        >
+                          <Icon className={cn("h-5 w-5 mb-1.5", isSelected ? "text-primary" : status.color)} />
+                          <span className={cn("text-sm font-medium text-center", isSelected ? "text-primary" : "text-foreground")}>
+                            {status.label}
+                          </span>
+                          {status.description && (
+                            <span className="text-[10px] text-muted-foreground mt-0.5 text-center leading-tight">
+                              {status.description}
+                            </span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
