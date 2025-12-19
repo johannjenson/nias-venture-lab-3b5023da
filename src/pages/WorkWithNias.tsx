@@ -62,34 +62,26 @@ const WorkWithNias = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             <Waves className="h-12 w-12 text-primary mx-auto mb-8 animate-wave" />
-            <h1 className="text-4xl md:text-5xl tracking-tight text-foreground mb-4">
+            <h1 className="text-4xl md:text-5xl tracking-tight text-foreground mb-6">
               Work with <span className="font-semibold">NIAS</span>
             </h1>
-            <p className="text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto">
-              For Global Companies & Funds Expanding into the Gulf
-            </p>
             
             {/* Info Cards */}
-            <div className="mt-8 mb-4">
-              <p className="text-sm text-muted-foreground mb-6 max-w-lg mx-auto leading-relaxed">
-                NIAS works with a highly curated set of top tier global operators and investment fund managers.
-              </p>
-              <div className="grid sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
-                <div className="bg-background/90 backdrop-blur-sm border border-border/40 rounded-lg p-4 text-left">
-                  <Building2 className="h-4 w-4 text-primary mb-2" />
-                  <h3 className="font-medium text-foreground mb-1 text-sm">Companies</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">&gt;$100M revenue, multinational footprint</p>
-                </div>
-                <div className="bg-background/90 backdrop-blur-sm border border-border/40 rounded-lg p-4 text-left">
-                  <TrendingUp className="h-4 w-4 text-primary mb-2" />
-                  <h3 className="font-medium text-foreground mb-1 text-sm">Investment Funds</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">Institutional-grade, Gulf relevance</p>
-                </div>
-                <div className="bg-background/90 backdrop-blur-sm border border-border/40 rounded-lg p-4 text-left">
-                  <Users className="h-4 w-4 text-primary mb-2" />
-                  <h3 className="font-medium text-foreground mb-1 text-sm">Advisors</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">Proven track record, strategic networks</p>
-                </div>
+            <div className="grid sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
+              <div className="bg-background/90 backdrop-blur-sm border border-border/40 rounded-lg p-4 text-left">
+                <Building2 className="h-4 w-4 text-primary mb-2" />
+                <h3 className="font-medium text-foreground mb-1 text-sm">Companies</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">&gt;$100M revenue, multinational footprint</p>
+              </div>
+              <div className="bg-background/90 backdrop-blur-sm border border-border/40 rounded-lg p-4 text-left">
+                <TrendingUp className="h-4 w-4 text-primary mb-2" />
+                <h3 className="font-medium text-foreground mb-1 text-sm">Investment Funds</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">Institutional-grade, Gulf relevance</p>
+              </div>
+              <div className="bg-background/90 backdrop-blur-sm border border-border/40 rounded-lg p-4 text-left">
+                <Users className="h-4 w-4 text-primary mb-2" />
+                <h3 className="font-medium text-foreground mb-1 text-sm">Advisors</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">Proven track record, strategic networks</p>
               </div>
             </div>
           </div>
