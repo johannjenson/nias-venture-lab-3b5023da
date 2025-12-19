@@ -188,6 +188,30 @@ const CompanyForm = () => {
     
     setIsSubmitting(true);
     try {
+      let fileUrl = "";
+      
+      // Upload file to Supabase Storage if present
+      if (uploadedFile) {
+        const fileExt = uploadedFile.name.split('.').pop();
+        const fileName = `${Date.now()}-${data.company_name.replace(/[^a-zA-Z0-9]/g, '_')}.${fileExt}`;
+        const filePath = `company-decks/${fileName}`;
+        
+        const { data: uploadData, error: uploadError } = await supabase.storage
+          .from('partnership_files')
+          .upload(filePath, uploadedFile);
+        
+        if (uploadError) {
+          console.error('File upload error:', uploadError);
+          toast.error('Failed to upload file. Submitting without attachment.');
+        } else {
+          // Get public URL
+          const { data: urlData } = supabase.storage
+            .from('partnership_files')
+            .getPublicUrl(filePath);
+          fileUrl = urlData.publicUrl;
+        }
+      }
+
       const { error } = await supabase
         .from("partnership_applications" as any)
         .insert({
@@ -206,6 +230,7 @@ const CompanyForm = () => {
           gulf_expansion_plans: data.desired_outcome,
           strategic_metric_type: data.mandates.join(", "),
           strategic_metric_value: data.advisory_mandate,
+          additional_info: fileUrl || null,
         });
 
       if (error) throw error;
@@ -226,7 +251,7 @@ const CompanyForm = () => {
               "Submitted At", "Company Name", "Email", "Phone", "Website", "HQ Country", 
               "Year Founded", "Primary Sector", "Revenue Band", "Last 12 Months Revenue", 
               "EBITDA Status", "Profit Margin", "Desired Outcome", "Mandates", 
-              "Advisory Mandate", "GCC Readiness"
+              "Advisory Mandate", "GCC Readiness", "Deck URL"
             ],
             values: [
               new Date().toISOString(),
@@ -244,7 +269,8 @@ const CompanyForm = () => {
               data.desired_outcome,
               mandateLabels,
               data.advisory_mandate,
-              gccReadinessLabels
+              gccReadinessLabels,
+              fileUrl
             ]
           }
         });
@@ -268,6 +294,7 @@ const CompanyForm = () => {
 
       toast.success("Application submitted successfully!");
       setIsSubmitted(true);
+      setUploadedFile(null);
       form.reset();
     } catch (error) {
       console.error("Error submitting application:", error);
