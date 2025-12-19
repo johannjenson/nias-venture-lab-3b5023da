@@ -20,17 +20,23 @@ export const PhoneInputWithCode = ({
   onChange,
   placeholder = "Phone Number",
 }: PhoneInputWithCodeProps) => {
-  const [countryCode, setCountryCode] = useState("+966");
+  // Store the selected country index to handle countries with the same code
+  const [selectedIndex, setSelectedIndex] = useState(0); // Default to Saudi Arabia (first item)
+  
+  const selectedCountry = countryCodes[selectedIndex];
+  const countryCode = selectedCountry?.code || "+966";
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const phoneNumber = e.target.value.replace(/[^\d]/g, "");
     onChange(`${countryCode}${phoneNumber}`);
   };
 
-  const handleCountryChange = (code: string) => {
-    setCountryCode(code);
+  const handleCountryChange = (indexStr: string) => {
+    const index = parseInt(indexStr, 10);
+    setSelectedIndex(index);
+    const newCode = countryCodes[index]?.code || "+966";
     const phoneOnly = value.replace(/^\+\d+/, "");
-    onChange(`${code}${phoneOnly}`);
+    onChange(`${newCode}${phoneOnly}`);
   };
 
   // Extract phone number without country code for display
@@ -38,16 +44,22 @@ export const PhoneInputWithCode = ({
 
   return (
     <div className="flex gap-2">
-      <Select value={countryCode} onValueChange={handleCountryChange}>
+      <Select value={String(selectedIndex)} onValueChange={handleCountryChange}>
         <SelectTrigger className="w-[140px] flex-shrink-0">
-          <SelectValue />
+          <SelectValue>
+            <span className="flex items-center gap-2">
+              <span>{selectedCountry?.flag}</span>
+              <span className="text-xs text-muted-foreground">{countryCode}</span>
+            </span>
+          </SelectValue>
         </SelectTrigger>
         <SelectContent className="max-h-[300px]">
           {countryCodes.map((country, index) => (
-            <SelectItem key={`${country.code}-${country.country}-${index}`} value={country.code}>
+            <SelectItem key={index} value={String(index)}>
               <span className="flex items-center gap-2">
                 <span>{country.flag}</span>
                 <span className="text-xs text-muted-foreground">{country.code}</span>
+                <span className="text-xs">{country.country}</span>
               </span>
             </SelectItem>
           ))}
