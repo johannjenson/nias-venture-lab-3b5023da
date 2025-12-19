@@ -87,27 +87,27 @@ const WorkWithNias = () => {
 
             {/* Prefer to chat first - moved here */}
             <div className="flex flex-col items-center mt-8 mb-14">
-              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Prefer to chat first?</p>
-              <div className="flex items-center gap-4">
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Prefer to chat first?</p>
+              <div className="flex flex-col sm:flex-row items-center gap-4">
                 <img 
                   src={johannProfile}
                   alt="Johann Jenson"
-                  className="w-10 h-10 rounded-full object-cover grayscale ring-1 ring-border/30"
+                  className="w-20 h-20 rounded-full object-cover grayscale ring-2 ring-border/30"
                 />
-                <div className="text-left">
-                  <p className="text-sm font-medium text-foreground">Johann Jenson</p>
-                  <p className="text-xs text-muted-foreground">Founding Partner</p>
+                <div className="text-center sm:text-left">
+                  <p className="text-base font-medium text-foreground">Johann Jenson</p>
+                  <p className="text-sm text-muted-foreground mb-3">Founding Partner</p>
+                  <Button asChild variant="outline" size="sm">
+                    <a
+                      href="https://calendar.app.google/uBmFhFXNBK6etNeH6"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Calendar className="h-4 w-4 mr-2" />
+                      Book a Call
+                    </a>
+                  </Button>
                 </div>
-                <Button asChild variant="outline" size="sm">
-                  <a
-                    href="https://calendar.app.google/uBmFhFXNBK6etNeH6"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Calendar className="h-4 w-4 mr-2" />
-                    Book a Call
-                  </a>
-                </Button>
               </div>
             </div>
             
