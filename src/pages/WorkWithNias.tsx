@@ -49,7 +49,7 @@ const WorkWithNias = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-28 pb-16 px-6 overflow-hidden">
+      <section className="relative pt-28 pb-0 px-6 overflow-hidden">
         {/* Background Image with Overlay */}
         <img 
           src={heroBackground}
@@ -112,7 +112,7 @@ const WorkWithNias = () => {
       </section>
 
       {/* Form Section */}
-      <section id="application-form" className="py-12 px-6 bg-muted/30">
+      <section id="application-form" className="pt-6 pb-12 px-6 bg-muted/30">
         <div className="max-w-2xl mx-auto">
 
           {/* Forms */}
