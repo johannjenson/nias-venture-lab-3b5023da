@@ -54,11 +54,12 @@ const Footer = () => {
       { name: "Vision 2030", href: "/resources" },
       { name: "Real Estate", href: "/real-estate" },
     ],
-    about: [
+    nias: [
       { name: "Team", href: "/people" },
       { name: "Clients & Partners", href: "/clients-partners" },
       { name: "Contact", href: "/contact" },
       ...(user ? [{ name: "Log Out", href: "#", onClick: handleLogout }] : []),
+      { name: "Client Login", href: "https://access.nias.io/client/login", external: true },
     ],
     social: [
       {
@@ -163,11 +164,11 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* About */}
+          {/* NIAS */}
           <div>
-            <h3 className="text-[11px] uppercase tracking-[0.2em] font-medium text-background mb-5">About</h3>
+            <h3 className="text-[11px] uppercase tracking-[0.2em] font-medium text-background mb-5">NIAS</h3>
             <ul className="space-y-3">
-              {navigation.about.map((item) => (
+              {navigation.nias.map((item) => (
                 <li key={item.name}>
                   {item.onClick ? (
                     <button
@@ -176,6 +177,15 @@ const Footer = () => {
                     >
                       {item.name}
                     </button>
+                  ) : item.external ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-background/50 hover:text-background transition-colors"
+                    >
+                      {item.name}
+                    </a>
                   ) : (
                     <Link
                       to={item.href}
