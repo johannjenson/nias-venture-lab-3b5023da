@@ -25,8 +25,26 @@ const HeroContent = () => {
 
   return (
     <div className="flex-1 flex flex-col bg-secondary/30">
+      {/* News Ticker */}
+      <div className="bg-nias-gold/10 border-b border-nias-gold/20 py-2 px-4 mt-[88px] md:mt-[52px]">
+        <a
+          href="https://mof.gov.sa/en/budget/2026/Pages/Home.aspx"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 group"
+        >
+          <span className="text-[10px] md:text-xs text-foreground/70 uppercase tracking-[0.1em]">
+            Just Announced
+          </span>
+          <span className="text-[10px] md:text-xs font-medium text-foreground group-hover:text-nias-gold transition-colors">
+            Saudi Arabia 2026 Budget
+          </span>
+          <ArrowRight className="w-3 h-3 text-nias-gold group-hover:translate-x-0.5 transition-transform" />
+        </a>
+      </div>
+
       {/* Hero Section */}
-      <div className="flex-1 flex items-center pt-40 pb-20 md:py-28">
+      <div className="flex-1 flex items-center py-20 md:py-28">
         <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
           <div className="max-w-3xl mx-auto text-center">
             {/* Wave Icon */}
