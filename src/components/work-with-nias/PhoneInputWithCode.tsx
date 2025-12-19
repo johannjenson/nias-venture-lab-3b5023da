@@ -72,7 +72,7 @@ export const PhoneInputWithCode = ({
   onChange,
   placeholder = "Phone Number",
 }: PhoneInputWithCodeProps) => {
-  const [countryCode, setCountryCode] = useState("+1");
+  const [countryCode, setCountryCode] = useState("+966");
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const phoneNumber = e.target.value.replace(/[^\d]/g, "");
