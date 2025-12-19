@@ -112,6 +112,42 @@ const AdvisorForm = () => {
 
       if (error) throw error;
 
+      // Send to Google Sheets
+      try {
+        await supabase.functions.invoke('send-to-google-sheets', {
+          body: {
+            type: "Advisors",
+            headers: [
+              "Submitted At", "Advisor Name", "Email", "Phone", "Advisory Role", 
+              "Opportunity Description", "Relationship Type", "Gulf Relevance", 
+              "Opportunity Type", "Company Revenue Band", "Company Footprint", 
+              "Fund AUM Band", "Fund Sector Focus", "Engagement Type", 
+              "Engagement Details", "Additional Info"
+            ],
+            values: [
+              new Date().toISOString(),
+              data.advisor_name,
+              data.email,
+              data.phone,
+              data.advisor_role,
+              data.opportunity_description,
+              data.relationship_type === "other" ? data.relationship_other : data.relationship_type,
+              data.gulf_relevance,
+              data.opportunity_type,
+              data.company_revenue_band || "",
+              data.company_footprint || "",
+              data.fund_aum_band || "",
+              data.fund_sector_focus || "",
+              data.partnership_engagement_type,
+              data.partnership_engagement_details || "",
+              data.additional_info || ""
+            ]
+          }
+        });
+      } catch (sheetError) {
+        console.error('Error sending to Google Sheets:', sheetError);
+      }
+
       // Send confirmation email
       try {
         await supabase.functions.invoke('send-partnership-confirmation', {
@@ -124,7 +160,6 @@ const AdvisorForm = () => {
         });
       } catch (emailError) {
         console.error('Error sending confirmation email:', emailError);
-        // Don't fail the submission if email fails
       }
 
       toast.success("Application submitted successfully!");

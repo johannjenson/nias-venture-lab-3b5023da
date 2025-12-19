@@ -210,6 +210,48 @@ const CompanyForm = () => {
 
       if (error) throw error;
 
+      // Send to Google Sheets
+      try {
+        const sector = data.primary_sector === "other" ? data.primary_sector_other : 
+          primarySectors.find(s => s.value === data.primary_sector)?.label || data.primary_sector;
+        const revenueBandLabel = revenueBands.find(r => r.value === data.revenue_band)?.label || data.revenue_band || "";
+        const ebitdaLabel = ebitdaStatuses.find(e => e.value === data.ebitda_status)?.label || data.ebitda_status;
+        const mandateLabels = data.mandates.map(m => mandateOptions.find(o => o.id === m)?.label || m).join(", ");
+        const gccReadinessLabels = (data.gcc_readiness || []).map(g => gccReadinessOptions.find(o => o.id === g)?.label || g).join(", ");
+        
+        await supabase.functions.invoke('send-to-google-sheets', {
+          body: {
+            type: "Companies",
+            headers: [
+              "Submitted At", "Company Name", "Email", "Phone", "Website", "HQ Country", 
+              "Year Founded", "Primary Sector", "Revenue Band", "Last 12 Months Revenue", 
+              "EBITDA Status", "Profit Margin", "Desired Outcome", "Mandates", 
+              "Advisory Mandate", "GCC Readiness"
+            ],
+            values: [
+              new Date().toISOString(),
+              data.company_name,
+              data.email,
+              data.phone,
+              data.website || "",
+              data.hq_country,
+              data.year_founded,
+              sector,
+              revenueBandLabel,
+              data.last_12_months_revenue || "",
+              ebitdaLabel,
+              data.profit_margin || "",
+              data.desired_outcome,
+              mandateLabels,
+              data.advisory_mandate,
+              gccReadinessLabels
+            ]
+          }
+        });
+      } catch (sheetError) {
+        console.error('Error sending to Google Sheets:', sheetError);
+      }
+
       // Send confirmation email
       try {
         await supabase.functions.invoke('send-partnership-confirmation', {
