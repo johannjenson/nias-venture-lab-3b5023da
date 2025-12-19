@@ -102,21 +102,21 @@ const FundForm = () => {
 
   return (
     <div>
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold text-primary mb-2">Funds</h2>
+      <div className="mb-6">
+        <h2 className="text-lg font-medium text-foreground mb-1">Funds</h2>
         <p className="text-sm text-muted-foreground">
           For investment funds seeking Gulf partnerships, co-locations, or LP relationships
         </p>
       </div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>1. Email</FormLabel>
+                <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input type="email" placeholder="contact@fund.com" {...field} ref={firstInputRef} />
                 </FormControl>
@@ -130,7 +130,7 @@ const FundForm = () => {
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>2. Phone Number</FormLabel>
+                <FormLabel>Phone Number</FormLabel>
                 <FormControl>
                   <PhoneInputWithCode value={field.value} onChange={field.onChange} />
                 </FormControl>
@@ -144,7 +144,7 @@ const FundForm = () => {
             name="fund_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>3. Name of Fund</FormLabel>
+                <FormLabel>Fund Name</FormLabel>
                 <FormControl>
                   <Input placeholder="e.g., Acme Ventures Fund III" {...field} />
                 </FormControl>
@@ -158,7 +158,7 @@ const FundForm = () => {
             name="fund_aum_vintage"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>4. What is your fund's total AUM and current fund vintage?</FormLabel>
+                <FormLabel>Total AUM & Current Fund Vintage</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Describe your fund's AUM, vintage year, and fund structure..."
@@ -176,7 +176,7 @@ const FundForm = () => {
             name="investment_strategy"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>5. What is your investment strategy and sector focus?</FormLabel>
+                <FormLabel>Investment Strategy & Sector Focus</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Describe your investment thesis, target sectors, check sizes, and stage focus..."
@@ -194,7 +194,7 @@ const FundForm = () => {
             name="historical_performance"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>6. What is your historical performance (IRR, TVPI, DPI)?</FormLabel>
+                <FormLabel>Historical Performance (IRR, TVPI, DPI)</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Share key performance metrics and track record..."
@@ -212,7 +212,7 @@ const FundForm = () => {
             name="gulf_strategy"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>7. How does the Gulf region fit into your fund's long-term strategy?</FormLabel>
+                <FormLabel>Gulf Regional Strategy</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Explain your regional thesis, timeline, and objectives..."
@@ -230,7 +230,7 @@ const FundForm = () => {
             name="partnership_type"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>8. What type of partnership or presence are you seeking in the Gulf?</FormLabel>
+                <FormLabel>Partnership Type</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="e.g., co-location, ecosystem partnerships, innovation programs, anchor LPs, regional SPVs..."
@@ -248,7 +248,7 @@ const FundForm = () => {
             name="additional_info"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>9. Additional Information (Optional)</FormLabel>
+                <FormLabel>Additional Information (Optional)</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Any other relevant information..."
