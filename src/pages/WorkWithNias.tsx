@@ -90,25 +90,9 @@ const WorkWithNias = () => {
 
       {/* Form Section */}
       <section id="application-form" className="py-12 px-6 bg-muted/30">
-        <div className="max-w-2xl mx-auto mb-8 text-center">
-          <p className="text-sm text-muted-foreground leading-relaxed mb-2">
-            NIAS works with a highly curated set of top tier global operators, investment fund managers, and reputable advisors.{" "}
-            <a 
-              href="https://access.nias.io/client" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              Learn more
-            </a>
-          </p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Kindly complete the relevant form below. Our team will review and respond within 7–10 days.
-          </p>
-        </div>
         <div className="max-w-2xl mx-auto">
           {/* Toggle */}
-          <div className="flex justify-center mb-10">
+          <div className="flex justify-center mb-8">
             <ToggleGroup 
               type="single" 
               value={applicationType}
@@ -147,9 +131,22 @@ const WorkWithNias = () => {
           </div>
 
           {/* Footer Note */}
-          <p className="text-center text-xs text-muted-foreground mt-6 leading-relaxed">
-            After submission, NIAS will conduct an initial review. If aligned, our Partnerships Team will reach out to coordinate a deeper discussion.
-          </p>
+          <div className="mt-6 text-center space-y-1">
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              NIAS works with a curated set of global operators, fund managers, and advisors.{" "}
+              <a 
+                href="https://access.nias.io/client" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                Learn more →
+              </a>
+            </p>
+            <p className="text-xs text-muted-foreground/70 leading-relaxed">
+              Our team will review and respond within 7–10 days.
+            </p>
+          </div>
         </div>
       </section>
 
