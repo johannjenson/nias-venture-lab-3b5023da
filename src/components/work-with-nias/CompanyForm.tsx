@@ -45,6 +45,7 @@ const companySchema = z.object({
   desired_outcome: z.string().min(1, "Please describe your desired outcome").max(2000),
   mandates: z.array(z.string()).min(1, "Please select at least one mandate"),
   advisory_mandate: z.string().min(1, "Please select an option"),
+  gcc_readiness: z.array(z.string()).optional(),
 });
 
 type CompanyFormData = z.infer<typeof companySchema>;
@@ -80,6 +81,14 @@ const mandateOptions = [
   { id: "regional_representation", label: "Ongoing regional representation" },
 ];
 
+const gccReadinessOptions = [
+  { id: "existing_gcc_clients", label: "Existing GCC clients" },
+  { id: "prior_ksa_uae_projects", label: "Prior projects in KSA/UAE" },
+  { id: "local_partner_identified", label: "Local partner identified" },
+  { id: "willing_regional_hq", label: "Willing to establish regional HQ" },
+  { id: "willing_jv_minority_sale", label: "Willing to do JV or minority sale" },
+];
+
 const CompanyForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -107,8 +116,11 @@ const CompanyForm = () => {
       desired_outcome: "",
       mandates: [],
       advisory_mandate: "",
+      gcc_readiness: [],
     },
   });
+
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
 
   const watchedRevenueBand = form.watch("revenue_band");
   const watchedEbitdaStatus = form.watch("ebitda_status");
@@ -430,22 +442,14 @@ const CompanyForm = () => {
                   <p className="text-sm text-muted-foreground">
                     Based on your current revenue and profitability profile, our advisory services may not be the right fit at this stage. We typically work with companies at $25M+ revenue with a path to profitability.
                   </p>
-                  <div className="flex flex-col gap-1">
-                    <Link 
-                      to="/#network" 
-                      className="text-sm font-medium text-primary hover:underline"
-                    >
-                      Join the NIAS Network →
-                    </Link>
-                    <a 
-                      href="https://access.nias.io" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-sm font-medium text-primary hover:underline"
-                    >
-                      Explore NIAS Access →
-                    </a>
-                  </div>
+                  <a 
+                    href="https://access.nias.io" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-primary hover:underline"
+                  >
+                    Explore NIAS Access →
+                  </a>
                 </div>
               </div>
             </div>
@@ -545,6 +549,68 @@ const CompanyForm = () => {
                   </FormItem>
                 )}
               />
+
+              {/* GCC Readiness */}
+              <FormField
+                control={form.control}
+                name="gcc_readiness"
+                render={() => (
+                  <FormItem>
+                    <FormLabel>GCC Readiness (critical NIAS filter)</FormLabel>
+                    <p className="text-sm text-muted-foreground mb-2">Select all that apply:</p>
+                    <div className="space-y-3">
+                      {gccReadinessOptions.map((option) => (
+                        <FormField
+                          key={option.id}
+                          control={form.control}
+                          name="gcc_readiness"
+                          render={({ field }) => (
+                            <FormItem className="flex items-center space-x-3 space-y-0">
+                              <FormControl>
+                                <Checkbox
+                                  checked={field.value?.includes(option.id)}
+                                  onCheckedChange={(checked) => {
+                                    const current = field.value || [];
+                                    if (checked) {
+                                      field.onChange([...current, option.id]);
+                                    } else {
+                                      field.onChange(current.filter((v) => v !== option.id));
+                                    }
+                                  }}
+                                />
+                              </FormControl>
+                              <Label className="text-sm font-normal cursor-pointer">
+                                {option.label}
+                              </Label>
+                            </FormItem>
+                          )}
+                        />
+                      ))}
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* File Upload */}
+              <div className="space-y-2">
+                <Label>Latest investor deck or info memo (PDF)</Label>
+                <p className="text-sm text-muted-foreground">Optional</p>
+                <Input
+                  type="file"
+                  accept=".pdf"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0] || null;
+                    setUploadedFile(file);
+                  }}
+                  className="cursor-pointer"
+                />
+                {uploadedFile && (
+                  <p className="text-sm text-muted-foreground">
+                    Selected: {uploadedFile.name}
+                  </p>
+                )}
+              </div>
 
               <Button 
                 type="submit" 
