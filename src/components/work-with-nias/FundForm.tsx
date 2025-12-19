@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -16,6 +16,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import PhoneInputWithCode from "./PhoneInputWithCode";
 
 const fundSchema = z.object({
   email: z.string().email("Invalid email address").min(1, "Email is required"),
@@ -33,6 +34,11 @@ type FundFormData = z.infer<typeof fundSchema>;
 
 const FundForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const firstInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    firstInputRef.current?.focus();
+  }, []);
 
   const form = useForm<FundFormData>({
     resolver: zodResolver(fundSchema),
@@ -112,7 +118,7 @@ const FundForm = () => {
               <FormItem>
                 <FormLabel>1. Email</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="contact@fund.com" {...field} />
+                  <Input type="email" placeholder="contact@fund.com" {...field} ref={firstInputRef} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -126,7 +132,7 @@ const FundForm = () => {
               <FormItem>
                 <FormLabel>2. Phone Number</FormLabel>
                 <FormControl>
-                  <Input type="tel" placeholder="+1 (555) 000-0000" {...field} />
+                  <PhoneInputWithCode value={field.value} onChange={field.onChange} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
