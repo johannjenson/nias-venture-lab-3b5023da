@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -25,6 +25,7 @@ import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import PhoneInputWithCode from "./PhoneInputWithCode";
 
 const advisorSchema = z.object({
   advisor_name: z.string().min(1, "Advisor/firm name is required").max(200),
@@ -51,6 +52,11 @@ type AdvisorFormData = z.infer<typeof advisorSchema>;
 
 const AdvisorForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const firstInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    firstInputRef.current?.focus();
+  }, []);
 
   const form = useForm<AdvisorFormData>({
     resolver: zodResolver(advisorSchema),

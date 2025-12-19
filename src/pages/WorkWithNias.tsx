@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Building2, TrendingUp, Waves, Users, Calendar } from "lucide-react";
+import { TrendingUp, Waves, Users, Calendar, Building2 } from "lucide-react";
 import CompanyForm from "@/components/work-with-nias/CompanyForm";
 import FundForm from "@/components/work-with-nias/FundForm";
 import AdvisorForm from "@/components/work-with-nias/AdvisorForm";
@@ -58,10 +58,10 @@ const WorkWithNias = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background z-0" />
         
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <Building2 className="h-16 w-16 text-primary mx-auto mb-6" />
-            <h1 className="text-5xl font-bold text-foreground mb-6">
-              Work with NIAS
+        <div className="text-center max-w-4xl mx-auto">
+            <Waves className="h-16 w-16 text-primary mx-auto mb-6 animate-wave" />
+            <h1 className="text-5xl text-foreground mb-6">
+              Work with <span className="font-bold">NIAS</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
               For Global Companies & Funds Expanding into the Gulf

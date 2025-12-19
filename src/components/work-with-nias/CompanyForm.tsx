@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -23,6 +23,7 @@ import {
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import PhoneInputWithCode from "./PhoneInputWithCode";
 
 const companySchema = z.object({
   company_name: z.string().min(1, "Company name is required").max(200),
@@ -42,6 +43,11 @@ type CompanyFormData = z.infer<typeof companySchema>;
 
 const CompanyForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const firstInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    firstInputRef.current?.focus();
+  }, []);
 
   const form = useForm<CompanyFormData>({
     resolver: zodResolver(companySchema),
@@ -125,7 +131,7 @@ const CompanyForm = () => {
               <FormItem>
                 <FormLabel>1. Company Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Your Company Ltd." {...field} />
+                  <Input placeholder="Your Company Ltd." {...field} ref={firstInputRef} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
