@@ -29,6 +29,7 @@ import { toast } from "sonner";
 import { Loader2, AlertCircle, Coins, TrendingUp, TrendingDown, Minus, BarChart3, Building2, Rocket, Crown, Cpu, Trophy, Zap, GraduationCap, Palette, MoreHorizontal, Hotel, Home, Building, Briefcase, Users, X } from "lucide-react";
 import PhoneInputWithCode from "./PhoneInputWithCode";
 import { cn } from "@/lib/utils";
+import { allCountries } from "@/data/countries";
 
 const companySchema = z.object({
   company_name: z.string().min(1, "Company name is required").max(200),
@@ -92,19 +93,7 @@ const primarySectors = [
   { value: "other", label: "Other", icon: MoreHorizontal },
 ];
 
-const countries = [
-  "United States", "United Kingdom", "Canada", "Germany", "France", "Australia",
-  "Switzerland", "Netherlands", "Sweden", "Norway", "Denmark", "Finland",
-  "Ireland", "Belgium", "Austria", "Spain", "Italy", "Portugal",
-  "Japan", "South Korea", "Singapore", "Hong Kong", "China", "India",
-  "United Arab Emirates", "Saudi Arabia", "Qatar", "Kuwait", "Bahrain", "Oman",
-  "Israel", "Turkey", "South Africa", "Nigeria", "Egypt", "Morocco",
-  "Brazil", "Mexico", "Argentina", "Chile", "Colombia",
-  "New Zealand", "Malaysia", "Indonesia", "Thailand", "Vietnam", "Philippines",
-  "Poland", "Czech Republic", "Hungary", "Romania", "Greece",
-  "Russia", "Ukraine", "Kazakhstan", "Pakistan", "Bangladesh",
-  "Other"
-].sort();
+// Using allCountries from shared data file - already sorted alphabetically
 
 const revenueBands = [
   { value: "under_10m", label: "<$10M", icon: Coins, description: "Early stage" },
@@ -429,8 +418,8 @@ const CompanyForm = () => {
                         <SelectValue placeholder="Select country" />
                       </SelectTrigger>
                     </FormControl>
-                    <SelectContent>
-                      {countries.map((country) => (
+                    <SelectContent className="max-h-[300px]">
+                      {allCountries.map((country) => (
                         <SelectItem key={country} value={country}>
                           {country}
                         </SelectItem>
