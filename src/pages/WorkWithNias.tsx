@@ -21,11 +21,20 @@ const WorkWithNias = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Work with NIAS | Strategic Partnerships for Global Expansion</title>
+        <title>Work with NIAS | Partner with Us for Gulf Expansion</title>
         <meta 
           name="description" 
-          content="NIAS partners with global companies and funds expanding into the Gulf. Submit your application to join our curated ecosystem of operators and investors." 
+          content="Apply to partner with NIAS. We work with global companies ($50M+ revenue), institutional investment funds, and strategic advisors expanding into Saudi Arabia and the Gulf region." 
         />
+        <meta property="og:title" content="Work with NIAS | Partner with Us for Gulf Expansion" />
+        <meta property="og:description" content="Join NIAS's curated ecosystem of operators, fund managers, and advisors. Apply now for strategic partnership opportunities in Saudi Arabia and the Gulf." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nias.io/work-with-nias" />
+        <meta property="og:image" content="https://nias.io/nias-og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Work with NIAS | Partner with Us for Gulf Expansion" />
+        <meta name="twitter:description" content="Apply to partner with NIAS. We work with global companies, investment funds, and advisors expanding into Saudi Arabia and the Gulf." />
+        <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
       </Helmet>
 
       {/* Sticky Header */}
