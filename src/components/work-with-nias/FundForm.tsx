@@ -77,6 +77,34 @@ const FundForm = () => {
 
       if (error) throw error;
 
+      // Send to Google Sheets
+      try {
+        await supabase.functions.invoke('send-to-google-sheets', {
+          body: {
+            type: "Funds",
+            headers: [
+              "Submitted At", "Email", "Phone", "Fund Name", "AUM & Vintage", 
+              "Investment Strategy", "Historical Performance", "Gulf Strategy", 
+              "Partnership Type", "Additional Info"
+            ],
+            values: [
+              new Date().toISOString(),
+              data.email,
+              data.phone,
+              data.fund_name,
+              data.fund_aum_vintage,
+              data.investment_strategy,
+              data.historical_performance,
+              data.gulf_strategy,
+              data.partnership_type,
+              data.additional_info || ""
+            ]
+          }
+        });
+      } catch (sheetError) {
+        console.error('Error sending to Google Sheets:', sheetError);
+      }
+
       // Send confirmation email
       try {
         await supabase.functions.invoke('send-partnership-confirmation', {
@@ -89,7 +117,6 @@ const FundForm = () => {
         });
       } catch (emailError) {
         console.error('Error sending confirmation email:', emailError);
-        // Don't fail the submission if email fails
       }
 
       toast.success("Application submitted successfully!");

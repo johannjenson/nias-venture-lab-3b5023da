@@ -2,3 +2,6 @@ project_id = "govawobduzmxagqmfobp"
 
 [functions.send-partnership-confirmation]
 verify_jwt = false
+
+[functions.send-to-google-sheets]
+verify_jwt = false
