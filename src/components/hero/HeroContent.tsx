@@ -44,7 +44,7 @@ const HeroContent = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="flex-1 flex items-center pt-2 pb-20 md:py-28">
+      <div className="flex-1 flex items-center pt-2 pb-20 md:pt-[87px] md:pb-28">
         <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
           <div className="max-w-3xl mx-auto text-center">
             {/* Wave Icon */}
