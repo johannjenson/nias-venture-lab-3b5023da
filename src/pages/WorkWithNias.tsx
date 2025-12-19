@@ -64,7 +64,7 @@ const WorkWithNias = () => {
             <h1 className="text-4xl md:text-5xl tracking-tight text-foreground mb-4">
               Work with <span className="font-semibold">NIAS</span>
             </h1>
-            <p className="text-sm text-muted-foreground mb-10">
+            <p className="text-sm text-muted-foreground mb-6">
               NIAS works with a curated set of global operators, fund managers, and advisors.{" "}
               <a 
                 href="https://access.nias.io/client" 
@@ -75,6 +75,32 @@ const WorkWithNias = () => {
                 Learn more →
               </a>
             </p>
+
+            {/* Prefer to chat first - moved here */}
+            <div className="flex flex-col items-center mb-10">
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Prefer to chat first?</p>
+              <div className="flex items-center gap-4">
+                <img 
+                  src={johannProfile}
+                  alt="Johann Jenson"
+                  className="w-10 h-10 rounded-full object-cover grayscale ring-1 ring-border/30"
+                />
+                <div className="text-left">
+                  <p className="text-sm font-medium text-foreground">Johann Jenson</p>
+                  <p className="text-xs text-muted-foreground">Founding Partner</p>
+                </div>
+                <Button asChild variant="outline" size="sm">
+                  <a
+                    href="https://calendar.app.google/uBmFhFXNBK6etNeH6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Calendar className="h-4 w-4 mr-2" />
+                    Book a Call
+                  </a>
+                </Button>
+              </div>
+            </div>
             
             {/* Selectable Cards */}
             <div className="grid sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
@@ -138,35 +164,6 @@ const WorkWithNias = () => {
             <p className="text-xs text-muted-foreground/70 leading-relaxed">
               Our team will review and respond within 7–10 days.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Meet & Greet Section */}
-      <section className="py-14 px-6 bg-background">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Prefer to chat first?</p>
-          <h2 className="text-xl font-medium text-foreground mb-8">
-            Book a 15-min Meet & Greet
-          </h2>
-          <div className="flex flex-col items-center">
-            <img 
-              src={johannProfile}
-              alt="Johann Jenson"
-              className="w-24 h-24 rounded-full object-cover grayscale mb-4 ring-2 ring-border/30"
-            />
-            <h3 className="text-base font-medium text-foreground">Johann Jenson</h3>
-            <p className="text-sm text-muted-foreground mb-5">Founding Partner</p>
-            <Button asChild variant="outline" size="sm">
-              <a
-                href="https://calendar.app.google/uBmFhFXNBK6etNeH6"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Calendar className="h-4 w-4 mr-2" />
-                Schedule a Call
-              </a>
-            </Button>
           </div>
         </div>
       </section>
