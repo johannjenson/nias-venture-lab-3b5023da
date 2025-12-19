@@ -21,26 +21,64 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
+import { Loader2, AlertCircle } from "lucide-react";
 import PhoneInputWithCode from "./PhoneInputWithCode";
 
 const companySchema = z.object({
   company_name: z.string().min(1, "Company name is required").max(200),
   email: z.string().email("Invalid email address").min(1, "Email is required"),
   phone: z.string().min(1, "Phone number is required").max(50),
-  revenue_usd: z.string().min(1, "Revenue is required").max(100),
-  profit_margin: z.string().min(1, "Profit margin is required").max(50),
-  growth_rate: z.string().min(1, "Growth rate is required").max(50),
-  geographic_footprint: z.string().min(1, "Geographic footprint is required").max(1000),
-  gulf_expansion_plans: z.string().min(1, "Expansion plans are required").max(2000),
-  strategic_metric_type: z.string().min(1, "Please select a metric"),
-  strategic_metric_value: z.string().max(500).optional(),
-  additional_info: z.string().max(2000).optional(),
+  website: z.string().max(500).optional(),
+  hq_country: z.string().min(1, "HQ country is required").max(100),
+  year_founded: z.string().min(1, "Year founded is required").max(10),
+  primary_sector: z.string().min(1, "Primary sector is required"),
+  primary_sector_other: z.string().max(200).optional(),
+  revenue_band: z.string().min(1, "Revenue band is required"),
+  last_12_months_revenue: z.string().max(100).optional(),
+  ebitda_status: z.string().min(1, "EBITDA status is required"),
+  profit_margin: z.string().max(50).optional(),
+  desired_outcome: z.string().min(1, "Please describe your desired outcome").max(2000),
+  mandates: z.array(z.string()).min(1, "Please select at least one mandate"),
+  advisory_mandate: z.string().min(1, "Please select an option"),
 });
 
 type CompanyFormData = z.infer<typeof companySchema>;
+
+const primarySectors = [
+  { value: "sports_entertainment", label: "Sports & Entertainment" },
+  { value: "energy", label: "Energy" },
+  { value: "education", label: "Education" },
+  { value: "art_lifestyle", label: "Art & Lifestyle" },
+  { value: "other", label: "Other (please specify)" },
+];
+
+const revenueBands = [
+  { value: "under_10m", label: "<$10M" },
+  { value: "10_25m", label: "$10–25M" },
+  { value: "25_50m", label: "$25–50M" },
+  { value: "50_100m", label: "$50–100M" },
+  { value: "100m_plus", label: "$100M+" },
+];
+
+const ebitdaStatuses = [
+  { value: "profitable", label: "Profitable" },
+  { value: "breakeven", label: "Break-even" },
+  { value: "loss_improving", label: "Loss-making but improving" },
+  { value: "loss_making", label: "Loss-making" },
+];
+
+const mandateOptions = [
+  { id: "capital_raising", label: "Capital raising" },
+  { id: "strategic_partnerships", label: "Strategic partnerships" },
+  { id: "market_entry", label: "Market entry / KSA or GCC setup" },
+  { id: "coinvestment_jv", label: "Co-investment or JV structuring" },
+  { id: "regional_representation", label: "Ongoing regional representation" },
+];
 
 const CompanyForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -57,18 +95,37 @@ const CompanyForm = () => {
       company_name: "",
       email: "",
       phone: "",
-      revenue_usd: "",
+      website: "",
+      hq_country: "",
+      year_founded: "",
+      primary_sector: "",
+      primary_sector_other: "",
+      revenue_band: "",
+      last_12_months_revenue: "",
+      ebitda_status: "",
       profit_margin: "",
-      growth_rate: "",
-      geographic_footprint: "",
-      gulf_expansion_plans: "",
-      strategic_metric_type: "",
-      strategic_metric_value: "",
-      additional_info: "",
+      desired_outcome: "",
+      mandates: [],
+      advisory_mandate: "",
     },
   });
 
+  const watchedRevenueBand = form.watch("revenue_band");
+  const watchedEbitdaStatus = form.watch("ebitda_status");
+  const watchedPrimarySector = form.watch("primary_sector");
+
+  // Check if disqualified (revenue < $25M OR deeply loss-making)
+  const isDisqualified = 
+    watchedRevenueBand === "under_10m" || 
+    watchedRevenueBand === "10_25m" || 
+    watchedEbitdaStatus === "loss_making";
+
+  const showProfitMargin = watchedEbitdaStatus === "profitable";
+  const showOtherSector = watchedPrimarySector === "other";
+
   const onSubmit = async (data: CompanyFormData) => {
+    if (isDisqualified) return;
+    
     setIsSubmitting(true);
     try {
       const { error } = await supabase
@@ -78,14 +135,17 @@ const CompanyForm = () => {
           company_name: data.company_name,
           advisor_name: data.email,
           advisor_role: data.phone,
-          revenue_usd: data.revenue_usd,
-          profit_margin: data.profit_margin,
-          growth_rate: data.growth_rate,
-          geographic_footprint: data.geographic_footprint,
-          gulf_expansion_plans: data.gulf_expansion_plans,
-          strategic_metric_type: data.strategic_metric_type,
-          strategic_metric_value: data.strategic_metric_value || null,
-          additional_info: data.additional_info || null,
+          company_footprint: data.website,
+          geographic_footprint: data.hq_country,
+          gulf_strategy: data.year_founded,
+          fund_sector_focus: data.primary_sector === "other" ? data.primary_sector_other : data.primary_sector,
+          company_revenue_band: data.revenue_band,
+          revenue_usd: data.last_12_months_revenue || null,
+          gulf_relevance: data.ebitda_status,
+          profit_margin: data.profit_margin || null,
+          gulf_expansion_plans: data.desired_outcome,
+          strategic_metric_type: data.mandates.join(", "),
+          strategic_metric_value: data.advisory_mandate,
         });
 
       if (error) throw error;
@@ -102,7 +162,6 @@ const CompanyForm = () => {
         });
       } catch (emailError) {
         console.error('Error sending confirmation email:', emailError);
-        // Don't fail the submission if email fails
       }
 
       toast.success("Application submitted successfully!");
@@ -141,14 +200,15 @@ const CompanyForm = () => {
   return (
     <div>
       <div className="mb-6">
-        <h2 className="text-lg font-medium text-foreground mb-1">Companies</h2>
-        <p className="text-sm text-muted-foreground">
-          For operating businesses seeking entry or expansion into the GCC
+        <h2 className="text-lg font-medium text-foreground mb-2">Companies</h2>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          NIAS works with a small number of post-revenue companies seeking capital, strategic partners, and market entry across Saudi Arabia and the GCC. We typically engage with companies at $50M+ revenue, or with a very clear path there within 12–18 months.
         </p>
       </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+          {/* Basic Info */}
           <FormField
             control={form.control}
             name="company_name"
@@ -193,100 +253,67 @@ const CompanyForm = () => {
 
           <FormField
             control={form.control}
-            name="revenue_usd"
+            name="website"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Last 12 Months Revenue (USD)</FormLabel>
+                <FormLabel>Website</FormLabel>
                 <FormControl>
-                  <Input placeholder="e.g., $150M" {...field} />
+                  <Input placeholder="https://yourcompany.com" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
 
-          <FormField
-            control={form.control}
-            name="profit_margin"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Profit Margin (%)</FormLabel>
-                <FormControl>
-                  <Input placeholder="e.g., 25%" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <div className="grid grid-cols-2 gap-4">
+            <FormField
+              control={form.control}
+              name="hq_country"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>HQ Country</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g., United States" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <FormField
-            control={form.control}
-            name="growth_rate"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Last 12 Months Growth (%)</FormLabel>
-                <FormControl>
-                  <Input placeholder="e.g., 40%" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            <FormField
+              control={form.control}
+              name="year_founded"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Year Founded</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g., 2015" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
 
+          {/* Primary Sector */}
           <FormField
             control={form.control}
-            name="geographic_footprint"
+            name="primary_sector"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Geographic Footprint</FormLabel>
-                <FormControl>
-                  <Textarea 
-                    placeholder="List countries where you operate..."
-                    className="min-h-[100px]"
-                    {...field} 
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="gulf_expansion_plans"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Gulf Expansion Plans</FormLabel>
-                <FormControl>
-                  <Textarea 
-                    placeholder="Outline your strategy, timeline, and objectives..."
-                    className="min-h-[120px]"
-                    {...field} 
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="strategic_metric_type"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Key Strategic Metric</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormLabel>Primary Sector</FormLabel>
+                <Select onValueChange={field.onChange} value={field.value}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Choose one" />
+                      <SelectValue placeholder="Select a sector" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="cac">Customer Acquisition Cost (CAC)</SelectItem>
-                    <SelectItem value="ltv">LTV / Revenue per Customer</SelectItem>
-                    <SelectItem value="ebitda">EBITDA Multiple</SelectItem>
-                    <SelectItem value="acv">Average Contract Value (ACV)</SelectItem>
-                    <SelectItem value="enterprise">Number of Enterprise Clients</SelectItem>
+                    {primarySectors.map((sector) => (
+                      <SelectItem key={sector.value} value={sector.value}>
+                        {sector.label}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -294,53 +321,248 @@ const CompanyForm = () => {
             )}
           />
 
+          {showOtherSector && (
+            <FormField
+              control={form.control}
+              name="primary_sector_other"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Please Specify Sector</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Your sector..." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
+
+          {/* Revenue Band */}
           <FormField
             control={form.control}
-            name="strategic_metric_value"
+            name="revenue_band"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Metric Value (Optional)</FormLabel>
+                <FormLabel>Revenue Band</FormLabel>
+                <Select onValueChange={field.onChange} value={field.value}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select revenue band" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {revenueBands.map((band) => (
+                      <SelectItem key={band.value} value={band.value}>
+                        {band.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Last 12 Months Revenue */}
+          <FormField
+            control={form.control}
+            name="last_12_months_revenue"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Last 12 Months Revenue (USD)</FormLabel>
                 <FormControl>
-                  <Input placeholder="Provide specific numbers or details..." {...field} />
+                  <Input type="number" placeholder="e.g., 75000000" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
 
+          {/* EBITDA Status */}
           <FormField
             control={form.control}
-            name="additional_info"
+            name="ebitda_status"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Additional Information (Optional)</FormLabel>
-                <FormControl>
-                  <Textarea 
-                    placeholder="Any other relevant information..."
-                    className="min-h-[100px]"
-                    {...field} 
-                  />
-                </FormControl>
+                <FormLabel>EBITDA Status</FormLabel>
+                <Select onValueChange={field.onChange} value={field.value}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select EBITDA status" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {ebitdaStatuses.map((status) => (
+                      <SelectItem key={status.value} value={status.value}>
+                        {status.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
                 <FormMessage />
               </FormItem>
             )}
           />
 
-          <Button 
-            type="submit" 
-            size="lg" 
-            className="w-full"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Submitting...
-              </>
-            ) : (
-              "Submit Opportunity"
-            )}
-          </Button>
+          {/* Profit Margin - only show if profitable */}
+          {showProfitMargin && (
+            <FormField
+              control={form.control}
+              name="profit_margin"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Profit Margin (%)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g., 25" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
+
+          {/* Disqualification Message */}
+          {isDisqualified && (
+            <div className="rounded-lg border border-muted bg-muted/30 p-4">
+              <div className="flex items-start gap-3">
+                <AlertCircle className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
+                <div className="space-y-2">
+                  <p className="text-sm text-muted-foreground">
+                    Based on your current revenue and profitability profile, our advisory services may not be the right fit at this stage. We typically work with companies at $25M+ revenue with a path to profitability.
+                  </p>
+                  <div className="flex flex-col gap-1">
+                    <Link 
+                      to="/#network" 
+                      className="text-sm font-medium text-primary hover:underline"
+                    >
+                      Join the NIAS Network →
+                    </Link>
+                    <a 
+                      href="https://access.nias.io" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-sm font-medium text-primary hover:underline"
+                    >
+                      Explore NIAS Access →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Only show remaining fields if not disqualified */}
+          {!isDisqualified && (
+            <>
+              {/* Desired Outcome */}
+              <FormField
+                control={form.control}
+                name="desired_outcome"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>What is the concrete outcome you want in the next 12–24 months?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Capital raise, strategic partner, GCC market entry, JV, regional acquisition, secondary liquidity, other..."
+                        className="min-h-[120px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* Mandates - Checkboxes */}
+              <FormField
+                control={form.control}
+                name="mandates"
+                render={() => (
+                  <FormItem>
+                    <FormLabel>What mandate are you seeking?</FormLabel>
+                    <div className="space-y-3 mt-2">
+                      {mandateOptions.map((option) => (
+                        <FormField
+                          key={option.id}
+                          control={form.control}
+                          name="mandates"
+                          render={({ field }) => (
+                            <FormItem className="flex items-center space-x-3 space-y-0">
+                              <FormControl>
+                                <Checkbox
+                                  checked={field.value?.includes(option.id)}
+                                  onCheckedChange={(checked) => {
+                                    const current = field.value || [];
+                                    if (checked) {
+                                      field.onChange([...current, option.id]);
+                                    } else {
+                                      field.onChange(current.filter((v) => v !== option.id));
+                                    }
+                                  }}
+                                />
+                              </FormControl>
+                              <Label className="text-sm font-normal cursor-pointer">
+                                {option.label}
+                              </Label>
+                            </FormItem>
+                          )}
+                        />
+                      ))}
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* Advisory Mandate - Radio */}
+              <FormField
+                control={form.control}
+                name="advisory_mandate"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Would you consider granting NIAS a regional advisory mandate if aligned?</FormLabel>
+                    <FormControl>
+                      <RadioGroup
+                        onValueChange={field.onChange}
+                        value={field.value}
+                        className="flex flex-col space-y-2 mt-2"
+                      >
+                        <div className="flex items-center space-x-3">
+                          <RadioGroupItem value="yes" id="advisory_yes" />
+                          <Label htmlFor="advisory_yes" className="font-normal cursor-pointer">Yes</Label>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <RadioGroupItem value="potentially" id="advisory_potentially" />
+                          <Label htmlFor="advisory_potentially" className="font-normal cursor-pointer">Potentially</Label>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <RadioGroupItem value="no" id="advisory_no" />
+                          <Label htmlFor="advisory_no" className="font-normal cursor-pointer">No</Label>
+                        </div>
+                      </RadioGroup>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="w-full"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  "Submit Application"
+                )}
+              </Button>
+            </>
+          )}
         </form>
       </Form>
     </div>
