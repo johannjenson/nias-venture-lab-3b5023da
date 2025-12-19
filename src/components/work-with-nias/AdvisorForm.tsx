@@ -25,8 +25,9 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
+import { Loader2, Hotel, Home, Building, Briefcase, Users, Building2, X } from "lucide-react";
 import PhoneInputWithCode from "./PhoneInputWithCode";
+import { cn } from "@/lib/utils";
 
 const advisorSchema = z.object({
   advisor_name: z.string().min(1, "Advisor/firm name is required").max(200),
@@ -46,10 +47,26 @@ const advisorSchema = z.object({
   fund_sector_focus: z.string().max(1000).optional(),
   partnership_engagement_type: z.string().min(1, "Please select engagement type"),
   partnership_engagement_details: z.string().max(1000).optional(),
+  accommodation_type: z.string().optional(),
+  office_space_type: z.string().optional(),
   additional_info: z.string().max(2000).optional(),
 });
 
 type AdvisorFormData = z.infer<typeof advisorSchema>;
+
+const accommodationOptions = [
+  { value: "not_needed", label: "Not needed", icon: X, description: "No accommodation required" },
+  { value: "hotel", label: "Hotel", icon: Hotel, description: "5-star hotel stays" },
+  { value: "serviced_apartment", label: "Serviced Apt", icon: Home, description: "Furnished apartments" },
+  { value: "long_term_rental", label: "Long-term", icon: Building, description: "Extended lease" },
+];
+
+const officeSpaceOptions = [
+  { value: "not_needed", label: "Not needed", icon: X, description: "No office required" },
+  { value: "coworking", label: "Co-working", icon: Users, description: "Hot desk / shared" },
+  { value: "private_office", label: "Private Office", icon: Briefcase, description: "Dedicated space" },
+  { value: "full_floor", label: "Full Floor", icon: Building2, description: "Suite or floor" },
+];
 
 const AdvisorForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -78,6 +95,8 @@ const AdvisorForm = () => {
       fund_sector_focus: "",
       partnership_engagement_type: "",
       partnership_engagement_details: "",
+      accommodation_type: "",
+      office_space_type: "",
       additional_info: "",
     },
   });
@@ -114,6 +133,9 @@ const AdvisorForm = () => {
 
       // Send to Google Sheets
       try {
+        const accommodationLabel = accommodationOptions.find(a => a.value === data.accommodation_type)?.label || data.accommodation_type || "";
+        const officeSpaceLabel = officeSpaceOptions.find(o => o.value === data.office_space_type)?.label || data.office_space_type || "";
+        
         await supabase.functions.invoke('send-to-google-sheets', {
           body: {
             type: "Advisors",
@@ -122,7 +144,7 @@ const AdvisorForm = () => {
               "Opportunity Description", "Relationship Type", "Gulf Relevance", 
               "Opportunity Type", "Company Revenue Band", "Company Footprint", 
               "Fund AUM Band", "Fund Sector Focus", "Engagement Type", 
-              "Engagement Details", "Additional Info"
+              "Engagement Details", "Accommodation", "Office Space", "Additional Info"
             ],
             values: [
               new Date().toISOString(),
@@ -140,6 +162,8 @@ const AdvisorForm = () => {
               data.fund_sector_focus || "",
               data.partnership_engagement_type,
               data.partnership_engagement_details || "",
+              accommodationLabel,
+              officeSpaceLabel,
               data.additional_info || ""
             ]
           }
@@ -523,6 +547,82 @@ const AdvisorForm = () => {
               </FormItem>
             )}
           />
+
+          {/* Regional Presence Section */}
+          <div className="border-t pt-6 mt-2">
+            <h3 className="text-sm font-medium text-foreground mb-1">Regional Presence</h3>
+            <p className="text-xs text-muted-foreground mb-4">
+              We recommend spending at least 5 days in the region every 2 months. How can we support your team?
+            </p>
+            
+            <FormField
+              control={form.control}
+              name="accommodation_type"
+              render={({ field }) => (
+                <FormItem className="mb-5">
+                  <FormLabel>Team Accommodation</FormLabel>
+                  <FormControl>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
+                      {accommodationOptions.map((option) => {
+                        const Icon = option.icon;
+                        const isSelected = field.value === option.value;
+                        return (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => field.onChange(option.value)}
+                            className={cn(
+                              "flex flex-col items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                              isSelected ? "border-primary bg-primary/5 shadow-sm" : "border-border bg-background hover:bg-muted/50"
+                            )}
+                          >
+                            <Icon className={cn("h-5 w-5 mb-1.5", isSelected ? "text-primary" : "text-muted-foreground")} />
+                            <span className={cn("text-sm font-medium text-center", isSelected ? "text-primary" : "text-foreground")}>{option.label}</span>
+                            <span className="text-[10px] text-muted-foreground mt-0.5 text-center leading-tight">{option.description}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="office_space_type"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Office Space Requirements</FormLabel>
+                  <FormControl>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
+                      {officeSpaceOptions.map((option) => {
+                        const Icon = option.icon;
+                        const isSelected = field.value === option.value;
+                        return (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => field.onChange(option.value)}
+                            className={cn(
+                              "flex flex-col items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                              isSelected ? "border-primary bg-primary/5 shadow-sm" : "border-border bg-background hover:bg-muted/50"
+                            )}
+                          >
+                            <Icon className={cn("h-5 w-5 mb-1.5", isSelected ? "text-primary" : "text-muted-foreground")} />
+                            <span className={cn("text-sm font-medium text-center", isSelected ? "text-primary" : "text-foreground")}>{option.label}</span>
+                            <span className="text-[10px] text-muted-foreground mt-0.5 text-center leading-tight">{option.description}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
 
           <Button 
             type="submit" 

@@ -26,7 +26,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, AlertCircle, Coins, TrendingUp, TrendingDown, Minus, BarChart3, Building2, Rocket, Crown, Cpu, Trophy, Zap, GraduationCap, Palette, MoreHorizontal } from "lucide-react";
+import { Loader2, AlertCircle, Coins, TrendingUp, TrendingDown, Minus, BarChart3, Building2, Rocket, Crown, Cpu, Trophy, Zap, GraduationCap, Palette, MoreHorizontal, Hotel, Home, Building, Briefcase, Users, X } from "lucide-react";
 import PhoneInputWithCode from "./PhoneInputWithCode";
 import { cn } from "@/lib/utils";
 
@@ -47,6 +47,8 @@ const companySchema = z.object({
   mandates: z.array(z.string()).min(1, "Please select at least one mandate"),
   advisory_mandate: z.string().min(1, "Please select an option"),
   gcc_readiness: z.array(z.string()).optional(),
+  accommodation_type: z.string().optional(),
+  office_space_type: z.string().optional(),
   // Sector-specific fields
   frontier_core_tech: z.string().max(2000).optional(),
   frontier_deployment_proof: z.string().max(2000).optional(),
@@ -66,6 +68,20 @@ const companySchema = z.object({
 });
 
 type CompanyFormData = z.infer<typeof companySchema>;
+
+const accommodationOptions = [
+  { value: "not_needed", label: "Not needed", icon: X, description: "No accommodation required" },
+  { value: "hotel", label: "Hotel", icon: Hotel, description: "5-star hotel stays" },
+  { value: "serviced_apartment", label: "Serviced Apt", icon: Home, description: "Furnished apartments" },
+  { value: "long_term_rental", label: "Long-term", icon: Building, description: "Extended lease" },
+];
+
+const officeSpaceOptions = [
+  { value: "not_needed", label: "Not needed", icon: X, description: "No office required" },
+  { value: "coworking", label: "Co-working", icon: Users, description: "Hot desk / shared" },
+  { value: "private_office", label: "Private Office", icon: Briefcase, description: "Dedicated space" },
+  { value: "full_floor", label: "Full Floor", icon: Building2, description: "Suite or floor" },
+];
 
 const primarySectors = [
   { value: "frontier_technology", label: "Frontier Tech", icon: Cpu },
@@ -149,6 +165,8 @@ const CompanyForm = () => {
       mandates: [],
       advisory_mandate: "",
       gcc_readiness: [],
+      accommodation_type: "",
+      office_space_type: "",
       // Sector-specific fields
       frontier_core_tech: "",
       frontier_deployment_proof: "",
@@ -243,6 +261,8 @@ const CompanyForm = () => {
         const ebitdaLabel = ebitdaStatuses.find(e => e.value === data.ebitda_status)?.label || data.ebitda_status;
         const mandateLabels = data.mandates.map(m => mandateOptions.find(o => o.id === m)?.label || m).join(", ");
         const gccReadinessLabels = (data.gcc_readiness || []).map(g => gccReadinessOptions.find(o => o.id === g)?.label || g).join(", ");
+        const accommodationLabel = accommodationOptions.find(a => a.value === data.accommodation_type)?.label || data.accommodation_type || "";
+        const officeSpaceLabel = officeSpaceOptions.find(o => o.value === data.office_space_type)?.label || data.office_space_type || "";
         
         await supabase.functions.invoke('send-to-google-sheets', {
           body: {
@@ -251,7 +271,7 @@ const CompanyForm = () => {
               "Submitted At", "Company Name", "Email", "Phone", "Website", "HQ Country", 
               "Year Founded", "Primary Sector", "Revenue Band", "Last 12 Months Revenue", 
               "EBITDA Status", "Profit Margin", "Desired Outcome", "Mandates", 
-              "Advisory Mandate", "GCC Readiness", "Deck URL"
+              "Advisory Mandate", "GCC Readiness", "Accommodation", "Office Space", "Deck URL"
             ],
             values: [
               new Date().toISOString(),
@@ -270,6 +290,8 @@ const CompanyForm = () => {
               mandateLabels,
               data.advisory_mandate,
               gccReadinessLabels,
+              accommodationLabel,
+              officeSpaceLabel,
               fileUrl
             ]
           }
@@ -1054,6 +1076,96 @@ const CompanyForm = () => {
                   </FormItem>
                 )}
               />
+
+              {/* Regional Presence Section */}
+              <div className="border-t pt-6 mt-6">
+                <h3 className="text-sm font-medium text-foreground mb-1">Regional Presence</h3>
+                <p className="text-xs text-muted-foreground mb-4">
+                  We recommend spending at least 5 days in the region every 2 months. How can we support your executives?
+                </p>
+                
+                {/* Accommodation */}
+                <FormField
+                  control={form.control}
+                  name="accommodation_type"
+                  render={({ field }) => (
+                    <FormItem className="mb-5">
+                      <FormLabel>Executive Accommodation</FormLabel>
+                      <FormControl>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
+                          {accommodationOptions.map((option) => {
+                            const Icon = option.icon;
+                            const isSelected = field.value === option.value;
+                            return (
+                              <button
+                                key={option.value}
+                                type="button"
+                                onClick={() => field.onChange(option.value)}
+                                className={cn(
+                                  "flex flex-col items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                                  isSelected
+                                    ? "border-primary bg-primary/5 shadow-sm"
+                                    : "border-border bg-background hover:bg-muted/50"
+                                )}
+                              >
+                                <Icon className={cn("h-5 w-5 mb-1.5", isSelected ? "text-primary" : "text-muted-foreground")} />
+                                <span className={cn("text-sm font-medium text-center", isSelected ? "text-primary" : "text-foreground")}>
+                                  {option.label}
+                                </span>
+                                <span className="text-[10px] text-muted-foreground mt-0.5 text-center leading-tight">
+                                  {option.description}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Office Space */}
+                <FormField
+                  control={form.control}
+                  name="office_space_type"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Office Space Requirements</FormLabel>
+                      <FormControl>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
+                          {officeSpaceOptions.map((option) => {
+                            const Icon = option.icon;
+                            const isSelected = field.value === option.value;
+                            return (
+                              <button
+                                key={option.value}
+                                type="button"
+                                onClick={() => field.onChange(option.value)}
+                                className={cn(
+                                  "flex flex-col items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                                  isSelected
+                                    ? "border-primary bg-primary/5 shadow-sm"
+                                    : "border-border bg-background hover:bg-muted/50"
+                                )}
+                              >
+                                <Icon className={cn("h-5 w-5 mb-1.5", isSelected ? "text-primary" : "text-muted-foreground")} />
+                                <span className={cn("text-sm font-medium text-center", isSelected ? "text-primary" : "text-foreground")}>
+                                  {option.label}
+                                </span>
+                                <span className="text-[10px] text-muted-foreground mt-0.5 text-center leading-tight">
+                                  {option.description}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
 
               {/* File Upload */}
               <div className="space-y-2">
