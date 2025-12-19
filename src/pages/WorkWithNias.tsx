@@ -91,8 +91,19 @@ const WorkWithNias = () => {
       {/* Form Section */}
       <section id="application-form" className="py-12 px-6 bg-muted/30">
         <div className="max-w-2xl mx-auto mb-8 text-center">
+          <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+            NIAS works with a highly curated set of top tier global operators, investment fund managers, and reputable advisors.{" "}
+            <a 
+              href="https://access.nias.io/client" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              Learn more
+            </a>
+          </p>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Complete the relevant form below. Our team will review and respond within 7–10 days.
+            Kindly complete the relevant form below. Our team will review and respond within 7–10 days.
           </p>
         </div>
         <div className="max-w-2xl mx-auto">
