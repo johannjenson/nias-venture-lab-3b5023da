@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 
 const EventBanner = () => {
   const navItems = [
@@ -47,24 +46,6 @@ const EventBanner = () => {
             </a>
           ))}
         </div>
-      </div>
-
-      {/* News Ticker */}
-      <div className="bg-nias-gold/10 border-b border-nias-gold/20 py-2 px-4">
-        <a
-          href="https://mof.gov.sa/en/budget/2026/Pages/Home.aspx"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 group"
-        >
-          <span className="text-[10px] md:text-xs text-foreground/70 uppercase tracking-[0.1em]">
-            Just Announced
-          </span>
-          <span className="text-[10px] md:text-xs font-medium text-foreground group-hover:text-nias-gold transition-colors">
-            Saudi Arabia 2026 Budget
-          </span>
-          <ArrowRight className="w-3 h-3 text-nias-gold group-hover:translate-x-0.5 transition-transform" />
-        </a>
       </div>
     </div>
   );
