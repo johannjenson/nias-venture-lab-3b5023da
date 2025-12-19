@@ -115,21 +115,21 @@ const CompanyForm = () => {
 
   return (
     <div>
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold text-primary mb-2">Companies</h2>
+      <div className="mb-6">
+        <h2 className="text-lg font-medium text-foreground mb-1">Companies</h2>
         <p className="text-sm text-muted-foreground">
           For operating businesses seeking entry or expansion into the GCC
         </p>
       </div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
           <FormField
             control={form.control}
             name="company_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>1. Company Name</FormLabel>
+                <FormLabel>Company Name</FormLabel>
                 <FormControl>
                   <Input placeholder="Your Company Ltd." {...field} ref={firstInputRef} />
                 </FormControl>
@@ -143,7 +143,7 @@ const CompanyForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>2. Email</FormLabel>
+                <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input type="email" placeholder="contact@company.com" {...field} />
                 </FormControl>
@@ -157,9 +157,9 @@ const CompanyForm = () => {
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>3. Phone Number</FormLabel>
+                <FormLabel>Phone Number</FormLabel>
                 <FormControl>
-                  <Input type="tel" placeholder="+1 (555) 000-0000" {...field} />
+                  <PhoneInputWithCode value={field.value} onChange={field.onChange} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -171,7 +171,7 @@ const CompanyForm = () => {
             name="revenue_usd"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>4. Last 12 Months Revenue (USD)</FormLabel>
+                <FormLabel>Last 12 Months Revenue (USD)</FormLabel>
                 <FormControl>
                   <Input placeholder="e.g., $150M" {...field} />
                 </FormControl>
@@ -185,7 +185,7 @@ const CompanyForm = () => {
             name="profit_margin"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>5. Profit Margin (%)</FormLabel>
+                <FormLabel>Profit Margin (%)</FormLabel>
                 <FormControl>
                   <Input placeholder="e.g., 25%" {...field} />
                 </FormControl>
@@ -199,7 +199,7 @@ const CompanyForm = () => {
             name="growth_rate"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>6. Last 12 Months Growth (%)</FormLabel>
+                <FormLabel>Last 12 Months Growth (%)</FormLabel>
                 <FormControl>
                   <Input placeholder="e.g., 40%" {...field} />
                 </FormControl>
@@ -213,7 +213,7 @@ const CompanyForm = () => {
             name="geographic_footprint"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>7. Geographic Footprint (Countries of Operation)</FormLabel>
+                <FormLabel>Geographic Footprint</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="List countries where you operate..."
@@ -231,7 +231,7 @@ const CompanyForm = () => {
             name="gulf_expansion_plans"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>8. Describe Your Gulf Expansion Plans</FormLabel>
+                <FormLabel>Gulf Expansion Plans</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Outline your strategy, timeline, and objectives..."
@@ -249,7 +249,7 @@ const CompanyForm = () => {
             name="strategic_metric_type"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>9. Key Strategic Metric</FormLabel>
+                <FormLabel>Key Strategic Metric</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
@@ -288,7 +288,7 @@ const CompanyForm = () => {
             name="additional_info"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>10. Additional Information (Optional)</FormLabel>
+                <FormLabel>Additional Information (Optional)</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Any other relevant information..."

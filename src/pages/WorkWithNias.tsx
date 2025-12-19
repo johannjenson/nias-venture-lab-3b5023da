@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { TrendingUp, Waves, Users, Calendar, Building2 } from "lucide-react";
+import { TrendingUp, Waves, Users, Calendar, Building2, ArrowLeft } from "lucide-react";
 import CompanyForm from "@/components/work-with-nias/CompanyForm";
 import FundForm from "@/components/work-with-nias/FundForm";
 import AdvisorForm from "@/components/work-with-nias/AdvisorForm";
@@ -30,17 +30,19 @@ const WorkWithNias = () => {
       </Helmet>
 
       {/* Sticky Header */}
-      <div className="fixed top-0 left-0 right-0 bg-background border-b z-50">
+      <div className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-border/50 z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center justify-between px-6">
           <button 
             onClick={() => navigate('/')} 
-            className="hover:opacity-80 transition-opacity"
+            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
           >
-            <Waves className="h-8 w-8 text-primary" />
+            <ArrowLeft className="h-5 w-5 group-hover:-translate-x-0.5 transition-transform" />
+            <span className="text-sm font-medium">Back</span>
           </button>
           <Button
             onClick={() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-primary hover:bg-primary/90 text-white"
+            size="sm"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground"
           >
             Apply Now
           </Button>
@@ -48,45 +50,45 @@ const WorkWithNias = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+      <section className="relative pt-28 pb-16 px-6 overflow-hidden">
         {/* Background Image with Overlay */}
         <img 
           src={heroBackground}
           alt="Saudi Arabia landscape"
-          className="absolute inset-0 w-full h-full object-cover z-0 grayscale opacity-50"
+          className="absolute inset-0 w-full h-full object-cover z-0 grayscale opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background z-0" />
         
         <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
-            <Waves className="h-16 w-16 text-primary mx-auto mb-6 animate-wave" />
-            <h1 className="text-5xl text-foreground mb-6">
-              Work with <span className="font-bold">NIAS</span>
+          <div className="text-center max-w-3xl mx-auto">
+            <Waves className="h-12 w-12 text-primary mx-auto mb-8 animate-wave" />
+            <h1 className="text-4xl md:text-5xl tracking-tight text-foreground mb-4">
+              Work with <span className="font-semibold">NIAS</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
+            <p className="text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto">
               For Global Companies & Funds Expanding into the Gulf
             </p>
             
-            {/* Info Cards - Moved into Hero */}
-            <div className="mt-12 mb-8">
-              <p className="text-sm text-foreground/70 mb-8 max-w-2xl mx-auto">
+            {/* Info Cards */}
+            <div className="mt-8 mb-4">
+              <p className="text-sm text-muted-foreground mb-6 max-w-lg mx-auto leading-relaxed">
                 NIAS works with a highly curated set of top tier global operators and investment fund managers.
               </p>
-              <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-                <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-lg p-4 text-left">
-                  <Building2 className="h-5 w-5 text-primary mb-2" />
-                  <h3 className="font-semibold text-foreground mb-1 text-sm">Companies</h3>
-                  <p className="text-xs text-muted-foreground">&gt;$100M revenue, multinational footprint</p>
+              <div className="grid sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
+                <div className="bg-background/90 backdrop-blur-sm border border-border/40 rounded-lg p-4 text-left">
+                  <Building2 className="h-4 w-4 text-primary mb-2" />
+                  <h3 className="font-medium text-foreground mb-1 text-sm">Companies</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">&gt;$100M revenue, multinational footprint</p>
                 </div>
-                <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-lg p-4 text-left">
-                  <TrendingUp className="h-5 w-5 text-primary mb-2" />
-                  <h3 className="font-semibold text-foreground mb-1 text-sm">Investment Funds</h3>
-                  <p className="text-xs text-muted-foreground">Institutional-grade, with Gulf relevance</p>
+                <div className="bg-background/90 backdrop-blur-sm border border-border/40 rounded-lg p-4 text-left">
+                  <TrendingUp className="h-4 w-4 text-primary mb-2" />
+                  <h3 className="font-medium text-foreground mb-1 text-sm">Investment Funds</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">Institutional-grade, Gulf relevance</p>
                 </div>
-                <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-lg p-4 text-left">
-                  <Users className="h-5 w-5 text-primary mb-2" />
-                  <h3 className="font-semibold text-foreground mb-1 text-sm">Advisors</h3>
-                  <p className="text-xs text-muted-foreground">Proven track record, strategic networks in target markets</p>
+                <div className="bg-background/90 backdrop-blur-sm border border-border/40 rounded-lg p-4 text-left">
+                  <Users className="h-4 w-4 text-primary mb-2" />
+                  <h3 className="font-medium text-foreground mb-1 text-sm">Advisors</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">Proven track record, strategic networks</p>
                 </div>
               </div>
             </div>
@@ -95,38 +97,38 @@ const WorkWithNias = () => {
       </section>
 
       {/* Form Section */}
-      <section id="application-form" className="pt-3 pb-12 px-6 bg-muted/20">
-        <div className="max-w-3xl mx-auto mb-4 text-center">
-          <p className="text-sm text-muted-foreground">
-            Please complete the relevant form below. Our team will review and respond within 7–10 days.
+      <section id="application-form" className="py-12 px-6 bg-muted/30">
+        <div className="max-w-2xl mx-auto mb-8 text-center">
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Complete the relevant form below. Our team will review and respond within 7–10 days.
           </p>
         </div>
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           {/* Toggle */}
-          <div className="flex justify-center mb-12">
+          <div className="flex justify-center mb-10">
             <ToggleGroup 
               type="single" 
               value={applicationType}
               onValueChange={(value) => value && setApplicationType(value as "company" | "fund" | "advisor")}
-              className="bg-muted/50 p-1 rounded-lg border border-border shadow-sm"
+              className="bg-background p-1 rounded-lg border border-border/50 shadow-sm"
             >
               <ToggleGroupItem 
                 value="company" 
-                className="px-6 py-3 data-[state=on]:bg-background data-[state=on]:shadow-sm"
+                className="px-5 py-2.5 text-sm data-[state=on]:bg-muted data-[state=on]:shadow-sm rounded-md"
               >
                 <Building2 className="h-4 w-4 mr-2" />
                 Companies
               </ToggleGroupItem>
               <ToggleGroupItem 
                 value="fund"
-                className="px-6 py-3 data-[state=on]:bg-background data-[state=on]:shadow-sm"
+                className="px-5 py-2.5 text-sm data-[state=on]:bg-muted data-[state=on]:shadow-sm rounded-md"
               >
                 <TrendingUp className="h-4 w-4 mr-2" />
                 Funds
               </ToggleGroupItem>
               <ToggleGroupItem 
                 value="advisor"
-                className="px-6 py-3 data-[state=on]:bg-background data-[state=on]:shadow-sm"
+                className="px-5 py-2.5 text-sm data-[state=on]:bg-muted data-[state=on]:shadow-sm rounded-md"
               >
                 <Users className="h-4 w-4 mr-2" />
                 Advisors
@@ -135,34 +137,35 @@ const WorkWithNias = () => {
           </div>
 
           {/* Forms */}
-          <div className="bg-card border border-border rounded-xl p-6 lg:p-10 shadow-sm">
+          <div className="bg-card border border-border/50 rounded-xl p-6 lg:p-8 shadow-sm">
             {applicationType === "company" && <CompanyForm />}
             {applicationType === "fund" && <FundForm />}
             {applicationType === "advisor" && <AdvisorForm />}
           </div>
 
           {/* Footer Note */}
-          <p className="text-center text-sm text-muted-foreground mt-8">
+          <p className="text-center text-xs text-muted-foreground mt-6 leading-relaxed">
             After submission, NIAS will conduct an initial review. If aligned, our Partnerships Team will reach out to coordinate a deeper discussion.
           </p>
         </div>
       </section>
 
       {/* Meet & Greet Section */}
-      <section className="py-16 px-6 bg-background">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-foreground mb-8">
+      <section className="py-14 px-6 bg-background">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Prefer to chat first?</p>
+          <h2 className="text-xl font-medium text-foreground mb-8">
             Book a 15-min Meet & Greet
           </h2>
           <div className="flex flex-col items-center">
             <img 
               src={johannProfile}
               alt="Johann Jenson"
-              className="w-32 h-32 rounded-full object-cover grayscale mb-4"
+              className="w-24 h-24 rounded-full object-cover grayscale mb-4 ring-2 ring-border/30"
             />
-            <h3 className="text-lg font-semibold text-foreground">Johann Jenson</h3>
-            <p className="text-muted-foreground mb-6">Founding Partner</p>
-            <Button asChild>
+            <h3 className="text-base font-medium text-foreground">Johann Jenson</h3>
+            <p className="text-sm text-muted-foreground mb-5">Founding Partner</p>
+            <Button asChild variant="outline" size="sm">
               <a
                 href="https://calendar.app.google/uBmFhFXNBK6etNeH6"
                 target="_blank"
