@@ -50,7 +50,7 @@ const EventBanner = () => {
       </div>
 
       {/* News Ticker */}
-      <div className="bg-nias-gold/10 border-b border-nias-gold/20 py-2 px-4">
+      <div className="bg-nias-gold/10 border-b border-nias-gold/20 py-2 px-4 mb-[25px] md:mb-0">
         <a
           href="https://mof.gov.sa/en/budget/2026/Pages/Home.aspx"
           target="_blank"
