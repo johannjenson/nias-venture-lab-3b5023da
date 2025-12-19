@@ -39,7 +39,7 @@ const companySchema = z.object({
   year_founded: z.string().min(1, "Year founded is required").max(10),
   primary_sector: z.string().min(1, "Primary sector is required"),
   primary_sector_other: z.string().max(200).optional(),
-  revenue_band: z.string().min(1, "Revenue band is required"),
+  revenue_band: z.string().optional(),
   last_12_months_revenue: z.string().max(100).optional(),
   ebitda_status: z.string().min(1, "EBITDA status is required"),
   profit_margin: z.string().max(50).optional(),
@@ -942,7 +942,7 @@ const CompanyForm = () => {
                 name="gcc_readiness"
                 render={() => (
                   <FormItem>
-                    <FormLabel>GCC Readiness (critical NIAS filter)</FormLabel>
+                    <FormLabel>GCC Readiness</FormLabel>
                     <p className="text-sm text-muted-foreground mb-2">Select all that apply:</p>
                     <div className="space-y-3">
                       {gccReadinessOptions.map((option) => (
@@ -981,19 +981,25 @@ const CompanyForm = () => {
               {/* File Upload */}
               <div className="space-y-2">
                 <Label>Latest investor deck or info memo (PDF)</Label>
-                <p className="text-sm text-muted-foreground">Optional</p>
+                <p className="text-sm text-muted-foreground">Optional · Max 20MB</p>
                 <Input
                   type="file"
                   accept=".pdf"
                   onChange={(e) => {
                     const file = e.target.files?.[0] || null;
+                    if (file && file.size > 20 * 1024 * 1024) {
+                      e.target.value = '';
+                      setUploadedFile(null);
+                      alert('File size must be less than 20MB');
+                      return;
+                    }
                     setUploadedFile(file);
                   }}
                   className="cursor-pointer"
                 />
                 {uploadedFile && (
                   <p className="text-sm text-muted-foreground">
-                    Selected: {uploadedFile.name}
+                    Selected: {uploadedFile.name} ({(uploadedFile.size / (1024 * 1024)).toFixed(2)}MB)
                   </p>
                 )}
               </div>
