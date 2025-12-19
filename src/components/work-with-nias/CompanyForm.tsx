@@ -973,7 +973,7 @@ const CompanyForm = () => {
                 )}
               />
 
-              {/* Advisory Mandate - Radio */}
+              {/* Advisory Mandate */}
               <FormField
                 control={form.control}
                 name="advisory_mandate"
@@ -981,24 +981,32 @@ const CompanyForm = () => {
                   <FormItem>
                     <FormLabel>Would you consider granting NIAS a regional advisory mandate if aligned?</FormLabel>
                     <FormControl>
-                      <RadioGroup
-                        onValueChange={field.onChange}
-                        value={field.value}
-                        className="flex flex-col space-y-2 mt-2"
-                      >
-                        <div className="flex items-center space-x-3">
-                          <RadioGroupItem value="yes" id="advisory_yes" />
-                          <Label htmlFor="advisory_yes" className="font-normal cursor-pointer">Yes</Label>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <RadioGroupItem value="potentially" id="advisory_potentially" />
-                          <Label htmlFor="advisory_potentially" className="font-normal cursor-pointer">Potentially</Label>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <RadioGroupItem value="no" id="advisory_no" />
-                          <Label htmlFor="advisory_no" className="font-normal cursor-pointer">No</Label>
-                        </div>
-                      </RadioGroup>
+                      <div className="grid grid-cols-3 gap-2 mt-2">
+                        {[
+                          { value: "yes", label: "Yes" },
+                          { value: "potentially", label: "Potentially" },
+                          { value: "no", label: "No" },
+                        ].map((option) => {
+                          const isSelected = field.value === option.value;
+                          return (
+                            <button
+                              key={option.value}
+                              type="button"
+                              onClick={() => field.onChange(option.value)}
+                              className={cn(
+                                "flex items-center justify-center py-3 px-4 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                                isSelected
+                                  ? "border-primary bg-primary/5 shadow-sm"
+                                  : "border-border bg-background hover:bg-muted/50"
+                              )}
+                            >
+                              <span className={cn("text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
+                                {option.label}
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
