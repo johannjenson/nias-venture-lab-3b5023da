@@ -320,7 +320,7 @@ const AudienceCTAs = () => {
               Curious about <span className="text-nias-gold">Expansion Capital</span>?
             </h2>
             <p className="text-base text-nias-dark-foreground/70 max-w-lg mx-auto mb-10 leading-relaxed">
-              Download our guide focused on Saudi Arabia & Kuwait
+              Download our guide and get focused updates on KSA & Kuwait
             </p>
             <ExpansionCapitalForm />
           </div>
@@ -336,6 +336,7 @@ const ExpansionCapitalForm = () => {
   const [email, setEmail] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -383,12 +384,27 @@ const ExpansionCapitalForm = () => {
       setFullName("");
       setEmail("");
       setPhone("");
+      setIsSubmitted(true);
     } catch (error) {
       console.error('Form submission error:', error);
     } finally {
       setIsLoading(false);
     }
   };
+
+  if (isSubmitted) {
+    return (
+      <div className="text-center py-8">
+        <div className="mb-4">
+          <svg className="h-12 w-12 text-nias-gold mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-medium text-nias-dark-foreground mb-2">Thank you!</h3>
+        <p className="text-nias-dark-foreground/70 text-sm">We'll be in touch shortly with your guide.</p>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-2 sm:gap-3 max-w-xl mx-auto">
