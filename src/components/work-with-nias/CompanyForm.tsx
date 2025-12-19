@@ -46,11 +46,28 @@ const companySchema = z.object({
   mandates: z.array(z.string()).min(1, "Please select at least one mandate"),
   advisory_mandate: z.string().min(1, "Please select an option"),
   gcc_readiness: z.array(z.string()).optional(),
+  // Sector-specific fields
+  frontier_core_tech: z.string().max(2000).optional(),
+  frontier_deployment_proof: z.string().max(2000).optional(),
+  frontier_saudi_relevance: z.string().max(2000).optional(),
+  sports_control_own: z.string().max(2000).optional(),
+  sports_revenue_drivers: z.string().max(2000).optional(),
+  sports_saudi_strategy: z.string().max(2000).optional(),
+  energy_value_chain: z.string().max(2000).optional(),
+  energy_contracted_vs_spot: z.string().max(2000).optional(),
+  energy_saudi_importance: z.string().max(2000).optional(),
+  education_model: z.string().max(2000).optional(),
+  education_regulation: z.string().max(2000).optional(),
+  education_gap: z.string().max(2000).optional(),
+  art_core_business: z.string().max(2000).optional(),
+  art_revenue_model: z.string().max(2000).optional(),
+  art_saudi_role: z.string().max(2000).optional(),
 });
 
 type CompanyFormData = z.infer<typeof companySchema>;
 
 const primarySectors = [
+  { value: "frontier_technology", label: "Frontier Technology" },
   { value: "sports_entertainment", label: "Sports & Entertainment" },
   { value: "energy", label: "Energy" },
   { value: "education", label: "Education" },
@@ -117,6 +134,22 @@ const CompanyForm = () => {
       mandates: [],
       advisory_mandate: "",
       gcc_readiness: [],
+      // Sector-specific fields
+      frontier_core_tech: "",
+      frontier_deployment_proof: "",
+      frontier_saudi_relevance: "",
+      sports_control_own: "",
+      sports_revenue_drivers: "",
+      sports_saudi_strategy: "",
+      energy_value_chain: "",
+      energy_contracted_vs_spot: "",
+      energy_saudi_importance: "",
+      education_model: "",
+      education_regulation: "",
+      education_gap: "",
+      art_core_business: "",
+      art_revenue_model: "",
+      art_saudi_role: "",
     },
   });
 
@@ -347,6 +380,291 @@ const CompanyForm = () => {
                 </FormItem>
               )}
             />
+          )}
+
+          {/* Frontier Technology Follow-ups */}
+          {watchedPrimarySector === "frontier_technology" && (
+            <div className="space-y-5 p-4 rounded-lg border border-border bg-muted/20">
+              <FormField
+                control={form.control}
+                name="frontier_core_tech"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>What is the core technology you have built or own?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="AI, computer vision, robotics, biotech, advanced materials, deep infrastructure software, other..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="frontier_deployment_proof"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>What proof of real-world deployment do you have today?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Live customers, production contracts, government pilots, enterprise deployments..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="frontier_saudi_relevance"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Why is Saudi Arabia strategically relevant to your technology's next phase?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Scale, data access, infrastructure, capital, sovereign partners, regulatory advantage..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          )}
+
+          {/* Sports & Entertainment Follow-ups */}
+          {watchedPrimarySector === "sports_entertainment" && (
+            <div className="space-y-5 p-4 rounded-lg border border-border bg-muted/20">
+              <FormField
+                control={form.control}
+                name="sports_control_own"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>What do you control or own?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="IP, league or franchise rights, media rights, venues, talent contracts..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="sports_revenue_drivers"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>What are your primary revenue drivers today?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Media, sponsorships, ticketing, licensing, government contracts..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="sports_saudi_strategy"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>How would Saudi Arabia fit into your growth strategy?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Anchor market, production hub, regional HQ, capital partner..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          )}
+
+          {/* Energy Follow-ups */}
+          {watchedPrimarySector === "energy" && (
+            <div className="space-y-5 p-4 rounded-lg border border-border bg-muted/20">
+              <FormField
+                control={form.control}
+                name="energy_value_chain"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Where do you sit in the energy value chain?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Upstream, midstream, downstream, infrastructure, transition..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="energy_contracted_vs_spot"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>What percentage of your revenues are contracted versus spot?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="e.g., 70% contracted, 30% spot..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="energy_saudi_importance"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Why is Saudi Arabia strategically important to your energy roadmap?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Describe your strategic rationale..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          )}
+
+          {/* Education Follow-ups */}
+          {watchedPrimarySector === "education" && (
+            <div className="space-y-5 p-4 rounded-lg border border-border bg-muted/20">
+              <FormField
+                control={form.control}
+                name="education_model"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>What education model do you operate?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="K–12, higher ed, vocational, executive, EdTech, hybrid..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="education_regulation"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>How regulated is your business and have you operated in regulated markets before?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Describe your regulatory experience..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="education_gap"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>What specific gap in Saudi or GCC education does your model address?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Describe the gap you address..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          )}
+
+          {/* Art & Lifestyle Follow-ups */}
+          {watchedPrimarySector === "art_lifestyle" && (
+            <div className="space-y-5 p-4 rounded-lg border border-border bg-muted/20">
+              <FormField
+                control={form.control}
+                name="art_core_business"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>What is the core of your business?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Platform, gallery, IP, cultural production, lifestyle brand..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="art_revenue_model"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>How repeatable or scalable is your revenue model?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Describe your revenue model..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="art_saudi_role"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>What long-term role do you see Saudi Arabia playing for your brand?</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder="Describe your vision for Saudi Arabia..."
+                        className="min-h-[80px]"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
           )}
 
           {/* Revenue Band */}
