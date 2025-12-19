@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -52,6 +53,7 @@ type AdvisorFormData = z.infer<typeof advisorSchema>;
 
 const AdvisorForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const firstInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -125,7 +127,8 @@ const AdvisorForm = () => {
         // Don't fail the submission if email fails
       }
 
-      toast.success("Application submitted successfully! Check your email for confirmation.");
+      toast.success("Application submitted successfully!");
+      setIsSubmitted(true);
       form.reset();
     } catch (error) {
       console.error("Error submitting application:", error);
@@ -134,6 +137,28 @@ const AdvisorForm = () => {
       setIsSubmitting(false);
     }
   };
+
+  if (isSubmitted) {
+    return (
+      <div className="text-center py-12">
+        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h3 className="text-lg font-medium text-foreground mb-2">Application Submitted</h3>
+        <p className="text-sm text-muted-foreground mb-6">
+          Thank you for your interest. Our team will review and respond within 7–10 days.
+        </p>
+        <Link 
+          to="/#network" 
+          className="inline-flex items-center text-sm font-medium text-primary hover:underline"
+        >
+          Join the NIAS Network →
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div>
