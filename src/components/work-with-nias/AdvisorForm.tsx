@@ -25,7 +25,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, Hotel, Home, Building, Briefcase, Users, Building2, X, Upload } from "lucide-react";
+import { Loader2, Hotel, Home, Building, Briefcase, Users, Building2, X, Upload, Search, Globe, Handshake, MessageSquare } from "lucide-react";
 import PhoneInputWithCode from "./PhoneInputWithCode";
 import { cn } from "@/lib/utils";
 
@@ -250,7 +250,7 @@ const AdvisorForm = () => {
       <div className="mb-6">
         <h2 className="text-lg font-medium text-foreground mb-1">Advisors</h2>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          For trusted advisors sharing high-quality dealflow with NIAS
+          For trusted advisors sharing strategic opportunities and market intelligence with NIAS
         </p>
       </div>
 
@@ -306,7 +306,7 @@ const AdvisorForm = () => {
                 <FormLabel>Nature of Your Advisory Role</FormLabel>
                 <FormControl>
                   <Textarea 
-                    placeholder="e.g., strategic advisor, board member, consultant, introducer, banker, operator, subject-matter expert..."
+                    placeholder="e.g., strategic advisor, board member, consultant, operator, subject-matter expert, industry executive"
                     className="min-h-[80px]"
                     {...field} 
                   />
@@ -321,10 +321,10 @@ const AdvisorForm = () => {
             name="opportunity_description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Describe the Opportunity</FormLabel>
+                <FormLabel>Describe the Opportunity or Context</FormLabel>
                 <FormControl>
                   <Textarea 
-                    placeholder="Company, fund, or transaction context — no confidential information required..."
+                    placeholder="Company, platform, or strategic situation overview (no confidential information required)."
                     className="min-h-[120px]"
                     {...field} 
                   />
@@ -339,7 +339,7 @@ const AdvisorForm = () => {
             name="relationship_type"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Your Relationship With the Company/Fund</FormLabel>
+                <FormLabel>Your Relationship to the Opportunity</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
@@ -396,14 +396,15 @@ const AdvisorForm = () => {
           />
 
           <div className="border-t pt-6">
-            <h3 className="text-sm font-medium text-foreground mb-4">Maturity & Metrics of the Opportunity</h3>
+            <h3 className="text-sm font-medium text-foreground mb-1">Business maturity, operating scale, and general commercial indicators.</h3>
             
             <FormField
               control={form.control}
               name="opportunity_type"
               render={({ field }) => (
-                <FormItem className="mb-6">
-                  <FormLabel>Choose one track depending on what you're sharing</FormLabel>
+                <FormItem className="mb-6 mt-4">
+                  <FormLabel>Opportunity Type</FormLabel>
+                  <p className="text-xs text-muted-foreground mb-2">Operating company / Investment platform / Other</p>
                   <FormControl>
                     <RadioGroup
                       onValueChange={field.onChange}
@@ -521,22 +522,38 @@ const AdvisorForm = () => {
             name="partnership_engagement_type"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Partnership or Engagement Type</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select engagement type" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="strategic_collaboration">Strategic collaboration</SelectItem>
-                    <SelectItem value="expansion_support">Expansion support</SelectItem>
-                    <SelectItem value="co_hosting">Co-hosting gatherings</SelectItem>
-                    <SelectItem value="ecosystem_partnerships">Ecosystem partnerships</SelectItem>
-                    <SelectItem value="intelligence_reports">Intelligence/report inclusion</SelectItem>
-                    <SelectItem value="share_dealflow">Share dealflow</SelectItem>
-                  </SelectContent>
-                </Select>
+                <FormLabel>Context of Potential Engagement</FormLabel>
+                <FormControl>
+                  <div className="grid grid-cols-2 gap-2 mt-2">
+                    {[
+                      { value: "strategic_review", label: "Strategic review", icon: Search },
+                      { value: "market_entry", label: "Market entry exploration", icon: Globe },
+                      { value: "partnership_discussion", label: "Partnership discussion", icon: Handshake },
+                      { value: "advisory_context", label: "Advisory context", icon: MessageSquare },
+                    ].map((option) => {
+                      const Icon = option.icon;
+                      const isSelected = field.value === option.value;
+                      return (
+                        <button
+                          key={option.value}
+                          type="button"
+                          onClick={() => field.onChange(option.value)}
+                          className={cn(
+                            "flex items-center gap-3 p-4 rounded-lg border-2 transition-all duration-200 hover:border-primary/50 text-left",
+                            isSelected
+                              ? "border-primary bg-primary/5 shadow-sm"
+                              : "border-border bg-background hover:bg-muted/50"
+                          )}
+                        >
+                          <Icon className={cn("h-5 w-5 flex-shrink-0", isSelected ? "text-primary" : "text-muted-foreground")} />
+                          <span className={cn("text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
+                            {option.label}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
