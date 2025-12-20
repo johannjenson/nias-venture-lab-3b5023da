@@ -130,8 +130,8 @@ const Resources = () => {
 
       <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-primary mb-4">Vision 2030 Investment Opportunities</h1>
-          <p className="text-lg text-gray-600 mb-4">
+          <h1 className="text-4xl md:text-5xl font-light tracking-tight text-foreground mb-4">Vision 2030 Investment Opportunities</h1>
+          <p className="text-base md:text-lg text-muted-foreground mb-4 leading-relaxed">
             Saudi Arabia is investing $3 trillion across key industries as part of Vision 2030. 
             Below are the top industries with the highest potential for international businesses 
             seeking market entry.
@@ -185,11 +185,11 @@ const Resources = () => {
               Join the NIAS Network and connect with Saudi investors, founders, and advisors to accelerate your business growth in the Kingdom.
             </p>
             <Button
-              onClick={() => navigate('/work-with-nias')}
+              onClick={() => navigate('/#network')}
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg"
             >
-              Work with NIAS
+              Request to Join
             </Button>
           </div>
 
