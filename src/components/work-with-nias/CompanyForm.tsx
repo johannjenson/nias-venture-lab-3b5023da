@@ -111,11 +111,11 @@ const ebitdaStatuses = [
 ];
 
 const mandateOptions = [
-  { id: "capital_raising", label: "Capital raising" },
-  { id: "strategic_partnerships", label: "Strategic partnerships" },
+  { id: "strategic_advisory", label: "Strategic advisory & positioning" },
+  { id: "partnership_development", label: "Partnership development" },
   { id: "market_entry", label: "Market entry / KSA or GCC setup" },
-  { id: "coinvestment_jv", label: "Co-investment or JV structuring" },
-  { id: "regional_representation", label: "Ongoing regional representation" },
+  { id: "jv_alliance", label: "Joint venture or alliance exploration" },
+  { id: "regional_advisory", label: "Ongoing regional advisory support" },
 ];
 
 const gccReadinessOptions = [
@@ -342,7 +342,7 @@ const CompanyForm = () => {
       <div className="mb-6">
         <h2 className="text-lg font-medium text-foreground mb-2">Companies</h2>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          NIAS works with a small number of post-revenue companies seeking capital, strategic partners, and market entry across Saudi Arabia and the GCC. We typically engage with companies at $50M+ revenue, or with a very clear path there within 12–18 months.
+          NIAS works with a small number of post-revenue companies exploring strategic partnerships, international expansion, and long-term growth across Saudi Arabia and the GCC. We typically engage with companies at $50M+ revenue, or with a very clear path there within 12–18 months.
         </p>
       </div>
 
@@ -933,7 +933,7 @@ const CompanyForm = () => {
                     <FormLabel>What is the concrete outcome you want in the next 12–24 months?</FormLabel>
                     <FormControl>
                       <Textarea 
-                        placeholder="Capital raise, strategic partner, GCC market entry, JV, regional acquisition, secondary liquidity, other..."
+                        placeholder="Strategic partnerships, international expansion, joint ventures, regional M&A exploration, shareholder planning, other…"
                         className="min-h-[120px]"
                         {...field} 
                       />
@@ -990,7 +990,7 @@ const CompanyForm = () => {
                 name="advisory_mandate"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Would you consider granting NIAS a regional advisory mandate if aligned?</FormLabel>
+                    <FormLabel>Would you consider engaging NIAS as a regional strategic advisor if aligned?</FormLabel>
                     <FormControl>
                       <div className="grid grid-cols-3 gap-2 mt-2">
                         {[

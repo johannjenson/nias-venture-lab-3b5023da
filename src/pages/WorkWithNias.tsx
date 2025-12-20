@@ -74,7 +74,7 @@ const WorkWithNias = () => {
               Work with <span className="font-semibold">NIAS</span>
             </h1>
             <p className="text-sm text-muted-foreground mb-6">
-              NIAS works with a curated set of global operators, fund managers, and advisors.{" "}
+              NIAS works with a curated set of global operators, institutional platforms, and senior advisors.{" "}
               <a 
                 href="https://access.nias.io/client" 
                 target="_blank" 
@@ -137,7 +137,7 @@ const WorkWithNias = () => {
               >
                 <TrendingUp className="h-4 w-4 text-primary mb-2" />
                 <h3 className="font-medium text-foreground mb-1 text-sm">Investment Funds</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">Institutional-grade, Gulf relevance</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">Institutional platforms with Gulf relevance</p>
               </button>
               <button
                 onClick={() => {
