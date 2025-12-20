@@ -9,6 +9,7 @@ import FundForm from "@/components/work-with-nias/FundForm";
 import AdvisorForm from "@/components/work-with-nias/AdvisorForm";
 import heroBackground from "@/assets/work-with-nias-hero.png";
 import johannProfile from "@/assets/johann-jenson-profile.jpeg";
+import ibrahimProfile from "@/assets/ibrahim-alshuwaier.png";
 
 const WorkWithNias = () => {
   const navigate = useNavigate();
@@ -88,25 +89,50 @@ const WorkWithNias = () => {
             {/* Prefer to chat first - moved here */}
             <div className="flex flex-col items-center mt-8 mb-14">
               <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Prefer to chat first?</p>
-              <div className="flex flex-col sm:flex-row items-center gap-4">
-                <img 
-                  src={johannProfile}
-                  alt="Johann Jenson"
-                  className="w-20 h-20 rounded-full object-cover grayscale ring-2 ring-border/30"
-                />
-                <div className="text-center sm:text-left">
-                  <p className="text-base font-medium text-foreground">Johann Jenson</p>
-                  <p className="text-sm text-muted-foreground mb-3">Founding Partner</p>
-                  <Button asChild variant="outline" size="sm">
-                    <a
-                      href="https://calendar.app.google/uBmFhFXNBK6etNeH6"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Calendar className="h-4 w-4 mr-2" />
-                      Book a Call
-                    </a>
-                  </Button>
+              <div className="flex flex-col sm:flex-row items-center gap-8">
+                {/* Johann Jenson */}
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <img 
+                    src={johannProfile}
+                    alt="Johann Jenson"
+                    className="w-20 h-20 rounded-full object-cover grayscale ring-2 ring-border/30"
+                  />
+                  <div className="text-center sm:text-left">
+                    <p className="text-base font-medium text-foreground">Johann Jenson</p>
+                    <p className="text-sm text-muted-foreground mb-3">Founding Partner</p>
+                    <Button asChild variant="outline" size="sm">
+                      <a
+                        href="https://calendar.app.google/uBmFhFXNBK6etNeH6"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Calendar className="h-4 w-4 mr-2" />
+                        Book a Call
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+                {/* Ibrahim Alshuwaier */}
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <img 
+                    src={ibrahimProfile}
+                    alt="Ibrahim Alshuwaier"
+                    className="w-20 h-20 rounded-full object-cover grayscale ring-2 ring-border/30"
+                  />
+                  <div className="text-center sm:text-left">
+                    <p className="text-base font-medium text-foreground">Ibrahim Alshuwaier</p>
+                    <p className="text-sm text-muted-foreground mb-3">Founding Partner</p>
+                    <Button asChild variant="outline" size="sm">
+                      <a
+                        href="https://calendar.app.google/uBmFhFXNBK6etNeH6"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Calendar className="h-4 w-4 mr-2" />
+                        Book a Call
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
