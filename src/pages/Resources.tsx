@@ -7,7 +7,7 @@ import IndustryStats from "@/components/resources/IndustryStats";
 import IndustryBubbleChart from "@/components/resources/IndustryBubbleChart";
 import { industries } from "@/data/industries";
 import { Button } from "@/components/ui/button";
-import { Waves } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import RequestInviteModal from "@/components/RequestInviteModal";
 import { Helmet } from "react-helmet";
@@ -109,19 +109,21 @@ const Resources = () => {
       </Helmet>
 
       {/* Sticky Header */}
-      <div className="fixed top-0 left-0 right-0 bg-white border-b z-50">
+      <div className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-border/50 z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center justify-between px-6">
           <button 
             onClick={() => navigate('/')} 
-            className="hover:opacity-80 transition-opacity"
+            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
           >
-            <Waves className="h-8 w-8 text-primary" />
+            <ArrowLeft className="h-5 w-5 group-hover:-translate-x-0.5 transition-transform" />
+            <span className="text-sm font-medium">Back</span>
           </button>
           <Button
-            onClick={() => navigate('/#network')}
-            className="bg-primary hover:bg-primary/90 text-white"
+            onClick={() => navigate('/work-with-nias')}
+            size="sm"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground"
           >
-            Join the NIAS Network
+            Work with NIAS
           </Button>
         </div>
       </div>
@@ -183,11 +185,11 @@ const Resources = () => {
               Join the NIAS Network and connect with Saudi investors, founders, and advisors to accelerate your business growth in the Kingdom.
             </p>
             <Button
-              onClick={() => setShowRequestModal(true)}
+              onClick={() => navigate('/work-with-nias')}
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg"
             >
-              Apply to Join NIAS
+              Work with NIAS
             </Button>
           </div>
 
