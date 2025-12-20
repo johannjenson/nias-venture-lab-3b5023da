@@ -95,15 +95,15 @@ const Resources = () => {
   return (
     <div className="min-h-screen bg-white scroll-smooth">
       <Helmet>
-        <title>Vision 2030 Investment Opportunities | NIAS Network</title>
-        <meta name="description" content="Explore Saudi Arabia's $3 trillion Vision 2030 investment opportunities across key industries with high potential for international businesses seeking market entry." />
-        <meta property="og:title" content="Vision 2030 Investment Opportunities | NIAS Network" />
+        <title>Vision 2030 Market Opportunity Analysis | NIAS Network</title>
+        <meta name="description" content="Explore Saudi Arabia's $3 trillion Vision 2030 sector opportunities across key industries with high potential for international businesses seeking market entry." />
+        <meta property="og:title" content="Vision 2030 Market Opportunity Analysis | NIAS Network" />
         <meta property="og:description" content="Saudi Arabia is investing $3 trillion across key industries as part of Vision 2030. Discover the top industries with the highest potential for international businesses." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://nias.io/resources" />
         <meta property="og:image" content="https://nias.io/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Vision 2030 Investment Opportunities | NIAS Network" />
+        <meta name="twitter:title" content="Vision 2030 Market Opportunity Analysis | NIAS Network" />
         <meta name="twitter:description" content="Saudi Arabia is investing $3 trillion across key industries as part of Vision 2030. Discover the top industries with the highest potential for international businesses." />
         <meta name="twitter:image" content="https://nias.io/og-image.png" />
       </Helmet>
@@ -130,7 +130,7 @@ const Resources = () => {
 
       <main className="container mx-auto px-4 py-16 mt-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-light tracking-tight text-foreground mb-4">Vision 2030 Investment Opportunities</h1>
+          <h1 className="text-4xl md:text-5xl font-light tracking-tight text-foreground mb-4">Vision 2030 Market Opportunity Analysis</h1>
           <p className="text-base md:text-lg text-muted-foreground mb-4 leading-relaxed">
             Saudi Arabia is investing $3 trillion across key industries as part of Vision 2030. 
             Below are the top industries with the highest potential for international businesses 
@@ -182,7 +182,7 @@ const Resources = () => {
               Ready to Expand into Saudi Arabia?
             </h2>
             <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-              Join the NIAS Network and connect with Saudi investors, founders, and advisors to accelerate your business growth in the Kingdom.
+              Join the NIAS Network and connect with founders, operators, advisors, and ecosystem leaders to support your growth in the Kingdom.
             </p>
             <Button
               onClick={() => navigate('/#network')}
@@ -193,8 +193,11 @@ const Resources = () => {
             </Button>
           </div>
 
-          {/* Data Sources */}
-          <div className="mt-16 pt-8 border-t border-gray-200">
+          {/* Disclaimer and Data Sources */}
+          <div className="mt-16 pt-8 border-t border-gray-200 space-y-4">
+            <p className="text-sm text-gray-500 text-center italic">
+              This analysis is provided for informational and strategic planning purposes only and does not constitute investment advice, an offer, or solicitation of any investment.
+            </p>
             <p className="text-sm text-gray-500 text-center">
               Last updated: September 2025 • Data sources: Vision 2030 Annual Report, McKinsey Saudi Arabia Analysis, market research
             </p>

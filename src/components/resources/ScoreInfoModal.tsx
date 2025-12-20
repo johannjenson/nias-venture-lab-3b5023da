@@ -15,11 +15,11 @@ const ScoreInfoModal = ({ isOpen, onClose }: ScoreInfoModalProps) => {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-lg">
         <DialogHeader>
-          <DialogTitle>Understanding the NIAS Opportunity Score</DialogTitle>
+          <DialogTitle>Understanding the NIAS Readiness Score</DialogTitle>
         </DialogHeader>
         <div className="space-y-4 text-left">
           <p className="text-gray-600">
-            The NIAS Opportunity Score is a comprehensive metric that evaluates industry sectors based on multiple factors to determine their investment and growth potential in Saudi Arabia.
+            The NIAS Readiness Score is a comprehensive metric that evaluates industry sectors based on multiple factors to determine their strategic and growth potential in Saudi Arabia.
           </p>
           <div>
             <h4 className="font-semibold mb-2">Assessment Criteria:</h4>
