@@ -60,7 +60,7 @@ const HeroContent = () => {
               </span>
             </h1>
             <p className="text-base md:text-lg text-muted-foreground mb-12 max-w-xl mx-auto leading-relaxed">
-              Uniting top tier frontier tech, energy, sports, art, and entertainment companies with the Kingdom's most influential entrepreneurs, government leaders, strategic investors, and acquisitive funds.
+              Connecting global frontier tech, energy, education, art, sports, and entertainment companies with the Kingdom's entrepreneurs, government leaders, and strategic ecosystem participants.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button
@@ -68,7 +68,7 @@ const HeroContent = () => {
                 className="w-full sm:w-56 bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground h-12 text-sm font-medium tracking-wide"
               >
                 <a href="https://access.nias.io/investors" target="_blank" rel="noopener noreferrer">
-                  For Capital Allocators <ArrowRight className="ml-2 h-4 w-4" />
+                  For Institutional Platforms <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
               <Button
@@ -86,7 +86,7 @@ const HeroContent = () => {
                 className="w-full sm:w-56 border-foreground/20 text-foreground hover:bg-foreground hover:text-background h-12 text-sm font-medium tracking-wide"
               >
                 <Link to="/resources">
-                  View Opportunities
+                  Explore Vision 2030 Sectors
                 </Link>
               </Button>
             </div>
@@ -108,7 +108,7 @@ const HeroContent = () => {
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-light tracking-tight mb-2">100+</div>
-              <div className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-background/50 font-medium">Deals Sourced</div>
+              <div className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-background/50 font-medium">Opportunities Reviewed</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-light tracking-tight mb-2">15+</div>

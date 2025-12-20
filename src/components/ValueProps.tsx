@@ -19,8 +19,8 @@ const features = [
     icon: Users,
   },
   {
-    name: "Strategic Financing",
-    description: "Access funding opportunities aligned with Vision 2030.",
+    name: "Strategic Growth Advisory",
+    description: "Navigate strategic partnerships and capital planning aligned with Vision 2030.",
     icon: Briefcase,
   },
 ];
@@ -34,7 +34,7 @@ const ValueProps = ({ openRequestModal }: ValuePropsProps) => {
             What is NIAS?
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            We provide comprehensive support for top tier founders and funds looking to establish and grow
+            We provide strategic and operational support for top tier founders and institutional platforms looking to establish and grow
             their presence in Saudi Arabia.
           </p>
         </div>
