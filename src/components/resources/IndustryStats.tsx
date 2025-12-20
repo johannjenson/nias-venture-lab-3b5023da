@@ -27,7 +27,7 @@ const IndustryStats = ({ totalIndustries, avgScore, totalInvestment }: IndustryS
             <TrendingUp className="h-5 w-5 text-primary" />
           </div>
           <div>
-            <p className="text-sm text-gray-600">Avg Opportunity Score</p>
+            <p className="text-sm text-gray-600">Avg Readiness Score</p>
             <p className="text-2xl font-bold text-primary">{avgScore.toFixed(1)}</p>
           </div>
         </div>

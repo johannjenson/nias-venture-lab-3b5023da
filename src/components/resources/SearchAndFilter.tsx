@@ -63,7 +63,7 @@ const SearchAndFilter = ({
             <PopoverContent className="w-80">
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-medium mb-3">Minimum Opportunity Score</h4>
+                  <h4 className="font-medium mb-3">Minimum Readiness Score</h4>
                   <div className="space-y-2">
                     <Slider
                       value={[minScore]}
@@ -111,7 +111,7 @@ const SearchAndFilter = ({
             className="gap-2"
           >
             <Download className="h-4 w-4" />
-            <span className="hidden sm:inline">Export</span>
+            <span className="hidden sm:inline">Download Analysis</span>
           </Button>
         </div>
       </div>
