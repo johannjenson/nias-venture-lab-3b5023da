@@ -25,7 +25,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, Hotel, Home, Building, Briefcase, Users, Building2, X, Upload, Search, Globe, Handshake, MessageSquare } from "lucide-react";
+import { Loader2, Hotel, Home, Building, Briefcase, Users, Building2, X, Upload, Search, Globe, Handshake, MessageSquare, TrendingUp, Landmark, BarChart3, Rocket, Crown } from "lucide-react";
 import PhoneInputWithCode from "./PhoneInputWithCode";
 import { cn } from "@/lib/utils";
 
@@ -404,22 +404,34 @@ const AdvisorForm = () => {
               render={({ field }) => (
                 <FormItem className="mb-6 mt-4">
                   <FormLabel>Opportunity Type</FormLabel>
-                  <p className="text-xs text-muted-foreground mb-2">Operating company / Investment platform / Other</p>
                   <FormControl>
-                    <RadioGroup
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                      className="flex flex-col space-y-2"
-                    >
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="company" id="company" />
-                        <Label htmlFor="company" className="cursor-pointer">Company</Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="fund" id="fund" />
-                        <Label htmlFor="fund" className="cursor-pointer">Fund</Label>
-                      </div>
-                    </RadioGroup>
+                    <div className="grid grid-cols-2 gap-3 mt-2">
+                      {[
+                        { value: "company", label: "Operating company", icon: Building2 },
+                        { value: "fund", label: "Investment platform", icon: Landmark },
+                      ].map((option) => {
+                        const Icon = option.icon;
+                        const isSelected = field.value === option.value;
+                        return (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => field.onChange(option.value)}
+                            className={cn(
+                              "flex items-center gap-3 p-4 rounded-lg border-2 transition-all duration-200 hover:border-primary/50 text-left",
+                              isSelected
+                                ? "border-primary bg-primary/5 shadow-sm"
+                                : "border-border bg-background hover:bg-muted/50"
+                            )}
+                          >
+                            <Icon className={cn("h-5 w-5 flex-shrink-0", isSelected ? "text-primary" : "text-muted-foreground")} />
+                            <span className={cn("text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
+                              {option.label}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -434,18 +446,36 @@ const AdvisorForm = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Revenue band (USD)</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select revenue band" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="25-100m">$25–100M</SelectItem>
-                          <SelectItem value="100-250m">$100–250M</SelectItem>
-                          <SelectItem value="250m+">$250M+</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <FormControl>
+                        <div className="grid grid-cols-3 gap-2 mt-2">
+                          {[
+                            { value: "25-100m", label: "$25–100M", icon: BarChart3 },
+                            { value: "100-250m", label: "$100–250M", icon: Rocket },
+                            { value: "250m+", label: "$250M+", icon: Crown },
+                          ].map((band) => {
+                            const Icon = band.icon;
+                            const isSelected = field.value === band.value;
+                            return (
+                              <button
+                                key={band.value}
+                                type="button"
+                                onClick={() => field.onChange(band.value)}
+                                className={cn(
+                                  "flex flex-col items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                                  isSelected
+                                    ? "border-primary bg-primary/5 shadow-sm"
+                                    : "border-border bg-background hover:bg-muted/50"
+                                )}
+                              >
+                                <Icon className={cn("h-5 w-5 mb-1.5", isSelected ? "text-primary" : "text-muted-foreground")} />
+                                <span className={cn("text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
+                                  {band.label}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -479,18 +509,36 @@ const AdvisorForm = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>AUM band</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select AUM band" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="<100m">&lt;$100M</SelectItem>
-                          <SelectItem value="100-500m">$100–500M</SelectItem>
-                          <SelectItem value="500m+">$500M+</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <FormControl>
+                        <div className="grid grid-cols-3 gap-2 mt-2">
+                          {[
+                            { value: "<100m", label: "<$100M", icon: BarChart3 },
+                            { value: "100-500m", label: "$100–500M", icon: Rocket },
+                            { value: "500m+", label: "$500M+", icon: Crown },
+                          ].map((band) => {
+                            const Icon = band.icon;
+                            const isSelected = field.value === band.value;
+                            return (
+                              <button
+                                key={band.value}
+                                type="button"
+                                onClick={() => field.onChange(band.value)}
+                                className={cn(
+                                  "flex flex-col items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                                  isSelected
+                                    ? "border-primary bg-primary/5 shadow-sm"
+                                    : "border-border bg-background hover:bg-muted/50"
+                                )}
+                              >
+                                <Icon className={cn("h-5 w-5 mb-1.5", isSelected ? "text-primary" : "text-muted-foreground")} />
+                                <span className={cn("text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
+                                  {band.label}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
