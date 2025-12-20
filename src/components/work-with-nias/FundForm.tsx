@@ -206,9 +206,9 @@ const FundForm = () => {
   return (
     <div>
       <div className="mb-6">
-        <h2 className="text-lg font-medium text-foreground mb-1">Funds</h2>
+        <h2 className="text-lg font-medium text-foreground mb-1">Institutional Platforms</h2>
         <p className="text-sm text-muted-foreground">
-          For investment platforms exploring Gulf partnerships, regional presence, and ecosystem alignment
+          For institutional groups exploring Gulf partnerships, regional presence, and ecosystem alignment
         </p>
       </div>
 
@@ -261,10 +261,10 @@ const FundForm = () => {
             name="fund_aum_vintage"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Total AUM & Current Fund Vintage</FormLabel>
+                <FormLabel>Organizational Overview</FormLabel>
                 <FormControl>
                   <Textarea 
-                    placeholder="Describe your platform's AUM, vintage year, and structure for context."
+                    placeholder="Describe your platform's scale, operating history, and regional relevance."
                     className="min-h-[100px]"
                     {...field} 
                   />
@@ -282,7 +282,7 @@ const FundForm = () => {
                 <FormLabel>Investment Strategy & Sector Focus</FormLabel>
                 <FormControl>
                   <Textarea 
-                    placeholder="Describe your investment thesis, target sectors, check sizes, and stage focus..."
+                    placeholder="Describe your focus areas, target sectors, and strategic priorities..."
                     className="min-h-[100px]"
                     {...field} 
                   />
@@ -297,10 +297,10 @@ const FundForm = () => {
             name="historical_performance"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Historical Performance (IRR, TVPI, DPI)</FormLabel>
+                <FormLabel>Relevant Experience & Track Record</FormLabel>
                 <FormControl>
                   <Textarea 
-                    placeholder="Share relevant experience, portfolio highlights, and operating history."
+                    placeholder="Share high-level experience, portfolio themes, and operating background."
                     className="min-h-[100px]"
                     {...field} 
                   />
@@ -456,8 +456,8 @@ const FundForm = () => {
 
           {/* File Upload */}
           <div className="space-y-2">
-            <Label>Fund deck or info memo (PDF)</Label>
-            <p className="text-sm text-muted-foreground">Optional · Max 20MB</p>
+            <Label>Overview Presentation (Optional)</Label>
+            <p className="text-sm text-muted-foreground">General platform overview · Max 20MB</p>
             <Input
               type="file"
               accept=".pdf"
@@ -492,7 +492,7 @@ const FundForm = () => {
                 Submitting...
               </>
             ) : (
-              "Submit Opportunity"
+              "Submit Application"
             )}
           </Button>
         </form>

@@ -135,9 +135,9 @@ const WorkWithNias = () => {
                   applicationType === "fund" ? "border-primary ring-1 ring-primary/20" : "border-border/40"
                 }`}
               >
-                <TrendingUp className="h-4 w-4 text-primary mb-2" />
-                <h3 className="font-medium text-foreground mb-1 text-sm">Investment Funds</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">Institutional platforms with Gulf relevance</p>
+              <TrendingUp className="h-4 w-4 text-primary mb-2" />
+                <h3 className="font-medium text-foreground mb-1 text-sm">Institutional Platforms</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">Institutional groups with Gulf relevance</p>
               </button>
               <button
                 onClick={() => {
