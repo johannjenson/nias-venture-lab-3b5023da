@@ -48,7 +48,7 @@ const Footer = () => {
   const navigation = {
     network: [
       { name: "For Founders", href: "https://access.nias.io/", external: true },
-      { name: "For Investors", href: "https://access.nias.io/investors", external: true },
+      { name: "For Strategic Partners", href: "https://access.nias.io/investors", external: true },
     ],
     opportunities: [
       { name: "Vision 2030", href: "/resources" },

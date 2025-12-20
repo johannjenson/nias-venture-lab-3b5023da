@@ -175,7 +175,7 @@ const AudienceCTAs = () => {
               Work with <span className="font-medium">NIAS</span>
             </h2>
             <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
-              We provide comprehensive support for top tier founders and funds looking to establish and grow their presence in Saudi Arabia.
+              We provide strategic and operational support for top tier founders and institutional platforms looking to establish and grow their presence in Saudi Arabia.
             </p>
           </div>
           
@@ -204,8 +204,8 @@ const AudienceCTAs = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="text-base font-medium text-foreground mb-3 tracking-tight">Strategic Financing</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">Access funding opportunities aligned with Vision 2030.</p>
+              <h3 className="text-base font-medium text-foreground mb-3 tracking-tight">Strategic Growth Advisory</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">Navigate strategic partnerships and capital planning aligned with Vision 2030.</p>
             </div>
           </div>
           
@@ -248,7 +248,7 @@ const AudienceCTAs = () => {
             {/* NIAS Private - Blue theme */}
             <div className="p-8 bg-secondary/40 border border-nias-blue/30 hover:border-nias-blue/60 transition-colors">
               <h3 className="text-lg font-medium text-foreground mb-3 tracking-tight">NIAS <span className="text-nias-blue">Private</span></h3>
-              <p className="mb-8 text-muted-foreground text-sm leading-relaxed">For qualified investors seeking deal flow and co-investment opportunities in the GCC.</p>
+              <p className="mb-8 text-muted-foreground text-sm leading-relaxed">For qualified members seeking curated insights, strategic opportunities, and ecosystem access across the GCC.</p>
               <Button 
                 asChild
                 className="w-full bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground h-11 text-sm font-medium"
@@ -261,7 +261,7 @@ const AudienceCTAs = () => {
             {/* NIAS Family Office - Black and Gold theme */}
             <div className="p-8 bg-nias-dark border border-nias-gold/30">
               <h3 className="text-lg font-medium text-nias-dark-foreground mb-3 tracking-tight">NIAS <span className="text-nias-gold">Family Office</span></h3>
-              <p className="mb-8 text-nias-dark-foreground/70 text-sm leading-relaxed">For family offices seeking bespoke advisory and exclusive investment access.</p>
+              <p className="mb-8 text-nias-dark-foreground/70 text-sm leading-relaxed">For family offices seeking bespoke advisory and curated strategic insights into the Saudi market.</p>
               <Button 
                 disabled
                 className="w-full bg-nias-gold/20 text-nias-gold border border-nias-gold/30 cursor-not-allowed h-11 text-sm font-medium"
@@ -281,7 +281,7 @@ const AudienceCTAs = () => {
               Explore
             </h2>
             <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
-              Explore investment opportunities aligned with Saudi Vision 2030.
+              Explore strategic sectors and growth themes aligned with Saudi Vision 2030.
             </p>
           </div>
           
@@ -306,7 +306,7 @@ const AudienceCTAs = () => {
                 Real Estate
                 <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
               </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">Discover exclusive property opportunities in Riyadh and Khobar.</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">Discover curated real estate projects and development themes in Riyadh and Khobar.</p>
             </Link>
           </div>
         </div>
@@ -317,7 +317,7 @@ const AudienceCTAs = () => {
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-light text-nias-dark-foreground mb-5 tracking-tight">
-              Curious about <span className="text-nias-gold">Expansion Capital</span>?
+              Curious about <span className="text-nias-gold">Scaling & Expansion in the GCC</span>?
             </h2>
             <p className="text-base text-nias-dark-foreground/70 max-w-lg mx-auto mb-10 leading-relaxed">
               Download our guide and get focused updates on KSA & Kuwait
