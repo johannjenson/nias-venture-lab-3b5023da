@@ -41,7 +41,7 @@ const IndustryMetrics = ({ industry }: IndustryMetricsProps) => {
       <div className="grid grid-cols-2 gap-4 mt-4">
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <div className="text-sm font-medium text-gray-500">Expected Investment</div>
+            <div className="text-sm font-medium text-gray-500">Planned Allocation</div>
             <button onClick={() => setShowInvestmentInfo(true)}>
               <InfoIcon className="h-4 w-4 text-gray-400 hover:text-gray-600 transition-colors" />
             </button>
@@ -51,9 +51,9 @@ const IndustryMetrics = ({ industry }: IndustryMetricsProps) => {
           <Dialog open={showInvestmentInfo} onOpenChange={setShowInvestmentInfo}>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>Expected Investment</DialogTitle>
+                <DialogTitle>Planned Allocation</DialogTitle>
                 <DialogDescription>
-                  Expected investment represents the projected capital allocation for this sector by 2030, based on Vision 2030 initiatives and Saudi government announcements.
+                  Planned allocation represents the projected capital allocation for this sector by 2030, based on Vision 2030 initiatives and Saudi government announcements.
                 </DialogDescription>
               </DialogHeader>
             </DialogContent>
