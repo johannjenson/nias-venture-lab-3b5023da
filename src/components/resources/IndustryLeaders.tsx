@@ -7,7 +7,7 @@ interface IndustryLeadersProps {
 const IndustryLeaders = ({ leaders }: IndustryLeadersProps) => {
   return (
     <div className="mt-6">
-      <h4 className="text-sm font-medium text-gray-500 mb-3">Notable Industry Leaders</h4>
+      <h4 className="text-sm font-medium text-gray-500 mb-3">Notable Market Participants</h4>
       <div className="grid grid-cols-3 gap-4">
         {leaders.map((leader, index) => (
           <div key={index} className="bg-secondary/10 rounded-lg p-3">

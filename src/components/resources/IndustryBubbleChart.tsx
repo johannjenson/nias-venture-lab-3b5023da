@@ -66,7 +66,7 @@ const IndustryBubbleChart = ({ industries, onBubbleClick }: IndustryBubbleChartP
             dataKey="investment" 
             name="Investment"
             unit="B"
-            label={{ value: 'Investment Amount (Billions)', position: 'insideBottom', offset: -10, style: { fill: '#6b7280', fontWeight: 500 } }}
+            label={{ value: 'Planned Allocation (USD, billions)', position: 'insideBottom', offset: -10, style: { fill: '#6b7280', fontWeight: 500 } }}
             stroke="#9ca3af"
           />
           <YAxis 
@@ -74,7 +74,7 @@ const IndustryBubbleChart = ({ industries, onBubbleClick }: IndustryBubbleChartP
             dataKey="score" 
             name="Score"
             domain={[70, 100]}
-            label={{ value: 'NIAS Opportunity Score', angle: -90, position: 'insideLeft', style: { fill: '#6b7280', fontWeight: 500 } }}
+            label={{ value: 'NIAS Readiness Score', angle: -90, position: 'insideLeft', style: { fill: '#6b7280', fontWeight: 500 } }}
             stroke="#9ca3af"
           />
           <ZAxis 

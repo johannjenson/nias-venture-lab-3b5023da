@@ -100,7 +100,7 @@ const SearchAndFilter = ({
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="score">Sort by Score</SelectItem>
-              <SelectItem value="investment">Sort by Investment</SelectItem>
+              <SelectItem value="investment">Sort by Allocation</SelectItem>
               <SelectItem value="name">Sort by Name</SelectItem>
             </SelectContent>
           </Select>
