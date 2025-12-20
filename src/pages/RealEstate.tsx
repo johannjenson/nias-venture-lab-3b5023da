@@ -71,7 +71,7 @@ const RealEstate = () => {
     {
       name: "Turki AlShubaiki",
       image: turkiImage,
-      bio: "With over eight years of experience across residential, commercial, and industrial real estate, I specialize in helping investors, buyers, and tenants identify the right opportunities and make well-informed decisions. Over the years, I've built a strong network of developers, landowners, contractors, and investors, allowing me to provide exclusive access, market insights, and brokerage support across Riyadh's most promising areas."
+      bio: "With over eight years of experience across residential, commercial, and industrial real estate, I specialize in providing market insight, sector context, and strategic guidance to clients evaluating the Saudi real estate landscape. Over the years, I've built a strong network of developers, landowners, contractors, and investors, allowing me to provide exclusive access, market insights, and brokerage support across Riyadh's most promising areas."
     },
     {
       name: "Mohammed Ibn Salamah",
@@ -83,10 +83,10 @@ const RealEstate = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Real Estate Opportunities in Saudi Arabia | NIAS Network</title>
-        <meta name="description" content="Discover exclusive real estate investment opportunities in Riyadh and Khobar. Connect with our experienced team for market insights, property acquisition, and development consultations." />
-        <meta property="og:title" content="Real Estate Opportunities in Saudi Arabia | NIAS Network" />
-        <meta property="og:description" content="Access off-market properties and investment opportunities in Saudi Arabia's most dynamic markets." />
+        <title>Saudi Arabia Real Estate Market Overview | NIAS Network</title>
+        <meta name="description" content="Understand Riyadh and Khobar's evolving real estate landscape. NIAS provides market intelligence, policy context, and strategic guidance to support informed evaluation of Saudi property markets." />
+        <meta property="og:title" content="Saudi Arabia Real Estate Market Overview | NIAS Network" />
+        <meta property="og:description" content="Understand Riyadh and Khobar's evolving real estate landscape. NIAS provides market intelligence, policy context, and strategic guidance." />
         <meta property="og:type" content="website" />
       </Helmet>
 
@@ -122,11 +122,11 @@ const RealEstate = () => {
           <div className="text-center max-w-4xl mx-auto">
             <Building2 className="h-16 w-16 text-primary mx-auto mb-6" />
             <h1 className="text-5xl font-bold text-foreground mb-6">
-              Real Estate Opportunities in the Kingdom of Saudi Arabia
+              Saudi Arabia Real Estate Market Overview
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Unlock exclusive access to Riyadh and Khobar's most promising property markets. 
-              From residential developments to commercial investments, we connect you with the right opportunities.
+              Understand Riyadh and Khobar's evolving real estate landscape. NIAS provides market intelligence, 
+              policy context, and strategic guidance to support informed evaluation of Saudi property markets.
             </p>
           </div>
         </div>
@@ -141,7 +141,7 @@ const RealEstate = () => {
                 <MapPin className="h-10 w-10 text-primary mb-4" />
                 <CardTitle>Prime Locations</CardTitle>
                 <CardDescription>
-                  Access to exclusive properties in Riyadh and Khobar's most sought-after areas
+                  Insight into priority districts and development zones in Riyadh and Khobar.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -157,9 +157,9 @@ const RealEstate = () => {
             <Card>
               <CardHeader>
                 <Building2 className="h-10 w-10 text-primary mb-4" />
-                <CardTitle>Off-Market Deals</CardTitle>
+                <CardTitle>Developer & Market Context</CardTitle>
                 <CardDescription>
-                  Exclusive access to off-market opportunities through our extensive developer network
+                  Insight into development activity, stakeholder dynamics, and emerging property themes across key districts.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -199,8 +199,8 @@ const RealEstate = () => {
             <CardHeader>
               <CardTitle className="text-3xl text-center">Start Your Real Estate Journey</CardTitle>
               <CardDescription className="text-center text-base">
-                Whether you're exploring investment opportunities or seeking market insights, 
-                we're here to help. Fill out the form below and our team will reach out within 24 hours.
+                Whether you're evaluating the Saudi real estate market or seeking strategic insight, 
+                our team can support your planning and exploration. Fill out the form below and our team will reach out within 24 hours.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -262,7 +262,7 @@ const RealEstate = () => {
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    placeholder="What type of property or opportunity are you looking for?"
+                    placeholder="What type of real estate market, asset class, or development context are you exploring?"
                   />
                 </div>
 
@@ -287,6 +287,10 @@ const RealEstate = () => {
                   </a>
                 </div>
               </div>
+
+              <p className="mt-6 text-xs text-muted-foreground text-center">
+                NIAS provides strategic and market advisory services only and does not act as a real estate broker, agent, or intermediary, nor does it facilitate or execute property transactions.
+              </p>
             </CardContent>
           </Card>
         </div>
