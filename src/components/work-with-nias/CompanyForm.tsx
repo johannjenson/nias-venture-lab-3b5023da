@@ -131,9 +131,7 @@ const CompanyForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const firstInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    firstInputRef.current?.focus();
-  }, []);
+  // Removed auto-focus on first input
 
   const form = useForm<CompanyFormData>({
     resolver: zodResolver(companySchema),
