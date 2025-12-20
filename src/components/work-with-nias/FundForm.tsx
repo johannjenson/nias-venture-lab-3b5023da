@@ -208,7 +208,7 @@ const FundForm = () => {
       <div className="mb-6">
         <h2 className="text-lg font-medium text-foreground mb-1">Funds</h2>
         <p className="text-sm text-muted-foreground">
-          For investment funds seeking Gulf partnerships, co-locations, or LP relationships
+          For investment platforms exploring Gulf partnerships, regional presence, and ecosystem alignment
         </p>
       </div>
 
@@ -264,7 +264,7 @@ const FundForm = () => {
                 <FormLabel>Total AUM & Current Fund Vintage</FormLabel>
                 <FormControl>
                   <Textarea 
-                    placeholder="Describe your fund's AUM, vintage year, and fund structure..."
+                    placeholder="Describe your platform's AUM, vintage year, and structure for context."
                     className="min-h-[100px]"
                     {...field} 
                   />
@@ -300,7 +300,7 @@ const FundForm = () => {
                 <FormLabel>Historical Performance (IRR, TVPI, DPI)</FormLabel>
                 <FormControl>
                   <Textarea 
-                    placeholder="Share key performance metrics and track record..."
+                    placeholder="Share relevant experience, portfolio highlights, and operating history."
                     className="min-h-[100px]"
                     {...field} 
                   />
@@ -336,7 +336,7 @@ const FundForm = () => {
                 <FormLabel>Partnership Type</FormLabel>
                 <FormControl>
                   <Textarea 
-                    placeholder="e.g., co-location, ecosystem partnerships, innovation programs, anchor LPs, regional SPVs..."
+                    placeholder="e.g., co-location, ecosystem partnerships, innovation programs, strategic collaborations, regional operating structures…"
                     className="min-h-[100px]"
                     {...field} 
                   />
