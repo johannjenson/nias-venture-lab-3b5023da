@@ -31,11 +31,13 @@ const WorkWithNias = () => {
         <meta property="og:description" content="Join NIAS's curated ecosystem of operators, fund managers, and advisors. Apply now for strategic partnership opportunities in Saudi Arabia and the Gulf." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://nias.io/work-with-nias" />
-        <meta property="og:image" content="https://nias.io/nias-og-image.png" />
+        <meta property="og:image" content="https://nias.io/work-with-nias-og.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Work with NIAS | Partner with Us for Gulf Expansion" />
         <meta name="twitter:description" content="Apply to partner with NIAS. We work with global companies, investment funds, and advisors expanding into Saudi Arabia and the Gulf." />
-        <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
+        <meta name="twitter:image" content="https://nias.io/work-with-nias-og.png" />
       </Helmet>
 
       {/* Sticky Header */}
