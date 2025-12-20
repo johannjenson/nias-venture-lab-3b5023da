@@ -132,7 +132,7 @@ const Resources = () => {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-light tracking-tight text-foreground mb-4">Vision 2030 Market Opportunity Analysis</h1>
           <p className="text-base md:text-lg text-muted-foreground mb-4 leading-relaxed">
-            Saudi Arabia is investing $3 trillion across key industries as part of Vision 2030. 
+            Saudi Arabia plans over $3 trillion in public and private sector spending and initiatives under Vision 2030. 
             Below are the top industries with the highest potential for international businesses 
             seeking market entry.
           </p>
