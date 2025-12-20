@@ -203,7 +203,7 @@ const Footer = () => {
         {/* Disclaimer */}
         <div className="mt-16 pt-8 border-t border-background/10">
           <p className="text-[11px] text-background/40 leading-relaxed max-w-4xl mx-auto text-center">
-            <span className="font-medium text-background/50">Important Notice:</span> NIAS is a private membership network for founders, advisors, and capital allocators. NIAS does not provide investment advice, solicit investments, or arrange transactions in securities. Any introductions or opportunities discussed within the network are conducted under the responsibility of licensed partners. Membership is subject to qualification and approval.
+            <span className="font-medium text-background/50">Important Notice:</span> NIAS is a private membership network for founders, advisors, and institutional market participants. NIAS does not provide investment advice, solicit investments, or arrange transactions in securities. Any introductions or opportunities discussed within the network are conducted under the responsibility of licensed partners. Membership is subject to qualification and approval.
           </p>
         </div>
 
