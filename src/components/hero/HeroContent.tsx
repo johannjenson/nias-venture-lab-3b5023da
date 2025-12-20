@@ -65,7 +65,7 @@ const HeroContent = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button
                 asChild
-                className="w-full sm:w-56 bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground h-12 text-sm font-medium tracking-wide"
+                className="w-full sm:w-64 bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground h-12 px-6 text-sm font-medium tracking-wide"
               >
                 <a href="https://access.nias.io/investors" target="_blank" rel="noopener noreferrer">
                   For Institutional Platforms <ArrowRight className="ml-2 h-4 w-4" />
@@ -74,7 +74,7 @@ const HeroContent = () => {
               <Button
                 asChild
                 variant="outline"
-                className="w-full sm:w-56 border-nias-green text-nias-green hover:bg-nias-green hover:text-nias-green-foreground h-12 text-sm font-medium tracking-wide"
+                className="w-full sm:w-64 border-nias-green text-nias-green hover:bg-nias-green hover:text-nias-green-foreground h-12 px-6 text-sm font-medium tracking-wide"
               >
                 <a href="https://access.nias.io/" target="_blank" rel="noopener noreferrer">
                   For Founders & Advisors
@@ -83,7 +83,7 @@ const HeroContent = () => {
               <Button
                 asChild
                 variant="outline"
-                className="w-full sm:w-56 border-foreground/20 text-foreground hover:bg-foreground hover:text-background h-12 text-sm font-medium tracking-wide"
+                className="w-full sm:w-64 border-foreground/20 text-foreground hover:bg-foreground hover:text-background h-12 px-6 text-sm font-medium tracking-wide"
               >
                 <Link to="/resources">
                   Explore Vision 2030 Sectors
