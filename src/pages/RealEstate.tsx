@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Waves, Building2, TrendingUp, MapPin, Mail, Phone, Linkedin } from "lucide-react";
+import { Waves, Building2, TrendingUp, MapPin, Mail, ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import turkiImage from "@/assets/turki-alshubaki.jpg";
@@ -91,17 +91,19 @@ const RealEstate = () => {
       </Helmet>
 
       {/* Sticky Header */}
-      <div className="fixed top-0 left-0 right-0 bg-background border-b z-50">
+      <div className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-border/50 z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center justify-between px-6">
           <button 
             onClick={() => navigate('/')} 
-            className="hover:opacity-80 transition-opacity"
+            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
           >
-            <Waves className="h-8 w-8 text-primary" />
+            <ArrowLeft className="h-5 w-5 group-hover:-translate-x-0.5 transition-transform" />
+            <span className="text-sm font-medium">Back</span>
           </button>
           <Button
             onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-primary hover:bg-primary/90 text-white"
+            size="sm"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground"
           >
             Get in Touch
           </Button>
@@ -109,22 +111,22 @@ const RealEstate = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 px-6 overflow-hidden">
+      <section className="relative pt-28 pb-16 px-6 overflow-hidden">
         {/* Background Image with Overlay */}
         <img 
           src={heroBackground}
           alt="Riyadh skyline"
-          className="absolute inset-0 w-full h-full object-cover z-0 grayscale opacity-50"
+          className="absolute inset-0 w-full h-full object-cover z-0 grayscale opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background z-0" />
         
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <Building2 className="h-16 w-16 text-primary mx-auto mb-6" />
-            <h1 className="text-5xl font-bold text-foreground mb-6">
-              Saudi Arabia Real Estate Market Overview
+          <div className="text-center max-w-3xl mx-auto">
+            <Waves className="h-12 w-12 text-primary mx-auto mb-8 animate-wave" />
+            <h1 className="text-4xl md:text-5xl tracking-tight text-foreground mb-4">
+              Saudi Arabia <span className="font-semibold">Real Estate</span> Market Overview
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-base text-muted-foreground mb-8 leading-relaxed">
               Understand Riyadh and Khobar's evolving real estate landscape. NIAS provides market intelligence, 
               policy context, and strategic guidance to support informed evaluation of Saudi property markets.
             </p>
@@ -139,7 +141,7 @@ const RealEstate = () => {
             <Card>
               <CardHeader>
                 <MapPin className="h-10 w-10 text-primary mb-4" />
-                <CardTitle>Prime Locations</CardTitle>
+                <CardTitle className="text-xl tracking-tight">Prime Locations</CardTitle>
                 <CardDescription>
                   Insight into priority districts and development zones in Riyadh and Khobar.
                 </CardDescription>
@@ -148,7 +150,7 @@ const RealEstate = () => {
             <Card>
               <CardHeader>
                 <TrendingUp className="h-10 w-10 text-primary mb-4" />
-                <CardTitle>Market Insights</CardTitle>
+                <CardTitle className="text-xl tracking-tight">Market Insights</CardTitle>
                 <CardDescription>
                   Expert analysis and strategic guidance backed by years of local market experience
                 </CardDescription>
@@ -157,7 +159,7 @@ const RealEstate = () => {
             <Card>
               <CardHeader>
                 <Building2 className="h-10 w-10 text-primary mb-4" />
-                <CardTitle>Developer & Market Context</CardTitle>
+                <CardTitle className="text-xl tracking-tight">Developer & Market Context</CardTitle>
                 <CardDescription>
                   Insight into development activity, stakeholder dynamics, and emerging property themes across key districts.
                 </CardDescription>
@@ -170,7 +172,9 @@ const RealEstate = () => {
       {/* Team Section */}
       <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Meet Your Real Estate Experts</h2>
+          <h2 className="text-3xl md:text-4xl tracking-tight text-center mb-12">
+            Meet Your <span className="font-semibold">Real Estate Experts</span>
+          </h2>
           <div className="grid md:grid-cols-2 gap-12">
             {team.map((member) => (
               <Card key={member.name} className="overflow-hidden">
@@ -181,8 +185,8 @@ const RealEstate = () => {
                       alt={member.name}
                       className="w-48 h-48 rounded-full object-cover mb-6 border-4 border-primary/20"
                     />
-                    <h3 className="text-2xl font-bold mb-2">{member.name}</h3>
-                    <p className="text-sm text-primary font-semibold mb-4">NIAS Real Estate Consultant</p>
+                    <h3 className="text-2xl font-semibold tracking-tight mb-2">{member.name}</h3>
+                    <p className="text-sm text-primary font-medium mb-4">NIAS Real Estate Consultant</p>
                     <p className="text-muted-foreground leading-relaxed">{member.bio}</p>
                   </div>
                 </CardContent>
@@ -197,7 +201,9 @@ const RealEstate = () => {
         <div className="max-w-2xl mx-auto">
           <Card>
             <CardHeader>
-              <CardTitle className="text-3xl text-center">Start Your Real Estate Journey</CardTitle>
+              <CardTitle className="text-2xl md:text-3xl tracking-tight text-center">
+                Start Your <span className="font-semibold">Real Estate Journey</span>
+              </CardTitle>
               <CardDescription className="text-center text-base">
                 Whether you're evaluating the Saudi real estate market or seeking strategic insight, 
                 our team can support your planning and exploration. Fill out the form below and our team will reach out within 24 hours.
