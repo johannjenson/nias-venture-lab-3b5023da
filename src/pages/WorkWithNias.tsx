@@ -117,7 +117,7 @@ const WorkWithNias = () => {
                   <img 
                     src={ibrahimProfile}
                     alt="Ibrahim Alshuwaier"
-                    className="w-20 h-20 rounded-full object-cover grayscale ring-2 ring-border/30"
+                    className="w-20 h-20 rounded-full object-cover object-top grayscale ring-2 ring-border/30"
                   />
                   <div className="text-center sm:text-left">
                     <p className="text-base font-medium text-foreground">Ibrahim Alshuwaier</p>
