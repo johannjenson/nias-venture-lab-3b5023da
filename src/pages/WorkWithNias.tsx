@@ -102,7 +102,7 @@ const WorkWithNias = () => {
                     <p className="text-sm text-muted-foreground mb-3">Founding Partner</p>
                     <Button asChild variant="outline" size="sm">
                       <a
-                        href="https://calendar.app.google/uBmFhFXNBK6etNeH6"
+                        href="https://calendar.app.google/RLMeAvPw8VHmKrwJ7"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -124,7 +124,7 @@ const WorkWithNias = () => {
                     <p className="text-sm text-muted-foreground mb-3">Founding Partner</p>
                     <Button asChild variant="outline" size="sm">
                       <a
-                        href="https://calendar.app.google/uBmFhFXNBK6etNeH6"
+                        href="https://calendar.app.google/RLMeAvPw8VHmKrwJ7"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
