@@ -83,9 +83,9 @@ const RealEstate = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Saudi Arabia Real Estate Market Overview | NIAS Network</title>
+        <title>Real Estate Landscape & Development Trends in Saudi Arabia | NIAS Network</title>
         <meta name="description" content="Understand Riyadh and Khobar's evolving real estate landscape. NIAS provides market intelligence, policy context, and strategic guidance to support informed evaluation of Saudi property markets." />
-        <meta property="og:title" content="Saudi Arabia Real Estate Market Overview | NIAS Network" />
+        <meta property="og:title" content="Real Estate Landscape & Development Trends in Saudi Arabia | NIAS Network" />
         <meta property="og:description" content="Understand Riyadh and Khobar's evolving real estate landscape. NIAS provides market intelligence, policy context, and strategic guidance." />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -124,7 +124,7 @@ const RealEstate = () => {
           <div className="text-center max-w-3xl mx-auto">
             <Waves className="h-12 w-12 text-primary mx-auto mb-8 animate-wave" />
             <h1 className="text-4xl md:text-5xl tracking-tight text-foreground mb-4">
-              Saudi Arabia <span className="font-semibold">Real Estate</span> Market Overview
+              Real Estate Landscape & Development Trends in <span className="font-semibold">Saudi Arabia</span>
             </h1>
             <p className="text-base text-muted-foreground mb-8 leading-relaxed">
               Understand Riyadh and Khobar's evolving real estate landscape. NIAS provides market intelligence, 
