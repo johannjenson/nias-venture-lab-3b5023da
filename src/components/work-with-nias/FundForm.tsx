@@ -159,14 +159,31 @@ const FundForm = () => {
         console.error('Error sending to Google Sheets:', sheetError);
       }
 
-      // Send confirmation email
+      // Send confirmation email with all form details
       try {
+        const accommodationLabel = accommodationOptions.find(a => a.value === data.accommodation_type)?.label || "";
+        const officeSpaceLabel = officeSpaceOptions.find(o => o.value === data.office_space_type)?.label || "";
+        
         await supabase.functions.invoke('send-partnership-confirmation', {
           body: {
             applicationType: 'fund',
             email: data.email,
-            companyName: data.fund_name,
-            phone: data.phone,
+            formData: {
+              full_name: data.full_name,
+              role_title: data.role_title,
+              fund_name: data.fund_name,
+              email: data.email,
+              phone: data.phone,
+              organizational_overview: data.fund_aum_vintage,
+              investment_strategy: data.investment_strategy,
+              relevant_experience: data.historical_performance,
+              gulf_strategy: data.gulf_strategy,
+              partnership_type: data.partnership_type,
+              accommodation: accommodationLabel || null,
+              office_space: officeSpaceLabel || null,
+              additional_info: data.additional_info || null,
+              deck_url: fileUrl || null,
+            }
           }
         });
       } catch (emailError) {

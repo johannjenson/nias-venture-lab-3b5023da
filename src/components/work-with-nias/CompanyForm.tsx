@@ -291,14 +291,43 @@ const CompanyForm = () => {
         console.error('Error sending to Google Sheets:', sheetError);
       }
 
-      // Send confirmation email
+      // Send confirmation email with all form details
       try {
+        const sector = data.primary_sector === "other" ? data.primary_sector_other : 
+          primarySectors.find(s => s.value === data.primary_sector)?.label || data.primary_sector;
+        const revenueBandLabel = revenueBands.find(r => r.value === data.revenue_band)?.label || data.revenue_band || "";
+        const ebitdaLabel = ebitdaStatuses.find(e => e.value === data.ebitda_status)?.label || data.ebitda_status;
+        const mandateLabels = data.mandates.map(m => mandateOptions.find(o => o.id === m)?.label || m);
+        const gccReadinessLabels = (data.gcc_readiness || []).map(g => gccReadinessOptions.find(o => o.id === g)?.label || g);
+        const accommodationLabel = accommodationOptions.find(a => a.value === data.accommodation_type)?.label || "";
+        const officeSpaceLabel = officeSpaceOptions.find(o => o.value === data.office_space_type)?.label || "";
+        
         await supabase.functions.invoke('send-partnership-confirmation', {
           body: {
             applicationType: 'company',
             email: data.email,
-            companyName: data.company_name,
-            phone: data.phone,
+            formData: {
+              full_name: data.full_name,
+              role_title: data.role_title,
+              company_name: data.company_name,
+              email: data.email,
+              phone: data.phone,
+              website: data.website || null,
+              hq_country: data.hq_country,
+              year_founded: data.year_founded,
+              primary_sector: sector,
+              revenue_band: revenueBandLabel,
+              last_12_months_revenue: data.last_12_months_revenue || null,
+              ebitda_status: ebitdaLabel,
+              profit_margin: data.profit_margin || null,
+              desired_outcome: data.desired_outcome,
+              mandates: mandateLabels,
+              advisory_mandate: data.advisory_mandate,
+              gcc_readiness: gccReadinessLabels.length > 0 ? gccReadinessLabels : null,
+              accommodation: accommodationLabel || null,
+              office_space: officeSpaceLabel || null,
+              deck_url: fileUrl || null,
+            }
           }
         });
       } catch (emailError) {

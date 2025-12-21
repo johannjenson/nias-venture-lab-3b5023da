@@ -204,14 +204,37 @@ const AdvisorForm = () => {
         console.error('Error sending to Google Sheets:', sheetError);
       }
 
-      // Send confirmation email
+      // Send confirmation email with all form details
       try {
+        const accommodationLabel = accommodationOptions.find(a => a.value === data.accommodation_type)?.label || "";
+        const officeSpaceLabel = officeSpaceOptions.find(o => o.value === data.office_space_type)?.label || "";
+        
         await supabase.functions.invoke('send-partnership-confirmation', {
           body: {
             applicationType: 'advisor',
             email: data.email,
-            advisorName: data.advisor_name,
-            phone: data.phone,
+            formData: {
+              advisor_name: data.advisor_name,
+              email: data.email,
+              phone: data.phone,
+              advisory_role: data.advisor_role,
+              opportunity_description: data.opportunity_description,
+              relationship_type: data.relationship_type === "other" ? data.relationship_other : data.relationship_type,
+              gulf_relevance: data.gulf_relevance,
+              opportunity_type: data.opportunity_type,
+              company_revenue_band: data.opportunity_type === "company" ? data.company_revenue_band : null,
+              company_footprint: data.opportunity_type === "company" ? data.company_footprint : null,
+              fund_aum_band: data.opportunity_type === "fund" ? data.fund_aum_band : null,
+              fund_sector_focus: data.opportunity_type === "fund" ? data.fund_sector_focus : null,
+              real_estate_asset_type: data.opportunity_type === "real_estate" ? data.real_estate_asset_type : null,
+              real_estate_value_band: data.opportunity_type === "real_estate" ? data.real_estate_value_band : null,
+              engagement_type: data.partnership_engagement_type,
+              engagement_details: data.partnership_engagement_details || null,
+              accommodation: accommodationLabel || null,
+              office_space: officeSpaceLabel || null,
+              additional_info: data.additional_info || null,
+              deck_url: fileUrl || null,
+            }
           }
         });
       } catch (emailError) {
