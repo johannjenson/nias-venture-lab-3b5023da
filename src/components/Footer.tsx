@@ -57,7 +57,7 @@ const Footer = () => {
     nias: [
       { name: "Team", href: "/people" },
       { name: "Clients & Partners", href: "/clients-partners" },
-      { name: "Contact", href: "/contact" },
+      { name: "Work with Us", href: "/work-with-nias" },
       ...(user ? [{ name: "Log Out", href: "#", onClick: handleLogout }] : []),
       { name: "Client Login", href: "https://access.nias.io/client/login", external: true },
     ],
