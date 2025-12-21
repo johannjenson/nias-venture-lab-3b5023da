@@ -11,8 +11,18 @@ const FiresideChats = () => {
   };
   return <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Nias Fireside Chats - Intimate Conversations Under the Stars in Al Amaariah</title>
-        <meta name="description" content="Join us for Nias Fireside Chats at Fahad's farmhouse in Al Amaariah. An evening of meaningful conversations, networking, and Iftar meal under the stars with business leaders." />
+        <title>NIAS Fireside Chats | Intimate Conversations Under the Stars in Riyadh</title>
+        <meta name="description" content="Join NIAS for intimate fireside conversations at a private farmhouse in Al Amaariah, Riyadh. An exclusive evening of Iftar, meaningful discussions, and networking with business leaders." />
+        <meta property="og:title" content="NIAS Fireside Chats | Intimate Conversations Under the Stars" />
+        <meta property="og:description" content="Join NIAS for intimate fireside conversations at a private farmhouse in Riyadh. Exclusive Iftar dinner and networking with business leaders." />
+        <meta property="og:type" content="event" />
+        <meta property="og:url" content="https://nias.io/fireside" />
+        <meta property="og:image" content="https://nias.io/nias-og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="NIAS Fireside Chats | Riyadh" />
+        <meta name="twitter:description" content="Intimate fireside conversations and Iftar at a private farmhouse in Riyadh." />
+        <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
+        <link rel="canonical" href="https://nias.io/fireside" />
       </Helmet>
 
       {/* Sticky Header */}

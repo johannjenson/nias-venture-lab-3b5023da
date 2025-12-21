@@ -1,6 +1,6 @@
+import { Helmet } from "react-helmet";
 import { Waves, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import johannImage from "@/assets/johann-jenson.png";
 import richardImage from "@/assets/richard-schrems.png";
 import ibrahimImage from "@/assets/ibrahim-alshuwaier.png";
@@ -74,6 +74,21 @@ const People = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Meet the NIAS Team | Founders, Associates & Advisors</title>
+        <meta name="description" content="Meet the people behind NIAS. Our founding partners, associates, and advisors bring decades of experience in finance, technology, real estate, and business development across Saudi Arabia." />
+        <meta property="og:title" content="Meet the NIAS Team | Founders, Associates & Advisors" />
+        <meta property="og:description" content="Meet the people behind NIAS. Our team brings decades of experience helping companies expand into Saudi Arabia and the Gulf region." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nias.io/people" />
+        <meta property="og:image" content="https://nias.io/nias-og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Meet the NIAS Team" />
+        <meta name="twitter:description" content="Meet the people behind NIAS helping companies expand into Saudi Arabia." />
+        <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
+        <link rel="canonical" href="https://nias.io/people" />
+      </Helmet>
+
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center px-6">
           <button 

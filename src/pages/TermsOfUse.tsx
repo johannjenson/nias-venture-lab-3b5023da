@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +9,17 @@ const TermsOfUse = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Terms of Use | NIAS</title>
+        <meta name="description" content="NIAS terms of use. Review the terms and conditions governing your use of NIAS services and platform." />
+        <meta property="og:title" content="Terms of Use | NIAS" />
+        <meta property="og:description" content="Review the terms and conditions governing your use of NIAS services." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nias.io/terms" />
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://nias.io/terms" />
+      </Helmet>
+
       <Button
         variant="ghost"
         size="icon"

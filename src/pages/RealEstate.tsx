@@ -88,6 +88,13 @@ const RealEstate = () => {
         <meta property="og:title" content="Real Estate Landscape & Development Trends in Saudi Arabia | NIAS Network" />
         <meta property="og:description" content="Understand Riyadh and Khobar's evolving real estate landscape. NIAS provides market intelligence, policy context, and strategic guidance." />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nias.io/real-estate" />
+        <meta property="og:image" content="https://nias.io/nias-og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Saudi Arabia Real Estate Market Insights | NIAS" />
+        <meta name="twitter:description" content="Market intelligence and strategic guidance for Riyadh and Khobar real estate." />
+        <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
+        <link rel="canonical" href="https://nias.io/real-estate" />
       </Helmet>
 
       {/* Sticky Header */}

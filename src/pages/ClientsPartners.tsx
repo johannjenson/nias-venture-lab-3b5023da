@@ -56,9 +56,18 @@ const ClientsPartners = () => {
   return (
     <>
       <Helmet>
-        <title>Clients & Partners - Nias</title>
-        <meta name="description" content="Discover our trusted clients and strategic partners who collaborate with Nias to drive innovation and growth across industries." />
-        <meta name="keywords" content="Nias clients, Nias partners, 180 Studios, The Diwan, Infnt, strategic partnerships" />
+        <title>Clients & Partners | NIAS Network</title>
+        <meta name="description" content="Discover our trusted clients and strategic partners who collaborate with NIAS to drive innovation and growth across Saudi Arabia and the Gulf region." />
+        <meta name="keywords" content="NIAS clients, NIAS partners, 180 Studios, The Diwan, Infnt, strategic partnerships, Saudi Arabia business" />
+        <meta property="og:title" content="Clients & Partners | NIAS Network" />
+        <meta property="og:description" content="Discover our trusted clients and strategic partners who collaborate with NIAS to drive innovation and growth in the Gulf region." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nias.io/clients-partners" />
+        <meta property="og:image" content="https://nias.io/nias-og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Clients & Partners | NIAS Network" />
+        <meta name="twitter:description" content="Discover our trusted clients and strategic partners collaborating with NIAS." />
+        <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
         <link rel="canonical" href="https://nias.io/clients-partners" />
       </Helmet>
 

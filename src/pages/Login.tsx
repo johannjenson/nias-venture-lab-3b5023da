@@ -1,5 +1,5 @@
-
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Footer from "@/components/Footer";
@@ -114,6 +114,17 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Member Login | NIAS</title>
+        <meta name="description" content="Log in to your NIAS member account to access exclusive resources, events, and networking opportunities in Saudi Arabia." />
+        <meta property="og:title" content="Member Login | NIAS" />
+        <meta property="og:description" content="Log in to your NIAS member account to access exclusive resources and opportunities." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nias.io/login" />
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://nias.io/login" />
+      </Helmet>
+
       <div className="fixed top-0 left-0 right-0 bg-white border-b z-50 px-4">
         <div className="max-w-7xl mx-auto h-16 flex items-center">
           <Button
