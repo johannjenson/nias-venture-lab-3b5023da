@@ -134,12 +134,14 @@ const FundForm = () => {
           body: {
             type: "Funds",
             headers: [
-              "Submitted At", "Email", "Phone", "Fund Name", "AUM & Vintage", 
+              "Submitted At", "Full Name", "Role/Title", "Email", "Phone", "Fund Name", "AUM & Vintage", 
               "Investment Strategy", "Historical Performance", "Gulf Strategy", 
               "Partnership Type", "Accommodation", "Office Space", "Additional Info", "Deck URL"
             ],
             values: [
               new Date().toISOString(),
+              data.full_name,
+              data.role_title,
               data.email,
               data.phone,
               data.fund_name,
