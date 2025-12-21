@@ -10,6 +10,7 @@ import mohammedImage from "@/assets/mohammed-khalid-ibn-salamah.jpg";
 import ibrahimAlsemariImage from "@/assets/ibrahim-alsemari.png";
 import lukasImage from "@/assets/lukas-gaebler.png";
 import { Button } from "@/components/ui/button";
+import PersonSchema from "@/components/seo/PersonSchema";
 
 const People = () => {
   const navigate = useNavigate();
@@ -88,7 +89,18 @@ const People = () => {
         <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
         <link rel="canonical" href="https://nias.io/people" />
       </Helmet>
-
+      <PersonSchema 
+        people={[
+          { name: "Johann Jenson", jobTitle: "Founding Partner - Finance & Platform", linkedIn: "https://www.linkedin.com/in/johannjenson/" },
+          { name: "Ibrahim Alshuwaier", jobTitle: "Founding Partner - Business Development & Partnerships" },
+          { name: "Richard Schrems", jobTitle: "Associate - Operations", linkedIn: "https://sa.linkedin.com/in/richardschrems" },
+          { name: "Fahad Alsudairy", jobTitle: "Associate - Sports & Entertainment" },
+          { name: "Turki Alshubaki", jobTitle: "Associate - Real Estate" },
+          { name: "Mohammed Khalid Ibn Salamah", jobTitle: "Associate - Real Estate" },
+          { name: "Ibrahim AlSemari", jobTitle: "Counsel & Advisory - Finance", linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162" },
+          { name: "Lukas Gaebler", jobTitle: "Counsel & Advisory - Tech", linkedIn: "https://at.linkedin.com/in/lukas-gaebler" }
+        ]}
+      />
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center px-6">
           <button 
