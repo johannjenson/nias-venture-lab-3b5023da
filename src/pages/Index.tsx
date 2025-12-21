@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import RequestInviteModal from "@/components/RequestInviteModal";
 import { useSearchParams, useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import OrganizationSchema from "@/components/seo/OrganizationSchema";
+import WebsiteSchema from "@/components/seo/WebsiteSchema";
 
 const Index = () => {
   const [showRequestModal, setShowRequestModal] = useState(false);
@@ -60,6 +62,8 @@ const Index = () => {
         <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
         <link rel="canonical" href="https://nias.io" />
       </Helmet>
+      <OrganizationSchema />
+      <WebsiteSchema />
       <Hero />
       <Footer />
       <RequestInviteModal 

@@ -12,6 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import turkiImage from "@/assets/turki-alshubaki.jpg";
 import mohammedImage from "@/assets/mohammed-khalid-ibn-salamah.jpg";
 import heroBackground from "@/assets/riyadh-skyline.png";
+import ServiceSchema from "@/components/seo/ServiceSchema";
 
 const RealEstate = () => {
   const navigate = useNavigate();
@@ -96,7 +97,11 @@ const RealEstate = () => {
         <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
         <link rel="canonical" href="https://nias.io/real-estate" />
       </Helmet>
-
+      <ServiceSchema
+        name="Saudi Arabia Real Estate Advisory"
+        description="Market intelligence, policy context, and strategic guidance for Riyadh and Khobar real estate markets."
+        url="https://nias.io/real-estate"
+      />
       {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-border/50 z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center justify-between px-6">

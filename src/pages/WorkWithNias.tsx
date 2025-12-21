@@ -10,6 +10,7 @@ import AdvisorForm from "@/components/work-with-nias/AdvisorForm";
 import heroBackground from "@/assets/work-with-nias-hero.png";
 import johannProfile from "@/assets/johann-jenson-profile.jpeg";
 import ibrahimProfile from "@/assets/ibrahim-alshuwaier.png";
+import ServiceSchema from "@/components/seo/ServiceSchema";
 
 const WorkWithNias = () => {
   const navigate = useNavigate();
@@ -39,7 +40,11 @@ const WorkWithNias = () => {
         <meta name="twitter:description" content="Apply to partner with NIAS. We work with global companies, investment funds, and advisors expanding into Saudi Arabia and the Gulf." />
         <meta name="twitter:image" content="https://nias.io/work-with-nias-og.png" />
       </Helmet>
-
+      <ServiceSchema
+        name="NIAS Partnership & Market Entry Services"
+        description="Strategic advisory services for global companies, institutional funds, and advisors expanding into Saudi Arabia and the Gulf region."
+        url="https://nias.io/work-with-nias"
+      />
       {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-border/50 z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center justify-between px-6">

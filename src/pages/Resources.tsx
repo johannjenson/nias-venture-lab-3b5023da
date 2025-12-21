@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import IndustryCard from "@/components/resources/IndustryCard";
@@ -12,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import RequestInviteModal from "@/components/RequestInviteModal";
 import { Helmet } from "react-helmet";
 import { useToast } from "@/hooks/use-toast";
+import ServiceSchema from "@/components/seo/ServiceSchema";
 
 const Resources = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -107,7 +107,11 @@ const Resources = () => {
         <meta name="twitter:description" content="Saudi Arabia is investing $3 trillion across key industries as part of Vision 2030. Discover the top industries with the highest potential for international businesses." />
         <meta name="twitter:image" content="https://nias.io/og-image.png" />
       </Helmet>
-
+      <ServiceSchema
+        name="Vision 2030 Market Opportunity Analysis"
+        description="Comprehensive analysis of Saudi Arabia's $3 trillion Vision 2030 sector opportunities across 20+ industries for international businesses seeking market entry."
+        url="https://nias.io/resources"
+      />
       {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-border/50 z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center justify-between px-6">
