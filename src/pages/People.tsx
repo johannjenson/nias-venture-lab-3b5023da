@@ -48,17 +48,17 @@ const PersonCard = ({ person, small = false }: { person: TeamMember; small?: boo
         src={person.imageUrl}
         alt={person.name}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
       
-      {/* Hover overlay with links */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-        <div className="flex items-center gap-3">
+      {/* Actions (hover on desktop, always visible on mobile) */}
+      <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-0 md:translate-y-full md:group-hover:translate-y-0 transition-transform duration-300">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
           {person.calendarLink && (
             <a
               href={person.calendarLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-background text-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-background/90 transition-colors"
+              className="flex items-center justify-center gap-2 bg-background text-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-background/90 transition-colors w-full sm:w-auto"
             >
               <Calendar className="h-4 w-4" />
               Book Call
@@ -69,9 +69,10 @@ const PersonCard = ({ person, small = false }: { person: TeamMember; small?: boo
               href={person.linkedIn}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-10 h-10 bg-background/20 backdrop-blur-sm text-background rounded-lg hover:bg-background/30 transition-colors"
+              className="flex items-center justify-center w-full sm:w-10 h-10 bg-background/20 backdrop-blur-sm text-background rounded-lg hover:bg-background/30 transition-colors"
             >
               <LinkedInIcon className="h-5 w-5" />
+              <span className="sr-only">LinkedIn</span>
             </a>
           )}
         </div>
@@ -86,16 +87,6 @@ const PersonCard = ({ person, small = false }: { person: TeamMember; small?: boo
           </h3>
           <p className={`text-muted-foreground mt-1 ${small ? 'text-xs' : 'text-sm'}`}>{person.role}</p>
         </div>
-        {person.linkedIn && (
-          <a
-            href={person.linkedIn}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors mt-1"
-          >
-            <LinkedInIcon className="h-4 w-4" />
-          </a>
-        )}
       </div>
     </div>
   </div>
@@ -179,7 +170,7 @@ const People = () => {
       role: "Tech",
       imageUrl: lukasImage,
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
-      objectPosition: "center 10px",
+      objectPosition: "center 0%",
     },
   ];
 
