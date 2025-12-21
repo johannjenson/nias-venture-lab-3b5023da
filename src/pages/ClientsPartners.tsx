@@ -166,7 +166,7 @@ const ClientsPartners = () => {
               Clients & <span className="font-semibold">Partners</span>
             </h1>
             <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
-              We support ambitious companies expanding into the Gulf region by connecting them with family offices, exited entrepreneurs, strategic investors, and acquisitive funds across Saudi Arabia and the broader GCC.
+              We work with a curated set of global operators, institutional platforms, and senior advisors navigating the Gulf region.
             </p>
           </div>
         </div>
