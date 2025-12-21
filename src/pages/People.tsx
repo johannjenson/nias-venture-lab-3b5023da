@@ -21,6 +21,7 @@ interface TeamMember {
   linkedIn?: string;
   calendarLink?: string;
   objectPosition?: string;
+  scale?: number;
 }
 
 const LinkedInIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -33,12 +34,17 @@ const LinkedInIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const PersonCard = ({ person, small = false }: { person: TeamMember; small?: boolean }) => (
+const PersonCard = ({ person, small = false }: { person: TeamMember; small?: boolean }) => {
+  const baseScale = person.scale || 1;
+  return (
   <div className="group relative">
     <div className={`relative overflow-hidden rounded-xl bg-white ${small ? 'aspect-square' : 'aspect-[4/5]'}`}>
       <img
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        style={{ objectPosition: person.objectPosition || 'top' }}
+        style={{ 
+          objectPosition: person.objectPosition || 'top',
+          transform: `scale(${baseScale})`,
+        }}
         src={person.imageUrl}
         alt={person.name}
       />
@@ -94,6 +100,7 @@ const PersonCard = ({ person, small = false }: { person: TeamMember; small?: boo
     </div>
   </div>
 );
+};
 
 const TeamSection = ({ title, members, columns = 4, small = false }: { title: string; members: TeamMember[]; columns?: number; small?: boolean }) => (
   <div className="mb-20 md:mb-28">
@@ -122,6 +129,7 @@ const People = () => {
       linkedIn: "https://www.linkedin.com/in/johannjenson/",
       calendarLink: "https://calendar.app.google/RLMeAvPw8VHmKrwJ7",
       objectPosition: "center 5%",
+      scale: 0.8,
     },
     {
       name: "Ibrahim Alshuwaier",
@@ -129,6 +137,7 @@ const People = () => {
       imageUrl: ibrahimImage,
       linkedIn: "",
       calendarLink: "https://calendar.app.google/RLMeAvPw8VHmKrwJ7",
+      scale: 1.1,
     },
   ];
 
@@ -171,7 +180,7 @@ const People = () => {
       role: "Tech",
       imageUrl: lukasImage,
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
-      objectPosition: "center 20%",
+      objectPosition: "center 10%",
     },
   ];
 
