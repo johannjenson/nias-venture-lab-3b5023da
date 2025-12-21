@@ -22,25 +22,24 @@ export const PhoneInputWithCode = ({
 }: PhoneInputWithCodeProps) => {
   // Store the selected country index to handle countries with the same code
   const [selectedIndex, setSelectedIndex] = useState(0); // Default to Saudi Arabia (first item)
+  // Store the phone number separately to avoid regex issues
+  const [phoneNumber, setPhoneNumber] = useState("");
   
   const selectedCountry = countryCodes[selectedIndex];
   const countryCode = selectedCountry?.code || "+966";
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const phoneNumber = e.target.value.replace(/[^\d]/g, "");
-    onChange(`${countryCode}${phoneNumber}`);
+    const digits = e.target.value.replace(/[^\d]/g, "");
+    setPhoneNumber(digits);
+    onChange(`${countryCode}${digits}`);
   };
 
   const handleCountryChange = (indexStr: string) => {
     const index = parseInt(indexStr, 10);
     setSelectedIndex(index);
     const newCode = countryCodes[index]?.code || "+966";
-    const phoneOnly = value.replace(/^\+\d+/, "");
-    onChange(`${newCode}${phoneOnly}`);
+    onChange(`${newCode}${phoneNumber}`);
   };
-
-  // Extract phone number without country code for display
-  const displayPhone = value.replace(/^\+\d+/, "");
 
   return (
     <div className="flex gap-2">
@@ -68,7 +67,7 @@ export const PhoneInputWithCode = ({
       <Input
         type="tel"
         placeholder={placeholder}
-        value={displayPhone}
+        value={phoneNumber}
         onChange={handlePhoneChange}
         className="flex-1"
       />
