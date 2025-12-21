@@ -43,74 +43,192 @@ const generateDetailsHtml = (formData: Record<string, any>): string => {
     .filter(([_, value]) => value !== null && value !== undefined && value !== '' && !(Array.isArray(value) && value.length === 0))
     .map(([key, value]) => `
       <tr>
-        <td style="padding: 12px; border-bottom: 1px solid #E2E8F0; font-weight: 500; color: #4A5568; width: 40%;">${formatFieldLabel(key)}</td>
-        <td style="padding: 12px; border-bottom: 1px solid #E2E8F0; color: #2D3748;">${formatFieldValue(value)}</td>
+        <td style="padding: 14px 16px; border-bottom: 1px solid #2a2a2a; color: #9ca3af; font-size: 14px; width: 40%; vertical-align: top;">${formatFieldLabel(key)}</td>
+        <td style="padding: 14px 16px; border-bottom: 1px solid #2a2a2a; color: #f5f5f5; font-size: 14px;">${formatFieldValue(value)}</td>
       </tr>
     `)
     .join('');
 
   return `
-    <table style="width: 100%; border-collapse: collapse; margin: 20px 0; background: #F7FAFC; border-radius: 8px; overflow: hidden;">
+    <table style="width: 100%; border-collapse: collapse; background-color: #1a1a1a; border-radius: 8px; overflow: hidden; margin: 20px 0;">
       ${rows}
     </table>
   `;
 };
 
 const getApplicantEmailTemplate = (applicationType: string, name: string, formData: Record<string, any>) => {
-  const typeLabel = applicationType === 'company' ? 'Company' : 
-                    applicationType === 'fund' ? 'Institutional Platform' : 'Advisor';
+  const typeLabel = applicationType === 'company' ? 'Company Application' : 
+                    applicationType === 'fund' ? 'Institutional Platform Application' : 'Advisory Application';
   
   return `
     <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <style>
-          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
-          .container { max-width: 700px; margin: 0 auto; padding: 40px 20px; }
-          .header { background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%); color: white; padding: 40px; border-radius: 8px 8px 0 0; text-align: center; }
-          .content { background: white; padding: 40px; border: 1px solid #E2E8F0; border-top: none; border-radius: 0 0 8px 8px; }
-          .footer { text-align: center; margin-top: 40px; color: #718096; font-size: 14px; }
-          h1 { margin: 0; font-size: 28px; font-weight: 600; }
-          h2 { color: #2D3748; font-size: 18px; margin-top: 30px; }
-          .highlight { background: #F7FAFC; padding: 20px; border-left: 4px solid #2D3748; margin: 20px 0; }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <div class="header">
-            <h1>Application Received</h1>
-          </div>
-          <div class="content">
-            <p>Dear ${name},</p>
-            
-            <p>Thank you for your interest in partnering with NIAS. We have successfully received your <strong>${typeLabel}</strong> partnership application.</p>
-            
-            <div class="highlight">
-              <p style="margin: 0;"><strong>What happens next?</strong></p>
-              <p style="margin-top: 10px; margin-bottom: 0;">Our Partnerships Team will review your submission and respond within <strong>7–10 business days</strong>. If your opportunity aligns with our strategic focus on the Gulf region, we'll reach out to coordinate a deeper discussion.</p>
-            </div>
-
-            <h2>Your Application Details</h2>
-            ${generateDetailsHtml(formData)}
-            
-            <p style="margin-top: 30px;">In the meantime, feel free to explore more about NIAS:</p>
-            <ul>
-              <li><a href="https://nias.io/people" style="color: #2D3748;">Meet our team</a></li>
-              <li><a href="https://nias.io/resources" style="color: #2D3748;">Explore Vision 2030 opportunities</a></li>
-              <li><a href="https://nias.io/clients-partners" style="color: #2D3748;">Our clients & partners</a></li>
-            </ul>
-            
-            <p>If you have any urgent questions, please don't hesitate to reach out to our team at <a href="mailto:network@nias.io" style="color: #2D3748;">network@nias.io</a>.</p>
-            
-            <p style="margin-top: 30px;">Best regards,<br><strong>The NIAS Partnerships Team</strong></p>
-          </div>
-          <div class="footer">
-            <p>NIAS - Connecting Global Opportunities with Gulf Growth</p>
-            <p><a href="https://nias.io" style="color: #2D3748;">nias.io</a></p>
-          </div>
-        </div>
-      </body>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Application Received - NIAS Client</title>
+    </head>
+    <body style="margin: 0; padding: 0; background-color: #0a0a0a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
+      <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td align="center" style="padding: 40px 20px;">
+            <table role="presentation" style="width: 100%; max-width: 620px; border-collapse: collapse;">
+              
+              <!-- Header with Logo -->
+              <tr>
+                <td style="padding: 32px 40px; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-bottom: 2px solid #b8860b;">
+                  <table role="presentation" style="width: 100%;">
+                    <tr>
+                      <td>
+                        <h1 style="margin: 0; font-size: 26px; font-weight: 600; color: #ffffff; letter-spacing: 3px;">
+                          NIAS
+                          <span style="color: #b8860b; font-size: 14px; font-weight: 400; margin-left: 10px; letter-spacing: 1px;">CLIENT</span>
+                        </h1>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              
+              <!-- Main Content -->
+              <tr>
+                <td style="padding: 40px; background-color: #111111;">
+                  <h2 style="margin: 0 0 24px 0; font-size: 24px; font-weight: 500; color: #ffffff; line-height: 1.4;">
+                    Application Received
+                  </h2>
+                  
+                  <p style="margin: 0 0 20px 0; font-size: 15px; line-height: 1.7; color: #d1d5db;">
+                    Dear ${name},
+                  </p>
+                  
+                  <p style="margin: 0 0 24px 0; font-size: 15px; line-height: 1.7; color: #d1d5db;">
+                    Thank you for submitting your application to NIAS Client. We have received your information and our team will review your submission carefully.
+                  </p>
+                  
+                  <!-- Application Type Badge -->
+                  <div style="margin-bottom: 28px;">
+                    <span style="display: inline-block; padding: 10px 18px; background-color: rgba(184, 134, 11, 0.15); border: 1px solid #b8860b; border-radius: 4px; color: #b8860b; font-size: 13px; font-weight: 500; letter-spacing: 0.5px;">
+                      ${typeLabel}
+                    </span>
+                  </div>
+                  
+                  <!-- What's Next Section -->
+                  <div style="margin-bottom: 32px; padding: 24px; background-color: #1a1a1a; border-radius: 8px; border-left: 3px solid #b8860b;">
+                    <h3 style="margin: 0 0 12px 0; font-size: 16px; font-weight: 500; color: #ffffff;">
+                      What Happens Next?
+                    </h3>
+                    <p style="margin: 0; font-size: 14px; line-height: 1.7; color: #9ca3af;">
+                      Our team will review your application and assess how NIAS Client can best support your objectives in Saudi Arabia. We typically respond within 5-7 business days.
+                    </p>
+                  </div>
+                  
+                  <!-- Application Details -->
+                  <h3 style="margin: 0 0 16px 0; font-size: 13px; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 1.5px;">
+                    Your Application Details
+                  </h3>
+                  ${generateDetailsHtml(formData)}
+                </td>
+              </tr>
+              
+              <!-- Footer Action Boxes -->
+              <tr>
+                <td style="padding: 0 40px 40px 40px; background-color: #111111;">
+                  <h3 style="margin: 0 0 20px 0; font-size: 13px; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 1.5px;">
+                    Explore Our Network
+                  </h3>
+                  
+                  <!-- Action Box 1: NIAS Network Tiers -->
+                  <table role="presentation" style="width: 100%; margin-bottom: 16px;">
+                    <tr>
+                      <td style="padding: 24px; background-color: #1a1a1a; border-radius: 8px; border: 1px solid #2a2a2a;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 16px; font-weight: 500; color: #ffffff;">
+                          Join the NIAS Network
+                        </h4>
+                        <p style="margin: 0 0 16px 0; font-size: 14px; line-height: 1.6; color: #9ca3af;">
+                          Explore membership tiers designed to support your Saudi Arabia market strategy.
+                        </p>
+                        <table role="presentation" style="width: 100%;">
+                          <tr>
+                            <td style="padding-right: 10px; padding-bottom: 8px;">
+                              <a href="https://access.nias.io" style="display: inline-block; padding: 10px 16px; background-color: rgba(184, 134, 11, 0.15); border: 1px solid #b8860b; border-radius: 4px; color: #b8860b; font-size: 13px; text-decoration: none; font-weight: 500;">
+                                NIAS Access
+                              </a>
+                            </td>
+                            <td style="padding-right: 10px; padding-bottom: 8px;">
+                              <a href="https://access.nias.io/private" style="display: inline-block; padding: 10px 16px; background-color: rgba(184, 134, 11, 0.15); border: 1px solid #b8860b; border-radius: 4px; color: #b8860b; font-size: 13px; text-decoration: none; font-weight: 500;">
+                                NIAS Private
+                              </a>
+                            </td>
+                            <td style="padding-bottom: 8px;">
+                              <span style="display: inline-block; padding: 10px 16px; background-color: #1f1f1f; border: 1px solid #3a3a3a; border-radius: 4px; color: #6b7280; font-size: 13px; font-weight: 500;">
+                                Family Office <span style="font-size: 11px;">(Invite Only)</span>
+                              </span>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  
+                  <!-- Action Box 2: Vision 2030 Sector Analysis -->
+                  <table role="presentation" style="width: 100%; margin-bottom: 16px;">
+                    <tr>
+                      <td style="padding: 24px; background-color: #1a1a1a; border-radius: 8px; border: 1px solid #2a2a2a;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 16px; font-weight: 500; color: #ffffff;">
+                          Vision 2030 Sector Analysis
+                        </h4>
+                        <p style="margin: 0 0 16px 0; font-size: 14px; line-height: 1.6; color: #9ca3af;">
+                          Explore comprehensive insights across 20+ sectors aligned with Saudi Arabia's Vision 2030 strategic priorities.
+                        </p>
+                        <a href="https://nias.io/resources" style="display: inline-block; padding: 12px 24px; background-color: #b8860b; border-radius: 4px; color: #ffffff; font-size: 14px; text-decoration: none; font-weight: 500;">
+                          View Sector Analysis →
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                  
+                  <!-- Action Box 3: Contact -->
+                  <table role="presentation" style="width: 100%;">
+                    <tr>
+                      <td style="padding: 24px; background-color: #1a1a1a; border-radius: 8px; border: 1px solid #2a2a2a;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 16px; font-weight: 500; color: #ffffff;">
+                          Questions?
+                        </h4>
+                        <p style="margin: 0; font-size: 14px; line-height: 1.7; color: #9ca3af;">
+                          If you have any urgent questions, please don't hesitate to reach out to our team at 
+                          <a href="mailto:client@nias.io" style="color: #b8860b; text-decoration: none; font-weight: 500;">client@nias.io</a>. 
+                          Or visit 
+                          <a href="https://nias.io/work-with-nias" style="color: #b8860b; text-decoration: none; font-weight: 500;">nias.io/work-with-nias</a> 
+                          to book a call.
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              
+              <!-- Signature -->
+              <tr>
+                <td style="padding: 32px 40px; background-color: #0a0a0a; border-top: 1px solid #1a1a1a;">
+                  <p style="margin: 0 0 4px 0; font-size: 15px; color: #d1d5db;">
+                    Best regards,
+                  </p>
+                  <p style="margin: 0 0 24px 0; font-size: 15px; font-weight: 600; color: #ffffff;">
+                    NIAS Client
+                  </p>
+                  
+                  <!-- Legal Disclaimer -->
+                  <p style="margin: 0; font-size: 11px; line-height: 1.7; color: #6b7280;">
+                    This email and any attachments are confidential and may be privileged. If you are not the intended recipient, please notify the sender immediately and delete this email. This communication is for informational purposes only and does not constitute financial advice, an offer, or a solicitation to buy or sell any securities or financial instruments. Any investment decisions should be made based on independent professional advice. NIAS does not guarantee the accuracy or completeness of any information provided and accepts no liability for any loss arising from reliance on such information.
+                  </p>
+                </td>
+              </tr>
+              
+            </table>
+          </td>
+        </tr>
+      </table>
+    </body>
     </html>
   `;
 };
@@ -121,35 +239,60 @@ const getTeamEmailTemplate = (applicationType: string, name: string, email: stri
   
   return `
     <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <style>
-          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
-          .container { max-width: 700px; margin: 0 auto; padding: 40px 20px; }
-          .header { background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%); color: white; padding: 30px; border-radius: 8px 8px 0 0; }
-          .content { background: white; padding: 30px; border: 1px solid #E2E8F0; border-top: none; border-radius: 0 0 8px 8px; }
-          h1 { margin: 0; font-size: 22px; font-weight: 600; }
-          .badge { display: inline-block; background: #EBF8FF; color: #2B6CB0; padding: 4px 12px; border-radius: 4px; font-size: 14px; font-weight: 500; margin-left: 10px; }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <div class="header">
-            <h1>New Partnership Application <span class="badge">${typeLabel}</span></h1>
-          </div>
-          <div class="content">
-            <p style="margin-top: 0;"><strong>From:</strong> ${name} (<a href="mailto:${email}" style="color: #2D3748;">${email}</a>)</p>
-            <p><strong>Submitted:</strong> ${new Date().toLocaleString('en-GB', { dateStyle: 'full', timeStyle: 'short' })}</p>
-            
-            ${generateDetailsHtml(formData)}
-            
-            <p style="margin-top: 20px; color: #718096; font-size: 14px;">
-              <a href="https://supabase.com/dashboard/project/govawobduzmxagqmfobp/editor" style="color: #2D3748;">View in Database →</a>
-            </p>
-          </div>
-        </div>
-      </body>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>New Application - NIAS Client</title>
+    </head>
+    <body style="margin: 0; padding: 0; background-color: #0a0a0a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
+      <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td align="center" style="padding: 40px 20px;">
+            <table role="presentation" style="width: 100%; max-width: 620px; border-collapse: collapse;">
+              
+              <!-- Header -->
+              <tr>
+                <td style="padding: 28px 40px; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-bottom: 2px solid #b8860b;">
+                  <table role="presentation" style="width: 100%;">
+                    <tr>
+                      <td>
+                        <h1 style="margin: 0; font-size: 20px; font-weight: 500; color: #ffffff;">
+                          New ${typeLabel} Application
+                          <span style="display: inline-block; margin-left: 12px; padding: 6px 12px; background-color: rgba(184, 134, 11, 0.2); border: 1px solid #b8860b; border-radius: 4px; color: #b8860b; font-size: 12px; font-weight: 500; vertical-align: middle;">
+                            ${typeLabel}
+                          </span>
+                        </h1>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              
+              <!-- Content -->
+              <tr>
+                <td style="padding: 32px 40px; background-color: #111111;">
+                  <p style="margin: 0 0 8px 0; font-size: 14px; color: #9ca3af;">
+                    <strong style="color: #d1d5db;">From:</strong> ${name} 
+                    (<a href="mailto:${email}" style="color: #b8860b; text-decoration: none;">${email}</a>)
+                  </p>
+                  <p style="margin: 0 0 24px 0; font-size: 14px; color: #9ca3af;">
+                    <strong style="color: #d1d5db;">Submitted:</strong> ${new Date().toLocaleString('en-GB', { dateStyle: 'full', timeStyle: 'short' })}
+                  </p>
+                  
+                  ${generateDetailsHtml(formData)}
+                  
+                  <p style="margin-top: 24px; font-size: 13px; color: #6b7280;">
+                    <a href="https://supabase.com/dashboard/project/govawobduzmxagqmfobp/editor" style="color: #b8860b; text-decoration: none;">View in Database →</a>
+                  </p>
+                </td>
+              </tr>
+              
+            </table>
+          </td>
+        </tr>
+      </table>
+    </body>
     </html>
   `;
 };
@@ -167,13 +310,13 @@ const handler = async (req: Request): Promise<Response> => {
     console.log('Application type:', applicationType);
     console.log('Form data keys:', Object.keys(formData));
 
-    const displayName = formData.full_name || formData.company_name || formData.fund_name || formData.advisor_name || 'Applicant';
+    const displayName = formData.full_name || formData.fullName || formData.company_name || formData.fund_name || formData.advisor_name || 'Applicant';
 
     // Send confirmation email to applicant with all details
     const confirmationEmail = await resend.emails.send({
-      from: "NIAS Partnerships <partnerships@nias.io>",
+      from: "NIAS Client <client@nias.io>",
       to: [email],
-      subject: "Your NIAS Partnership Application - Confirmation",
+      subject: "Your NIAS Client Application - Confirmation",
       html: getApplicantEmailTemplate(applicationType, displayName, formData),
     });
 
@@ -181,7 +324,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification to NIAS team (network@nias.io) with all details
     const notificationEmail = await resend.emails.send({
-      from: "NIAS Partnerships <partnerships@nias.io>",
+      from: "NIAS Client <client@nias.io>",
       to: ["network@nias.io"],
       subject: `New ${applicationType.charAt(0).toUpperCase() + applicationType.slice(1)} Application: ${displayName}`,
       html: getTeamEmailTemplate(applicationType, displayName, email, formData),
