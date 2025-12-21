@@ -515,9 +515,9 @@ const CompanyForm = () => {
           </div>
 
           {/* Section 3: Business Profile (Qualifying questions) */}
-          <div className="border-t pt-5">
-          <FormField
-            control={form.control}
+          <div className="border-t pt-5 space-y-5">
+            <FormField
+              control={form.control}
             name="primary_sector"
             render={({ field }) => (
               <FormItem>
@@ -551,26 +551,26 @@ const CompanyForm = () => {
                 <FormMessage />
               </FormItem>
             )}
-          />
-
-          {showOtherSector && (
-            <FormField
-              control={form.control}
-              name="primary_sector_other"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Please Specify Sector</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Your sector..." {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
             />
-          )}
 
-          {/* Frontier Technology Follow-ups */}
-          {watchedPrimarySector === "frontier_technology" && (
+            {showOtherSector && (
+              <FormField
+                control={form.control}
+                name="primary_sector_other"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Please Specify Sector</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Your sector..." {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            )}
+
+            {/* Frontier Technology Follow-ups */}
+            {watchedPrimarySector === "frontier_technology" && (
             <div className="space-y-5 p-4 rounded-lg border border-border bg-muted/20">
               <FormField
                 control={form.control}
