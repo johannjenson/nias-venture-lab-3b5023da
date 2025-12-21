@@ -613,7 +613,7 @@ const AdvisorForm = () => {
                     <FormItem>
                       <FormLabel>Asset type</FormLabel>
                       <FormControl>
-                        <div className="grid grid-cols-2 gap-2 mt-2">
+                        <div className="grid grid-cols-1 xs:grid-cols-2 gap-3 mt-2">
                           {[
                             { value: "residential", label: "Residential", icon: Home, description: "Villas, apartments, compounds" },
                             { value: "commercial", label: "Commercial", icon: Building2, description: "Offices, retail, mixed-use" },
@@ -628,19 +628,21 @@ const AdvisorForm = () => {
                                 type="button"
                                 onClick={() => field.onChange(asset.value)}
                                 className={cn(
-                                  "flex flex-col items-start p-4 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                                  "flex flex-row xs:flex-col items-start xs:items-start gap-3 xs:gap-2 p-4 rounded-lg border-2 transition-all duration-200 hover:border-primary/50 text-left",
                                   isSelected
                                     ? "border-primary bg-primary/5 shadow-sm"
                                     : "border-border bg-background hover:bg-muted/50"
                                 )}
                               >
-                                <div className="flex items-center gap-2 mb-1">
-                                  <Icon className={cn("h-5 w-5", isSelected ? "text-primary" : "text-muted-foreground")} />
-                                  <span className={cn("text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
+                                <Icon className={cn("h-5 w-5 mt-0.5 xs:mt-0", isSelected ? "text-primary" : "text-muted-foreground")} />
+                                <div className="min-w-0">
+                                  <div className={cn("text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
                                     {asset.label}
-                                  </span>
+                                  </div>
+                                  <div className="text-xs text-muted-foreground leading-snug">
+                                    {asset.description}
+                                  </div>
                                 </div>
-                                <span className="text-xs text-muted-foreground">{asset.description}</span>
                               </button>
                             );
                           })}
@@ -658,7 +660,7 @@ const AdvisorForm = () => {
                     <FormItem className="mt-4">
                       <FormLabel>Estimated asset value (USD)</FormLabel>
                       <FormControl>
-                        <div className="grid grid-cols-3 gap-2 mt-2">
+                        <div className="grid grid-cols-1 xs:grid-cols-3 gap-3 mt-2">
                           {[
                             { value: "10-50m", label: "$10–50M", icon: BarChart3 },
                             { value: "50-200m", label: "$50–200M", icon: Rocket },
@@ -672,13 +674,13 @@ const AdvisorForm = () => {
                                 type="button"
                                 onClick={() => field.onChange(band.value)}
                                 className={cn(
-                                  "flex flex-col items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                                  "flex items-center xs:flex-col xs:justify-center gap-3 xs:gap-0 p-4 xs:p-3 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
                                   isSelected
                                     ? "border-primary bg-primary/5 shadow-sm"
                                     : "border-border bg-background hover:bg-muted/50"
                                 )}
                               >
-                                <Icon className={cn("h-5 w-5 mb-1.5", isSelected ? "text-primary" : "text-muted-foreground")} />
+                                <Icon className={cn("h-5 w-5 xs:mb-1.5 shrink-0", isSelected ? "text-primary" : "text-muted-foreground")} />
                                 <span className={cn("text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
                                   {band.label}
                                 </span>
