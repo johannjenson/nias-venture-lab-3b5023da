@@ -227,7 +227,7 @@ const AudienceCTAs = () => {
               Network
             </h2>
             <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
-              A carefully curated community of founders, investors, advisors, and leaders united by a shared interest in the Saudi market.
+              A carefully curated community of founders, <a href="https://access.nias.io/private" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground transition-colors">strategic partners</a>, advisors, and leaders united by a shared interest in the Saudi market.
             </p>
           </div>
           
