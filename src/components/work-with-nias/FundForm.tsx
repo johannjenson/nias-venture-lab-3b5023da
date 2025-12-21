@@ -112,8 +112,10 @@ const FundForm = () => {
         .from("partnership_applications" as any)
         .insert({
           application_type: "fund",
-          advisor_name: data.email,
-          advisor_role: data.phone,
+          full_name: data.full_name,
+          role_title: data.role_title,
+          email: data.email,
+          phone: data.phone,
           company_name: data.fund_name,
           fund_aum_vintage: data.fund_aum_vintage,
           investment_strategy: data.investment_strategy,
