@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +9,17 @@ const PrivacyPolicy = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Privacy Policy | NIAS</title>
+        <meta name="description" content="NIAS privacy policy. Learn how we collect, use, and protect your personal information when you use our services." />
+        <meta property="og:title" content="Privacy Policy | NIAS" />
+        <meta property="og:description" content="Learn how NIAS collects, uses, and protects your personal information." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nias.io/privacy" />
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://nias.io/privacy" />
+      </Helmet>
+
       <Button
         variant="ghost"
         size="icon"

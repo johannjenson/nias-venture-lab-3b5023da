@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -69,6 +70,21 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Contact NIAS | Get in Touch with Our Team</title>
+        <meta name="description" content="Contact NIAS to discuss business opportunities in Saudi Arabia. Reach out to our team for partnership inquiries, event information, or general questions." />
+        <meta property="og:title" content="Contact NIAS | Get in Touch with Our Team" />
+        <meta property="og:description" content="Contact NIAS to discuss business opportunities in Saudi Arabia. Reach out to our team for partnership inquiries and more." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nias.io/contact" />
+        <meta property="og:image" content="https://nias.io/nias-og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact NIAS | Get in Touch" />
+        <meta name="twitter:description" content="Contact NIAS to discuss business opportunities in Saudi Arabia." />
+        <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
+        <link rel="canonical" href="https://nias.io/contact" />
+      </Helmet>
+
       {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center px-6">

@@ -1,5 +1,5 @@
-
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "@/integrations/supabase/client";
@@ -42,6 +42,17 @@ const Register = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Create Account | NIAS</title>
+        <meta name="description" content="Create your NIAS member account to join our exclusive network of business leaders expanding into Saudi Arabia and the Gulf region." />
+        <meta property="og:title" content="Create Account | NIAS" />
+        <meta property="og:description" content="Create your NIAS member account to join our exclusive network of business leaders." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nias.io/register" />
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://nias.io/register" />
+      </Helmet>
+
       <div className="fixed top-0 left-0 right-0 bg-white border-b z-50 px-4">
         <div className="max-w-7xl mx-auto h-16 flex items-center">
           <Button
