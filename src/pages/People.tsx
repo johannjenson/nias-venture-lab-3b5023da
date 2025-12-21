@@ -182,7 +182,7 @@ const People = () => {
       role: "Tech",
       imageUrl: lukasImage,
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
-      objectPosition: "center -40px",
+      objectPosition: "center -25px",
     },
   ];
 
