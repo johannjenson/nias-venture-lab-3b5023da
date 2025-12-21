@@ -412,7 +412,7 @@ const AdvisorForm = () => {
                 <FormItem className="mb-6 mt-4">
                   <FormLabel>Opportunity Type</FormLabel>
                   <FormControl>
-                    <div className="grid grid-cols-3 gap-3 mt-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
                       {[
                         { value: "company", label: "Operating company", icon: Building2 },
                         { value: "fund", label: "Investment platform", icon: Landmark },

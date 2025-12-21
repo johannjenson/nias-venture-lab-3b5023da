@@ -32,6 +32,8 @@ import { cn } from "@/lib/utils";
 import { allCountries } from "@/data/countries";
 
 const companySchema = z.object({
+  full_name: z.string().min(1, "Full name is required").max(200),
+  role_title: z.string().min(1, "Role/job title is required").max(200),
   company_name: z.string().min(1, "Company name is required").max(200),
   email: z.string().email("Invalid email address").min(1, "Email is required"),
   phone: z.string().min(1, "Phone number is required").max(50),
@@ -136,6 +138,8 @@ const CompanyForm = () => {
   const form = useForm<CompanyFormData>({
     resolver: zodResolver(companySchema),
     defaultValues: {
+      full_name: "",
+      role_title: "",
       company_name: "",
       email: "",
       phone: "",
@@ -349,12 +353,40 @@ const CompanyForm = () => {
           {/* Basic Info */}
           <FormField
             control={form.control}
+            name="full_name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Full Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="John Smith" {...field} ref={firstInputRef} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="role_title"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Role (Job Title)</FormLabel>
+                <FormControl>
+                  <Input placeholder="CEO, Managing Director, etc." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
             name="company_name"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Company Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Your Company Ltd." {...field} ref={firstInputRef} />
+                  <Input placeholder="Your Company Ltd." {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -452,7 +484,7 @@ const CompanyForm = () => {
               <FormItem>
                 <FormLabel>Primary Sector</FormLabel>
                 <FormControl>
-                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
                     {primarySectors.map((sector) => {
                       const Icon = sector.icon;
                       const isSelected = field.value === sector.value;
@@ -791,7 +823,7 @@ const CompanyForm = () => {
               <FormItem>
                 <FormLabel>Revenue Band</FormLabel>
                 <FormControl>
-                  <div className="grid grid-cols-5 gap-2">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
                     {revenueBands.map((band) => {
                       const Icon = band.icon;
                       const isSelected = field.value === band.value;

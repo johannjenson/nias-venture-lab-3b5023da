@@ -22,6 +22,8 @@ import { cn } from "@/lib/utils";
 import PhoneInputWithCode from "./PhoneInputWithCode";
 
 const fundSchema = z.object({
+  full_name: z.string().min(1, "Full name is required").max(200),
+  role_title: z.string().min(1, "Role/job title is required").max(200),
   email: z.string().email("Invalid email address").min(1, "Email is required"),
   phone: z.string().min(1, "Phone number is required").max(50),
   fund_name: z.string().min(1, "Fund name is required").max(200),
@@ -64,6 +66,8 @@ const FundForm = () => {
   const form = useForm<FundFormData>({
     resolver: zodResolver(fundSchema),
     defaultValues: {
+      full_name: "",
+      role_title: "",
       email: "",
       phone: "",
       fund_name: "",
@@ -216,12 +220,40 @@ const FundForm = () => {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
           <FormField
             control={form.control}
+            name="full_name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Full Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="John Smith" {...field} ref={firstInputRef} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="role_title"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Role (Job Title)</FormLabel>
+                <FormControl>
+                  <Input placeholder="Managing Partner, CIO, etc." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="contact@fund.com" {...field} ref={firstInputRef} />
+                  <Input type="email" placeholder="contact@fund.com" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
