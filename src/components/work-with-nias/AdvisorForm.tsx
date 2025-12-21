@@ -25,7 +25,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, Hotel, Home, Building, Briefcase, Users, Building2, X, Upload, Search, Globe, Handshake, MessageSquare, TrendingUp, Landmark, BarChart3, Rocket, Crown } from "lucide-react";
+import { Loader2, Hotel, Home, Building, Briefcase, Users, Building2, X, Upload, Search, Globe, Handshake, MessageSquare, TrendingUp, Landmark, BarChart3, Rocket, Crown, MapPin, DollarSign } from "lucide-react";
 import PhoneInputWithCode from "./PhoneInputWithCode";
 import { cn } from "@/lib/utils";
 
@@ -38,13 +38,15 @@ const advisorSchema = z.object({
   relationship_type: z.string().min(1, "Please select your relationship"),
   relationship_other: z.string().max(500).optional(),
   gulf_relevance: z.string().min(1, "Please explain the Gulf relevance").max(2000),
-  opportunity_type: z.enum(["company", "fund"], {
+  opportunity_type: z.enum(["company", "fund", "real_estate"], {
     required_error: "Please select opportunity type",
   }),
   company_revenue_band: z.string().optional(),
   company_footprint: z.string().max(1000).optional(),
   fund_aum_band: z.string().optional(),
   fund_sector_focus: z.string().max(1000).optional(),
+  real_estate_asset_type: z.string().optional(),
+  real_estate_value_band: z.string().optional(),
   partnership_engagement_type: z.string().min(1, "Please select engagement type"),
   partnership_engagement_details: z.string().max(1000).optional(),
   accommodation_type: z.string().optional(),
@@ -94,6 +96,8 @@ const AdvisorForm = () => {
       company_footprint: "",
       fund_aum_band: "",
       fund_sector_focus: "",
+      real_estate_asset_type: "",
+      real_estate_value_band: "",
       partnership_engagement_type: "",
       partnership_engagement_details: "",
       accommodation_type: "",
@@ -167,8 +171,9 @@ const AdvisorForm = () => {
               "Submitted At", "Advisor Name", "Email", "Phone", "Advisory Role", 
               "Opportunity Description", "Relationship Type", "Gulf Relevance", 
               "Opportunity Type", "Company Revenue Band", "Company Footprint", 
-              "Fund AUM Band", "Fund Sector Focus", "Engagement Type", 
-              "Engagement Details", "Accommodation", "Office Space", "Additional Info", "Deck URL"
+              "Fund AUM Band", "Fund Sector Focus", "RE Asset Type", "RE Value Band",
+              "Engagement Type", "Engagement Details", "Accommodation", "Office Space", 
+              "Additional Info", "Deck URL"
             ],
             values: [
               new Date().toISOString(),
@@ -184,6 +189,8 @@ const AdvisorForm = () => {
               data.company_footprint || "",
               data.fund_aum_band || "",
               data.fund_sector_focus || "",
+              data.real_estate_asset_type || "",
+              data.real_estate_value_band || "",
               data.partnership_engagement_type,
               data.partnership_engagement_details || "",
               accommodationLabel,
@@ -409,6 +416,7 @@ const AdvisorForm = () => {
                       {[
                         { value: "company", label: "Operating company", icon: Building2 },
                         { value: "fund", label: "Investment platform", icon: Landmark },
+                        { value: "real_estate", label: "Real estate asset", icon: Home },
                       ].map((option) => {
                         const Icon = option.icon;
                         const isSelected = field.value === option.value;
@@ -556,6 +564,96 @@ const AdvisorForm = () => {
                           className="min-h-[80px]"
                           {...field} 
                         />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </>
+            )}
+
+            {opportunityType === "real_estate" && (
+              <>
+                <FormField
+                  control={form.control}
+                  name="real_estate_asset_type"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Asset type</FormLabel>
+                      <FormControl>
+                        <div className="grid grid-cols-2 gap-2 mt-2">
+                          {[
+                            { value: "residential", label: "Residential", icon: Home, description: "Villas, apartments, compounds" },
+                            { value: "commercial", label: "Commercial", icon: Building2, description: "Offices, retail, mixed-use" },
+                            { value: "hospitality", label: "Hospitality", icon: Hotel, description: "Hotels, resorts, serviced" },
+                            { value: "land", label: "Land / Development", icon: MapPin, description: "Raw land, master-planned" },
+                          ].map((asset) => {
+                            const Icon = asset.icon;
+                            const isSelected = field.value === asset.value;
+                            return (
+                              <button
+                                key={asset.value}
+                                type="button"
+                                onClick={() => field.onChange(asset.value)}
+                                className={cn(
+                                  "flex flex-col items-start p-4 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                                  isSelected
+                                    ? "border-primary bg-primary/5 shadow-sm"
+                                    : "border-border bg-background hover:bg-muted/50"
+                                )}
+                              >
+                                <div className="flex items-center gap-2 mb-1">
+                                  <Icon className={cn("h-5 w-5", isSelected ? "text-primary" : "text-muted-foreground")} />
+                                  <span className={cn("text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
+                                    {asset.label}
+                                  </span>
+                                </div>
+                                <span className="text-xs text-muted-foreground">{asset.description}</span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="real_estate_value_band"
+                  render={({ field }) => (
+                    <FormItem className="mt-4">
+                      <FormLabel>Estimated asset value (USD)</FormLabel>
+                      <FormControl>
+                        <div className="grid grid-cols-3 gap-2 mt-2">
+                          {[
+                            { value: "10-50m", label: "$10–50M", icon: BarChart3 },
+                            { value: "50-200m", label: "$50–200M", icon: Rocket },
+                            { value: "200m+", label: "$200M+", icon: Crown },
+                          ].map((band) => {
+                            const Icon = band.icon;
+                            const isSelected = field.value === band.value;
+                            return (
+                              <button
+                                key={band.value}
+                                type="button"
+                                onClick={() => field.onChange(band.value)}
+                                className={cn(
+                                  "flex flex-col items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                                  isSelected
+                                    ? "border-primary bg-primary/5 shadow-sm"
+                                    : "border-border bg-background hover:bg-muted/50"
+                                )}
+                              >
+                                <Icon className={cn("h-5 w-5 mb-1.5", isSelected ? "text-primary" : "text-muted-foreground")} />
+                                <span className={cn("text-sm font-medium", isSelected ? "text-primary" : "text-foreground")}>
+                                  {band.label}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
