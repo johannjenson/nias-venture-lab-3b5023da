@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
-import { Waves, Calendar, Linkedin, ArrowRight } from "lucide-react";
+import { Waves, Calendar, ArrowLeft } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
-import johannImage from "@/assets/johann-jenson.png";
+import johannImage from "@/assets/johann-jenson-new.png";
 import richardImage from "@/assets/richard-schrems.png";
 import ibrahimImage from "@/assets/ibrahim-alshuwaier.png";
 import fahadImage from "@/assets/fahad-alsudairy-new.png";
@@ -9,8 +9,10 @@ import turkiImage from "@/assets/turki-alshubaki.jpg";
 import mohammedImage from "@/assets/mohammed-khalid-ibn-salamah.jpg";
 import ibrahimAlsemariImage from "@/assets/ibrahim-alsemari.png";
 import lukasImage from "@/assets/lukas-gaebler.png";
+import heroBackground from "@/assets/work-with-nias-hero.png";
 import { Button } from "@/components/ui/button";
 import PersonSchema from "@/components/seo/PersonSchema";
+import Footer from "@/components/Footer";
 
 interface TeamMember {
   name: string;
@@ -18,21 +20,30 @@ interface TeamMember {
   imageUrl: string;
   linkedIn?: string;
   calendarLink?: string;
-  bio?: string;
 }
 
-const PersonCard = ({ person }: { person: TeamMember }) => (
+const LinkedInIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+    <path
+      fillRule="evenodd"
+      d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
+const PersonCard = ({ person, small = false }: { person: TeamMember; small?: boolean }) => (
   <div className="group relative">
-    <div className="relative overflow-hidden rounded-xl bg-muted">
+    <div className={`relative overflow-hidden rounded-xl bg-white ${small ? 'aspect-square' : 'aspect-[4/5]'}`}>
       <img
-        className="aspect-[4/5] w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
         src={person.imageUrl}
         alt={person.name}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       
       {/* Hover overlay with links */}
-      <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+      <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
         <div className="flex items-center gap-3">
           {person.calendarLink && (
             <a
@@ -52,20 +63,20 @@ const PersonCard = ({ person }: { person: TeamMember }) => (
               rel="noopener noreferrer"
               className="flex items-center justify-center w-10 h-10 bg-background/20 backdrop-blur-sm text-background rounded-lg hover:bg-background/30 transition-colors"
             >
-              <Linkedin className="h-5 w-5" />
+              <LinkedInIcon className="h-5 w-5" />
             </a>
           )}
         </div>
       </div>
     </div>
     
-    <div className="mt-5">
+    <div className="mt-4">
       <div className="flex items-start justify-between">
         <div>
-          <h3 className="text-lg font-medium text-foreground tracking-tight">
+          <h3 className={`font-medium text-foreground tracking-tight ${small ? 'text-base' : 'text-lg'}`}>
             {person.name}
           </h3>
-          <p className="text-sm text-muted-foreground mt-1">{person.role}</p>
+          <p className={`text-muted-foreground mt-1 ${small ? 'text-xs' : 'text-sm'}`}>{person.role}</p>
         </div>
         {person.linkedIn && (
           <a
@@ -74,7 +85,7 @@ const PersonCard = ({ person }: { person: TeamMember }) => (
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors mt-1"
           >
-            <Linkedin className="h-4 w-4" />
+            <LinkedInIcon className="h-4 w-4" />
           </a>
         )}
       </div>
@@ -82,7 +93,7 @@ const PersonCard = ({ person }: { person: TeamMember }) => (
   </div>
 );
 
-const TeamSection = ({ title, members, columns = 4 }: { title: string; members: TeamMember[]; columns?: number }) => (
+const TeamSection = ({ title, members, columns = 4, small = false }: { title: string; members: TeamMember[]; columns?: number; small?: boolean }) => (
   <div className="mb-20 md:mb-28">
     <div className="flex items-center gap-4 mb-10">
       <h2 className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">
@@ -90,9 +101,9 @@ const TeamSection = ({ title, members, columns = 4 }: { title: string; members: 
       </h2>
       <div className="flex-1 h-px bg-border" />
     </div>
-    <div className={`grid grid-cols-1 sm:grid-cols-2 ${columns === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-2'} gap-8 md:gap-10`}>
+    <div className={`grid grid-cols-2 ${columns === 4 ? 'lg:grid-cols-4' : columns === 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-4'} gap-6 md:gap-8`}>
       {members.map((person) => (
-        <PersonCard key={person.name} person={person} />
+        <PersonCard key={person.name} person={person} small={small} />
       ))}
     </div>
   </div>
@@ -107,13 +118,14 @@ const People = () => {
       role: "Finance & Platform",
       imageUrl: johannImage,
       linkedIn: "https://www.linkedin.com/in/johannjenson/",
-      calendarLink: "https://calendar.app.google/uBmFhFXNBK6etNeH6",
+      calendarLink: "https://calendar.app.google/RLMeAvPw8VHmKrwJ7",
     },
     {
       name: "Ibrahim Alshuwaier",
       role: "Business Development & Partnerships",
       imageUrl: ibrahimImage,
       linkedIn: "",
+      calendarLink: "https://calendar.app.google/RLMeAvPw8VHmKrwJ7",
     },
   ];
 
@@ -189,66 +201,51 @@ const People = () => {
         ]}
       />
 
-      {/* Header */}
-      <div className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-md border-b border-border z-50">
+      {/* Sticky Header - matches Work with NIAS */}
+      <div className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-border/50 z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center justify-between px-6">
           <button 
             onClick={() => navigate('/')} 
-            className="hover:opacity-80 transition-opacity"
+            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
           >
-            <Waves className="h-8 w-8 text-foreground" />
+            <ArrowLeft className="h-5 w-5 group-hover:-translate-x-0.5 transition-transform" />
+            <span className="text-sm font-medium">Back</span>
           </button>
-          <Link 
-            to="/work-with-nias" 
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
+          <Button
+            asChild
+            size="sm"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground"
           >
-            Work With Us <ArrowRight className="h-4 w-4" />
-          </Link>
+            <Link to="/work-with-nias">Work with NIAS</Link>
+          </Button>
         </div>
       </div>
 
-      {/* Hero Section - Dark */}
-      <div className="bg-foreground text-background pt-32 pb-20 md:pt-40 md:pb-28">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl">
-            <Waves className="h-10 w-10 text-background/50 mb-8 animate-wave" strokeWidth={2} />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-6 leading-[1.1]">
-              Meet the<br />
-              <span className="font-medium">NIAS Team</span>
+      {/* Hero Section - matches Work with NIAS layout */}
+      <section className="relative pt-28 pb-20 md:pt-32 md:pb-24 px-6 overflow-hidden">
+        {/* Background Image with Overlay */}
+        <img 
+          src={heroBackground}
+          alt="Saudi Arabia landscape"
+          className="absolute inset-0 w-full h-full object-cover z-0 grayscale opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background z-0" />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center max-w-3xl mx-auto">
+            <Waves className="h-12 w-12 text-primary mx-auto mb-8 animate-wave" />
+            <h1 className="text-4xl md:text-5xl tracking-tight text-foreground mb-4">
+              Meet the <span className="font-semibold">NIAS Team</span>
             </h1>
-            <p className="text-lg md:text-xl text-background/60 max-w-xl leading-relaxed">
+            <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
               Our team combines decades of experience in finance, technology, real estate, and business development across Saudi Arabia and the Gulf region.
             </p>
           </div>
         </div>
-      </div>
-
-      {/* Stats Bar */}
-      <div className="bg-nias-gold/10 border-b border-nias-gold/20 py-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-light tracking-tight text-foreground mb-1">8</div>
-              <div className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">Team Members</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-light tracking-tight text-foreground mb-1">50+</div>
-              <div className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">Years Combined Experience</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-light tracking-tight text-foreground mb-1">5</div>
-              <div className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">Industries Covered</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-light tracking-tight text-foreground mb-1">3</div>
-              <div className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-muted-foreground font-medium">Continents</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
 
       {/* Team Sections */}
-      <div className="py-20 md:py-28">
+      <div className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6">
           <TeamSection 
             title="Founding Partners" 
@@ -260,12 +257,14 @@ const People = () => {
             title="Associates" 
             members={associates} 
             columns={4}
+            small
           />
           
           <TeamSection 
             title="Counsel & Advisory" 
             members={counselSupport} 
-            columns={2}
+            columns={4}
+            small
           />
         </div>
       </div>
@@ -277,53 +276,20 @@ const People = () => {
             Ready to work with us?
           </h2>
           <p className="text-muted-foreground mb-10 max-w-lg mx-auto">
-            Whether you're a company looking to expand into Saudi Arabia, an investor seeking opportunities, or an advisor with relevant expertise.
+            NIAS works with a curated set of global operators, institutional platforms, and senior advisors.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              asChild
-              className="w-full sm:w-auto bg-foreground text-background hover:bg-foreground/90 h-12 px-8 text-sm font-medium tracking-wide"
-            >
-              <Link to="/work-with-nias">
-                Partner With NIAS <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              className="w-full sm:w-auto border-foreground/20 text-foreground hover:bg-foreground hover:text-background h-12 px-8 text-sm font-medium tracking-wide"
-            >
-              <a href="https://calendar.app.google/uBmFhFXNBK6etNeH6" target="_blank" rel="noopener noreferrer">
-                <Calendar className="mr-2 h-4 w-4" />
-                Book a Call
-              </a>
-            </Button>
-          </div>
+          <Button
+            asChild
+            className="bg-foreground text-background hover:bg-foreground/90 h-12 px-8 text-sm font-medium tracking-wide"
+          >
+            <Link to="/work-with-nias">
+              Work with NIAS
+            </Link>
+          </Button>
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="bg-foreground text-background py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <Waves className="h-6 w-6" />
-              <span className="text-sm text-background/60">© 2024 NIAS. All rights reserved.</span>
-            </div>
-            <div className="flex items-center gap-6">
-              <Link to="/" className="text-sm text-background/60 hover:text-background transition-colors">
-                Home
-              </Link>
-              <Link to="/resources" className="text-sm text-background/60 hover:text-background transition-colors">
-                Resources
-              </Link>
-              <Link to="/work-with-nias" className="text-sm text-background/60 hover:text-background transition-colors">
-                Work With Us
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 };
