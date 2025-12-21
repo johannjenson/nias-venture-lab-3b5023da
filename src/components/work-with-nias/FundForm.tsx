@@ -420,7 +420,7 @@ const FundForm = () => {
                 <FormItem className="mb-5">
                   <FormLabel>Team Accommodation</FormLabel>
                   <FormControl>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
+                    <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-3 mt-2">
                       {accommodationOptions.map((option) => {
                         const Icon = option.icon;
                         const isSelected = field.value === option.value;
@@ -430,19 +430,21 @@ const FundForm = () => {
                             type="button"
                             onClick={() => field.onChange(option.value)}
                             className={cn(
-                              "flex flex-col items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                              "flex flex-row xs:flex-col items-center xs:justify-center gap-3 xs:gap-0 p-4 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
                               isSelected
                                 ? "border-primary bg-primary/5 shadow-sm"
                                 : "border-border bg-background hover:bg-muted/50"
                             )}
                           >
-                            <Icon className={cn("h-5 w-5 mb-1.5", isSelected ? "text-primary" : "text-muted-foreground")} />
-                            <span className={cn("text-sm font-medium text-center", isSelected ? "text-primary" : "text-foreground")}>
-                              {option.label}
-                            </span>
-                            <span className="text-[10px] text-muted-foreground mt-0.5 text-center leading-tight">
-                              {option.description}
-                            </span>
+                            <Icon className={cn("h-5 w-5 xs:mb-1.5 shrink-0", isSelected ? "text-primary" : "text-muted-foreground")} />
+                            <div className="flex flex-col xs:items-center">
+                              <span className={cn("text-sm font-medium xs:text-center", isSelected ? "text-primary" : "text-foreground")}>
+                                {option.label}
+                              </span>
+                              <span className="text-xs xs:text-[10px] text-muted-foreground xs:mt-0.5 xs:text-center leading-tight">
+                                {option.description}
+                              </span>
+                            </div>
                           </button>
                         );
                       })}
@@ -461,7 +463,7 @@ const FundForm = () => {
                 <FormItem>
                   <FormLabel>Office Space Requirements</FormLabel>
                   <FormControl>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
+                    <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-3 mt-2">
                       {officeSpaceOptions.map((option) => {
                         const Icon = option.icon;
                         const isSelected = field.value === option.value;
@@ -471,19 +473,21 @@ const FundForm = () => {
                             type="button"
                             onClick={() => field.onChange(option.value)}
                             className={cn(
-                              "flex flex-col items-center justify-center p-3 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
+                              "flex flex-row xs:flex-col items-center xs:justify-center gap-3 xs:gap-0 p-4 rounded-lg border-2 transition-all duration-200 hover:border-primary/50",
                               isSelected
                                 ? "border-primary bg-primary/5 shadow-sm"
                                 : "border-border bg-background hover:bg-muted/50"
                             )}
                           >
-                            <Icon className={cn("h-5 w-5 mb-1.5", isSelected ? "text-primary" : "text-muted-foreground")} />
-                            <span className={cn("text-sm font-medium text-center", isSelected ? "text-primary" : "text-foreground")}>
-                              {option.label}
-                            </span>
-                            <span className="text-[10px] text-muted-foreground mt-0.5 text-center leading-tight">
-                              {option.description}
-                            </span>
+                            <Icon className={cn("h-5 w-5 xs:mb-1.5 shrink-0", isSelected ? "text-primary" : "text-muted-foreground")} />
+                            <div className="flex flex-col xs:items-center">
+                              <span className={cn("text-sm font-medium xs:text-center", isSelected ? "text-primary" : "text-foreground")}>
+                                {option.label}
+                              </span>
+                              <span className="text-xs xs:text-[10px] text-muted-foreground xs:mt-0.5 xs:text-center leading-tight">
+                                {option.description}
+                              </span>
+                            </div>
                           </button>
                         );
                       })}
