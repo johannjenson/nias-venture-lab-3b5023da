@@ -259,13 +259,15 @@ const CompanyForm = () => {
           body: {
             type: "Companies",
             headers: [
-              "Submitted At", "Company Name", "Email", "Phone", "Website", "HQ Country", 
+              "Submitted At", "Full Name", "Role/Title", "Company Name", "Email", "Phone", "Website", "HQ Country", 
               "Year Founded", "Primary Sector", "Revenue Band", "Last 12 Months Revenue", 
               "EBITDA Status", "Profit Margin", "Desired Outcome", "Mandates", 
               "Advisory Mandate", "GCC Readiness", "Accommodation", "Office Space", "Deck URL"
             ],
             values: [
               new Date().toISOString(),
+              data.full_name,
+              data.role_title,
               data.company_name,
               data.email,
               data.phone,
