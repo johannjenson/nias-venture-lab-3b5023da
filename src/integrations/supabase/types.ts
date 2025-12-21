@@ -563,6 +563,8 @@ export type Database = {
           company_name: string | null
           company_revenue_band: string | null
           created_at: string
+          email: string | null
+          full_name: string | null
           fund_aum_band: string | null
           fund_aum_vintage: string | null
           fund_sector_focus: string | null
@@ -579,9 +581,11 @@ export type Database = {
           partnership_engagement_details: string | null
           partnership_engagement_type: string | null
           partnership_type: string | null
+          phone: string | null
           profit_margin: string | null
           relationship_type: string | null
           revenue_usd: string | null
+          role_title: string | null
           status: string
           strategic_metric_type: string | null
           strategic_metric_value: string | null
@@ -596,6 +600,8 @@ export type Database = {
           company_name?: string | null
           company_revenue_band?: string | null
           created_at?: string
+          email?: string | null
+          full_name?: string | null
           fund_aum_band?: string | null
           fund_aum_vintage?: string | null
           fund_sector_focus?: string | null
@@ -612,9 +618,11 @@ export type Database = {
           partnership_engagement_details?: string | null
           partnership_engagement_type?: string | null
           partnership_type?: string | null
+          phone?: string | null
           profit_margin?: string | null
           relationship_type?: string | null
           revenue_usd?: string | null
+          role_title?: string | null
           status?: string
           strategic_metric_type?: string | null
           strategic_metric_value?: string | null
@@ -629,6 +637,8 @@ export type Database = {
           company_name?: string | null
           company_revenue_band?: string | null
           created_at?: string
+          email?: string | null
+          full_name?: string | null
           fund_aum_band?: string | null
           fund_aum_vintage?: string | null
           fund_sector_focus?: string | null
@@ -645,9 +655,11 @@ export type Database = {
           partnership_engagement_details?: string | null
           partnership_engagement_type?: string | null
           partnership_type?: string | null
+          phone?: string | null
           profit_margin?: string | null
           relationship_type?: string | null
           revenue_usd?: string | null
+          role_title?: string | null
           status?: string
           strategic_metric_type?: string | null
           strategic_metric_value?: string | null

@@ -139,9 +139,11 @@ const AdvisorForm = () => {
         .from("partnership_applications" as any)
         .insert({
           application_type: "advisor",
+          full_name: data.advisor_name,
+          email: data.email,
+          phone: data.phone,
           advisor_name: data.advisor_name,
-          company_name: data.email,
-          advisor_role: data.phone + " | " + data.advisor_role,
+          advisor_role: data.advisor_role,
           opportunity_description: data.opportunity_description,
           relationship_type: data.relationship_type === "other" 
             ? data.relationship_other 

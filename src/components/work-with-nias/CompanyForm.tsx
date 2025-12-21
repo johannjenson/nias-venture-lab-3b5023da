@@ -225,9 +225,11 @@ const CompanyForm = () => {
         .from("partnership_applications" as any)
         .insert({
           application_type: "company",
+          full_name: data.full_name,
+          role_title: data.role_title,
+          email: data.email,
+          phone: data.phone,
           company_name: data.company_name,
-          advisor_name: data.email,
-          advisor_role: data.phone,
           company_footprint: data.website,
           geographic_footprint: data.hq_country,
           gulf_strategy: data.year_founded,
