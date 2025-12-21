@@ -20,6 +20,7 @@ interface TeamMember {
   imageUrl: string;
   linkedIn?: string;
   calendarLink?: string;
+  objectPosition?: string;
 }
 
 const LinkedInIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -36,7 +37,8 @@ const PersonCard = ({ person, small = false }: { person: TeamMember; small?: boo
   <div className="group relative">
     <div className={`relative overflow-hidden rounded-xl bg-white ${small ? 'aspect-square' : 'aspect-[4/5]'}`}>
       <img
-        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        style={{ objectPosition: person.objectPosition || 'top' }}
         src={person.imageUrl}
         alt={person.name}
       />
@@ -168,6 +170,7 @@ const People = () => {
       role: "Tech",
       imageUrl: lukasImage,
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
+      objectPosition: "center",
     },
   ];
 
