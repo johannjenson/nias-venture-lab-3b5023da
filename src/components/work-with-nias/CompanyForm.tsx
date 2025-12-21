@@ -379,92 +379,115 @@ const CompanyForm = () => {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-          {/* Basic Info */}
-          <FormField
-            control={form.control}
-            name="full_name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Full Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="John Smith" {...field} ref={firstInputRef} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {/* Section 1: Contact Information (Easy fields first for momentum) */}
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="full_name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Full Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="John Smith" {...field} ref={firstInputRef} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <FormField
-            control={form.control}
-            name="role_title"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Role (Job Title)</FormLabel>
-                <FormControl>
-                  <Input placeholder="CEO, Managing Director, etc." {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input type="email" placeholder="contact@company.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
 
-          <FormField
-            control={form.control}
-            name="company_name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Company Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Your Company Ltd." {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="role_title"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Role (Job Title)</FormLabel>
+                    <FormControl>
+                      <Input placeholder="CEO, Managing Director, etc." {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input type="email" placeholder="contact@company.com" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Phone Number</FormLabel>
+                    <FormControl>
+                      <PhoneInputWithCode value={field.value} onChange={field.onChange} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          </div>
 
-          <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone Number</FormLabel>
-                <FormControl>
-                  <PhoneInputWithCode value={field.value} onChange={field.onChange} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {/* Section 2: Company Information */}
+          <div className="border-t pt-5 space-y-4">
+            <FormField
+              control={form.control}
+              name="company_name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Company Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Your Company Ltd." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <FormField
-            control={form.control}
-            name="website"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Website</FormLabel>
-                <FormControl>
-                  <Input placeholder="https://yourcompany.com" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="website"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Website</FormLabel>
+                    <FormControl>
+                      <Input placeholder="https://yourcompany.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <div className="grid grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="year_founded"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Year Founded</FormLabel>
+                    <FormControl>
+                      <Input placeholder="e.g., 2015" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
             <FormField
               control={form.control}
               name="hq_country"
@@ -489,23 +512,10 @@ const CompanyForm = () => {
                 </FormItem>
               )}
             />
-
-            <FormField
-              control={form.control}
-              name="year_founded"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Year Founded</FormLabel>
-                  <FormControl>
-                    <Input placeholder="e.g., 2015" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
           </div>
 
-          {/* Primary Sector */}
+          {/* Section 3: Business Profile (Qualifying questions) */}
+          <div className="border-t pt-5">
           <FormField
             control={form.control}
             name="primary_sector"
@@ -957,6 +967,7 @@ const CompanyForm = () => {
               )}
             />
           )}
+          </div>
 
           {/* Disqualification Message */}
           {isDisqualified && (

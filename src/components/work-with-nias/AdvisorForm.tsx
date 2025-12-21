@@ -286,65 +286,72 @@ const AdvisorForm = () => {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-          <FormField
-            control={form.control}
-            name="advisor_name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Advisor or Advisory Firm Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Your name or firm" {...field} ref={firstInputRef} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {/* Section 1: Contact Information (Easy fields first) */}
+          <div className="space-y-4">
+            <FormField
+              control={form.control}
+              name="advisor_name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Advisor or Advisory Firm Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Your name or firm" {...field} ref={firstInputRef} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input type="email" placeholder="contact@advisory.com" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input type="email" placeholder="contact@advisory.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone Number</FormLabel>
-                <FormControl>
-                  <PhoneInputWithCode value={field.value} onChange={field.onChange} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Phone Number</FormLabel>
+                    <FormControl>
+                      <PhoneInputWithCode value={field.value} onChange={field.onChange} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          </div>
 
-          <FormField
-            control={form.control}
-            name="advisor_role"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Nature of Your Advisory Role</FormLabel>
-                <FormControl>
-                  <Textarea 
-                    placeholder="e.g., strategic advisor, board member, consultant, operator, subject-matter expert, industry executive"
-                    className="min-h-[80px]"
-                    {...field} 
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {/* Section 2: Advisory Details */}
+          <div className="border-t pt-5 space-y-5">
+            <FormField
+              control={form.control}
+              name="advisor_role"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Nature of Your Advisory Role</FormLabel>
+                  <FormControl>
+                    <Textarea 
+                      placeholder="e.g., strategic advisor, board member, consultant, operator, subject-matter expert, industry executive"
+                      className="min-h-[80px]"
+                      {...field} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
           <FormField
             control={form.control}
@@ -424,7 +431,9 @@ const AdvisorForm = () => {
               </FormItem>
             )}
           />
+          </div>
 
+          {/* Section 3: Opportunity Details */}
           <div className="border-t pt-6">
             <h3 className="text-sm font-medium text-foreground mb-1">Business maturity, operating scale, and general commercial indicators.</h3>
             

@@ -235,75 +235,84 @@ const FundForm = () => {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-          <FormField
-            control={form.control}
-            name="full_name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Full Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="John Smith" {...field} ref={firstInputRef} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {/* Section 1: Contact Information (Easy fields first) */}
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="full_name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Full Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="John Smith" {...field} ref={firstInputRef} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <FormField
-            control={form.control}
-            name="role_title"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Role (Job Title)</FormLabel>
-                <FormControl>
-                  <Input placeholder="Managing Partner, CIO, etc." {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input type="email" placeholder="contact@fund.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
 
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input type="email" placeholder="contact@fund.com" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="role_title"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Role (Job Title)</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Managing Partner, CIO, etc." {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone Number</FormLabel>
-                <FormControl>
-                  <PhoneInputWithCode value={field.value} onChange={field.onChange} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Phone Number</FormLabel>
+                    <FormControl>
+                      <PhoneInputWithCode value={field.value} onChange={field.onChange} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          </div>
 
-          <FormField
-            control={form.control}
-            name="fund_name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Fund Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="e.g., Acme Ventures Fund III" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {/* Section 2: Organization Information */}
+          <div className="border-t pt-5 space-y-5">
+            <FormField
+              control={form.control}
+              name="fund_name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Fund / Organization Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g., Acme Ventures Fund III" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
           <FormField
             control={form.control}
@@ -394,8 +403,9 @@ const FundForm = () => {
               </FormItem>
             )}
           />
+          </div>
 
-          {/* Regional Presence Section */}
+          {/* Section 3: Regional Presence (Optional) */}
           <div className="border-t pt-6 mt-2">
             <h3 className="text-sm font-medium text-foreground mb-1">Regional Presence</h3>
             <p className="text-xs text-muted-foreground mb-4">
