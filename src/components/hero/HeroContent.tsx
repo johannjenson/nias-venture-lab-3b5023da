@@ -28,7 +28,7 @@ const HeroContent = () => {
       {/* News Ticker */}
       <div className="bg-nias-gold/10 border-b border-nias-gold/20 py-2 px-4 mt-[88px] md:mt-[52px]">
         <a
-          href="https://access.nias.io/investors/insights/saudi-arabia-budget-2026"
+          href="https://access.nias.io/private/insights/saudi-arabia-budget-2026"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 group"
