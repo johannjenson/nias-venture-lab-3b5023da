@@ -1252,6 +1252,9 @@ const CompanyForm = () => {
                 )}
               </div>
 
+              <p className="text-xs text-muted-foreground text-center">
+                A copy of your application will be sent to your email.
+              </p>
               <Button 
                 type="submit" 
                 size="lg" 
