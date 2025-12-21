@@ -129,7 +129,7 @@ const People = () => {
       linkedIn: "https://www.linkedin.com/in/johannjenson/",
       calendarLink: "https://calendar.app.google/RLMeAvPw8VHmKrwJ7",
       objectPosition: "center 5%",
-      scale: 0.8,
+      scale: 0.9,
     },
     {
       name: "Ibrahim Alshuwaier",
@@ -180,7 +180,6 @@ const People = () => {
       role: "Tech",
       imageUrl: lukasImage,
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
-      objectPosition: "center 10%",
     },
   ];
 
