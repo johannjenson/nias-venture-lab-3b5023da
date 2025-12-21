@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Waves, Calendar, ArrowLeft } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
@@ -36,9 +37,18 @@ const LinkedInIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const PersonCard = ({ person, small = false }: { person: TeamMember; small?: boolean }) => {
   const baseScale = person.scale || 1;
+  const [isActive, setIsActive] = useState(false);
+  
+  const handleTap = () => {
+    setIsActive(!isActive);
+  };
+  
   return (
   <div className="group relative">
-    <div className={`relative overflow-hidden rounded-xl bg-white ${small ? 'aspect-square' : 'aspect-[4/5]'}`}>
+    <div 
+      className={`relative overflow-hidden rounded-xl bg-white ${small ? 'aspect-square' : 'aspect-[4/5]'}`}
+      onClick={handleTap}
+    >
       <img
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         style={{ 
@@ -48,16 +58,17 @@ const PersonCard = ({ person, small = false }: { person: TeamMember; small?: boo
         src={person.imageUrl}
         alt={person.name}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
+      <div className={`absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'} md:opacity-0 md:group-hover:opacity-100`} />
       
-      {/* Actions (hover on desktop, always visible on mobile) */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-0 md:translate-y-full md:group-hover:translate-y-0 transition-transform duration-300">
+      {/* Actions (tap on mobile, hover on desktop) */}
+      <div className={`absolute bottom-0 left-0 right-0 p-4 transition-transform duration-300 ${isActive ? 'translate-y-0' : 'translate-y-full'} md:translate-y-full md:group-hover:translate-y-0`}>
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
           {person.calendarLink && (
             <a
               href={person.calendarLink}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="flex items-center justify-center gap-2 bg-background text-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-background/90 transition-colors w-full sm:w-auto"
             >
               <Calendar className="h-4 w-4" />
@@ -69,6 +80,7 @@ const PersonCard = ({ person, small = false }: { person: TeamMember; small?: boo
               href={person.linkedIn}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="flex items-center justify-center w-full sm:w-10 h-10 bg-background/20 backdrop-blur-sm text-background rounded-lg hover:bg-background/30 transition-colors"
             >
               <LinkedInIcon className="h-5 w-5" />
@@ -170,7 +182,6 @@ const People = () => {
       role: "Tech",
       imageUrl: lukasImage,
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
-      objectPosition: "center 0%",
     },
   ];
 
@@ -225,7 +236,7 @@ const People = () => {
       </div>
 
       {/* Hero Section - matches Work with NIAS layout */}
-      <section className="relative pt-28 pb-20 md:pt-32 md:pb-24 px-6 overflow-hidden">
+      <section className="relative pt-28 pb-10 md:pt-32 md:pb-12 px-6 overflow-hidden">
         {/* Background Image with Overlay */}
         <img 
           src={heroBackground}
@@ -248,7 +259,7 @@ const People = () => {
       </section>
 
       {/* Team Sections */}
-      <div className="py-16 md:py-24">
+      <div className="py-10 md:py-16">
         <div className="max-w-7xl mx-auto px-6">
           <TeamSection 
             title="Founding Partners" 
@@ -257,7 +268,7 @@ const People = () => {
           />
           
           <TeamSection 
-            title="Associates" 
+            title="Associates"
             members={associates} 
             columns={4}
             small
