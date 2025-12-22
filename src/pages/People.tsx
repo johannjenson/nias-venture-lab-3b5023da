@@ -10,6 +10,7 @@ import turkiImage from "@/assets/turki-alshubaki.jpg";
 import mohammedImage from "@/assets/mohammed-khalid-ibn-salamah.jpg";
 import ibrahimAlsemariImage from "@/assets/ibrahim-alsemari.png";
 import lukasImage from "@/assets/lukas-gaebler.png";
+import hasanImage from "@/assets/hasan-bakalla.jpg";
 import heroBackground from "@/assets/work-with-nias-hero.png";
 import { Button } from "@/components/ui/button";
 import PersonSchema from "@/components/seo/PersonSchema";
@@ -184,6 +185,12 @@ const People = () => {
       linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
       objectPosition: "center -55px",
     },
+    {
+      name: "Hasan Bakalla",
+      role: "Family Offices",
+      imageUrl: hasanImage,
+      linkedIn: "https://www.linkedin.com/in/hasan-bakalla-mba-6450b17/",
+    },
   ];
 
   return (
@@ -212,7 +219,8 @@ const People = () => {
           { name: "Turki Alshubaki", jobTitle: "Associate - Real Estate" },
           { name: "Mohammed Khalid Ibn Salamah", jobTitle: "Associate - Real Estate" },
           { name: "Ibrahim AlSemari", jobTitle: "Counsel & Advisory - Finance", linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162" },
-          { name: "Lukas Gaebler", jobTitle: "Counsel & Advisory - Tech", linkedIn: "https://at.linkedin.com/in/lukas-gaebler" }
+          { name: "Lukas Gaebler", jobTitle: "Counsel & Advisory - Tech", linkedIn: "https://at.linkedin.com/in/lukas-gaebler" },
+          { name: "Hasan Bakalla", jobTitle: "Counsel & Advisory - Family Offices", linkedIn: "https://www.linkedin.com/in/hasan-bakalla-mba-6450b17/" }
         ]}
       />
 
