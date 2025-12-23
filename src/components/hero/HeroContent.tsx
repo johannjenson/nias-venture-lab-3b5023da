@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import saudiTimesLogo from "@/assets/saudi-times-logo.png";
 import diwanLogo from "@/assets/diwan-logo.png";
+import { trackCTAClick, trackExternalLink } from "@/lib/analytics";
 
 const regions = ["Saudi Arabia", "Kuwait", "the GCC"];
 
@@ -32,6 +33,7 @@ const HeroContent = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 group"
+          onClick={() => trackCTAClick('saudi_budget_announcement', 'hero', 'https://access.nias.io/private/insights/saudi-arabia-budget-2026')}
         >
           <span className="text-[10px] md:text-xs text-foreground/70 uppercase tracking-[0.1em]">
             Just Announced
@@ -67,7 +69,12 @@ const HeroContent = () => {
                 asChild
                 className="w-full sm:w-64 bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground h-12 px-6 text-sm font-medium tracking-wide"
               >
-                <a href="https://access.nias.io/investors" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href="https://access.nias.io/investors" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => trackCTAClick('for_institutional_platforms', 'hero', 'https://access.nias.io/investors')}
+                >
                   For Institutional Platforms <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
@@ -76,7 +83,12 @@ const HeroContent = () => {
                 variant="outline"
                 className="w-full sm:w-64 border-nias-green text-nias-green hover:bg-nias-green hover:text-nias-green-foreground h-12 px-6 text-sm font-medium tracking-wide"
               >
-                <a href="https://access.nias.io/" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href="https://access.nias.io/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => trackCTAClick('for_founders_advisors', 'hero', 'https://access.nias.io/')}
+                >
                   For Founders & Advisors
                 </a>
               </Button>
@@ -85,7 +97,7 @@ const HeroContent = () => {
                 variant="outline"
                 className="w-full sm:w-64 border-foreground/20 text-foreground hover:bg-foreground hover:text-background h-12 px-6 text-sm font-medium tracking-wide"
               >
-                <Link to="/resources">
+                <Link to="/resources" onClick={() => trackCTAClick('explore_vision_2030', 'hero', '/resources')}>
                   Explore Vision 2030 Sectors
                 </Link>
               </Button>
@@ -129,6 +141,7 @@ const HeroContent = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="opacity-70 hover:opacity-100 transition-opacity"
+                onClick={() => trackExternalLink('https://thesauditimes.net/en/', 'The Saudi Times', 'hero')}
               >
                 <img src={saudiTimesLogo} alt="The Saudi Times" className="h-8 md:h-10 w-auto" />
               </a>
@@ -137,6 +150,7 @@ const HeroContent = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="opacity-70 hover:opacity-100 transition-opacity"
+                onClick={() => trackExternalLink('https://www.the-diwan.com/', 'The Diwan', 'hero')}
               >
                 <img src={diwanLogo} alt="The Diwan" className="h-24 md:h-[7.5rem] w-auto" />
               </a>
