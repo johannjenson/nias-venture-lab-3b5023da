@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { FormData } from "./types";
 import { IndustryType } from "../crm/types/contact";
 import { PostgrestError } from "@supabase/supabase-js";
+import { trackFormSubmit, trackFormStep, trackConversion } from "@/lib/analytics";
 
 const initialFormData: FormData = {
   fullName: "",
@@ -103,12 +104,15 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
         console.error('Error sending confirmation email:', emailError);
       }
 
+      trackFormSubmit('network_request', true);
+      trackConversion('NETWORK_REQUEST_SUBMITTED');
       toast.success("Thank you for your interest in joining the Nias Network. We'll review your application and be in touch soon!");
       onCloseModal(false);
       setFormData(initialFormData);
       setStep(1);
     } catch (error) {
       console.error('Error submitting form:', error);
+      trackFormSubmit('network_request', false);
       toast.error("There was an error submitting your application. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -124,6 +128,7 @@ export const useRequestInvite = (onCloseModal: (open: boolean) => void) => {
 
   const handleNext = (e: React.FormEvent) => {
     e.preventDefault();
+    trackFormStep('network_request', 1, 'basic_info');
     setStep(2);
   };
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
+import { trackCTAClick, trackGatheringView, trackFormSubmit, trackFormStart, trackConversion } from "@/lib/analytics";
 
 // Hero images for gatherings
 import fii9Hero from "@/assets/fii9-hero.png";
@@ -24,7 +25,10 @@ const GatheringCard = ({ event }: { event: Gathering }) => {
   return (
     <Link 
       to={event.href}
-      onClick={() => window.scrollTo(0, 0)}
+      onClick={() => {
+        window.scrollTo(0, 0);
+        trackGatheringView(event.title, event.href);
+      }}
       className="block p-5 bg-secondary/40 border border-border/30 hover:border-border/60 transition-colors group relative overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -211,7 +215,13 @@ const AudienceCTAs = () => {
           
           <div className="mt-16 text-center">
             <Button asChild className="bg-foreground hover:bg-foreground/90 text-background h-11 px-8 text-sm font-medium">
-              <Link to="/work-with-nias" onClick={() => window.scrollTo(0, 0)}>
+              <Link 
+                to="/work-with-nias" 
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                  trackCTAClick('work_with_nias', 'work_with_nias_section', '/work-with-nias');
+                }}
+              >
                 Work with NIAS <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -240,7 +250,15 @@ const AudienceCTAs = () => {
                 asChild
                 className="w-full bg-nias-green hover:bg-nias-green/90 text-nias-green-foreground h-11 text-sm font-medium"
               >
-                <a href="https://access.nias.io/" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href="https://access.nias.io/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    trackCTAClick('request_access', 'network_section', 'https://access.nias.io/');
+                    trackConversion('ACCESS_CTA_CLICKED');
+                  }}
+                >
                   Request Access <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
@@ -253,7 +271,15 @@ const AudienceCTAs = () => {
                 asChild
                 className="w-full bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground h-11 text-sm font-medium"
               >
-                <a href="https://access.nias.io/investors" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href="https://access.nias.io/investors" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    trackCTAClick('request_membership', 'network_section', 'https://access.nias.io/investors');
+                    trackConversion('PRIVATE_CTA_CLICKED');
+                  }}
+                >
                   Request Membership <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
