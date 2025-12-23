@@ -131,6 +131,7 @@ const gccReadinessOptions = [
 const CompanyForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitAnyway, setSubmitAnyway] = useState(false);
   const firstInputRef = useRef<HTMLInputElement>(null);
 
   // Removed auto-focus on first input
@@ -193,7 +194,7 @@ const CompanyForm = () => {
   const showOtherSector = watchedPrimarySector === "other";
 
   const onSubmit = async (data: CompanyFormData) => {
-    if (isDisqualified) return;
+    if (isDisqualified && !submitAnyway) return;
     
     setIsSubmitting(true);
     try {
@@ -974,7 +975,7 @@ const CompanyForm = () => {
           </div>
 
           {/* Disqualification Message */}
-          {isDisqualified && (
+          {isDisqualified && !submitAnyway && (
             <div className="rounded-lg border border-muted bg-muted/30 p-4">
               <div className="flex items-start gap-3">
                 <AlertCircle className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
@@ -990,13 +991,25 @@ const CompanyForm = () => {
                   >
                     Explore NIAS Access →
                   </a>
+                  <div className="pt-2 border-t border-border/50 mt-3">
+                    <button
+                      type="button"
+                      onClick={() => setSubmitAnyway(true)}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-2"
+                    >
+                      Submit anyway
+                    </button>
+                    <p className="text-xs text-muted-foreground/70 mt-1">
+                      NIAS will forward your application to a trusted partner for review.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           )}
 
-          {/* Only show remaining fields if not disqualified */}
-          {!isDisqualified && (
+          {/* Only show remaining fields if not disqualified or user chose to submit anyway */}
+          {(!isDisqualified || submitAnyway) && (
             <>
               {/* Desired Outcome */}
               <FormField
