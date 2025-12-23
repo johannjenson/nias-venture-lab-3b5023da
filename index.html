@@ -2,14 +2,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) - Primary -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PF5EZ7EWMV"></script>
+    <!-- Cross-domain tracking for access.nias.io -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0XFR2MD37G"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
+      // Primary GA property
       gtag('config', 'G-PF5EZ7EWMV');
+      
+      // Cross-domain tracking property
+      gtag('config', 'G-0XFR2MD37G', {
+        'linker': {
+          'domains': ['nias.io', 'access.nias.io'],
+          'accept_incoming': true
+        }
+      });
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
