@@ -28,6 +28,7 @@ import { toast } from "sonner";
 import { Loader2, Hotel, Home, Building, Briefcase, Users, Building2, X, Upload, Search, Globe, Handshake, MessageSquare, TrendingUp, Landmark, BarChart3, Rocket, Crown, MapPin, DollarSign } from "lucide-react";
 import PhoneInputWithCode from "./PhoneInputWithCode";
 import { cn } from "@/lib/utils";
+import { trackFormSubmit, trackConversion } from "@/lib/analytics";
 
 const advisorSchema = z.object({
   advisor_name: z.string().min(1, "Advisor/firm name is required").max(200),
@@ -242,6 +243,10 @@ const AdvisorForm = () => {
       } catch (emailError) {
         console.error('Error sending confirmation email:', emailError);
       }
+
+      // Track analytics
+      trackFormSubmit('advisor_application', true, 'work_with_nias');
+      trackConversion('ADVISOR_APPLICATION_SUBMITTED', { advisor_name: data.advisor_name });
 
       toast.success("Application submitted successfully!");
       setIsSubmitted(true);

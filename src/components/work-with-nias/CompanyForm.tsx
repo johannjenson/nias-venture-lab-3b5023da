@@ -29,6 +29,7 @@ import { toast } from "sonner";
 import { Loader2, AlertCircle, Coins, TrendingUp, TrendingDown, Minus, BarChart3, Building2, Rocket, Crown, Cpu, Trophy, Zap, GraduationCap, Palette, MoreHorizontal, Hotel, Home, Building, Briefcase, Users, X } from "lucide-react";
 import PhoneInputWithCode from "./PhoneInputWithCode";
 import { cn } from "@/lib/utils";
+import { trackFormSubmit, trackConversion } from "@/lib/analytics";
 import { allCountries } from "@/data/countries";
 
 const companySchema = z.object({
@@ -338,6 +339,10 @@ const CompanyForm = () => {
       } catch (emailError) {
         console.error('Error sending confirmation email:', emailError);
       }
+
+      // Track analytics
+      trackFormSubmit('company_application', true, 'work_with_nias');
+      trackConversion('COMPANY_APPLICATION_SUBMITTED', { company_name: data.company_name });
 
       toast.success("Application submitted successfully!");
       setIsSubmitted(true);

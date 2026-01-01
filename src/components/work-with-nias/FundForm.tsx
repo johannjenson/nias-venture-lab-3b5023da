@@ -20,6 +20,7 @@ import { Loader2, Hotel, Home, Building, Briefcase, Users, Building2, X, Upload 
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import PhoneInputWithCode from "./PhoneInputWithCode";
+import { trackFormSubmit, trackConversion } from "@/lib/analytics";
 
 const fundSchema = z.object({
   full_name: z.string().min(1, "Full name is required").max(200),
@@ -193,6 +194,10 @@ const FundForm = () => {
       } catch (emailError) {
         console.error('Error sending confirmation email:', emailError);
       }
+
+      // Track analytics
+      trackFormSubmit('fund_application', true, 'work_with_nias');
+      trackConversion('FUND_APPLICATION_SUBMITTED', { fund_name: data.fund_name });
 
       toast.success("Application submitted successfully!");
       setIsSubmitted(true);
