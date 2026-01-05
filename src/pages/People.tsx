@@ -11,7 +11,7 @@ import mohammedImage from "@/assets/mohammed-khalid-ibn-salamah.jpg";
 import ibrahimAlsemariImage from "@/assets/ibrahim-alsemari.png";
 import lukasImage from "@/assets/lukas-gaebler.png";
 import hasanImage from "@/assets/hasan-bakalla.jpg";
-import peterImage from "@/assets/peter-lada.jpeg";
+import peterImage from "@/assets/peter-lada.png";
 import heroBackground from "@/assets/work-with-nias-hero.png";
 import { Button } from "@/components/ui/button";
 import PersonSchema from "@/components/seo/PersonSchema";
