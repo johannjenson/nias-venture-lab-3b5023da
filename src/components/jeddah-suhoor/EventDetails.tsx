@@ -76,7 +76,7 @@ const EventDetails = () => {
             href="https://gulf-edu.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:opacity-70 transition-opacity"
+            className="hover:opacity-70 transition-opacity ml-8"
           >
             <span className="text-foreground font-serif text-lg leading-snug block" style={{ fontFamily: "Georgia, 'Times New Roman', serif", maxWidth: "160px" }}>
               Gulf Education Investment Company

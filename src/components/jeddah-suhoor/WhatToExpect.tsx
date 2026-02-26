@@ -25,7 +25,7 @@ const WhatToExpect = () => {
           <div>
             <h3 className="text-lg font-semibold text-primary mb-2">A curated guest list</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Senior principals from business, government, and the broader ecosystem, assembled personally. Attendance is not applied for; it is extended.
+              Senior principals from business, government, and the broader ecosystem, assembled personally.
             </p>
           </div>
         </div>
