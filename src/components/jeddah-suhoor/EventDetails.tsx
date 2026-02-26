@@ -1,6 +1,7 @@
 import { Calendar, Clock, MapPin, Users } from "lucide-react";
 import niasLogo from "@/assets/nias-logo.png";
 import diwanLogo from "@/assets/diwan-logo.png";
+import gulfEduLogo from "@/assets/gulf-edu-logo.png";
 
 const EventDetails = () => {
   return (
@@ -78,9 +79,7 @@ const EventDetails = () => {
             rel="noopener noreferrer"
             className="hover:opacity-70 transition-opacity ml-8"
           >
-            <span className="text-foreground font-serif text-lg leading-snug block" style={{ fontFamily: "Georgia, 'Times New Roman', serif", maxWidth: "160px" }}>
-              Gulf Education Investment Company
-            </span>
+            <img src={gulfEduLogo} alt="Gulf Education Investment Company" className="h-10 w-auto" style={{ filter: "invert(1)" }} />
           </a>
         </div>
       </div>
