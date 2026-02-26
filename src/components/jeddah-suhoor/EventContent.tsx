@@ -19,8 +19,8 @@ const EventContent = () => {
 
         {/* Hosted by — full width */}
         <div className="mt-12 pt-10 border-t border-border">
-          <h4 className="text-xs uppercase tracking-[0.15em] font-semibold text-muted-foreground mb-8">Hosted by</h4>
-          <div className="flex items-center gap-12 flex-wrap">
+          <h4 className="text-xs uppercase tracking-[0.15em] font-semibold text-muted-foreground mb-10 text-center">Hosted by</h4>
+          <div className="flex items-center justify-center gap-16 flex-wrap">
             <a href="https://www.alj.com/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
               <img src={aljLogo} alt="Abdul Latif Jameel" className="h-14 w-auto" />
             </a>
