@@ -42,6 +42,7 @@ import WorkWithNias from "./pages/WorkWithNias";
 import USSaudiForumDinner from "./pages/USSaudiForumDinner";
 import DoersSummitEvent from "./pages/DoersSummitEvent";
 import JeddahSuhoorDinner from "./pages/JeddahSuhoorDinner";
+import RiyadhSuhoorDinner from "./pages/RiyadhSuhoorDinner";
 
 const queryClient = new QueryClient();
 
@@ -73,6 +74,8 @@ const App = () => (
             {/* Gatherings routes (aliases for events) */}
             <Route path="/events/jeddah-suhoor-dinner" element={<JeddahSuhoorDinner />} />
             <Route path="/gatherings/jeddah-suhoor-dinner" element={<JeddahSuhoorDinner />} />
+            <Route path="/gatherings/riyadh-suhoor-dinner" element={<RiyadhSuhoorDinner />} />
+            <Route path="/events/riyadh-suhoor-dinner" element={<RiyadhSuhoorDinner />} />
             <Route path="/gatherings/doers-summit-dubai-panel" element={<DoersSummitEvent />} />
             <Route path="/gatherings/us-saudi-forum-dinner" element={<USSaudiForumDinner />} />
             <Route path="/gatherings/biban25-art-gala-dinner" element={<Biban25Event />} />
