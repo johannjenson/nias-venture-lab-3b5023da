@@ -32,18 +32,15 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                   alt="Riyadh Suhoor Dinner — NIAS Private Gathering"
                   className="w-full h-auto rounded-lg shadow-xl object-cover object-center"
                 />
-                {/* Crescent moon SVG overlay — centered above the lantern chain */}
-                <svg
-                  viewBox="0 0 100 100"
+                {/* Crescent moon overlay — positioned above the lantern chain */}
+                <Moon
                   className="absolute"
-                  style={{ top: '3%', left: '50%', transform: 'translateX(-50%)', width: '7%', opacity: 0.92 }}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M50 10 C30 10 15 27 15 48 C15 69 30 86 50 86 C38 78 30 64 30 48 C30 32 38 18 50 10Z"
-                    fill="#c9a84c"
-                  />
-                </svg>
+                  style={{ top: '2%', left: '50%', transform: 'translateX(-50%)' }}
+                  size={32}
+                  fill="#c9a84c"
+                  color="#c9a84c"
+                  strokeWidth={0}
+                />
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-border via-muted to-border rounded-b-lg opacity-60" />
               </div>
             </div>
