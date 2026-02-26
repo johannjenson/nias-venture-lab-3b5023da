@@ -54,7 +54,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
               </p>
 
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-5 animate-fade-in leading-tight">
-                A Private Suhoor Dinner<br className="hidden lg:block" /> in Jeddah
+                A Private Suhoor Dinner<br className="hidden lg:block" /> by Abdul Latif Jameel x NIAS
               </h1>
 
               <p className="text-lg text-muted-foreground mb-4 animate-fade-in leading-relaxed">
