@@ -41,6 +41,7 @@ import RealEstate from "./pages/RealEstate";
 import WorkWithNias from "./pages/WorkWithNias";
 import USSaudiForumDinner from "./pages/USSaudiForumDinner";
 import DoersSummitEvent from "./pages/DoersSummitEvent";
+import JeddahSuhoorDinner from "./pages/JeddahSuhoorDinner";
 
 const queryClient = new QueryClient();
 
@@ -70,6 +71,8 @@ const App = () => (
             <Route path="/events/us-saudi-forum-dinner" element={<USSaudiForumDinner />} />
             <Route path="/events/doers-summit-dubai-panel" element={<DoersSummitEvent />} />
             {/* Gatherings routes (aliases for events) */}
+            <Route path="/events/jeddah-suhoor-dinner" element={<JeddahSuhoorDinner />} />
+            <Route path="/gatherings/jeddah-suhoor-dinner" element={<JeddahSuhoorDinner />} />
             <Route path="/gatherings/doers-summit-dubai-panel" element={<DoersSummitEvent />} />
             <Route path="/gatherings/us-saudi-forum-dinner" element={<USSaudiForumDinner />} />
             <Route path="/gatherings/biban25-art-gala-dinner" element={<Biban25Event />} />
