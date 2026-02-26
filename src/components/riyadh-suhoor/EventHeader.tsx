@@ -30,7 +30,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                 <img
                   src={heroImage}
                   alt="Riyadh Suhoor Dinner — NIAS Private Gathering"
-                  className="w-full h-auto rounded-lg shadow-xl object-cover"
+                  className="w-full h-auto rounded-lg shadow-xl object-cover object-center"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-border via-muted to-border rounded-b-lg opacity-60" />
               </div>
