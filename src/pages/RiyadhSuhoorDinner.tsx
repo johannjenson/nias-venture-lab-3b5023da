@@ -6,7 +6,7 @@ import EventSEO from "@/components/riyadh-suhoor/EventSEO";
 
 const RiyadhSuhoorDinner = () => {
   const handleRequestClick = () => {
-    window.open('https://lu.ma/riyadh-suhoor', '_blank', 'noopener,noreferrer');
+    window.open('https://luma.com/ku3goiag', '_blank', 'noopener,noreferrer');
   };
 
   return (
