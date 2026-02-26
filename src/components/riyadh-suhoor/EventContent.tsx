@@ -2,7 +2,6 @@ import EventDetails from "./EventDetails";
 import GuestsOfHonor from "./GuestsOfHonor";
 import WhatToExpect from "./WhatToExpect";
 import niasLogo from "@/assets/nias-logo.png";
-import sunriseMarketingLogo from "@/assets/sunrise-marketing-logo.png";
 
 const EventContent = () => {
   return (
@@ -21,14 +20,6 @@ const EventContent = () => {
           <h4 className="text-xs uppercase tracking-[0.15em] font-semibold text-muted-foreground mb-10 text-center">Hosted by</h4>
           <div className="flex items-center justify-center gap-16 flex-wrap">
             <img src={niasLogo} alt="NIAS.io" className="h-16 w-auto" />
-            <a
-              href="https://www.linkedin.com/company/sunrisemarketing/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80 transition-opacity"
-            >
-              <img src={sunriseMarketingLogo} alt="Sunrise Marketing" className="h-28 w-auto" />
-            </a>
           </div>
         </div>
       </div>

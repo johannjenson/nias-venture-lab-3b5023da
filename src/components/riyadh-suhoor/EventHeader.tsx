@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Moon, Lock, Waves } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import heroImage from "@/assets/jeddah-suhoor-hero.jpg";
+import heroImage from "@/assets/riyadh-suhoor-hero.jpg";
 
 interface EventHeaderProps {
   onRequestClick: () => void;
