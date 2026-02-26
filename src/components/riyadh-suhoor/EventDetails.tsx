@@ -39,7 +39,6 @@ const EventDetails = () => {
           <div>
             <h3 className="text-xl font-semibold text-primary mb-1">Venue</h3>
             <p className="text-muted-foreground">
-              A private residence<br />
               Riyadh, Saudi Arabia
             </p>
             <p className="text-sm text-muted-foreground/60 mt-1 italic">Exact address shared upon confirmation</p>
