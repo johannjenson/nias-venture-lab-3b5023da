@@ -7,7 +7,7 @@ import EventSEO from "@/components/jeddah-suhoor/EventSEO";
 const JeddahSuhoorDinner = () => {
   const handleRequestClick = () => {
     // Opens the invitation request form (lu.ma link or modal to be added)
-    window.open('https://lu.ma/jeddah-suhoor', '_blank', 'noopener,noreferrer');
+    window.open('https://luma.com/qb9ucibu', '_blank', 'noopener,noreferrer');
   };
 
   return (
