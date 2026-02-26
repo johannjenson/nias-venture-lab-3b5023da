@@ -79,7 +79,7 @@ const EventDetails = () => {
             rel="noopener noreferrer"
             className="hover:opacity-70 transition-opacity ml-8"
           >
-            <img src={gulfEduLogo} alt="Gulf Education Investment Company" className="h-10 w-auto" style={{ filter: "invert(1)" }} />
+            <img src={gulfEduLogo} alt="Gulf Education Investment Company" className="h-40 w-auto" style={{ filter: "invert(1)" }} />
           </a>
         </div>
       </div>
