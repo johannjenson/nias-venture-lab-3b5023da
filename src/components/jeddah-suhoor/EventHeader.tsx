@@ -58,11 +58,11 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
               </h1>
 
               <p className="text-lg text-muted-foreground mb-4 animate-fade-in leading-relaxed">
-                An intimate late-evening gathering for a select circle of senior leaders — convened ahead of the World Economic Forum's Global Collaboration and Growth Meeting in Jeddah, April 22–23.
+                An intimate late-evening gathering for a select circle of senior leaders, convened ahead of the World Economic Forum's Global Collaboration and Growth Meeting in Jeddah, April 22–23.
               </p>
 
               <p className="text-base text-muted-foreground/70 mb-8 animate-fade-in italic">
-                Conversation, connection, and Suhoor — by referral only.
+                Conversation, connection, and Suhoor. By referral only.
               </p>
 
               <Button

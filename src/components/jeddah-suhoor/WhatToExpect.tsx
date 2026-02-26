@@ -13,7 +13,7 @@ const WhatToExpect = () => {
           <div>
             <h3 className="text-lg font-semibold text-primary mb-2">Off-the-record dialogue</h3>
             <p className="text-muted-foreground leading-relaxed">
-              A candid conversation among people who rarely share a table — about where the region is heading, what the WEF agenda signals, and where the real opportunities lie in 2026 and beyond.
+              A candid conversation among people who rarely share a table: where the region is heading, what the WEF agenda signals, and where the real opportunities lie in 2026 and beyond.
             </p>
           </div>
         </div>
@@ -25,7 +25,7 @@ const WhatToExpect = () => {
           <div>
             <h3 className="text-lg font-semibold text-primary mb-2">A curated guest list</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Senior principals from business, government, and the broader ecosystem — invited personally, not through open registration. The people in the room shape decisions; they don't just attend events.
+              Senior principals from business, government, and the broader ecosystem, invited personally rather than through open registration. The people in the room shape decisions; they don't just attend events.
             </p>
           </div>
         </div>
@@ -37,7 +37,7 @@ const WhatToExpect = () => {
           <div>
             <h3 className="text-lg font-semibold text-primary mb-2">The right moment</h3>
             <p className="text-muted-foreground leading-relaxed">
-              With global leaders converging on Jeddah for the WEF meeting, the city becomes a stage for meaningful connection. This dinner positions you ahead of that conversation — in the most genuine setting possible.
+              With global leaders converging on Jeddah for the WEF meeting, the city becomes a stage for meaningful connection. This dinner positions you ahead of that conversation, in the most genuine setting possible.
             </p>
           </div>
         </div>
@@ -45,7 +45,7 @@ const WhatToExpect = () => {
 
       <div className="mt-10 border-l-2 border-border pl-6">
         <p className="text-base text-muted-foreground italic leading-relaxed">
-          "The best conversations in the Gulf happen after midnight, over a table that wasn't planned — just quietly arranged."
+          "The best conversations in the Gulf happen after midnight, over a table that wasn't planned. Just quietly arranged."
         </p>
       </div>
     </div>
