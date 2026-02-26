@@ -6,7 +6,7 @@ const EventDetails = () => {
       <div>
         <h2 className="text-3xl font-bold text-primary mb-6">Gathering Details</h2>
         <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-          NIAS hosts a small group of senior guests for a private Suhoor dinner in Riyadh at the start of Ramadan. The evening arrives just before the city enters one of its busiest international seasons.
+          NIAS hosts a small group of senior guests for a private Suhoor dinner in Riyadh in the middle of Ramadan. The evening arrives just before the city enters one of its busiest international seasons. The evening arrives just before the city enters one of its busiest international seasons.
         </p>
         <p className="text-base text-muted-foreground mb-8 leading-relaxed">
           As Riyadh prepares to anchor a dense run of global gatherings, this is a moment to arrive deliberately, connect quietly, and share perspective before the season begins.

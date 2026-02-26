@@ -32,15 +32,6 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
                   alt="Riyadh Suhoor Dinner — NIAS Private Gathering"
                   className="w-full h-auto rounded-lg shadow-xl object-cover object-center"
                 />
-                {/* Crescent moon overlay — positioned above the lantern chain */}
-                <Moon
-                  className="absolute"
-                  style={{ top: '2%', left: '50%', transform: 'translateX(-50%)' }}
-                  size={32}
-                  fill="#c9a84c"
-                  color="#c9a84c"
-                  strokeWidth={0}
-                />
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-border via-muted to-border rounded-b-lg opacity-60" />
               </div>
             </div>
