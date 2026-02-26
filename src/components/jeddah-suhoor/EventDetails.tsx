@@ -4,9 +4,9 @@ const EventDetails = () => {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-3xl font-bold text-primary mb-6">Event Details</h2>
+        <h2 className="text-3xl font-bold text-primary mb-6">Gathering Details</h2>
         <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-          During Ramadan, NIAS gathers a small group of senior decision-makers for a private Suhoor dinner on the Red Sea coast. The evening is designed for unhurried dialogue: the kind of conversation that only happens when the table is the right size and the guest list is carefully composed.
+          Abdul Latif Jameel hosts a small group of senior decision-makers for a private Suhoor dinner on the Red Sea coast during Ramadan. The evening is designed for unhurried dialogue: the kind of conversation that only happens when the table is the right size and the guest list is carefully composed.
         </p>
         <p className="text-base text-muted-foreground mb-8 leading-relaxed">
           With the World Economic Forum bringing global attention to Jeddah just weeks later, this is a timely moment to convene the people shaping what comes next for the region and for the relationships that will define it.
