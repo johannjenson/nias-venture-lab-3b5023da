@@ -77,9 +77,9 @@ const EventDetails = () => {
             href="https://gulf-edu.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:opacity-70 transition-opacity ml-8"
+            className="hover:opacity-70 transition-opacity ml-4"
           >
-            <img src={gulfEduLogo} alt="Gulf Education Investment Company" className="h-32 w-auto" style={{ filter: "invert(1)" }} />
+            <img src={gulfEduLogo} alt="Gulf Education Investment Company" className="h-36 w-auto" style={{ filter: "invert(1)" }} />
           </a>
         </div>
       </div>
