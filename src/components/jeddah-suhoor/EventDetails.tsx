@@ -72,6 +72,16 @@ const EventDetails = () => {
           <div>
             <img src={niasLogo} alt="NIAS.io" className="h-14 w-auto" />
           </div>
+          <a
+            href="https://gulf-edu.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:opacity-70 transition-opacity"
+          >
+            <span className="text-foreground font-serif text-lg leading-snug block" style={{ fontFamily: "Georgia, 'Times New Roman', serif", maxWidth: "160px" }}>
+              Gulf Education Investment Company
+            </span>
+          </a>
         </div>
       </div>
     </div>
