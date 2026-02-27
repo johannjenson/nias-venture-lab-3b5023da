@@ -10,6 +10,7 @@ import nightcapHero from "@/assets/nightcap-hero.png";
 import biban25Hero from "@/assets/biban25-hero.png";
 import usSaudiHero from "@/assets/us-saudi-forum-hero.jpg";
 import saudiPlaybookHero from "@/assets/doers-summit/saudi-playbook-hero.png";
+import riyadhSuhoorHero from "@/assets/riyadh-suhoor-hero.jpg";
 
 interface Gathering {
   title: string;
@@ -64,6 +65,13 @@ const GatheringCard = ({ event }: { event: Gathering }) => {
 
 const AudienceCTAs = () => {
   const pastGatherings: Gathering[] = [
+    {
+      title: "Riyadh Suhoor Dinner",
+      date: "March 3, 2026",
+      location: "Riyadh",
+      href: "/gatherings/riyadh-suhoor-dinner",
+      heroImage: riyadhSuhoorHero,
+    },
     {
       title: "Doers Summit Dubai Panel",
       date: "November 26, 2025",
