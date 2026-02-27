@@ -165,11 +165,14 @@ const AudienceCTAs = () => {
           {/* Upcoming Gatherings */}
           <div className="mb-16">
             <h3 className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium mb-8">Upcoming Gatherings</h3>
-            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
               {upcomingGatherings.map((event) => (
                 <GatheringCard key={event.title} event={event} />
               ))}
             </div>
+            <p className="text-sm text-muted-foreground">
+              Join the <a href="#network" className="text-foreground underline underline-offset-2 hover:text-foreground/80 transition-colors">Network</a> to find out about upcoming gatherings.
+            </p>
           </div>
 
           {/* Past Gatherings */}
@@ -356,7 +359,7 @@ const AudienceCTAs = () => {
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-light text-nias-dark-foreground mb-5 tracking-tight">
-              Curious about <span className="text-nias-gold">Scaling & Expansion in the GCC</span>?
+              Ready to <span className="text-nias-gold">Enter or Grow in the GCC</span>?
             </h2>
             <p className="text-base text-nias-dark-foreground/70 max-w-lg mx-auto mb-10 leading-relaxed">
               Download our guide and get focused updates on KSA & Kuwait
