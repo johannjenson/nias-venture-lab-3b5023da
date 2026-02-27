@@ -58,7 +58,7 @@ const EventHeader = ({ onRequestClick }: EventHeaderProps) => {
               </h1>
 
               <p className="text-lg text-muted-foreground mb-4 animate-fade-in leading-relaxed">
-                A private dinner, ahead of the busy season to come.
+                A private NIAS dinner, ahead of the busy season to come.
               </p>
 
               <p className="text-base text-muted-foreground/70 mb-8 animate-fade-in italic">
