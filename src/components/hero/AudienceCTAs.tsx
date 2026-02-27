@@ -64,7 +64,7 @@ const GatheringCard = ({ event }: { event: Gathering }) => {
 };
 
 const AudienceCTAs = () => {
-  const pastGatherings: Gathering[] = [
+  const upcomingGatherings: Gathering[] = [
     {
       title: "Riyadh Suhoor Dinner",
       date: "March 3, 2026",
@@ -72,6 +72,9 @@ const AudienceCTAs = () => {
       href: "/gatherings/riyadh-suhoor-dinner",
       heroImage: riyadhSuhoorHero,
     },
+  ];
+
+  const pastGatherings: Gathering[] = [
     {
       title: "Doers Summit Dubai Panel",
       date: "November 26, 2025",
@@ -161,10 +164,12 @@ const AudienceCTAs = () => {
 
           {/* Upcoming Gatherings */}
           <div className="mb-16">
-            <h3 className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium mb-4">Upcoming Gatherings</h3>
-            <p className="text-sm text-muted-foreground">
-              Join the <a href="#network" className="text-foreground underline underline-offset-2 hover:text-foreground/80 transition-colors">Network</a> to find out about upcoming gatherings.
-            </p>
+            <h3 className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium mb-8">Upcoming Gatherings</h3>
+            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {upcomingGatherings.map((event) => (
+                <GatheringCard key={event.title} event={event} />
+              ))}
+            </div>
           </div>
 
           {/* Past Gatherings */}
