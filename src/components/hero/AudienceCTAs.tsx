@@ -274,7 +274,7 @@ const AudienceCTAs = () => {
             {/* NIAS Private - Blue theme */}
             <div className="p-8 bg-secondary/40 border border-nias-blue/30 hover:border-nias-blue/60 transition-colors">
               <h3 className="text-lg font-medium text-foreground mb-3 tracking-tight">NIAS <span className="text-nias-blue">Private</span></h3>
-              <p className="mb-8 text-muted-foreground text-sm leading-relaxed">For qualified members seeking curated insights, strategic opportunities, and ecosystem access across the GCC.</p>
+              <p className="mb-8 text-muted-foreground text-sm leading-relaxed"><p className="mb-8 text-muted-foreground text-sm leading-relaxed">For qualified capital allocators seeking curated insights, strategic opportunities, and ecosystem access across the GCC.</p></p>
               <Button 
                 asChild
                 className="w-full bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground h-11 text-sm font-medium"
