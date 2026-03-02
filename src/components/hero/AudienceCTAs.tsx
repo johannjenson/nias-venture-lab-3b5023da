@@ -257,14 +257,14 @@ const AudienceCTAs = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto items-stretch">
             {/* NIAS Access - Green theme */}
-            <div className="p-8 bg-secondary/40 border border-nias-green/30 hover:border-nias-green/60 transition-colors">
+            <div className="p-8 bg-secondary/40 border border-nias-green/30 hover:border-nias-green/60 transition-colors flex flex-col">
               <h3 className="text-lg font-medium text-foreground mb-3 tracking-tight">NIAS <span className="text-nias-green">Access</span></h3>
-              <p className="mb-8 text-muted-foreground text-sm leading-relaxed">For founders, executives, advisors, and operators looking to expand into the Kingdom.</p>
+              <p className="text-muted-foreground text-sm leading-relaxed flex-1">For founders, executives, advisors, and operators looking to expand into the Kingdom.</p>
               <Button 
                 asChild
-                className="w-full bg-nias-green hover:bg-nias-green/90 text-nias-green-foreground h-11 text-sm font-medium"
+                className="w-full bg-nias-green hover:bg-nias-green/90 text-nias-green-foreground h-11 text-sm font-medium mt-8"
               >
                 <a 
                   href="https://access.nias.io/" 
@@ -280,12 +280,12 @@ const AudienceCTAs = () => {
               </Button>
             </div>
             {/* NIAS Private - Blue theme */}
-            <div className="p-8 bg-secondary/40 border border-nias-blue/30 hover:border-nias-blue/60 transition-colors">
+            <div className="p-8 bg-secondary/40 border border-nias-blue/30 hover:border-nias-blue/60 transition-colors flex flex-col">
               <h3 className="text-lg font-medium text-foreground mb-3 tracking-tight">NIAS <span className="text-nias-blue">Private</span></h3>
-              <p className="mb-8 text-muted-foreground text-sm leading-relaxed"><p className="mb-8 text-muted-foreground text-sm leading-relaxed">For qualified capital allocators seeking curated insights, strategic opportunities, and ecosystem access across the GCC.</p></p>
+              <p className="text-muted-foreground text-sm leading-relaxed flex-1">For qualified capital allocators seeking curated insights, strategic opportunities, and ecosystem access across the GCC.</p>
               <Button 
                 asChild
-                className="w-full bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground h-11 text-sm font-medium"
+                className="w-full bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground h-11 text-sm font-medium mt-8"
               >
                 <a 
                   href="https://access.nias.io/investors" 
@@ -301,12 +301,12 @@ const AudienceCTAs = () => {
               </Button>
             </div>
             {/* NIAS Family Office - Black and Gold theme */}
-            <div className="p-8 bg-nias-dark border border-nias-gold/30">
+            <div className="p-8 bg-nias-dark border border-nias-gold/30 flex flex-col">
               <h3 className="text-lg font-medium text-nias-dark-foreground mb-3 tracking-tight">NIAS <span className="text-nias-gold">Family Office</span></h3>
-              <p className="mb-8 text-nias-dark-foreground/70 text-sm leading-relaxed">For family offices seeking bespoke advisory and curated strategic insights into the Saudi market.</p>
+              <p className="text-nias-dark-foreground/70 text-sm leading-relaxed flex-1">For family offices seeking bespoke advisory and curated strategic insights into the Saudi market.</p>
               <Button 
                 disabled
-                className="w-full bg-nias-gold/20 text-nias-gold border border-nias-gold/30 cursor-not-allowed h-11 text-sm font-medium"
+                className="w-full bg-nias-gold/20 text-nias-gold border border-nias-gold/30 cursor-not-allowed h-11 text-sm font-medium mt-8"
               >
                 <Lock className="mr-2 h-3.5 w-3.5" /> Invite Only
               </Button>

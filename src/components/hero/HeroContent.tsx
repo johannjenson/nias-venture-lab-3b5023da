@@ -115,11 +115,11 @@ const HeroContent = () => {
               <div className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-background/50 font-medium">Network AUM</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-light tracking-tight mb-2">300+</div>
+              <div className="text-3xl md:text-4xl font-light tracking-tight mb-2">350+</div>
               <div className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-background/50 font-medium">Network Members</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-light tracking-tight mb-2">100+</div>
+              <div className="text-3xl md:text-4xl font-light tracking-tight mb-2">120+</div>
               <div className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-background/50 font-medium">Opportunities Reviewed</div>
             </div>
             <div className="text-center">
