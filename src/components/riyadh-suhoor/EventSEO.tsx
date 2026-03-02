@@ -4,7 +4,7 @@ const EventSEO = () => {
   return (
     <Helmet>
       <title>NIAS Private Suhoor Dinner · Riyadh, March 2026 | Invitation Only</title>
-      <meta name="description" content="An intimate invitation-only Suhoor dinner for senior leaders in Riyadh on March 3, 2026 — ahead of FII Miami, WEF Jeddah, LEAP, and the World Petroleum Congress." />
+      <meta name="description" content="An intimate invitation-only Suhoor dinner for senior leaders in Riyadh on March 3, 2026 — ahead of FII Miami, World Economic Forum Jeddah, LEAP, F1 Jeddah, and the World Petroleum Congress." />
       <meta property="og:title" content="NIAS Private Suhoor Dinner · Riyadh" />
       <meta property="og:description" content="A curated late-evening gathering for senior principals in Riyadh, ahead of the season. No panels. No agenda. By invitation only." />
       <meta property="og:type" content="event" />
