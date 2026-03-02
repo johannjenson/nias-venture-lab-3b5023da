@@ -19,6 +19,7 @@ const GuestsOfHonor = () => {
               <a href="https://sa.linkedin.com/in/fawazb" target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-primary hover:underline block">
                 H.E. Assistant Deputy Minister Fawaz AlBassam
               </a>
+              <p className="text-sm text-muted-foreground">Assistant Deputy Minister for Macro/Fiscal Policies Analysis, Ministry of Economy and Planning</p>
             </div>
           </div>
         </div>
@@ -34,6 +35,7 @@ const GuestsOfHonor = () => {
               <a href="https://sa.linkedin.com/in/khalidalzaini" target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-primary hover:underline block">
                 Khaled Alzaini
               </a>
+              <p className="text-sm text-muted-foreground">Co-Founder, Foodics</p>
             </div>
           </div>
         </div>
@@ -49,6 +51,7 @@ const GuestsOfHonor = () => {
               <a href="https://sa.linkedin.com/in/maria-medvedevaa" target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-primary hover:underline block">
                 Maria Medvedeva
               </a>
+              <p className="text-sm text-muted-foreground">Former Head of Mastercard KSA</p>
             </div>
           </div>
         </div>
