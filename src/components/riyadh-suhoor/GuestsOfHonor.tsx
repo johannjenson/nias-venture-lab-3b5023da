@@ -51,7 +51,7 @@ const GuestsOfHonor = () => {
               <a href="https://sa.linkedin.com/in/maria-medvedevaa" target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-primary hover:underline block">
                 Maria Medvedeva
               </a>
-              <p className="text-sm text-muted-foreground">Former Head of Mastercard KSA</p>
+              <p className="text-sm text-muted-foreground">Former VP, Mastercard KSA & Bahrain</p>
             </div>
           </div>
         </div>
