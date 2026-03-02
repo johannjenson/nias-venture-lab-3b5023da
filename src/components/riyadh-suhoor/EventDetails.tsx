@@ -53,7 +53,7 @@ const EventDetails = () => {
 
       <div className="mt-6 bg-secondary rounded-lg p-5 border border-border">
         <p className="text-sm text-foreground/70 italic leading-relaxed">
-          This gathering precedes a dense run of international activity: FII Miami at the end of March, WEF Jeddah, LEAP, and the World Petroleum Congress in April. An early moment, before the season accelerates.
+          This gathering precedes a dense run of international activity: FII Miami at the end of March, World Economic Forum Jeddah, LEAP, F1 Jeddah, and the World Petroleum Congress in April. An early moment, before the season accelerates.
         </p>
       </div>
     </div>
