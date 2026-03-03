@@ -20,7 +20,7 @@ const GuestsOfHonor = () => {
               <a href="https://sa.linkedin.com/in/fawazb" target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-primary hover:underline block">
                 Assistant Deputy Minister Fawaz AlBassam
               </a>
-              <p className="text-sm text-muted-foreground">Assistant Deputy Minister for Macro/Fiscal Policies Analysis, Ministry of Economy and Planning</p>
+              <p className="text-sm text-muted-foreground">Ministry of Economy and Planning</p>
             </div>
           </div>
         </div>
