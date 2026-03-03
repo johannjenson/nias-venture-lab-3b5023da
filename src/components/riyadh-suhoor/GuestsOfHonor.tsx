@@ -12,12 +12,13 @@ const GuestsOfHonor = () => {
           <div className="flex items-center gap-3 mb-3">
             <img
               src={fawazAlBassam}
-              alt="H.E. Assistant Deputy Minister Fawaz AlBassam"
-              className="w-20 h-20 rounded-full object-cover border-2 border-primary grayscale"
+              alt="Assistant Deputy Minister Fawaz AlBassam"
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary grayscale shrink-0"
+              style={{ aspectRatio: '1 / 1' }}
             />
             <div>
               <a href="https://sa.linkedin.com/in/fawazb" target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-primary hover:underline block">
-                H.E. Assistant Deputy Minister Fawaz AlBassam
+                Assistant Deputy Minister Fawaz AlBassam
               </a>
               <p className="text-sm text-muted-foreground">Assistant Deputy Minister for Macro/Fiscal Policies Analysis, Ministry of Economy and Planning</p>
             </div>
@@ -29,7 +30,8 @@ const GuestsOfHonor = () => {
             <img
               src={khaledAlzaini}
               alt="Khaled Alzaini"
-              className="w-20 h-20 rounded-full object-cover border-2 border-primary grayscale"
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary grayscale shrink-0"
+              style={{ aspectRatio: '1 / 1' }}
             />
             <div>
               <a href="https://sa.linkedin.com/in/khalidalzaini" target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-primary hover:underline block">
@@ -45,7 +47,8 @@ const GuestsOfHonor = () => {
             <img
               src={mariaMedvedeva}
               alt="Maria Medvedeva"
-              className="w-20 h-20 rounded-full object-cover border-2 border-primary grayscale"
+              className="w-20 h-20 rounded-full object-cover border-2 border-primary grayscale shrink-0"
+              style={{ aspectRatio: '1 / 1' }}
             />
             <div>
               <a href="https://sa.linkedin.com/in/maria-medvedevaa" target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-primary hover:underline block">
