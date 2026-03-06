@@ -64,7 +64,9 @@ const GatheringCard = ({ event }: { event: Gathering }) => {
 };
 
 const AudienceCTAs = () => {
-  const upcomingGatherings: Gathering[] = [
+  const upcomingGatherings: Gathering[] = [];
+
+  const pastGatherings: Gathering[] = [
     {
       title: "Riyadh Suhoor Dinner",
       date: "March 3, 2026",
@@ -72,9 +74,6 @@ const AudienceCTAs = () => {
       href: "/gatherings/riyadh-suhoor-dinner",
       heroImage: riyadhSuhoorHero,
     },
-  ];
-
-  const pastGatherings: Gathering[] = [
     {
       title: "Doers Summit Dubai Panel",
       date: "November 26, 2025",
