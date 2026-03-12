@@ -301,8 +301,15 @@ const People = () => {
           />
           
           <TeamSection 
-            title="Counsel & Advisory" 
+            title="Counsel" 
             members={counselSupport} 
+            columns={4}
+            small
+          />
+
+          <TeamSection 
+            title="Board of Advisors" 
+            members={boardAdvisors} 
             columns={4}
             small
           />
