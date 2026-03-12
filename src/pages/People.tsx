@@ -293,6 +293,13 @@ const People = () => {
             members={foundingPartners} 
             columns={2}
           />
+
+          <TeamSection 
+            title="Board of Advisors" 
+            members={boardAdvisors} 
+            columns={4}
+            small
+          />
           
           <TeamSection 
             title="Associates"
@@ -304,13 +311,6 @@ const People = () => {
           <TeamSection 
             title="Counsel" 
             members={counselSupport} 
-            columns={4}
-            small
-          />
-
-          <TeamSection 
-            title="Board of Advisors" 
-            members={boardAdvisors} 
             columns={4}
             small
           />
