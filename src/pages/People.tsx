@@ -234,10 +234,11 @@ const People = () => {
           { name: "Fahad Alsudairy", jobTitle: "Associate - Sports & Entertainment" },
           { name: "Turki Alshubaki", jobTitle: "Associate - Real Estate" },
           { name: "Mohammed Khalid Ibn Salamah", jobTitle: "Associate - Real Estate" },
-          { name: "Ibrahim AlSemari", jobTitle: "Counsel & Advisory - Finance", linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162" },
-          { name: "Lukas Gaebler", jobTitle: "Counsel & Advisory - Tech", linkedIn: "https://at.linkedin.com/in/lukas-gaebler" },
-          { name: "Hasan Bakalla", jobTitle: "Counsel & Advisory - Family Offices", linkedIn: "https://www.linkedin.com/in/hasan-bakalla-mba-6450b17/" },
-          { name: "Peter Lada", jobTitle: "Counsel & Advisory - Tech", linkedIn: "https://www.linkedin.com/in/peterlada/" }
+          { name: "Ibrahim AlSemari", jobTitle: "Counsel - Finance", linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162" },
+          { name: "Hasan Bakalla", jobTitle: "Counsel - Family Offices", linkedIn: "https://www.linkedin.com/in/hasan-bakalla-mba-6450b17/" },
+          { name: "Peter Lada", jobTitle: "Counsel - Tech", linkedIn: "https://www.linkedin.com/in/peterlada/" },
+          { name: "Jawad Abdulsamad", jobTitle: "Board of Advisors - Misk Foundation", linkedIn: "https://www.linkedin.com/in/jawadabdulsamad/" },
+          { name: "Arpad Sarkozy", jobTitle: "Board of Advisors - Richard Attias & Associates", linkedIn: "https://www.linkedin.com/in/arpad-sarkozy/" }
         ]}
       />
 
