@@ -206,6 +206,7 @@ const People = () => {
       role: "Richard Attias & Associates",
       imageUrl: arpadImage,
       linkedIn: "https://www.linkedin.com/in/arpad-sarkozy/",
+      scale: 1.15,
     },
   ];
 
