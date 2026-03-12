@@ -9,9 +9,10 @@ import fahadImage from "@/assets/fahad-alsudairy-new.png";
 import turkiImage from "@/assets/turki-alshubaki.jpg";
 import mohammedImage from "@/assets/mohammed-khalid-ibn-salamah.jpg";
 import ibrahimAlsemariImage from "@/assets/ibrahim-alsemari.png";
-import lukasImage from "@/assets/lukas-gaebler.png";
 import hasanImage from "@/assets/hasan-bakalla.jpg";
 import peterImage from "@/assets/peter-lada.png";
+import jawadImage from "@/assets/jawad-abdulsamad.jpg";
+import arpadImage from "@/assets/arpad-sarkozy.jpg";
 import heroBackground from "@/assets/work-with-nias-hero.png";
 import { Button } from "@/components/ui/button";
 import PersonSchema from "@/components/seo/PersonSchema";
@@ -180,13 +181,6 @@ const People = () => {
       linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162",
     },
     {
-      name: "Lukas Gaebler",
-      role: "Tech",
-      imageUrl: lukasImage,
-      linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
-      objectPosition: "center -55px",
-    },
-    {
       name: "Hasan Bakalla",
       role: "Family Offices",
       imageUrl: hasanImage,
@@ -197,6 +191,21 @@ const People = () => {
       role: "Tech",
       imageUrl: peterImage,
       linkedIn: "https://www.linkedin.com/in/peterlada/",
+    },
+  ];
+
+  const boardAdvisors: TeamMember[] = [
+    {
+      name: "Jawad Abdulsamad",
+      role: "Misk Foundation",
+      imageUrl: jawadImage,
+      linkedIn: "https://www.linkedin.com/in/jawadabdulsamad/",
+    },
+    {
+      name: "Arpad Sarkozy",
+      role: "Richard Attias & Associates",
+      imageUrl: arpadImage,
+      linkedIn: "https://www.linkedin.com/in/arpad-sarkozy/",
     },
   ];
 
@@ -225,10 +234,11 @@ const People = () => {
           { name: "Fahad Alsudairy", jobTitle: "Associate - Sports & Entertainment" },
           { name: "Turki Alshubaki", jobTitle: "Associate - Real Estate" },
           { name: "Mohammed Khalid Ibn Salamah", jobTitle: "Associate - Real Estate" },
-          { name: "Ibrahim AlSemari", jobTitle: "Counsel & Advisory - Finance", linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162" },
-          { name: "Lukas Gaebler", jobTitle: "Counsel & Advisory - Tech", linkedIn: "https://at.linkedin.com/in/lukas-gaebler" },
-          { name: "Hasan Bakalla", jobTitle: "Counsel & Advisory - Family Offices", linkedIn: "https://www.linkedin.com/in/hasan-bakalla-mba-6450b17/" },
-          { name: "Peter Lada", jobTitle: "Counsel & Advisory - Tech", linkedIn: "https://www.linkedin.com/in/peterlada/" }
+          { name: "Ibrahim AlSemari", jobTitle: "Counsel - Finance", linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162" },
+          { name: "Hasan Bakalla", jobTitle: "Counsel - Family Offices", linkedIn: "https://www.linkedin.com/in/hasan-bakalla-mba-6450b17/" },
+          { name: "Peter Lada", jobTitle: "Counsel - Tech", linkedIn: "https://www.linkedin.com/in/peterlada/" },
+          { name: "Jawad Abdulsamad", jobTitle: "Board of Advisors - Misk Foundation", linkedIn: "https://www.linkedin.com/in/jawadabdulsamad/" },
+          { name: "Arpad Sarkozy", jobTitle: "Board of Advisors - Richard Attias & Associates", linkedIn: "https://www.linkedin.com/in/arpad-sarkozy/" }
         ]}
       />
 
@@ -292,8 +302,15 @@ const People = () => {
           />
           
           <TeamSection 
-            title="Counsel & Advisory" 
+            title="Counsel" 
             members={counselSupport} 
+            columns={4}
+            small
+          />
+
+          <TeamSection 
+            title="Board of Advisors" 
+            members={boardAdvisors} 
             columns={4}
             small
           />
