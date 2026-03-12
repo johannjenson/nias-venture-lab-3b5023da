@@ -181,13 +181,6 @@ const People = () => {
       linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162",
     },
     {
-      name: "Lukas Gaebler",
-      role: "Tech",
-      imageUrl: lukasImage,
-      linkedIn: "https://at.linkedin.com/in/lukas-gaebler",
-      objectPosition: "center -55px",
-    },
-    {
       name: "Hasan Bakalla",
       role: "Family Offices",
       imageUrl: hasanImage,
@@ -198,6 +191,21 @@ const People = () => {
       role: "Tech",
       imageUrl: peterImage,
       linkedIn: "https://www.linkedin.com/in/peterlada/",
+    },
+  ];
+
+  const boardAdvisors: TeamMember[] = [
+    {
+      name: "Jawad Abdulsamad",
+      role: "Misk Foundation",
+      imageUrl: jawadImage,
+      linkedIn: "https://www.linkedin.com/in/jawadabdulsamad/",
+    },
+    {
+      name: "Arpad Sarkozy",
+      role: "Richard Attias & Associates",
+      imageUrl: arpadImage,
+      linkedIn: "https://www.linkedin.com/in/arpad-sarkozy/",
     },
   ];
 
