@@ -295,14 +295,12 @@ const People = () => {
             columns={2}
           />
 
-          {/* Board of Advisors - temporarily hidden
           <TeamSection 
             title="Board of Advisors" 
             members={boardAdvisors} 
             columns={4}
             small
           />
-          */}
           
           <TeamSection 
             title="Associates"
