@@ -94,38 +94,36 @@ const WorkWithNias = () => {
             </p>
 
             {/* AI Due Diligence Banner */}
-            <div className="mt-10 mb-10">
+            <div className="mt-10 mb-10 max-w-xl mx-auto">
               <a
                 href="https://access.nias.io/cortex"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-primary/95 backdrop-blur-sm rounded-xl p-6 md:p-8 text-left hover:bg-primary transition-colors group"
+                className="block border border-border/60 rounded-xl p-5 md:p-6 hover:border-primary/40 hover:shadow-sm transition-all group bg-background/80 backdrop-blur-sm"
               >
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                  <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-semibold text-primary-foreground mb-2">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-base font-semibold text-foreground mb-1.5">
                       A Full DD Team — Matched to Your Asset Class
                     </h3>
-                    <p className="text-sm text-primary-foreground/80 leading-relaxed max-w-xl">
-                      Upload any fund deck and get an institutional-grade assessment in minutes — powered by AI agents tailored to PE, VC, credit, or fund of funds.
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                      Upload any fund deck. Get an institutional-grade assessment in minutes — AI agents tailored to PE, VC, credit, or fund of funds.
                     </p>
-                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-4">
-                      <span className="flex items-center gap-1.5 text-xs text-primary-foreground/60">
-                        <BarChart3 className="h-3.5 w-3.5" /> Asset class-matched DD teams
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground/70">
+                      <span className="flex items-center gap-1.5">
+                        <BarChart3 className="h-3 w-3" /> Asset class-matched DD
                       </span>
-                      <span className="flex items-center gap-1.5 text-xs text-primary-foreground/60">
-                        <TrendingUp className="h-3.5 w-3.5" /> 10× more opportunities evaluated
+                      <span className="flex items-center gap-1.5">
+                        <TrendingUp className="h-3 w-3" /> 10× more evaluations
                       </span>
-                      <span className="flex items-center gap-1.5 text-xs text-primary-foreground/60">
-                        <FileText className="h-3.5 w-3.5" /> Save $25K–$50K per review
+                      <span className="flex items-center gap-1.5">
+                        <FileText className="h-3 w-3" /> Save $25K–$50K per review
                       </span>
                     </div>
                   </div>
-                  <div className="shrink-0">
-                    <span className="inline-flex items-center gap-2 bg-primary-foreground text-primary px-5 py-3 rounded-lg text-sm font-medium group-hover:shadow-md transition-shadow">
-                      Try It <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
-                    </span>
-                  </div>
+                  <span className="shrink-0 mt-1 inline-flex items-center gap-1.5 text-sm font-medium text-primary group-hover:translate-x-0.5 transition-transform">
+                    Try It <ArrowRight className="h-4 w-4" />
+                  </span>
                 </div>
               </a>
             </div>
