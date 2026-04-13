@@ -158,7 +158,7 @@ const WorkWithNias = () => {
                   Before you apply, generate a complimentary deep analysis
                 </h3>
                 <p className="text-xs text-muted-foreground leading-relaxed mb-3">
-                  Upload your fund deck and receive an institutional-grade assessment in minutes, powered by AI agents tailored to PE, VC, credit, or fund of funds.
+                  Upload your deck and receive an institutional-grade assessment in minutes, powered by AI agents tailored to your asset class or sector.
                 </p>
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-muted-foreground/60 mb-3">
                   <span className="flex items-center gap-1">
