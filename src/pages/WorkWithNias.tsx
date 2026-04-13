@@ -93,7 +93,48 @@ const WorkWithNias = () => {
               </a>
             </p>
 
-            {/* Prefer to chat first - moved here */}
+            {/* NIAS Cortex Banner */}
+            <div className="mt-10 mb-10">
+              <a
+                href="https://access.nias.io/cortex"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-primary/95 backdrop-blur-sm rounded-xl p-6 md:p-8 text-left hover:bg-primary transition-colors group"
+              >
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-3">
+                      <BarChart3 className="h-4 w-4 text-primary-foreground/70" />
+                      <span className="text-[11px] uppercase tracking-[0.15em] text-primary-foreground/70 font-medium">NIAS Cortex</span>
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-semibold text-primary-foreground mb-2">
+                      NIAS Cortex <span className="text-xs font-medium bg-primary-foreground/20 text-primary-foreground px-2 py-0.5 rounded-full ml-2 align-middle">BETA</span>
+                    </h3>
+                    <p className="text-sm text-primary-foreground/80 leading-relaxed max-w-xl">
+                      Upload your pitch deck and receive a structured NIAS Cortex analysis — AI-powered due diligence, multi-agent deep research, and a readiness assessment for Gulf capital markets.
+                    </p>
+                    <div className="flex flex-wrap items-center gap-4 mt-4">
+                      <span className="flex items-center gap-1.5 text-xs text-primary-foreground/60">
+                        <FileText className="h-3.5 w-3.5" /> Full DD Report
+                      </span>
+                      <span className="flex items-center gap-1.5 text-xs text-primary-foreground/60">
+                        <BarChart3 className="h-3.5 w-3.5" /> 8 Asset Classes
+                      </span>
+                      <span className="flex items-center gap-1.5 text-xs text-primary-foreground/60">
+                        <TrendingUp className="h-3.5 w-3.5" /> GCC Readiness Score
+                      </span>
+                    </div>
+                  </div>
+                  <div className="shrink-0">
+                    <span className="inline-flex items-center gap-2 bg-primary-foreground text-primary px-5 py-3 rounded-lg text-sm font-medium group-hover:shadow-md transition-shadow">
+                      Start Assessment <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            {/* Prefer to chat first */}
             <div className="flex flex-col items-center mt-8 mb-14">
               <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Prefer to chat first?</p>
               <div className="flex flex-col sm:flex-row items-center gap-8">
