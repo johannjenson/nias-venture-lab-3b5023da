@@ -361,7 +361,7 @@ const AudienceCTAs = () => {
               A Full DD Team <span className="text-nias-gold">Matched to Your Asset Class</span>
             </h2>
             <p className="text-base text-nias-dark-foreground/70 max-w-lg mx-auto mb-6 leading-relaxed">
-              Upload any fund deck and receive an institutional-grade assessment in minutes, powered by AI agents tailored to PE, VC, credit, or fund of funds.
+              Upload any deck and receive an institutional-grade assessment in minutes, powered by AI agents tailored to your asset class or sector.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-nias-dark-foreground/50 mb-10">
               <span>Evaluate 10× more opportunities</span>
