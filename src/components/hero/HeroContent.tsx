@@ -6,7 +6,7 @@ import saudiTimesLogo from "@/assets/saudi-times-logo.png";
 import diwanLogo from "@/assets/diwan-logo.png";
 import { trackCTAClick, trackExternalLink } from "@/lib/analytics";
 
-const regions = ["Saudi Arabia", "Kuwait", "the GCC"];
+const regions = ["Saudi Arabia", "the GCC"];
 
 const HeroContent = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

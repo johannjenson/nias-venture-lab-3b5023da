@@ -353,17 +353,29 @@ const AudienceCTAs = () => {
         </div>
       </div>
 
-      {/* Expansion Capital Section with Form */}
+      {/* AI Due Diligence Section */}
       <div className="py-24 md:py-32 bg-nias-dark">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-light text-nias-dark-foreground mb-5 tracking-tight">
-              Ready to <span className="text-nias-gold">Enter or Grow in the GCC</span>?
+              A Full DD Team <span className="text-nias-gold">Matched to Your Asset Class</span>
             </h2>
-            <p className="text-base text-nias-dark-foreground/70 max-w-lg mx-auto mb-10 leading-relaxed">
-              Download our guide and get focused updates on KSA & Kuwait
+            <p className="text-base text-nias-dark-foreground/70 max-w-lg mx-auto mb-6 leading-relaxed">
+              Upload any fund deck and receive an institutional-grade assessment in minutes, powered by AI agents tailored to PE, VC, credit, or fund of funds.
             </p>
-            <ExpansionCapitalForm />
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-nias-dark-foreground/50 mb-10">
+              <span>Evaluate 10× more opportunities</span>
+              <span className="hidden sm:inline">·</span>
+              <span>Save weeks of work and thousands in staff costs</span>
+            </div>
+            <Button
+              asChild
+              className="bg-nias-gold text-nias-dark hover:bg-nias-gold/90 h-12 px-8 text-sm font-medium"
+            >
+              <a href="https://access.nias.io/cortex" target="_blank" rel="noopener noreferrer">
+                Try It Free <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
           </div>
         </div>
       </div>
