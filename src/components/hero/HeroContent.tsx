@@ -6,7 +6,7 @@ import saudiTimesLogo from "@/assets/saudi-times-logo.png";
 import diwanLogo from "@/assets/diwan-logo.png";
 import { trackCTAClick, trackExternalLink } from "@/lib/analytics";
 
-const regions = ["Saudi Arabia", "the GCC"];
+const regions = ["Saudi Arabia", "the GCC", "Riyadh", "Jeddah", "Khobar"];
 
 const HeroContent = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -62,7 +62,7 @@ const HeroContent = () => {
               </span>
             </h1>
             <p className="text-base md:text-lg text-muted-foreground mb-12 max-w-xl mx-auto leading-relaxed">
-              Connecting global frontier tech, energy, education, art, sports, and entertainment companies with the Kingdom's entrepreneurs, government leaders, and strategic ecosystem participants.
+              Connecting global frontier tech, energy, education, art, sports, and entertainment companies with the Kingdom's entrepreneurs, government leaders, and capital allocators.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button
@@ -75,7 +75,7 @@ const HeroContent = () => {
                   rel="noopener noreferrer"
                   onClick={() => trackCTAClick('for_institutional_platforms', 'hero', 'https://access.nias.io/investors')}
                 >
-                  For Capital Allocators <ArrowRight className="ml-2 h-4 w-4" />
+                  For Investors <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
               <Button
@@ -119,7 +119,7 @@ const HeroContent = () => {
               <div className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-background/50 font-medium">Network Members</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-light tracking-tight mb-2">120+</div>
+              <div className="text-3xl md:text-4xl font-light tracking-tight mb-2">150+</div>
               <div className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-background/50 font-medium">Opportunities Reviewed</div>
             </div>
             <div className="text-center">
