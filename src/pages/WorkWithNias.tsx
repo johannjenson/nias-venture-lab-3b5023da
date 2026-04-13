@@ -93,7 +93,7 @@ const WorkWithNias = () => {
               </a>
             </p>
 
-            {/* NIAS Cortex Banner */}
+            {/* AI Due Diligence Banner */}
             <div className="mt-10 mb-10">
               <a
                 href="https://access.nias.io/cortex"
@@ -103,31 +103,27 @@ const WorkWithNias = () => {
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-3">
-                      <BarChart3 className="h-4 w-4 text-primary-foreground/70" />
-                      <span className="text-[11px] uppercase tracking-[0.15em] text-primary-foreground/70 font-medium">NIAS Cortex</span>
-                    </div>
                     <h3 className="text-xl md:text-2xl font-semibold text-primary-foreground mb-2">
-                      NIAS Cortex <span className="text-xs font-medium bg-primary-foreground/20 text-primary-foreground px-2 py-0.5 rounded-full ml-2 align-middle">BETA</span>
+                      A Full DD Team — Matched to Your Asset Class
                     </h3>
                     <p className="text-sm text-primary-foreground/80 leading-relaxed max-w-xl">
-                      Upload your pitch deck and receive a structured NIAS Cortex analysis — AI-powered due diligence, multi-agent deep research, and a readiness assessment for Gulf capital markets.
+                      Upload any fund deck and get an institutional-grade assessment in minutes — powered by AI agents tailored to PE, VC, credit, or fund of funds.
                     </p>
-                    <div className="flex flex-wrap items-center gap-4 mt-4">
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-4">
                       <span className="flex items-center gap-1.5 text-xs text-primary-foreground/60">
-                        <FileText className="h-3.5 w-3.5" /> Full DD Report
+                        <BarChart3 className="h-3.5 w-3.5" /> Asset class-matched DD teams
                       </span>
                       <span className="flex items-center gap-1.5 text-xs text-primary-foreground/60">
-                        <BarChart3 className="h-3.5 w-3.5" /> 8 Asset Classes
+                        <TrendingUp className="h-3.5 w-3.5" /> 10× more opportunities evaluated
                       </span>
                       <span className="flex items-center gap-1.5 text-xs text-primary-foreground/60">
-                        <TrendingUp className="h-3.5 w-3.5" /> GCC Readiness Score
+                        <FileText className="h-3.5 w-3.5" /> Save $25K–$50K per review
                       </span>
                     </div>
                   </div>
                   <div className="shrink-0">
                     <span className="inline-flex items-center gap-2 bg-primary-foreground text-primary px-5 py-3 rounded-lg text-sm font-medium group-hover:shadow-md transition-shadow">
-                      Start Assessment <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                      Try It <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
                     </span>
                   </div>
                 </div>
