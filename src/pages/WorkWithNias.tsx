@@ -94,7 +94,7 @@ const WorkWithNias = () => {
             </p>
 
             {/* Prefer to chat first */}
-            <div className="flex flex-col items-center mt-8 mb-14">
+            <div className="flex flex-col items-center mt-14 mb-14">
               <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Prefer to chat first?</p>
               <div className="flex flex-col sm:flex-row items-center gap-8">
                 {/* Johann Jenson */}
@@ -147,7 +147,7 @@ const WorkWithNias = () => {
             </div>
             
             {/* AI Due Diligence Card */}
-            <div className="max-w-2xl mx-auto mb-3">
+            <div className="max-w-2xl mx-auto mb-8">
               <a
                 href="https://access.nias.io/cortex"
                 target="_blank"
