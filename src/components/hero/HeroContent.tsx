@@ -75,7 +75,7 @@ const HeroContent = () => {
                   rel="noopener noreferrer"
                   onClick={() => trackCTAClick('for_institutional_platforms', 'hero', 'https://access.nias.io/investors')}
                 >
-                  For Institutional Platforms <ArrowRight className="ml-2 h-4 w-4" />
+                  For Capital Allocators <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
               <Button
