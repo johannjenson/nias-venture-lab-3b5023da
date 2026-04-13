@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
-import { TrendingUp, Waves, Users, Calendar, Building2, ArrowLeft } from "lucide-react";
+import { TrendingUp, Waves, Users, Calendar, Building2, ArrowLeft, BarChart3, FileText, ArrowRight } from "lucide-react";
 import CompanyForm from "@/components/work-with-nias/CompanyForm";
 import FundForm from "@/components/work-with-nias/FundForm";
 import AdvisorForm from "@/components/work-with-nias/AdvisorForm";
