@@ -146,6 +146,34 @@ const WorkWithNias = () => {
               </div>
             </div>
             
+            {/* AI Due Diligence Card */}
+            <div className="max-w-2xl mx-auto mb-3">
+              <a
+                href="https://access.nias.io/cortex"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block border border-border/40 rounded-lg p-4 text-left transition-colors hover:border-primary/50 group"
+              >
+                <h3 className="font-medium text-foreground mb-1 text-sm">
+                  Before you apply, generate a complimentary deep analysis
+                </h3>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+                  Upload your fund deck and receive an institutional-grade assessment in minutes, powered by AI agents tailored to PE, VC, credit, or fund of funds.
+                </p>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-muted-foreground/60 mb-3">
+                  <span className="flex items-center gap-1">
+                    <TrendingUp className="h-3 w-3" /> Evaluate 10× more opportunities
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <FileText className="h-3 w-3" /> Save weeks of work and thousands in staff costs
+                  </span>
+                </div>
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary">
+                  Try It Free <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </a>
+            </div>
+
             {/* Selectable Cards */}
             <div className="grid sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
               <button
@@ -171,7 +199,7 @@ const WorkWithNias = () => {
                 }`}
               >
               <TrendingUp className="h-4 w-4 text-primary mb-2" />
-                <h3 className="font-medium text-foreground mb-1 text-sm">Institutional Platforms</h3>
+                <h3 className="font-medium text-foreground mb-1 text-sm">Funds</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">Institutional groups with Gulf relevance</p>
               </button>
               <button
