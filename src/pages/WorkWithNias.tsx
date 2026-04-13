@@ -93,38 +93,32 @@ const WorkWithNias = () => {
               </a>
             </p>
 
-            {/* AI Due Diligence Banner */}
-            <div className="mt-10 mb-10 max-w-xl mx-auto">
+            {/* AI Due Diligence Card */}
+            <div className="mt-10 mb-10 max-w-2xl mx-auto">
               <a
                 href="https://access.nias.io/cortex"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block border border-border/60 rounded-xl p-5 md:p-6 hover:border-primary/40 hover:shadow-sm transition-all group bg-background/80 backdrop-blur-sm"
+                className="block bg-background/90 backdrop-blur-sm border border-border/40 rounded-lg p-4 text-left transition-all hover:border-primary/50 hover:shadow-md group"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-base font-semibold text-foreground mb-1.5">
-                      A Full DD Team — Matched to Your Asset Class
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                      Upload any fund deck. Get an institutional-grade assessment in minutes — AI agents tailored to PE, VC, credit, or fund of funds.
-                    </p>
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground/70">
-                      <span className="flex items-center gap-1.5">
-                        <BarChart3 className="h-3 w-3" /> Asset class-matched DD
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <TrendingUp className="h-3 w-3" /> 10× more evaluations
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <FileText className="h-3 w-3" /> Save $25K–$50K per review
-                      </span>
-                    </div>
-                  </div>
-                  <span className="shrink-0 mt-1 inline-flex items-center gap-1.5 text-sm font-medium text-primary group-hover:translate-x-0.5 transition-transform">
-                    Try It <ArrowRight className="h-4 w-4" />
+                <BarChart3 className="h-4 w-4 text-primary mb-2" />
+                <h3 className="font-medium text-foreground mb-1 text-sm">
+                  Before you apply, generate a complimentary deep analysis
+                </h3>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+                  Upload your fund deck and receive an institutional-grade assessment in minutes, powered by AI agents tailored to PE, VC, credit, or fund of funds.
+                </p>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-muted-foreground/60 mb-3">
+                  <span className="flex items-center gap-1">
+                    <TrendingUp className="h-3 w-3" /> Evaluate 10× more opportunities
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <FileText className="h-3 w-3" /> Save weeks of work and thousands in staff costs
                   </span>
                 </div>
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary group-hover:translate-x-0.5 transition-transform">
+                  Try It Free <ArrowRight className="h-3.5 w-3.5" />
+                </span>
               </a>
             </div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -353,134 +353,33 @@ const AudienceCTAs = () => {
         </div>
       </div>
 
-      {/* Expansion Capital Section with Form */}
+      {/* AI Due Diligence Section */}
       <div className="py-24 md:py-32 bg-nias-dark">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-light text-nias-dark-foreground mb-5 tracking-tight">
-              Ready to <span className="text-nias-gold">Enter or Grow in the GCC</span>?
+              A Full DD Team <span className="text-nias-gold">Matched to Your Asset Class</span>
             </h2>
-            <p className="text-base text-nias-dark-foreground/70 max-w-lg mx-auto mb-10 leading-relaxed">
-              Download our guide and get focused updates on KSA & Kuwait
+            <p className="text-base text-nias-dark-foreground/70 max-w-lg mx-auto mb-6 leading-relaxed">
+              Upload any fund deck and receive an institutional-grade assessment in minutes, powered by AI agents tailored to PE, VC, credit, or fund of funds.
             </p>
-            <ExpansionCapitalForm />
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-nias-dark-foreground/50 mb-10">
+              <span>Evaluate 10× more opportunities</span>
+              <span className="hidden sm:inline">·</span>
+              <span>Save weeks of work and thousands in staff costs</span>
+            </div>
+            <Button
+              asChild
+              className="bg-nias-gold text-nias-dark hover:bg-nias-gold/90 h-12 px-8 text-sm font-medium"
+            >
+              <a href="https://access.nias.io/cortex" target="_blank" rel="noopener noreferrer">
+                Try It Free <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
           </div>
         </div>
       </div>
     </div>
-  );
-};
-
-// Inline form component for expansion capital section
-const ExpansionCapitalForm = () => {
-  const [fullName, setFullName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [phone, setPhone] = React.useState("");
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [isSubmitted, setIsSubmitted] = React.useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!fullName.trim() || !email.trim()) {
-      return;
-    }
-    setIsLoading(true);
-    try {
-      const { supabase } = await import("@/integrations/supabase/client");
-      const nameParts = fullName.trim().split(' ');
-      const first_name = nameParts[0];
-      const last_name = nameParts.slice(1).join(' ') || '';
-
-      const { data: existingContact } = await supabase
-        .from('contacts')
-        .select('id')
-        .eq('email', email.trim())
-        .single();
-
-      if (existingContact) {
-        await supabase.from('contacts').update({
-          first_name,
-          last_name,
-          phone: phone.trim() || null
-        }).eq('email', email.trim());
-      } else {
-        await supabase.from('contacts').insert({
-          first_name,
-          last_name,
-          email: email.trim(),
-          phone: phone.trim() || null,
-          lead_source: 'expansion_capital',
-          stage: 'mql_lead'
-        });
-      }
-
-      await supabase.functions.invoke('send-newsletter-confirmation', {
-        body: {
-          fullName: fullName.trim(),
-          email: email.trim(),
-          phone: phone.trim() || null
-        }
-      });
-
-      setFullName("");
-      setEmail("");
-      setPhone("");
-      setIsSubmitted(true);
-    } catch (error) {
-      console.error('Form submission error:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  if (isSubmitted) {
-    return (
-      <div className="text-center py-8">
-        <div className="mb-4">
-          <svg className="h-12 w-12 text-nias-gold mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <h3 className="text-xl font-medium text-nias-dark-foreground mb-2">Thank you!</h3>
-        <p className="text-nias-dark-foreground/70 text-sm">We'll be in touch shortly with your guide.</p>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-2 sm:gap-3 max-w-xl mx-auto">
-      <input
-        type="text"
-        placeholder="Your Full Name"
-        value={fullName}
-        onChange={(e) => setFullName(e.target.value)}
-        className="w-full bg-nias-dark-foreground/10 text-nias-dark-foreground placeholder:text-nias-dark-foreground/50 border border-nias-gold/20 h-11 px-4 text-sm"
-        disabled={isLoading}
-      />
-      <input
-        type="email"
-        placeholder="Your Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="w-full bg-nias-dark-foreground/10 text-nias-dark-foreground placeholder:text-nias-dark-foreground/50 border border-nias-gold/20 h-11 px-4 text-sm"
-        disabled={isLoading}
-      />
-      <input
-        type="tel"
-        placeholder="Phone Number (Optional)"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-        className="w-full bg-nias-dark-foreground/10 text-nias-dark-foreground placeholder:text-nias-dark-foreground/50 border border-nias-gold/20 h-11 px-4 text-sm"
-        disabled={isLoading}
-      />
-      <Button 
-        type="submit" 
-        className="w-full bg-nias-gold text-nias-dark hover:bg-nias-gold/90 h-11 text-sm font-medium"
-        disabled={isLoading}
-      >
-        {isLoading ? "Submitting..." : "Submit"}
-      </Button>
-    </form>
   );
 };
 
