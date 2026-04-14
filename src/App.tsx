@@ -96,6 +96,7 @@ const App = () => (
             <Route path="/crm" element={<CRM />} />
             <Route path="/resources/inbound-contacts" element={<InboundContacts />} />
             <Route path="/clients-partners" element={<ClientsPartners />} />
+            <Route path="/cortex" element={<Cortex />} />
           </Routes>
           <BottomNavigation />
           <Toaster />
