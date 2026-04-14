@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import CortexHero from "@/components/cortex/CortexHero";
-import CredibilityBar from "@/components/cortex/CredibilityBar";
+
 import ReportPreview from "@/components/cortex/ReportPreview";
 import AssetClasses from "@/components/cortex/AssetClasses";
 import HowItWorks from "@/components/cortex/HowItWorks";
