@@ -29,8 +29,8 @@ const ROTATING_WORDS = ["the first meeting.", "the investment committee.", "the 
 
 const CortexHero = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const [done, setDone] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
+  const [wordVisible, setWordVisible] = useState(true);
   const [wordVisible, setWordVisible] = useState(true);
 
   useEffect(() => {
