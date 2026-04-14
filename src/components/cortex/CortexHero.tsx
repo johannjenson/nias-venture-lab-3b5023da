@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { FileSearch, BarChart3, Globe, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
@@ -25,9 +25,13 @@ const STEPS = [
   },
 ];
 
+const ROTATING_WORDS = ["the first meeting.", "the investment committee.", "the investor pitch.", "the pipeline review."];
+
 const CortexHero = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [done, setDone] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
+  const [wordVisible, setWordVisible] = useState(true);
 
   useEffect(() => {
     if (done) return;
