@@ -50,11 +50,6 @@ const CortexHero = () => {
         {/* Gold accent line top */}
         <div className="w-full h-px bg-gradient-to-r from-transparent via-[#c9a84c]/40 to-transparent mb-16" />
 
-        {/* Eyebrow */}
-        <p className="text-[11px] uppercase tracking-[0.4em] text-[#c9a84c] mb-8">
-          NIAS Cortex
-        </p>
-
         {/* H1 */}
         <h1
           className="text-[44px] md:text-[56px] lg:text-[88px] leading-[1.1] font-normal text-[#f5f3ef] mb-8"
