@@ -25,7 +25,7 @@ const STEPS = [
   },
 ];
 
-const ROTATING_WORDS = ["the first meeting.", "the investment committee.", "the investor pitch.", "the pipeline review."];
+const ROTATING_WORDS = ["the first meeting.", "the next IC.", "the investor pitch.", "the pipeline review."];
 
 const CortexHero = () => {
   const [activeStep, setActiveStep] = useState(0);
