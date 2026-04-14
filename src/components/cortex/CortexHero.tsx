@@ -1,11 +1,28 @@
 import { useState, useEffect } from "react";
+import { FileSearch, BarChart3, Globe, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
 const STEPS = [
-  "Reading Document",
-  "Structuring Analysis",
-  "Researching Market",
-  "Generating Report",
+  {
+    icon: FileSearch,
+    label: "Reading Document",
+    description: "Uploading pitch deck...",
+  },
+  {
+    icon: BarChart3,
+    label: "Structuring Analysis",
+    description: "Analyzing the deal...",
+  },
+  {
+    icon: Globe,
+    label: "Researching Market",
+    description: "Market context...",
+  },
+  {
+    icon: Sparkles,
+    label: "Generating Report",
+    description: "Synthesizing memo...",
+  },
 ];
 
 const CortexHero = () => {
@@ -23,7 +40,7 @@ const CortexHero = () => {
         }
         return prev + 1;
       });
-    }, 750);
+    }, 1200);
     return () => clearInterval(timer);
   }, [done]);
 
@@ -35,6 +52,9 @@ const CortexHero = () => {
       destination: "https://access.nias.io/cortex",
     });
   };
+
+  const currentStep = STEPS[activeStep];
+  const CurrentIcon = currentStep.icon;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6">
@@ -52,7 +72,7 @@ const CortexHero = () => {
 
         {/* H1 */}
         <h1
-          className="text-[44px] md:text-[56px] lg:text-[88px] leading-[1.1] font-normal text-[#f5f3ef] mb-8"
+          className="text-[44px] md:text-[56px] lg:text-[88px] leading-[1.1] font-normal text-[#f5f3ef] mb-10"
           style={{ fontFamily: "'Cormorant Garamond', serif" }}
         >
           Your next deal,{" "}
@@ -62,22 +82,43 @@ const CortexHero = () => {
           the first meeting.
         </h1>
 
-        {/* Cortex Meter */}
-        <div className="flex items-center justify-center gap-2 md:gap-4 mb-10 flex-wrap">
-          {STEPS.map((step, i) => (
-            <div key={step} className="flex items-center gap-2 md:gap-4">
-              <span
-                className={`text-[11px] md:text-[13px] tracking-wide transition-colors duration-500 ${
-                  i <= activeStep ? "text-[#c9a84c]" : "text-[#3a3a3a]"
-                }`}
-              >
-                {step}
-              </span>
-              {i < STEPS.length - 1 && (
-                <span className="text-[#2a2a2a] text-[10px]">→</span>
-              )}
+        {/* Animated Cortex Meter — icon + label + dots */}
+        <div className="flex flex-col items-center mb-10">
+          {/* Pulsing icon circle */}
+          <div className="relative w-20 h-20 mb-4">
+            <div className="absolute inset-0 rounded-full border border-[#2a2a2a] bg-[#1a1a1a]" />
+            <div
+              className="absolute inset-0 rounded-full border border-[#c9a84c]/20 animate-pulse"
+              style={{ animationDuration: "2s" }}
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <CurrentIcon
+                className="w-8 h-8 text-[#c9a84c] transition-all duration-500"
+                strokeWidth={1.5}
+              />
             </div>
-          ))}
+          </div>
+
+          {/* Step label */}
+          <p className="text-[13px] md:text-[15px] text-[#9ca3af] mb-1 transition-all duration-500 h-5">
+            {currentStep.description}
+          </p>
+
+          {/* Dot indicators */}
+          <div className="flex items-center gap-2 mt-3">
+            {STEPS.map((_, i) => (
+              <div
+                key={i}
+                className={`h-1.5 rounded-full transition-all duration-500 ${
+                  i === activeStep
+                    ? "w-6 bg-[#c9a84c]"
+                    : i < activeStep
+                    ? "w-1.5 bg-[#c9a84c]/40"
+                    : "w-1.5 bg-[#3a3a3a]"
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Subhead */}
