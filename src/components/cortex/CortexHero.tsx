@@ -34,19 +34,11 @@ const CortexHero = () => {
   const [wordVisible, setWordVisible] = useState(true);
 
   useEffect(() => {
-    if (done) return;
     const timer = setInterval(() => {
-      setActiveStep((prev) => {
-        if (prev >= STEPS.length - 1) {
-          setDone(true);
-          clearInterval(timer);
-          return prev;
-        }
-        return prev + 1;
-      });
+      setActiveStep((prev) => (prev + 1) % STEPS.length);
     }, 2500);
     return () => clearInterval(timer);
-  }, [done]);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
