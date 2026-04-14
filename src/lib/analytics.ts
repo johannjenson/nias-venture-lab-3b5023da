@@ -168,7 +168,7 @@ export const trackEvent = (eventName: string, params: EventParams): void => {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', eventName, {
       ...params,
-      send_to: ['G-PF5EZ7EWMV', 'G-0XFR2MD37G'],
+      send_to: 'G-PF5EZ7EWMV',
     });
     
     // Log in development for debugging
