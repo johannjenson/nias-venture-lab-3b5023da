@@ -101,11 +101,12 @@ const Resources = () => {
         <meta property="og:description" content="Saudi Arabia is investing $3 trillion across key industries as part of Vision 2030. Discover the top industries with the highest potential for international businesses." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://nias.io/resources" />
-        <meta property="og:image" content="https://nias.io/og-image.png" />
+        <meta property="og:image" content="https://nias.io/nias-og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Vision 2030 Market Opportunity Analysis | NIAS Network" />
         <meta name="twitter:description" content="Saudi Arabia is investing $3 trillion across key industries as part of Vision 2030. Discover the top industries with the highest potential for international businesses." />
-        <meta name="twitter:image" content="https://nias.io/og-image.png" />
+        <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
+        <link rel="canonical" href="https://nias.io/resources" />
       </Helmet>
       <ServiceSchema
         name="Vision 2030 Market Opportunity Analysis"

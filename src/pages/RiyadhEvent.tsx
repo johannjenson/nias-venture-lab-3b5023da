@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import EventInviteModal from "@/components/event-invite/EventInviteModal";
 import Footer from "@/components/Footer";
 import { Waves } from "lucide-react";

@@ -25,7 +25,11 @@ const Cortex = () => {
           content="Upload any pitch deck or fund memo. NIAS Cortex delivers a structured, GCC-contextualised due diligence assessment in minutes."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://nias.io/cortex" />
+        <meta property="og:image" content="https://nias.io/nias-og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="NIAS Cortex — AI Due Diligence for GCC Capital Allocators" />
+        <meta name="twitter:description" content="Upload any pitch deck or fund memo. Get a structured, GCC-contextualised due diligence assessment in minutes." />
+        <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
         <link rel="canonical" href="https://nias.io/cortex" />
       </Helmet>
 
