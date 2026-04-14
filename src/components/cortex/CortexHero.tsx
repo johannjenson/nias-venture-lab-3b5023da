@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { FileSearch, BarChart3, Globe, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
@@ -25,9 +25,13 @@ const STEPS = [
   },
 ];
 
+const ROTATING_WORDS = ["the first meeting.", "the investment committee.", "the investor pitch.", "the pipeline review."];
+
 const CortexHero = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [done, setDone] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
+  const [wordVisible, setWordVisible] = useState(true);
 
   useEffect(() => {
     if (done) return;
@@ -43,6 +47,17 @@ const CortexHero = () => {
     }, 2500);
     return () => clearInterval(timer);
   }, [done]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordVisible(false);
+      setTimeout(() => {
+        setWordIndex((prev) => (prev + 1) % ROTATING_WORDS.length);
+        setWordVisible(true);
+      }, 600);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleCTA = () => {
     trackEvent("assess_deal_click", {
@@ -79,7 +94,12 @@ const CortexHero = () => {
           <br className="hidden md:block" />
           pressure-tested before{" "}
           <br className="hidden md:block" />
-          the first meeting.
+          <span
+            className="inline-block transition-all duration-500"
+            style={{ opacity: wordVisible ? 1 : 0, transform: wordVisible ? "translateY(0)" : "translateY(8px)" }}
+          >
+            {ROTATING_WORDS[wordIndex]}
+          </span>
         </h1>
 
         {/* Animated Cortex Meter — icon + label + dots */}
