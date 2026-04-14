@@ -31,7 +31,6 @@ const CortexHero = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [wordIndex, setWordIndex] = useState(0);
   const [wordVisible, setWordVisible] = useState(true);
-  const [wordVisible, setWordVisible] = useState(true);
 
   useEffect(() => {
     const timer = setInterval(() => {
