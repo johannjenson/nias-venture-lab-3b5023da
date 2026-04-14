@@ -25,7 +25,7 @@ const STEPS = [
   },
 ];
 
-const ROTATING_WORDS = ["the first meeting.", "the next IC.", "the investor pitch.", "the pipeline review."];
+const ROTATING_WORDS = ["the first call.", "the term sheet.", "the next IC.", "the wire."];
 
 const CortexHero = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -87,7 +87,7 @@ const CortexHero = () => {
           <br className="hidden md:block" />
           <span className="inline-block relative">
             {/* Invisible longest word to reserve space */}
-            <span className="invisible">the investment committee.</span>
+            <span className="invisible">the term sheet.</span>
             <span
               className="absolute left-0 top-0 w-full transition-all duration-500"
               style={{ opacity: wordVisible ? 1 : 0, transform: wordVisible ? "translateY(0)" : "translateY(8px)" }}
