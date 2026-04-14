@@ -40,7 +40,7 @@ const CortexHero = () => {
         }
         return prev + 1;
       });
-    }, 1200);
+    }, 2500);
     return () => clearInterval(timer);
   }, [done]);
 
