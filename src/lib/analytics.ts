@@ -168,7 +168,7 @@ export const trackEvent = (eventName: string, params: EventParams): void => {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', eventName, {
       ...params,
-      send_to: ['G-PF5EZ7EWMV', 'G-0XFR2MD37G'],
+      send_to: 'G-PF5EZ7EWMV',
     });
     
     // Log in development for debugging
@@ -247,7 +247,7 @@ export const trackPageView = (pagePath: string, pageTitle?: string): void => {
       page_path: pagePath,
       page_title: pageTitle || document.title,
       page_location: window.location.href,
-      send_to: ['G-PF5EZ7EWMV', 'G-0XFR2MD37G'],
+      send_to: 'G-PF5EZ7EWMV',
     });
   }
 };
@@ -351,7 +351,7 @@ export const trackConversion = (
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', CONVERSION_EVENTS[conversionEvent], {
       ...additionalParams,
-      send_to: ['G-PF5EZ7EWMV', 'G-0XFR2MD37G'],
+      send_to: 'G-PF5EZ7EWMV',
     });
   }
 };

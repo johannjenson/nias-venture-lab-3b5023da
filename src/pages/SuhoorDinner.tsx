@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { CalendarIcon, Clock, MapPin, Users, Waves } from "lucide-react";
@@ -9,6 +10,20 @@ const SuhoorDinner = () => {
     window.open('https://lu.ma/zlllw0y3', '_blank');
   };
   return <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>NIAS Suhoor Dinner | Intimate Business Gathering in Riyadh</title>
+        <meta name="description" content="Join NIAS for an intimate Suhoor dinner with business leaders, investors, and industry experts in Riyadh. By invitation only." />
+        <meta property="og:title" content="NIAS Suhoor Dinner | Riyadh" />
+        <meta property="og:description" content="An intimate Suhoor dinner gathering with fellow business leaders, investors, and industry experts in Riyadh." />
+        <meta property="og:type" content="event" />
+        <meta property="og:url" content="https://nias.io/events/suhoor-dinner" />
+        <meta property="og:image" content="https://nias.io/nias-og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="NIAS Suhoor Dinner | Riyadh" />
+        <meta name="twitter:description" content="Intimate Suhoor dinner with business leaders in Riyadh." />
+        <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
+        <link rel="canonical" href="https://nias.io/events/suhoor-dinner" />
+      </Helmet>
       {/* Sticky Header */}
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">
         <div className="max-w-7xl mx-auto h-16 flex items-center px-6">

@@ -9,11 +9,11 @@ const EventSEO = () => {
       <meta property="og:description" content="An intimate evening gathering at The Greek Villa. Connect with innovators, changemakers, family offices, and diplomatic leaders from 8pm to 2am." />
       <meta property="og:type" content="event" />
       <meta property="og:url" content="https://nias.io/events/night-cap" />
-      <meta property="og:image" content="https://nias.io/og-image.png" />
+      <meta property="og:image" content="https://nias.io/nias-og-image.png" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Informal Night Cap at The Greek Villa - Private Gathering for Innovators" />
       <meta name="twitter:description" content="An intimate evening gathering at The Greek Villa. Connect with innovators, changemakers, family offices, and diplomatic leaders." />
-      <meta name="twitter:image" content="https://nias.io/og-image.png" />
+      <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
     </Helmet>
   );
 };

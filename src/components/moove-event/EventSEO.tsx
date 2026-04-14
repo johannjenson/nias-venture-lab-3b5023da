@@ -9,11 +9,11 @@ const EventSEO = () => {
       <meta property="og:description" content="Exclusive gathering with Ladi Delano exploring the future of mobility, autonomous vehicles, and AI infrastructure. Limited to family offices, sovereigns, and government leaders." />
       <meta property="og:type" content="event" />
       <meta property="og:url" content="https://nias.io/events/an-evening-with-moove-ceo" />
-      <meta property="og:image" content="https://nias.io/og-image.png" />
+      <meta property="og:image" content="https://nias.io/nias-og-image.png" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Driving Billions in Mobility Financing: A Private Evening with Moove.io's CEO Ladi Delano" />
       <meta name="twitter:description" content="Exclusive gathering with Ladi Delano exploring the future of mobility, autonomous vehicles, and AI infrastructure. Limited to family offices, sovereigns, and government leaders." />
-      <meta name="twitter:image" content="https://nias.io/og-image.png" />
+      <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
     </Helmet>
   );
 };

@@ -154,6 +154,16 @@ const VSQRiyadhEvent = () => {
       <Helmet>
         <title>VNTR Investor Forum Riyadh | NIAS Network</title>
         <meta name="description" content="Join VNTR Investor Forum in Riyadh on April 23rd, 2025 for a day of keynotes, panels, and networking with industry leaders, in partnership with NIAS Network." />
+        <meta property="og:title" content="VNTR Investor Forum Riyadh | NIAS Network" />
+        <meta property="og:description" content="A day of keynotes, panels, and networking with industry leaders in Riyadh. April 23, 2025." />
+        <meta property="og:type" content="event" />
+        <meta property="og:url" content="https://nias.io/events/vntr-investor-forum" />
+        <meta property="og:image" content="https://nias.io/nias-og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="VNTR Investor Forum Riyadh | NIAS Network" />
+        <meta name="twitter:description" content="Keynotes, panels, and networking with industry leaders in Riyadh." />
+        <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
+        <link rel="canonical" href="https://nias.io/events/vntr-investor-forum" />
       </Helmet>
       
       <div className="fixed top-0 left-0 right-0 bg-secondary border-b z-50">

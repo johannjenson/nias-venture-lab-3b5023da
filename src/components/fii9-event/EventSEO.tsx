@@ -9,11 +9,11 @@ const EventSEO = () => {
       <meta property="og:description" content="Exclusive private gathering celebrating Avra's cohort and Saudi Arabia's innovation ecosystem. Intimate networking with global founders and Saudi leaders." />
       <meta property="og:type" content="event" />
       <meta property="og:url" content="https://nias.io/events/fii9-recap" />
-      <meta property="og:image" content="https://nias.io/og-image.png" />
+      <meta property="og:image" content="https://nias.io/nias-og-image.png" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="FII9 Recap: Celebrating Saudi Innovation" />
       <meta name="twitter:description" content="Exclusive private gathering celebrating Avra's cohort and Saudi Arabia's innovation ecosystem in Riyadh." />
-      <meta name="twitter:image" content="https://nias.io/og-image.png" />
+      <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
     </Helmet>
   );
 };
