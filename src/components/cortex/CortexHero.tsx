@@ -94,7 +94,12 @@ const CortexHero = () => {
           <br className="hidden md:block" />
           pressure-tested before{" "}
           <br className="hidden md:block" />
-          the first meeting.
+          <span
+            className="inline-block transition-all duration-500"
+            style={{ opacity: wordVisible ? 1 : 0, transform: wordVisible ? "translateY(0)" : "translateY(8px)" }}
+          >
+            {ROTATING_WORDS[wordIndex]}
+          </span>
         </h1>
 
         {/* Animated Cortex Meter — icon + label + dots */}
