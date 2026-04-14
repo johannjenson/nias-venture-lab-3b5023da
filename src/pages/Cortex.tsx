@@ -31,7 +31,6 @@ const Cortex = () => {
 
       <div className="cortex-page bg-[#0f0f0f] text-[#f5f3ef] min-h-screen" style={{ fontFamily: "'Inter', sans-serif" }}>
         <CortexHero />
-        <CredibilityBar />
         <ReportPreview />
         <AssetClasses />
         <HowItWorks />
