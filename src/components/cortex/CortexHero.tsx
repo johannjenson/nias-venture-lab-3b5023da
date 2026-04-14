@@ -94,11 +94,15 @@ const CortexHero = () => {
           <br className="hidden md:block" />
           pressure-tested before{" "}
           <br className="hidden md:block" />
-          <span
-            className="inline-block transition-all duration-500"
-            style={{ opacity: wordVisible ? 1 : 0, transform: wordVisible ? "translateY(0)" : "translateY(8px)" }}
-          >
-            {ROTATING_WORDS[wordIndex]}
+          <span className="inline-block relative">
+            {/* Invisible longest word to reserve space */}
+            <span className="invisible">the investment committee.</span>
+            <span
+              className="absolute left-0 top-0 w-full transition-all duration-500"
+              style={{ opacity: wordVisible ? 1 : 0, transform: wordVisible ? "translateY(0)" : "translateY(8px)" }}
+            >
+              {ROTATING_WORDS[wordIndex]}
+            </span>
           </span>
         </h1>
 
