@@ -9,7 +9,7 @@ const POINTS = [
   {
     icon: Lock,
     title: "Institutional-grade confidentiality",
-    body: "Assessments are private by default. Only you can see your report. Sharing requires your explicit action.",
+    body: "Your reports are accessible only to you. No third-party access, no data sharing without your consent.",
   },
   {
     icon: CheckCircle,

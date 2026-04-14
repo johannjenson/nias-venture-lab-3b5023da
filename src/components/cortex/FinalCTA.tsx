@@ -27,7 +27,7 @@ const FinalCTA = () => {
 
         <p className="text-[16px] text-[#9ca3af] max-w-[480px] mx-auto leading-[1.65] mb-10">
           NIAS Cortex is free for your first assessment.
-          Apply for membership to unlock the full due diligence suite.
+          Apply for complementary membership to unlock the full due diligence suite.
         </p>
 
         <a
