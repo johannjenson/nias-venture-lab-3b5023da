@@ -43,6 +43,7 @@ import USSaudiForumDinner from "./pages/USSaudiForumDinner";
 import DoersSummitEvent from "./pages/DoersSummitEvent";
 import JeddahSuhoorDinner from "./pages/JeddahSuhoorDinner";
 import RiyadhSuhoorDinner from "./pages/RiyadhSuhoorDinner";
+import Cortex from "./pages/Cortex";
 
 const queryClient = new QueryClient();
 
@@ -96,6 +97,7 @@ const App = () => (
             <Route path="/crm" element={<CRM />} />
             <Route path="/resources/inbound-contacts" element={<InboundContacts />} />
             <Route path="/clients-partners" element={<ClientsPartners />} />
+            <Route path="/cortex" element={<Cortex />} />
           </Routes>
           <BottomNavigation />
           <Toaster />
