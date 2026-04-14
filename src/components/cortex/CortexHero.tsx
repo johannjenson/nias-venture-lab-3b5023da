@@ -48,6 +48,17 @@ const CortexHero = () => {
     return () => clearInterval(timer);
   }, [done]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordVisible(false);
+      setTimeout(() => {
+        setWordIndex((prev) => (prev + 1) % ROTATING_WORDS.length);
+        setWordVisible(true);
+      }, 600);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleCTA = () => {
     trackEvent("assess_deal_click", {
       category: "cta_click",
