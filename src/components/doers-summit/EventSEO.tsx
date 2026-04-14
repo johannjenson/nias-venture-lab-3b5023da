@@ -9,11 +9,11 @@ const EventSEO = () => {
       <meta property="og:description" content="A panel discussion at Doers Summit Dubai unpacking real expansion journeys in the GCC market. November 26, 2025." />
       <meta property="og:type" content="event" />
       <meta property="og:url" content="https://nias.io/events/doers-summit-dubai-panel" />
-      <meta property="og:image" content="https://nias.io/og-image.png" />
+      <meta property="og:image" content="https://nias.io/nias-og-image.png" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="The Playbook for Landing & Expanding in Saudi Arabia" />
       <meta name="twitter:description" content="A panel discussion at Doers Summit Dubai unpacking real expansion journeys in the GCC market. November 26, 2025." />
-      <meta name="twitter:image" content="https://nias.io/og-image.png" />
+      <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
     </Helmet>
   );
 };

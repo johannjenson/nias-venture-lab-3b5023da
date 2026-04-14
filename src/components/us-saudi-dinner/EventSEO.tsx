@@ -9,11 +9,11 @@ const EventSEO = () => {
       <meta property="og:description" content="Exclusive dinner for business leaders, investors, and officials shaping US-Saudi economic relations. November 18, 2025, Washington D.C." />
       <meta property="og:type" content="event" />
       <meta property="og:url" content="https://nias.io/events/us-saudi-forum-dinner" />
-      <meta property="og:image" content="https://nias.io/og-image.png" />
+      <meta property="og:image" content="https://nias.io/nias-og-image.png" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="NIAS VIP Dinner: US-Saudi Investment Forum" />
       <meta name="twitter:description" content="Exclusive dinner for business leaders, investors, and officials shaping US-Saudi economic relations. November 18, 2025, Washington D.C." />
-      <meta name="twitter:image" content="https://nias.io/og-image.png" />
+      <meta name="twitter:image" content="https://nias.io/nias-og-image.png" />
     </Helmet>
   );
 };
