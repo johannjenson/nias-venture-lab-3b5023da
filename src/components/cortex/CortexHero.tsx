@@ -155,7 +155,7 @@ const CortexHero = () => {
 
         {/* Micro-copy */}
         <p className="text-[11px] text-[#5a5a5a] mt-4">
-          No account required. Results in under 3 minutes.
+          No account required. Results in under 5 minutes.
         </p>
 
         {/* Gold accent line bottom */}
