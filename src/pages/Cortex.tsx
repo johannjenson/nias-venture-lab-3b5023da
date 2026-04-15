@@ -1,4 +1,6 @@
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import CortexHero from "@/components/cortex/CortexHero";
 
 import ReportPreview from "@/components/cortex/ReportPreview";
@@ -34,6 +36,13 @@ const Cortex = () => {
       </Helmet>
 
       <div className="cortex-page bg-[#0f0f0f] text-[#f5f3ef] min-h-screen" style={{ fontFamily: "'Inter', sans-serif" }}>
+        <Link
+          to="/"
+          className="fixed top-6 left-6 z-50 flex items-center gap-1.5 text-[13px] text-[#5a5a5a] hover:text-[#f5f3ef] transition-colors"
+        >
+          <ArrowLeft size={14} />
+          <span>nias.io</span>
+        </Link>
         <CortexHero />
         <ReportPreview />
         <AssetClasses />
