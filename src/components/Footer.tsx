@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import NiasLogo from "./NiasLogo";
 
 const Footer = () => {
