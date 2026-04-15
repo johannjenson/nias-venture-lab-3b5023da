@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import NiasLogo from "./NiasLogo";
 
 const Footer = () => {
   const [user, setUser] = useState<User | null>(null);
+  const location = useLocation();
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -53,7 +54,7 @@ const Footer = () => {
     opportunities: [
       { name: "Vision 2030", href: "/resources" },
       { name: "Real Estate", href: "/real-estate" },
-      { name: "Cortex", href: "/cortex" },
+      ...(location.pathname !== "/cortex" ? [{ name: "Cortex", href: "/cortex" }] : []),
     ],
     nias: [
       { name: "Team", href: "/people" },
