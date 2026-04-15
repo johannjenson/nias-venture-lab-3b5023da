@@ -9,7 +9,11 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-PF5EZ7EWMV', {
-        linker: false
+        linker: {
+          accept_incoming: false,
+          decorate_forms: false,
+          url_position: 'none'
+        }
       });
     </script>
     <meta charset="UTF-8" />
