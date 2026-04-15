@@ -7,6 +7,7 @@ import NiasLogo from "./NiasLogo";
 
 const Footer = () => {
   const [user, setUser] = useState<User | null>(null);
+  const location = useLocation();
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
