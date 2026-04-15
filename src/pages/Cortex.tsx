@@ -8,7 +8,7 @@ import DDAgentTeam from "@/components/cortex/DDAgentTeam";
 import GCCContext from "@/components/cortex/GCCContext";
 import TrustArchitecture from "@/components/cortex/TrustArchitecture";
 import FinalCTA from "@/components/cortex/FinalCTA";
-import CortexFooter from "@/components/cortex/CortexFooter";
+import Footer from "@/components/Footer";
 
 const Cortex = () => {
   return (
