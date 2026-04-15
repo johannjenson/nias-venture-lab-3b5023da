@@ -1,4 +1,6 @@
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import CortexHero from "@/components/cortex/CortexHero";
 
 import ReportPreview from "@/components/cortex/ReportPreview";
