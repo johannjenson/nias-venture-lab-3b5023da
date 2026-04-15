@@ -42,7 +42,7 @@ const Cortex = () => {
         <GCCContext />
         <TrustArchitecture />
         <FinalCTA />
-        <CortexFooter />
+        <Footer />
       </div>
     </>
   );
