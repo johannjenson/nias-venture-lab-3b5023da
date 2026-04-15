@@ -54,7 +54,7 @@ const Footer = () => {
     opportunities: [
       { name: "Vision 2030", href: "/resources" },
       { name: "Real Estate", href: "/real-estate" },
-      { name: "Cortex", href: "/cortex" },
+      ...(location.pathname !== "/cortex" ? [{ name: "Cortex", href: "/cortex" }] : []),
     ],
     nias: [
       { name: "Team", href: "/people" },
