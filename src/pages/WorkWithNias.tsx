@@ -152,24 +152,17 @@ const WorkWithNias = () => {
                 href="https://access.nias.io/cortex"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block border border-border/40 rounded-lg p-4 text-left transition-colors hover:border-primary/50 group"
+                className="block bg-foreground border border-foreground rounded-lg p-4 text-left transition-all hover:opacity-90 hover:shadow-md group"
               >
-                <h3 className="font-medium text-foreground mb-1 text-sm">
+                <FileText className="h-4 w-4 text-background mb-2" />
+                <h3 className="font-medium text-background mb-1 text-sm">
                   Before you apply, generate a complimentary deep analysis
                 </h3>
-                <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+                <p className="text-xs text-background/70 leading-relaxed mb-3">
                   Upload your deck and receive an institutional-grade assessment in minutes, powered by AI agents tailored to your asset class or sector.
                 </p>
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-muted-foreground/60 mb-3">
-                  <span className="flex items-center gap-1">
-                    <TrendingUp className="h-3 w-3" /> Evaluate 10× more opportunities
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <FileText className="h-3 w-3" /> Save weeks of work and thousands in staff costs
-                  </span>
-                </div>
                 <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary">
-                  Try It Free <ArrowRight className="h-3.5 w-3.5" />
+                  Assess Your Opportunity <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </span>
               </a>
             </div>
