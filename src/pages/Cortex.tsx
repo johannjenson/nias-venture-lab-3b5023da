@@ -41,7 +41,7 @@ const Cortex = () => {
           className="fixed top-6 left-6 z-50 flex items-center gap-1.5 text-[13px] text-[#5a5a5a] hover:text-[#f5f3ef] transition-colors"
         >
           <ArrowLeft size={14} />
-          <span>nias.io</span>
+          <span>NIAS.io</span>
         </Link>
         <CortexHero />
         <ReportPreview />
