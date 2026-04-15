@@ -154,14 +154,13 @@ const WorkWithNias = () => {
                 rel="noopener noreferrer"
                 className="block bg-foreground border border-foreground rounded-lg p-4 text-left transition-all hover:opacity-90 hover:shadow-md group"
               >
-                <FileText className="h-4 w-4 text-background mb-2" />
                 <h3 className="font-medium text-background mb-1 text-sm">
                   Before you apply, generate a complimentary deep analysis
                 </h3>
                 <p className="text-xs text-background/70 leading-relaxed mb-3">
                   Upload your deck and receive an institutional-grade assessment in minutes, powered by AI agents tailored to your asset class or sector.
                 </p>
-                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary">
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-background underline underline-offset-2">
                   Assess Your Opportunity <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </span>
               </a>
