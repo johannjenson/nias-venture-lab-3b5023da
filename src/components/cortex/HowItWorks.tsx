@@ -3,18 +3,18 @@ import { trackEvent } from "@/lib/analytics";
 const STEPS = [
   {
     num: "01",
-    title: "Upload your document",
-    copy: "Any PDF. Pitch deck, fund memo, CIM, or information memorandum. The system handles the rest.",
-  },
-  {
-    num: "02",
     title: "Select the asset class",
     copy: "Cortex applies the right evaluation framework for your deal type. Not a generic checklist.",
   },
   {
+    num: "02",
+    title: "Upload your document",
+    copy: "Any PDF. Pitch deck, fund memo, CIM, or information memorandum. The system handles the rest.",
+  },
+  {
     num: "03",
     title: "Receive your assessment",
-    copy: "A structured report in under 3 minutes. Share, export, or apply for NIAS membership to unlock the full suite.",
+    copy: "A structured report in under 5 minutes. Share, export, or apply for NIAS membership to unlock the full suite.",
   },
 ];
 
