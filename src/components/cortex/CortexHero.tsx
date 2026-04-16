@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { FileSearch, BarChart3, Globe, Sparkles } from "lucide-react";
+import { FileSearch, BarChart3, Globe, Sparkles, Users, HelpCircle, GitMerge, Handshake } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
 const STEPS = [
@@ -17,6 +17,26 @@ const STEPS = [
     icon: Globe,
     label: "Researching Market",
     description: "Market context...",
+  },
+  {
+    icon: Users,
+    label: "Deploying DD Agents",
+    description: "Deploying DD agents...",
+  },
+  {
+    icon: HelpCircle,
+    label: "Generating DD Questions",
+    description: "Generating DD questions...",
+  },
+  {
+    icon: GitMerge,
+    label: "Synthesizing Answers",
+    description: "Synthesizing answers...",
+  },
+  {
+    icon: Handshake,
+    label: "Recommending Investors",
+    description: "Recommending investors...",
   },
   {
     icon: Sparkles,
