@@ -35,8 +35,8 @@ const STEPS = [
   },
   {
     icon: Handshake,
-    label: "Recommending Investors",
-    description: "Recommending investors...",
+    label: "Recommending Strategic Partners",
+    description: "Recommending strategic partners...",
   },
   {
     icon: Sparkles,
