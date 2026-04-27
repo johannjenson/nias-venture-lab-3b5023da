@@ -154,12 +154,6 @@ const People = () => {
       linkedIn: "https://sa.linkedin.com/in/richardschrems",
     },
     {
-      name: "Fahad Alsudairy",
-      role: "Sports & Entertainment",
-      imageUrl: fahadImage,
-      linkedIn: "",
-    },
-    {
       name: "Turki Alshubaki",
       role: "Real Estate",
       imageUrl: turkiImage,
@@ -232,7 +226,7 @@ const People = () => {
           { name: "Johann Jenson", jobTitle: "Founding Partner - Finance & Platform", linkedIn: "https://www.linkedin.com/in/johannjenson/" },
           { name: "Ibrahim Alshuwaier", jobTitle: "Founding Partner - Business Development & Partnerships" },
           { name: "Richard Schrems", jobTitle: "Associate - Operations", linkedIn: "https://sa.linkedin.com/in/richardschrems" },
-          { name: "Fahad Alsudairy", jobTitle: "Associate - Sports & Entertainment" },
+          
           { name: "Turki Alshubaki", jobTitle: "Associate - Real Estate" },
           { name: "Mohammed Khalid Ibn Salamah", jobTitle: "Associate - Real Estate" },
           { name: "Ibrahim AlSemari", jobTitle: "Counsel - Finance", linkedIn: "https://sa.linkedin.com/in/ibrahim-alsemari-cfa-cpa-3a3866162" },
