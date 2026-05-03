@@ -25,7 +25,18 @@ const HeroContent = () => {
   }, []);
 
   return (
-    <div className="flex-1 flex flex-col bg-secondary/30">
+    <div className="flex-1 flex flex-col relative">
+      {/* Video Background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        src="/hero-bg.mp4"
+      />
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/60 z-[1]" />
       {/* News Ticker */}
       <div className="bg-nias-gold/10 border-b border-nias-gold/20 py-2 px-4 mt-[88px] md:mt-[52px]">
         <a
