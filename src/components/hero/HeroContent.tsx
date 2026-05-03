@@ -78,7 +78,8 @@ const HeroContent = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button
                 asChild
-                className="w-full sm:w-64 bg-white text-foreground hover:bg-white/90 h-12 px-6 text-sm font-medium tracking-wide"
+                variant="outline"
+                className="w-full sm:w-64 border-white text-white bg-white/10 hover:bg-white/90 hover:text-foreground h-12 px-6 text-sm font-medium tracking-wide backdrop-blur-sm"
               >
                 <a 
                   href="https://access.nias.io/investors" 
@@ -86,13 +87,13 @@ const HeroContent = () => {
                   rel="noopener noreferrer"
                   onClick={() => trackCTAClick('for_institutional_platforms', 'hero', 'https://access.nias.io/investors')}
                 >
-                  For Investors <ArrowRight className="ml-2 h-4 w-4" />
+                  For Investors
                 </a>
               </Button>
               <Button
                 asChild
                 variant="outline"
-                className="w-full sm:w-64 border-white text-white bg-white/10 hover:bg-white/20 h-12 px-6 text-sm font-medium tracking-wide backdrop-blur-sm"
+                className="w-full sm:w-64 border-white text-white bg-white/10 hover:bg-white/90 hover:text-foreground h-12 px-6 text-sm font-medium tracking-wide backdrop-blur-sm"
               >
                 <a 
                   href="https://access.nias.io/" 
@@ -106,7 +107,7 @@ const HeroContent = () => {
               <Button
                 asChild
                 variant="outline"
-                className="w-full sm:w-64 border-white text-white bg-white/10 hover:bg-white/20 h-12 px-6 text-sm font-medium tracking-wide backdrop-blur-sm"
+                className="w-full sm:w-64 border-white text-white bg-white/10 hover:bg-white/90 hover:text-foreground h-12 px-6 text-sm font-medium tracking-wide backdrop-blur-sm"
               >
                 <Link to="/resources" onClick={() => trackCTAClick('explore_vision_2030', 'hero', '/resources')}>
                   Explore Vision 2030 Sectors
