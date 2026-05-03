@@ -38,7 +38,7 @@ const HeroContent = () => {
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/60 z-[1]" />
       {/* News Ticker */}
-      <div className="bg-nias-gold/10 border-b border-nias-gold/20 py-2 px-4 mt-[88px] md:mt-[52px]">
+      <div className="relative z-[2] bg-black/40 border-b border-nias-gold/20 py-2 px-4 mt-[88px] md:mt-[52px]">
         <a
           href="https://access.nias.io/private/insights/saudi-arabia-budget-2026"
           target="_blank"
@@ -46,10 +46,10 @@ const HeroContent = () => {
           className="flex items-center justify-center gap-2 group"
           onClick={() => trackCTAClick('saudi_budget_announcement', 'hero', 'https://access.nias.io/private/insights/saudi-arabia-budget-2026')}
         >
-          <span className="text-[10px] md:text-xs text-foreground/70 uppercase tracking-[0.1em]">
+          <span className="text-[10px] md:text-xs text-white/70 uppercase tracking-[0.1em]">
             Just Announced
           </span>
-          <span className="text-[10px] md:text-xs font-medium text-foreground group-hover:text-nias-gold transition-colors">
+          <span className="text-[10px] md:text-xs font-medium text-white group-hover:text-nias-gold transition-colors">
             Saudi Arabia 2026 Budget
           </span>
           <ArrowRight className="w-3 h-3 text-nias-gold group-hover:translate-x-0.5 transition-transform" />
@@ -57,12 +57,12 @@ const HeroContent = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="flex-1 flex items-center pt-2 pb-20 md:pt-[62px] md:pb-28">
+      <div className="relative z-[2] flex-1 flex items-center pt-2 pb-20 md:pt-[62px] md:pb-28">
         <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
           <div className="max-w-3xl mx-auto text-center">
             {/* Wave Icon */}
-            <Waves className="h-10 w-10 md:h-12 md:w-12 text-foreground mx-auto mt-6 md:mt-0 mb-6 md:mb-12 animate-wave" strokeWidth={2} />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.15]">
+            <Waves className="h-10 w-10 md:h-12 md:w-12 text-white mx-auto mt-6 md:mt-0 mb-6 md:mb-12 animate-wave" strokeWidth={2} />
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white mb-8 leading-[1.15]">
               Land & Expand<br />in{" "}
               <span 
                 className={`font-medium inline-block transition-all duration-400 ${
@@ -72,7 +72,7 @@ const HeroContent = () => {
                 {regions[currentIndex]}
               </span>
             </h1>
-            <p className="text-base md:text-lg text-muted-foreground mb-12 max-w-xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg text-white/80 mb-12 max-w-xl mx-auto leading-relaxed">
               Connecting global frontier tech, energy, education, art, sports, and entertainment companies with the Kingdom's entrepreneurs, government leaders, and capital allocators.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
