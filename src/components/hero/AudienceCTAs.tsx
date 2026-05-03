@@ -150,7 +150,7 @@ const AudienceCTAs = () => {
   return (
     <div className="bg-background">
       {/* Gatherings Section */}
-      <div id="gatherings" className="py-24 md:py-32">
+      <div id="gatherings" className="py-14 md:py-20">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-light text-foreground mb-5 tracking-tight">
