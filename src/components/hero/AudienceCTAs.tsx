@@ -370,10 +370,11 @@ const AudienceCTAs = () => {
             </div>
             <Button
               asChild
-              className="bg-nias-gold text-nias-dark hover:bg-nias-gold/90 h-12 px-8 text-sm font-medium"
+              variant="outline"
+              className="border-nias-gold text-nias-gold bg-transparent hover:bg-nias-gold hover:text-nias-dark h-12 px-8 text-sm font-medium"
             >
               <a href="https://access.nias.io/cortex" target="_blank" rel="noopener noreferrer">
-                Try It Free <ArrowRight className="ml-2 h-4 w-4" />
+                Try It Free
               </a>
             </Button>
           </div>
