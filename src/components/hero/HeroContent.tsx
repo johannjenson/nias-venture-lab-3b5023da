@@ -28,11 +28,11 @@ const HeroContent = () => {
     <div className="flex-1 flex flex-col relative">
       {/* Video Background */}
       <video
+        ref={(el) => { if (el) el.playbackRate = 0.5; }}
         autoPlay
         muted
         loop
         playsInline
-        playbackRate={0.5}
         className="absolute inset-0 w-full h-full object-cover z-0"
         src="/hero-bg.mp4"
       />
