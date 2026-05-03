@@ -106,7 +106,7 @@ const HeroContent = () => {
               <Button
                 asChild
                 variant="outline"
-                className="w-full sm:w-64 border-foreground/20 text-foreground hover:bg-foreground hover:text-background h-12 px-6 text-sm font-medium tracking-wide"
+                className="w-full sm:w-64 border-white/30 text-white hover:bg-white hover:text-black h-12 px-6 text-sm font-medium tracking-wide"
               >
                 <Link to="/resources" onClick={() => trackCTAClick('explore_vision_2030', 'hero', '/resources')}>
                   Explore Vision 2030 Sectors
@@ -118,7 +118,7 @@ const HeroContent = () => {
       </div>
 
       {/* Stats Section */}
-      <div className="bg-foreground text-background py-16 md:py-20">
+      <div className="relative z-[2] bg-foreground text-background py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-16">
             <div className="text-center">
