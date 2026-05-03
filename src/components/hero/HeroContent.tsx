@@ -142,7 +142,7 @@ const HeroContent = () => {
       </div>
 
       {/* Partnership Section */}
-      <div className="bg-background py-12 md:py-16">
+      <div className="relative z-[2] bg-background py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center">
             <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-medium mb-8">In Partnership With</p>
