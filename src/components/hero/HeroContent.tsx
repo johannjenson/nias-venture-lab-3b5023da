@@ -38,7 +38,7 @@ const HeroContent = () => {
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/60 z-[1]" />
       {/* News Ticker */}
-      <div className="relative z-[2] bg-black/40 border-b border-nias-gold/20 py-2 px-4 mt-[72px] md:mt-[40px]">
+      <div className="relative z-[2] bg-[#F8F3E8] border-b border-nias-gold/20 py-3 px-4 mt-[80px] md:mt-[48px]">
         <a
           href="https://access.nias.io/private/insights/saudi-arabia-budget-2026"
           target="_blank"
@@ -46,10 +46,10 @@ const HeroContent = () => {
           className="flex items-center justify-center gap-2 group"
           onClick={() => trackCTAClick('saudi_budget_announcement', 'hero', 'https://access.nias.io/private/insights/saudi-arabia-budget-2026')}
         >
-          <span className="text-[10px] md:text-xs text-white/70 uppercase tracking-[0.1em]">
+          <span className="text-[10px] md:text-xs text-foreground/60 uppercase tracking-[0.1em]">
             Just Announced
           </span>
-          <span className="text-[10px] md:text-xs font-medium text-white group-hover:text-nias-gold transition-colors">
+          <span className="text-[10px] md:text-xs font-medium text-foreground group-hover:text-nias-gold transition-colors">
             Saudi Arabia 2026 Budget
           </span>
           <ArrowRight className="w-3 h-3 text-nias-gold group-hover:translate-x-0.5 transition-transform" />
