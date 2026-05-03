@@ -32,6 +32,7 @@ const HeroContent = () => {
         muted
         loop
         playsInline
+        playbackRate={0.5}
         className="absolute inset-0 w-full h-full object-cover z-0"
         src="/hero-bg.mp4"
       />
