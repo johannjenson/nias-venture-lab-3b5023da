@@ -78,7 +78,7 @@ const HeroContent = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button
                 asChild
-                className="w-full sm:w-64 bg-nias-blue hover:bg-nias-blue/90 text-nias-blue-foreground h-12 px-6 text-sm font-medium tracking-wide"
+                className="w-full sm:w-64 bg-white text-foreground hover:bg-white/90 h-12 px-6 text-sm font-medium tracking-wide"
               >
                 <a 
                   href="https://access.nias.io/investors" 
@@ -92,7 +92,7 @@ const HeroContent = () => {
               <Button
                 asChild
                 variant="outline"
-                className="w-full sm:w-64 border-nias-green text-nias-green hover:bg-nias-green hover:text-nias-green-foreground h-12 px-6 text-sm font-medium tracking-wide"
+                className="w-full sm:w-64 border-white/50 text-white hover:bg-white/10 h-12 px-6 text-sm font-medium tracking-wide backdrop-blur-sm"
               >
                 <a 
                   href="https://access.nias.io/" 
@@ -106,7 +106,7 @@ const HeroContent = () => {
               <Button
                 asChild
                 variant="outline"
-                className="w-full sm:w-64 border-white/30 text-white hover:bg-white hover:text-black h-12 px-6 text-sm font-medium tracking-wide"
+                className="w-full sm:w-64 border-white/50 text-white hover:bg-white/10 h-12 px-6 text-sm font-medium tracking-wide backdrop-blur-sm"
               >
                 <Link to="/resources" onClick={() => trackCTAClick('explore_vision_2030', 'hero', '/resources')}>
                   Explore Vision 2030 Sectors
