@@ -28,6 +28,7 @@ const HeroContent = () => {
     <div className="flex-1 flex flex-col relative">
       {/* Video Background */}
       <video
+        ref={(el) => { if (el) el.playbackRate = 0.5; }}
         autoPlay
         muted
         loop
