@@ -38,7 +38,7 @@ const HeroContent = () => {
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/60 z-[1]" />
       {/* News Ticker */}
-      <div className="relative z-[2] bg-black/40 border-b border-nias-gold/20 py-2 px-4 mt-[88px] md:mt-[52px]">
+      <div className="relative z-[2] bg-black/40 border-b border-nias-gold/20 py-2 px-4 mt-[72px] md:mt-[40px]">
         <a
           href="https://access.nias.io/private/insights/saudi-arabia-budget-2026"
           target="_blank"
@@ -134,7 +134,7 @@ const HeroContent = () => {
               <div className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-background/50 font-medium">Opportunities Reviewed</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-light tracking-tight mb-2">15+</div>
+              <div className="text-3xl md:text-4xl font-light tracking-tight mb-2">20+</div>
               <div className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-background/50 font-medium">Annual Gatherings</div>
             </div>
           </div>
