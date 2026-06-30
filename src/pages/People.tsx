@@ -289,12 +289,12 @@ const People = () => {
             columns={2}
           />
 
-          {/* <TeamSection 
+          <TeamSection 
             title="Board of Advisors" 
             members={boardAdvisors} 
             columns={4}
             small
-          /> */}
+          />
           
           <TeamSection 
             title="Associates"
